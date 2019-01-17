@@ -14,7 +14,7 @@ library.add(faHeart, faCode);
 class App extends Component {
 
     componentDidMount() {
-        document.title = 'Clearwdd - Web design and development';
+        document.title = 'Clearwdd - Web design and development in Dublin, Ireland';
     }
 
     render() {
