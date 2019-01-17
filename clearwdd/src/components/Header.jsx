@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const styles = {
     border: {backgroundColor: '#7289DA', color: '#111', borderRadius: '10%'},
@@ -14,7 +16,7 @@ class Header extends React.Component {
             <ul className="nav justify-content-center mb-3">
                 <li className="nav-item">
                     <a className='nav-link' style={styles.brand} href="/">
-                        clearwdd
+                        <FontAwesomeIcon icon='code' style={{color: '#0275D8'}}/> clearwdd
                     </a>
                 </li>
             </ul>

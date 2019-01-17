@@ -5,7 +5,17 @@ import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart, faCode } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faHeart, faCode);
+
+
 class App extends Component {
+
+    componentDidMount() {
+        document.title = 'Clearwdd - Web design and development';
+    }
 
     render() {
         return(

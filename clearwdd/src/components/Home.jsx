@@ -8,7 +8,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className='container'>
-                <div className='col-lg-12 mb-5'>
+                <div className='col-lg-12'>
                     <div className='row'>
                         <div className='col-lg-6'>
                             <h1><b>Get a modern website</b></h1>
@@ -17,11 +17,10 @@ class Home extends React.Component {
                                 small business owners or creative entreprereneurs.
                             </h4>
                             <br/>
-                            <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary'>Get started</a>
+                            <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary mb-3'>Get in touch</a>
                         </div>
                         <div className='col-lg-6 text-center'>
                             <img src={laptop} className='img-fluid' alt='laptop'></img>
-                            <small>Vector illustration credit: <a rel="nofollow" href="https://www.vecteezy.com">www.Vecteezy.com</a></small>
                         </div>
                     </div>
                 </div>
@@ -47,7 +46,7 @@ class Home extends React.Component {
                         <div className='col-lg-4 mb-3'>
                             <h4><b>Single page application</b></h4>
                             <h5>
-                                Clearwdd uses the latest frontend technologiy that powers
+                                Clearwdd uses the latest frontend technology that powers
                                 some of the famous companies such as Facebook, Netflix and
                                 Airbnb (just to name a few) to deliver frictionless and
                                 enriched digital experiences for the user.
