@@ -1,9 +1,9 @@
-# clearwdd.github.io
-Web development for brochure websites
+# humblepage
+Web development for landing pages
 
 # Usage
 ```
-cd clearwdd && npm run start
+cd humblepage && npm run start
 ```
 
 # Deploy

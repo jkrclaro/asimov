@@ -1,2 +1,5 @@
 deploy: 
-	cd clearwdd && npm run build && rm -rf ../static && mv build/* ../
+	cd humblepage && npm run build && rm -rf ../static && mv build/* ../
+
+start:
+	cd humblepage	&& npm run start

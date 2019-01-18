@@ -34,14 +34,24 @@
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
-.btn-clearwdd-primary {
+
+.btn-humblepage-primary {
     border-color: #0275D8 !important;
     background-color: #0275D8 !important;
     color: #fff !important;
     font-weight: 700 !important;
 }
-.btn-clearwdd-primary:hover, .btn-clearwdd-primary:focus, .btn-clearwdd-primary:active, .btn-clearwdd-primary.active, .open > .dropdown-toggle.btn-clearwdd-primary {
+.btn-humblepage-primary:hover, .btn-humblepage-primary:focus, .btn-humblepage-primary:active, .btn-humblepage-primary.active, .open > .dropdown-toggle.btn-humblepage-primary {
     border-color: #0275D8 !important;
     background-color: #0275D8 !important;
     color:#fff !important;
+}
+.btn-humblepage-alternative {
+    border-color: #0275D8 !important;
+    color: #0275D8 !important;
+    font-weight: 700 !important;
+}
+.btn-humblepage-alternative:hover, .btn-humblepage-alternative:focus, .btn-humblepage-alternative:active, .btn-humblepage-alternative.active, .open > .dropdown-toggle.btn-humblepage-alternative {
+    border-color: #0275D8 !important;
+    color:#0275D8 !important;
 }

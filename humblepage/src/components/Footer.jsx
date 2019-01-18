@@ -12,7 +12,7 @@ class Footer extends React.Component {
     render() {
         return (
             <div>
-                <ul className="nav justify-content-center mt-3">
+                <ul className="nav justify-content-center">
                     <li className="nav-item">
                         <a className='nav-link disabled' href='/'>
                             <b>
