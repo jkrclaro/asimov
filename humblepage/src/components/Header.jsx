@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const logo = require('../imgs/logo.png');
 
 const styles = {
@@ -17,7 +15,7 @@ class Header extends React.Component {
             <ul className="nav justify-content-center mb-3">
                 <li className="nav-item">
                     <a className='nav-link' style={styles.brand} href="/">
-                        <img src={logo} className='img-fluid' height='50' width='50'/> humblepage
+                        <img src={logo} alt='logo' className='img-fluid' height='50' width='50'/> humblepage
                     </a>
                 </li>
             </ul>

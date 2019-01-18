@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const isometric1 = require('../imgs/isometric1.png');
 
