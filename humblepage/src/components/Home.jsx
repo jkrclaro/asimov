@@ -25,7 +25,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='col-lg-12 mb-5'>
+                <div className='col-lg-12'>
                     <div className='row'>
                         <div className='col-lg-4 mb-3'>
                             <h4><b>No more monthly hosting</b></h4>
