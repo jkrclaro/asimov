@@ -14,7 +14,8 @@ class Home extends React.Component {
                             <h1><b>Get a modern website</b></h1>
                             <h4>
                                 Clearwdd builds brochure websites for ambitious
-                                small business owners, creative entrepreneurs or memorable weddings.
+                                small business owners, creative entrepreneurs 
+                                or memorable weddings.
                             </h4>
                             <br/>
                             <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary mb-5'>Get in touch</a>
@@ -39,8 +40,7 @@ class Home extends React.Component {
                             <h5>
                                 2/3 of the world's population are connected by 
                                 mobile devices therefore your website should be compatible
-                                through desktop <i>and</i> mobile these days. 
-                                Go ahead try resizing this window!
+                                through desktop <i>and</i> mobile these days.
                             </h5>
                         </div>
                         <div className='col-lg-4 mb-3'>
@@ -48,7 +48,7 @@ class Home extends React.Component {
                             <h5>
                                 Clearwdd uses the latest frontend technology that powers
                                 some of the biggest tech companies such as Facebook, Netflix and
-                                Airbnb (just to name a few) to deliver frictionless and
+                                Airbnb (just to name a few) to deliver a frictionless and
                                 enriched user experience.
                             </h5>
                         </div>

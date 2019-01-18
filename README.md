@@ -10,4 +10,5 @@ cd clearwdd && npm run start
 ```
 make deploy
 git add . && git commit -m 'Latest build' && git push
+rm precache*
 ```
