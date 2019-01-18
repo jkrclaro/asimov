@@ -9,5 +9,5 @@ cd clearwdd && npm run start
 # Deploy
 ```
 make deploy
-git commit -m 'Latest build' && git push
+git add . && git commit -m 'Latest build' && git push
 ```
