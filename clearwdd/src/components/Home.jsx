@@ -14,7 +14,7 @@ class Home extends React.Component {
                             <h1><b>Get a modern website</b></h1>
                             <h4>
                                 Clearwdd builds brochure websites for ambitious
-                                small business owners or creative entreprereneurs.
+                                small business owners, creative entrepreneurs or memorable weddings.
                             </h4>
                             <br/>
                             <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary mb-5'>Get in touch</a>
