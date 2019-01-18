@@ -17,7 +17,7 @@ class Home extends React.Component {
                                 small business owners or creative entreprereneurs.
                             </h4>
                             <br/>
-                            <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary mb-3'>Get in touch</a>
+                            <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary mb-5'>Get in touch</a>
                         </div>
                         <div className='col-lg-6 text-center'>
                             <img src={isometric1} className='img-fluid' alt='isometric1'></img>
@@ -27,9 +27,9 @@ class Home extends React.Component {
                 <div className='col-lg-12'>
                     <div className='row'>
                         <div className='col-lg-4 mb-3'>
-                            <h4><b>No monthly hosting</b></h4>
+                            <h4><b>No more monthly hosting</b></h4>
                             <h5>
-                                Save money in the long-run! Why pay <i>atleast</i> €7.99 per 
+                                Save money in the long-run! Why keep paying <i>atleast</i> €7.99 per 
                                 month for hosting when this can now be done 
                                 for free and available 24/7?
                             </h5>
@@ -47,9 +47,9 @@ class Home extends React.Component {
                             <h4><b>Single page application</b></h4>
                             <h5>
                                 Clearwdd uses the latest frontend technology that powers
-                                some of the famous companies such as Facebook, Netflix and
+                                some of the biggest tech companies such as Facebook, Netflix and
                                 Airbnb (just to name a few) to deliver frictionless and
-                                enriched digital experiences for the user.
+                                enriched user experience.
                             </h5>
                         </div>
                     </div>
