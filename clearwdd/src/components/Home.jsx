@@ -1,6 +1,6 @@
 import React from 'react';
 
-const laptop = require('../imgs/laptop.png');
+const isometric1 = require('../imgs/isometric1.png');
 
 
 class Home extends React.Component {
@@ -8,7 +8,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className='container'>
-                <div className='col-lg-12'>
+                <div className='col-lg-12 mb-5'>
                     <div className='row'>
                         <div className='col-lg-6'>
                             <h1><b>Get a modern website</b></h1>
@@ -20,7 +20,7 @@ class Home extends React.Component {
                             <a href='mailto:clearwdd@gmail.com' className='btn btn-clearwdd-primary mb-3'>Get in touch</a>
                         </div>
                         <div className='col-lg-6 text-center'>
-                            <img src={laptop} className='img-fluid' alt='laptop'></img>
+                            <img src={isometric1} className='img-fluid' alt='isometric1'></img>
                         </div>
                     </div>
                 </div>
