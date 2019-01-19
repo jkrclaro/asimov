@@ -13,10 +13,12 @@ class Home extends React.Component {
     
     state = {
         isFormOpen: false,
+        isForm2Open: false,
         isDesktop: false
     }
     updatePredicate = this.updatePredicate.bind(this);
     viaForm = this.viaForm.bind(this);
+    viaForm2 = this.viaForm2.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -28,11 +30,15 @@ class Home extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 768 });
+        this.setState({ isDesktop: window.innerWidth > 1024 });
     };
 
     viaForm() {
         this.setState({isFormOpen: !this.state.isFormOpen});
+    }
+    
+    viaForm2() {
+        this.setState({isForm2Open: !this.state.isForm2Open});
     }
 
     render() {
@@ -114,6 +120,35 @@ class Home extends React.Component {
                                 Strengthen your website using HTTPS. 
                                 Your site will then be served via CDN making your site faster and protected against DDoS attacks.
                             </h5>
+                        </div>
+                    </div>
+                </div>
+                <div className='col-lg-12 mb-3'>
+                    
+                    <div className='row'>
+                        <div className={this.state.isDesktop ? ('col-lg-6 text-right') : ('col-lg-6 text-center')}>
+                            <h4><b>Ready to get started?</b></h4>
+                            <h5>
+                                Get in touch, let us know how we can help.
+                            </h5>
+                        </div>
+                        <div  className={this.state.isDesktop ? ('col-lg-6') : ('col-lg-6 text-center')}>
+                                <div className='mb-3'>
+                                <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Contact us</a>
+                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm2}>
+                                    {this.state.isForm2Open ? ('Close') : ('Via form')}
+                                </span>
+                            </div>
+
+                            <div>
+                                {this.state.isForm2Open ? (
+                                    <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
+                                        <input type='email' name='_replyto' placeholder='Your email' className='form-control mb-3'></input>
+                                        <textarea name='message' placeholder='Your message' className='form-control mb-3'></textarea>
+                                        <input type='submit' className='btn btn-humblepage-alternative btn-block' value='Send message'></input>
+                                    </form>
+                                ) : (null)}
+                            </div>
                         </div>
                     </div>
                 </div>
