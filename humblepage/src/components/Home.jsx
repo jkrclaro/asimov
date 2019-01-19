@@ -100,9 +100,9 @@ class Home extends React.Component {
                             <FontAwesomeIcon icon={['fab', 'react']} style={styles.reactIcon}/>
                             <h4><b>Single page application</b></h4>
                             <h5>
-                                Our stack uses React to deliver a frictionless and instant
-                                user experience for the user. React was developed by Facebook
-                                and is used by other large tech companies such as Airbnb, Netflix, etc.
+                                Our technology uses React to deliver a frictionless and instant
+                                user experience for the user. React is continuously developed by Facebook
+                                and backed by other large tech companies such as Airbnb, Netflix, etc.
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-3'>
@@ -110,7 +110,7 @@ class Home extends React.Component {
                             <h4><b>Mobile responsive</b></h4>
                             <h5>
                                 Provide great user experience across many devices and screen sizes all in one site.
-                                Responsive web designs is considered <a href='https://developers.google.com/search/mobile-sites/'>best practice</a> by Google! 
+                                Responsive web designs are considered <a href='https://developers.google.com/search/mobile-sites/'>best practice</a> by Google! 
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-3'>
