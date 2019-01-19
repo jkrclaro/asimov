@@ -56,29 +56,40 @@ class Home extends React.Component {
                 </div>
                 <div className='col-lg-12'>
                     <div className='row'>
-                        <div className='col-lg-4 mb-3'>
+                        <div className='col-lg-6 mb-3'>
                             <h4><b>No more monthly hosting</b></h4>
                             <h5>
-                                Save money in the long-run! Why keep paying <i>atleast</i> €10 per 
+                                Save money in the long-run, why keep paying <i>atleast</i> €10 per 
                                 month for hosting when we can do this for you
                                 free of charge and available 24/7?
                             </h5>
                         </div>
-                        <div className='col-lg-4 mb-3'>
-                            <h4><b>Mobile responsive</b></h4>
+                        <div className='col-lg-6 mb-3'>
+                            <h4><b>HTTPS enabled</b></h4>
                             <h5>
-                                2/3 of the world's population are connected by 
-                                mobile devices therefore your website should be compatible
-                                through desktop <i>and</i> mobile these days.
+                                HTTPS protects the integrity of your website.
+                                HTTPS helps prevent intruders from tampering
+                                with the communications between yor websites
+                                and your users' browsers. Statistically, only
+                                50% of the one million most visited websites
+                                worldwide still use HTTP!
                             </h5>
                         </div>
-                        <div className='col-lg-4 mb-3'>
+                        <div className='col-lg-6 mb-3'>
                             <h4><b>Single page application</b></h4>
                             <h5>
                                 Humblepage uses the latest frontend technology that powers
                                 some of the biggest tech companies such as Facebook, Netflix and
                                 Airbnb (just to name a few) to deliver a frictionless and
                                 enriched user experience.
+                            </h5>
+                        </div>
+                        <div className='col-lg-6 mb-3'>
+                            <h4><b>Mobile responsive</b></h4>
+                            <h5>
+                                2/3 of the world's population are connected by 
+                                mobile devices therefore your website should be compatible
+                                through desktop <i>and</i> mobile these days.
                             </h5>
                         </div>
                     </div>
