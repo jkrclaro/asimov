@@ -3,14 +3,12 @@ Repository for my freelance clients.
 
 # Usage
 ```
-cd humblepage && npm run start
+make start
 ```
 
 # Deploy
 ```
-make deploy
-git add . && git commit -m 'Latest build' && git push
-rm precache*
+make deploy PROJECT=humblepage
 ```
 
 # Set proper GitHub credentials on new *.github.io
