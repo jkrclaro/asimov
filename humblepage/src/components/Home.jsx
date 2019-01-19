@@ -52,8 +52,9 @@ class Home extends React.Component {
                                 <h1><b>Get a modern website</b></h1>
                                 <h4>
                                     Humblepage builds brochure websites 
-                                    or landing pages for active small businesses, 
-                                    creative freelancers or wedding couples.
+                                    or landing pages for ad agencies, 
+                                    healthcare professionals, creative designers and
+                                    fitness studios.
                                 </h4>
                             </div>
                             <div className='mb-3'>
@@ -81,10 +82,10 @@ class Home extends React.Component {
                 <div className='col-lg-12 text-center mb-5'>
                     <h4>
                         Humblepage is a web design company based in Dublin, Ireland.
-                        Let us help you get a professional website in a matter of days. 
+                        Get a professional website in a matter of days. 
                         Your search for a web designer or web developer ends here.
                         No more hidden fees or outrages quotes.
-                        Get your business online and make it as an extension of your brand.
+                        Get your service online and make it an extension of your brand.
                     </h4>
                 </div>
                 <div className='col-lg-12 mb-5'>
@@ -130,7 +131,7 @@ class Home extends React.Component {
                         <div className={this.state.isDesktop ? ('col-lg-6 text-right') : ('col-lg-6 text-center')}>
                             <h4><b>Ready to get started?</b></h4>
                             <h5>
-                                Get in touch, let us know your issue.
+                                Get in touch with your website description.
                             </h5>
                         </div>
                         <div  className={this.state.isDesktop ? ('col-lg-6') : ('col-lg-6 text-center')}>
