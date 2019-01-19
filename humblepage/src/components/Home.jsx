@@ -27,8 +27,8 @@ class Home extends React.Component {
                                 <h1><b>Get a modern website</b></h1>
                                 <h4>
                                     Humblepage is a web design company based in Dublin, Ireland
-                                    that builds landing pages for ambitious
-                                    entreprenuers, creative freelancers 
+                                    that builds brochure websites or landing pages for ambitious
+                                    entrepreneurs, creative freelancers 
                                     or wedding couples.
                                 </h4>
                             </div>
