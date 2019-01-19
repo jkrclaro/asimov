@@ -80,10 +80,11 @@ class Home extends React.Component {
                 </div>
                 <div className='col-lg-12 text-center mb-5'>
                     <h4>
-                        Get a professional website in a matter of days. 
-                        Your search for a web designer or developer ends here. 
-                        No more hidden fees or outrages quotes. 
-                        Get your business online for a price you can afford.
+                        Humblepage is a web design company based in Dublin, Ireland.
+                        Let us help you get a professional website in a matter of days. 
+                        Your search for a web designer or web developer ends here.
+                        No more hidden fees or outrages quotes.
+                        Get your business online and make it as an extension of your brand.
                     </h4>
                 </div>
                 <div className='col-lg-12 mb-5'>
@@ -136,7 +137,7 @@ class Home extends React.Component {
                                 <div className='mb-3'>
                                 <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Contact us</a>
                                 <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
-                                    {this.state.isForm2Open ? ('Close') : ('Via form')}
+                                    {this.state.isFormOpen ? ('Close') : ('Via form')}
                                 </span>
                             </div>
 
