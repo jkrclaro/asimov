@@ -103,9 +103,9 @@ class Home extends React.Component {
                             <FontAwesomeIcon icon={['fab', 'react']} style={styles.reactIcon}/>
                             <h4><b>Single page application</b></h4>
                             <h5>
-                                Our technology uses React to deliver a frictionless and instant
-                                user experience for the user. React is continuously developed by Facebook
-                                and backed by other large tech companies such as Airbnb, Netflix, etc.
+                                Your website will be developed using React, delivering you a frictionless and instant
+                                user experience for your customers. React is maintained by Facebook
+                                and used by other large tech companies such as Airbnb and Netflix.
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-3'>
