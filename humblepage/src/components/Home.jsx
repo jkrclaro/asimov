@@ -1,17 +1,35 @@
 import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const isometric1 = require('../imgs/isometric1.png');
-
+const mobileresponsive1 = require('../imgs/mobileresponsive.png');
+const enforcehttps = require('../imgs/enforcehttps.png');
+const styles = {
+    reactIcon: {fontSize: 60, color: '#00d8ff'},
+    githubIcon: {fontSize: 60, color: '#111'}
+}
 
 class Home extends React.Component {
     
-    constructor(props) {
-        super(props);
-        this.state = {
-            isFormOpen: false
-        }
-        this.viaForm = this.viaForm.bind(this);
+    state = {
+        isFormOpen: false,
+        isDesktop: false
     }
+    updatePredicate = this.updatePredicate.bind(this);
+    viaForm = this.viaForm.bind(this);
+
+    componentDidMount() {
+        this.updatePredicate();
+        window.addEventListener('resize', this.updatePredicate);
+    };
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updatePredicate);
+    };
+
+    updatePredicate() {
+        this.setState({ isDesktop: window.innerWidth > 768 });
+    };
 
     viaForm() {
         this.setState({isFormOpen: !this.state.isFormOpen});
@@ -26,8 +44,7 @@ class Home extends React.Component {
                             <div className='mb-3'>
                                 <h1><b>Get a modern website</b></h1>
                                 <h4>
-                                    Humblepage is a web design company based in 
-                                    Dublin, Ireland that builds brochure websites 
+                                    Humblepage builds brochure websites 
                                     or landing pages for active small businesses, 
                                     creative freelancers or wedding couples.
                                 </h4>
@@ -54,42 +71,48 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='col-lg-12'>
+                <div className='col-lg-12 text-center mb-5'>
+                    <h4>
+                        Get a professional website in a matter of days. 
+                        Your search for a web designer or developer ends here. 
+                        No more hidden fees or outrages quotes. 
+                        Get your business online for a price you can afford.
+                    </h4>
+                </div>
+                <div className='col-lg-12 mb-3'>
                     <div className='row'>
                         <div className='col-lg-6 mb-3'>
-                            <h4><b>No more monthly hosting</b></h4>
+                            <FontAwesomeIcon icon={['fab', 'github']} style={styles.githubIcon}/>
+                            <h4><b>No more monthly hosting cost</b></h4>
                             <h5>
-                                Save money in the long-run, why keep paying <i>atleast</i> €10 per 
-                                month for hosting when we can do this for you
-                                free of charge and available 24/7?
+                                Get your site powered by the world's leading
+                                software development platform backed by Microsoft
+                                to ensure you don't pay for montly hosting cost.
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-3'>
-                            <h4><b>HTTPS enabled</b></h4>
-                            <h5>
-                                HTTPS protects the integrity of your website.
-                                HTTPS helps prevent intruders from tampering
-                                with the communications between your website
-                                and your users' browsers. Statistically, 51.8% 
-                                of the 1,000,000 most visited websites
-                                worldwide still use HTTP!
-                            </h5>
-                        </div>
-                        <div className='col-lg-6 mb-3'>
+                            <FontAwesomeIcon icon={['fab', 'react']} style={styles.reactIcon}/>
                             <h4><b>Single page application</b></h4>
                             <h5>
-                                Humblepage uses the latest frontend technology that powers
-                                some of the biggest tech companies such as Facebook, Netflix and
-                                Airbnb (just to name a few) to deliver a frictionless and
-                                enriched user experience.
+                                Our stack uses React to deliver a frictionless and instant
+                                user experience for the user. React was developed by Facebook
+                                and is used by other large tech companies such as Airbnb, Netflix, etc.
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-3'>
+                            <img src={mobileresponsive1} alt='mobile-responsive' height='60' width='60' />
                             <h4><b>Mobile responsive</b></h4>
                             <h5>
-                                2/3 of the world's population are connected by 
-                                mobile devices therefore your website should be compatible
-                                through desktop <i>and</i> mobile these days.
+                                Provide great user experience across many devices and screen sizes all in one site.
+                                Responsive web designs is considered <a href='https://developers.google.com/search/mobile-sites/'>best practice</a> by Google! 
+                            </h5>
+                        </div>
+                        <div className='col-lg-6 mb-3'>
+                            <img src={enforcehttps} alt='enforce-https' height='60' width='120' />
+                            <h4><b>Enforce HTTPS</b></h4>
+                            <h5>
+                                Strengthen your website using HTTPS. 
+                                Your site will then be served via CDN making your site faster and protected against DDoS attacks.
                             </h5>
                         </div>
                     </div>

@@ -7,8 +7,9 @@ import Footer from './components/Footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faCode } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faHeart, faCode);
+library.add(faHeart, faCode, fab);
 
 
 class App extends Component {
