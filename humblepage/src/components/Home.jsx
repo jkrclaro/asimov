@@ -8,18 +8,13 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: '',
             isFormOpen: false
         }
         this.viaForm = this.viaForm.bind(this);
     }
 
-    handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value });
-    }
-
     viaForm() {
-        console.log('Hey!')
+        this.setState({isFormOpen: !this.state.isFormOpen});
     }
 
     render() {
@@ -28,15 +23,29 @@ class Home extends React.Component {
                 <div className='col-lg-12 mb-5'>
                     <div className='row'>
                         <div className='col-lg-6 mb-5'>
-                            <h1><b>Get a modern website</b></h1>
-                            <h4>
-                                Humblepage is a web design company based in Dublin, Ireland
-                                that builds landing pages for ambitious
-                                small business owners, creative freelancers 
-                                or those memorable weddings.
-                            </h4>
-                            <br/>
-                            <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Contact us</a>
+                            <div className='mb-3'>
+                                <h1><b>Get a modern website</b></h1>
+                                <h4>
+                                    Humblepage is a web design company based in Dublin, Ireland
+                                    that builds landing pages for ambitious
+                                    small business owners, creative freelancers 
+                                    or to remember those memorable weddings.
+                                </h4>
+                            </div>
+                            <div className='mb-3'>
+                                <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Contact us</a>
+                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>Via form</span>
+                            </div>
+
+                            <div>
+                                {this.state.isFormOpen ? (
+                                    <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
+                                        <input type='email' name='_replyto' placeholder='Your email' className='form-control mb-3'></input>
+                                        <textarea name='message' placeholder='Your message' className='form-control mb-3'></textarea>
+                                        <input type='submit' className='btn btn-humblepage-alternative btn-block' value='Send message'></input>
+                                    </form>
+                                ) : (null)}
+                            </div>
                         </div>
                         <div className='col-lg-6 text-center'>
                             <img src={isometric1} className='img-fluid' alt='isometric1'></img>
