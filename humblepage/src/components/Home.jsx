@@ -28,8 +28,8 @@ class Home extends React.Component {
                                 <h4>
                                     Humblepage is a web design company based in Dublin, Ireland
                                     that builds landing pages for ambitious
-                                    small business owners, creative freelancers 
-                                    or capture memorable weddings.
+                                    entreprenuers, creative freelancers 
+                                    or wedding couples.
                                 </h4>
                             </div>
                             <div className='mb-3'>
@@ -70,8 +70,8 @@ class Home extends React.Component {
                                 HTTPS protects the integrity of your website.
                                 HTTPS helps prevent intruders from tampering
                                 with the communications between your website
-                                and your users' browsers. Statistically, only
-                                51.8% of the one million most visited websites
+                                and your users' browsers. Statistically, 51.8% 
+                                of the 1,000,000 most visited websites
                                 worldwide still use HTTP!
                             </h5>
                         </div>
