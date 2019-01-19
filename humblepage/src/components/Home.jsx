@@ -29,12 +29,14 @@ class Home extends React.Component {
                                     Humblepage is a web design company based in Dublin, Ireland
                                     that builds landing pages for ambitious
                                     small business owners, creative freelancers 
-                                    or to remember those memorable weddings.
+                                    or capture memorable weddings.
                                 </h4>
                             </div>
                             <div className='mb-3'>
                                 <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Contact us</a>
-                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>Via form</span>
+                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
+                                    {this.state.isFormOpen ? ('Close') : ('Via form')}
+                                </span>
                             </div>
 
                             <div>
