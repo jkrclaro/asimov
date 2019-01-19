@@ -13,14 +13,12 @@ class Home extends React.Component {
     
     state = {
         isFormOpen: false,
-        isForm2Open: false,
         isDesktop: false,
         email: '',
         message: ''
     }
     updatePredicate = this.updatePredicate.bind(this);
     viaForm = this.viaForm.bind(this);
-    viaForm2 = this.viaForm2.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -37,10 +35,6 @@ class Home extends React.Component {
 
     viaForm() {
         this.setState({isFormOpen: !this.state.isFormOpen});
-    }
-    
-    viaForm2() {
-        this.setState({isForm2Open: !this.state.isForm2Open});
     }
 
     handleChange = (event) => {
@@ -141,13 +135,13 @@ class Home extends React.Component {
                         <div  className={this.state.isDesktop ? ('col-lg-6') : ('col-lg-6 text-center')}>
                                 <div className='mb-3'>
                                 <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Contact us</a>
-                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm2}>
+                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
                                     {this.state.isForm2Open ? ('Close') : ('Via form')}
                                 </span>
                             </div>
 
                             <div>
-                                {this.state.isForm2Open ? (
+                                {this.state.isFormOpen ? (
                                     <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
                                         <input type='email' name='email' placeholder='Your email' className='form-control mb-3' value={this.state.email} onChange={this.handleChange}></input>
                                         <textarea name='message' placeholder='Your message' className='form-control mb-3' value={this.state.message} onChange={this.handleChange}></textarea>
