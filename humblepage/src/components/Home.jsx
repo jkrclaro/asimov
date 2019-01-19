@@ -69,9 +69,9 @@ class Home extends React.Component {
                             <h5>
                                 HTTPS protects the integrity of your website.
                                 HTTPS helps prevent intruders from tampering
-                                with the communications between yor websites
+                                with the communications between your website
                                 and your users' browsers. Statistically, only
-                                50% of the one million most visited websites
+                                51.8% of the one million most visited websites
                                 worldwide still use HTTP!
                             </h5>
                         </div>
