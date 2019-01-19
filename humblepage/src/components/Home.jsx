@@ -14,7 +14,9 @@ class Home extends React.Component {
     state = {
         isFormOpen: false,
         isForm2Open: false,
-        isDesktop: false
+        isDesktop: false,
+        email: '',
+        message: ''
     }
     updatePredicate = this.updatePredicate.bind(this);
     viaForm = this.viaForm.bind(this);
@@ -41,6 +43,11 @@ class Home extends React.Component {
         this.setState({isForm2Open: !this.state.isForm2Open});
     }
 
+    handleChange = (event) => {
+        console.log(`${event.target.name} : ${event.target.value}`);
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
     render() {
         return (
             <div className='container'>
@@ -65,8 +72,8 @@ class Home extends React.Component {
                             <div>
                                 {this.state.isFormOpen ? (
                                     <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
-                                        <input type='email' name='_replyto' placeholder='Your email' className='form-control mb-3'></input>
-                                        <textarea name='message' placeholder='Your message' className='form-control mb-3'></textarea>
+                                        <input type='email' name='email' placeholder='Your email' className='form-control mb-3' value={this.state.email} onChange={this.handleChange}></input>
+                                        <textarea name='message' placeholder='Your message' className='form-control mb-3' value={this.state.message} onChange={this.handleChange}></textarea>
                                         <input type='submit' className='btn btn-humblepage-alternative btn-block' value='Send message'></input>
                                     </form>
                                 ) : (null)}
@@ -85,7 +92,7 @@ class Home extends React.Component {
                         Get your business online for a price you can afford.
                     </h4>
                 </div>
-                <div className='col-lg-12 mb-3'>
+                <div className='col-lg-12 mb-5'>
                     <div className='row'>
                         <div className='col-lg-6 mb-3'>
                             <FontAwesomeIcon icon={['fab', 'github']} style={styles.githubIcon}/>
@@ -123,13 +130,12 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='col-lg-12 mb-3'>
-                    
+                <div className='col-lg-12 mb-5'>
                     <div className='row'>
                         <div className={this.state.isDesktop ? ('col-lg-6 text-right') : ('col-lg-6 text-center')}>
                             <h4><b>Ready to get started?</b></h4>
                             <h5>
-                                Get in touch, let us know how we can help.
+                                Get in touch, let us know your issue.
                             </h5>
                         </div>
                         <div  className={this.state.isDesktop ? ('col-lg-6') : ('col-lg-6 text-center')}>
@@ -143,8 +149,8 @@ class Home extends React.Component {
                             <div>
                                 {this.state.isForm2Open ? (
                                     <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
-                                        <input type='email' name='_replyto' placeholder='Your email' className='form-control mb-3'></input>
-                                        <textarea name='message' placeholder='Your message' className='form-control mb-3'></textarea>
+                                        <input type='email' name='email' placeholder='Your email' className='form-control mb-3' value={this.state.email} onChange={this.handleChange}></input>
+                                        <textarea name='message' placeholder='Your message' className='form-control mb-3' value={this.state.message} onChange={this.handleChange}></textarea>
                                         <input type='submit' className='btn btn-humblepage-alternative btn-block' value='Send message'></input>
                                     </form>
                                 ) : (null)}
