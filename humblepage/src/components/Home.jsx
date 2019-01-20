@@ -57,7 +57,7 @@ class Home extends React.Component {
 
     scrollToFormRef() {
         window.scrollTo({
-            top: this.formRef.current.offsetTop,
+            top: this.formRef.current.offsetTop - 300,
             behavior: 'smooth'
         })
     }
