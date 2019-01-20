@@ -46,7 +46,6 @@ class Home extends React.Component {
 
     viaForm() {
         this.setState({isFormOpen: !this.state.isFormOpen});
-        console.log(this.state.isFormOpen);
         if (!this.state.isFormOpen) {
             this.scrollToFormRef();
         }
