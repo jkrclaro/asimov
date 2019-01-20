@@ -41,8 +41,9 @@ class Home extends React.Component {
                             <div className='mb-3'>
                                 <h1><b>Get a modern website</b></h1>
                                 <h4>
-                                    Humblepage is a web design company based in Dublin, Ireland.
-                                    Modernize your website and make it an extension of your brand.
+                                    Humblepage builds tailored professionally 
+                                    designed landings pages for busy people
+                                    to generate more leads.
                                 </h4>
                             </div>
                             <div className='mb-3'>
@@ -57,6 +58,7 @@ class Home extends React.Component {
                 </div>
                 <div className='col-lg-12 text-center mb-5'>
                     <h4>
+                        Humblepage is based in Dublin, Ireland.
                         Get a professional website in a matter of days. 
                         Your search for a web designer or web developer ends here.
                         No more hidden fees or outrages quotes.
