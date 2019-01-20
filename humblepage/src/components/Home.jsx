@@ -68,17 +68,18 @@ class Home extends React.Component {
                             <FontAwesomeIcon icon={['fab', 'github']} style={styles.githubIcon}/>
                             <h4><b>No hosting cost</b></h4>
                             <h5>
-                                Get your site hosted by the world's leading
+                                Hosting is managed by the world's leading
                                 software development platform that's backed by Microsoft, 
-                                allowing you to save money in the long run.
+                                allowing you to avoid monthly payment for hosting.
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-5'>
                             <FontAwesomeIcon icon={['fab', 'react']} style={styles.reactIcon}/>
                             <h4><b>Single page application</b></h4>
                             <h5>
-                                Your website will be developed using React, delivering you a frictionless and instant
-                                user experience for your customers. React is maintained by Facebook
+                                Delivering frictionless and instant
+                                user experience for your customers by using React. 
+                                React is maintained by Facebook
                                 and used by other large tech companies such as Airbnb and Netflix.
                             </h5>
                         </div>
@@ -94,7 +95,7 @@ class Home extends React.Component {
                             <img src={enforcehttps} alt='enforce-https' height='60' width='120' />
                             <h4><b>Enforce HTTPS</b></h4>
                             <h5>
-                                This further protects your website and users' browser from attackers.
+                                Further protect your website and users' browser from attackers.
                                 In 2018, 51.8% of the 1,000,000 most
                                 visited websites worldwide still only redirect to HTTPS.
                             </h5>
