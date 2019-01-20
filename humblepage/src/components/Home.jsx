@@ -150,9 +150,11 @@ class Home extends React.Component {
                         <div  className={this.state.isDesktop ? ('col-lg-6') : ('col-lg-6 text-center')}>
                             <div className='mb-3'>
                                 <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Get In Touch</a>
-                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
-                                    {this.state.isFormOpen ? ('Close') : ('Via form')}
-                                </span>
+                                {!this.state.isFormOpen ? (
+                                    <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
+                                        {this.state.isFormOpen ? ('Close') : ('Via form')}
+                                    </span>
+                                ) : (null)}
                             </div>
                         </div>
                     </div>
