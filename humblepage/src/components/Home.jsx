@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const isometric1 = require('../imgs/isometric1.png');
-const mobileresponsive1 = require('../imgs/mobileresponsive.png');
+const mobileresponsive = require('../imgs/mobileresponsive.png');
 const enforcehttps = require('../imgs/enforcehttps.png');
 const styles = {
     reactIcon: {fontSize: 60, color: '#00d8ff'},
@@ -12,24 +13,11 @@ const styles = {
 class Home extends React.Component {
     
     state = {
-        isFormOpen: false,
         isDesktop: false,
         email: '',
         message: ''
     }
-    constructor(props) {
-        super(props);
-        this.state = {
-            isFormOpen: false,
-            isDesktop: false,
-            email: '',
-            message: ''
-        }
-        this.updatePredicate = this.updatePredicate.bind(this);
-        this.viaForm = this.viaForm.bind(this);
-        this.formRef = React.createRef();
-        this.scrollToFormRef = this.scrollToFormRef.bind(this);
-    }
+    updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -43,24 +31,6 @@ class Home extends React.Component {
     updatePredicate() {
         this.setState({ isDesktop: window.innerWidth > 1024 });
     };
-
-    viaForm() {
-        this.setState({isFormOpen: !this.state.isFormOpen});
-        if (!this.state.isFormOpen) {
-            this.scrollToFormRef();
-        }
-    }
-
-    handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value });
-    }
-
-    scrollToFormRef() {
-        window.scrollTo({
-            top: this.formRef.current.offsetTop - 300,
-            behavior: 'smooth'
-        })
-    }
 
     render() {
         return (
@@ -77,19 +47,7 @@ class Home extends React.Component {
                             </div>
                             <div className='mb-3'>
                                 <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Get In Touch</a>
-                                <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
-                                    {this.state.isFormOpen ? ('Close') : ('Via form')}
-                                </span>
-                            </div>
-
-                            <div ref={this.formRef}>
-                                {this.state.isFormOpen ? (
-                                    <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
-                                        <input type='email' name='email' placeholder='Your email' className='form-control mb-3' value={this.state.email} onChange={this.handleChange}></input>
-                                        <textarea name='message' placeholder='Your message' className='form-control mb-3' value={this.state.message} onChange={this.handleChange}></textarea>
-                                        <input type='submit' className='btn btn-humblepage-alternative btn-block' value='Send message'></input>
-                                    </form>
-                                ) : (null)}
+                                <Link className='btn btn-humblepage-alternative' to='/contact'>Via form</Link>
                             </div>
                         </div>
                         <div className='col-lg-6 text-center'>
@@ -125,7 +83,7 @@ class Home extends React.Component {
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <img src={mobileresponsive1} alt='mobile-responsive' height='60' width='60' />
+                            <img src={mobileresponsive} alt='mobile-responsive' height='60' width='60' />
                             <h4><b>Mobile responsive</b></h4>
                             <h5>
                                 Provide great user experience across many devices and screen sizes all in one site.
@@ -150,11 +108,7 @@ class Home extends React.Component {
                         <div  className={this.state.isDesktop ? ('col-lg-6') : ('col-lg-6 text-center')}>
                             <div className='mb-3'>
                                 <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Get In Touch</a>
-                                {!this.state.isFormOpen ? (
-                                    <span className='btn btn-humblepage-alternative' onClick={this.viaForm}>
-                                        {this.state.isFormOpen ? ('Close') : ('Via form')}
-                                    </span>
-                                ) : (null)}
+                                <Link className='btn btn-humblepage-alternative' to='/contact'>Via form</Link>
                             </div>
                         </div>
                     </div>
