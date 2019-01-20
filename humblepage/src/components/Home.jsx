@@ -110,9 +110,9 @@ class Home extends React.Component {
                             <FontAwesomeIcon icon={['fab', 'github']} style={styles.githubIcon}/>
                             <h4><b>No hosting cost</b></h4>
                             <h5>
-                                Get your site powered by the world's leading
-                                software development platform backed by Microsoft
-                                to ensure you don't pay for montly hosting cost.
+                                Get your site hosted by the world's leading
+                                software development platform that's backed by Microsoft, 
+                                allowing you to save money in the long run.
                             </h5>
                         </div>
                         <div className='col-lg-6 mb-5'>
