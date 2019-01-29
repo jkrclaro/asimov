@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import Header from './components/Header';
 import Body from './components/Body';
@@ -15,12 +15,12 @@ library.add(faHeart, faCode, fab, faChevronLeft);
 class App extends Component {
 
     componentDidMount() {
-        document.title = 'Humblepage - Web design & development based in Dublin, Ireland';
+        document.title = 'Humblepage | Let Your Website Do The Talking';
     }
 
     render() {
         return(
-            <HashRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <div className='App Site'>
                     <div className='Site-content'>
                         <div className='App-header'>
@@ -32,7 +32,7 @@ class App extends Component {
                     </div>
                     <Footer />
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         )
     }
 }

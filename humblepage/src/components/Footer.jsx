@@ -13,11 +13,9 @@ class Footer extends React.Component {
         return (
             <div>
                 <ul className="nav justify-content-center">
-                    <li className="nav-item">
+                    <li className="nav-item text-center">
                         <a className='nav-link disabled' href='/'>
-                            <b>
-                                Made with <FontAwesomeIcon icon='heart' style={styles.heart}/> in Dublin, Ireland
-                            </b>
+                            <b>Made with <FontAwesomeIcon icon='heart' style={styles.heart}/> in Dublin, Ireland</b>
                         </a>
                     </li>
                 </ul>
