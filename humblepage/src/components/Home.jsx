@@ -1,21 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const isometric1 = require('../imgs/isometric1.png');
-const mobileresponsive = require('../imgs/mobileresponsive.png');
-const enforcehttps = require('../imgs/enforcehttps.png');
-const styles = {
-    reactIcon: {fontSize: 60, color: '#00d8ff'},
-    githubIcon: {fontSize: 60, color: '#111'}
-}
+const design = require('../imgs/design.png');
+const me = require('../imgs/me.png');
 
 class Home extends React.Component {
     
     state = {
-        isDesktop: false,
-        email: '',
-        message: ''
+        isDesktop: false
     }
     updatePredicate = this.updatePredicate.bind(this);
 
@@ -32,6 +23,15 @@ class Home extends React.Component {
         this.setState({ isDesktop: window.innerWidth > 1024 });
     };
 
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    scrollToContactUs = () => {
+        const contactUsId = document.getElementById('contactus')
+        contactUsId.scrollIntoView({behavior: "smooth"});
+    }
+
     render() {
         return (
             <div className='container'>
@@ -39,27 +39,26 @@ class Home extends React.Component {
                     <div className='row'>
                         <div className='col-lg-6 mb-5'>
                             <div className='mb-3'>
-                                <h1><b>Get a custom website</b></h1>
-                                <h4>
-                                    Humblepage builds websites that captures
-                                    the owner's values.
-                                </h4>
+                                <h4><b>GET A TAILORED WEBSITE</b></h4>
+                                <h5>
+                                    Humblepage builds websites for busy people
+                                    to help them have a professionally designed website
+                                    that helps drive sales.
+                                </h5>
                             </div>
                             <div className='mb-3'>
-                                <a className='btn btn-humblepage-primary mr-3' href='mailto:gethumblepage@gmail.com'>Get In Touch</a>
-                                <Link to={process.env.PUBLIC_URL + '/contact'} className='btn btn-humblepage-primary mr-3'>Contact</Link>
+                                <span className='btn btn-humblepage-primary mr-3' onClick={this.scrollToContactUs}>Contact us</span>
                             </div>
                         </div>
                         <div className='col-lg-6 text-center'>
-                            <img src={isometric1} className='img-fluid' alt='isometric1'></img>
+                            <img src={design} className='img-fluid' alt='design'></img>
                         </div>
                     </div>
                 </div>
                 <div className='col-lg-12 mb-5'>
                     <div className='row'>
-                        <div className='col-lg-12 mb-5'>
-                            <img src={mobileresponsive} alt='mobile-responsive' height='60' width='60' />
-                            <h4><b>The right approach</b></h4>
+                        <div className='col-lg-9 mb-5'>
+                            <h4><b>THE RIGHT APPROACH</b></h4>
                             <h5>
                                 Most online strategies being sold today are 
                                 focused on the wrong things. SEO. Adwords. 
@@ -86,26 +85,29 @@ class Home extends React.Component {
                                 The people who will love your company and 
                                 happily recommend your services far and wide. 
                             </h5>
+                        </div>
+                        <div className='col-lg-3 text-center mb-5'>
+                            <img src={me} alt='me' className='img-fluid rounded' />
+                            <small>John Claro, Founder</small>
+                        </div>
+                        <div className='col-lg-6 mb-5'>
+                            <h4><b>WE GET RESULTS</b></h4>
                             <h5>
-                                We can say this confidently because every year 
-                                we create millions of dollars in revenue for 
-                                the select few clients we work with. 
-                                If you really want to reach your market we can help.
+                                If you have a need for results then reach out. 
+                                We won’t try impress you with fancy features or cool buzz words. 
+                                We are normal everyday folk who work hard to get our clients big results. 
+                                Our websites are built around what is best for you and the people you want to connect with. 
+                            </h5>
+                            <h5>
+                                Our biggest victories are watching our clients succeed. 
+                                These are just a few of the people we have worked with since we launched. 
+                                While some businesses have made well over one 
+                                million dollars in direct revenue from our 
+                                websites we love working on projects of all sizes.
                             </h5>
                         </div>
-                        <div className='col-lg-12 mb-5'>
-                            <FontAwesomeIcon icon={['fab', 'react']} style={styles.reactIcon}/>
-                            <h4><b>We get results</b></h4>
-                            <h5>
-                                If you have a need for results then reach out. We won’t try impress you with fancy features or cool buzz words. We are normal everyday folk who work hard to get our clients big results. Our websites are built around what is best for you and the people you want to connect with. 
-                            </h5>
-                            <h5>
-                                Our biggest victories are watching our clients succeed. These are just a few of the people we have worked with since we launched. While some businesses have made well over one million dollars in direct revenue from our websites we love working on projects of all sizes.
-                            </h5>
-                        </div>
-                        <div className='col-lg-12 mb-5'>
-                            <FontAwesomeIcon icon={['fab', 'github']} style={styles.githubIcon}/>
-                            <h4><b>Simple success</b></h4>
+                        <div className='col-lg-6 mb-5'>
+                            <h4><b>SIMPLE SUCCESS</b></h4>
                             <h5>
                                 Most businesses feel that to compete online 
                                 they need to be doing a dozen different things. 
@@ -125,34 +127,36 @@ class Home extends React.Component {
                             </h5>
                         </div>
                         <div className='col-lg-12 text-center'>
-                            <h4><b>Contact us</b></h4>
+                            <h4><b>CONTACT US</b></h4>
                             <h5>Let’s get things started.</h5>
                             <h5>Send us a quick email below and we are happy to write back or get on a phone call.</h5>
                         </div>
-                        <div className='col-lg-12 mb-5'>
+                        <div className='col-lg-12' id='contactus'>
                             <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
-                                <div class='row'>
-                                    <div class='col-lg-6'>
-                                        <label for='id_first_name'><small>FIRST NAME</small></label>
-                                        <input type='text' name='id_first_name' className='form-control mb-3' required></input>
+                                <div className='row'>
+                                    <div className='col-lg-6'>
+                                        <label htmlFor='first_name'><small>FIRST NAME</small></label>
+                                        <input type='text' id='first_name' name='first_name' className='form-control mb-3' required></input>
                                     </div>
-                                    <div class='col-lg-6'>
-                                        <label for='id_last_name'><small>LAST NAME</small></label>
-                                        <input type='text' name='id_last_name' className='form-control mb-3' required></input>
+                                    <div className='col-lg-6'>
+                                        <label htmlFor='last_name'><small>LAST NAME</small></label>
+                                        <input type='text' id='last_name' name='last_name' className='form-control mb-3' required></input>
                                     </div>
-                                    <div class='col-lg-6'>
-                                        <label for='id_email'><small>EMAIL</small></label>
-                                        <input type='text' name='id_email' className='form-control mb-3' required></input>
+                                    <div className='col-lg-6'>
+                                        <label htmlFor='_replyto'><small>EMAIL</small></label>
+                                        <input type='email' id='_replyto' name='_replyto' className='form-control mb-3' required></input>
                                     </div>
-                                    <div class='col-lg-6'>
-                                        <label for='id_phone'><small>PHONE</small></label>
-                                        <input type='text' name='id_phone' className='form-control mb-3' required></input>
+                                    <div className='col-lg-6'>
+                                        <label htmlFor='phone'><small>PHONE</small></label>
+                                        <input type='number' id='phone' name='phone' className='form-control mb-3' required></input>
                                     </div>
-                                    <div class='col-lg-12'>
-                                        <label class='id_message'><small>MESSAGE</small></label>
-                                        <textarea name='message' placeholder='' className='form-control mb-3'></textarea>
+                                    <div className='col-lg-12'>
+                                        <label className='message'><small>MESSAGE</small></label>
+                                        <textarea name='message' id='message' className='form-control mb-3'></textarea>
                                     </div>
                                 </div>
+                                <input type="hidden" name="_subject" value={this.fullName} />
+                                <input type="hidden" name="_next" value="https://humblepage.com" />
                                 <input type='submit' className='btn btn-humblepage-primary btn-block' value='Send message'></input>
                             </form>
                         </div>
