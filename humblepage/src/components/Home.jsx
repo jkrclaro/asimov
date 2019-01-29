@@ -39,11 +39,12 @@ class Home extends React.Component {
                     <div className='row'>
                         <div className='col-lg-6 mb-5'>
                             <div className='mb-3'>
-                                <h4><b>GET A TAILORED WEBSITE</b></h4>
+                                <h4><b>Get a professional website in Ireland</b></h4>
                                 <h5>
-                                    Humblepage builds websites for busy people
-                                    to help them have a professionally designed website
-                                    that helps drive sales.
+                                    Humblepage is a web design and development 
+                                    company based in Dublin, Ireland. 
+                                    We build websites for companies and 
+                                    organisations of all sizes in all sectors.
                                 </h5>
                             </div>
                             <div className='mb-3'>
@@ -98,13 +99,6 @@ class Home extends React.Component {
                                 We are normal everyday folk who work hard to get our clients big results. 
                                 Our websites are built around what is best for you and the people you want to connect with. 
                             </h5>
-                            <h5>
-                                Our biggest victories are watching our clients succeed. 
-                                These are just a few of the people we have worked with since we launched. 
-                                While some businesses have made well over one 
-                                million dollars in direct revenue from our 
-                                websites we love working on projects of all sizes.
-                            </h5>
                         </div>
                         <div className='col-lg-6 mb-5'>
                             <h4><b>SIMPLE SUCCESS</b></h4>
@@ -155,7 +149,7 @@ class Home extends React.Component {
                                         <textarea name='message' id='message' className='form-control mb-3'></textarea>
                                     </div>
                                 </div>
-                                <input type="hidden" name="_subject" value={this.fullName} />
+                                <input type="hidden" name="_subject" value="Humblepage Proposal" />
                                 <input type="hidden" name="_next" value="https://humblepage.com" />
                                 <input type='submit' className='btn btn-humblepage-primary btn-block' value='Send message'></input>
                             </form>
