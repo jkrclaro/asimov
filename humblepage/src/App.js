@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 
@@ -23,12 +22,7 @@ class App extends Component {
             <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <div className='App Site'>
                     <div className='Site-content'>
-                        <div className='App-header'>
-                            <Header />
-                        </div>
-                        <div className='text-style'>
-                            <Body />
-                        </div>
+                        <Body />
                     </div>
                     <Footer />
                 </div>

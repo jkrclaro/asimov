@@ -9,15 +9,50 @@ const styles = {
 }
 
 class Header extends React.Component {
+    
+    state = {
+        isDesktop: false
+    }
+    updatePredicate = this.updatePredicate.bind(this);
+    trackScrolling = this.trackScrolling.bind(this);
+    isBottom = this.isBottom.bind(this);
+
+    componentDidMount() {
+        this.updatePredicate();
+        window.addEventListener('resize', this.updatePredicate);
+        window.addEventListener('scroll', this.trackScrolling);
+    };
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updatePredicate);
+        window.removeEventListener('scroll', this.trackScrolling);
+    };
+
+    updatePredicate() {
+        this.setState({ isDesktop: window.innerWidth > 1024 });
+    };
+
+    trackScrolling() {
+        // const element = document.getElementById('');
+        // console.log(element.getBoundingClientRect())
+        console.log('yellow')
+    }
+
+    isBottom(element) {
+        console.log(element.getBoundingClientRect().bottom)
+        return element.getBoundingClientRect().bottom <= window.innerHeight;
+    }
 
     render() {
         return (
-            <ul className="nav justify-content-center mb-5">
-                <li className="nav-item">
-                    <a className='nav-link' style={styles.brand} href="/">
-                        <img src={logo} alt='logo' className='img-fluid' height='60' width='60'/> humblepage
-                    </a>
-                </li>
+            <ul className="nav fixed-top justify-content">
+                <div className='container'>
+                    <li className="nav-item">
+                        <span className='nav-link' style={styles.brand}>
+                            <a href='/'><img src={logo} alt='logo' className='img-fluid' height='60' width='60'/></a> { this.state.isDesktop ? ('humblepage') : (null)}
+                        </span>
+                    </li>
+                </div>
             </ul>
         )
     }
