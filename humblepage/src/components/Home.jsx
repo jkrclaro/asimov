@@ -191,7 +191,7 @@ class Home extends React.Component {
                                         </div>
                                         <div className='col-lg-12'>
                                             <label className='message'><small>MESSAGE <span style={{color: '#E34343'}}>*</span></small></label>
-                                            <textarea name='message' id='message' className='form-control mb-3'></textarea>
+                                            <textarea name='message' id='message' className='form-control mb-3' required></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" name="_subject" value="Humblepage Proposal" />
