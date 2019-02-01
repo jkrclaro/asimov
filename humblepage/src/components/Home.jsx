@@ -182,23 +182,15 @@ class Home extends React.Component {
                                 <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
                                     <div className='row'>
                                         <div className='col-lg-6'>
-                                            <label htmlFor='first_name'><small>FIRST NAME</small></label>
-                                            <input type='text' id='first_name' name='first_name' className='form-control mb-3' required></input>
-                                        </div>
-                                        <div className='col-lg-6'>
-                                            <label htmlFor='last_name'><small>LAST NAME</small></label>
-                                            <input type='text' id='last_name' name='last_name' className='form-control mb-3' required></input>
-                                        </div>
-                                        <div className='col-lg-6'>
-                                            <label htmlFor='_replyto'><small>EMAIL</small></label>
+                                            <label htmlFor='_replyto'><small>EMAIL <span style={{color: '#E34343'}}>*</span></small></label>
                                             <input type='email' id='_replyto' name='_replyto' className='form-control mb-3' required></input>
                                         </div>
                                         <div className='col-lg-6'>
                                             <label htmlFor='phone'><small>PHONE</small></label>
-                                            <input type='text' id='phone' name='phone' className='form-control mb-3' required></input>
+                                            <input type='text' id='phone' name='phone' className='form-control mb-3'></input>
                                         </div>
                                         <div className='col-lg-12'>
-                                            <label className='message'><small>MESSAGE</small></label>
+                                            <label className='message'><small>MESSAGE <span style={{color: '#E34343'}}>*</span></small></label>
                                             <textarea name='message' id='message' className='form-control mb-3'></textarea>
                                         </div>
                                     </div>
