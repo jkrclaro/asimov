@@ -3,9 +3,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const logo = require('../imgs/logo.png');
-const styles = {
-    heart: {color: 'red'}
-}
 
 class Footer extends React.Component {
 
@@ -14,9 +11,8 @@ class Footer extends React.Component {
             <div>
                 <ul className="nav justify-content-center mt-5 mb-3">
                     <li className="nav-item text-center">
-                        <span className='nav-link disabled'>
-                            <img src={logo} className='img-fluid mr-3' height='50' width='50'></img>
-                            <b>Made with <FontAwesomeIcon icon='heart' style={styles.heart}/> in Dublin, Ireland</b>
+                        <span className='nav-link disabled text-muted'>
+                            <small>COPYRIGHT <FontAwesomeIcon icon='copyright'/> 2019 HUMBLEPAGE</small>
                         </span>
                     </li>
                 </ul>
