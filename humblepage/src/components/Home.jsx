@@ -71,11 +71,11 @@ class Home extends React.Component {
                         <a className='btn btn-humblepage-primary mt-3 mr-2' href='mailto:gethumblepage@gmail.com'>Contact us</a>
                         <span className='btn btn-humblepage-alternative mt-3' onClick={this.scrollToContactUs}>Via Form</span>
                     </div>
-                    <div className='col-lg-12 mb-5' id='about'>
+                    <div className='col-lg-12 mb-3' id='about'>
                         <div className='row'>
                             <div className='col-lg-2'></div>
                             <div className='col-lg-2 text-center mb-3'>
-                                <img src={success3} alt='success-3' className='img-fluid' height='200' width='200'></img>
+                                <img src={success3} alt='success-3' className='img-fluid' height='100' width='100'></img>
                             </div>
                             <div className='col-lg-6'>
                                 <h5><b>THE RIGHT APPROACH</b></h5>
@@ -112,7 +112,7 @@ class Home extends React.Component {
                         {this.state.isDesktop ? (
                             <div className='row'>
                                 <div className='col-lg-2'></div>
-                                <div className='col-lg-6 mb-5' id='services'>
+                                <div className='col-lg-6 mb-3' id='services'>
                                     <h5><b>WE GET RESULTS</b></h5>
                                     <p>
                                         If you have a need for results then reach out. 
@@ -122,16 +122,16 @@ class Home extends React.Component {
                                     </p>
                                 </div>
                                 <div className='col-lg-2 text-center'>
-                                    <img src={success1} alt='success-1' className='img-fluid' height='200' width='200'></img>
+                                    <img src={success1} alt='success-1' className='img-fluid' height='100' width='100'></img>
                                 </div>
                             </div>
                         ) : (
                             <div className='row'>
                                 <div className='col-lg-2'></div>
                                 <div className='col-lg-2 text-center mb-3'>
-                                    <img src={success1} alt='success-1' className='img-fluid' height='200' width='200'></img>
+                                    <img src={success1} alt='success-1' className='img-fluid' height='100' width='100'></img>
                                 </div>
-                                <div className='col-lg-6 mb-5' id='services'>
+                                <div className='col-lg-6 mb-3' id='services'>
                                     <h5><b>WE GET RESULTS</b></h5>
                                     <p>
                                         If you have a need for results then reach out. 
@@ -147,7 +147,7 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-2'></div>
                             <div className='col-lg-2 text-center mb-3'>
-                                <img src={success2} alt='success-2' className='img-fluid' height='200' width='200'></img>
+                                <img src={success2} alt='success-2' className='img-fluid' height='100' width='100'></img>
                             </div>
                             <div className='col-lg-6'>
                                 <h5><b>SIMPLE SUCCESS</b></h5>
