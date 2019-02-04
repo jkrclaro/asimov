@@ -5,10 +5,10 @@ import Body from './components/Body';
 import Footer from './components/Footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCopyright } from '@fortawesome/free-solid-svg-icons';
+import { faCopyright, faBars, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-library.add(fab, faCopyright);
+library.add(fab, faCopyright, faBars, faPhone, faEnvelope);
 
 
 class App extends Component {

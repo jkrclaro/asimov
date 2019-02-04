@@ -22,54 +22,127 @@
 }
 
 * {
-    font-family: 'Lato';
+    font-family: 'Karla';
 }
 
-html, body {
+.hero-section {
     background-color: #141414 !important;
-    color: #fff !important;
+    min-height: 100vh !important;
+    color: #fff;
+}
+
+.sub-section {
+    background-color: #fff !important;
+}
+
+.theme-color, .theme-color:hover {
+    color: #e34343;
 }
 
 .form-control {
-    background-color: #222 !important;
-    border-color: #222 !important;
-    color: #fff !important;
     border-radius: 24px !important;
+    border-color: #E0E0E0 !important;
+    color: #A9A9A9 !important;
 }
 
-.card {
-    background-color: #141414 !important;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+.anchor-link, .anchor-link:hover {
+    color: #e34343 !important;
 }
 
 .btn {
-    border-radius: 20px !important;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
 
 .btn-humblepage-primary {
-    border-color: #e34343 !important;
-    background-color: #e34343 !important;
+    border-color: #141414 !important;
+    background-color: #141414 !important;
     color: #fff !important;
     font-weight: 700 !important;
 }
 .btn-humblepage-primary:hover, .btn-humblepage-primary:focus, .btn-humblepage-primary:active, .btn-humblepage-primary.active, .open > .dropdown-toggle.btn-humblepage-primary {
-    border-color: #e34343 !important;
-    background-color: #e34343 !important;
+    border-color: #aaa !important;
+    background-color: #aaa !important;
     color:#fff !important;
 }
-.btn-humblepage-alternative {
+.btn-humblepage-primary-inverse {
     border-color: #fff !important;
     color: #fff !important;
     font-weight: 700 !important;
 }
+.btn-humblepage-primary-inverse:hover, .btn-humblepage-primary-inverse:focus, .btn-humblepage-primary-inverse:active, .btn-humblepage-primary-inverse.active, .open > .dropdown-toggle.btn-humblepage-primary-inverse {
+    border-color: #aaa !important;
+    color:#aaa !important;
+}
+.btn-humblepage-alternative {
+    border-radius: 24px !important;
+    border-color: #E34343 !important;
+    color: #fff !important;
+    background-color: #E34343;
+    font-weight: 700 !important;
+}
 .btn-humblepage-alternative:hover, .btn-humblepage-alternative:focus, .btn-humblepage-alternative:active, .btn-humblepage-alternative.active, .open > .dropdown-toggle.btn-humblepage-alternative {
-    border-color: #fff !important;
-    color:#fff !important;
+    border-radius: 24px !important;
+    border-color: #aaa !important;
+    color:#aaa !important;
+}
+
+/* Overlay*/
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #141414;
+    background-color: #141414;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    text-decoration: none;
+    color: #aaa;
+}
+
+.overlay .closebtn {
+    color: #fff !important;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
 }
