@@ -13,7 +13,8 @@ const styles = {
     navItemInverse: {color: '#E34343', cursor: 'pointer'},
     cursor: {cursor: 'pointer'},
     menuBar: {fontSize: 30, color: '#fff'},
-    professionalFont: {fontFamily: 'Georgia'}
+    professionalFont: {fontFamily: 'Georgia'},
+    spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
 
 class Home extends React.Component {
@@ -48,7 +49,14 @@ class Home extends React.Component {
         document.getElementById("overlay-nav").style.width = "0%";
     }
 
+    scrollToContact = () => {
+        document.getElementById("overlay-nav").style.width = "0%";
+        const contactId = document.getElementById('contact')
+        contactId.scrollIntoView({behavior: "smooth"});
+    }
+
     scrollToAbout = () => {
+        document.getElementById("overlay-nav").style.width = "0%";
         const aboutId = document.getElementById('about')
         aboutId.scrollIntoView({behavior: "smooth"});
     }
@@ -61,8 +69,8 @@ class Home extends React.Component {
                     <div className="overlay-content">
                         <div className='container'>              
                             <b>
-                                <a href="/">About</a>                
-                                <a className='mb-5' href="/">Contact</a>
+                                <div><span style={styles.spanStyle} onClick={this.scrollToAbout}>About</span></div>                
+                                <div className='mb-5'><span style={styles.spanStyle} onClick={this.scrollToContact}>Contact</span></div>
                                 <a href="mailto:gethumblepage@gmail.com" style={{fontSize: 20}}>gethumblepage@gmail.com</a>
                                 <a href="tel:1231234567">(123) 123-4567</a>
                             </b>
@@ -107,14 +115,14 @@ class Home extends React.Component {
                 <div className='container'>
                     <div className='col-lg-12 mb-3 mt-5'>
                         <div className='row'>
-                            <div className='col-lg-12' id='about'>
+                            <div className='col-lg-12'>
                                 <div className='text-center mb-5'>
                                     <h3 className='theme-color'><b>GET TO KNOW US</b></h3>
                                     <h1><b>A LOOK AT OUR VALUES, BELIEFS, AND CULTURE.</b></h1>
                                 </div>
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h5><b>FORWARD THINKING</b></h5>
+                                <h5 id='about'><b>FORWARD THINKING</b></h5>
                                 <p className='text-muted'>
                                     We pride ourselves on pushing the boundaries of digital design and development. 
                                     We combine relevant trends and best practices to build platforms with longevity.
@@ -176,7 +184,7 @@ class Home extends React.Component {
                                         <div>or call us at <a href='tel:1231234567' className='theme-color'>(123) 123-4567</a></div>
                                     </div>
                                     <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
-                                        <h5><b>Project information</b></h5>
+                                        <h5 id='contact'><b>Project information</b></h5>
                                         <div className='row'>
                                             <div className='col-lg-6'>
                                                 <label htmlFor='companyname'><small>COMPANY NAME</small></label>
