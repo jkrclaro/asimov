@@ -90,11 +90,11 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-6 mt-5'>
                                 <div className='mb-5' style={styles.professionalFont}>
-                                    <h1>Experience design for growing brands. Based in Dublin.</h1>
+                                    <h1>Tailored design for growing brands. Based in Dublin.</h1>
                                     <h1 className='text-muted'>We focus on driving results.</h1>
                                 </div>
-                                <span className='btn btn-humblepage-primary-inverse mr-2' onClick={this.scrollToAbout}>About us</span>
-                                <a className='btn btn-humblepage-primary-inverse' href='mailto:gethumblepage@gmail.com'>Let's talk</a>
+                                <span className='btn btn-humblepage-primary-inverse mr-2 mb-5' onClick={this.scrollToAbout}>About us</span>
+                                <a className='btn btn-humblepage-primary-inverse mb-5' href='mailto:gethumblepage@gmail.com'>Let's talk</a>
                             </div>
                             {this.state.isDesktop ? (
                                 <div className='col-lg-6 mt-5'>
