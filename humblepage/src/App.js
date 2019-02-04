@@ -14,7 +14,7 @@ library.add(fab, faCopyright, faBars, faPhone, faEnvelope);
 class App extends Component {
 
     componentDidMount() {
-        document.title = 'Humblepage | Building Success For You';
+        document.title = 'Humblepage - Web Design Dublin, Ireland | Irish Website Design Company';
     }
 
     render() {
