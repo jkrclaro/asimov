@@ -113,12 +113,12 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-12'>
                                 <div className='text-center mb-5'>
-                                    <h3 className='theme-color'><b>GET TO KNOW US</b></h3>
+                                    <h3 className='theme-color' id='about'><b>GET TO KNOW US</b></h3>
                                     <h1><b>A LOOK AT OUR VALUES, BELIEFS, AND CULTURE.</b></h1>
                                 </div>
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h5 id='about'><b>FORWARD THINKING</b></h5>
+                                <h5><b>FORWARD THINKING</b></h5>
                                 <p className='text-muted'>
                                     We pride ourselves on pushing the boundaries of digital design and development. 
                                     We combine relevant trends and best practices to build platforms with longevity.
@@ -174,7 +174,7 @@ class Home extends React.Component {
                         <div className='col-lg-12'>
                             <div className='row'>
                                 <div className='col-lg-6 mt-5 mb-5'>
-                                    <h3 className='mb-3'><b>We look forward to hearing from you.</b></h3>
+                                    <h3 className='mb-3' id='contact'><b>We look forward to hearing from you.</b></h3>
                                     <div className='mb-5'>
                                         <div>You can always contact us directly at <a href='mailto:gethumblepage@gmail.com' className='theme-color'>gethumblepage@gmail.com</a></div>
                                         <div>or call us at <a href='tel:1231234567' className='theme-color'>(123) 123-4567</a></div>
@@ -191,7 +191,7 @@ class Home extends React.Component {
                                                 <input type='text' id='websiteurl' name='websiteurl' className='form-control mb-3'></input>
                                             </div>
                                         </div>
-                                        <label htmlFor='message' id='contact'><small>INFORMATION</small></label>
+                                        <label htmlFor='message'><small>INFORMATION</small></label>
                                         <textarea name='message' rows='10' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
                                         <h5><b>Contact information</b></h5>
                                         <div className='row'>
