@@ -68,12 +68,8 @@ class Home extends React.Component {
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>              
-                            <b>
-                                <div><span style={styles.spanStyle} onClick={this.scrollToAbout}>About</span></div>                
-                                <div className='mb-5'><span style={styles.spanStyle} onClick={this.scrollToContact}>Contact</span></div>
-                                <a href="mailto:gethumblepage@gmail.com" style={{fontSize: 20}}>gethumblepage@gmail.com</a>
-                                <a href="tel:1231234567">(123) 123-4567</a>
-                            </b>
+                            <a href="mailto:gethumblepage@gmail.com" style={{fontSize: 20}}>gethumblepage@gmail.com</a>
+                            <a href="tel:1231234567">(123) 123-4567</a>
                         </div>
                     </div>
                 </div>
@@ -102,7 +98,7 @@ class Home extends React.Component {
                                     <h1 className='text-muted'>We focus on driving results.</h1>
                                 </div>
                                 <span className='btn btn-humblepage-primary-inverse mr-2 mb-5' onClick={this.scrollToAbout}>About us</span>
-                                <a className='btn btn-humblepage-primary-inverse mb-5' href='mailto:gethumblepage@gmail.com'>Let's talk</a>
+                                <a className='btn btn-humblepage-primary-inverse mb-5' href='mailto:gethumblepage@gmail.com' onClick={this.scrollToContact}>Let's talk</a>
                             </div>
                             {this.state.isDesktop ? (
                                 <div className='col-lg-6 mt-5'>
@@ -175,7 +171,7 @@ class Home extends React.Component {
                 </div>
                 <div style={{backgroundColor: '#FAFAFA'}}>
                     <div className='container'>
-                        <div className='col-lg-12' style={{fontFamily: 'Karla'}}>
+                        <div className='col-lg-12'>
                             <div className='row'>
                                 <div className='col-lg-6 mt-5 mb-5'>
                                     <h3 className='mb-3'><b>We look forward to hearing from you.</b></h3>
@@ -184,7 +180,7 @@ class Home extends React.Component {
                                         <div>or call us at <a href='tel:1231234567' className='theme-color'>(123) 123-4567</a></div>
                                     </div>
                                     <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
-                                        <h5 id='contact'><b>Project information</b></h5>
+                                        <h5><b>Project information</b></h5>
                                         <div className='row'>
                                             <div className='col-lg-6'>
                                                 <label htmlFor='companyname'><small>COMPANY NAME</small></label>
@@ -195,7 +191,7 @@ class Home extends React.Component {
                                                 <input type='text' id='websiteurl' name='websiteurl' className='form-control mb-3'></input>
                                             </div>
                                         </div>
-                                        <label htmlFor='message'><small>INFORMATION</small></label>
+                                        <label htmlFor='message' id='contact'><small>INFORMATION</small></label>
                                         <textarea name='message' rows='10' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
                                         <h5><b>Contact information</b></h5>
                                         <div className='row'>
