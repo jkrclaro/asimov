@@ -98,7 +98,7 @@ class Home extends React.Component {
                                     <h1 className='text-muted'>We focus on driving results.</h1>
                                 </div>
                                 <span className='btn btn-humblepage-primary-inverse mr-2 mb-5' onClick={this.scrollToAbout}>About us</span>
-                                <a className='btn btn-humblepage-primary-inverse mb-5' href='mailto:gethumblepage@gmail.com' onClick={this.scrollToContact}>Let's talk</a>
+                                <a className='btn btn-humblepage-primary-inverse mb-5' onClick={this.scrollToContact}>Let's talk</a>
                             </div>
                             {this.state.isDesktop ? (
                                 <div className='col-lg-6 mt-5'>
@@ -173,8 +173,8 @@ class Home extends React.Component {
                     <div className='container'>
                         <div className='col-lg-12'>
                             <div className='row'>
-                                <div className='col-lg-6 mt-5 mb-5' id='contact'>
-                                    <h3 className='mb-3'><b>We look forward to hearing from you.</b></h3>
+                                <div className='col-lg-6 mt-5 mb-5'>
+                                    <h3 className='mb-3' id='contact'><b>We look forward to hearing from you.</b></h3>
                                     <div className='mb-5'>
                                         <div>You can always contact us directly at <a href='mailto:gethumblepage@gmail.com' className='theme-color'>gethumblepage@gmail.com</a></div>
                                         <div>or call us at <a href='tel:1231234567' className='theme-color'>(123) 123-4567</a></div>
