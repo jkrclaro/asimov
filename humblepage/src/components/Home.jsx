@@ -30,7 +30,7 @@ class Home extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 767 });
+        this.setState({ isDesktop: window.innerWidth > 992 });
     };
 
     handleChange(event) {
@@ -88,7 +88,7 @@ class Home extends React.Component {
                     </nav>
                     <div className='container'>
                         <div className='row'>
-                            <div className='col-md-6 mt-5'>
+                            <div className='col-lg-6 mt-5'>
                                 <div className='mb-5' style={styles.professionalFont}>
                                     <h2>Tailored design for growing brands.</h2>
                                     <h2>Based in Dublin.</h2>
@@ -98,7 +98,7 @@ class Home extends React.Component {
                                 <a className='btn btn-humblepage-primary-inverse mb-5' onClick={this.scrollToContact}>Let's talk</a>
                             </div>
                             {this.state.isDesktop ? (
-                                <div className='col-md-6 mt-5'>
+                                <div className='col-lg-6 mt-5'>
                                     <img src={vector1} alt='vector1' className='img-fluid'></img>
                                 </div>
                             ) : (null)}
@@ -106,58 +106,58 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className='container'>
-                    <div className='col-md-12 mb-3 mt-5'>
+                    <div className='col-lg-12 mb-3 mt-5'>
                         <div className='row'>
-                            <div className='col-md-12'>
+                            <div className='col-lg-12'>
                                 <div className='text-center mb-5'>
                                     <h3 className='theme-color' id='about'><b>GET TO KNOW US</b></h3>
                                     <h1><b>A LOOK AT OUR VALUES, BELIEFS, AND CULTURE.</b></h1>
                                 </div>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>FORWARD THINKING</b></h5>
                                 <p className='text-muted'>
                                     We pride ourselves on pushing the boundaries of digital design and development. 
                                     We combine relevant trends and best practices to build platforms with longevity.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>ENDLESS DRIVE</b></h5>
                                 <p className='text-muted'>
                                     Each member is dedicated to perfecting their craft and up-leveling their work.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>PURE PASSION</b></h5>
                                 <p className='text-muted'>
                                     Every member of our team is genuinely passionate about doing great work for brands we believe in—from global tech giants, to ambitious startups.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>DETAIL ORIENTED</b></h5>
                                 <p className='text-muted'>
                                     We sweat the small stuff, because we believe that the details make the design. A time-tested and true platform values quality over quantity.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>GREAT CHARACTER</b></h5>
                                 <p className='text-muted'>
                                     We believe in people over profit; hiring the right individuals and investing in personal growth is essential. More than skill, drive, or experience, great work is rooted in character.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>SELF STARTING</b></h5>
                                 <p className='text-muted'>
                                     Having an entrepreneurial mindset ensures that every member of our team proudly takes ownership of each project, from concept to execution.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>WORK HARD, PLAY HARD</b></h5>
                                 <p className='text-muted'>
                                     Occasionally, we like to celebrate our accomplishments. Sometimes the late nights, early mornings, and week-long design sprints call for strong drinks with good company.
                                 </p>
                             </div>
-                            <div className='col-md-6 mb-5'>
+                            <div className='col-lg-6 mb-5'>
                                 <h5><b>STAY HUMBLE</b></h5>
                                 <p className='text-muted'>
                                     We stand up for what we believe in, but never let ego get in the way. The key to growth is to embrace feedback and from team members and clients.
@@ -168,9 +168,9 @@ class Home extends React.Component {
                 </div>
                 <div style={{backgroundColor: '#FAFAFA'}}>
                     <div className='container'>
-                        <div className='col-md-12'>
+                        <div className='col-lg-12'>
                             <div className='row'>
-                                <div className='col-md-6 mt-5 mb-5'>
+                                <div className='col-lg-6 mt-5 mb-5'>
                                     <h3 className='mb-3' id='contact'><b>We look forward to hearing from you.</b></h3>
                                     <div className='mb-5'>
                                         <div>You can always contact us directly at <a href='mailto:gethumblepage@gmail.com' className='theme-color'>gethumblepage@gmail.com</a></div>
@@ -179,11 +179,11 @@ class Home extends React.Component {
                                     <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
                                         <h5><b>Project information</b></h5>
                                         <div className='row'>
-                                            <div className='col-md-6'>
+                                            <div className='col-lg-6'>
                                                 <label htmlFor='companyname'><small>COMPANY NAME</small></label>
                                                 <input type='text' id='companyname' name='companyname' className='form-control mb-3'></input>
                                             </div>
-                                            <div className='col-md-6'>
+                                            <div className='col-lg-6'>
                                                 <label htmlFor='websiteurl'><small>WEBSITE URL</small></label>
                                                 <input type='text' id='websiteurl' name='websiteurl' className='form-control mb-3'></input>
                                             </div>
@@ -192,11 +192,11 @@ class Home extends React.Component {
                                         <textarea name='message' rows='10' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
                                         <h5><b>Contact information</b></h5>
                                         <div className='row'>
-                                            <div className='col-md-6'>
+                                            <div className='col-lg-6'>
                                                 <label htmlFor='email'><small>EMAIL</small></label>
                                                 <input type='email' id='_replyto' name='_replyto' className='form-control mb-3' required></input>
                                             </div>
-                                            <div className='col-md-6'>
+                                            <div className='col-lg-6'>
                                                 <label htmlFor='phonenumber'><small>PHONE NUMBER</small></label>
                                                 <input type='text' id='phonenumber' name='phonenumber' className='form-control mb-3' required></input>
                                             </div>
@@ -207,7 +207,7 @@ class Home extends React.Component {
                                     </form>
                                 </div>
                                 {this.state.isDesktop ? (
-                                    <div className='col-md-6 text-center mt-5'>
+                                    <div className='col-lg-6 text-center mt-5'>
                                         <img src={vector2} className='img-fluid' alt='vector2' height='400' width='400'></img>
                                     </div>
                                 ) : (null)}
