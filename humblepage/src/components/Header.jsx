@@ -51,7 +51,7 @@ class Header extends React.Component {
                             <br/>
                             <br/>
                             <br/>
-                            <a href="tel:+353894518912">+353894518912</a>
+                            <a href="tel:0894518912">0894518912</a>
                         </div>
                     </div>
                 </div>
