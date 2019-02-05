@@ -21,6 +21,11 @@
    visibility: hidden;
 }
 
+ul {
+    color: #E34343;
+    font-weight: 700;
+}
+
 .hero-section {
     background-color: #141414 !important;
     min-height: 100vh !important;

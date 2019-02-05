@@ -49,7 +49,7 @@ class Home extends React.Component {
                                     <h2>Tailored design for growing brands.</h2>
                                     <h2>We transform business objectives into compelling digital experiences.</h2>
                                 </div>
-                                <Link to='/work' className='btn btn-humblepage-primary mr-2 mb-5'>See our work</Link>
+                                <Link to='/services' className='btn btn-humblepage-primary mr-2 mb-5'>See our services</Link>
                             </div>
                             {this.state.isDesktop ? (
                                 <div className='col-lg-6 mt-5'>
