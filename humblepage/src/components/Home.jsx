@@ -7,14 +7,10 @@ const vector2 = require('../imgs/vector2.png');
 
 
 const styles = {
-    topPadding: {marginTop: 20},
-    border: {backgroundColor: '#7289DA', color: '#111', borderRadius: '10%'},
-    navItem: {color: '#fff', cursor: 'pointer'},
-    navItemInverse: {color: '#E34343', cursor: 'pointer'},
     cursor: {cursor: 'pointer'},
-    menuBar: {fontSize: 30, color: '#fff'},
+    menuBar: {fontSize: '2.5em', color: '#fff'},
     professionalFont: {fontFamily: 'Georgia'},
-    spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
+    spanStyle: {fontSize: '3.33em', color: '#fff', cursor: 'pointer'}
 }
 
 class Home extends React.Component {
@@ -68,7 +64,7 @@ class Home extends React.Component {
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>              
-                            <a href="mailto:gethumblepage@gmail.com" style={{fontSize: 20}}>gethumblepage@gmail.com</a>
+                            <a href="mailto:gethumblepage@gmail.com" style={{fontSize: '1.6em'}}>gethumblepage@gmail.com</a>
                             <a href="tel:1231234567">(123) 123-4567</a>
                         </div>
                     </div>
