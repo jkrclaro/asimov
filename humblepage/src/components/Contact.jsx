@@ -35,10 +35,10 @@ class Contact extends React.Component {
                             <div className='container'>
                             <h3 className='mb-3'><b>We look forward to hearing from you.</b></h3>
                             <div className='mb-5'>
-                                <div>You can always contact us directly at <a href='mailto:gethumblepage@gmail.com' className='theme-color'>gethumblepage@gmail.com</a></div>
+                                <div>You can always contact us directly at <a href='mailto:john@humblepage.com' className='theme-color'>john@humblepage.com</a></div>
                                 <div>or call us at <a href='tel:+353894518912' className='theme-color'>+353894518912</a></div>
                             </div>
-                            <form action='https://formspree.io/gethumblepage@gmail.com' method='POST'>
+                            <form action='https://formspree.io/john@humblepage.com' method='POST'>
                                 <h5><b>Project information</b></h5>
                                 <div className='row'>
                                     <div className='col-lg-6'>
