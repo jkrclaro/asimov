@@ -44,14 +44,14 @@ class Service extends React.Component {
                             <div className='row'>
                                 <div className='col-sm-6'>
                                     <ul>
-                                        <li>Front-End Development</li>
+                                        <li>Free Hosting</li>
                                         <li>Responsive Development</li>
                                         <li>Javascript &amp; React</li>
                                     </ul>
                                 </div>
                                 <div className='col-sm-6'>
                                     <ul>
-                                        <li>Back-End Development</li>
+                                        <li>Front End Development</li>
                                         <li>CSS / HTML</li>
                                         <li>Single Page Application</li>
                                     </ul>
