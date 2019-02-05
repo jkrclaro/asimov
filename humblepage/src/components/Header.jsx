@@ -46,15 +46,13 @@ class Header extends React.Component {
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
-                            <Link to='/' onClick={this.closeNav}><b>HOME</b></Link>
                             <Link to='/work' onClick={this.closeNav}><b>WORK</b></Link>
-                            <Link to='/services' onClick={this.closeNav}><b>SERVICES</b></Link>
                             <Link to='/about' onClick={this.closeNav}><b>ABOUT</b></Link>
                             <Link to='/contact' onClick={this.closeNav}><b>CONTACT</b></Link>
                             <br/>
                             <br/>
                             <br/>
-                            <a href="tel:1231234567">(123) 123-4567</a>
+                            <a href="tel:+353894518912">+353894518912</a>
                         </div>
                     </div>
                 </div>
@@ -64,9 +62,7 @@ class Header extends React.Component {
                         <Link to='/' style={styles.brand}><img src={logo} alt='logo' height='40' width='40'></img></Link>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">
-                            <li className='nav-item'><Link to='/' className='nav-link white-color mt-3'><b>HOME</b></Link></li>
                             <li className='nav-item'><Link to='/work' className='nav-link white-color mt-3'><b>WORK</b></Link></li>
-                            <li className='nav-item'><Link to='/services' className='nav-link white-color mt-3'><b>SERVICES</b></Link></li>
                                 <li className='nav-item'><Link to='/about' className='nav-link white-color mt-3'><b>ABOUT</b></Link></li>
                                 <li className='nav-item'><Link to='/contact' className='nav-link white-color mt-1'><span className='btn btn-humblepage-primary'>Let's talk</span></Link></li>
                             </ul>
