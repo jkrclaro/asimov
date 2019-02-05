@@ -71,7 +71,7 @@ class Home extends React.Component {
                             </div>
                             <div className='col-lg-6 mb-5'>
                                 <h3 className='theme-color'><b>WEB DESIGN</b></h3>
-                                <h5><b>Our dev team brings engaging visuals to life through custom development.</b></h5>
+                                <h5><b>Our team brings engaging visuals to life through custom development.</b></h5>
                                 <div className='row'>
                                     <div className='col-sm-6'>
                                         <ul>
@@ -105,8 +105,7 @@ class Home extends React.Component {
                                     web platform is aligned with your business 
                                     initiatives and marketing goals. 
                                     From custom code, to seamless integration, 
-                                    to exclusive portal functionality, our 
-                                    dedicated team of developers have the 
+                                    our dedicated team have the 
                                     capabilities to take your website to the next level.
                                 </p>
                             </div>
@@ -144,10 +143,7 @@ class Home extends React.Component {
                                     to convert customers.
                                 </p>
                                 <p className='text-muted'>
-                                    We work as an extension of your company’s 
-                                    marketing team to build a website driven by 
-                                    intuitive UI and engaging UX. We combine 
-                                    best-in-class web design, sophisticated UI 
+                                    We combine best-in-class web design, sophisticated UI 
                                     elements, and an intuitive path to purchase 
                                     to drive user engagement and conversion. 
                                     Our dedicated team collaborates with you to create a 
