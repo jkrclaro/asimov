@@ -15,11 +15,14 @@ class About extends React.Component {
             <div style={styles.aboutFont}>
                 <div className='container'>
                     <div className='row mt-5'>
-                        <div className='col-lg-12'>
-                            <div className='mb-5'>
-                                <h3 className='theme-color' id='about'><b>GET TO KNOW US</b></h3>
-                                <h3><b>A LOOK AT OUR VALUES, BELIEFS, AND CULTURE.</b></h3>
-                            </div>
+                        <div className='col-lg-12 mb-5'>
+                            <h3 className='theme-color' id='about'><b>BASED IN DUBLIN, IRELAND</b></h3>
+                            <h3><b>We are an independent web design company.</b></h3>
+                            <h3><b>We collaborate with brands to accelerate their growth.</b></h3>
+                        </div>
+                        <div className='col-lg-12 mb-5'>
+                            <h3 className='theme-color' id='about'><b>GET TO KNOW US</b></h3>
+                            <h3><b>A LOOK AT OUR VALUES, BELIEFS, AND CULTURE.</b></h3>
                         </div>
                         <div className='col-lg-6 mb-5'>
                             <h5><b>FORWARD THINKING</b></h5>
