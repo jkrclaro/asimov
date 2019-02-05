@@ -94,8 +94,9 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-6 mt-5'>
                                 <div className='mb-5' style={styles.professionalFont}>
-                                    <h1>Tailored design for growing brands. Based in Dublin.</h1>
-                                    <h1 className='text-muted'>We focus on driving results.</h1>
+                                    <h2>Tailored design for growing brands.</h2>
+                                    <h2>Based in Dublin.</h2>
+                                    <h2 className='text-muted'>We focus on driving results.</h2>
                                 </div>
                                 <span className='btn btn-humblepage-primary-inverse mr-2 mb-5' onClick={this.scrollToAbout}>About us</span>
                                 <a className='btn btn-humblepage-primary-inverse mb-5' onClick={this.scrollToContact}>Let's talk</a>
