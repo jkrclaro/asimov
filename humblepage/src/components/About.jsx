@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = {
     aboutFont: {fontFamily: 'Titillium Web'}
@@ -73,6 +74,13 @@ class About extends React.Component {
                                 We stand up for what we believe in, but never let ego get in the way. The key to growth is to embrace feedback and from team members and clients.
                             </p>
                         </div>
+                    </div>
+                </div>
+                <div style={{backgroundColor: '#FAFAFA', ...styles.homeFont}}>
+                    <div className='container text-center'>
+                        <h3 className='theme-color' style={{paddingTop: 40}}><b>WORK WITH US</b></h3>
+                        <h3><b>Tell us a little bit about your project.</b></h3>
+                        <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
                     </div>
                 </div>
             </div>
