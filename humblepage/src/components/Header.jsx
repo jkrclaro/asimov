@@ -61,7 +61,7 @@ class Header extends React.Component {
 
                 <nav className="navbar navbar-expand-lg navbar-dark">
                     <div className='container mt-3 mb-3'>
-                        <a href='/' style={styles.brand}><img src={logo} alt='logo' height='40' width='40'></img></a>
+                        <Link to='/' style={styles.brand}><img src={logo} alt='logo' height='40' width='40'></img></Link>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">
                             <li className='nav-item'><Link to='/' className='nav-link white-color mt-3'><b>HOME</b></Link></li>
