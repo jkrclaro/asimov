@@ -102,6 +102,11 @@ ul {
     color:#fff !important;
 }
 
+.footer {
+    background-color: #141414;
+    font-family: 'Titillium Web';
+}
+
 /* Overlay*/
 .overlay {
     height: 100%;

@@ -31,7 +31,7 @@ class Service extends React.Component {
         return (
             <div>
                 <div className='container mt-5' style={styles.serviceFont}>
-                    <h1 className='mb-5'><b>This is what we offer.</b></h1>
+                    <h3 className='mb-5'><b>This is what we offer.</b></h3>
                     <div className='row'>
                         <div className='col-lg-6'>
                             {this.state.isDesktop ? (
