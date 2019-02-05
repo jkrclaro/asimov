@@ -40,11 +40,12 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '#141414'}}>
+            <div style={{backgroundColor: '#141414', ...styles.professionalFont}}>
                 <div id="overlay-nav" className="overlay">
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
+                            <Link to='/' onClick={this.closeNav}><b>HOME</b></Link>
                             <Link to='/work' onClick={this.closeNav}><b>WORK</b></Link>
                             <Link to='/about' onClick={this.closeNav}><b>ABOUT</b></Link>
                             <Link to='/contact' onClick={this.closeNav}><b>CONTACT</b></Link>
@@ -57,7 +58,7 @@ class Header extends React.Component {
                 </div>
 
                 <nav className="navbar navbar-expand-lg navbar-dark">
-                    <div className='container mt-3'>
+                    <div className='container mt-3 mb-3'>
                         <a href='/' style={styles.brand}><img src={logo} alt='logo' height='40' width='40'></img></a>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">

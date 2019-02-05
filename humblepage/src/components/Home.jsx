@@ -9,6 +9,7 @@ const styles = {
     cursor: {cursor: 'pointer'},
     menuBar: {fontSize: 30, color: '#fff'},
     professionalFont: {fontFamily: 'Georgia'},
+    homeFont: {fontFamily: 'Titillium Web'},
     spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
 
@@ -57,7 +58,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='row'>
+                <div className='row' style={styles.homeFont}>
                     <div className='col-lg-3'></div>
                     <div className='col-lg-6 text-center'>
                         <h3 className='theme-color mt-5' id='about'><b>BASED IN DUBLIN, IRELAND</b></h3>
@@ -70,7 +71,7 @@ class Home extends React.Component {
                     </div>
                     <div className='col-lg-3'></div>
                 </div>
-                <div style={{backgroundColor: '#FAFAFA'}}>
+                <div style={{backgroundColor: '#FAFAFA', ...styles.homeFont}}>
                     <div className='container'>
                         <div className='col-lg-12 text-right' style={{paddingTop: 40}}>
                             <h3 className='theme-color' id='about'><b>WORK WITH US</b></h3>
