@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const logo = require('../imgs/logo.png');
 const vector1 = require('../imgs/vector1.png');
 const vector2 = require('../imgs/vector2.png');
 const vector3 = require('../imgs/vector3.png');
@@ -67,7 +66,7 @@ class Home extends React.Component {
                         <div className='row mt-5'>
                             <div className='col-lg-6 text-center'>
                                 {this.state.isDesktop ? (
-                                    <img src={vector2} className='img-fluid mt-5'></img>
+                                    <img alt='vector-2' src={vector2} className='img-fluid mt-5'></img>
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6 mb-5'>
@@ -157,12 +156,12 @@ class Home extends React.Component {
                             </div>
                             <div className='col-lg-6'>
                                 {this.state.isDesktop ? (
-                                    <img src={vector3} className='img-fluid mt-5'></img>
+                                    <img alt='vector-3' src={vector3} className='img-fluid mt-5'></img>
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6'>
                                 {this.state.isDesktop ? (
-                                    <img src={vector4} className='img-fluid mt-5'></img>
+                                    <img alt='vector-4' src={vector4} className='img-fluid mt-5'></img>
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6 mb-5'>

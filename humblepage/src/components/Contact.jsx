@@ -71,7 +71,7 @@ class Contact extends React.Component {
                         </div>
                         {this.state.isDesktop ? (
                             <div className='col-lg-6'>
-                                <img src={stock1} width='100%' height='100%' className='img-responsive'></img>
+                                <img alt='stock-1' src={stock1} width='100%' height='100%' className='img-responsive'></img>
                             </div>
                         ) : (null)}
                     </div>
