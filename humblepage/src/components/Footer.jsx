@@ -46,7 +46,7 @@ class Footer extends React.Component {
                             <div className='col-lg-3 mt-4'>
                                 <h5 className='text-muted mb-3'><b>GET IN TOUCH</b></h5>
                                 <h5><a href='mailto:john@humblepage.com' className='white-color'>john@humblepage.com</a></h5>
-                                <h5><a href='tel:0894518912' className='white-color'>0894518912</a></h5>
+                                <h5><a href='tel:0894518912' className='white-color'>(089) 451 8912</a></h5>
                             </div>
                         </div>
                     ) : (
@@ -54,7 +54,7 @@ class Footer extends React.Component {
                             <h3 className='mb-5'><b>HUMBLEPAGE</b></h3>
                             <h5 className='text-muted mb-3'><b>GET IN TOUCH</b></h5>
                             <h5><a href='mailto:john@humblepage.com' className='white-color'>john@humblepage.com</a></h5>
-                            <h5><a href='tel:0894518912' className='white-color'>0894518912</a></h5>
+                            <h5><a href='tel:0894518912' className='white-color'>(089) 451 8912</a></h5>
                         </div>
                     )}
                 </div>
