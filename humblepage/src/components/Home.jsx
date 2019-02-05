@@ -47,7 +47,7 @@ class Home extends React.Component {
                                     <h2>Tailored design for growing brands.</h2>
                                     <h2>We transform business objectives into compelling digital experiences.</h2>
                                 </div>
-                                <Link to='/work' className='btn btn-humblepage-primary mr-2 mb-5'>Our work</Link>
+                                <Link to='/work' className='btn btn-humblepage-primary mr-2 mb-5'>See our work</Link>
                             </div>
                             {this.state.isDesktop ? (
                                 <div className='col-lg-6 mt-5'>
@@ -57,23 +57,19 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                {this.state.isDesktop ? (
-                    <div className='row'>
-                        <div className='col-lg-4' style={{backgroundColor: '#009A49'}}></div>
-                        <div className='col-lg-4 text-center'>
-                            <h3 className='mt-5'><b>We're a web design company</b></h3>
-                            <h3 className='mb-5'><b>based in Dublin, Ireland.</b></h3>
-                            <Link to='/about' className='btn btn-humblepage-primary-inverse mb-5'>About us</Link>
+                <div className='row'>
+                    <div className='col-lg-3'></div>
+                    <div className='col-lg-6 text-center'>
+                        <h3 className='theme-color mt-5' id='about'><b>BASED IN DUBLIN, IRELAND</b></h3>
+                        <div className='mb-5'>
+                            <div><h3><b>We are an independent web design company.</b></h3></div>
+                            <div><h3><b>We collaborate with brands</b></h3></div>
+                            <div><h3><b> to accelerate their growth.</b></h3></div>
                         </div>
-                        <div className='col-lg-4' style={{backgroundColor: '#FF7900'}}></div>
+                        <Link to='/about' className='btn btn-humblepage-alternative mb-5'>Get to know us</Link>
                     </div>
-                ) : (
-                    <div className='text-center'>
-                        <h3 className='mt-5'><b>We're a web design company</b></h3>
-                        <h3 className='mb-5'><b>based in Dublin, Ireland.</b></h3>
-                        <Link to='/about' className='btn btn-humblepage-primary-inverse mb-5'>About us</Link>
-                    </div>
-                )}
+                    <div className='col-lg-3'></div>
+                </div>
                 <div style={{backgroundColor: '#FAFAFA'}}>
                     <div className='container'>
                         <div className='col-lg-12 text-right' style={{paddingTop: 40}}>
@@ -82,7 +78,7 @@ class Home extends React.Component {
                                 <h2><b>Tell us a little bit</b></h2>
                                 <h2><b>about your project.</b></h2>
                             </div>
-                            <Link to='/contact' className='btn btn-humblepage-alternative mb-5'>CONTACT US</Link>
+                            <Link to='/contact' className='btn btn-humblepage-alternative mb-5'>Let's talk</Link>
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const styles = {
+    aboutFont: {fontFamily: 'Titillium Web'}
+}
 
 class About extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={styles.aboutFont}>
                 <div className='container'>
                     <div className='row mt-5'>
                         <div className='col-lg-12'>

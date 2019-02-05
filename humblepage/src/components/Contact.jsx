@@ -1,6 +1,9 @@
 import React from 'react';
 
 const stock1 = require('../imgs/stock1.jpg')
+const styles = {
+    contactFont: {fontFamily: 'Karla'}
+}
 
 class Contact extends React.Component {
 
@@ -24,7 +27,7 @@ class Contact extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={styles.contactFont}>
                 <div className='row'>
                     <div className='col-lg-6 mt-5 mb-5'>
                         <div className='container'>
