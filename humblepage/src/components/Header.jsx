@@ -7,6 +7,7 @@ const styles = {
     cursor: {cursor: 'pointer'},
     menuBar: {fontSize: 30, color: '#fff'},
     professionalFont: {fontFamily: 'Georgia'},
+    headerFont: {fontFamily: 'Titillium Web'},
     spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
 
@@ -40,7 +41,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '#141414', ...styles.professionalFont}}>
+            <div style={{backgroundColor: '#141414', ...styles.headerFont}}>
                 <div id="overlay-nav" className="overlay">
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">

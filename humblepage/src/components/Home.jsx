@@ -58,29 +58,19 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='row' style={styles.homeFont}>
-                    <div className='col-lg-3'></div>
-                    <div className='col-lg-6 text-center'>
-                        <h3 className='theme-color mt-5' id='about'><b>BASED IN DUBLIN, IRELAND</b></h3>
-                        <div className='mb-5'>
-                            <div><h3><b>We are an independent web design company.</b></h3></div>
-                            <div><h3><b>We collaborate with brands</b></h3></div>
-                            <div><h3><b> to accelerate their growth.</b></h3></div>
-                        </div>
-                        <Link to='/about' className='btn btn-humblepage-alternative mb-5'>Get to know us</Link>
-                    </div>
-                    <div className='col-lg-3'></div>
-                </div>
                 <div style={{backgroundColor: '#FAFAFA', ...styles.homeFont}}>
                     <div className='container'>
-                        <div className='col-lg-12 text-right' style={{paddingTop: 40}}>
-                            <h3 className='theme-color' id='about'><b>WORK WITH US</b></h3>
-                            <div className='mb-5'>
-                                <h2><b>Tell us a little bit</b></h2>
-                                <h2><b>about your project.</b></h2>
-                            </div>
-                            <Link to='/contact' className='btn btn-humblepage-alternative mb-5'>Let's talk</Link>
-                        </div>
+                        <h3 className='theme-color'  style={{paddingTop: 40}}><b>BASED IN DUBLIN, IRELAND</b></h3>
+                        <div><h3><b>We are an independent web design company.</b></h3></div>
+                        <div><h3><b>We collaborate with brands to accelerate their growth.</b></h3></div>
+                        <Link to='/about' className='btn btn-humblepage-primary-inverse mb-5'>Get to know us</Link>
+                    </div>
+                </div>
+                <div style={styles.homeFont}>
+                    <div className='container'>
+                        <h3 className='theme-color' style={{paddingTop: 40}}><b>WORK WITH US</b></h3>
+                        <h3><b>Tell us a little bit about your project.</b></h3>
+                        <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
                     </div>
                 </div>
             </div>
