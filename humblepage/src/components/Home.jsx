@@ -212,7 +212,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div style={{backgroundColor: '#FAFAFA', ...styles.homeFont}}>
-                    <div className='container'>
+                    <div className='container text-center'>
                         <h3 className='theme-color' style={{paddingTop: 40}}><b>WORK WITH US</b></h3>
                         <h3><b>Tell us a little bit about your project.</b></h3>
                         <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>

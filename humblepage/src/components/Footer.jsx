@@ -35,7 +35,6 @@ class Footer extends React.Component {
                             <div className='col-lg-3 mt-4'>
                                 <h5 className='text-muted mb-3'><b>EXPLORE</b></h5>
                                 <h5><Link to='/work' className='white-color'>Work</Link></h5>
-                                <h5><Link to='/about' className='white-color'>About</Link></h5>
                                 <h5><Link to='/contact' className='white-color'>Contact</Link></h5>
                             </div>
                             <div className='col-lg-3 mt-4'>
