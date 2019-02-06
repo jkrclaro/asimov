@@ -105,7 +105,7 @@ class Home extends React.Component {
                                     web platform is aligned with your business 
                                     initiatives and marketing goals. 
                                     From custom code, to seamless integration, 
-                                    our dedicated team have the 
+                                    our dedicated team has the 
                                     capabilities to take your website to the next level.
                                 </p>
                             </div>
