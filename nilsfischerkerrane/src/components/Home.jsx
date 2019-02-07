@@ -9,6 +9,28 @@ const stock3 = require('../imgs/stock3.jpg');
 
 class Home extends React.Component {
 
+    state = {
+        isDesktop: false,
+        heroSectionPaddingTop: 300
+    }
+    updatePredicate = this.updatePredicate.bind(this);
+
+    componentDidMount() {
+        this.updatePredicate();
+        window.addEventListener('resize', this.updatePredicate);
+    };
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updatePredicate);
+    };
+
+    updatePredicate() {
+        if (window.innerHeight <= 580) {
+            this.setState({ heroSectionPaddingTop: 110 });
+        }
+        this.setState({ isDesktop: window.innerWidth > 992 });
+    };
+
     render() {
         return (
             <div>
@@ -16,7 +38,7 @@ class Home extends React.Component {
                     <Header/>
                     <div className='container'>
                         <div className='row'>
-                            <div className='col-lg-6' style={{paddingTop: 225}}>
+                            <div className='col-lg-6' style={{paddingTop: this.state.heroSectionPaddingTop}}>
                                 <h1>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h1>
                                 <a className='btn btn-custom-primary'>Book now</a>
                             </div>
@@ -49,13 +71,13 @@ class Home extends React.Component {
                             After 2 hours of history, we'll head to one of my favourite pubs and enjoy a pint of Guinness (pint is included in the price of the tour). As we enjoy it, I’ll tell you everything there is to know about the beer, especially important info that you wouldn't necessarily hear at the Guinness Storehouse – Why does it take so long to pour a pint? Why is it so beloved in Ireland? Why is it so smooth and creamy? Why does it taste so much better here than elsewhere? Why does every can of Guinness have a plastic ball in it?
                             Fascinating history followed by a delicious pint. What could be better?
                             </p>
-                            <div class="carousel">
-                                <div class="carousel-row">
-                                    <div class="carousel-tile"><a href='/'><img src={stock1} className='img-fluid'></img></a></div>
-                                    <div class="carousel-tile"><a href='/'><img src={stock1} className='img-fluid'></img></a></div>
-                                    <div class="carousel-tile"><a href='/'><img src={stock1} className='img-fluid'></img></a></div>
-                                    <div class="carousel-tile"><a href='/'><img src={stock1} className='img-fluid'></img></a></div>
-                                    <div class="carousel-tile"><a href='/'><img src={stock1} className='img-fluid'></img></a></div>
+                            <div className="carousel">
+                                <div className="carousel-row">
+                                    <div className="carousel-tile"><a href='/'><img src={stock1} alt='carousel-1' className='img-fluid'></img></a></div>
+                                    <div className="carousel-tile"><a href='/'><img src={stock1} alt='carousel-2' className='img-fluid'></img></a></div>
+                                    <div className="carousel-tile"><a href='/'><img src={stock1} alt='carousel-3' className='img-fluid'></img></a></div>
+                                    <div className="carousel-tile"><a href='/'><img src={stock1} alt='carousel-4' className='img-fluid'></img></a></div>
+                                    <div className="carousel-tile"><a href='/'><img src={stock1} alt='carousel-5' className='img-fluid'></img></a></div>
                                 </div>
                                 </div>
                             </div>

@@ -69,7 +69,8 @@
 
 .btn-custom-primary {
   border-radius: 24px !important;
-  border-color: #fff !important;
+  background-color: #009E60 !important;
+  border-color: #009E60 !important;
   color: #fff !important;
   font-weight: 700 !important;
 }

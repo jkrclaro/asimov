@@ -46,13 +46,9 @@ class Header extends React.Component {
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
-                            <Link to='/about' onClick={this.closeNav}>About</Link>
-                            <Link to='/testimonials' onClick={this.closeNav}>Testimonials</Link>
-                            <Link to='/contaact' onClick={this.closeNav}>Contact</Link>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <a href="tel:0894518912">(089) 451 8912</a>
+                            <Link to='/about' onClick={this.closeNav}>ABOUT</Link>
+                            <Link to='/testimonials' onClick={this.closeNav}>TESTIMONIALS</Link>
+                            <Link to='/contaact' onClick={this.closeNav}>CONTACT</Link>
                         </div>
                     </div>
                 </div>
