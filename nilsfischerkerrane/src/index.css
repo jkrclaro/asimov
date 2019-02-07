@@ -21,6 +21,13 @@
   color: #fff;
 }
 
+.section-1-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: solid 1px red;
+}
+
 .white-color {
   color: #fff !important;
 }
