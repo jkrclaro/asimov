@@ -4,3 +4,7 @@ deploy:
 
 start:
 	cd $(PROJECT) && npm run start
+
+new:
+	npx create-react-app $(PROJECT)
+	cd $(PROJECT)
