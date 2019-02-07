@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import Body from './components/Body';
-import Footer from './components/Footer';
+import Home from './components/Home';
+import About from './components/About';
+import Testimonial from './components/Testimonial';
+import Contact from './components/Contact';
+import NotFound from './components/NotFound';
 
 
 class App extends Component {
@@ -11,13 +13,13 @@ class App extends Component {
     render() {
         return(
             <HashRouter basename={process.env.PUBLIC_URL}>
-                <div className='App Site'>
-                    <div className='Site-content'>
-                        <Header />
-                        <Body />
-                    </div>
-                    <Footer />
-                </div>
+                <Switch>
+                    <Route exact path={process.env.PUBLIC_URL + '/'} component={Home} />
+                    <Route path={process.env.PUBLIC_URL + '/about'} component={About} />
+                    <Route path={process.env.PUBLIC_URL + '/testimonials'} component={Testimonial} />
+                    <Route path={process.env.PUBLIC_URL + '/contact'} component={Contact} />
+                    <Route component={NotFound} />
+                </Switch>
             </HashRouter>
         )
     }

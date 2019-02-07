@@ -1,14 +1,126 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.section-1 {
+  background-image: url('../src/imgs/stock1.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Oswald';
+  height: 100vh;
+  color: #fff;
+}
+
+.section-2 {
+  background-image: url('../src/imgs/stock2.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Oswald';
+  height: 100vh;
+  color: #fff;
+}
+
+.white-color {
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: #009E60 !important;
+}
+
+.brand {
+  font-size: 30px;
+  color: #fff;
+  opacity: 1;
+}
+.brand-link {
+  text-decoration: none !important;
+}
+
+.h3-heading {
+  font-weight: 700;
+  font-family: 'Ubuntu';
+}
+
+.p-content {
+  font-family: 'Ubuntu';
+}
+
+.btn {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-custom-primary {
+  border-radius: 24px !important;
+  border-color: #fff !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+.btn-custom-primary:hover, .btn-custom-primary:focus, .btn-custom-primary:active, .btn-custom-primary.active, .open > .dropdown-toggle.btn-custom-primary {
+  border-radius: 24px !important;
+  background-color: #009E60 !important;
+  border-color: #009E60 !important;
+  color:#fff !important;
+}
+
+/* Overlay*/
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #141414;
+  background-color: #141414;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.overlay .closebtn {
+  color: #fff !important;
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+.overlay a {font-size: 20px}
+.overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+}
 }
