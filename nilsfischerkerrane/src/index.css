@@ -8,24 +8,15 @@
   background-size: cover;
   background-position: center;
   font-family: 'Oswald';
+  color: #fff;
   height: 100vh;
-  color: #fff;
-}
-
-.section-2 {
-  background-image: url('../src/imgs/stock1.jpg');
-  background-size: cover;
-  background-position: center;
-  font-family: 'Oswald';
-  height: 30vh;
-  color: #fff;
-}
-
-.section-1-content {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-  border: solid 1px red;
+  align-items: center;
+}
+
+.footer {
+    background-color: #141414;
 }
 
 .white-color {

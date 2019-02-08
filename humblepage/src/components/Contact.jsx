@@ -33,13 +33,13 @@ class Contact extends React.Component {
                     <div className='row'>
                         <div className='col-lg-6 mt-5 mb-5'>
                             <div className='container'>
-                            <h3 className='mb-3'><b>We look forward to hearing from you.</b></h3>
-                            <div className='mb-5'>
+                            <h2 className='mb-3'>We look forward to hearing from you.</h2>
+                            <p className='mb-5'>
                                 <div className='mb-3'>You can always contact us directly at <a href='mailto:john@humblepage.com' className='theme-color'>john@humblepage.com</a></div>
                                 <div>or call us at <a href='tel:0894518912' className='theme-color'>(089) 451 8912</a></div>
-                            </div>
+                            </p>
                             <form action='https://formspree.io/john@humblepage.com' method='POST'>
-                                <h5><b>Project information</b></h5>
+                                <h4>Project information</h4>
                                 <div className='row'>
                                     <div className='col-lg-6'>
                                         <label htmlFor='companyname'><small>COMPANY NAME</small></label>
@@ -52,7 +52,7 @@ class Contact extends React.Component {
                                 </div>
                                 <label htmlFor='message'><small>INFORMATION</small></label>
                                 <textarea name='message' rows='5' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
-                                <h5><b>Contact information</b></h5>
+                                <h4>Contact information</h4>
                                 <div className='row'>
                                     <div className='col-lg-6'>
                                         <label htmlFor='email'><small>EMAIL</small></label>

@@ -55,7 +55,7 @@ class Header extends React.Component {
 
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#141414', opacity: 0.9}}>
                     <div className='container mt-3 mb-3'>
-                        <Link to='/' className='brand-link'><span className='brand'>H&amp;P</span></Link>
+                        <Link to='/' className='brand-link'><span className='brand'>NILSFK</span></Link>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">
                                 <li className='nav-item'><Link to='/tour' className='nav-link white-color'>TOUR</Link></li>

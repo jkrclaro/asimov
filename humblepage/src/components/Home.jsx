@@ -48,8 +48,10 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-6 mt-5'>
                                 <div className='mb-5' style={styles.professionalFont}>
-                                    <h2>Tailored design for growing brands.</h2>
-                                    <h2>We transform business objectives into compelling digital experiences.</h2>
+                                    <h1>
+                                        Tailored design for growing brands.
+                                        We transform business objectives into compelling digital experiences.
+                                    </h1>
                                 </div>
                                 <Link to='/about' className='btn btn-humblepage-primary mr-2 mb-5'>Get to know us</Link>
                             </div>
@@ -70,25 +72,25 @@ class Home extends React.Component {
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h3 className='theme-color'><b>WEB DESIGN</b></h3>
-                                <h5><b>Our team brings engaging visuals to life through custom development.</b></h5>
+                                <h2 className='theme-color'>WEB DESIGN</h2>
+                                <p>Our team brings engaging visuals to life through custom development.</p>
                                 <div className='row'>
-                                    <div className='col-sm-6'>
+                                    <div className='col-6'>
                                         <ul>
                                             <li>Free Hosting</li>
                                             <li>Responsive Development</li>
                                             <li>Javascript &amp; React</li>
                                         </ul>
                                     </div>
-                                    <div className='col-sm-6'>
+                                    <div className='col-6'>
                                         <ul>
                                             <li>Front End Development</li>
                                             <li>CSS / HTML</li>
-                                            <li>Single Page Application</li>
+                                            <li>SPA</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <p className='text-muted'>
+                                <p>
                                     From front-end to back-end, leverage custom 
                                     development to create an intuitive website 
                                     for your users as well as your internal team. 
@@ -100,7 +102,7 @@ class Home extends React.Component {
                                     engage web users and ultimately convert them to 
                                     loyal customers.
                                 </p>
-                                <p className='text-muted'>
+                                <p>
                                     We offer flexible services to ensure that your 
                                     web platform is aligned with your business 
                                     initiatives and marketing goals. 
@@ -110,18 +112,17 @@ class Home extends React.Component {
                                 </p>
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h3 className='theme-color'>
-                                <b>UI / UX DESIGN</b></h3>
-                                <h5><b>We build elevated websites, optimized for engagement and conversion.</b></h5>
+                                <h2 className='theme-color'>UI / UX DESIGN</h2>
+                                <p>We build elevated websites, optimized for engagement and conversion.</p>
                                 <div className='row'>
-                                    <div className='col-sm-6'>
+                                    <div className='col-6'>
                                         <ul>
                                             <li>Interface</li>
                                             <li>Usability</li>
                                             <li>Interactions</li>
                                         </ul>
                                     </div>
-                                    <div className='col-sm-6'>
+                                    <div className='col-6'>
                                         <ul>
                                             <li>User Experience</li>
                                             <li>Accessibility</li>
@@ -129,7 +130,7 @@ class Home extends React.Component {
                                         </ul>
                                     </div>
                                 </div>
-                                <p className='text-muted'>
+                                <p>
                                     UI refers to user interface design,
                                     which includes all visual design elements in the series of web pages or screens. 
                                     UX refers to user experience, which is the 
@@ -142,7 +143,7 @@ class Home extends React.Component {
                                     meaningful user journey that ultimately aims 
                                     to convert customers.
                                 </p>
-                                <p className='text-muted'>
+                                <p>
                                     We combine best-in-class web design, sophisticated UI 
                                     elements, and an intuitive path to purchase 
                                     to drive user engagement and conversion. 
@@ -161,17 +162,17 @@ class Home extends React.Component {
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h3 className='theme-color'><b>RESPONSIVE WEB DESIGN</b></h3>
-                                <h5><b>We ensure that your platform works well across desktop, tablet, and mobile.</b></h5>
+                                <h2 className='theme-color'>RESPONSIVE WEB DESIGN</h2>
+                                <p>We ensure that your platform works well across desktop, tablet, and mobile.</p>
                                 <div className='row'>
-                                    <div className='col-sm-6'>
+                                    <div className='col-6'>
                                         <ul>
                                             <li>Mobile Functionality</li>
                                             <li>Social Optimization</li>
                                             <li>Cross-Device Testing</li>
                                         </ul>
                                     </div>
-                                    <div className='col-sm-6'>
+                                    <div className='col-6'>
                                         <ul>
                                             <li>Tablet Functionality</li>
                                             <li>Mobile Development</li>
@@ -179,7 +180,7 @@ class Home extends React.Component {
                                         </ul>
                                     </div>
                                 </div>
-                                <p className='text-muted'>
+                                <p>
                                     Responsive design is an approach to web design 
                                     that allows the pages of a website to render, 
                                     or "respond," to different device, window, or screen sizes. 
@@ -190,7 +191,7 @@ class Home extends React.Component {
                                     may require a mobile-first design approach to 
                                     accommodate for customers on-the-go.
                                 </p>
-                                <p className='text-muted'>
+                                <p>
                                     With the digital landscape evolving, 
                                     it is essential to build a fully-responsive 
                                     website that translates effectively across all 
@@ -208,8 +209,8 @@ class Home extends React.Component {
                 </div>
                 <div style={{backgroundColor: '#FAFAFA', ...styles.homeFont}}>
                     <div className='container text-center'>
-                        <h3 className='theme-color' style={{paddingTop: 40}}><b>WORK WITH US</b></h3>
-                        <h3><b>Tell us a little bit about your project.</b></h3>
+                        <h2 className='theme-color' style={{paddingTop: 40}}>WORK WITH US</h2>
+                        <h3>Tell us a little bit about your project.</h3>
                         <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
                     </div>
                 </div>
