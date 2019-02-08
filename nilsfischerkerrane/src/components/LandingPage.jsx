@@ -62,7 +62,7 @@ class Home extends React.Component {
                                 <div className='col-lg-6 mt-5'>
                                     <h3 className='h3-heading text-center'>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h3>
                                     <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block'>Book now</a>
-                                    <Link to='/contact' className='btn btn-custom-alternative-inverse btn-block'>See tour</Link>
+                                    <Link to='/tour' className='btn btn-custom-alternative-inverse btn-block'>See tour</Link>
                                 </div>
                             </div>
                         </div>
