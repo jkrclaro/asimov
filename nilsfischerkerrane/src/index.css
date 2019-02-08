@@ -13,11 +13,11 @@
 }
 
 .section-2 {
-  background-image: url('../src/imgs/stock2.jpg');
+  background-image: url('../src/imgs/stock1.jpg');
   background-size: cover;
   background-position: center;
   font-family: 'Oswald';
-  height: 100vh;
+  height: 30vh;
   color: #fff;
 }
 
@@ -68,14 +68,12 @@
 }
 
 .btn-custom-primary {
-  border-radius: 24px !important;
   background-color: #009E60 !important;
   border-color: #009E60 !important;
   color: #fff !important;
   font-weight: 700 !important;
 }
 .btn-custom-primary:hover, .btn-custom-primary:focus, .btn-custom-primary:active, .btn-custom-primary.active, .open > .dropdown-toggle.btn-custom-primary {
-  border-radius: 24px !important;
   background-color: #009E60 !important;
   border-color: #009E60 !important;
   color:#fff !important;
@@ -89,8 +87,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #141414;
-  background-color: #141414;
+  background-color: #009E60;
   overflow-x: hidden;
   transition: 0.5s;
 }
