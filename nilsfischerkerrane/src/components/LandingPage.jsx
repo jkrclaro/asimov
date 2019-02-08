@@ -1,17 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from './Header';
 
 const stock1 = require('../imgs/stock1.jpg');
 const stock2 = require('../imgs/stock2.jpg');
 const stock3 = require('../imgs/stock3.jpg');
-const visit1 = require('../imgs/visit1.jpg');
-const visit2 = require('../imgs/visit2.jpg');
-const visit3 = require('../imgs/visit3.jpg');
-const visit4 = require('../imgs/visit4.jpg');
-const visit5 = require('../imgs/visit5.jpg');
-const visit6 = require('../imgs/visit6.jpg');
-const visit7 = require('../imgs/visit7.jpg');
 
 
 class Home extends React.Component {
@@ -31,6 +25,7 @@ class Home extends React.Component {
     componentDidMount() {
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
+        window.scrollTo(0 ,0);
     };
 
     componentWillUnmount() {
@@ -51,7 +46,8 @@ class Home extends React.Component {
                             <div className='row'>
                                 <div className='col-lg-6' style={{paddingTop: 400}}>
                                     <h1>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h1>
-                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary'>Book now</a>
+                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary mr-3'>Book now</a>
+                                    <Link to='/tour' className='btn btn-custom-alternative'>See tour</Link>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +61,8 @@ class Home extends React.Component {
                             <div className='row'>
                                 <div className='col-lg-6 mt-5'>
                                     <h3 className='h3-heading text-center'>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h3>
-                                    <a className='btn btn-custom-primary btn-block'>Book now</a>
+                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block'>Book now</a>
+                                    <Link to='/contact' className='btn btn-custom-alternative-inverse btn-block'>See tour</Link>
                                 </div>
                             </div>
                         </div>
@@ -98,78 +95,6 @@ class Home extends React.Component {
                             After 2 hours of history, we'll head to one of my favourite pubs and enjoy a pint of Guinness (pint is included in the price of the tour). As we enjoy it, I’ll tell you everything there is to know about the beer, especially important info that you wouldn't necessarily hear at the Guinness Storehouse – Why does it take so long to pour a pint? Why is it so beloved in Ireland? Why is it so smooth and creamy? Why does it taste so much better here than elsewhere? Why does every can of Guinness have a plastic ball in it?
                             Fascinating history followed by a delicious pint. What could be better?
                             </p>
-                        </div>
-                    </div>
-                </div>
-                <div style={{backgroundColor: '#ddd'}}>
-                    <div className='container' style={{paddingTop: 100, paddingBottom: 100}}>
-                        <div className='col-lg-12'>
-                            <div className='row'>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit1} alt='visit-1' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>GENERAL POST OFFICE</h3>
-                                    <p className='p-content'>
-                                        The General Post Office (GPO; Irish: Ard-Oifig an Phoist) in Dublin is the headquarters of An Post, the Irish Post Office, and Dublin's principal post office. Sited in the centre of O'Connell Street, the city's main thoroughfare, it is one of Ireland's most famous buildings, and was the last of the great Georgian public buildings erected in the capital.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit2} alt='visit-2' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>O'CONNELL BRIDGE</h3>
-                                    <p className='p-content'>
-                                    O'Connell Bridge (Irish: Droichead Uí Chonaill)[2] is a road bridge spanning the River Liffey in Dublin, and joining O'Connell Street to D'Olier Street, Westmoreland Street and the south quays.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit3} alt='visit-3' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>JOKER'S CHAIR</h3>
-                                    <p className='p-content'>
-                                    Just a short distance away from the powers-that-be in Ireland, the Joker’s Chair is a memorial to one of the country’s most beloved alternative comedians, Dermot Morgan, who made his career satirizing Irish politics, and rose to international fame playing Father Ted, a priest that had quite a weakness for fame and money.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit4} alt='visit-4' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>HA'PENNY BRIDGE</h3>
-                                    <p className='p-content'>
-                                    The Ha'penny Bridge (Irish: Droichead na Leathphingine, or Droichead na Life), known later for a time as the Penny Ha'penny Bridge, and officially the Liffey Bridge, is a pedestrian bridge built in May 1816 over the River Liffey in Dublin, Ireland.[2][4] Made of cast iron, the bridge was cast in Shropshire, England
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit5} alt='visit-5' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>OSCAR WILDE MEMORIAL STATUE</h3>
-                                    <p className='p-content'>
-                                    The Oscar Wilde Memorial Sculpture is a collection of three statues in Merrion Square in Dublin, Ireland, commemorating Irish poet and playwright Oscar Wilde. The sculptures were unveiled in 1997 and were designed and made by Danny Osborne.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit6} alt='visit-6' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>TRINITY COLLEGE DUBLIN</h3>
-                                    <p className='p-content'>
-                                    Trinity College (Irish: Coláiste na Tríonóide), officially the College of the Holy and Undivided Trinity of Queen Elizabeth near Dublin, is the sole constituent college of the University of Dublin, a research university located in Dublin, Ireland.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-3'>
-                                    <img src={visit7} alt='visit-7' width='100%' height='300'></img>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <h3 className='h3-heading'>A PINT AT MY FAVOURITE PUB</h3>
-                                    <p className='p-content'>
-                                    As we enjoy it, I’ll tell you everything there is to know about the beer, especially important info that you wouldn't necessarily hear at the Guinness Storehouse – Why does it take so long to pour a pint? Why is it so beloved in Ireland? Why is it so smooth and creamy? Why does it taste so much better here than elsewhere? Why does every can of Guinness have a plastic ball in it?
-                                    Fascinating history followed by a delicious pint. What could be better?
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

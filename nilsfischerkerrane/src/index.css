@@ -33,7 +33,7 @@
 }
 
 .nav-link:hover {
-  color: #009E60 !important;
+  color: #009A49 !important;
 }
 
 .brand {
@@ -68,14 +68,33 @@
 }
 
 .btn-custom-primary {
-  background-color: #009E60 !important;
-  border-color: #009E60 !important;
+  background-color: #009A49 !important;
+  border-color: #009A49 !important;
   color: #fff !important;
-  font-weight: 700 !important;
 }
 .btn-custom-primary:hover, .btn-custom-primary:focus, .btn-custom-primary:active, .btn-custom-primary.active, .open > .dropdown-toggle.btn-custom-primary {
-  background-color: #009E60 !important;
-  border-color: #009E60 !important;
+  background-color: #009A49 !important;
+  border-color: #009A49 !important;
+  color:#fff !important;
+}
+.btn-custom-alternative {
+  background-color: #FF7900 !important;
+  border-color: #FF7900 !important;
+  color: #fff !important;
+}
+.btn-custom-alternative:hover, .btn-custom-alternative:focus, .btn-custom-alternative:active, .btn-custom-alternative.active, .open > .dropdown-toggle.btn-custom-alternative {
+  background-color: #FF7900 !important;
+  border-color: #FF7900 !important;
+  color:#fff !important;
+}
+.btn-custom-alternative-inverse {
+  background-color: #FF7900 !important;
+  border-color: #FF7900 !important;
+  color:#fff !important;
+}
+.btn-custom-alternative-inverse:hover, .btn-custom-alternative-inverse:focus, .btn-custom-alternative-inverse:active, .btn-custom-alternative-inverse.active, .open > .dropdown-toggle.btn-custom-alternative-inverse {
+  background-color: #FF7900 !important;
+  border-color: #FF7900 !important;
   color:#fff !important;
 }
 
@@ -87,7 +106,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #009E60;
+  background-color: #009A49;
   overflow-x: hidden;
   transition: 0.5s;
 }

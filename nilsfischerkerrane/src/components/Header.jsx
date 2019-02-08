@@ -46,7 +46,7 @@ class Header extends React.Component {
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
-                            <Link to='/testimonials' onClick={this.closeNav}>TESTIMONIALS</Link>
+                            <Link to='/tour' onClick={this.closeNav}>TOUR</Link>
                             <Link to='/contaact' onClick={this.closeNav}>CONTACT</Link>
                         </div>
                     </div>
@@ -57,8 +57,7 @@ class Header extends React.Component {
                         <Link to='/' className='brand-link'><span className='brand'>HISTORY AND PINTS</span></Link>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">
-                                <li className='nav-item'><Link to='/photos' className='nav-link white-color'>PHOTOS</Link></li>
-                                <li className='nav-item'><Link to='/testimonials' className='nav-link white-color'>TESTIMONIALS</Link></li>
+                                <li className='nav-item'><Link to='/tour' className='nav-link white-color'>TOUR</Link></li>
                                 <li className='nav-item'><Link to='/contact' className='nav-link white-color'>CONTACT</Link></li>
                             </ul>
                         ) : (
