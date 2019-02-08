@@ -3,26 +3,19 @@ import { Link } from 'react-router-dom';
 
 import Header from './Header';
 
-const stock1 = require('../imgs/stock1.jpg');
 const stock2 = require('../imgs/stock2.jpg');
-const stock3 = require('../imgs/stock3.jpg');
 
 
 class Home extends React.Component {
 
     state = {
         isDesktop: false,
-        settings: {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        }
+        section1Padding: 225
     }
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
+        this.updateSection1Padding();
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
@@ -33,41 +26,43 @@ class Home extends React.Component {
     };
 
     updatePredicate() {
+        this.updateSection1Padding();
         this.setState({ isDesktop: window.innerWidth > 992 });
     };
+
+    updateSection1Padding() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        if (height < 960) {
+            if (width >= 1920 && height >= 1440) {
+                this.setState({section1Padding: 400})
+            } else if (width >= 1280 && height >= 720 ) {
+                this.setState({section1Padding: 300})
+            } else if (width >= 320 && height >= 480) {
+                this.setState({section1Padding: 100})
+            }
+        } else {
+            if (height >= 960 && width >= 480) {
+                this.setState({section1Padding: 450})
+            }
+        }
+    }
 
     render() {
         return (
             <div>
-                {this.state.isDesktop ? (
-                    <div className='section-1'>
-                        <Header/>
-                        <div className='container'>
-                            <div className='row'>
-                                <div className='col-lg-6' style={{paddingTop: 400}}>
-                                    <h1>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h1>
-                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary mr-3'>Book now</a>
-                                    <Link to='/tour' className='btn btn-custom-alternative'>See tour</Link>
-                                </div>
+                <div className='section-1'>
+                    <Header/>
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='col-lg-6' style={{paddingTop: this.state.section1Padding}}>
+                                <h1>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h1>
+                                <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary mr-3'>Book now</a>
+                                <Link to='/tour' className='btn btn-custom-alternative'>See tour</Link>
                             </div>
                         </div>
                     </div>
-                ) : (
-                    <div>
-                        <div className='section-2'>
-                            <Header/>
-                        </div>
-                        <div className='container'>
-                            <div className='row'>
-                                <div className='col-lg-6 mt-5'>
-                                    <h3 className='h3-heading text-center'>TAKE A JOURNEY THROUGH DUBLIN'S AND IRELAND'S HISTORY</h3>
-                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block'>Book now</a>
-                                    <Link to='/tour' className='btn btn-custom-alternative-inverse btn-block'>See tour</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                </div>
 
                 <div className='container mt-5 mb-5'>
                     <div className='row'>
