@@ -33,7 +33,7 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-12 text-center mt-5 mb-5'>
                                 <h1>
-                                    <div style={{fontSize: '5rem', fontWeight: 900}}>NIL'S</div>
+                                    <div style={{fontSize: '4.5rem', fontWeight: 900}}>NIL'S</div>
                                     <div style={{fontSize: '3rem'}}>HISTORY &amp; PINTS</div>
                                 </h1>
                                 <h3 style={{fontSize: '1.5rem'}}>

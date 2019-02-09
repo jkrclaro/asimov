@@ -42,7 +42,7 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#111'}}>
+                <nav className="navbar navbar-expand-lg navbar-dark mb-5" style={{backgroundColor: '#111'}}>
                     <div className='container'>
                         <Link to='/' className='brand-link'><span className='brand'>NIL'S H&amp;P</span></Link>
                         {this.state.isDesktop ? (
