@@ -5,6 +5,7 @@
 }
 
 html, body {
+  color: #24242A !important;
 }
 
 .section-1 {
@@ -43,33 +44,41 @@ html, body {
 
 .footer {
     background-color: #111;
+    height: 100%;
+    font-family: 'Georgia';
 }
 
-.white-color {
-  color: #fff !important;
+.nav-link {
+  color: #24242A;
 }
-
 .nav-link:hover {
   color: #009A49 !important;
 }
 
 .brand {
+  font-weight: 900;
   font-size: 30px;
-  color: #fff;
   opacity: 1;
+  color: #24242A !important;
 }
 .brand-link {
   text-decoration: none !important;
 }
 
 .h3-heading {
-  font-weight: 700;
   font-family: 'Ubuntu';
+}
+
+.footer-link {
+  color: #24242A !important;
+}
+.footer-link:hover {
+  text-decoration: none !important;
 }
 
 .btn {
   border-radius: 24px !important;
-  font-weight: 700;
+  font-weight: 900 !important;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding-left: 20px !important;
@@ -181,4 +190,55 @@ html, body {
 
 .fadeIn-bottom{
   top: 90%;
+}
+
+/* Overlay*/
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #26262A;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  text-decoration: none;
+  color: #009A49;
+}
+
+.overlay .closebtn {
+  color: #26262A !important;
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
 }

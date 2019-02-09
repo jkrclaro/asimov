@@ -5,13 +5,9 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className='footer white-color'>
-                    <div className='col-lg-12 text-center'>
-                        <h3 className='mb-5'><b>NIL'S HISTORY AND PINTS</b></h3>
-                        <h5 className='text-muted mb-3'><b>GET IN TOUCH</b></h5>
-                    </div>
-                </div>
+            <div className='text-center mb-3'>
+                <hr/>
+                <a href='https://humblepage.com' className='footer-link'><small>SITE BY HUMBLEPAGE</small></a>
             </div>
         )
     }

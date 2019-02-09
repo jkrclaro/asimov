@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Footer from './Footer';
+
 const stock2 = require('../imgs/stock2.jpg');
 
 
@@ -48,26 +50,34 @@ class Home extends React.Component {
                     </div>
                 </div>
 
-                <div className='container mt-5 mb-5'>
-                    <div className='row'>
-                        <div className='col-md-6 col-lg-3 mb-5'>
-                            <img src={stock2} alt='stock-2' width='100%' height='300' style={{borderRadius: '50%'}}></img>
+                <div style={{height: '100vh'}}>
+                    <div className='container'>
+                        <div className='row mt-5'>
+                            <div className='col-md-6 col-lg-3 mb-5'>
+                                <img src={stock2} alt='stock-2' width='100%' height='250' style={{borderRadius: '50%'}}></img>
+                            </div>
+                            <div className='col-md-6 col-lg-9'>
+                                <h3 className='h3-heading'>ABOUT ME</h3>
+                                <p className='p-content'>
+                                How often do you meet a historian who's also a professional beer expert? 
+                                I'm Nils and I have created my own tour combining history and beer. 
+                                Having established the tour in Berlin (Rated 4.93/5 from 374 reviews),
+                                I have now decided to do the same in my hometown.
+                                Born and bred in Dublin, I have a degree in Irish history from Trinity College, 
+                                and have also worked as a guide in the Guinness Brewery. 
+                                All this puts me in a offer position to offer insights on 
+                                both Ireland's history and its favourite beer.
+                                </p>
+                            </div>
                         </div>
-                        <div className='col-md-6 col-lg-9'>
-                            <h3 className='h3-heading'>ABOUT ME</h3>
+                        <div className='testimonials-bg'>
+                            <h3 className='h3-heading'>TESTIMONIALS</h3>
                             <p className='p-content'>
-                            How often do you meet a historian who's also a professional beer expert? 
-                            I'm Nils and I have created my own tour combining history and beer. 
-                            Having established the tour in Berlin (Rated 4.93/5 from 374 reviews),
-                            I have now decided to do the same in my hometown.
-                            Born and bred in Dublin, I have a degree in Irish history from Trinity College, 
-                            and have also worked as a guide in the Guinness Brewery. 
-                            All this puts me in a offer position to offer insights on 
-                            both Ireland's history and its favourite beer.
                             </p>
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

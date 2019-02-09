@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
+import Footer from './Footer';
 
 
 class Tour extends React.Component {
@@ -115,6 +116,7 @@ class Tour extends React.Component {
                         </div>
                     </div>
                 )}
+                <Footer />
             </div>
         )
     }
