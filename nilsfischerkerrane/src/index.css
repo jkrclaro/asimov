@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+html, body {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
 .section-1 {
   background-image: url('../src/imgs/stock1.jpg');
   background-size: cover;
@@ -38,7 +43,7 @@
 }
 
 .footer {
-    background-color: #141414;
+    background-color: #111;
 }
 
 .white-color {
@@ -68,6 +73,7 @@
 }
 
 .btn {
+  border-radius: 24px !important;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -168,7 +174,8 @@
 
 .content-details h3{
   color: #fff;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 2em;
   letter-spacing: 0.15em;
   margin-bottom: 0.5em;
   text-transform: uppercase;

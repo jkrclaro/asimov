@@ -42,9 +42,9 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#141414', opacity: 0.9}}>
-                    <div className='container mt-3 mb-3'>
-                        <Link to='/' className='brand-link'><span className='brand'>NILSFK</span></Link>
+                <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{backgroundColor: '#111'}}>
+                    <div className='container'>
+                        <Link to='/' className='brand-link'><span className='brand'>NIL'S H&amp;P</span></Link>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">
                                 <li className='nav-item'><Link to='/tour' className='nav-link white-color'>TOUR</Link></li>

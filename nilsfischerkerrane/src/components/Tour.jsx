@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from './Header';
+
 
 class Tour extends React.Component {
 
@@ -44,8 +46,9 @@ class Tour extends React.Component {
 
     render() {
         return (
-            <div style={{paddingTop: 50, paddingBottom: 50}}>
-                <div className='container'>
+            <div>
+                <Header />
+                <div style={{paddingTop: 90}}>
                     {this.state.isDesktop ? (
                         <div className="row flex-row flex-nowrap">
                             {this.state.visits.map((visit, visitIndex) =>
