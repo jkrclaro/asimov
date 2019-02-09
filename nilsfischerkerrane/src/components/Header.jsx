@@ -42,17 +42,6 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <div id="overlay-nav" className="overlay">
-                    <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
-                    <div className="overlay-content">
-                        <div className='container'>
-                            <a href='https://www.airbnb.ie/experiences/385040' onClick={this.closeNav}>BOOK</a>
-                            <Link to='/tour' onClick={this.closeNav}>TOUR</Link>
-                            <Link to='/contaact' onClick={this.closeNav}>CONTACT</Link>
-                        </div>
-                    </div>
-                </div>
-
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#141414', opacity: 0.9}}>
                     <div className='container mt-3 mb-3'>
                         <Link to='/' className='brand-link'><span className='brand'>NILSFK</span></Link>
