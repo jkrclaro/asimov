@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Tour extends React.Component {
@@ -60,7 +61,7 @@ class Tour extends React.Component {
                                 <p className='p-content'>
                                 As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
                                 </p>
-                                <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block mr-3'>Book now</a>
+                                <Link to='/' className='btn btn-custom-alternative btn-block mr-3'>Home</Link>
                             </div>
                             {this.state.visits.map((visit, visitIndex) =>
                                 <div className="col-lg-4 enlarge" key={visitIndex}>
@@ -95,7 +96,7 @@ class Tour extends React.Component {
                                     <p className='p-content'>
                                     As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
                                     </p>
-                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block mr-3'>Book now</a>
+                                    <Link to='/' className='btn btn-custom-alternative btn-block mr-3'>Home</Link>
                                 </div>
                             </div>
                             {this.state.visits.map((visit, visitIndex) =>

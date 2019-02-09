@@ -51,7 +51,7 @@ class Home extends React.Component {
                 <div className='container mt-5 mb-5'>
                     <div className='row'>
                         <div className='col-md-6 col-lg-3 mb-5'>
-                            <img src={stock2} alt='stock-2' width='100%' height='200' style={{borderRadius: '50%'}}></img>
+                            <img src={stock2} alt='stock-2' width='100%' height='300' style={{borderRadius: '50%'}}></img>
                         </div>
                         <div className='col-md-6 col-lg-9'>
                             <h3 className='h3-heading'>ABOUT ME</h3>
