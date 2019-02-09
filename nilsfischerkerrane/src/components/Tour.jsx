@@ -8,24 +8,24 @@ class Tour extends React.Component {
     state = {
         isDesktop: false,
         visits: [
-            {'title': 'Garden of Remembrance', 'description': "TODO"},
-            {'title': 'Parnell Monument', 'description': "TODO"},
-            {'title': "O'Connell Street", 'description': "TODO"},
-            {'title': 'The Spire', 'description': "TODO"},
-            {'title': 'The GPO', 'description': "TODO"},
-            {'title': "O'Connell Monument", 'description': "TODO"},
-            {'title': 'Liffey Boardwalk', 'description': "TODO"},
-            {'title': "Ha'penny Bridge", 'description': "TODO"},
-            {'title': 'Temple Bar', 'description': "TODO"},
-            {'title': 'City Hall', 'description': "TODO"},
-            {'title': 'Dublin Castle', 'description': "TODO"},
-            {'title': '1916 Memorial', 'description': "TODO"},
-            {'title': 'College Green', 'description': "TODO"},
-            {'title': 'Trinity College', 'description': "TODO"},
-            {'title': 'Merrion Square', 'description': "TODO"},
-            {'title': 'Oscar Wilde Statue', 'description': "TODO"},
-            {'title': 'Leinster House', 'description': "TODO"},
-            {'title': "Napper Tandy's", 'description': "TODO"},
+            {'title': 'Garden of Remembrance', 'description': "TODO"}, // 1
+            {'title': 'Parnell Monument', 'description': "TODO"}, // 2
+            {'title': "O'Connell Street", 'description': "TODO"}, // 3
+            {'title': 'The Spire', 'description': "TODO"}, // 4
+            {'title': 'General Post Office', 'description': "TODO"}, // 5
+            {'title': "O'Connell Monument", 'description': "TODO"}, // 6
+            {'title': 'Liffey Boardwalk', 'description': "TODO"}, // 7
+            {'title': "Ha'penny Bridge", 'description': "TODO"}, // 8
+            {'title': 'Temple Bar', 'description': "TODO"}, // 9
+            {'title': 'City Hall', 'description': "TODO"}, // 10
+            {'title': 'Dublin Castle', 'description': "TODO"}, // 11
+            {'title': '1916 Memorial', 'description': "TODO"}, // 12
+            {'title': 'College Green', 'description': "TODO"}, // 13
+            {'title': 'Trinity College', 'description': "TODO"}, // 14
+            {'title': 'Merrion Square', 'description': "TODO"}, // 15
+            {'title': 'Oscar Wilde Statue', 'description': "TODO"}, // 16
+            {'title': 'Leinster House', 'description': "TODO"}, // 17
+            {'title': "Napper Tandy's", 'description': "TODO"}, // 18
         ]
     }
     updatePredicate = this.updatePredicate.bind(this);
@@ -41,17 +41,21 @@ class Tour extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 780 });
+        this.setState({ isDesktop: window.innerWidth > 992 });
     };
+
+    scroll(e) {
+        window.scrollBy(e.deltaY, 0)
+    }
 
     render() {
         return (
             <div>
-                <div style={{paddingTop: 90}}>
+                <div onWheel={this.scroll} style={{paddingTop: 90}}>
                     {this.state.isDesktop ? (
                         <div className="row flex-row flex-nowrap">
                             {this.state.visits.map((visit, visitIndex) =>
-                                <div className="col-md-4 enlarge ml-3" key={visitIndex}>
+                                <div className="col-lg-4 enlarge" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block">
                                         <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
@@ -65,7 +69,7 @@ class Tour extends React.Component {
                     ) : (
                         <div>
                             {this.state.visits.map((visit, visitIndex) =>
-                                <div className="col-md-4 enlarge mb-3" key={visitIndex}>
+                                <div className="col-lg-4 enlarge mb-3" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block-mobile">
                                         <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='200'></img>
