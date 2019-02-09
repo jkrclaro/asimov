@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Header from './Header';
-import Footer from './Footer';
-
 const stock2 = require('../imgs/stock2.jpg');
 
 
@@ -36,7 +33,7 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-12 text-center mt-5 mb-5'>
                                 <h1>
-                                    <div style={{fontSize: '5rem'}}>NIL'S</div>
+                                    <div style={{fontSize: '5rem', fontWeight: 900}}>NIL'S</div>
                                     <div style={{fontSize: '3rem'}}>HISTORY &amp; PINTS</div>
                                 </h1>
                                 <h3 style={{fontSize: '1.5rem'}}>
@@ -54,7 +51,7 @@ class Home extends React.Component {
                 <div className='container mt-5 mb-5'>
                     <div className='row'>
                         <div className='col-md-6 col-lg-3 mb-5'>
-                            <img src={stock2} className='img-fluid' style={{borderRadius: '50%'}}></img>
+                            <img src={stock2} alt='stock-2' width='100%' height='200' style={{borderRadius: '50%'}}></img>
                         </div>
                         <div className='col-md-6 col-lg-9'>
                             <h3 className='h3-heading'>ABOUT ME</h3>
