@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from './Header';
+
 
 class Tour extends React.Component {
 
@@ -43,28 +45,26 @@ class Tour extends React.Component {
         this.setState({ isDesktop: window.innerWidth > 992 });
     };
 
-    scroll(e) {
-        window.scrollBy(e.deltaY, 0)
-    }
-
     render() {
         return (
             <div>
-                <div onWheel={this.scroll}>
-                    {this.state.isDesktop ? (
-                        <div className="row flex-row flex-nowrap mt-5">
-                            <div className='col-lg-4 ml-5'>
-                                <h3 className='h3-heading'>WHAT WE'LL DO</h3>
-                                <p className='p-content'>
-                                Join me as we take a journey through Dublin’s and Ireland’s history, focussing on the most important figures of the last centuries; from St. Patrick to Queen Elizabeth, from Oscar Wilde to Bono. 
-                                </p>
-                                <p className='p-content'>
-                                As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
-                                </p>
-                                <Link to='/' className='btn btn-custom-alternative btn-block mr-3'>Home</Link>
+                <Header />
+                {this.state.isDesktop ? (
+                    <div className='container'>
+                        <div className="row">
+                            <div className='col-lg-12 mt-5'>
+                                <div className='container'>
+                                    <h3 className='h3-heading'>WHAT WE'LL DO</h3>
+                                    <p className='p-content'>
+                                    Join me as we take a journey through Dublin’s and Ireland’s history, focussing on the most important figures of the last centuries; from St. Patrick to Queen Elizabeth, from Oscar Wilde to Bono. 
+                                    </p>
+                                    <p className='p-content'>
+                                    As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
+                                    </p>
+                                </div>
                             </div>
                             {this.state.visits.map((visit, visitIndex) =>
-                                <div className="col-lg-4 enlarge" key={visitIndex}>
+                                <div className="col-lg-4 enlarge mb-5" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block">
                                         <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
@@ -74,43 +74,7 @@ class Tour extends React.Component {
                                     </div>
                                 </div>
                             )}
-                            <div className='col-lg-4'>
-                                <h3 className='h3-heading'>FINISHED!</h3>
-                                <p className='p-content'>
-                                After 2 hours of history, we'll head to one of my favourite pubs and enjoy a pint of Guinness (pint is included in the price of the tour). As we enjoy it, I’ll tell you everything there is to know about the beer, especially important info that you wouldn't necessarily hear at the Guinness Storehouse – Why does it take so long to pour a pint? Why is it so beloved in Ireland? Why is it so smooth and creamy? Why does it taste so much better here than elsewhere? Why does every can of Guinness have a plastic ball in it?
-                                </p>
-                                <p className='p-content'>
-                                Fascinating history followed by a delicious pint. What could be better?
-                                </p>
-                                <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block mr-3'>Book now</a>
-                            </div>
-                        </div>
-                    ) : (
-                        <div>
-                            <div className='col-lg-4 mt-3'>
-                                <div className='container'>
-                                    <h3 className='h3-heading'>WHAT WE'LL DO</h3>
-                                    <p className='p-content'>
-                                    Join me as we take a journey through Dublin’s and Ireland’s history, focussing on the most important figures of the last centuries; from St. Patrick to Queen Elizabeth, from Oscar Wilde to Bono. 
-                                    </p>
-                                    <p className='p-content'>
-                                    As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
-                                    </p>
-                                    <Link to='/' className='btn btn-custom-alternative btn-block mr-3'>Home</Link>
-                                </div>
-                            </div>
-                            {this.state.visits.map((visit, visitIndex) =>
-                                <div className="col-lg-4 enlarge mt-3 mb-3" key={visitIndex}>
-                                    <div className="content-overlay"></div>
-                                    <div className="content card-block-mobile">
-                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='200'></img>
-                                        <div className="content-details fadeIn-bottom">
-                                            <h3 className="content-title">{visit.title}</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-                            <div className='col-lg-4 mb-3'>
+                            <div className='col-lg-12 mb-5'>
                                 <div className='container'>
                                     <h3 className='h3-heading'>FINISHED!</h3>
                                     <p className='p-content'>
@@ -119,12 +83,45 @@ class Tour extends React.Component {
                                     <p className='p-content'>
                                     Fascinating history followed by a delicious pint. What could be better?
                                     </p>
-                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block mr-3'>Book now</a>
+                                    <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block'>Book now</a>
                                 </div>
                             </div>
                         </div>
-                    )}
-                </div>
+                    </div>
+                ) : (
+                    <div>
+                        <div className='col-lg-4 mt-3'>
+                            <h3 className='h3-heading'>WHAT WE'LL DO</h3>
+                            <p className='p-content'>
+                            Join me as we take a journey through Dublin’s and Ireland’s history, focussing on the most important figures of the last centuries; from St. Patrick to Queen Elizabeth, from Oscar Wilde to Bono. 
+                            </p>
+                            <p className='p-content'>
+                            As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
+                            </p>
+                        </div>
+                        {this.state.visits.map((visit, visitIndex) =>
+                            <div className="col-lg-12 enlarge mt-3 mb-3" key={visitIndex}>
+                                <div className="content-overlay"></div>
+                                <div className="content card-block-mobile">
+                                    <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='200'></img>
+                                    <div className="content-details fadeIn-bottom">
+                                        <h3 className="content-title">{visit.title}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        <div className='col-lg-4 mb-3'>
+                            <h3 className='h3-heading'>FINISHED!</h3>
+                            <p className='p-content'>
+                            After 2 hours of history, we'll head to one of my favourite pubs and enjoy a pint of Guinness (pint is included in the price of the tour). As we enjoy it, I’ll tell you everything there is to know about the beer, especially important info that you wouldn't necessarily hear at the Guinness Storehouse – Why does it take so long to pour a pint? Why is it so beloved in Ireland? Why is it so smooth and creamy? Why does it taste so much better here than elsewhere? Why does every can of Guinness have a plastic ball in it?
+                            </p>
+                            <p className='p-content'>
+                            Fascinating history followed by a delicious pint. What could be better?
+                            </p>
+                            <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block'>Book now</a>
+                        </div>
+                    </div>
+                )}
             </div>
         )
     }
