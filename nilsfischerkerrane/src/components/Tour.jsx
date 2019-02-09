@@ -41,21 +41,20 @@ class Tour extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 992 });
+        this.setState({ isDesktop: window.innerWidth > 780 });
     };
 
     render() {
         return (
             <div>
-                <Header />
                 <div style={{paddingTop: 90}}>
                     {this.state.isDesktop ? (
                         <div className="row flex-row flex-nowrap">
                             {this.state.visits.map((visit, visitIndex) =>
-                                <div className="col-lg-4 enlarge" key={visitIndex}>
+                                <div className="col-md-4 enlarge ml-3" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block">
-                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='500'></img>
+                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
                                         <div class="content-details fadeIn-bottom">
                                             <h3 className="content-title">{visit.title}</h3>
                                         </div>
@@ -65,10 +64,14 @@ class Tour extends React.Component {
                         </div>
                     ) : (
                         <div>
-                            {this.state.visits.map((visit, visitIndex) => 
-                                <div className="col-lg-12 mb-1" key={visitIndex}>
-                                    <div className="card-block-mobile">
-                                        <img src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='200'></img>
+                            {this.state.visits.map((visit, visitIndex) =>
+                                <div className="col-md-4 enlarge mb-3" key={visitIndex}>
+                                    <div className="content-overlay"></div>
+                                    <div className="content card-block-mobile">
+                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='200'></img>
+                                        <div class="content-details fadeIn-bottom">
+                                            <h3 className="content-title">{visit.title}</h3>
+                                        </div>
                                     </div>
                                 </div>
                             )}

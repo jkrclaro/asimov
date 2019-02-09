@@ -21,7 +21,7 @@ html, body {
 }
 
 .card-block {
-  min-height: 500px;
+  height: 75vh;
   cursor: pointer;
 }
 
@@ -167,7 +167,7 @@ html, body {
 }
 
 .content:hover .content-details{
-  top: 90%;
+  top: 80%;
   left: 50%;
   opacity: 1;
 }
@@ -175,7 +175,7 @@ html, body {
 .content-details h3{
   color: #fff;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 2.5vw;
   letter-spacing: 0.15em;
   margin-bottom: 0.5em;
   text-transform: uppercase;
