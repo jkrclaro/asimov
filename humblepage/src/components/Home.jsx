@@ -44,7 +44,7 @@ class Home extends React.Component {
                             <div className='col-lg-6'>
                                 <div className='text-right mt-5'>
                                     <h1 className='h1-title'>WE CREATE WEBSITES FOR THE TRAVEL INDUSTRY</h1>
-                                    <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
+                                    <Link to='/services' className='btn btn-humblepage-primary'>See our services</Link>
                                 </div>
                             </div>
                             <div className='col-lg-6 mt-5'>

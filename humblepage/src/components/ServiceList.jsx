@@ -17,6 +17,7 @@ class ServiceList extends React.Component {
     componentDidMount() {
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
+        window.scrollTo(0 ,0);
     };
 
     componentWillUnmount() {

@@ -83,9 +83,8 @@ ul {
 }
 
 .form-control {
-    border-radius: 24px !important;
-    border-color: #aaa !important;
-    color: #A9A9A9 !important;
+    border-color: #111 !important;
+    color: gray !important;
 }
 
 .anchor-link, .anchor-link:hover {
