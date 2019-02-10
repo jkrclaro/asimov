@@ -79,7 +79,7 @@ class Tour extends React.Component {
                         <p className='p-content'>
                         Fascinating history followed by a delicious pint. What could be better?
                         </p>
-                        <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block mb-5'>Book now</a>
+                        <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary mb-5'>Book now</a>
                     </div>
                 ) : (
                     <div>
@@ -112,7 +112,7 @@ class Tour extends React.Component {
                             <p className='p-content'>
                             Fascinating history followed by a delicious pint. What could be better?
                             </p>
-                            <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary btn-block'>Book now</a>
+                            <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-primary'>Book now</a>
                         </div>
                     </div>
                 )}

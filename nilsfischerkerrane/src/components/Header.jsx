@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const styles = {
     cursor: {cursor: 'pointer'},
-    menuBar: {fontSize: 30, color: '#111'},
     brand: {fontSize: 30, color: '#111'},
     headerFont: {fontFamily: 'Titillium Web'},
     spanStyle: {fontSize: 40, color: '#111', cursor: 'pointer'}
@@ -54,7 +53,7 @@ class Header extends React.Component {
                 </div>
                 <nav className="navbar navbar-expand-lg navbar-light mb-5">
                     <div className='container'>
-                        <Link to='/' className='brand-link'><span className='brand'>HISTORY&amp;PINTS</span></Link>
+                        <Link to='/' className='brand-link'><span className='brand'><span style={{color: '#009A49'}}>HISTORY&amp;PINTS</span></span></Link>
                         {this.state.isDesktop ? (
                             <ul className="nav justify-content-end">
                                 <li className='nav-item'><Link to='/tour' className='nav-link'>TOUR</Link></li>
@@ -62,7 +61,7 @@ class Header extends React.Component {
                             </ul>
                         ) : (
                             <ul className="nav justify-content-end">
-                                <li className='nav-item'><span className='nav-link' style={{...styles.menuBar, ...styles.cursor}} onClick={this.openNav}>&#9776;</span></li>
+                                <li className='nav-item'><span className='nav-link menu-bar' style={styles.cursor} onClick={this.openNav}>&#9776;</span></li>
                             </ul>
                         )}
                     </div>

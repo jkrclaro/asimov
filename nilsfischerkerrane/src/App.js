@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import LandingPage from './components/LandingPage';
 import Tour from './components/Tour';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
+
+library.add(faStar);
 
 
 class App extends Component {
