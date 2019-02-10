@@ -41,11 +41,12 @@ class Header extends React.Component {
         return (
             <div>
                 <div id="overlay-nav" className="overlay">
-                    <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
+                    <span className="closebtn" onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
                             <Link to='/' className='overlay-link' onClick={this.closeNav}>Home</Link>
                             <Link to='/about' className='overlay-link' onClick={this.closeNav}>About</Link>
+                            <Link to='/services' className='overlay-link' onClick={this.closeNav}>Services</Link>
                             <Link to='/contact' className='overlay-link' onClick={this.closeNav}>Contact</Link>
                             <br/>
                             <br/>
@@ -60,6 +61,7 @@ class Header extends React.Component {
                         <ul className="nav">
                             <li className='nav-item'><Link to='/' className='nav-link'><img src={logo} className='logo mb-2 mr-2'></img> <span className='brand-title mr-3'>humblepage</span></Link></li>
                             <li className='nav-item nav-item-style'><Link to='/about' className='nav-link'>About</Link></li>
+                            <li className='nav-item nav-item-style'><Link to='/services' className='nav-link'>Services</Link></li>
                             <li className='nav-item nav-item-style ml-auto'><Link to='/contact' className='nav-link'><span className='btn btn-humblepage-primary'>Let's Talk</span></Link></li>
                         </ul>
                     ) : (

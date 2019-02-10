@@ -195,6 +195,7 @@ ul {
 }
 
 .overlay .closebtn {
+    cursor: pointer;
     color: #111 !important;
     position: absolute;
     top: 20px;
