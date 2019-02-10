@@ -61,35 +61,37 @@ class Tour extends React.Component {
                         As we make our way through the city, we’ll discuss it all - from the first English invasion up to Brexit, from the arrival of St. Patrick up to the abortion referendum of 2018. And everything in between. We’ll see how this history has shaped Dublin, and how its legacy can still be seen all over the city today. 
                         </p>
                         <h3 className='h3-heading'>WHERE WE'LL GO</h3>
-                        {this.state.isDesktop ? (
-                            <div className='row'>
-                                {this.state.visits.map((visit, visitIndex) =>
-                                    <div className="col-lg-2 enlarge mb-3" key={visitIndex}>
-                                        <div className="content-overlay"></div>
-                                        <div className="content card-block">
-                                            <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
-                                            <div className='content-details fadeIn-bottom'>
-                                                <h3 className="content-title">{visit.title}</h3>
+                        <div className='col-lg-12'>
+                            {this.state.isDesktop ? (
+                                <div className='row'>
+                                    {this.state.visits.map((visit, visitIndex) =>
+                                        <div className="col-lg-2 enlarge mb-3" key={visitIndex}>
+                                            <div className="content-overlay"></div>
+                                            <div className="content card-block">
+                                                <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
+                                                <div className='content-details fadeIn-bottom'>
+                                                    <h3 className="content-title">{visit.title}</h3>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <div className='row'>
-                                {this.state.visits.map((visit, visitIndex) =>
-                                    <div className="col-6 enlarge mb-2" key={visitIndex}>
-                                        <div className="content-overlay"></div>
-                                        <div className="content card-block-mobile">
-                                            <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
-                                            <div className="content-details fadeIn-bottom">
-                                                <h3 className="content-title">{visit.title}</h3>
+                                    )}
+                                </div>
+                            ) : (
+                                <div className='row'>
+                                    {this.state.visits.map((visit, visitIndex) =>
+                                        <div className="col-6 enlarge mb-2" key={visitIndex}>
+                                            <div className="content-overlay"></div>
+                                            <div className="content card-block-mobile">
+                                                <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
+                                                <div className="content-details fadeIn-bottom">
+                                                    <h3 className="content-title">{visit.title}</h3>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                                    )}
+                                </div>
+                            )}
+                        </div>
                         <h3 className='h3-heading'>A MEMORABLE PINT</h3>
                         <p className='p-content'>
                         After 2 hours of history, we'll head to one of my favourite pubs and enjoy a pint of Guinness (pint is included in the price of the tour). As we enjoy it, I’ll tell you everything there is to know about the beer, especially important info that you wouldn't necessarily hear at the Guinness Storehouse – Why does it take so long to pour a pint? Why is it so beloved in Ireland? Why is it so smooth and creamy? Why does it taste so much better here than elsewhere? Why does every can of Guinness have a plastic ball in it?
