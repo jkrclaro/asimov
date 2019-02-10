@@ -44,18 +44,16 @@ class Home extends React.Component {
                             <div className='col-lg-6'>
                                 <div className='text-right mt-5'>
                                     <h1 className='h1-title'>WE CREATE WEBSITES FOR THE TRAVEL INDUSTRY</h1>
-                                    <Link to='/about' className='btn btn-humblepage-primary mr-2 mb-5'>Get to know us</Link>
+                                    <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
                                 </div>
                             </div>
-                            {this.state.isDesktop ? (
-                                <div className='col-lg-6 mt-5'>
-                                    <img src={vector1} alt='vector1' className='img-fluid mb-5'></img>
-                                </div>
-                            ) : (null)}
+                            <div className='col-lg-6 mt-5'>
+                                <img src={vector1} alt='vector1' className='img-fluid'></img>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className='section-work'>
+                <div className='section-work mt-5'>
                     <div className='container text-center'>
                         <h2 className='h2-title' style={{paddingTop: 40}}>WORK WITH US</h2>
                         <h3>Tell us a little bit about your project.</h3>

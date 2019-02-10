@@ -33,9 +33,7 @@ class ServiceList extends React.Component {
                 <div className='container'>
                     <div className='row mt-5'>
                         <div className='col-lg-6 text-center'>
-                            {this.state.isDesktop ? (
-                                <img alt='vector-2' src={vector2} className='img-fluid mt-5'></img>
-                            ) : (null)}
+                            <img alt='vector-2' src={vector2} className='img-fluid'></img>
                         </div>
                         <div className='col-lg-6 mb-5'>
                             <h2 className='h2-title'>WEB DESIGN</h2>
@@ -77,6 +75,11 @@ class ServiceList extends React.Component {
                                 capabilities to take your website to the next level.
                             </p>
                         </div>
+                        {!this.state.isDesktop ? (
+                            <div className='col-lg-6'>
+                                    <img alt='vector-3' src={vector3} className='img-fluid'></img>
+                            </div>
+                        ) : (null)}
                         <div className='col-lg-6 mb-5'>
                             <h2 className='h2-title'>UI / UX DESIGN</h2>
                             <p>We build elevated websites, optimized for engagement and conversion.</p>
@@ -117,15 +120,13 @@ class ServiceList extends React.Component {
                                 website tailored to your brand’s goals and initiatives.
                             </p>
                         </div>
-                        <div className='col-lg-6'>
-                            {this.state.isDesktop ? (
+                        {this.state.isDesktop ? (
+                            <div className='col-lg-6'>
                                 <img alt='vector-3' src={vector3} className='img-fluid mt-5'></img>
-                            ) : (null)}
-                        </div>
+                            </div>
+                        ) : (null)}
                         <div className='col-lg-6'>
-                            {this.state.isDesktop ? (
-                                <img alt='vector-4' src={vector4} className='img-fluid mt-5'></img>
-                            ) : (null)}
+                            <img alt='vector-4' src={vector4} className='img-fluid mt-5'></img>
                         </div>
                         <div className='col-lg-6 mb-5'>
                             <h2 className='h2-title'>RESPONSIVE WEB DESIGN</h2>
