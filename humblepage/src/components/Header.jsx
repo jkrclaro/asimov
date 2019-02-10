@@ -44,8 +44,9 @@ class Header extends React.Component {
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
-                            <Link to='/about' onClick={this.closeNav}><b>ABOUT</b></Link>
-                            <Link to='/contact' onClick={this.closeNav}><b>CONTACT</b></Link>
+                            <Link to='/' className='overlay-link' onClick={this.closeNav}>Home</Link>
+                            <Link to='/about' className='overlay-link' onClick={this.closeNav}>About</Link>
+                            <Link to='/contact' className='overlay-link' onClick={this.closeNav}>Contact</Link>
                             <br/>
                             <br/>
                             <br/>
@@ -59,7 +60,6 @@ class Header extends React.Component {
                         <ul className="nav">
                             <li className='nav-item'><Link to='/' className='nav-link'><img src={logo} className='logo mb-2 mr-2'></img> <span className='brand-title mr-3'>humblepage</span></Link></li>
                             <li className='nav-item nav-item-style'><Link to='/about' className='nav-link'>About</Link></li>
-                            <li className='nav-item nav-item-style'><Link to='/about' className='nav-link'>Portfolio</Link></li>
                             <li className='nav-item nav-item-style ml-auto'><Link to='/contact' className='nav-link'><span className='btn btn-humblepage-primary'>Let's Talk</span></Link></li>
                         </ul>
                     ) : (

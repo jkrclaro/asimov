@@ -97,8 +97,18 @@ ul {
     color: #fff;
 }
 
+.overlay-link {
+    font-weight: 900;
+}
+
+.theme-link {
+    color: #38A1F3;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
 .btn {
-    font-weight: 700;
+    font-weight: 900 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
     padding-left: 20px !important;
@@ -158,8 +168,7 @@ ul {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #141414;
-    background-color: #141414;
+    background-color: #fff;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -175,7 +184,7 @@ ul {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
-    color: #fff;
+    color: #111;
     display: block;
     transition: 0.3s;
 }
@@ -186,7 +195,7 @@ ul {
 }
 
 .overlay .closebtn {
-    color: #fff !important;
+    color: #111 !important;
     position: absolute;
     top: 20px;
     right: 45px;
