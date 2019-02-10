@@ -127,7 +127,7 @@ class Home extends React.Component {
                             <div className='col-md-12 mt-5 text-center'>
                                 <h3 className='h3-heading'>ARE YOU LOOKING TO VISIT DUBLIN?</h3>
                                 <p className='p-content'>Join us for a historic tour in Dublin city and afterwards have a pint or two at a local Irish pub!</p>
-                                <Link to='/tour' className='btn btn-custom-alternative mb-5'>See tour</Link>
+                                <Link to='/tour' className='btn btn-custom-alternative'>See tour</Link>
                             </div>
                         </div>
                     </div>
