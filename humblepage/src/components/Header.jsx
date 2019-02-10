@@ -4,10 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const logo = require('../imgs/logo.png');
 const styles = {
-    cursor: {cursor: 'pointer'},
-    menuBar: {fontSize: 30, color: '#fff'},
+    menuBar: {fontSize: '1.75em', color: '#26262A', cursor: 'pointer'},
     professionalFont: {fontFamily: 'Georgia'},
-    headerFont: {fontFamily: 'Titillium Web'},
     spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
 
@@ -41,7 +39,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '#141414', ...styles.headerFont}}>
+            <div>
                 <div id="overlay-nav" className="overlay">
                     <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
@@ -56,21 +54,21 @@ class Header extends React.Component {
                     </div>
                 </div>
 
-                <nav className="navbar navbar-expand-lg navbar-dark">
-                    <div className='container mt-3 mb-3'>
-                        <Link to='/' style={styles.brand}><img src={logo} alt='logo' height='40' width='40'></img></Link>
-                        {this.state.isDesktop ? (
-                            <ul className="nav justify-content-end">
-                                <li className='nav-item'><Link to='/about' className='nav-link white-color mt-3'><b>ABOUT</b></Link></li>
-                                <li className='nav-item'><Link to='/contact' className='nav-link white-color mt-1'><span className='btn btn-humblepage-primary'>Let's talk</span></Link></li>
-                            </ul>
-                        ) : (
-                            <ul className="nav justify-content-end">
-                                <li className='nav-item'><span className='nav-link' style={{...styles.menuBar, ...styles.cursor}} onClick={this.openNav}><FontAwesomeIcon icon='bars'/></span></li>
-                            </ul>
-                        )}
-                    </div>
-                </nav>
+                <div className='container mt-3'>
+                    {this.state.isDesktop ? (
+                        <ul className="nav">
+                            <li className='nav-item'><Link to='/' className='nav-link'><img src={logo} className='logo mb-2 mr-2'></img> <span className='brand-title mr-3'>humblepage</span></Link></li>
+                            <li className='nav-item nav-item-style'><Link to='/about' className='nav-link'>About</Link></li>
+                            <li className='nav-item nav-item-style'><Link to='/about' className='nav-link'>Portfolio</Link></li>
+                            <li className='nav-item nav-item-style ml-auto'><Link to='/contact' className='nav-link'><span className='btn btn-humblepage-primary'>Let's Talk</span></Link></li>
+                        </ul>
+                    ) : (
+                        <ul className="nav">
+                            <li className='nav-item'><Link to='/' className='nav-link'><img src={logo} className='logo mb-2 mr-2'></img> <span className='brand-title'> humblepage</span></Link></li>
+                            <li className='nav-item ml-auto'><span className='nav-link' style={styles.menuBar} onClick={this.openNav}><FontAwesomeIcon icon='bars'/></span></li>
+                        </ul>
+                    )}
+                </div>
             </div>
         )
     }

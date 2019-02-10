@@ -9,9 +9,7 @@ const vector4 = require('../imgs/vector4.png');
 
 const styles = {
     cursor: {cursor: 'pointer'},
-    menuBar: {fontSize: 30, color: '#fff'},
-    professionalFont: {fontFamily: 'Georgia'},
-    homeFont: {fontFamily: 'Titillium Web'},
+    menuBar: {fontSize: 30, color: '#E2424A'},
     spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
 
@@ -43,17 +41,14 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <div style={{backgroundColor: '#141414', color: '#fff'}}>
-                    <div className='container'>
+                <div className='container'>
+                    <div className='col-lg-12'>
                         <div className='row'>
-                            <div className='col-lg-6 mt-5'>
-                                <div className='mb-5' style={styles.professionalFont}>
-                                    <h1>
-                                        Tailored design for growing brands.
-                                        We transform business objectives into compelling digital experiences.
-                                    </h1>
+                            <div className='col-lg-6'>
+                                <div className='text-right mt-5'>
+                                    <h1 className='h1-title'>WE CREATE WEBSITES FOR THE TRAVEL INDUSTRY</h1>
+                                    <Link to='/about' className='btn btn-humblepage-primary mr-2 mb-5'>Get to know us</Link>
                                 </div>
-                                <Link to='/about' className='btn btn-humblepage-primary mr-2 mb-5'>Get to know us</Link>
                             </div>
                             {this.state.isDesktop ? (
                                 <div className='col-lg-6 mt-5'>
@@ -63,7 +58,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div style={styles.homeFont}>
+                <div>
                     <div className='container'>
                         <div className='row mt-5'>
                             <div className='col-lg-6 text-center'>
@@ -72,12 +67,12 @@ class Home extends React.Component {
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h2 className='theme-color'>WEB DESIGN</h2>
+                                <h2 className='h2-title'>WEB DESIGN</h2>
                                 <p>Our team brings engaging visuals to life through custom development.</p>
                                 <div className='row'>
                                     <div className='col-6'>
                                         <ul>
-                                            <li>Free Hosting</li>
+                                            <li>Mobile Friendly</li>
                                             <li>Responsive Development</li>
                                             <li>Javascript &amp; React</li>
                                         </ul>
@@ -86,7 +81,7 @@ class Home extends React.Component {
                                         <ul>
                                             <li>Front End Development</li>
                                             <li>CSS / HTML</li>
-                                            <li>SPA</li>
+                                            <li>Single Page Application</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -112,7 +107,7 @@ class Home extends React.Component {
                                 </p>
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h2 className='theme-color'>UI / UX DESIGN</h2>
+                                <h2 className='h2-title'>UI / UX DESIGN</h2>
                                 <p>We build elevated websites, optimized for engagement and conversion.</p>
                                 <div className='row'>
                                     <div className='col-6'>
@@ -162,7 +157,7 @@ class Home extends React.Component {
                                 ) : (null)}
                             </div>
                             <div className='col-lg-6 mb-5'>
-                                <h2 className='theme-color'>RESPONSIVE WEB DESIGN</h2>
+                                <h2 className='h2-title'>RESPONSIVE WEB DESIGN</h2>
                                 <p>We ensure that your platform works well across desktop, tablet, and mobile.</p>
                                 <div className='row'>
                                     <div className='col-6'>
@@ -207,9 +202,9 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div style={{backgroundColor: '#FAFAFA', ...styles.homeFont}}>
+                <div className='section-work'>
                     <div className='container text-center'>
-                        <h2 className='theme-color' style={{paddingTop: 40}}>WORK WITH US</h2>
+                        <h2 className='h2-title' style={{paddingTop: 40}}>WORK WITH US</h2>
                         <h3>Tell us a little bit about your project.</h3>
                         <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
                     </div>

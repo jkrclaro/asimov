@@ -21,9 +21,51 @@
    visibility: hidden;
 }
 
-ul {
-    color: #E34343;
+* {
+    font-family: 'Titillium Web'
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+}
+.brand-title {
+    color: #111;
     font-weight: 700;
+    font-size: 1.7em;
+}
+
+.nav-item:hover {
+    text-decoration: none !important;
+}
+.nav-link {
+    color: #454545;
+    font-weight: 400;
+}
+.nav-link:hover {
+    color: #3F0F3F;
+}
+.nav-item-style {
+    padding-top: 10px !important;
+}
+
+.h1-title {
+    font-weight: 900;
+    font-size: 3.5em !important;
+}
+.h2-title {
+    font-weight: 900;
+}
+.h4-title {
+    font-weight: 900;
+}
+
+.footer-title {
+    font-weight: 900;
+}
+
+ul {
+    color: #3F0F3F;
 }
 
 .hero-section {
@@ -34,10 +76,6 @@ ul {
 
 .sub-section {
     background-color: #fff !important;
-}
-
-.theme-color, .theme-color:hover {
-    color: #e34343;
 }
 
 .white-color, .white-color:hover {
@@ -51,7 +89,12 @@ ul {
 }
 
 .anchor-link, .anchor-link:hover {
-    color: #e34343 !important;
+    color: #3F0F3F !important;
+}
+
+.section-work {
+    background-color: #3F0F3F;
+    color: #fff;
 }
 
 .btn {
@@ -68,29 +111,29 @@ ul {
 }
 
 .btn-humblepage-primary {
-    border-color: #fff !important;
-    color: #fff !important;
-    font-weight: 700 !important;
+    background-color: #3F0F3F;
+    border-color: #3F0F3F;
+    color: #fff;
 }
 .btn-humblepage-primary:hover, .btn-humblepage-primary:focus, .btn-humblepage-primary:active, .btn-humblepage-primary.active, .open > .dropdown-toggle.btn-humblepage-primary {
-    background-color: #fff !important;
-    border-color: #fff !important;
-    color:#141414 !important;
+    background-color: #3F0F3F;
+    border-color: #3F0F3F;
+    color: #fff;
 }
 .btn-humblepage-primary-inverse {
-    background-color: #141414 !important;
-    border-color: #141414 !important;
-    color: #fff !important;
+    background-color: #fff !important;
+    border-color: #3F0F3F !important;
+    color: #3F0F3F !important;
     font-weight: 700 !important;
 }
 .btn-humblepage-primary-inverse:hover, .btn-humblepage-primary-inverse:focus, .btn-humblepage-primary-inverse:active, .btn-humblepage-primary-inverse.active, .open > .dropdown-toggle.btn-humblepage-primary-inverse {
-    border-color: #E34343 !important;
-    background-color: #E34343 !important;
-    color:#fff !important;
+    border-color: #3F0F3F !important;
+    background-color: #fff !important;
+    color:#3F0F3F !important;
 }
 .btn-humblepage-alternative {
     border-radius: 24px !important;
-    border-color: #141414 !important;
+    border-color: #3F0F3F !important;
     color: #fff !important;
     background-color: #141414;
     font-weight: 700 !important;
