@@ -57,7 +57,7 @@ class Contact extends React.Component {
                                     </div>
                                     <div className='col-lg-6'>
                                         <label htmlFor='phonenumber'><small>PHONE NUMBER</small></label>
-                                        <input type='text' id='phonenumber' name='phonenumber' className='form-control mb-3' required></input>
+                                        <input type='text' id='phonenumber' name='phonenumber' className='form-control mb-3'></input>
                                     </div>
                                 </div>
                                 <input type="hidden" name="_subject" value="Humblepage Proposal" />
