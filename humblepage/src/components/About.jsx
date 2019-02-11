@@ -13,8 +13,8 @@ class About extends React.Component {
             <div>
                 <div className='container'>
                         <div className='row mt-5'>
-                            <div className='col-lg-12 text-center mb-3'>
-                                <h2 className='h2-title theme-color'>GET TO KNOW US</h2>
+                            <div className='col-lg-12 mb-3'>
+                                <h2 className='h2-title text-center theme-color'>GET TO KNOW US</h2>
                                 <p>
                                     Most businesses feel that to compete online they need to be doing a dozen different things. 
                                     They don’t. We set up easy to manage systems that run like clockwork. 
