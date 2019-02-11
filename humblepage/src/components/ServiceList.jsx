@@ -34,53 +34,8 @@ class ServiceList extends React.Component {
                 <div className='container'>
                     <div className='row mt-5'>
                         <div className='col-lg-6 text-center'>
-                            <img alt='vector-3' src={vector3} className='img-fluid'></img>
+                            <img alt='vector-2' src={vector2} className='img-fluid'></img>
                         </div>
-                        <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>UI / UX DESIGN</h2>
-                            <p>We build elevated websites, optimized for engagement and conversion.</p>
-                            <div className='row'>
-                                <div className='col-6'>
-                                    <ul className='ul-primary'>
-                                        <li>Interface</li>
-                                        <li>Usability</li>
-                                        <li>Interactions</li>
-                                    </ul>
-                                </div>
-                                <div className='col-6'>
-                                    <ul className='ul-primary'>
-                                        <li>User Experience</li>
-                                        <li>Accessibility</li>
-                                        <li>Custom</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p>
-                                UI refers to user interface design,
-                                which includes all visual design elements in the series of web pages or screens. 
-                                UX refers to user experience, which is the 
-                                internal experience that a user participates 
-                                in as they interact with a brand's website, 
-                                product, or service. 
-                                An impactful website brings together content 
-                                architecture, typography, color, photos, videos, 
-                                and interactive elements in order to create a 
-                                meaningful user journey that ultimately aims 
-                                to convert customers.
-                            </p>
-                            <p>
-                                We combine best-in-class web design, sophisticated UI 
-                                elements, and an intuitive path to purchase 
-                                to drive user engagement and conversion. 
-                                Our dedicated team collaborates with you to create a 
-                                website tailored to your brand’s goals and initiatives.
-                            </p>
-                        </div>
-                        {!this.state.isDesktop ? (
-                            <div className='col-lg-6'>
-                                <img alt='vector-2' src={vector2} className='img-fluid'></img>
-                            </div>
-                        ) : (null)}
                         <div className='col-lg-6 mb-5'>
                             <h2 className='h2-title'>WEB DESIGN</h2>
                             <p>Our team brings engaging visuals to life through custom development.</p>
@@ -121,9 +76,54 @@ class ServiceList extends React.Component {
                                 capabilities to take your website to the next level.
                             </p>
                         </div>
+                        {!this.state.isDesktop ? (
+                            <div className='col-lg-6'>
+                                <img alt='vector-3' src={vector3} className='img-fluid'></img>
+                            </div>
+                        ) : (null)}
+                        <div className='col-lg-6 mb-5'>
+                            <h2 className='h2-title'>UI / UX DESIGN</h2>
+                            <p>We build elevated websites, optimized for engagement and conversion.</p>
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <ul className='ul-primary'>
+                                        <li>Interface</li>
+                                        <li>Usability</li>
+                                        <li>Interactions</li>
+                                    </ul>
+                                </div>
+                                <div className='col-6'>
+                                    <ul className='ul-primary'>
+                                        <li>User Experience</li>
+                                        <li>Accessibility</li>
+                                        <li>Custom</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>
+                                UI refers to user interface design,
+                                which includes all visual design elements in the series of web pages or screens. 
+                                UX refers to user experience, which is the 
+                                internal experience that a user participates 
+                                in as they interact with a brand's website, 
+                                product, or service. 
+                                An impactful website brings together content 
+                                architecture, typography, color, photos, videos, 
+                                and interactive elements in order to create a 
+                                meaningful user journey that ultimately aims 
+                                to convert customers.
+                            </p>
+                            <p>
+                                We combine best-in-class web design, sophisticated UI 
+                                elements, and an intuitive path to purchase 
+                                to drive user engagement and conversion. 
+                                Our dedicated team collaborates with you to create a 
+                                website tailored to your brand’s goals and initiatives.
+                            </p>
+                        </div>
                         {this.state.isDesktop ? (
                             <div className='col-lg-6'>
-                                <img alt='vector-2' src={vector2} className='img-fluid'></img>
+                                <img alt='vector-3' src={vector3} className='img-fluid'></img>
                             </div>
                         ) : (null)}
                         <div className='col-lg-6'>

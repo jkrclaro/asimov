@@ -2,14 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const vector1 = require('../imgs/vector1.png');
-const hp = require('../imgs/hp.png');
 
-
-const styles = {
-    cursor: {cursor: 'pointer'},
-    menuBar: {fontSize: 30, color: '#E2424A'},
-    spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
-}
 
 class Home extends React.Component {
     
@@ -44,7 +37,7 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-6'>
                                 <div className='text-right mt-5'>
-                                    <h1 className='h1-title'>WE CREATE WEBSITES FOR THE TRAVEL INDUSTRY</h1>
+                                    <h1 className='h1-title'>WE CREATE AND DESIGN WEBSITES</h1>
                                     <Link to='/services' className='btn btn-humblepage-primary'>See our services</Link>
                                 </div>
                             </div>
