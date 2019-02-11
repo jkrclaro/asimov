@@ -46,7 +46,7 @@ class Footer extends React.Component {
                                 <div><a href='https://www.linkedin.com/company/humblepage' className='footer-text-color'>LinkedIn</a></div>
                             </div>
                             <div className='col-lg-3 mt-3'>
-                                <span className='footer-title text-muted mb-3'>Get In Touch</span>
+                                <span className='footer-title text-muted mb-3'>Get in touch</span>
                                 <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
                                 <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
                             </div>
@@ -54,7 +54,7 @@ class Footer extends React.Component {
                     ) : (
                         <div className='col-lg-12 text-center'>
                             <img src={logo} alt='footer-logo' className='logo mb-2 mr-2 mb-5'></img> 
-                            <h6 className='footer-title text-muted mb-3'>Get In Touch</h6>
+                            <h6 className='footer-title text-muted mb-3'>Get in touch</h6>
                             <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
                             <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
                         </div>

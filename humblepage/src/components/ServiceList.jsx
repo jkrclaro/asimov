@@ -38,7 +38,7 @@ class ServiceList extends React.Component {
                             <img alt='vector-2' src={vector2} className='img-fluid'></img>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>Web Design</h2>
+                            <h2 className='h2-title'>Web design</h2>
                             <p>Our team brings engaging visuals to life through custom development.</p>
                             <div className='row'>
                                 <div className='col-6'>
@@ -83,7 +83,7 @@ class ServiceList extends React.Component {
                             </div>
                         ) : (null)}
                         <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>UI / UX Design</h2>
+                            <h2 className='h2-title'>UI / UX design</h2>
                             <p>We build elevated websites, optimized for engagement and conversion.</p>
                             <div className='row'>
                                 <div className='col-6'>
@@ -131,7 +131,7 @@ class ServiceList extends React.Component {
                             <img alt='vector-4' src={vector4} className='img-fluid mt-5'></img>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>Responsive Web Design</h2>
+                            <h2 className='h2-title'>Responsive web design</h2>
                             <p>We ensure that your platform works well across desktop, tablet, and mobile.</p>
                             <div className='row'>
                                 <div className='col-6'>

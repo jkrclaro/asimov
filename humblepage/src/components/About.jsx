@@ -15,7 +15,7 @@ class About extends React.Component {
                 <div className='container'>
                         <div className='row mt-5'>
                             <div className='col-lg-12 mb-3'>
-                                <h2 className='h2-title text-center theme-color'>How We Work</h2>
+                                <h2 className='h2-title text-center theme-color'>How we work</h2>
                                 <p>
                                     Most businesses feel that to compete online they need to be doing a dozen different things. 
                                     They don’t. We set up easy to manage systems that run like clockwork. 
@@ -40,26 +40,26 @@ class About extends React.Component {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>Forward Thinking</h4>
+                            <h4 className='h4-title'>Forward thinking</h4>
                             <p>
                                 We pride ourselves on pushing the boundaries of digital design and development. 
                                 We combine relevant trends and best practices to build platforms with longevity.
                             </p>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>Detail Oriented</h4>
+                            <h4 className='h4-title'>Detail oriented</h4>
                             <p>
                                 We sweat the small stuff, because we believe that the details make the design. A time-tested and true platform values quality over quantity.
                             </p>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>Self Starting</h4>
+                            <h4 className='h4-title'>Self starting</h4>
                             <p>
                                 Having an entrepreneurial mindset ensures that every member of our team proudly takes ownership of each project, from concept to execution.
                             </p>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>Stay Humble</h4>
+                            <h4 className='h4-title'>Stay humble</h4>
                             <p>
                                 We stand up for what we believe in, but never let ego get in the way. The key to growth is to embrace feedback and from team members and clients.
                             </p>
