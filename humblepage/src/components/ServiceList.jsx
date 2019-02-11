@@ -34,66 +34,21 @@ class ServiceList extends React.Component {
                 <div className='container'>
                     <div className='row mt-5'>
                         <div className='col-lg-6 text-center'>
-                            <img alt='vector-2' src={vector2} className='img-fluid'></img>
+                            <img alt='vector-3' src={vector3} className='img-fluid'></img>
                         </div>
-                        <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>WEB DESIGN</h2>
-                            <p>Our team brings engaging visuals to life through custom development.</p>
-                            <div className='row'>
-                                <div className='col-6'>
-                                    <ul>
-                                        <li>Mobile Friendly</li>
-                                        <li>Responsive Development</li>
-                                        <li>Javascript &amp; React</li>
-                                    </ul>
-                                </div>
-                                <div className='col-6'>
-                                    <ul>
-                                        <li>Front End Development</li>
-                                        <li>CSS / HTML</li>
-                                        <li>Single Page Application</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p>
-                                From front-end to back-end, leverage custom 
-                                development to create an intuitive website 
-                                for your users as well as your internal team. 
-                                Our in-house development team works seamlessly 
-                                with our creative team to build a website 
-                                supported by engaging animations and purposeful 
-                                interactions. By combining elevate visuals with 
-                                sophisticated motion elements, your website can 
-                                engage web users and ultimately convert them to 
-                                loyal customers.
-                            </p>
-                            <p>
-                                We offer flexible services to ensure that your 
-                                web platform is aligned with your business 
-                                initiatives and marketing goals. 
-                                From custom code, to seamless integration, 
-                                our dedicated team has the 
-                                capabilities to take your website to the next level.
-                            </p>
-                        </div>
-                        {!this.state.isDesktop ? (
-                            <div className='col-lg-6'>
-                                    <img alt='vector-3' src={vector3} className='img-fluid'></img>
-                            </div>
-                        ) : (null)}
                         <div className='col-lg-6 mb-5'>
                             <h2 className='h2-title'>UI / UX DESIGN</h2>
                             <p>We build elevated websites, optimized for engagement and conversion.</p>
                             <div className='row'>
                                 <div className='col-6'>
-                                    <ul>
+                                    <ul className='ul-primary'>
                                         <li>Interface</li>
                                         <li>Usability</li>
                                         <li>Interactions</li>
                                     </ul>
                                 </div>
                                 <div className='col-6'>
-                                    <ul>
+                                    <ul className='ul-primary'>
                                         <li>User Experience</li>
                                         <li>Accessibility</li>
                                         <li>Custom</li>
@@ -121,9 +76,54 @@ class ServiceList extends React.Component {
                                 website tailored to your brand’s goals and initiatives.
                             </p>
                         </div>
+                        {!this.state.isDesktop ? (
+                            <div className='col-lg-6'>
+                                <img alt='vector-2' src={vector2} className='img-fluid'></img>
+                            </div>
+                        ) : (null)}
+                        <div className='col-lg-6 mb-5'>
+                            <h2 className='h2-title'>WEB DESIGN</h2>
+                            <p>Our team brings engaging visuals to life through custom development.</p>
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <ul className='ul-alternative'>
+                                        <li>Mobile Friendly</li>
+                                        <li>Responsive Development</li>
+                                        <li>Javascript &amp; React</li>
+                                    </ul>
+                                </div>
+                                <div className='col-6'>
+                                    <ul className='ul-alternative'>
+                                        <li>Front End Development</li>
+                                        <li>CSS / HTML</li>
+                                        <li>Single Page Application</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>
+                                From front-end to back-end, leverage custom 
+                                development to create an intuitive website 
+                                for your users as well as your internal team. 
+                                Our in-house development team works seamlessly 
+                                with our creative team to build a website 
+                                supported by engaging animations and purposeful 
+                                interactions. By combining elevate visuals with 
+                                sophisticated motion elements, your website can 
+                                engage web users and ultimately convert them to 
+                                loyal customers.
+                            </p>
+                            <p>
+                                We offer flexible services to ensure that your 
+                                web platform is aligned with your business 
+                                initiatives and marketing goals. 
+                                From custom code, to seamless integration, 
+                                our dedicated team has the 
+                                capabilities to take your website to the next level.
+                            </p>
+                        </div>
                         {this.state.isDesktop ? (
                             <div className='col-lg-6'>
-                                <img alt='vector-3' src={vector3} className='img-fluid mt-5'></img>
+                                <img alt='vector-2' src={vector2} className='img-fluid'></img>
                             </div>
                         ) : (null)}
                         <div className='col-lg-6'>
@@ -134,14 +134,14 @@ class ServiceList extends React.Component {
                             <p>We ensure that your platform works well across desktop, tablet, and mobile.</p>
                             <div className='row'>
                                 <div className='col-6'>
-                                    <ul>
+                                    <ul className='ul-primary'>
                                         <li>Mobile Functionality</li>
                                         <li>Social Optimization</li>
                                         <li>Cross-Device Testing</li>
                                     </ul>
                                 </div>
                                 <div className='col-6'>
-                                    <ul>
+                                    <ul className='ul-primary'>
                                         <li>Tablet Functionality</li>
                                         <li>Mobile Development</li>
                                         <li>Cross-Browser Testing</li>
