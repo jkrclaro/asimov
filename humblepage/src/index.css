@@ -66,6 +66,7 @@
 
 ul {
     color: #3F0F3F;
+    font-weight: 700;
 }
 
 .hero-section {
@@ -89,6 +90,14 @@ ul {
 
 .anchor-link, .anchor-link:hover {
     color: #3F0F3F !important;
+}
+
+.hp-section {
+    background-image: url('../src/imgs/hp.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .section-work {

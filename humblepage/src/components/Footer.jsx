@@ -39,9 +39,9 @@ class Footer extends React.Component {
                             </div>
                             <div className='col-lg-3 mt-4'>
                                 <h6 className='footer-title text-muted mb-3'>FOLLOW</h6>
-                                <div><a href='https://www.facebook.com/gethumblepage' className='white-color'>Facebook</a></div>
-                                <div><a href='https://www.instagram.com/gethumblepage' className='white-color'>Instagram</a></div>
-                                <div><a href='https://www.twitter.com/gethumblepage' className='white-color'>Twitter</a></div>
+                                <div><a href='https://www.facebook.com/humblepagedesign' className='white-color'>Facebook</a></div>
+                                <div><a href='https://www.instagram.com/humblepagedesign' className='white-color'>Instagram</a></div>
+                                <div><a href='https://www.twitter.com/humblepageweb' className='white-color'>Twitter</a></div>
                                 <div><a href='https://www.linkedin.com/company/humblepage' className='white-color'>LinkedIn</a></div>
                             </div>
                             <div className='col-lg-3 mt-4'>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const vector1 = require('../imgs/vector1.png');
+const hp = require('../imgs/hp.png');
 
 
 const styles = {
@@ -38,7 +39,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <div className='container'>
+                <div className='container mb-5'>
                     <div className='col-lg-12'>
                         <div className='row'>
                             <div className='col-lg-6'>
@@ -53,7 +54,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='section-work mt-5'>
+                <div className='section-work'>
                     <div className='container text-center'>
                         <h2 className='h2-title' style={{paddingTop: 40}}>WORK WITH US</h2>
                         <h3>Tell us a little bit about your project.</h3>
