@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import WorkWithUs from './WorkWithUs';
 
 
 class About extends React.Component {
@@ -14,7 +15,7 @@ class About extends React.Component {
                 <div className='container'>
                         <div className='row mt-5'>
                             <div className='col-lg-12 mb-3'>
-                                <h2 className='h2-title text-center theme-color'>GET TO KNOW US</h2>
+                                <h2 className='h2-title text-center theme-color'>How We Work</h2>
                                 <p>
                                     Most businesses feel that to compete online they need to be doing a dozen different things. 
                                     They don’t. We set up easy to manage systems that run like clockwork. 
@@ -39,39 +40,33 @@ class About extends React.Component {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>FORWARD THINKING</h4>
+                            <h4 className='h4-title'>Forward Thinking</h4>
                             <p>
                                 We pride ourselves on pushing the boundaries of digital design and development. 
                                 We combine relevant trends and best practices to build platforms with longevity.
                             </p>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>DETAIL ORIENTED</h4>
+                            <h4 className='h4-title'>Detail Oriented</h4>
                             <p>
                                 We sweat the small stuff, because we believe that the details make the design. A time-tested and true platform values quality over quantity.
                             </p>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>SELF STARTING</h4>
+                            <h4 className='h4-title'>Self Starting</h4>
                             <p>
                                 Having an entrepreneurial mindset ensures that every member of our team proudly takes ownership of each project, from concept to execution.
                             </p>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h4 className='h4-title'>STAY HUMBLE</h4>
+                            <h4 className='h4-title'>Stay Humble</h4>
                             <p>
                                 We stand up for what we believe in, but never let ego get in the way. The key to growth is to embrace feedback and from team members and clients.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className='section-work'>
-                    <div className='container text-center'>
-                        <h2 className='h2-title' style={{paddingTop: 40}}>WORK WITH US</h2>
-                        <h3>Tell us a little bit about your project.</h3>
-                        <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
-                    </div>
-                </div>
+                <WorkWithUs />
             </div>
         )
     }

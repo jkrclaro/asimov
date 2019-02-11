@@ -33,20 +33,20 @@ class Footer extends React.Component {
                                 <img src={logo} alt='footer-logo' className='logo mb-2 mr-2 mb-5'></img>
                             </div>
                             <div className='col-lg-3 mt-3'>
-                                <span className='footer-title text-muted mb-3'>EXPLORE</span>
+                                <span className='footer-title text-muted mb-3'>Explore</span>
                                 <div><Link to='/about' className='footer-text-color'>About</Link></div>
                                 <div><Link to='/services' className='footer-text-color'>Services</Link></div>
                                 <div><Link to='/contact' className='footer-text-color'>Contact</Link></div>
                             </div>
                             <div className='col-lg-3 mt-3'>
-                                <span className='footer-title text-muted mb-3'>FOLLOW</span>
+                                <span className='footer-title text-muted mb-3'>Follow</span>
                                 <div><a href='https://www.facebook.com/humblepagedesign' className='footer-text-color'>Facebook</a></div>
                                 <div><a href='https://www.instagram.com/humblepagedesign' className='footer-text-color'>Instagram</a></div>
                                 <div><a href='https://www.twitter.com/humblepageweb' className='footer-text-color'>Twitter</a></div>
                                 <div><a href='https://www.linkedin.com/company/humblepage' className='footer-text-color'>LinkedIn</a></div>
                             </div>
                             <div className='col-lg-3 mt-3'>
-                                <span className='footer-title text-muted mb-3'>GET IN TOUCH</span>
+                                <span className='footer-title text-muted mb-3'>Get In Touch</span>
                                 <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
                                 <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
                             </div>
@@ -54,7 +54,7 @@ class Footer extends React.Component {
                     ) : (
                         <div className='col-lg-12 text-center'>
                             <img src={logo} alt='footer-logo' className='logo mb-2 mr-2 mb-5'></img> 
-                            <h6 className='footer-title text-muted mb-3'>GET IN TOUCH</h6>
+                            <h6 className='footer-title text-muted mb-3'>Get In Touch</h6>
                             <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
                             <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
                         </div>

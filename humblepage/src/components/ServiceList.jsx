@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import WorkWithUs from './WorkWithUs';
 
 
 const vector2 = require('../imgs/vector2.png');
@@ -37,7 +38,7 @@ class ServiceList extends React.Component {
                             <img alt='vector-2' src={vector2} className='img-fluid'></img>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>WEB DESIGN</h2>
+                            <h2 className='h2-title'>Web Design</h2>
                             <p>Our team brings engaging visuals to life through custom development.</p>
                             <div className='row'>
                                 <div className='col-6'>
@@ -82,7 +83,7 @@ class ServiceList extends React.Component {
                             </div>
                         ) : (null)}
                         <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>UI / UX DESIGN</h2>
+                            <h2 className='h2-title'>UI / UX Design</h2>
                             <p>We build elevated websites, optimized for engagement and conversion.</p>
                             <div className='row'>
                                 <div className='col-6'>
@@ -130,7 +131,7 @@ class ServiceList extends React.Component {
                             <img alt='vector-4' src={vector4} className='img-fluid mt-5'></img>
                         </div>
                         <div className='col-lg-6 mb-5'>
-                            <h2 className='h2-title'>RESPONSIVE WEB DESIGN</h2>
+                            <h2 className='h2-title'>Responsive Web Design</h2>
                             <p>We ensure that your platform works well across desktop, tablet, and mobile.</p>
                             <div className='row'>
                                 <div className='col-6'>
@@ -174,13 +175,7 @@ class ServiceList extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='section-work'>
-                    <div className='container text-center'>
-                        <h2 className='h2-title' style={{paddingTop: 40}}>WORK WITH US</h2>
-                        <h3>Tell us a little bit about your project.</h3>
-                        <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
-                    </div>
-                </div>
+                <WorkWithUs />
             </div>
         )
     }

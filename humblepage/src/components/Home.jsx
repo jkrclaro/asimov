@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import WorkWithUs from './WorkWithUs';
+
 const vector1 = require('../imgs/vector1.png');
 
 
@@ -37,7 +39,7 @@ class Home extends React.Component {
                         <div className='row'>
                             <div className='col-lg-6'>
                                 <div className='text-right mt-5'>
-                                    <h1 className='h1-title'>WE CREATE AND DESIGN WEBSITES</h1>
+                                    <h1 className='h1-title'>We provide creative website and design solutions.</h1>
                                     <Link to='/services' className='btn btn-humblepage-primary'>See our services</Link>
                                 </div>
                             </div>
@@ -47,13 +49,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='section-work'>
-                    <div className='container text-center'>
-                        <h2 className='h2-title' style={{paddingTop: 40}}>WORK WITH US</h2>
-                        <h3>Tell us a little bit about your project.</h3>
-                        <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
-                    </div>
-                </div>
+                <WorkWithUs />
             </div>
         )
     }

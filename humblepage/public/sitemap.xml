@@ -8,7 +8,19 @@
 
 
 <url>
-  <loc>https://humblepage.com/</loc>
+  <loc>https://humblepage.com/#/</loc>
+  <lastmod>2019-02-11T18:26:40+00:00</lastmod>
+</url>
+<url>
+  <loc>https://humblepage.com/#/about</loc>
+  <lastmod>2019-02-11T18:26:40+00:00</lastmod>
+</url>
+<url>
+  <loc>https://humblepage.com/#/services</loc>
+  <lastmod>2019-02-11T18:26:40+00:00</lastmod>
+</url>
+<url>
+  <loc>https://humblepage.com/#/contact</loc>
   <lastmod>2019-02-11T18:26:40+00:00</lastmod>
 </url>
 
