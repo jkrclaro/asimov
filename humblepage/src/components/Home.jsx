@@ -33,8 +33,8 @@ class Home extends React.Component {
         return (
             <div style={{backgroundColor: '#111'}}>
                 <div className='container mb-5'>
-                    <div className='col-lg-10' style={{paddingTop: 50}}>
-                        <h1 className='h1-title mb-3'>Tailor made website design for entrepreneurs. <span className='text-muted'>We focus on driving results.</span></h1>
+                    <div className='col-lg-8' style={{paddingTop: 50}}>
+                        <h1 className='h1-title mb-3'>Experience website design for entrepreneurs. <span className='text-muted'>We focus on driving results.</span></h1>
                         <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
                     </div>
                 </div>

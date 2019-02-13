@@ -51,9 +51,9 @@ html, body {
 }
 
 .h1-title {
-    font-family: 'Times New Roman';
+    font-family: 'Prata';
     color: #fff;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 50px !important;
 }
 .h2-title {
@@ -91,14 +91,6 @@ html, body {
 
 .anchor-link, .anchor-link:hover {
     color: #111 !important;
-}
-
-.hp-section {
-    background-image: url('../src/imgs/hp.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
 }
 
 .section-work {

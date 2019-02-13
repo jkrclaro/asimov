@@ -9,7 +9,8 @@ import WebFont from 'webfontloader';
 WebFont.load({
     google: {
       families: [
-          'Titillium Web:300,400,700,900', 'sans-serif'
+          'Titillium Web:300,400,700,900', 'sans-serif',
+          'Prata:300,400,700,900', 'serif'
       ]
     }
 });
