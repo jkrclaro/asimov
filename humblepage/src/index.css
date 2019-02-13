@@ -51,21 +51,16 @@ html, body {
 }
 
 .h1-title {
-    font-family: 'Georgia';
+    font-family: 'Times New Roman';
     color: #fff;
     font-weight: 400;
-    font-size: 3em !important;
+    font-size: 50px !important;
 }
 .h2-title {
     font-weight: 400;
 }
 .h3-title, .h4-title {
-    font-family: 'Georgia';
     font-weight: 700;
-}
-
-.p-content {
-    font-family: 'Georgia';
 }
 
 .footer-title {
@@ -111,7 +106,6 @@ html, body {
     color: #111;
 }
 .section-work-alternative {
-    font-family: 'Georgia';
     background-color: #111;
     color: #fff;
 }

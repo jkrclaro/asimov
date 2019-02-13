@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const logo = require('../imgs/logo.png')
 
 class Footer extends React.Component {
 
@@ -30,7 +29,7 @@ class Footer extends React.Component {
                     {this.state.isDesktop ? (
                         <div className='row'>
                             <div className='col-lg-3 mt-3'>
-                                <img src={logo} alt='footer-logo' className='logo mr-2 mb-2'></img> <span className='brand-title'> HUMBLEPAGE</span>
+                                <span className='brand-title'>HUMBLEPAGE</span>
                             </div>
                             <div className='col-lg-3 mt-3'>
                                 <span className='footer-title text-muted mb-3'>Explore</span>
@@ -39,23 +38,23 @@ class Footer extends React.Component {
                             </div>
                             <div className='col-lg-3 mt-3'>
                                 <span className='footer-title text-muted mb-3'>Follow</span>
-                                <div><a href='https://www.facebook.com/humblepagedesign' className='footer-text-color'>Facebook</a></div>
-                                <div><a href='https://www.instagram.com/humblepagedesign' className='footer-text-color'>Instagram</a></div>
-                                <div><a href='https://www.twitter.com/humblepageweb' className='footer-text-color'>Twitter</a></div>
-                                <div><a href='https://www.linkedin.com/company/humblepage' className='footer-text-color'>LinkedIn</a></div>
+                                <div><a href='https://www.facebook.com/humblepagedesign' rel='nofollow' className='footer-text-color'>Facebook</a></div>
+                                <div><a href='https://www.instagram.com/humblepagedesign' rel='nofollow' className='footer-text-color'>Instagram</a></div>
+                                <div><a href='https://www.twitter.com/humblepageweb' rel='nofollow' className='footer-text-color'>Twitter</a></div>
+                                <div><a href='https://www.linkedin.com/company/humblepage' rel='nofollow' className='footer-text-color'>LinkedIn</a></div>
                             </div>
                             <div className='col-lg-3 mt-3'>
                                 <span className='footer-title text-muted mb-3'>Get in touch</span>
-                                <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
-                                <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
+                                <div><a href='mailto:john@humblepage.com' rel='nofollow' className='footer-text-color'>john@humblepage.com</a></div>
+                                <div><a href='tel:0894518912' rel='nofollow' className='footer-text-color'>(089) 451 8912</a></div>
                             </div>
                         </div>
                     ) : (
                         <div className='col-lg-12 text-center'>
-                            <div className='mb-3'><img src={logo} alt='footer-logo' className='logo mb-2 mr-2'></img> <span className='brand-title'> HUMBLEPAGE</span></div>
+                            <div className='mb-3'><span className='brand-title'>HUMBLEPAGE</span></div>
                             <h6 className='footer-title text-muted'>Get in touch</h6>
-                            <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
-                            <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
+                            <div><a href='mailto:john@humblepage.com' rel='nofollow' className='footer-text-color'>john@humblepage.com</a></div>
+                            <div><a href='tel:0894518912' rel='nofollow' className='footer-text-color'>(089) 451 8912</a></div>
                         </div>
                     )}
                 </div>

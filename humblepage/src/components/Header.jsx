@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const logo = require('../imgs/logo.png');
 const styles = {
-    menuBar: {fontSize: '1.75em', color: '#fff', cursor: 'pointer'},
+    menuBar: {fontSize: '1.5em', color: '#fff', cursor: 'pointer'},
     professionalFont: {fontFamily: 'Georgia'},
     spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
@@ -40,7 +39,7 @@ class Header extends React.Component {
     render() {
         return (
             <div style={{backgroundColor: '#111'}}>
-                <div id="overlay-nav" className="overlay" style={{fontFamily: 'Georgia'}}>
+                <div id="overlay-nav" className="overlay">
                     <span className="closebtn" onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
@@ -50,14 +49,14 @@ class Header extends React.Component {
                             <br/>
                             <br/>
                             <br/>
-                            <a href="tel:0894518912">(089) 451 8912</a>
+                            <a href="tel:0894518912" rel='nofollow'>(089) 451 8912</a>
                         </div>
                     </div>
                 </div>
 
                 <div className='container' style={{paddingTop: 20}}>
                     <ul className="nav">
-                        <li className='nav-item'><Link to='/' className='nav-link'><img src={logo} alt='header-logo' className='logo mb-2 mr-2'></img> <span className='brand-title'> HUMBLEPAGE</span></Link></li>
+                        <li className='nav-item'><Link to='/' className='nav-link'><span className='brand-title'> HUMBLEPAGE</span></Link></li>
                         <li className='nav-item ml-auto'><span className='nav-link' style={styles.menuBar} onClick={this.openNav}><FontAwesomeIcon icon='bars'/></span></li>
                     </ul>
                 </div>

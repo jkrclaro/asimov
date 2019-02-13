@@ -10,7 +10,7 @@ WebFont.load({
     google: {
       families: [
           'Titillium Web:300,400,700,900', 'sans-serif',
-          'Merriweather:300,400,700,900', 'sans-serif'
+          'Times New Roman:300,400,700,900', 'sans-serif'
       ]
     }
 });

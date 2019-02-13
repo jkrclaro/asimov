@@ -30,7 +30,7 @@ class Contact extends React.Component {
                         <div className='row'>
                             <div className='col-lg-3'></div>
                             <div className='col-lg-6'>
-                                <h2 className='h2-title mt-3 mb-3 text-center'>Contact us</h2>
+                                <h3 className='h4-title mt-3 mb-3 text-center'>Contact us</h3>
                                 <b>We look forward to hearing from you.</b>
                                 <p>
                                     <div>Email us at <a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></div>
@@ -46,10 +46,8 @@ class Contact extends React.Component {
                         <div className='col-lg-3'></div>
                         <div className='col-lg-6 mb-5'>
                             <form action='https://formspree.io/john@humblepage.com' method='POST'>
-                                <h4 className='h4-title'>Project information</h4>
                                 <label htmlFor='message'><small>INFORMATION</small></label>
                                 <textarea name='message' rows='5' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
-                                <h4 className='h4-title'>Contact information</h4>
                                 <div className='row'>
                                     <div className='col-lg-6'>
                                         <label htmlFor='email'><small>EMAIL</small></label>
