@@ -9,8 +9,8 @@ import WebFont from 'webfontloader';
 WebFont.load({
     google: {
       families: [
-          'Karla:300,400,700', 'sans-serif',
-          'Titillium Web:300,400,700', 'sans-serif'
+          'Titillium Web:300,400,700,900', 'sans-serif',
+          'Merriweather:300,400,700,900', 'sans-serif'
       ]
     }
 });

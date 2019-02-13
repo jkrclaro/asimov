@@ -33,7 +33,7 @@ class Contact extends React.Component {
                                 <h2 className='h2-title mt-3 mb-3 text-center'>Contact us</h2>
                                 <b>We look forward to hearing from you.</b>
                                 <p>
-                                    <div>You can always contact us directly at <a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></div>
+                                    <div>Email us at <a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></div>
                                     <div>or call us at <a href='tel:0894518912'  className='theme-link'>(089) 451 8912</a></div>
                                 </p>
                             </div>

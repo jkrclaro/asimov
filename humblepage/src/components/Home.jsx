@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import WorkWithUs from './WorkWithUs';
 
-const vector1 = require('../imgs/vector1.png');
-
 
 class Home extends React.Component {
     
@@ -33,18 +31,15 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{backgroundColor: '#111'}}>
                 <div className='container mb-5'>
                     <div className='col-lg-12'>
                         <div className='row'>
-                            <div className='col-lg-6'>
-                                <div className='text-right mt-5'>
-                                    <h1 className='h1-title'>We provide creative website and design solutions.</h1>
-                                    <Link to='/services' className='btn btn-humblepage-primary'>See our services</Link>
+                            <div className='col-lg-8'>
+                                <div className='mt-5'>
+                                    <h1 className='h1-title mb-3'>Professional website design for growing brands. <span className='text-muted'>We focus on driving results.</span></h1>
+                                    <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
                                 </div>
-                            </div>
-                            <div className='col-lg-6 mt-5'>
-                                <img src={vector1} alt='vector1' className='img-fluid'></img>
                             </div>
                         </div>
                     </div>

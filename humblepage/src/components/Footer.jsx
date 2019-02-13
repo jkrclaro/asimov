@@ -30,12 +30,11 @@ class Footer extends React.Component {
                     {this.state.isDesktop ? (
                         <div className='row'>
                             <div className='col-lg-3 mt-3'>
-                                <img src={logo} alt='footer-logo' className='logo mb-2 mr-2 mb-5'></img>
+                                <img src={logo} alt='footer-logo' className='logo mr-2 mb-2'></img> <span className='brand-title'> HUMBLEPAGE</span>
                             </div>
                             <div className='col-lg-3 mt-3'>
                                 <span className='footer-title text-muted mb-3'>Explore</span>
                                 <div><Link to='/about' className='footer-text-color'>About</Link></div>
-                                <div><Link to='/services' className='footer-text-color'>Services</Link></div>
                                 <div><Link to='/contact' className='footer-text-color'>Contact</Link></div>
                             </div>
                             <div className='col-lg-3 mt-3'>
@@ -53,8 +52,8 @@ class Footer extends React.Component {
                         </div>
                     ) : (
                         <div className='col-lg-12 text-center'>
-                            <img src={logo} alt='footer-logo' className='logo mb-2 mr-2 mb-5'></img> 
-                            <h6 className='footer-title text-muted mb-3'>Get in touch</h6>
+                            <div className='mb-3'><img src={logo} alt='footer-logo' className='logo mb-2 mr-2'></img> <span className='brand-title'> HUMBLEPAGE</span></div>
+                            <h6 className='footer-title text-muted'>Get in touch</h6>
                             <div><a href='mailto:john@humblepage.com' className='footer-text-color'>john@humblepage.com</a></div>
                             <div><a href='tel:0894518912' className='footer-text-color'>(089) 451 8912</a></div>
                         </div>

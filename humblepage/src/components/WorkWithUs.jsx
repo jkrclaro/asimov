@@ -8,9 +8,9 @@ class WorkWithUs extends React.Component {
         return (
             <div className='section-work'>
                 <div className='container text-center'>
-                    <h2 className='h2-title' style={{paddingTop: 40}}>Work with us</h2>
-                    <h3>Tell us a little bit about your project.</h3>
-                    <Link to='/contact' className='btn btn-humblepage-primary-inverse mb-5'>Let's talk</Link>
+                    <h3 className='h3-title' style={{paddingTop: 40}}>Work with us</h3>
+                    <p className='p-content'>Tell us a little bit about your project.</p>
+                    <Link to='/contact' className='btn btn-humblepage-primary mb-5'>Let's talk</Link>
                 </div>
             </div>
         )

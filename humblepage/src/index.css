@@ -21,62 +21,64 @@
    visibility: hidden;
 }
 
-* {
-    font-family: 'Titillium Web'
+
+html, body {
+    font-family: 'Titillium Web' !important;
 }
 
 .logo {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
 }
 .brand-title {
-    color: #111;
+    color: #fff;
     font-weight: 700;
-    font-size: 1.7em;
+    font-size: 1.25em;
 }
 
 .nav-item:hover {
     text-decoration: none !important;
 }
 .nav-link {
-    color: #454545;
+    color: #fff;
     font-weight: 400;
 }
 .nav-link:hover {
-    color: #A0236C;
+    color: #fff;
 }
 .nav-item-style {
-    padding-top: 10px !important;
+    padding-top: 5px !important;
 }
 
 .h1-title {
-    font-weight: 900;
+    font-family: 'Georgia';
+    color: #fff;
+    font-weight: 400;
     font-size: 3em !important;
 }
 .h2-title {
-    font-weight: 900;
+    font-weight: 400;
 }
-.h4-title {
-    font-weight: 900;
+.h3-title, .h4-title {
+    font-family: 'Georgia';
+    font-weight: 700;
+}
+
+.p-content {
+    font-family: 'Georgia';
 }
 
 .footer-title {
-    font-weight: 900;
+    font-weight: 400;
 }
 
 .ul-primary {
-    color: #A0236C;
-    font-weight: 700;
+    color: #fff;
+    font-weight: 400;
 }
 .ul-alternative {
-    color: #A0236C;
-    font-weight: 700;
-}
-
-.hero-section {
-    background-color: #141414 !important;
-    min-height: 100vh !important;
     color: #fff;
+    font-weight: 400;
 }
 
 .sub-section {
@@ -84,7 +86,7 @@
 }
 
 .footer-text-color, .footer-text-color:hover {
-    color: #111;
+    color: #fff;
 }
 
 .form-control {
@@ -93,7 +95,7 @@
 }
 
 .anchor-link, .anchor-link:hover {
-    color: #A0236C !important;
+    color: #111 !important;
 }
 
 .hp-section {
@@ -105,26 +107,25 @@
 }
 
 .section-work {
-    background-color: #A0236C;
-    color: #fff;
+    background-color: #fff;
+    color: #111;
 }
 .section-work-alternative {
-    background-color: #A0236C;
+    font-family: 'Georgia';
+    background-color: #111;
     color: #fff;
 }
 
 .overlay-link {
-    font-weight: 900;
+    font-weight: 400;
 }
 
 .theme-link, .theme-link:hover {
-    color: #36c5f0;
     text-decoration: underline;
     font-weight: 400;
 }
 
 .btn {
-    font-weight: 900 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
     padding-left: 20px !important;
@@ -137,36 +138,18 @@
 }
 
 .btn-humblepage-primary {
-    background-color: #A0236C;
-    border-color: #A0236C;
+    background-color: #333;
+    border-color: #333;
     color: #fff;
 }
 .btn-humblepage-primary:hover, .btn-humblepage-primary:focus, .btn-humblepage-primary:active, .btn-humblepage-primary.active, .open > .dropdown-toggle.btn-humblepage-primary {
-    background-color: #A0236C;
-    border-color: #A0236C;
+    background-color: #333;
+    border-color: #333;
     color: #fff;
-}
-.btn-humblepage-primary-inverse {
-    background-color: #fff !important;
-    border-color: #A0236C !important;
-    color: #A0236C !important;
-}
-.btn-humblepage-primary-inverse:hover, .btn-humblepage-primary-inverse:focus, .btn-humblepage-primary-inverse:active, .btn-humblepage-primary-inverse.active, .open > .dropdown-toggle.btn-humblepage-primary-inverse {
-    border-color: #A0236C !important;
-    background-color: #fff !important;
-    color:#A0236C !important;
-}
-.btn-humblepage-alternative {
-    background-color: #A0236C !important;
-    color: #fff !important;
-}
-.btn-humblepage-alternative:hover, .btn-humblepage-alternative:focus, .btn-humblepage-alternative:active, .btn-humblepage-alternative.active, .open > .dropdown-toggle.btn-humblepage-alternative {
-    background-color: #A0236C !important;
-    color:#fff !important;
 }
 
 .footer {
-    background-color: #F5F5F5;
+    background-color: #111;
     font-family: 'Titillium Web';
 }
 
@@ -178,7 +161,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -194,19 +177,19 @@
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
-    color: #111;
+    color: #fff;
     display: block;
     transition: 0.3s;
 }
 
 .overlay a:hover, .overlay a:focus {
     text-decoration: none;
-    color: #A0236C;
+    color: #808080;
 }
 
 .overlay .closebtn {
     cursor: pointer;
-    color: #111 !important;
+    color: #fff !important;
     position: absolute;
     top: 20px;
     right: 45px;
