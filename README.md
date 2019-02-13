@@ -20,4 +20,15 @@ git remote set-url origin https://<username>:<password>@github.com/humblepage/<p
 # New project
 ```
 make new PROJECT=<project>
+
+- Add components folder
+- npm i react-router-dom webfontloader bootstrap
+```
+
+# Domain
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
 ```

@@ -7,4 +7,5 @@ start:
 
 new:
 	npx create-react-app $(PROJECT)
-	cd $(PROJECT)
+	cd $(PROJECT) && mkdir src/components
+	cd $(PROJECT) && npm i react-router-dom webfontloader bootstrap
