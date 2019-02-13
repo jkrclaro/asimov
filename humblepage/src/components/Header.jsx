@@ -54,10 +54,10 @@ class Header extends React.Component {
                     </div>
                 </div>
 
-                <div className='container' style={{paddingTop: 20}}>
+                <div className='container' style={{paddingTop: 20, paddingBottom: 20}}>
                     <ul className="nav">
                         <li className='nav-item'><Link to='/' className='nav-link'><span className='brand-title'> HUMBLEPAGE</span></Link></li>
-                        <li className='nav-item ml-auto'><span className='nav-link' style={styles.menuBar} onClick={this.openNav}><FontAwesomeIcon icon='bars'/></span></li>
+                        <li className='nav-item ml-auto'><span className='nav-link' style={styles.menuBar} onClick={this.openNav}><FontAwesomeIcon icon='th'/></span></li>
                     </ul>
                 </div>
             </div>

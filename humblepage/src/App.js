@@ -9,10 +9,10 @@ import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCopyright, faBars, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faCopyright, faTh } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-library.add(fab, faCopyright, faBars, faPhone, faEnvelope);
+library.add(fab, faCopyright, faTh);
 
 
 class App extends Component {
