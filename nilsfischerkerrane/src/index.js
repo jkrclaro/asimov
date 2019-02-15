@@ -9,7 +9,8 @@ import WebFont from 'webfontloader';
 WebFont.load({
     google: {
       families: [
-          'Ubuntu:300,400,700,900', 'sans-serif'
+          'Ubuntu:300,400,700,900', 'sans-serif',
+          'Oswald:300,400,700,900', 'sans-serif'
       ]
     }
 });
