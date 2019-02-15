@@ -14,24 +14,24 @@ class TourDublin extends React.Component {
     state = {
         isDesktop: false,
         visits: [
-            {'title': 'Garden of Remembrance', 'description': "TODO"}, // 1
-            {'title': 'Parnell Monument', 'description': "TODO"}, // 2
-            {'title': "O'Connell Street", 'description': "TODO"}, // 3
-            {'title': 'The Spire', 'description': "TODO"}, // 4
-            {'title': 'General Post Office', 'description': "TODO"}, // 5
-            {'title': "O'Connell Monument", 'description': "TODO"}, // 6
-            {'title': 'Liffey Boardwalk', 'description': "TODO"}, // 7
-            {'title': "Ha'penny Bridge", 'description': "TODO"}, // 8
-            {'title': 'Temple Bar', 'description': "TODO"}, // 9
-            {'title': 'City Hall', 'description': "TODO"}, // 10
-            {'title': 'Dublin Castle', 'description': "TODO"}, // 11
-            {'title': '1916 Memorial', 'description': "TODO"}, // 12
-            {'title': 'College Green', 'description': "TODO"}, // 13
-            {'title': 'Trinity College', 'description': "TODO"}, // 14
-            {'title': 'Merrion Square', 'description': "TODO"}, // 15
-            {'title': 'Oscar Wilde Statue', 'description': "TODO"}, // 16
-            {'title': 'Leinster House', 'description': "TODO"}, // 17
-            {'title': "Napper Tandy's", 'description': "TODO"}, // 18
+            {'title': 'Garden of Remembrance', 'image': "gardenofremembrance.jpg"}, // 1
+            {'title': 'Parnell Monument', 'image': "parnellmonument.jpg"}, // 2
+            {'title': "O'Connell Street", 'image': "oconnellstreet.jpg"}, // 3
+            {'title': 'The Spire', 'image': "thespire.jpg"}, // 4
+            {'title': 'General Post Office', 'image': "generalpostoffice.jpg"}, // 5
+            {'title': "O'Connell Monument", 'image': "oconnellmonument.jpg"}, // 6
+            {'title': 'Liffey Boardwalk', 'image': "liffeyboardwalk.jpg"}, // 7
+            {'title': "Ha'penny Bridge", 'image': "hapennybridge.jpg"}, // 8
+            {'title': 'Temple Bar', 'image': "templebar.jpg"}, // 9
+            {'title': 'City Hall', 'image': "cityhall.jpg"}, // 10
+            {'title': 'Dublin Castle', 'image': "dublincastle.jpg"}, // 11
+            {'title': '1916 Memorial', 'image': "1916memorial.jpg"}, // 12
+            {'title': 'College Green', 'image': "collegegreen.jpg"}, // 13
+            {'title': 'Trinity College', 'image': "trinitycollege.jpg"}, // 14
+            {'title': 'Merrion Square', 'image': "merrionsquare.jpg"}, // 15
+            {'title': 'Oscar Wilde Statue', 'image': "oscarwildestatue.jpg"}, // 16
+            {'title': 'Leinster House', 'image': "leinsterhouse.jpg"}, // 17
+            {'title': "Napper Tandy's", 'image': "nappertandys.jpg"}, // 18
         ],
     }
     updatePredicate = this.updatePredicate.bind(this);
@@ -75,7 +75,7 @@ class TourDublin extends React.Component {
                                 <div className="col-lg-2 enlarge mb-3" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block">
-                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
+                                        <img className="content-image" src={require('../imgs/dublin/' + visit.image)} alt={'visit-' + visit.image} width='100%' height='100%'></img>
                                         <div className='content-details fadeIn-bottom'>
                                             <h3 className="content-title">{visit.title}</h3>
                                         </div>
@@ -89,7 +89,7 @@ class TourDublin extends React.Component {
                                 <div className="col-6 enlarge mb-2" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block-mobile">
-                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
+                                        <img className="content-image" src={require('../imgs/dublin/' + visit.image)} alt={'visit-' + visit.image} width='100%' height='100%'></img>
                                         <div className="content-details fadeIn-bottom">
                                             <h3 className="content-title">{visit.title}</h3>
                                         </div>

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
-const stock2 = require('../imgs/stock2.jpg');
-const beer = require('../imgs/beer.jpg');
+const nils = require('../imgs/nils.jpg');
 
 
 class Home extends React.Component {
@@ -44,7 +43,7 @@ class Home extends React.Component {
                 <div className='container'>
                     <div className='row mt-5'>
                         <div className='col-md-6 col-lg-3 mb-5'>
-                            <img src={stock2} alt='stock-2' width='100%' height='250' style={{borderRadius: '50%'}}></img>
+                            <img src={nils} alt='nils' width='100%' height='250' style={{borderRadius: '50%'}}></img>
                         </div>
                         <div className='col-md-6 col-lg-9 mb-5'>
                             <h3 className='h3-heading'>About Me</h3>
