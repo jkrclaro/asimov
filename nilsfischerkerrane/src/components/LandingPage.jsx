@@ -79,77 +79,77 @@ class Home extends React.Component {
                                 </div>
                             </div>
 
-                            <div class="main-timeline">
-                                <div class="timeline">
-                                    <div class="timeline-content">
-                                        <div class="timeline-icon">
-                                            <i class="fas fa-city"></i>
+                            <div className="main-timeline">
+                                <div className="timeline">
+                                    <div className="timeline-content">
+                                        <div className="timeline-icon">
+                                            <i className="fas fa-city"></i>
                                         </div>
-                                        <div class="inner-content">
-                                            <h3 class="title">Explore the city</h3>
-                                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
+                                        <div className="inner-content">
+                                            <h3 className="title">Explore the city</h3>
+                                            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
                                                 dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="timeline">
-                                    <div class="timeline-content">
-                                        <div class="timeline-icon">
-                                            <i class="fas fa-history"></i>
+                                <div className="timeline">
+                                    <div className="timeline-content">
+                                        <div className="timeline-icon">
+                                            <i className="fas fa-history"></i>
                                         </div>
-                                        <div class="inner-content">
-                                            <h3 class="title">Learn about the history</h3>
-                                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
+                                        <div className="inner-content">
+                                            <h3 className="title">Learn about the history</h3>
+                                            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
                                                 dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="timeline">
-                                    <div class="timeline-content">
-                                        <div class="timeline-icon">
-                                            <i class="fas fa-clock"></i>
+                                <div className="timeline">
+                                    <div className="timeline-content">
+                                        <div className="timeline-icon">
+                                            <i className="fas fa-clock"></i>
                                         </div>
-                                        <div class="inner-content">
-                                            <h3 class="title">Learn about the present</h3>
-                                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
-                                                dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="timeline">
-                                    <div class="timeline-content">
-                                        <div class="timeline-icon">
-                                            <i class="fas fa-language"></i>
-                                        </div>
-                                        <div class="inner-content">
-                                            <h3 class="title">Get the chance to chat to a local</h3>
-                                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
+                                        <div className="inner-content">
+                                            <h3 className="title">Learn about the present</h3>
+                                            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
                                                 dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="timeline">
-                                    <div class="timeline-content">
-                                        <div class="timeline-icon">
-                                            <i class="fas fa-map-marker-alt"></i>
+                                <div className="timeline">
+                                    <div className="timeline-content">
+                                        <div className="timeline-icon">
+                                            <i className="fas fa-language"></i>
                                         </div>
-                                        <div class="inner-content">
-                                            <h3 class="title">Drink where the locals drink</h3>
-                                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
+                                        <div className="inner-content">
+                                            <h3 className="title">Get the chance to chat to a local</h3>
+                                            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
                                                 dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="timeline">
-                                    <div class="timeline-content">
-                                        <div class="timeline-icon">
-                                            <i class="fas fa-beer"></i>
+                                
+                                <div className="timeline">
+                                    <div className="timeline-content">
+                                        <div className="timeline-icon">
+                                            <i className="fas fa-map-marker-alt"></i>
                                         </div>
-                                        <div class="inner-content">
-                                            <h3 class="title">And of course, drink where the locals drink!</h3>
-                                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
+                                        <div className="inner-content">
+                                            <h3 className="title">Drink where the locals drink</h3>
+                                            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
+                                                dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="timeline">
+                                    <div className="timeline-content">
+                                        <div className="timeline-icon">
+                                            <i className="fas fa-beer"></i>
+                                        </div>
+                                        <div className="inner-content">
+                                            <h3 className="title">And of course, drink where the locals drink!</h3>
+                                            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci culpa
                                                 dolore explicabo fuga pariatur gjkfdgj  quis reprehenderit tenetur vel!</p>
                                         </div>
                                     </div>

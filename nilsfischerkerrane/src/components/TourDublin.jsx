@@ -51,7 +51,7 @@ class TourDublin extends React.Component {
     render() {
         return (
             <div>
-                <Header tour='ireland' />
+                <Header tour='dublin' />
                 <div className='container'>
                     <div className='text-center'>
                         <div><a href='https://www.airbnb.ie/experiences/385040'><img src={ireland} alt='ireland' height='100' width='200'></img></a></div>

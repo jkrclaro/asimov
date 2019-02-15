@@ -1,10 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
-const classNames = require('classnames');
 const styles = {
-    cursor: {cursor: 'pointer'},
+    cursor: {cursor: 'pointer', fontSize: '2em'},
 }
 
 
@@ -37,8 +35,6 @@ class Header extends React.Component {
     }
 
     render() {
-        const brandClass = classNames({'brand-title': true, 'default': this.props.tour === 'default', 'dublin': this.props.tour === 'ireland', 'berlin': this.props.tour === 'berlin'})
-        const navLinkClass = classNames({'nav-link': true, 'theme-link': true, 'default': this.props.tour === 'default', 'dublin': this.props.tour === 'ireland', 'berlin': this.props.tour === 'berlin'})
         return (
             <div>
                 <div id="overlay-nav" className="overlay">
@@ -54,16 +50,18 @@ class Header extends React.Component {
                 
                 <nav className="navbar navbar-expand-lg navbar-dark mb-5">
                     <div className='container'>
-                        <Link to='/' className={brandClass}>Hoppy History</Link>
+                        <Link to='/' className={`brand-title ${this.props.tour}`}>Hoppy History</Link>
                         {this.state.isDesktop ? (
                             <ul className="nav ml-auto">
-                                <li className="nav-item"><Link to='/' className={navLinkClass}>Home</Link></li>
-                                <li className="nav-item"><Link to='/tours/dublin' className={navLinkClass}>Dublin Tour</Link></li>
-                                <li className="nav-item"><Link to='/tours/berlin' className={navLinkClass}>Berlin Tour</Link></li>
+                                <li className="nav-item"><Link to='/' className={`nav-link theme-link ${this.props.tour}`}>Home</Link></li>
+                                <li className="nav-item"><Link to='/tours/dublin' className={`nav-link theme-link ${this.props.tour}`}>Dublin Tour</Link></li>
+                                <li className="nav-item"><Link to='/tours/berlin' className={`nav-link theme-link ${this.props.tour}`}>Berlin Tour</Link></li>
                             </ul>
                         ) : (
                             <ul className="nav ml-auto">
-                                <li className="nav-item"><span className='nav-link'><FontAwesomeIcon className={brandClass} onClick={this.openNav} style={{fontSize: '2em', cursor: 'pointer'}} icon='bars'></FontAwesomeIcon></span></li>
+                                <li className="nav-item"><span className='nav-link'>
+                                    <i className={`fas fa-bars brand-title ${this.props.tour}`} onClick={this.openNav} style={styles.cursor}></i>
+                                </span></li>
                             </ul>
                         )}
                     </div>
