@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Header from './Header';
@@ -14,24 +13,17 @@ class TourDublin extends React.Component {
     state = {
         isDesktop: false,
         visits: [
-            {'title': 'Garden of Remembrance', 'description': "TODO"}, // 1
-            {'title': 'Parnell Monument', 'description': "TODO"}, // 2
-            {'title': "O'Connell Street", 'description': "TODO"}, // 3
-            {'title': 'The Spire', 'description': "TODO"}, // 4
-            {'title': 'General Post Office', 'description': "TODO"}, // 5
-            {'title': "O'Connell Monument", 'description': "TODO"}, // 6
-            {'title': 'Liffey Boardwalk', 'description': "TODO"}, // 7
-            {'title': "Ha'penny Bridge", 'description': "TODO"}, // 8
-            {'title': 'Temple Bar', 'description': "TODO"}, // 9
-            {'title': 'City Hall', 'description': "TODO"}, // 10
-            {'title': 'Dublin Castle', 'description': "TODO"}, // 11
-            {'title': '1916 Memorial', 'description': "TODO"}, // 12
-            {'title': 'College Green', 'description': "TODO"}, // 13
-            {'title': 'Trinity College', 'description': "TODO"}, // 14
-            {'title': 'Merrion Square', 'description': "TODO"}, // 15
-            {'title': 'Oscar Wilde Statue', 'description': "TODO"}, // 16
-            {'title': 'Leinster House', 'description': "TODO"}, // 17
-            {'title': "Napper Tandy's", 'description': "TODO"}, // 18
+            {'title': 'Reichstag Building', 'image': 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Berlin_reichstag_west_panorama_2.jpg'},
+            {'title': 'Berlin Wall', 'image': 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Berlinermauer.jpg'},
+            {'title': 'Memorial Sinti and Roma', 'image': require('../imgs/berlin/memorialsintiandromamemorial.jpg')},
+            {'title': 'Brandenburg Gate', 'image': 'https://upload.wikimedia.org/wikipedia/commons/2/2b/Berlin_Brandenburger_Tor_Abend.jpg'},
+            {'title': 'Pariser Platz', 'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/2005-10-26_Brandenburger-Tor.JPG/1920px-2005-10-26_Brandenburger-Tor.JPG'},
+            {'title': 'Memorial to Murdered Jews', 'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Holocaust_memorial_tree.jpg/1024px-Holocaust_memorial_tree.jpg'},
+            {'title': 'Potsdamer Platz', 'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Berlin_-_Potsdamer_Platz_-_2016.jpg/1920px-Berlin_-_Potsdamer_Platz_-_2016.jpg'},
+            {'title': 'Luftwaffe & SS Headquarters ', 'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Berlin%2C_Mitte%2C_Wilhelmstra%C3%9Fe%2C_Detlev-Rohwedder-Haus.jpg/1920px-Berlin%2C_Mitte%2C_Wilhelmstra%C3%9Fe%2C_Detlev-Rohwedder-Haus.jpg'},
+            {'title': 'German Chancellery', 'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Canciller%C3%ADa_Federal%2C_Berl%C3%ADn%2C_Alemania%2C_2016-04-21%2C_DD_37-39_HDR.JPG/1920px-Canciller%C3%ADa_Federal%2C_Berl%C3%ADn%2C_Alemania%2C_2016-04-21%2C_DD_37-39_HDR.JPG'},
+            {'title': "Hitler's Bunker", 'image': require('../imgs/berlin/hitlersbunker.jpg')},
+            {'title': 'Tiergarten', 'image': require('../imgs/berlin/tiergarten.jpg'    )}
         ]
     }
     updatePredicate = this.updatePredicate.bind(this);
@@ -79,7 +71,7 @@ class TourDublin extends React.Component {
                                 <div className="col-lg-2 enlarge mb-3" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block">
-                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
+                                        <img className="content-image" src={visit.image} alt={visit.title} width='100%' height='100%'></img>
                                         <div className='content-details fadeIn-bottom'>
                                             <h3 className="content-title">{visit.title}</h3>
                                         </div>
@@ -93,7 +85,7 @@ class TourDublin extends React.Component {
                                 <div className="col-6 enlarge mb-2" key={visitIndex}>
                                     <div className="content-overlay"></div>
                                     <div className="content card-block-mobile">
-                                        <img className="content-image" src={require('../imgs/visit' + `${visitIndex + 1}` + '.jpg')} alt={'visit-' + visitIndex} width='100%' height='100%'></img>
+                                        <img className="content-image" src={visit.image} alt={visit.title} width='100%' height='100%'></img>
                                         <div className="content-details fadeIn-bottom">
                                             <h3 className="content-title">{visit.title}</h3>
                                         </div>
