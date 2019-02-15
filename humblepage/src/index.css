@@ -21,19 +21,20 @@
    visibility: hidden;
 }
 
-
-html, body {
-    font-family: 'Titillium Web' !important;
-}
-
 .logo {
     height: 30px;
     width: 30px;
 }
 .brand-title {
+    font-family: 'Titillium Web';
     color: #fff;
+    letter-spacing: 2px;
     font-weight: 700;
     font-size: 1.25em;
+}
+
+.bg-color {
+    background-color: #000;
 }
 
 .nav-item:hover {
@@ -51,16 +52,26 @@ html, body {
 }
 
 .h1-title {
-    font-family: 'Prata';
+    font-family: 'Playfair Display';
     color: #fff;
-    font-weight: 300;
-    font-size: 50px !important;
+    font-weight: 400;
+    font-size: 3.25em;
 }
 .h2-title {
+    font-family: 'Playfair Display';
     font-weight: 400;
 }
 .h3-title, .h4-title {
+    font-family: 'Playfair Display';
     font-weight: 700;
+}
+
+.p-content {
+    font-family: 'Playfair Display';
+}
+
+.title-sub {
+    color: #969696;
 }
 
 .footer-title {
@@ -85,24 +96,25 @@ html, body {
 }
 
 .form-control {
-    border-color: #111 !important;
-    color: gray !important;
+    border-color: #000 !important;
+    color: #969696 !important;
 }
 
 .anchor-link, .anchor-link:hover {
-    color: #111 !important;
+    color: #000 !important;
 }
 
 .section-work {
     background-color: #fff;
-    color: #111;
+    color: #000;
 }
 .section-work-alternative {
-    background-color: #111;
+    background-color: #000;
     color: #fff;
 }
 
 .overlay-link {
+    font-family: 'Playfair Display';
     font-weight: 400;
 }
 
@@ -112,6 +124,8 @@ html, body {
 }
 
 .btn {
+    font-family: 'Titillium Web';
+    font-weight: 700 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
     padding-left: 20px !important;
@@ -135,8 +149,8 @@ html, body {
 }
 
 .footer {
-    background-color: #111;
-    font-family: 'Titillium Web';
+    background-color: #000;
+    font-family: 'Playfair Display';
 }
 
 /* Overlay*/
@@ -147,7 +161,7 @@ html, body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #000;
     overflow-x: hidden;
     transition: 0.5s;
 }

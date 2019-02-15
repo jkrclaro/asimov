@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const styles = {
     menuBar: {fontSize: '1.5em', color: '#fff', cursor: 'pointer'},
-    professionalFont: {fontFamily: 'Georgia'},
-    spanStyle: {fontSize: 40, color: '#fff', cursor: 'pointer'}
 }
 
 class Header extends React.Component {
@@ -38,7 +35,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor: '#111'}}>
+            <div className='bg-color'>
                 <div id="overlay-nav" className="overlay">
                     <span className="closebtn" onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
@@ -49,15 +46,15 @@ class Header extends React.Component {
                             <br/>
                             <br/>
                             <br/>
-                            <a href="tel:0894518912" rel='nofollow'>(089) 451 8912</a>
+                            <a href="tel:0894518912" className='overlay-link' rel='nofollow'>(089) 451 8912</a>
                         </div>
                     </div>
                 </div>
 
-                <div className='container' style={{paddingTop: 20, paddingBottom: 20}}>
+                <div className='container' style={{paddingTop: 50, paddingBottom: 20}}>
                     <ul className="nav">
                         <li className='nav-item'><Link to='/' className='nav-link'><span className='brand-title'> HUMBLEPAGE</span></Link></li>
-                        <li className='nav-item ml-auto'><span className='nav-link' style={styles.menuBar} onClick={this.openNav}><FontAwesomeIcon icon='th'/></span></li>
+                        <li className='nav-item ml-auto'><span className='nav-link' onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
                     </ul>
                 </div>
             </div>

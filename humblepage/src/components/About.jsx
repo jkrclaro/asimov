@@ -16,7 +16,7 @@ class About extends React.Component {
                     <div className='col-lg-12 mt-5 mb-5'>
                         <h3 className='h3-title theme-color'>How we work</h3>
                         <p className='p-content'>
-                            No monthly service fees, no hidden costs, no nonsense – just consistent sales and results. 
+                            We believe website design is not about how it looks or feels but how we can best serve your ideal customers. 
                             This allows you to focus on your own strengths and let us worry about running your online assets.
                         </p>
                         <p className='p-content'>

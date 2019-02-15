@@ -4,16 +4,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import WebFont from 'webfontloader';
 
-WebFont.load({
-    google: {
-      families: [
-          'Titillium Web:300,400,700,900', 'sans-serif',
-          'Prata:300,400,700,900', 'serif'
-      ]
-    }
-});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

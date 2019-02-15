@@ -25,14 +25,14 @@ class Contact extends React.Component {
     render() {
         return (
             <div>
-                <div className='section-work-alternative mb-3'>
+                <div className='mb-3'>
                     <div className='container'>
                         <div className='row'>
                             <div className='col-lg-3'></div>
                             <div className='col-lg-6'>
                                 <h3 className='h4-title mt-3 mb-3 text-center'>Contact us</h3>
-                                <b>We look forward to hearing from you.</b>
-                                <p>
+                                <b className='p-content'>We look forward to hearing from you.</b>
+                                <p className='p-content'>
                                     <div>Email us at <a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></div>
                                     <div>or call us at <a href='tel:0894518912'  className='theme-link'>(089) 451 8912</a></div>
                                 </p>
@@ -46,15 +46,15 @@ class Contact extends React.Component {
                         <div className='col-lg-3'></div>
                         <div className='col-lg-6 mb-5'>
                             <form action='https://formspree.io/john@humblepage.com' method='POST'>
-                                <label htmlFor='message'><small>INFORMATION</small></label>
+                                <label htmlFor='message' className='p-content'><small>INFORMATION</small></label>
                                 <textarea name='message' rows='5' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
                                 <div className='row'>
                                     <div className='col-lg-6'>
-                                        <label htmlFor='email'><small>EMAIL</small></label>
+                                        <label htmlFor='email' className='p-content'><small>EMAIL</small></label>
                                         <input type='email' id='_replyto' name='_replyto' className='form-control mb-3' required></input>
                                     </div>
                                     <div className='col-lg-6'>
-                                        <label htmlFor='phonenumber'><small>PHONE NUMBER</small></label>
+                                        <label htmlFor='phonenumber' className='p-content'><small>PHONE NUMBER</small></label>
                                         <input type='text' id='phonenumber' name='phonenumber' className='form-control mb-3'></input>
                                     </div>
                                 </div>
