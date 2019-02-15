@@ -25,26 +25,22 @@ class Contact extends React.Component {
     render() {
         return (
             <div>
-                <div className='mb-3'>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col-lg-3'></div>
-                            <div className='col-lg-6'>
-                                <h3 className='h4-title mt-3 mb-3 text-center'>Contact us</h3>
-                                <b className='p-content'>We look forward to hearing from you.</b>
-                                <p className='p-content'>
-                                    <div>Email us at <a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></div>
-                                    <div>or call us at <a href='tel:0894518912'  className='theme-link'>(089) 451 8912</a></div>
-                                </p>
-                            </div>
-                            <div className='col-lg-3'></div>
-                        </div>
-                    </div>
-                </div>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-lg-3'></div>
+                        <div className='col-lg-6'>
+                            <h3 className='h3-title mt-5 mb-5 text-center'>Let's talk.</h3>
+                            <div>
+                                <p className='p-title'>Email us</p>
+                                <p className='p-subtitle'><a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></p>
+                            </div>
+
+                            <div>
+                                <p className='p-title'>Call us</p>
+                                <p className='p-subtitle'><a href='tel:0894518912'  className='theme-link'>(089) 451 8912</a></p>
+                            </div>
+                        </div>
                         <div className='col-lg-6 mb-5'>
+                            <h3 className='h4-title mt-5 mb-5 text-center'>Send enquiry</h3>
                             <form action='https://formspree.io/john@humblepage.com' method='POST'>
                                 <label htmlFor='message' className='p-content'><small>INFORMATION</small></label>
                                 <textarea name='message' rows='5' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
@@ -63,7 +59,6 @@ class Contact extends React.Component {
                                 <input type='submit' className='btn btn-humblepage-primary' value='Send'></input>
                             </form>
                         </div>
-                        <div className='col-lg-3'></div>
                     </div>
                 </div>
             </div>

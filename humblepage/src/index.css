@@ -64,8 +64,18 @@
 .h3-title, .h4-title {
     font-family: 'Playfair Display';
     font-weight: 700;
+    font-size: 2em;
 }
 
+.p-title {
+    font-family: 'Playfair Display';
+    font-size: 1.75em;
+}
+.p-subtitle, .p-subtitle:hover {
+    font-family: 'Playfair Display';
+    font-size: 1.5em;
+    text-decoration: none !important;
+}
 .p-content {
     font-family: 'Playfair Display';
 }
@@ -96,6 +106,7 @@
 }
 
 .form-control {
+    font-family: 'Playfair Display';
     border-color: #000 !important;
     color: #969696 !important;
 }
@@ -119,13 +130,13 @@
 }
 
 .theme-link, .theme-link:hover {
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: 400;
+    color: #969696;
 }
 
 .btn {
     font-family: 'Titillium Web';
-    font-weight: 700 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
     padding-left: 20px !important;
