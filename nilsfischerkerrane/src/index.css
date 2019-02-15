@@ -224,7 +224,7 @@ html, body {
 }
 .main-timeline .timeline-content{
   color: #111;
-  background-color: #fff;
+  background-color: #efefef;
   border-radius: 0 60px 0 0;
   display: block;
   overflow: hidden;
