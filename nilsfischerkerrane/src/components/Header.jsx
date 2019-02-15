@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 const classNames = require('classnames');
 const styles = {
     cursor: {cursor: 'pointer'},
-    brand: {fontSize: 30, color: '#111'},
-    headerFont: {fontFamily: 'Titillium Web'},
-    spanStyle: {fontSize: 40, color: '#111', cursor: 'pointer'}
 }
 
 
@@ -45,7 +42,7 @@ class Header extends React.Component {
         return (
             <div>
                 <div id="overlay-nav" className="overlay">
-                    <a className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</a>
+                    <span className="closebtn" style={styles.cursor} onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>                        
                             <Link to='/' onClick={this.closeNav}>Home</Link>                        

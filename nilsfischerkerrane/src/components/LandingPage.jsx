@@ -42,11 +42,11 @@ class Home extends React.Component {
                 </div>
                 <div className='container'>
                     <div className='row mt-5'>
-                        <div className='col-md-6 col-lg-3 mb-5'>
-                            <img src={nils} alt='nils' width='100%' height='250' style={{borderRadius: '50%'}}></img>
+                        <div className='col-md-6 col-lg-3 text-center mb-5'>
+                            <img src={nils} alt='nils' width='200' height='250' style={{borderRadius: '50%'}}></img>
                         </div>
                         <div className='col-md-6 col-lg-9 mb-5'>
-                            <h3 className='h3-heading'>About Me</h3>
+                            <h2 className='h2-heading'>About Me</h2>
                             <p className='p-content'>
                             How often do you meet a historian who's also a professional beer expert? 
                             I'm Nils and I have created my own tour combining history and beer. 
@@ -59,7 +59,26 @@ class Home extends React.Component {
                             </p>
                         </div>
                         <div className='col-md-12 text-center'>
-                            <h3 className='h3-heading mb-5'>About the tours</h3>
+                            <h2 className='h2-heading mb-3'>About the tours</h2>
+                            <div className='row'>
+                                <div className='col-6 col-lg-3 mb-3'>
+                                    <h3 className='hoppyhistory'>200+</h3>
+                                    <h3 className='h3-heading'>Bookings</h3>
+                                </div>
+                                <div className='col-6 col-lg-3 mb-3'>
+                                    <h3 className='hoppyhistory'>1,500+</h3>
+                                    <h3 className='h3-heading'>Guests</h3>
+                                </div>
+                                <div className='col-6 col-lg-3 mb-3'>
+                                    <h3 className='hoppyhistory'>4.95/5</h3>
+                                    <h3 className='h3-heading'>Stars</h3>
+                                </div>
+                                <div className='col-6 col-lg-3 mb-3'>
+                                    <h3 className='hoppyhistory'>650+</h3>
+                                    <h3 className='h3-heading'>Reviews</h3>
+                                </div>
+                            </div>
+
                             <div class="main-timeline">
                                 <div class="timeline">
                                     <div class="timeline-content">

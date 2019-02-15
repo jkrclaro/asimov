@@ -1,5 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -48,7 +47,7 @@ class TourDublin extends React.Component {
                 <Header tour='berlin' />
                 <div className='container'>
                     <div className='text-center'>
-                        <div><a href='https://www.airbnb.ie/experiences/233421'><img src={germany} height='100' width='200'></img></a></div>
+                        <div><a href='https://www.airbnb.ie/experiences/233421'><img alt='germany.png' src={germany} height='100' width='200'></img></a></div>
                         <a className='berlin' style={{fontSize: '5em'}} href='https://www.airbnb.ie/experiences/233421'>Berlin</a>
                     </div>
                     <h3 className='h3-heading mb-3'>WHAT WE'LL DO</h3>
@@ -123,7 +122,7 @@ class TourDublin extends React.Component {
                         Nils just knows his stuff! Five stars, THANKS NILS!!!
                         </p>
                     </div>
-                    <div className='text-right mb-3'><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><span className='ml-3'>Christina, September 2018</span></div>
+                    <div className='text-right mb-3'><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><span className='ml-3'>Christina, Sep 2018</span></div>
                     <div className='speech-bubble'>
                         <p>
                             Easily one of the best tours we experienced in Europe! 
@@ -137,7 +136,7 @@ class TourDublin extends React.Component {
                             Highly recommend - you won't regret it!
                         </p>
                     </div>
-                    <div className='text-right mb-3'><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><span className='ml-3'>Amanda, September 2018</span></div>
+                    <div className='text-right mb-3'><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><span className='ml-3'>Amanda, Sep 2018</span></div>
                     <div className='speech-bubble'>
                         <p>
                             I am so happy I did this tour and really recommend it. 
@@ -149,7 +148,7 @@ class TourDublin extends React.Component {
                             some beers while learning fun facts about German beer culture was perfect.
                         </p>
                     </div>
-                    <div className='text-right mb-3'><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><span className='ml-3'>Losida, September 2018</span></div>
+                    <div className='text-right mb-3'><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><span className='ml-3'>Losida, Sep 2018</span></div>
                 </div>
                 <div className='container mt-5'>
                     <a href='https://www.airbnb.ie/experiences/233421' className='btn btn-custom-berlin btn-block mb-3'>Book now</a>

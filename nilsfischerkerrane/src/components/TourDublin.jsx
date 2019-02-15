@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -120,7 +118,7 @@ class TourDublin extends React.Component {
                         well and the Guinness was delicious. Highly recommended!
                         </p>
                     </div>
-                    <div className='text-right mb-3'><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><span className='ml-3'>Elizabeth, February 2019</span></div>
+                    <div className='text-right mb-3'><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><span className='ml-3'>Elizabeth, Feb 2019</span></div>
                     <div className='speech-bubble'>
                         <p>
                             I went with my boyfriend on this tour with Nils, 
@@ -138,7 +136,7 @@ class TourDublin extends React.Component {
                             recommendation to others, Thanks Nils! :)
                         </p>
                     </div>
-                    <div className='text-right mb-3'><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><span className='ml-3'>Jessica, February 2019</span></div>
+                    <div className='text-right mb-3'><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><span className='ml-3'>Jessica, Feb 2019</span></div>
                     <div className='speech-bubble'>
                         <p>
                             Touring with Nils was a delight - being taken 
@@ -151,7 +149,7 @@ class TourDublin extends React.Component {
                             made me rediscover my taste for Guinness!
                         </p>
                     </div>
-                    <div className='text-right mb-3'><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><FontAwesomeIcon icon='star' className='ireland-orange'/><span className='ml-3'>Paul, February 2019</span></div>
+                    <div className='text-right mb-3'><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><i className="fas fa-star hoppyhistory"></i><span className='ml-3'>Paul, Feb 2019</span></div>
                 </div>
                 <div className='container mt-5'>
                     <a href='https://www.airbnb.ie/experiences/385040' className='btn btn-custom-dublin btn-block mb-3'>Book now</a>

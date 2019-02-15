@@ -37,7 +37,12 @@ html, body {
 .h3-heading {
   font-family: 'Oswald';
   text-transform: uppercase;
-  font-size: 2.25em;
+  font-size: 1.5em;
+}
+.h2-heading {
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  font-size: 2.5em;
 }
 
 .theme-link, .theme-link:hover {
@@ -62,6 +67,10 @@ html, body {
 }
 .brand-title-inverse, .brand-title-inverse:hover {
   color: #fff;
+}
+.hoppyhistory, .hoppyhistory:hover {
+  color: #FF7900 !important;
+  text-decoration: none;
 }
 .dublin, .dublin:hover {
   color: #009A49 !important;
