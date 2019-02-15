@@ -28,7 +28,7 @@ class Contact extends React.Component {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-lg-6'>
-                            <h3 className='h3-title mt-5 text-center'>Let's talk.</h3>
+                            <h3 className='h3-title mt-5 mb-5 text-center'>Let's talk.</h3>
                             <div>
                                 <p className='p-title'>Email us</p>
                                 <p className='p-subtitle'><a href='mailto:john@humblepage.com' className='theme-link'>john@humblepage.com</a></p>

@@ -9,3 +9,12 @@ new:
 	npx create-react-app $(PROJECT)
 	cd $(PROJECT) && mkdir src/components
 	cd $(PROJECT) && npm i react-router-dom webfontloader bootstrap
+
+h:
+	cd humblepage && npm run start
+
+n:
+	cd nilsfischerkerrane && npm run start
+
+p:
+	cd pilarlokko && npm run start
