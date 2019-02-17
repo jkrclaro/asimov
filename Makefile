@@ -10,8 +10,8 @@ new:
 	cd $(PROJECT) && mkdir src/components
 	cd $(PROJECT) && npm i react-router-dom webfontloader bootstrap
 
-h:
-	cd humblepage && npm run start
+l:
+	cd leprechaundesign && npm run start
 
 n:
 	cd nilsfischerkerrane && npm run start

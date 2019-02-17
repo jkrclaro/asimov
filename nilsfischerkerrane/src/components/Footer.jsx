@@ -7,7 +7,7 @@ class Footer extends React.Component {
         return (
             <div className='text-center mt-5 mb-3'>
                 <hr/>
-                <a href='https://humblepage.com' className='footer-link'><small>SITE BY HUMBLEPAGE</small></a>
+                <a href='https://humblepage.com' className='footer-link'><small>SITE BY Leprechaun Design</small></a>
             </div>
         )
     }
