@@ -28,9 +28,10 @@
 
 .brand-title {
     font-family: 'Titillium Web';
+    text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 700;
-    font-size: 1.25em;
+    font-weight: 900;
+    font-size: 1.125em;
 }
 
 .main-text {
