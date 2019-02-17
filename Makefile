@@ -13,8 +13,8 @@ new:
 l:
 	cd leprechaundesign && npm run start
 
-n:
-	cd nilsfischerkerrane && npm run start
+h:
+	cd hoppyhistory && npm run start
 
 p:
 	cd pilarlokko && npm run start

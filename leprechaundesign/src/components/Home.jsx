@@ -25,7 +25,7 @@ class Home extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 992 });
+        this.setState({ isDesktop: window.innerWidth > 768 });
     };
 
     handleChange(event) {
