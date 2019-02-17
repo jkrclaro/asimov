@@ -10,7 +10,7 @@ class WorkWithUs extends React.Component {
                 <div className='container text-center'>
                     <h3 className='h3-title' style={{paddingTop: 40}}>Work with us</h3>
                     <p className='p-content'>Tell us a little bit about your project.</p>
-                    <Link to='/contact' className='btn btn-humblepage-primary mb-5'>Let's talk</Link>
+                    <Link to='/contact' className='btn btn-humblepage-primary mb-5'>Get in touch</Link>
                 </div>
             </div>
         )

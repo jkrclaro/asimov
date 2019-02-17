@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const styles = {
-    menuBar: {fontSize: '1.5em', color: '#fff', cursor: 'pointer'},
+    menuBar: {fontSize: '1.5em', cursor: 'pointer'},
 }
 
 class Header extends React.Component {
@@ -34,8 +34,9 @@ class Header extends React.Component {
     }
 
     render() {
+        const theme = this.props.theme;
         return (
-            <div className='bg-color'>
+            <div className={`${theme}-bg`}>
                 <div id="overlay-nav" className="overlay">
                     <span className="closebtn" onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
@@ -53,8 +54,8 @@ class Header extends React.Component {
 
                 <div className='container' style={{paddingTop: 50, paddingBottom: 20}}>
                     <ul className="nav">
-                        <li className='nav-item'><Link to='/' className='nav-link'><span className='brand-title'> HUMBLEPAGE</span></Link></li>
-                        <li className='nav-item ml-auto'><span className='nav-link' onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
+                        <li className='nav-item'><Link to='/' className='nav-link'><span className={`brand-title ${theme}-text`}> HUMBLEPAGE</span></Link></li>
+                        <li className='nav-item ml-auto'><span className={`nav-link ${theme}-text`} onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
                     </ul>
                 </div>
             </div>

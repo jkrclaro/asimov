@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from './Header';
+import Footer from './Footer';
 import WorkWithUs from './WorkWithUs';
 
 
@@ -11,27 +13,29 @@ class About extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className='container'>
-                    <div className='col-lg-12 mt-5 mb-5'>
-                        <h3 className='h3-title theme-color'>How we work</h3>
-                        <p className='p-content'>
-                            We believe website design is not about how it looks or feels but how we can best serve your ideal customers. 
-                            This allows you to focus on your own strengths and let us worry about running your online assets.
-                        </p>
-                        <p className='p-content'>
-                            We love to work with people who want real change and 
-                            who are willing to let us get it for them. 
-                            If you want to do things differently then we can’t wait to help.
-                        </p>
+            <div className='Site'>
+                <div className='Site-content'>
+                    <Header theme='main'/>
+                    <div className='container'>
+                        <div className='col-lg-10 mt-5 mb-5'>
+                            <h2 className='h2-title'>
+                                We are an independent company based in Dublin, Ireland.
+                                <span className='title-sub'> We work with people that wants real change.</span>
+                            </h2>
+                        </div>
+                        <div className='col-lg-10'>
+                            <h4 className='h4-title'>What we do</h4>
+                            <p className='p-content'>
+                                We develop engaging websites that 
+                                truly engages with your ideal customers to help
+                                you focus on your business and let us worry
+                                about running your online assets.
+                            </p>
+                        </div>
                     </div>
+                    <WorkWithUs />
                 </div>
-                <div className='section-work-alternative'>
-                    <div className='container text-center'>
-                        <h2 className='h2-title' style={{paddingTop: 40, paddingBottom: 40}}>We are an independent company based in Dublin, Ireland.</h2>    
-                    </div>
-                </div>
-                <WorkWithUs />
+                <Footer theme='main'/>
             </div>
         )
     }
