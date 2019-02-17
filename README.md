@@ -1,4 +1,4 @@
-# humblepage
+# leprechaundesign
 Repository for my freelance clients.
 
 # Usage

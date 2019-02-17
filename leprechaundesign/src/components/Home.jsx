@@ -39,7 +39,11 @@ class Home extends React.Component {
                 <div className='invert-bg'>
                     <div className='container mb-5'>
                         <div className='col-lg-12' style={{paddingTop: 50}}>
-                            <h1 className='h1-title mb-3'>Enhance your online presence with a website. <span className='title-sub'>We obsess about the outcome.</span></h1>
+                            {this.state.isDesktop ? (
+                                <h1 className='h1-title mb-3'>Enhance your online presence with a website. <span className='title-sub'>We obsess about the outcome.</span></h1>
+                            ) : (
+                                <h1 className='h1-title h1-title-mobile mb-3'>Enhance your online presence with a website. <span className='title-sub'>We obsess about the outcome.</span></h1>
+                            )}
                             <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
                         </div>
                     </div>
