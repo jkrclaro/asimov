@@ -1,14 +1,224 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Lato' !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+:root {
+  —-space: 1.5em 0;
+  —-space: 2em 0;
+}
+
+.Site {
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
+}
+.Site-content {
+ flex: 1 0 auto;
+ padding: var( — space) var( — space) 0;
+ width: 100%;
+}
+.Site-content:after {
+ content: ‘\00a0’;
+ display: block;
+ margin-top: var( — space);
+ height: 0;
+ visibility: hidden;
+}
+
+.nav {
+  font-family: 'Lato';
+}
+
+.brand-title {
+  font-family: 'Lato';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 1.3em;
+}
+
+.nav-link {
+  font-family: 'Lato';
+  text-transform: uppercase;
+  color: #121212 !important;
+  font-weight: 700;
+  font-size: 1em;
+}
+.nav-link:hover {
+  color: #aaa !important;
+}
+
+.img-link, .img-link:hover {
+  text-decoration: none;
+  color: #121212;
+}
+
+.theme-bg {
+  background-color: #121212 !important;
+}
+
+.theme-text {
+  color: #121212;
+}
+.theme-text:hover {
+  color: #aaa !important;
+  text-decoration: none;
+}
+
+.theme-link {
+  color: #121212;
+  text-decoration: underline;
+}
+.theme-link:hover {
+  color: #aaa !important;
+}
+
+.title {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.h1-title {
+  font-size: 2.5em;
+}
+.h3-title {
+  font-size: 1em;
+  padding-top: 10px;
+}
+
+.landingpage {
+  height: 100vh;
+}
+
+/* Button */
+.btn {
+  border-radius: 24px !important;
+  font-weight: 700 !important;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-pilarlokko-primary {
+  background-color: #121212 !important;
+  border-color: #121212 !important;
+  color: #fff !important;
+}
+.btn-pilarlokko-primary:hover, .btn-pilarlokko-primary:focus, .btn-pilarlokko-primary:active, .btn-pilarlokko-primary.active, .open > .dropdown-toggle.btn-pilarlokko-primary {
+  background-color: #aaa !important;
+  border-color: #aaa !important;
+  color: #fff;
+}
+
+.fab {
+  font-size: 32px;
+  padding-right: 10px;
+}
+.fa-instagram {
+  color: #fb3958;
+}
+.fa-facebook {
+  color: #3b5998;
+}
+.fa-twitter {
+  color: #1da1f2;
+}
+.fa-pinterest {
+  color: #c8232c;
+}
+.fa-linkedin {
+  color: #0077B5;
+}
+
+.dropdown {
+  cursor: pointer !important;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.footer-title {
+  font-weight: 700;
+}
+
+/* Overlay*/
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #121212;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  text-decoration: none;
+  color: #808080;
+}
+
+.overlay .closebtn {
+  cursor: pointer;
+  color: #fff !important;
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+.overlay a {font-size: 20px}
+.overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+}
 }
