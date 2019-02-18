@@ -13,8 +13,17 @@ new:
 l:
 	cd leprechaundesign && npm run start
 
+ld:
+	make deploy PROJECT=leprechaundesign
+
 h:
 	cd hoppyhistory && npm run start
 
+hd:
+	make deploy PROJECT=hoppyhistory
+
 p:
 	cd pilarlokko && npm run start
+
+pd:
+	make deploy PROJECT=pilarlokko

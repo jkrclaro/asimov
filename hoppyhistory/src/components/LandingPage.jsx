@@ -59,8 +59,8 @@ class Home extends React.Component {
                             </p>
                         </div>
                         <div className='col-md-12 text-center'>
-                            <h2 className='h2-heading mb-3'>About the tours</h2>
-                            <div className='row'>
+                            <h2 className='h2-heading mb-5'>About the tours</h2>
+                            <div className='row mb-5'>
                                 <div className='col-6 col-lg-3 mb-3'>
                                     <h3 className='hoppyhistory'>200+</h3>
                                     <h3 className='h3-heading'>Bookings</h3>
