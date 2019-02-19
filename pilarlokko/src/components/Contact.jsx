@@ -3,6 +3,10 @@ import React from 'react';
 
 class Contact extends React.Component {
 
+    componentDidMount() {
+        window.scrollTo(0 ,0);
+    }
+
     render() {
         return (
             <div className='container mt-5'>
@@ -10,6 +14,13 @@ class Contact extends React.Component {
                 <p>
                     Or email me at <a href='mailto:pilar.lokko@gmail.com' className='theme-link'>pilar.lokko@gmail.com</a>
                 </p>
+                <div className='mb-3'>
+                    <a href='https://google.com' rel='nofollow'><i className='fab fa-instagram'></i></a>
+                    <a href='https://google.com' rel='nofollow'><i className='fab fa-twitter'></i></a>
+                    <a href='https://google.com' rel='nofollow'><i className='fab fa-facebook'></i></a>
+                    <a href='https://google.com' rel='nofollow'><i className='fab fa-pinterest'></i></a>
+                    <a href='https://google.com' rel='nofollow'><i className='fab fa-linkedin'></i></a>
+                </div>
                 <form className='mb-3'>
                     <div className='row'>
                         <div className='col-lg-6'>
@@ -28,13 +39,6 @@ class Contact extends React.Component {
                     <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name="b_9d2249cd11327255e70ecdb60_77fea6ac28" tabindex="-1" value=""></input></div>
                     <div className="clear"><input type="submit" value="Send" name="Send" id="mc-embedded-subscribe" className="btn btn-pilarlokko-primary"></input></div>
                 </form>
-                <div>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-instagram'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-twitter'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-facebook'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-pinterest'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-linkedin'></i></a>
-                </div>
             </div>
         )
     }

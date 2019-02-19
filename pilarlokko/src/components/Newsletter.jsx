@@ -3,6 +3,10 @@ import React from 'react';
 
 class Newsletter extends React.Component {
 
+    componentDidMount() {
+        window.scrollTo(0 ,0);
+    }
+
     render() {
         return (
             <div className='container'>
@@ -26,13 +30,13 @@ class Newsletter extends React.Component {
                                     <label htmlFor='mce-EMAIL' className='p-content'><small>Email</small></label>
                                     <input type='email' value="" name="EMAIL" className='form-control mb-3' id="mce-EMAIL"  required></input>
                                     <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name="b_9d2249cd11327255e70ecdb60_77fea6ac28" tabindex="-1" value=""></input></div>
+                                    <p className='text-muted'>
+                                        Don’t worry, you can unsubscribe from the newsletter at any time.
+                                    </p>
                                     <div className="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="btn btn-pilarlokko-primary"></input></div>
                                 </div>
                             </form>
                         </div>
-                        <p className='text-muted'>
-                            Don’t worry, you can unsubscribe from the newsletter at any time.
-                        </p>
                     </div>
                     <div className='col-lg-6 mt-5'>
                         <img src='https://www.ucd.ie/sportandfitness/t4media/Banner---PT-Course.jpg' className='img-fluid' alt='contact.jpg'></img>
