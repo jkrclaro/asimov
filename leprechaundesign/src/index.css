@@ -80,25 +80,41 @@
     font-size: 7.5vw !important;
 }
 .h3-title {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
     font-weight: 700;
     font-size: 1.75em;
 }
 .h4-title {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.h5-title {
+    font-family: 'Titillium Web';
+    color: #808080;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1em;
 }
 
 .p-title {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
     font-size: 1.5em;
 }
 .p-subtitle, .p-subtitle:hover {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
     font-size: 1.25em;
     text-decoration: none !important;
 }
 .p-content {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web' !important;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
 
 .title-sub {
@@ -127,7 +143,7 @@
 }
 
 .form-control {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
     border-color: #000 !important;
     color: #969696 !important;
 }
@@ -146,7 +162,7 @@
 }
 
 .overlay-link {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
     font-weight: 400;
 }
 
@@ -181,7 +197,7 @@
 }
 
 .footer {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
 }
 
 /* Overlay*/

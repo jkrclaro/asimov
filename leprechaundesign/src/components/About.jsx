@@ -12,6 +12,7 @@ class About extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
+        document.title = 'Leprechaun Design - About';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
@@ -43,13 +44,37 @@ class About extends React.Component {
                             </h2>
                         )}
                     </div>
-                    <div className='col-lg-10'>
-                        <h4 className='h4-title'>What we do</h4>
-                        <p className='p-content'>
-                            We develop engaging websites to reach your ideal customers. This helps
-                            you focus on your business and let us worry
-                            about running your online assets.
-                        </p>
+                    <div className='col-lg-12'>
+                        <h4 className='h4-title mb-5'>What we do</h4>
+                        <div className='row'>
+                            <div className='col-lg-4 mb-3'>
+                                <h5 className='h5-title mb-3'>Web development</h5>
+                                <p className='p-content'>
+                                    We offer flexible services to 
+                                    ensure that your web platform is 
+                                    aligned with your business 
+                                    initiatives and marketing goals.
+                                </p>
+                            </div>
+                            <div className='col-lg-4 mb-3'>
+                                <h5 className='h5-title'>UI / UX design</h5>
+                                <p className='p-content'>
+                                    We work as an extension of your 
+                                    company and collaborate with you 
+                                    to create a website tailored to 
+                                    your brand’s goals and initiatives.
+                                </p>
+                            </div>
+                            <div className='col-lg-4 mb-3'>
+                                <h5 className='h5-title'>Responsive web design</h5>
+                                <p className='p-content'>
+                                    We create engaging visuals that 
+                                    scales across desktop, tablet and 
+                                    mobile ensuring your brand’s 
+                                    website works at all sizes.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <WorkWithUs />

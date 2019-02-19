@@ -15,6 +15,7 @@ class Home extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
+        document.title = 'Leprechaun Design - Enhance your online presence with a website | Ireland';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
@@ -47,7 +48,7 @@ class Home extends React.Component {
                             <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
                         </div>
                     </div>
-                    <a href='https://hoppyhistory.com' rel='nofollow'><img src={hoppyhistory} alt='hoppyhistory' width='100%' height='400'></img></a>
+                    <a href='https://hoppyhistory.com' rel='nofollow'><img src={hoppyhistory} alt='hoppyhistory' className='img-fluid'></img></a>
                     <WorkWithUs />
                 </div>
             </div>

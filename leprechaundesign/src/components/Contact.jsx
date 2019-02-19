@@ -11,6 +11,7 @@ class Contact extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
+        document.title = 'Leprechaun Design - Contact';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
