@@ -63,7 +63,7 @@ html, body {
   color: #121212;
 }
 .theme-text:hover {
-  color: #aaa !important;
+  color: #444 !important;
   text-decoration: none;
 }
 
@@ -72,7 +72,7 @@ html, body {
   text-decoration: underline;
 }
 .theme-link:hover {
-  color: #aaa !important;
+  color: #444 !important;
 }
 
 .title {
@@ -113,8 +113,8 @@ html, body {
   color: #fff !important;
 }
 .btn-pilarlokko-primary:hover, .btn-pilarlokko-primary:focus, .btn-pilarlokko-primary:active, .btn-pilarlokko-primary.active, .open > .dropdown-toggle.btn-pilarlokko-primary {
-  background-color: #aaa !important;
-  border-color: #aaa !important;
+  background-color: #444 !important;
+  border-color: #444 !important;
   color: #fff;
 }
 

@@ -14,7 +14,7 @@ make deploy PROJECT=<project>
 # Set proper GitHub credentials on new *.github.io
 ```
 cd <project>.github.io
-git remote set-url origin https://<username>:<password>@github.com/humblepage/<project>.github.io.git
+git remote set-url origin https://<username>:<password>@github.com/leprechaundesign/<project>.github.io.git
 ```
 
 # New project

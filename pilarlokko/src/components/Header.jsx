@@ -50,7 +50,7 @@ class Header extends React.Component {
                 <div className='container' style={{paddingTop: 20, paddingBottom: 20}}>
                     {this.state.isDesktop ? (
                         <ul className="nav">
-                            <li className="nav-item mr-auto"><Link to='/' className='navbar-brand brand-title theme-text'>Pilar Lokko</Link></li>
+                            <li className="mr-auto"><Link to='/' className='navbar-brand brand-title theme-text'>Pilar Lokko</Link></li>
                             <li className="nav-item"><Link className='nav-link' to='/'>Home</Link></li>
                             <li className="nav-item"><Link className='nav-link' to='/newsletter'>Newsletter</Link></li>
                             <li className="nav-item"><Link className='nav-link' to='/contact'>Contact</Link></li>
