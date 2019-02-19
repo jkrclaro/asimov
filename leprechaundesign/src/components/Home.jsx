@@ -45,7 +45,7 @@ class Home extends React.Component {
                             ) : (
                                 <h1 className='h1-title h1-title-mobile mb-3'>Enhance your online presence with a website. <span className='title-sub'>We obsess about the outcome.</span></h1>
                             )}
-                            <Link to='/about' className='btn btn-humblepage-primary'>Get to know us</Link>
+                            <Link to='/about' className='btn btn-leprechaundesign-primary'>Get to know us</Link>
                         </div>
                     </div>
                     <a href='https://hoppyhistory.com' rel='nofollow'><img src={hoppyhistory} alt='hoppyhistory' className='img-fluid'></img></a>

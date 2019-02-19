@@ -36,7 +36,7 @@ class Contact extends React.Component {
                                     <h3 className='h3-title mt-5 mb-5 text-center'>Let's talk.</h3>
                                     <div>
                                         <p className='p-title'>General Inquiries</p>
-                                        <p className='p-subtitle'><a href='mailto:hello@leprechaundesign.ie' className='theme-link'>info@leprechaundesign.ie</a></p>
+                                        <p className='p-subtitle'><a href='mailto:info@leprechaundesign.ie' className='theme-link'>info@leprechaundesign.ie</a></p>
                                     </div>
 
                                     <div>
@@ -60,8 +60,8 @@ class Contact extends React.Component {
                                             </div>
                                         </div>
                                         <input type="hidden" name="_subject" value="Leprechaun Design Proposal" />
-                                        <input type="hidden" name="_next" value="https://humblepage.com" />
-                                        <input type='submit' className='btn btn-humblepage-primary' value='Send'></input>
+                                        <input type="hidden" name="_next" value="https://leprechaundesign.ie" />
+                                        <input type='submit' className='btn btn-leprechaundesign-primary' value='Send'></input>
                                     </form>
                                 </div>
                             </div>

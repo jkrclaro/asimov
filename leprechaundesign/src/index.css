@@ -185,12 +185,12 @@
     outline: 0 none;
 }
 
-.btn-humblepage-primary {
+.btn-leprechaundesign-primary {
     background-color: #333;
     border-color: #333;
     color: #fff;
 }
-.btn-humblepage-primary:hover, .btn-humblepage-primary:focus, .btn-humblepage-primary:active, .btn-humblepage-primary.active, .open > .dropdown-toggle.btn-humblepage-primary {
+.btn-leprechaundesign-primary:hover, .btn-leprechaundesign-primary:focus, .btn-leprechaundesign-primary:active, .btn-leprechaundesign-primary.active, .open > .dropdown-toggle.btn-leprechaundesign-primary {
     background-color: #333;
     border-color: #333;
     color: #fff;
