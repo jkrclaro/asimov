@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
+import Footer from './Footer';
 
 
 class Contact extends React.Component {
@@ -27,7 +28,8 @@ class Contact extends React.Component {
 
     render() {
         return (
-                <div>
+            <div className='Site'>
+                <div className='Site-content'>
                     <Header theme='main' />
                     <div className='container'>
                         <div className='col-lg-12'>
@@ -68,6 +70,8 @@ class Contact extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Footer theme='main' />
+            </div>
         )
     }
 }
