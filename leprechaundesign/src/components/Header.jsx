@@ -53,7 +53,11 @@ class Header extends React.Component {
 
                 <div className='container' style={{paddingTop: 50, paddingBottom: 20}}>
                     <ul className="nav">
-                        <li className='nav-item'><Link to='/' className='nav-link'><span className={`brand-title ${theme}-title`}> Leprechaun Design</span></Link></li>
+                        <li className='nav-item'>
+                            <Link to='/' className='nav-link'>
+                                <span className={`brand-title ${theme}-title`}> Leprechaun Design</span>
+                            </Link>
+                        </li>
                         <li className='nav-item ml-auto'><span className={`nav-link ${theme}-title`} onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
                     </ul>
                 </div>
