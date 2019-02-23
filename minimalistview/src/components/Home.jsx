@@ -13,7 +13,7 @@ class Home extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
-        document.title = 'Minimalist View - Architects, Interior Designers and Builders';
+        document.title = 'Minimalist View - Minimalist modern website design';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
