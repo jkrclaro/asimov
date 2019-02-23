@@ -31,7 +31,7 @@ class Footer extends React.Component {
                         <div className='col-lg-12'>
                             <div className='row'>
                                 <div className='col-lg-3 mt-3'>
-                                    <Link to='/' className={`brand-title ${theme}-title`}>Minimalist pad</Link>
+                                    <Link to='/' className={`brand-title ${theme}-title`}>Minimalist view</Link>
                                 </div>
                                 <div className='col-lg-3 mt-3'>
                                     <div className={`${theme}-title footer-title mb-2`}>Explore</div>
