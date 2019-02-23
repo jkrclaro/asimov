@@ -56,7 +56,7 @@ class Home extends React.Component {
                                         <div>DEVELOPMENT</div>
                                     </h1>
                                 )}
-                                <Link to='/contact' className='btn btn-leprechaundesign-primary'>Contact us</Link>
+                                <Link to='/contact' className='btn btn-minimalistview-primary'>Contact us</Link>
                             </div>
                         </div>
                         <div className='section-work'>
@@ -108,7 +108,7 @@ class Home extends React.Component {
                                 <div className='col-lg-12 text-center'>
                                     <h3 className='h3-title' style={{paddingTop: 40}}>Work with us</h3>
                                     <p className='p-content'>Tell us a little bit about your project.</p>
-                                    <Link to='/contact' className='btn btn-leprechaundesign-alternative mb-5'>Get in touch</Link>
+                                    <Link to='/contact' className='btn btn-minimalistview-alternative mb-5'>Get in touch</Link>
                                 </div>
                             </div>
                         </div>

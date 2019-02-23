@@ -10,11 +10,11 @@ new:
 	cd $(PROJECT) && mkdir src/components
 	cd $(PROJECT) && npm i react-router-dom webfontloader bootstrap
 
-l:
-	cd leprechaundesign && npm run start
+m:
+	cd minimalistview && npm run start
 
-ld:
-	make deploy PROJECT=leprechaundesign
+md:
+	make deploy PROJECT=minimalistview
 
 h:
 	cd hoppyhistory && npm run start

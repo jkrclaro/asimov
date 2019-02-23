@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home';
-import Footer from './components/Footer';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 

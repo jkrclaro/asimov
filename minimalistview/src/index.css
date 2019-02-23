@@ -158,20 +158,20 @@
     outline: 0 none;
 }
 
-.btn-leprechaundesign-primary {
+.btn-minimalistview-primary {
     border: 1px solid #fff !important;
     color: #fff;
 }
-.btn-leprechaundesign-primary:hover, .btn-leprechaundesign-primary:focus, .btn-leprechaundesign-primary:active, .btn-leprechaundesign-primary.active, .open > .dropdown-toggle.btn-leprechaundesign-primary {
+.btn-minimalistview-primary:hover, .btn-minimalistview-primary:focus, .btn-minimalistview-primary:active, .btn-minimalistview-primary.active, .open > .dropdown-toggle.btn-minimalistview-primary {
     background-color: #fff;
     border-color: #fff;
     color: #000;
 }
-.btn-leprechaundesign-alternative {
+.btn-minimalistview-alternative {
     border: 1px solid #000 !important;
     color: #000;
 }
-.btn-leprechaundesign-alternative:hover, .btn-leprechaundesign-alternative:focus, .btn-leprechaundesign-alternative:active, .btn-leprechaundesign-alternative.active, .open > .dropdown-toggle.btn-leprechaundesign-alternative {
+.btn-minimalistview-alternative:hover, .btn-minimalistview-alternative:focus, .btn-minimalistview-alternative:active, .btn-minimalistview-alternative.active, .open > .dropdown-toggle.btn-minimalistview-alternative {
     background-color: #000;
     color: #fff;
 }
