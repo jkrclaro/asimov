@@ -13,7 +13,7 @@ class Home extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
-        document.title = 'Healthy Stamp - Minimalist modern website design';
+        document.title = 'Healthy Stamp - Website design for the health industry';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
@@ -41,19 +41,11 @@ class Home extends React.Component {
                             <div className='col-lg-12' style={{paddingTop: 50}}>
                                 {this.state.isDesktop ? (
                                     <h1 className='h1-title mb-3'>
-                                        <div>WEB</div>
-                                        <div>DESIGN</div>
-                                        <div>MINIMALIST</div>
-                                        <div>RESPONSIVE</div>
-                                        <div>DEVELOPMENT</div>
+                                        Enhance your online presence with a website. We focus on the results.
                                     </h1>
                                 ) : (
                                     <h1 className='h1-title h1-title-mobile mb-3'>
-                                        <div>WEB</div>
-                                        <div>DESIGN</div>
-                                        <div>MINIMALIST</div>
-                                        <div>RESPONSIVE</div>
-                                        <div>DEVELOPMENT</div>
+                                        Enhance your online presence with a website. We focus on the results.
                                     </h1>
                                 )}
                                 <Link to='/contact' className='btn btn-healthystamp-primary'>Contact us</Link>

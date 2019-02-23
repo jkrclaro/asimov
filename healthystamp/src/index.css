@@ -38,13 +38,13 @@
 }
 
 .main-text {
-    color: #000 !important;
+    color: #666 !important;
 }
 .invert-text {
-    color: #808080 !important;
+    color: #fff !important;
 }
 .main-title {
-    color: #111 !important;
+    color: #E34343 !important;
 }
 .invert-title {
     color: #fff;
@@ -54,7 +54,7 @@
     background-color: #fff;
 }
 .invert-bg {
-    background-color: #000;
+    background-color: #E34343;
 }
 
 .nav-item:hover {
@@ -93,16 +93,18 @@
     font-weight: 700;
     font-size: 1.75em;
     text-transform: uppercase;
+    color: #E34343;
 }
 
 .p-title {
     text-transform: uppercase;
     font-family: 'Titillium Web';
     font-size: 1.5em;
+    color: #E34343;
 }
 .p-subtitle, .p-subtitle:hover {
     font-family: 'Titillium Web';
-    font-size: 1.25em;
+    font-size: 1em;
     text-decoration: none !important;
 }
 .p-content {
@@ -110,28 +112,21 @@
 }
 
 .title-sub {
-    color: #777;
+    color: #E34343;
 }
 
 .form-control {
     font-family: 'Titillium Web';
-    border-color: #000 !important;
     color: #969696 !important;
-}
-
-.anchor-link, .anchor-link:hover {
-    color: #000 !important;
 }
 
 .section-work {
     background-color: #fff;
-    color: #000;
 }
 
 .overlay-link {
     font-family: 'Titillium Web';
     font-weight: 400;
-    text-transform: uppercase;
 }
 
 .theme-link, .theme-link:hover {
@@ -140,8 +135,8 @@
     color: #969696;
 }
 
-.btn, .form-control {
-    border-radius: 0 !important;
+.btn {
+    border-radius: 25px !important;
 }
 
 .btn {
@@ -165,22 +160,30 @@
 .btn-healthystamp-primary:hover, .btn-healthystamp-primary:focus, .btn-healthystamp-primary:active, .btn-healthystamp-primary.active, .open > .dropdown-toggle.btn-healthystamp-primary {
     background-color: #fff;
     border-color: #fff;
-    color: #000;
+    color: #E34343;
 }
 .btn-healthystamp-alternative {
-    border: 1px solid #000 !important;
-    color: #000;
+    border: 1px solid #E34343 !important;
+    color: #E34343;
 }
 .btn-healthystamp-alternative:hover, .btn-healthystamp-alternative:focus, .btn-healthystamp-alternative:active, .btn-healthystamp-alternative.active, .open > .dropdown-toggle.btn-healthystamp-alternative {
-    background-color: #000;
+    background-color: #E34343;
     color: #fff;
+}
+
+.fa-instagram, .fa-twitter, .fa-facebook {
+    cursor: pointer;
+    color: #fff;
+}
+.fa-instagram:hover, .fa-twitter:hover, .fa-facebook:hover {
+    color: gainsboro;
 }
 
 .footer {
     font-family: 'Titillium Web';
 }
 .footer-title {
-    font-weight: 400;
+    font-weight: 700;
     text-transform: uppercase;
 }
 .footer-text-color, .footer-text-color:hover {
@@ -218,7 +221,7 @@
 
 .overlay a:hover, .overlay a:focus {
     text-decoration: none;
-    color: #808080;
+    color: #E34343;
 }
 
 .overlay .closebtn {

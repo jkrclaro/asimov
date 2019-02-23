@@ -49,15 +49,15 @@ class Contact extends React.Component {
                                 <div className='col-lg-6 mb-5'>
                                     <h3 className='h3-title mt-5 mb-5 text-center'>Contact us</h3>
                                     <form action='https://formspree.io/info@healthystamp.com' method='POST'>
-                                        <label htmlFor='message' className='p-content'><small>INFORMATION</small></label>
+                                        <label htmlFor='message' className='p-subtitle'><small>INFORMATION</small></label>
                                         <textarea name='message' rows='5' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
                                         <div className='row'>
                                             <div className='col-lg-6'>
-                                                <label htmlFor='email' className='p-content'><small>EMAIL</small></label>
+                                                <label htmlFor='email' className='p-subtitle'><small>EMAIL</small></label>
                                                 <input type='email' id='_replyto' name='_replyto' className='form-control mb-3' required></input>
                                             </div>
                                             <div className='col-lg-6'>
-                                                <label htmlFor='phonenumber' className='p-content'><small>PHONE NUMBER</small></label>
+                                                <label htmlFor='phonenumber' className='p-subtitle'><small>PHONE NUMBER</small></label>
                                                 <input type='text' id='phonenumber' name='phonenumber' className='form-control mb-3'></input>
                                             </div>
                                         </div>

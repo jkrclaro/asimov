@@ -55,7 +55,7 @@ class Header extends React.Component {
                     <ul className="nav">
                         <li className='nav-item'>
                             <Link to='/' className='nav-link'>
-                                <span className={`brand-title ${theme}-title`}> Healthy Stamp</span>
+                                <span className={`brand-title ${theme}-title`}>Healthy Stamp</span>
                             </Link>
                         </li>
                         <li className='nav-item ml-auto'><span className={`nav-link ${theme}-title`} onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
