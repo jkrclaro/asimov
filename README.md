@@ -1,4 +1,4 @@
-# minimalistview
+# healthystamp
 Repository for my freelance clients.
 
 # Usage
@@ -14,7 +14,7 @@ make deploy PROJECT=<project>
 # Set proper GitHub credentials on new *.github.io
 ```
 cd <project>.github.io
-git remote set-url origin https://<username>:<password>@github.com/minimalistview/<project>.github.io.git
+git remote set-url origin https://<username>:<password>@github.com/healthystamp/<project>.github.io.git
 ```
 
 # New project

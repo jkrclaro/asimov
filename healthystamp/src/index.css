@@ -1,0 +1,240 @@
+:root {
+    —-space: 1.5em 0;
+    —-space: 2em 0;
+}
+
+.Site {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+.Site-content {
+   flex: 1 0 auto;
+   padding: var( — space) var( — space) 0;
+   width: 100%;
+}
+.Site-content:after {
+   content: ‘\00a0’;
+   display: block;
+   margin-top: var( — space);
+   height: 0;
+   visibility: hidden;
+}
+
+.logo {
+    height: 30px;
+    width: 30px;
+}
+
+.brand-title {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 1.125em;
+    color: #fff !important;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.main-text {
+    color: #000 !important;
+}
+.invert-text {
+    color: #808080 !important;
+}
+.main-title {
+    color: #111 !important;
+}
+.invert-title {
+    color: #fff;
+}
+
+.main-bg {
+    background-color: #fff;
+}
+.invert-bg {
+    background-color: #000;
+}
+
+.nav-item:hover {
+    text-decoration: none !important;
+}
+.nav-link {
+    color: #fff;
+    font-weight: 400;
+}
+.nav-link:hover {
+    color: #fff;
+}
+.nav-item-style {
+    padding-top: 5px !important;
+}
+
+.h1-title {
+    font-family: 'Montserrat';
+    color: #fff;
+    font-weight: 400;
+    font-size: 3.25em;
+}
+.h1-title-mobile {
+    font-size: 7.5vw !important;
+}
+.h2-title {
+    font-family: 'Titillium Web';
+    font-weight: 400;
+    font-size: 2.75em;
+}
+.h2-title-mobile {
+    font-size: 7.5vw !important;
+}
+.h3-title {
+    font-family: 'Titillium Web';
+    font-weight: 700;
+    font-size: 1.75em;
+    text-transform: uppercase;
+}
+
+.p-title {
+    text-transform: uppercase;
+    font-family: 'Titillium Web';
+    font-size: 1.5em;
+}
+.p-subtitle, .p-subtitle:hover {
+    font-family: 'Titillium Web';
+    font-size: 1.25em;
+    text-decoration: none !important;
+}
+.p-content {
+    font-family: 'Titillium Web' !important;
+}
+
+.title-sub {
+    color: #777;
+}
+
+.form-control {
+    font-family: 'Titillium Web';
+    border-color: #000 !important;
+    color: #969696 !important;
+}
+
+.anchor-link, .anchor-link:hover {
+    color: #000 !important;
+}
+
+.section-work {
+    background-color: #fff;
+    color: #000;
+}
+
+.overlay-link {
+    font-family: 'Titillium Web';
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.theme-link, .theme-link:hover {
+    text-decoration: none;
+    font-weight: 400;
+    color: #969696;
+}
+
+.btn, .form-control {
+    border-radius: 0 !important;
+}
+
+.btn {
+    font-family: 'Titillium Web';
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-healthystamp-primary {
+    border: 1px solid #fff !important;
+    color: #fff;
+}
+.btn-healthystamp-primary:hover, .btn-healthystamp-primary:focus, .btn-healthystamp-primary:active, .btn-healthystamp-primary.active, .open > .dropdown-toggle.btn-healthystamp-primary {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+.btn-healthystamp-alternative {
+    border: 1px solid #000 !important;
+    color: #000;
+}
+.btn-healthystamp-alternative:hover, .btn-healthystamp-alternative:focus, .btn-healthystamp-alternative:active, .btn-healthystamp-alternative.active, .open > .dropdown-toggle.btn-healthystamp-alternative {
+    background-color: #000;
+    color: #fff;
+}
+
+.footer {
+    font-family: 'Titillium Web';
+}
+.footer-title {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.footer-text-color, .footer-text-color:hover {
+    color: #808080;
+}
+
+/* Overlay*/
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    text-decoration: none;
+    color: #808080;
+}
+
+.overlay .closebtn {
+    cursor: pointer;
+    color: #000 !important;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}

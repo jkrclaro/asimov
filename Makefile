@@ -11,10 +11,10 @@ new:
 	cd $(PROJECT) && npm i react-router-dom webfontloader bootstrap
 
 m:
-	cd minimalistview && npm run start
+	cd healthystamp && npm run start
 
 md:
-	make deploy PROJECT=minimalistview
+	make deploy PROJECT=healthystamp
 
 h:
 	cd hoppyhistory && npm run start
