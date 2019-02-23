@@ -40,9 +40,21 @@ class Home extends React.Component {
                         <div className='container mb-5'>
                             <div className='col-lg-12' style={{paddingTop: 50}}>
                                 {this.state.isDesktop ? (
-                                    <h1 className='h1-title mb-3'>Enhance your online presence with a website. <span className='title-sub'>We obsess about the outcome.</span></h1>
+                                    <h1 className='h1-title mb-3'>
+                                        <div>WEB</div>
+                                        <div>DESIGN</div>
+                                        <div>MINIMALIST</div>
+                                        <div>RESPONSIVE</div>
+                                        <div>DEVELOPMENT</div>
+                                    </h1>
                                 ) : (
-                                    <h1 className='h1-title h1-title-mobile mb-3'>Enhance your online presence with a website. <span className='title-sub'>We obsess about the outcome.</span></h1>
+                                    <h1 className='h1-title h1-title-mobile mb-3'>
+                                        <div>WEB</div>
+                                        <div>DESIGN</div>
+                                        <div>MINIMALIST</div>
+                                        <div>RESPONSIVE</div>
+                                        <div>DEVELOPMENT</div>
+                                    </h1>
                                 )}
                                 <Link to='/contact' className='btn btn-leprechaundesign-primary'>Contact us</Link>
                             </div>
@@ -52,7 +64,7 @@ class Home extends React.Component {
                                 <div className='col-lg-12' style={{paddingTop: 50}}>
                                     <div className='row'>
                                         <div className='col-lg-4 mb-3'>
-                                            <h5 className='h5-title mb-3'>Web development</h5>
+                                            <h3 className='h3-title mb-3'>Web development</h3>
                                             <p className='p-content'>
                                                 We offer flexible web services to 
                                                 ensure that your web platform is 
@@ -61,7 +73,7 @@ class Home extends React.Component {
                                             </p>
                                         </div>
                                         <div className='col-lg-4 mb-3'>
-                                            <h5 className='h5-title'>UI / UX design</h5>
+                                            <h3 className='h3-title'>UI / UX design</h3>
                                             <p className='p-content'>
                                                 We work as an extension of your 
                                                 company and collaborate with you 
@@ -70,7 +82,7 @@ class Home extends React.Component {
                                             </p>
                                         </div>
                                         <div className='col-lg-4 mb-3'>
-                                            <h5 className='h5-title'>Responsive web design</h5>
+                                            <h3 className='h3-title'>Responsive web design</h3>
                                             <p className='p-content'>
                                                 We create engaging visuals that 
                                                 scales across desktop, tablet and 
@@ -80,7 +92,7 @@ class Home extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-lg-12 mt-5 mb-5'>
+                                <div className='col-lg-12 mt-5 mb-5 text-center'>
                                     {this.state.isDesktop ? (
                                         <h2 className='h2-title'>
                                             We are an independent company based in Dublin, Ireland.
@@ -96,7 +108,7 @@ class Home extends React.Component {
                                 <div className='col-lg-12 text-center'>
                                     <h3 className='h3-title' style={{paddingTop: 40}}>Work with us</h3>
                                     <p className='p-content'>Tell us a little bit about your project.</p>
-                                    <Link to='/contact' className='btn btn-leprechaundesign-primary mb-5'>Get in touch</Link>
+                                    <Link to='/contact' className='btn btn-leprechaundesign-alternative mb-5'>Get in touch</Link>
                                 </div>
                             </div>
                         </div>

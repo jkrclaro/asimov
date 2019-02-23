@@ -31,7 +31,7 @@ class Footer extends React.Component {
                         <div className='col-lg-12'>
                             <div className='row'>
                                 <div className='col-lg-3 mt-3'>
-                                    <Link to='/' className={`brand-title ${theme}-title`}>Leprechaun Design</Link>
+                                    <Link to='/' className={`brand-title ${theme}-title`}>Minimalist pad</Link>
                                 </div>
                                 <div className='col-lg-3 mt-3'>
                                     <div className={`${theme}-title footer-title mb-2`}>Explore</div>
@@ -41,9 +41,6 @@ class Footer extends React.Component {
                                 <div className='col-lg-3 mt-3'>
                                     <div className={`${theme}-title footer-title mb-2`}>Follow</div>
                                     <div><a href='https://www.facebook.com/leprechaundesign' rel='nofollow' className={`${theme}-text`}>Facebook</a></div>
-                                    <div><a href='https://www.instagram.com/leprechaundesign' rel='nofollow' className={`${theme}-text`}>Instagram</a></div>
-                                    <div><a href='https://www.twitter.com/leprechaundsgn' rel='nofollow' className={`${theme}-text`}>Twitter</a></div>
-                                    <div><a href='https://www.linkedin.com/company/leprechaundesign' rel='nofollow' className={`${theme}-text`}>LinkedIn</a></div>
                                 </div>
                                 <div className='col-lg-3 mt-3'>
                                     <div className={`${theme}-title footer-title mb-2`}>Get in touch</div>

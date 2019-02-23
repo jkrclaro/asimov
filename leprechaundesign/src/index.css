@@ -27,7 +27,7 @@
 }
 
 .brand-title {
-    font-family: 'Titillium Web';
+    font-family: 'Montserrat';
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 900;
@@ -72,7 +72,7 @@
 }
 
 .h1-title {
-    font-family: 'Playfair Display';
+    font-family: 'Montserrat';
     color: #fff;
     font-weight: 400;
     font-size: 3.25em;
@@ -81,7 +81,7 @@
     font-size: 7.5vw !important;
 }
 .h2-title {
-    font-family: 'Playfair Display';
+    font-family: 'Titillium Web';
     font-weight: 400;
     font-size: 2.75em;
 }
@@ -92,22 +92,11 @@
     font-family: 'Titillium Web';
     font-weight: 700;
     font-size: 1.75em;
-}
-.h4-title {
-    font-family: 'Titillium Web';
-    font-weight: 700;
-    font-size: 1.5em;
-}
-
-.h5-title {
-    font-family: 'Titillium Web';
-    color: #808080;
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1em;
 }
 
 .p-title {
+    text-transform: uppercase;
     font-family: 'Titillium Web';
     font-size: 1.5em;
 }
@@ -120,36 +109,8 @@
     font-family: 'Titillium Web' !important;
 }
 
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-
 .title-sub {
-    color: #969696;
-}
-
-.footer-title {
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.ul-primary {
-    color: #fff;
-    font-weight: 400;
-}
-.ul-alternative {
-    color: #fff;
-    font-weight: 400;
-}
-
-.sub-section {
-    background-color: #fff !important;
-}
-
-.footer-text-color, .footer-text-color:hover {
-    color: #808080;
+    color: #777;
 }
 
 .form-control {
@@ -166,14 +127,11 @@
     background-color: #fff;
     color: #000;
 }
-.section-work-alternative {
-    background-color: #969696;
-    color: #fff;
-}
 
 .overlay-link {
     font-family: 'Titillium Web';
     font-weight: 400;
+    text-transform: uppercase;
 }
 
 .theme-link, .theme-link:hover {
@@ -188,6 +146,7 @@
 
 .btn {
     font-family: 'Titillium Web';
+    font-weight: 700 !important;
     letter-spacing: 1px;
     text-transform: uppercase;
     padding-left: 20px !important;
@@ -200,18 +159,32 @@
 }
 
 .btn-leprechaundesign-primary {
-    background-color: #333;
-    border-color: #333;
+    border: 1px solid #fff !important;
     color: #fff;
 }
 .btn-leprechaundesign-primary:hover, .btn-leprechaundesign-primary:focus, .btn-leprechaundesign-primary:active, .btn-leprechaundesign-primary.active, .open > .dropdown-toggle.btn-leprechaundesign-primary {
-    background-color: #333;
-    border-color: #333;
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+.btn-leprechaundesign-alternative {
+    border: 1px solid #000 !important;
+    color: #000;
+}
+.btn-leprechaundesign-alternative:hover, .btn-leprechaundesign-alternative:focus, .btn-leprechaundesign-alternative:active, .btn-leprechaundesign-alternative.active, .open > .dropdown-toggle.btn-leprechaundesign-alternative {
+    background-color: #000;
     color: #fff;
 }
 
 .footer {
     font-family: 'Titillium Web';
+}
+.footer-title {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.footer-text-color, .footer-text-color:hover {
+    color: #808080;
 }
 
 /* Overlay*/
@@ -222,7 +195,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #000;
+    background-color: #fff;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -238,7 +211,7 @@
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
-    color: #fff;
+    color: #000;
     display: block;
     transition: 0.3s;
 }
@@ -250,7 +223,7 @@
 
 .overlay .closebtn {
     cursor: pointer;
-    color: #fff !important;
+    color: #000 !important;
     position: absolute;
     top: 20px;
     right: 45px;
