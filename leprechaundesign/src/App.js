@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home';
 import Contact from './components/Contact';
@@ -16,13 +16,13 @@ class App extends Component {
 
     render() {
         return(
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <HashRouter basename={process.env.PUBLIC_URL}>
                 <Switch>
                     <Route exact path={process.env.PUBLIC_URL + '/'} component={Home} />
                     <Route path={process.env.PUBLIC_URL + '/contact'} component={Contact} />
                     <Route component={NotFound} />
                 </Switch>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }

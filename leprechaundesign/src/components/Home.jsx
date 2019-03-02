@@ -13,7 +13,7 @@ class Home extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
-        document.title = 'Leprechaun Design - Website design for the health industry';
+        document.title = 'Leprechaun Design - Website design for ambitious brands';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
