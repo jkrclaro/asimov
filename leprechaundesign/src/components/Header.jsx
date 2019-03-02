@@ -22,7 +22,7 @@ class Header extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 992 });
+        this.setState({ isDesktop: window.innerWidth > 768 });
     };
 
     openNav() {
@@ -34,33 +34,32 @@ class Header extends React.Component {
     }
 
     render() {
+        const theme = this.props.theme;
         return (
-            <div>
+            <div className={`${theme}-bg`}>
                 <div id="overlay-nav" className="overlay">
                     <span className="closebtn" onClick={this.closeNav}>&times;</span>
                     <div className="overlay-content">
                         <div className='container'>
                             <Link to='/' className='overlay-link' onClick={this.closeNav}>Home</Link>
-                            <Link to='/newsletter' className='overlay-link' onClick={this.closeNav}>Newsletter</Link>
                             <Link to='/contact' className='overlay-link' onClick={this.closeNav}>Contact</Link>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <a href="tel:0894518912" className='overlay-link' rel='nofollow'>(089) 451 8912</a>
                         </div>
                     </div>
                 </div>
 
-                <div className='container' style={{paddingTop: 20, paddingBottom: 20}}>
-                    {this.state.isDesktop ? (
-                        <ul className="nav">
-                            <li className="mr-auto"><Link to='/' className='navbar-brand brand-title'>Pilar Lokko</Link></li>
-                            <li className="nav-item"><Link className='nav-link' to='/'>Home</Link></li>
-                            <li className="nav-item"><Link className='nav-link' to='/newsletter'>Newsletter</Link></li>
-                            <li className="nav-item"><Link className='nav-link' to='/contact'>Contact</Link></li>
-                        </ul>
-                    ) : (
-                        <ul className="nav">
-                            <Link to='/' className='navbar-brand brand-title'>Pilar Lokko</Link>
-                            <li className='nav-item ml-auto'><span className='nav-link theme-text' onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
-                        </ul>
-                    )}
+                <div className='container' style={{paddingTop: 50, paddingBottom: 20}}>
+                    <ul className="nav">
+                        <li className='nav-item'>
+                            <Link to='/' className='nav-link'>
+                                <span className={`brand-title ${theme}-title`}>Leprechaun Design</span>
+                            </Link>
+                        </li>
+                        <li className='nav-item ml-auto'><span className={`nav-link ${theme}-title`} onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
+                    </ul>
                 </div>
             </div>
         )

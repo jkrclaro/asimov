@@ -45,6 +45,17 @@ html, body {
   font-size: 2.5em;
 }
 
+.sitebytext {
+  color: #808080;
+}
+.siteby {
+  color: #808080;
+}
+.siteby:hover {
+  color: #444;
+  text-decoration: none;
+}
+
 .theme-link, .theme-link:hover {
   text-decoration: none !important;
 }

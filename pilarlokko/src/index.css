@@ -37,6 +37,10 @@ html, body {
   letter-spacing: 2px;
   font-weight: 900;
   font-size: 1.3em;
+  color: #000;
+}
+.brand-title:hover {
+  color: #000;
 }
 
 .nav-link {
@@ -60,7 +64,7 @@ html, body {
 }
 
 .theme-text {
-  color: #121212;
+  color: #808080;
 }
 .theme-text:hover {
   color: #444 !important;
