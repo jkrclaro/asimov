@@ -27,3 +27,9 @@ p:
 
 pd:
 	make deploy PROJECT=pilarlokko
+
+c:
+	cd ciaramccormack && npm run start
+
+cd:
+	make deploy PROJECT=ciaramccormack
