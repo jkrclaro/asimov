@@ -107,6 +107,7 @@ html, body {
 }
 
 .enlarge {
+  cursor: pointer;
   transition: .10s, transform .10s ease;
   -moz-transition: .10s, transform .10s ease;
   -webkit-transition: .10s, transform .10s ease;
