@@ -2,15 +2,35 @@ import React from 'react';
 import  { Link } from 'react-router-dom';
 
 
-const pilarlokko = require('../imgs/pilarlokko.png');
+const ciaramccormack = require('../imgs/ciaramccormack.png');
 
 
 class LandingPage extends React.Component {
 
-    state = {
-        isDesktop: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            isDesktop: false,
+            socials: [
+                {'link': 'https://www.google.com', 'fontawesome': 'fab fa-twitter'},
+                {'link': 'https://www.google.com', 'fontawesome': 'fab fa-facebook'},
+                {'link': 'https://www.google.com', 'fontawesome': 'fab fa-instagram'},
+                {'link': 'https://www.google.com', 'fontawesome': 'fab fa-linkedin'},
+            ],
+            services: [
+                {'title': 'Chronic Illness Exercise', src: 'http://placekitten.com/200/300'},
+                {'title': 'Lifestyle Coach', src: 'http://placekitten.com/300/200'},
+                {'title': 'Cardio Smart Program', src: 'http://placekitten.com/200/400'},
+                {'title': 'Men on The Move', src: 'http://placekitten.com/200/350'},
+            ],
+            testimonials: [
+                {'user': 'Customer #1', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."},
+                {'user': 'Customer #2', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."},
+                {'user': 'Customer #3', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."}
+            ],
+        }
+        this.updatePredicate = this.updatePredicate.bind(this);
     }
-    updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -31,160 +51,46 @@ class LandingPage extends React.Component {
         return (
             <div>
                 <div className='container mt-5 mb-5'>             
+                    <div className='col-lg-12 text-center'>
+                        <h1 className='title h1-title'>Health Focus Ireland</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere.</p>
+                        <Link to='/contact' className='btn btn-pilarlokko-primary'>Booking Enquiries</Link>
+                    </div>
+                </div>
+                <div className='container'>
                     <div className='col-lg-12'>
-                        {this.state.isDesktop ? (
-                            <div className='row'>
-                                <div className='col-lg-6 mt-5 text-right'>
-                                    <h1 className='title h1-title'>Are you ready to transform your body?</h1>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur 
-                                        adipiscing elit. Sed gravida erat in 
-                                        nulla malesuada, sit amet hendrerit 
-                                        enim porttitor. Ut posuere.
-                                    </p>
-                                    <div className='mb-3'>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-instagram'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-twitter'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-facebook'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-pinterest'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-linkedin'></i></a>
-                                    </div>
-                                    <Link to='/contact' className='btn btn-pilarlokko-primary'>Contact me</Link>
-                                </div>
-                                <div className='col-lg-6 text-center'>
-                                    <img alt='pilarlokko.jpg' className='img-fluid' src={pilarlokko}></img>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className='row'>
-                                <div className='col-lg-12 text-center'>
-                                    <img alt='pilarlokko.jpg' className='img-fluid' src={pilarlokko}></img>
-                                </div>
-                                <div className='col-lg-6 mt-5'>
-                                    <h1 className='title h1-title text-center'>Are you ready to transform your body?</h1>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur 
-                                        adipiscing elit. Sed gravida erat in 
-                                        nulla malesuada, sit amet hendrerit 
-                                        enim porttitor. Ut posuere.
-                                    </p>
-                                    <div className='text-center mb-3'>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-instagram'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-twitter'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-facebook'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-pinterest'></i></a>
-                                        <a href='https://google.com' rel='nofollow'><i className='fab fa-linkedin'></i></a>
-                                    </div>
-                                    <Link to='/contact' className='btn btn-pilarlokko-primary btn-block'>Contact me</Link>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                <div className='mb-5'>
-                    <div className='container'>
-                        <div className='col-lg-12'>
-                            <div className='row'>
-                                {this.state.isDesktop ? (
-                                    <div className='col-lg-6 mb-5'>
-                                        <img src='http://www.wellandgoodnyc.com/wp-content/uploads/2013/08/DMF_NYC_dance_cardio-e1376364021949.png' className='img-fluid'></img>
-                                    </div>
-                                ) : (null)}
-                                <div className='col-lg-6'>
-                                    <h2 className='title h2-title'>DANCEITOFF</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur 
-                                        adipiscing elit. Integer non hendrerit 
-                                        nisl, at dignissim sapien. In dignissim 
-                                        accumsan odio, sed rutrum lorem commodo 
-                                        et. Mauris non dui quis ligula ultrices
-                                        convallis ac non erat. Pellentesque 
-                                        ultricies, tellus ac molestie blandit nullam.
-                                    </p>
-                                </div>
-                                {!this.state.isDesktop ? (
-                                    <div className='col-lg-6 mb-5'>
-                                        <img src='http://www.wellandgoodnyc.com/wp-content/uploads/2013/08/DMF_NYC_dance_cardio-e1376364021949.png' className='img-fluid'></img>
-                                    </div>
-                                ) : (null)}
-                                <div className='col-lg-6 text-right'>
-                                    <h2 className='title h2-title'>Kids Dance Camp</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur 
-                                        adipiscing elit. Integer non hendrerit 
-                                        nisl, at dignissim sapien. In dignissim 
-                                        accumsan odio, sed rutrum lorem commodo 
-                                        et. Mauris non dui quis ligula ultrices
-                                        convallis ac non erat. Pellentesque 
-                                        ultricies, tellus ac molestie blandit nullam.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <img src='https://www.cre8ivedance.co.uk/secure/wp-content/uploads/2014/09/dancecamp0-.jpg' className='img-fluid'></img>
-                                </div>
-                                {this.state.isDesktop ? (
-                                    <div className='col-lg-6 mb-5'>
-                                        <img src='https://www.precor.com/sites/default/files/Precor%20Queenax%20Spinning%20Print%2034-2000x1333%20Body.jpg' className='img-fluid'></img>
-                                    </div>
-                                ) : (null)}
-                                <div className='col-lg-6'>
-                                    <h2 className='title h2-title'>Personal Training</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur 
-                                        adipiscing elit. Integer non hendrerit 
-                                        nisl, at dignissim sapien. In dignissim 
-                                        accumsan odio, sed rutrum lorem commodo 
-                                        et. Mauris non dui quis ligula ultrices
-                                        convallis ac non erat. Pellentesque 
-                                        ultricies, tellus ac molestie blandit nullam.
-                                    </p>
-                                </div>
-                                {!this.state.isDesktop ? (
-                                    <div className='col-lg-6 mb-5'>
-                                        <img src='https://www.precor.com/sites/default/files/Precor%20Queenax%20Spinning%20Print%2034-2000x1333%20Body.jpg' className='img-fluid'></img>
-                                    </div>
-                                ) : (null)}
-                                <div className='col-lg-6 text-right'>
-                                    <h2 className='title h2-title'>Group Training</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur 
-                                        adipiscing elit. Integer non hendrerit 
-                                        nisl, at dignissim sapien. In dignissim 
-                                        accumsan odio, sed rutrum lorem commodo 
-                                        et. Mauris non dui quis ligula ultrices
-                                        convallis ac non erat. Pellentesque 
-                                        ultricies, tellus ac molestie blandit nullam.
-                                    </p>
-                                </div>
-                                <div className='col-lg-6 mb-5'>
-                                    <img src='http://limitlessvictoria.com/wp-content/uploads/2016/05/group-fitness1-1024x685.jpg' className='img-fluid'></img>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className='container mb-3'>
-                    {this.state.isDesktop ? (
                         <div className='row'>
-                            <div className='col-lg-6 text-right'>
-                                <h2 className='title'>Stay in touch</h2>
-                                <p>
-                                    Subscribe to our newsletter and stay updated.
-                                </p>
+                            {this.state.services.map((service) => (
+                                <div className='col-lg-3 col-6 text-center'>
+                                        <img src={service.src} width='100%' height='200px'></img>
+                                        <div className='card-body'>
+                                            <b>{service.title}</b>
+                                        </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className='container'>
+                    {this.state.testimonials.map((testimonial, testimonialIndex) => (
+                        <div key={testimonialIndex}>
+                            <div className='speech-bubble'>
+                                <p className='p-content'>{testimonial.message}</p>
                             </div>
-                            <div className='col-lg-6 mt-3'>
-                                <Link to='/newsletter' className='btn btn-pilarlokko-primary'>Join newsletter</Link>
+                            <div className='text-right mb-3'>
+                                <span className='ml-3'>{testimonial.user}, {testimonial.date}</span>
                             </div>
                         </div>
-                    ) : (
-                        <div className='text-center'>
-                            <h2 className='title'>Stay in touch</h2>
-                            <p>
-                                Subscribe to our newsletter and stay updated.
-                            </p>
-                            <Link to='/newsletter' className='btn btn-pilarlokko-primary'>Join newsletter</Link>
+                    ))}
+                </div>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-lg-3'></div>
+                        <div className='col-lg-6 text-center'>
+                            <a className="twitter-timeline" data-width='100%' data-height="768" href="https://twitter.com/CiaraMcC_?ref_src=twsrc%5Etfw"></a>
                         </div>
-                    )}
+                        <div className='col-lg-3'></div>
+                    </div>
                 </div>
             </div>
         )

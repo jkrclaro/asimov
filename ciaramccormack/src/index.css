@@ -97,7 +97,7 @@ html, body {
 
 /* Button */
 .btn {
-  border-radius: 24px !important;
+  border-radius: 0 !important;
   font-weight: 400 !important;
   font-family: 'Lato';
   letter-spacing: 1px;
@@ -112,18 +112,19 @@ html, body {
 }
 
 .btn-pilarlokko-primary {
-  background-color: #121212 !important;
-  border-color: #121212 !important;
-  color: #fff !important;
+  background-color: #FFC0CB !important;
+  border-color: #FFC0CB !important;
+  color: #000 !important;
 }
 .btn-pilarlokko-primary:hover, .btn-pilarlokko-primary:focus, .btn-pilarlokko-primary:active, .btn-pilarlokko-primary.active, .open > .dropdown-toggle.btn-pilarlokko-primary {
-  background-color: #444 !important;
-  border-color: #444 !important;
-  color: #fff;
+  background-color: #FFB6C1 !important;
+  border-color: #FFB6C1 !important;
+  color: #000;
 }
 
-.fab {
-  font-size: 32px;
+.fab-header {
+  font-size: 24px;
+  padding-top: 5px;
   padding-right: 10px;
 }
 .fa-instagram {
@@ -174,6 +175,39 @@ html, body {
 .footer-title {
   font-weight: 400;
 }
+
+.healthfocusireland {
+  color: rgb(255, 122, 144);
+}
+
+/* -- Speech */
+.speech-bubble {
+  background: #efefef;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 0 auto 40px;
+  padding: 15px;
+  position: relative;
+}
+
+.speech-bubble p {
+  margin: 0 0 10px;
+}
+.speech-bubble p:last-of-type {
+  margin-bottom: 0;
+}
+
+.speech-bubble::after {
+  border-left: 20px solid transparent;
+  border-top: 20px solid #efefef;
+  bottom: -20px;
+  content: "";
+  position: absolute;
+  right: 20px;
+}
+/* Speech -- */
 
 /* Overlay*/
 .overlay {

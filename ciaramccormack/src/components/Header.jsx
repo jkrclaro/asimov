@@ -7,10 +7,14 @@ const styles = {
 
 class Header extends React.Component {
 
-    state = {
-        isDesktop: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            isDesktop: false,
+            title: 'Health Focus Ireland'
+        }
+        this.updatePredicate = this.updatePredicate.bind(this);
     }
-    updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -50,14 +54,16 @@ class Header extends React.Component {
                 <div className='container' style={{paddingTop: 20, paddingBottom: 20}}>
                     {this.state.isDesktop ? (
                         <ul className="nav">
-                            <li className="mr-auto"><Link to='/' className='navbar-brand brand-title'>Ciara McCormack</Link></li>
+                            <li className="mr-auto"><Link to='/' className='navbar-brand brand-title'>{this.state.title}</Link></li>
                             <li className="nav-item"><Link className='nav-link' to='/'>Home</Link></li>
-                            <li className="nav-item"><Link className='nav-link' to='/newsletter'>Newsletter</Link></li>
+                            <li className="nav-item"><Link className='nav-link' to='/blogs'>Blogs</Link></li>
+                            <li className="nav-item"><Link className='nav-link' to='/faqs'>FAQs</Link></li>
                             <li className="nav-item"><Link className='nav-link' to='/contact'>Contact</Link></li>
+                            <li className="nav-item"><a href='https://google.com' rel='nofollow'><i className='fab fab-header fa-instagram'></i></a> <a href='https://google.com' rel='nofollow'><i className='fab fab-header fa-twitter'></i></a> <a href='https://google.com' rel='nofollow'><i className='fab fab-header fa-facebook'></i></a></li>
                         </ul>
                     ) : (
                         <ul className="nav">
-                            <Link to='/' className='navbar-brand brand-title'>Pilar Lokko</Link>
+                            <Link to='/' className='navbar-brand brand-title'>{this.state.title}</Link>
                             <li className='nav-item ml-auto'><span className='nav-link theme-text' onClick={this.openNav}><i className='fas fa-bars' style={styles.menuBar}></i></span></li>
                         </ul>
                     )}

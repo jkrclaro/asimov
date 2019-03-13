@@ -12,15 +12,8 @@ class Contact extends React.Component {
             <div className='container mt-5'>
                 <h2 className='title h2-title'>Get in touch</h2>
                 <p>
-                    Or email me at <a href='mailto:pilar.lokko@gmail.com' className='theme-link'>pilar.lokko@gmail.com</a>
+                    Or email me at <a href='mailto:ciara.mccormack26@mail.dcu.ie' className='theme-link'>ciara.mccormack26@mail.dcu.ie</a>
                 </p>
-                <div className='mb-3'>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-instagram'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-twitter'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-facebook'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-pinterest'></i></a>
-                    <a href='https://google.com' rel='nofollow'><i className='fab fa-linkedin'></i></a>
-                </div>
                 <form className='mb-3'>
                     <div className='row'>
                         <div className='col-lg-6'>

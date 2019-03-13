@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 class Footer extends React.Component {
 
     state = {
-        isDesktop: false
+        isDesktop: false,
+        title: 'Health Focus Ireland'
     }
     updatePredicate = this.updatePredicate.bind(this);
 
@@ -19,7 +20,7 @@ class Footer extends React.Component {
     };
 
     updatePredicate() {
-        this.setState({ isDesktop: window.innerWidth > 768 });
+        this.setState({ isDesktop: window.innerWidth > 992 });
     };
 
     render() {
@@ -32,7 +33,7 @@ class Footer extends React.Component {
                         <div className='col-lg-12'>
                             <div className='row'>
                                 <div className='col-lg-4 mt-3'>
-                                    <Link to='/' className='navbar-brand brand-title'>Ciara McCormack</Link>
+                                    <Link to='/' className='navbar-brand brand-title'>{this.state.title}</Link>
                                 </div>
                                 <div className='col-lg-4 mt-3'>
                                     <div className='footer-title mb-2'>Follow</div>
@@ -43,7 +44,7 @@ class Footer extends React.Component {
                                 </div>
                                 <div className='col-lg-4 mt-3'>
                                     <div className='footer-title mb-2'>Get in touch</div>
-                                    <div><a href='mailto:pilar.lokko@gmail.com' rel='nofollow' className='theme-text'>pilar.lokko@gmail.com</a></div>
+                                    <div><a href='mailto:ciara.mccormack26@mail.dcu.ie' rel='nofollow' className='theme-text'>ciara.mccormack26@mail.dcu.ie</a></div>
                                     <div><a href='tel:1231234567' rel='nofollow' className='theme-text'>(123) 123 4567</a></div>
                                     <div><Link to='/newsletter' className='theme-text'>Join our newsletter</Link></div>
                                 </div>
@@ -52,9 +53,9 @@ class Footer extends React.Component {
                         </div>
                     ) : (
                         <div className='col-lg-12 text-center'>
-                            <div className='mb-3'><Link to='/' className={`navbar-brand nav-link brand-title`}>Ciara McCormack</Link></div>
+                            <div className='mb-3'><Link to='/' className={`navbar-brand nav-link brand-title`}>{this.state.title}</Link></div>
                             <div className='footer-title mb-2'>Get in touch</div>
-                            <div><a href='mailto:pilar.lokko@gmail.com' rel='nofollow' className='theme-text'>pilar.lokko@gmail.com</a></div>
+                            <div><a href='mailto:ciara.mccormack26@mail.dcu.ie' rel='nofollow' className='theme-text'>ciara.mccormack26@mail.dcu.ie</a></div>
                             <div><a href='tel:1231234567' rel='nofollow' className='theme-text'>(123) 123 4567</a></div>
                             <div><Link to='/newsletter' className='theme-text'>Join our newsletter</Link></div>
                             <div className='text-center mt-5' style={{color: '#808080'}}><small>SITE BY <a href='https://leprechaundesign.ie' className='theme-text'>LEPRECHAUN DESIGN</a></small></div>
