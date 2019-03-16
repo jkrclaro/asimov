@@ -2,9 +2,6 @@ import React from 'react';
 import  { Link } from 'react-router-dom';
 
 
-const ciaramccormack = require('../imgs/ciaramccormack.png');
-
-
 class LandingPage extends React.Component {
 
     constructor(props) {
@@ -26,7 +23,7 @@ class LandingPage extends React.Component {
             testimonials: [
                 {'user': 'Customer #1', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."},
                 {'user': 'Customer #2', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."},
-                {'user': 'Customer #3', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."}
+                {'user': 'Customer #3', 'date': 'Mar 2019', 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida erat in nulla malesuada, sit amet hendrerit enim porttitor. Ut posuere."},
             ],
         }
         this.updatePredicate = this.updatePredicate.bind(this);
@@ -60,9 +57,9 @@ class LandingPage extends React.Component {
                 <div className='container'>
                     <div className='col-lg-12'>
                         <div className='row'>
-                            {this.state.services.map((service) => (
+                            {this.state.services.map((service, serviceIndex) => (
                                 <div className='col-lg-3 col-6 text-center'>
-                                        <img src={service.src} width='100%' height='200px'></img>
+                                        <img alt={`service-${serviceIndex}`} src={service.src} width='100%' height='150px'></img>
                                         <div className='card-body'>
                                             <b>{service.title}</b>
                                         </div>
@@ -72,22 +69,32 @@ class LandingPage extends React.Component {
                     </div>
                 </div>
                 <div className='container'>
-                    {this.state.testimonials.map((testimonial, testimonialIndex) => (
-                        <div key={testimonialIndex}>
-                            <div className='speech-bubble'>
-                                <p className='p-content'>{testimonial.message}</p>
-                            </div>
-                            <div className='text-right mb-3'>
-                                <span className='ml-3'>{testimonial.user}, {testimonial.date}</span>
-                            </div>
+                    <div id="testimonial-slider" className="owl-carousel">
+                        <div className='row'>
+                            {this.state.testimonials.map((testimonial, testimonialIndex) => (
+                                <div className='col-lg-4'>
+                                    <div className="testimonial">
+                                        <div className="testimonial-content">
+                                            <div className="testimonial-icon">
+                                                <i className="fa fa-quote-left"></i>
+                                            </div>
+                                            <p className="description">
+                                                {testimonial.message}
+                                            </p>
+                                        </div>
+                                        <h3 className="title">{testimonial.user}</h3>
+                                        <span className="post">{testimonial.date}</span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
                 <div className='container'>
                     <div className='row'>
                         <div className='col-lg-3'></div>
                         <div className='col-lg-6 text-center'>
-                            <a className="twitter-timeline" data-width='100%' data-height="768" href="https://twitter.com/CiaraMcC_?ref_src=twsrc%5Etfw"></a>
+                            <a className="twitter-timeline" data-width='100%' data-height="768" href="https://twitter.com/CiaraMcC_?ref_src=twsrc%5Etfw">Tweets by CiaraMcC</a>
                         </div>
                         <div className='col-lg-3'></div>
                     </div>

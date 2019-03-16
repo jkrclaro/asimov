@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
 import Newsletter from './components/Newsletter';
+import FAQs from './components/FAQs';
+import Blogs from './components/Blogs';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 
@@ -21,6 +23,8 @@ class App extends Component {
                             <Route exact path={process.env.PUBLIC_URL + '/'} component={LandingPage} />
                             <Route path={process.env.PUBLIC_URL + '/newsletter'} component={Newsletter} />
                             <Route path={process.env.PUBLIC_URL + '/contact'} component={Contact} />
+                            <Route path={process.env.PUBLIC_URL + '/faqs'} component={FAQs} />
+                            <Route path={process.env.PUBLIC_URL + '/blogs'} component={Blogs} />
                             <Route component={NotFound} />
                         </Switch>
                     </div>
