@@ -46,7 +46,7 @@ class Footer extends React.Component {
                                 </div>
                                 <div className='col-lg-3 mt-3'>
                                     <div className={`${theme}-title footer-title mb-2`}>Get in touch</div>
-                                    <div><a href='mailto:info@leprechaundesign.ie' rel='nofollow' className={`${theme}-text`}>info@leprechaundesign.ie</a></div>
+                                    <div><a href='mailto:info@webprecon.com' rel='nofollow' className={`${theme}-text`}>info@webprecon.com</a></div>
                                     <div><a href='tel:0894518912' rel='nofollow' className={`${theme}-text`}>(089) 451 8912</a></div>
                                 </div>
                             </div>
@@ -56,10 +56,10 @@ class Footer extends React.Component {
                             <hr/>
                             <div className='mt-5 mb-3'><Link to='/'><img src={logo} className='logo'></img></Link></div>
                             <div className={`${theme}-title footer-title mb-2`}>Get in touch</div>
-                            <div><a href='mailto:info@leprechaundesign.ie' rel='nofollow' className={`${theme}-text`}>info@leprechaundesign.ie</a></div>
+                            <div><a href='mailto:info@webprecon.com' rel='nofollow' className={`${theme}-text`}>info@webprecon.com</a></div>
                             <div className='mb-3'><a href='tel:0894518912' rel='nofollow' className={`${theme}-text`}>(089) 451 8912</a></div>
                             <div>
-                                <a href='https://www.twitter.com/leprechaundesign' rel='nofollow'><i className='fab fa-twitter'></i></a>
+                                <a href='https://www.twitter.com/webprecon' rel='nofollow'><i className='fab fa-twitter'></i></a>
                             </div>
                         </div>
                     )}

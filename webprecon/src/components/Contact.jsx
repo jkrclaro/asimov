@@ -12,7 +12,7 @@ class Contact extends React.Component {
     updatePredicate = this.updatePredicate.bind(this);
 
     componentDidMount() {
-        document.title = 'Leprechaun Design - Contact';
+        document.title = 'Webprecon - Contact';
         this.updatePredicate();
         window.addEventListener('resize', this.updatePredicate);
         window.scrollTo(0 ,0);
@@ -38,7 +38,7 @@ class Contact extends React.Component {
                                     <h3 className='h3-title mt-5 mb-5 text-center'>Let's talk</h3>
                                     <div>
                                         <p className='p-title'>General Inquiries</p>
-                                        <p className='p-subtitle'><a href='mailto:info@leprechaundesign.ie' className='theme-link'>info@leprechaundesign.ie</a></p>
+                                        <p className='p-subtitle'><a href='mailto:info@webprecon.com' className='theme-link'>info@webprecon.com</a></p>
                                     </div>
 
                                     <div>
@@ -48,7 +48,7 @@ class Contact extends React.Component {
                                 </div>
                                 <div className='col-lg-6 mb-5'>
                                     <h3 className='h3-title mt-5 mb-5 text-center'>Contact us</h3>
-                                    <form action='https://formspree.io/info@leprechaundesign.ie' method='POST'>
+                                    <form action='https://formspree.io/info@webprecon.com' method='POST'>
                                         <label htmlFor='message' className='p-subtitle'><small>INFORMATION</small></label>
                                         <textarea name='message' rows='5' placeholder='Brief, scope, timeline, budget, etc.' id='message' className='form-control mb-3' required></textarea>
                                         <div className='row'>
@@ -61,9 +61,9 @@ class Contact extends React.Component {
                                                 <input type='text' id='phonenumber' name='phonenumber' className='form-control mb-3'></input>
                                             </div>
                                         </div>
-                                        <input type="hidden" name="_subject" value="Leprechaun Design Contact" />
-                                        <input type="hidden" name="_next" value="https://leprechaundesign.ie" />
-                                        <input type='submit' className='btn btn-leprechaundesign-alternative' value='Send'></input>
+                                        <input type="hidden" name="_subject" value="Webprecon Contact" />
+                                        <input type="hidden" name="_next" value="https://webprecon.com" />
+                                        <input type='submit' className='btn btn-webprecon-alternative' value='Send'></input>
                                     </form>
                                 </div>
                             </div>

@@ -48,7 +48,7 @@ class Footer extends React.Component {
                                     <div><Link to='/newsletter' className='theme-text'>Join our newsletter</Link></div>
                                 </div>
                             </div>
-                            <div className='text-center mt-5' style={{color: '#808080'}}><small>SITE BY <a href='https://leprechaundesign.ie' className='theme-text'>HEALTHYSTAMP</a></small></div>
+                            <div className='text-center mt-5' style={{color: '#808080'}}><small>SITE BY <a href='https://webprecon.com' className='theme-text'>HEALTHYSTAMP</a></small></div>
                         </div>
                     ) : (
                         <div className='col-lg-12 text-center'>
@@ -57,7 +57,7 @@ class Footer extends React.Component {
                             <div><a href='mailto:pilar.lokko@gmail.com' rel='nofollow' className='theme-text'>pilar.lokko@gmail.com</a></div>
                             <div><a href='tel:1231234567' rel='nofollow' className='theme-text'>(123) 123 4567</a></div>
                             <div><Link to='/newsletter' className='theme-text'>Join our newsletter</Link></div>
-                            <div className='text-center mt-5' style={{color: '#808080'}}><small>SITE BY <a href='https://leprechaundesign.ie' className='theme-text'>HEALTHYSTAMP</a></small></div>
+                            <div className='text-center mt-5' style={{color: '#808080'}}><small>SITE BY <a href='https://webprecon.com' className='theme-text'>HEALTHYSTAMP</a></small></div>
                         </div>
                     )}
                 </div>

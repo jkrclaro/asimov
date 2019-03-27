@@ -7,7 +7,7 @@ class Footer extends React.Component {
         return (
             <div className='text-center mt-5 mb-3'>
                 <hr/>
-                <small className='sitebytext'>SITE BY <a href='https://leprechaundesign.ie' className='siteby'>LEPRECHAUN DESIGN</a></small>
+                <small className='sitebytext'>SITE BY <a href='https://webprecon.com' className='siteby'>WEBPRECON</a></small>
             </div>
         )
     }

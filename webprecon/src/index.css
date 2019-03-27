@@ -160,20 +160,20 @@
     outline: 0 none;
 }
 
-.btn-leprechaundesign-primary {
+.btn-webprecon-primary {
     border: 1px solid #fff !important;
     color: #fff;
 }
-.btn-leprechaundesign-primary:hover, .btn-leprechaundesign-primary:focus, .btn-leprechaundesign-primary:active, .btn-leprechaundesign-primary.active, .open > .dropdown-toggle.btn-leprechaundesign-primary {
+.btn-webprecon-primary:hover, .btn-webprecon-primary:focus, .btn-webprecon-primary:active, .btn-webprecon-primary.active, .open > .dropdown-toggle.btn-webprecon-primary {
     background-color: #fff;
     border-color: #fff;
     color: #009e60;
 }
-.btn-leprechaundesign-alternative {
+.btn-webprecon-alternative {
     border: 1px solid #009e60 !important;
     color: #009e60;
 }
-.btn-leprechaundesign-alternative:hover, .btn-leprechaundesign-alternative:focus, .btn-leprechaundesign-alternative:active, .btn-leprechaundesign-alternative.active, .open > .dropdown-toggle.btn-leprechaundesign-alternative {
+.btn-webprecon-alternative:hover, .btn-webprecon-alternative:focus, .btn-webprecon-alternative:active, .btn-webprecon-alternative.active, .open > .dropdown-toggle.btn-webprecon-alternative {
     background-color: #009e60;
     color: #fff;
 }
