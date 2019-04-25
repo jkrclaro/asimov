@@ -1,5 +1,4 @@
 import os
-import logging
 
 from flask import Flask
 from flask_mail import Mail
@@ -25,8 +24,6 @@ def create_app():
 
     from .models import db
     db.init_app(app)
-
-    from .models.users import User
 
     from .views.users import users_blueprint
     from .views.home import home_blueprint

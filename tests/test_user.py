@@ -14,5 +14,6 @@ class TestUserModel(unittest.TestCase):
     def test_password_match(self):
         self.assertEqual(self.user1._password_match('basketball'), True)
 
+
 if __name__ == '__main__':
     unittest.main()

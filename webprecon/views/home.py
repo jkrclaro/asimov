@@ -1,6 +1,3 @@
-import json
-import logging
-
 from flask import Blueprint, render_template
 
 

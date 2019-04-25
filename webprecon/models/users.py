@@ -34,11 +34,11 @@ class User(db.Model):
 
         Cryptographic functions only work on bytes strings (or arrays in fact),
         therefore the provided password must be encoded to utf8.
-        
-        The bcrypt algorithm only handles passwords up to 72 characters, 
-        any characters beyond that are ignored.  To work around this, 
-        a common approach is to hash a password with a cryptographic hash 
-        (such as sha256) and then base64 encode it to prevent NULL byte 
+
+        The bcrypt algorithm only handles passwords up to 72 characters,
+        any characters beyond that are ignored.  To work around this,
+        a common approach is to hash a password with a cryptographic hash
+        (such as sha256) and then base64 encode it to prevent NULL byte
         problems before hashing the result with bcrypt.
         """
         password_encoded = password.encode('utf8')

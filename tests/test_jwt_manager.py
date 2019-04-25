@@ -16,5 +16,6 @@ class TestJWTManager(unittest.TestCase):
     def test_decode(self):
         assert self.jwt_manager.decode_token(self.access_token) == self.MESSAGE
 
+
 if __name__ == '__main__':
     unittest.main()
