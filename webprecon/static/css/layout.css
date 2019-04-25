@@ -3,11 +3,6 @@
     src: url('../font/IBMPlexSans-Regular.otf');
 }
 
-@font-face {
-    font-family: 'IBM Plex Mono';
-    src: url('../font/IBMPlexMono-Regular.otf');
-}
-
 * {
     font-family: 'IBM Plex';
 }
