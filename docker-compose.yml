@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+    database:
+        env_file: database/.env
+        build:
+            context: database
+            dockerfile: Dockerfile
+        image: webprecon/database
+        ports:
+          - "5432:5432"
+        restart: always
+    server:
+        env_file: webprecon/.env
+        build:
+            context: webprecon
+            dockerfile: Dockerfile
+        ports:
+         - "5000:5000"
+        depends_on:
+          - database
+        image: webprecon
+        volumes:
+          - .:/app
+        command: ["app:app", "-b", "0.0.0.0:5000", "--reload"]

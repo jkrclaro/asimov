@@ -1,0 +1,42 @@
+* {
+    font-family: 'Montserrat';
+}
+
+/* -- Header */
+.logo-text {
+    letter-spacing: 3.5px;
+    font-size: 36px; 
+    font-weight: 900;
+}
+/* Header -- */
+
+/* -- Button */
+.btn {
+    border-radius: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-webprecon-primary {
+    background-color: #6078FF;
+    border-color: #6078FF;
+    color: #fff;
+}
+.btn-webprecon-primary:hover, .btn-webprecon-primary:focus, .btn-webprecon-primary:active, .btn-webprecon-primary.active, .open > .dropdown-toggle.btn-webprecon-primary {
+    background-color: #6078FF;
+    border-color: #6078FF;
+    color: #fff;
+}
+.btn-webprecon-primary-outline {
+    border-color: #6078FF;
+    color: #6078FF;
+}
+.btn-webprecon-primary-outline:hover, .btn-webprecon-primary-outline:focus, .btn-webprecon-primary-outline:active, .btn-webprecon-primary-outline.active, .open > .dropdown-toggle.btn-webprecon-primary-outline {
+    border-color: #6078FF;
+    color: #6078FF;
+}
+/* Button -- */

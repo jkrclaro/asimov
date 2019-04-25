@@ -1,34 +1,24 @@
-# webprecon
-Repository for my freelance clients.
+# Webprecon
 
-# Usage
-```
-make start
-```
+API service built with Flask for Webprecon.
 
-# Deploy
-```
-make deploy PROJECT=<project>
-```
+## Documentation
+TBA
 
-# Set proper GitHub credentials on new *.github.io
-```
-cd <project>.github.io
-git remote set-url origin https://<username>:<password>@github.com/webprecon/<project>.github.io.git
-```
+## Installation
+TBA
 
-# New project
-```
-make new PROJECT=<project>
+## Requirements
+- Docker 1.12.6
+- Python 3.7.2
 
-- Add components folder
-- npm i react-router-dom webfontloader bootstrap
+## Usage
+
+```
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run
 ```
 
-# Domain
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
+## Development
+TBA
