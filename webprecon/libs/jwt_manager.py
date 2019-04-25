@@ -15,19 +15,22 @@ class JWTManager:
 
     def create_json_web_token(self, message: dict, expiration: int) -> dict:
         """Create a JSON Web Token.
+
         :param message: Message to be encoded
         :param expiration: How many days until encoding expires.
         :return: JSON Web Token
         """
         today = datetime.datetime.now()
         message['exp'] = today + datetime.timedelta(days=expiration)
-        token = jwt.encode(message, self.secret_key,
-                           algorithm=self.algorithm)
+        token = jwt.encode(
+            message, self.secret_key, algorithm=self.algorithm
+        )
         decoded_token = token.decode('ascii')
         return decoded_token
 
     def create_access_token(self, message: dict) -> dict:
         """Create an access token.
+
         :param message: Message to be encoded.
         :return: Access token
         """
@@ -35,6 +38,7 @@ class JWTManager:
 
     def create_refresh_token(self, message: dict) -> dict:
         """Create a refresh token.
+
         :param message: Message to be encoded.
         :return: Refresh token
         """
@@ -42,8 +46,9 @@ class JWTManager:
 
     def decode_token(self, encoded: dict) -> dict:
         """Decode a JSON Web Token to get its message.
-        :param encoded: Token encoded by the Bouncer class.
-        :return: Message that was encoded
+
+        :param encoded: Token encoded by the JWTManager class.
+        :return: Decoded message that was encoded
         """
         return jwt.decode(encoded, self.secret_key, algorithms=[self.algorithm])
 
