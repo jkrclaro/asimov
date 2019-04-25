@@ -1,9 +1,9 @@
 CREATE DATABASE webprecon;
-GRANT ALL PRIVILEGES ON DATABASE webprecon TO pxdcastadmin;
+GRANT ALL PRIVILEGES ON DATABASE webprecon TO john;
 
 \connect webprecon;
 CREATE SCHEMA account;
-GRANT USAGE ON SCHEMA account TO pxdcastadmin;
+GRANT USAGE ON SCHEMA account TO john;
 
 CREATE TABLE users
 (
