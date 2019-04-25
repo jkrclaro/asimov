@@ -6,8 +6,9 @@ RUN apk update && \
 RUN apk add libffi-dev
 RUN mkdir /app
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install pipenv
+COPY Pipfile .
+RUN pipenv --python 3.7
 COPY . .
 EXPOSE 5000
 ENTRYPOINT ["gunicorn"]
