@@ -13,7 +13,6 @@ class TestJWTManager(unittest.TestCase):
     def test_create_access_token(self):
         assert len(self.access_token) == 139
 
-
     def test_decode(self):
         assert self.jwt_manager.decode_token(self.access_token) == self.MESSAGE
 
