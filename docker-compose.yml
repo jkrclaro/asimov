@@ -11,9 +11,7 @@ services:
         restart: always
     server:
         env_file: webprecon/.env
-        build:
-            context: webprecon
-            dockerfile: Dockerfile
+        build: .
         ports:
          - "5000:5000"
         depends_on:
