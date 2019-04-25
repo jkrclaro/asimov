@@ -20,7 +20,7 @@ class User(db.Model):
     def __init__(self, email, username, password):
         self.email = email.lower()
         self.username = username.lower()
-        self.password = self._password_hash(password).decode('utf8')
+        self.password = self._password_hash(password)
 
     def _password_hash(self, password):
         return bcrypt.hashpw(self._base64_encode(password), bcrypt.gensalt())

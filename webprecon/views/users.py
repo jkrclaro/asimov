@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, request, current_app
 
 import sqlalchemy
 
-from webprecon.lib.bouncer import Bouncer
+from webprecon.libs.jwt_manager import JWTManager
 from webprecon.models import db
 from webprecon.models.users import User
 
@@ -63,13 +63,13 @@ def login():
         return jsonify(message='Email or password is incorrect'), 400
 
     message = {'email': email}
-    bouncer = Bouncer(current_app.config['SECRET_KEY'])
+    jwt_manager = JWTManager(current_app.config['SECRET_KEY'])
 
     data = jsonify(
         iss='webprecon.com',
         user={'username': user.username},
-        accessToken=bouncer.create_access_token(message),
-        refreshToken=bouncer.create_refresh_token(message)
+        accessToken=jwt_manager.create_access_token(message),
+        refreshToken=jwt_manager.create_refresh_token(message)
     )
 
     return data, 200
@@ -82,9 +82,9 @@ def refresh():
     if not refresh_token:
         return jsonify(message='No refresh token, login again'), 401
 
-    bouncer = Bouncer(current_app.config['SECRET_KEY'])
-    message = bouncer.decode_token(refresh_token)
+    jwt_manager = JWTManager(current_app.config['SECRET_KEY'])
+    message = jwt_manager.decode_token(refresh_token)
     # TODO: If decoding of token fails, then return proper error status code
 
-    data = jsonify(accessToken=bouncer.create_access_token(message))
+    data = jsonify(accessToken=jwt_manager.create_access_token(message))
     return data, 200
