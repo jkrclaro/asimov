@@ -23,4 +23,8 @@ flask run
 ```
 
 ## Development
-TBA
+
+To run tests
+```
+pytest
+```
