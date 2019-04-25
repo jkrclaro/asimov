@@ -10,7 +10,7 @@ services:
           - "5432:5432"
         restart: always
     server:
-        env_file: webprecon/.env
+        env_file: .env
         build: .
         ports:
          - "5000:5000"
