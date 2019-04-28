@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 COPY . .
 EXPOSE 5000
 ENTRYPOINT ["gunicorn"]
-CMD ["app:app", "-b", "0.0.0.0:5000"]
+CMD ["application:application", "-b", "0.0.0.0:5000"]
