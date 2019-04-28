@@ -18,7 +18,7 @@ TBA
 ```
 pipenv shell
 pipenv install
-export FLASK_APP=app.py
+export FLASK_APP=application.py
 export FLASK_ENV=development
 flask run
 ```
