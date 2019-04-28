@@ -1,0 +1,6 @@
+.circleci/
+database/
+.vscode/
+alembic/
+docs/
+tests/
