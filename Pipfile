@@ -32,7 +32,6 @@ WTForms = "==2.2.1"
 [dev-packages]
 pytest = "*"
 flake8 = "*"
-awsebcli = "*"
 alembic = "*"
 
 [requires]
