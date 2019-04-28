@@ -1,26 +1,16 @@
 # Deployment
 
-Currently using AWS Elastic Beanstalk for deployment.
+Currently using AWS Elastic Beanstalk for deploying a single docker container.
 
 ## Setup
 
-Install awscli
+Install awsebcli, **EB CLI 3.14.6 (Python 2.7.1)**. Consider using **brew**
+to separate your system's default Python3 version
 
+To update
 ```
-pipenv install awscli
-```
-
-## Initial steps
-
-Create application
-```
-aws elasticbeanstalk create-application --application-name=webprecon
+eb deploy
 ```
 
-Create environment
-```
-aws elasticbeanstalk --application-name=webprecon create-environment --environment-name=webprecon --cname-prefix=webprecon --solution-stack-name="64bit Amazon Linux 2018.03 v2.12.10 running Docker 18.06.1-ce"
-```
-
-List of solution stack names, can be found in [AWS Docs for Elastic Beanstalk
-Supported Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html)
+# Notes
+- Make sure to only have one Dockerfile for the .zip file being created by EB if platform is a single docker container. Otherwise deployment will fail. Use .ebignore if you have to.
