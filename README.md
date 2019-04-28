@@ -25,9 +25,17 @@ flask run
 
 ## Development
 
-To install awsebcli, use brew instead of pip. This error was using Python3.7 and awsebcli<=3.15.0
+For Mac users. Recommended .bash_profile setup.
 ```
-UnicodeDecodeError - 'ascii' codec can't decode byte 0xe2 in position 1287: ordinal not in range(128)
+# Setting PATH for Python 3.7
+# The original version is saved in .bash_profile.pysave
+PATH="/Users/jkrclaro/Library/Python/3.7/bin:${PATH}"
+export PATH
+
+alias python=python3
+alias pip=pip3
+alias d=docker
+alias dc=docker-compose
 ```
 
 To run tests
