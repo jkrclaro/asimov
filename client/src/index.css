@@ -1,0 +1,257 @@
+:root {
+    —-space: 1.5em 0;
+    —-space: 2em 0;
+}
+
+.Site {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+.Site-content {
+   flex: 1 0 auto;
+   padding: var( — space) var( — space) 0;
+   width: 100%;
+}
+.Site-content:after {
+   content: ‘\00a0’;
+   display: block;
+   margin-top: var( — space);
+   height: 0;
+   visibility: hidden;
+}
+
+html, body {
+    background-color: #26262A !important;
+    font-family: "Titillium Web";
+}
+
+/* Forms */
+.form-control {
+    background-color: #26262A !important;
+    border-color: #7289DA !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+}
+
+.input-group >.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.input-group-text {
+    border-color: #7289DA !important;
+    background-color: #7289DA !important;
+    color: #fff !important;
+}
+
+
+/* Placeholders */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #aaa !important;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #aaa !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #aaa !important;
+}
+
+.brand, .brand:hover {
+    color: #fff;
+    font-size: 50px !important;
+    font-weight: 700 !important;
+    text-decoration: none;
+}
+
+.text-style {
+    color: #fff !important;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    background-color: #26262A !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 20px !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+.btn-webprecon-primary {
+    border-color: #7289DA !important;
+    background-color: #7289DA !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+.btn-webprecon-primary:hover, .btn-webprecon-primary:focus, .btn-webprecon-primary:active, .btn-webprecon-primary.active, .open > .dropdown-toggle.btn-webprecon-primary {
+    border-color: #7289DA !important;
+    background-color: #7289DA !important;
+    color:#fff !important;
+}
+.btn-webprecon-alternative {
+    border-color: #7289DA !important;
+    color:#fff !important;
+}
+.btn-webprecon-alternative:hover, .btn-webprecon-alternative:focus, .btn-webprecon-alternative:active, .btn-webprecon-alternative.active, .open > .dropdown-toggle.btn-webprecon-alternative {
+    border-color: #7289DA !important;
+    color:#fff !important;
+}
+
+.nav-link, .link {
+    color: #fff;
+}
+.nav-link:hover, .link:hover {
+    color: #fff;
+    text-decoration: underline !important;
+}
+.webprecon-link, .webprecon-link:hover {
+    color: #7289DA;
+}
+
+/* Checkbox */
+.container-checkbox {
+    display: block;
+    padding-left: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 25%;
+}
+.container-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.container-checkbox input:checked ~ .checkmark {
+    background-color: #7289DA;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.container-checkbox .checkmark:after {
+    left: 9px;
+    top: 8px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Dropdown */
+.dropdown-item:hover {
+    background-color: #7289DA !important;
+    color: #fff !important;
+}
+
+/* Tabs */
+.nav-tabs {
+    cursor: pointer;
+    border-bottom: 1px solid #7289DA !important;
+}
+.nav-link-tab, .nav-link-tab:hover {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+.nav-item:hover, .nav-link:hover {
+    border-color: #7289DA !important;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #7289DA !important;
+    border-color: #26262A !important;
+    color: #fff !important;
+}
+ul.nav-tabs > li {
+  width: 33.33%;
+  text-align: center;
+}
+
+.footer {
+    background-color: #26262A;
+}
+
+/* Overlay*/
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #26262A;
+    background-color: #26262A;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    text-decoration: none;
+    color: #7289DA;
+}
+
+.overlay .closebtn {
+    color: #fff !important;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
