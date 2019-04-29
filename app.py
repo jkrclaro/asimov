@@ -6,8 +6,8 @@ from webprecon import create_app
 logging.getLogger().setLevel(logging.INFO)
 
 load_dotenv(find_dotenv())
-application = create_app()
+app = create_app()
 
 
 if __name__ == '__main__':
-    application.run()
+    app.run()
