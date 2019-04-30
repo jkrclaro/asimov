@@ -26,4 +26,11 @@ jobs:
       - store_artifacts:
           path: test-results
           destination: tr1
+    deploy:
+      steps:
+        - checkout
+        - run:
+            name: Deploy master to AWS EB
+            command: |
+              eb deploy
       
