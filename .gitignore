@@ -129,6 +129,3 @@ dmypy.json
 !.elasticbeanstalk/config.yml
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
-# nodejs
-node_modules
