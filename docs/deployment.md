@@ -4,8 +4,10 @@ Currently using AWS Elastic Beanstalk for deploying a single docker container.
 
 ## Setup
 
+*NOTE: As of this writing, awsebcli is broken with Python 3.7.*
+
 Install awsebcli, **EB CLI 3.14.6 (Python 2.7.1)**. Consider using **brew**
-to separate your system's default Python3 version
+to separate your system's default Python3 version.
 
 To update
 ```
