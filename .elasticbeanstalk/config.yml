@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: null
+    environment: webprechaun
 global:
   application_name: webprechaun
   branch: null
