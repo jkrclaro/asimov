@@ -40,7 +40,9 @@ jobs:
       - image: circleci/python:2.7
     steps:
       - checkout
-      - run: pip install awsebcli
+      - run: 
+          command: |
+            sudo pip install awsebcli
       - run:
           name: Deploy master to AWS via EB
           command: |
