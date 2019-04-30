@@ -14,8 +14,12 @@ def create_app():
     app = Flask(__name__)
     if os.getenv('FLASK_ENV', None):
         config = 'webprechaun.config.Development'
+        logging_level = logging.DEBUG
     else:
         config = 'webprechaun.config.Production'
+        logging_level = logging.INFO
+
+    logging.getLogger().setLevel(logging_level)
     app.config.from_object(config)
 
     mail.init_app(app)
