@@ -19,7 +19,7 @@ class Config(object):
     MAIL_USE_SSL = False
     MAIL_USERNAME = os.environ['MAIL_USERNAME']
     MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
-    MAIL_DEFAULT_SENDER = f"Webprecon '{MAIL_USERNAME}'"
+    MAIL_DEFAULT_SENDER = f"Webprechaun '{MAIL_USERNAME}'"
 
 
 class Production(Config):

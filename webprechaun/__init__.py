@@ -13,9 +13,9 @@ cors = CORS()
 def create_app():
     app = Flask(__name__)
     if os.getenv('FLASK_ENV', None):
-        config = 'webprecon.config.Development'
+        config = 'webprechaun.config.Development'
     else:
-        config = 'webprecon.config.Production'
+        config = 'webprechaun.config.Production'
     app.config.from_object(config)
 
     mail.init_app(app)

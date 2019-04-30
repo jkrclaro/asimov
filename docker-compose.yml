@@ -12,7 +12,7 @@ services:
          - "5000:5000"
         depends_on:
           - database
-        image: webprecon
+        image: webprechaun
         volumes:
           - .:/app
         command: ["app:app", "-b", "0.0.0.0:5000", "--reload"]

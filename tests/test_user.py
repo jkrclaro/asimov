@@ -1,6 +1,6 @@
 import unittest
 
-from webprecon.models.users import User
+from webprechaun.models.users import User
 
 
 class TestUserModel(unittest.TestCase):

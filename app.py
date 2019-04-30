@@ -1,7 +1,7 @@
 import logging
 from dotenv import find_dotenv, load_dotenv
 
-from webprecon import create_app
+from webprechaun import create_app
 
 logging.getLogger().setLevel(logging.INFO)
 

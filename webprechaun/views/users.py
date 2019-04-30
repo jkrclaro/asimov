@@ -4,9 +4,9 @@ from flask import Blueprint, jsonify, request, current_app
 
 import sqlalchemy
 
-from webprecon.libs.jwt_manager import JWTManager
-from webprecon.models import db
-from webprecon.models.users import User
+from webprechaun.libs.jwt_manager import JWTManager
+from webprechaun.models import db
+from webprechaun.models.users import User
 
 
 users_blueprint = Blueprint('user', __name__, url_prefix='/users')
@@ -65,7 +65,7 @@ def login():
     jwt_manager = JWTManager(current_app.config['SECRET_KEY'])
 
     data = jsonify(
-        iss='webprecon.com',
+        iss='webprechaun.com',
         user={'username': user.username},
         accessToken=jwt_manager.create_access_token(message),
         refreshToken=jwt_manager.create_refresh_token(message)

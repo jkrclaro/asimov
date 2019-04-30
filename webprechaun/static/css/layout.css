@@ -26,21 +26,21 @@
     outline: 0 none;
 }
 
-.btn-webprecon-primary {
+.btn-webprechaun-primary {
     background-color: #6078FF;
     border-color: #6078FF;
     color: #fff;
 }
-.btn-webprecon-primary:hover, .btn-webprecon-primary:focus, .btn-webprecon-primary:active, .btn-webprecon-primary.active, .open > .dropdown-toggle.btn-webprecon-primary {
+.btn-webprechaun-primary:hover, .btn-webprechaun-primary:focus, .btn-webprechaun-primary:active, .btn-webprechaun-primary.active, .open > .dropdown-toggle.btn-webprechaun-primary {
     background-color: #6078FF;
     border-color: #6078FF;
     color: #fff;
 }
-.btn-webprecon-primary-outline {
+.btn-webprechaun-primary-outline {
     border-color: #6078FF;
     color: #6078FF;
 }
-.btn-webprecon-primary-outline:hover, .btn-webprecon-primary-outline:focus, .btn-webprecon-primary-outline:active, .btn-webprecon-primary-outline.active, .open > .dropdown-toggle.btn-webprecon-primary-outline {
+.btn-webprechaun-primary-outline:hover, .btn-webprechaun-primary-outline:focus, .btn-webprechaun-primary-outline:active, .btn-webprechaun-primary-outline.active, .open > .dropdown-toggle.btn-webprechaun-primary-outline {
     border-color: #6078FF;
     color: #6078FF;
 }
