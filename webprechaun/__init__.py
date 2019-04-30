@@ -1,4 +1,5 @@
 import os
+import logging
 
 from flask import Flask
 from flask_mail import Mail
@@ -19,7 +20,7 @@ def create_app():
         config = 'webprechaun.config.Production'
         logging_level = logging.INFO
 
-    logging.getLogger().setLevel(logging_level)
+    app.logger.setLevel(logging_level)
     app.config.from_object(config)
 
     mail.init_app(app)
