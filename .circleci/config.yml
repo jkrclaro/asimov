@@ -20,7 +20,5 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
-      - run:
-        command: |
-          pipenv run pytest
+      - run: pipenv run pytest
       
