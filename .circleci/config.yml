@@ -43,6 +43,12 @@ jobs:
       - run: 
           command: |
             sudo pip install awsebcli
+      - save_cache:
+          key: deps9-{{ .Branch }}-awsebcli
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python2.7/site-packages"
       - run:
           name: Deploy master to AWS via EB
           command: |
