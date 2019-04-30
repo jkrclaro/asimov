@@ -36,8 +36,11 @@ jobs:
           path: test-results
           destination: tr1
     deploy:
+      docker:
+        - image: circleci/python:2.7
       steps:
         - checkout
+        - run: pip install awsebcli
         - run:
             name: Deploy master to AWS via EB
             command: |
