@@ -11,5 +11,7 @@ General API service for Webprechaun.
 - Issue tracker: https://trello.com/b/7Pm8Ltmg/webprechaun
 
 ## Documentation
-- [Developer Guide](https://github.com/jkrclaro/webprechaun/blob/master/docs/developerguide.md)
+- [Developer](https://github.com/jkrclaro/webprechaun/blob/master/docs/developer.md)
 - [Deployment](https://github.com/jkrclaro/webprechaun/blob/master/docs/deployment.md)
+- [Migrations](https://github.com/jkrclaro/webprechaun/blob/master/docs/migrations.md)
+- [SQLAlchemy](https://github.com/jkrclaro/webprechaun/blob/master/docs/sqlalchemy.md)
