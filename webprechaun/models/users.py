@@ -2,7 +2,7 @@ import base64
 import hashlib
 
 import bcrypt
-from sqlalchemy import func
+from sqlalchemy.sql import func
 
 from . import db
 
@@ -14,8 +14,8 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True)
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, server_default=func.sysdate())
-    updated_at = db.Column(db.DateTime, server_default=func.sysdate())
+    created_at = db.Column(db.DateTime, server_default=func.now())
+    updated_at = db.Column(db.DateTime, server_default=func.now())
 
     def __init__(self, email, username, password):
         self.email = email.lower()
