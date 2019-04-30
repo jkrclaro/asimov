@@ -17,4 +17,7 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
+      - run:
+        command: |
+          pytest
       
