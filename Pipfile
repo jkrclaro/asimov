@@ -28,13 +28,14 @@ PyJWT = "==1.7.1"
 SQLAlchemy = "==1.2.16"
 Werkzeug = "==0.14.1"
 WTForms = "==2.2.1"
-awscli = "*"
 psycopg2-binary = "*"
+requests = "*"
 
 [dev-packages]
 pytest = "*"
 flake8 = "*"
 alembic = "*"
+awscli = "*"
 
 [requires]
 python_version = "3.7"
