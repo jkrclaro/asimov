@@ -1,6 +1,6 @@
 import unittest
 
-from webprechaun.libs.jwt_manager import JWTManager
+from webprechaun.jwtmanager import JWTManager
 
 
 class TestJWTManager(unittest.TestCase):
