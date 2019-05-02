@@ -50,7 +50,7 @@ class Netlify:
         return sites
 
     def get_site_id(self, name: str) -> str:
-        """Get the site id of a site by name.
+        """Get the ID of a site by its name.
 
             :param name: Name of site.
         """
@@ -95,9 +95,9 @@ class Netlify:
             headers['Content-Type'] = 'application/zip'
             data = zip_file
         elif file_digest:
-            data = {}
-            # TODO: Add method to allow for file digests here
+            data = file_digest
         else:
+            data = None
             logging.error('You must supply a zip file or a file digest')
 
         response = requests.post(url, headers=headers, data=data)
