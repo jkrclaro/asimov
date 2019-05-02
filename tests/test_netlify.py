@@ -14,13 +14,16 @@ class TestNetlify(unittest.TestCase):
         self.netlify = Netlify(os.environ['NETLIFY_ACCESS_TOKEN'])
 
     def test_create_site(self):
-        self.netlify.create_site('webprechaun-1')
-        assert True
+        response = self.netlify.create_site('webprechaun-1')
+        assert 200 == 200
 
     def test_get_sites(self):
-        self.netlify.get_sites()
-        assert True
+        response = self.netlify.get_sites()
+        assert 200 == 200
 
+    def test_deploy_site(self):
+        response = self.netlify.deploy_site('webprechaun-1')
+        assert 200 == 200
 
 if __name__ == '__main__':
     unittest.main()
