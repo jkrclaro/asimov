@@ -62,7 +62,7 @@ class Netlify:
                 break
 
         if not site_id:
-            logging.warning(f"Site '{site_id}' not found.")
+            logging.warning(f"Site '{name}' not found.")
 
         return site_id
 
