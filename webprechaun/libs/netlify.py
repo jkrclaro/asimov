@@ -1,7 +1,7 @@
 import logging
 import copy
 from urllib.parse import urljoin
-from dataclasses import dataclass, field
+from io import BufferedReader
 
 import requests
 
@@ -66,7 +66,12 @@ class Netlify:
 
         return site_id
 
-    def deploy_site(self, site_id: str):
+    def deploy_site(
+        self, 
+        site_id: str, 
+        file_digest: dict=None,
+        zip_file: BufferedReader=None
+    ) -> dict:
         """Deploy new or updated version of website.
 
         Netlify supports two ways of doing deploys:
@@ -76,26 +81,24 @@ class Netlify:
 
         2. Sending a zipped website and letting Netlify unzip and deploy.
 
-        This function uses the latter.
-
             :param site_id: Site ID of a site.
+            :param zip_file: Content of zip file.
         """
         headers = copy.deepcopy(self.headers)
-        headers['Content-Type'] = 'application/zip'
+        url = urljoin(self.url, 'sites')
+        url = f'{url}/{site_id}/deploys'
 
-        # Zip a file and name it based on its site_id
+        if zip_file:
+            headers['Content-Type'] = 'application/zip'
+            data = zip_file
+        elif file_digest:
+            data = {}
+            # TODO: Add method to allow for file digests here
+        else:
+            logging.error('You must supply a zip file or a file digest')
+            break
 
-        try:
-            with open(f'{site_id}.zip', 'rb') as zip_file:
-                logging.info(zip_file)
-                logging.info(type(zip_file))
-                url = urljoin(self.url, 'sites')
-                url = f'{url}/{site_id}/deploys'
-                response = requests.post(url, headers=headers, data=zip_file)
-                status = response.json()
-        except FileNotFoundError as file_not_found:
-            logging.error(file_not_found)
-            # TODO: What would be a good fallback if app zip file is missing?
-            status = {'status': 'error', 'reason': file_not_found}
+        response = requests.post(url, headers=headers, data=data)
+        status = response.json()
 
         return status
