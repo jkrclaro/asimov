@@ -28,25 +28,24 @@ class Netlify:
         self.version = version
         self.url = f'{scheme}://{host}{version}'
         self.headers = {'Authorization': f'Bearer {access_token}'}
-        self.URL_SITES = urljoin(self.url, 'sites')
 
     def create_site(self, name: str) -> dict:
         """Create site in Netlify.
 
             :param name: Name of site.
         """
+        url = urljoin(self.url, 'sites')
         data = {'name': name}
-        site = requests.post(
-            self.URL_SITES, 
-            data=data, 
-            headers=self.headers
-        ).json()
+        response = requests.post(url, data=data, headers=self.headers)
+        site = response.json()
 
         return site
 
     def get_sites(self) -> list:
         """Get list of sites in Netlify."""
-        sites = requests.get(self.URL_SITES, headers=self.headers).json()
+        url = urljoin(self.url, 'sites')
+        response = requests.get(url, headers=self.headers)
+        sites = response.json()
 
         return sites
 
@@ -67,7 +66,7 @@ class Netlify:
 
         return site_id
 
-    def deploy_site(self, site_id: str) -> dict:
+    def deploy_site(self, site_id: str):
         """Deploy new or updated version of website.
 
         Netlify supports two ways of doing deploys:
@@ -88,12 +87,10 @@ class Netlify:
 
         try:
             with open(f'{site_id}.zip', 'rb') as zip_file:
-                url = f'{self.URL_SITES}/{site_id}/deploys'
-                status = requests.post(
-                    url,
-                    headers=headers,
-                    data=zip_file
-                ).json()
+                url = urljoin(self.url, 'sites')
+                url = f'{url}/{site_id}/deploys'
+                response = requests.post(url, headers=headers, data=zip_file)
+                status = response.json()
         except FileNotFoundError as file_not_found:
             logging.error(file_not_found)
             # TODO: What would be a good fallback if app zip file is missing?
