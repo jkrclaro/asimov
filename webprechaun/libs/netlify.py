@@ -2,7 +2,6 @@ import logging
 import copy
 from urllib.parse import urljoin
 from dataclasses import dataclass, field
-from typing import Dict
 
 import requests
 
@@ -37,21 +36,38 @@ class Netlify:
             :param name: Name of site.
         """
         data = {'name': name}
-        response = requests.post(
+        site = requests.post(
             self.URL_SITES, 
             data=data, 
             headers=self.headers
-        )
+        ).json()
 
-        return response.json()
+        return site
 
     def get_sites(self) -> list:
         """Get list of sites in Netlify."""
-        response = requests.get(self.URL_SITES, headers=self.headers)
+        sites = requests.get(self.URL_SITES, headers=self.headers).json()
 
-        return response.json()
+        return sites
 
-    def deploy_site(self, name: str) -> dict:
+    def get_site_id(self, name: str) -> str:
+        """Get site id of site by name.
+
+            :param name: Name of site.
+        """
+        site_id = None
+        sites = self.get_sites()
+        for site in sites:
+            if site['name'] == name:
+                site_id = site['id']
+                break
+
+        if not site_id:
+            logging.warning(f"Site '{site_id}' not found.")
+
+        return site_id
+
+    def deploy_site(self, site_id: str) -> dict:
         """Deploy new or updated version of website.
 
         Netlify supports two ways of doing deploys:
@@ -63,26 +79,24 @@ class Netlify:
 
         This function uses the latter.
 
-            :param site: Name of site.
+            :param site_id: Site ID of a site.
         """
         headers = copy.deepcopy(self.headers)
         headers['Content-Type'] = 'application/zip'
 
-        sites = self.get_sites()
-        for site in sites:
-            if site['name'] == name:
-                site_id = site['id']
-                break
-
-        if not site_id:
-            logging.warning(f"Site '{site_id}' not found.")
+        # Zip a file and name it based on its site_id
 
         try:
-            with open('webprechaun.zip', 'rb') as zip_file:
+            with open(f'{site_id}.zip', 'rb') as zip_file:
                 url = f'{self.URL_SITES}/{site_id}/deploys'
-                response = requests.post(url, headers=headers, data=zip_file)
-                return response.json()
-        except FileNotFoundError as file_not_found_error:
-            logging.error(file_not_found_error)
+                status = requests.post(
+                    url,
+                    headers=headers,
+                    data=zip_file
+                ).json()
+        except FileNotFoundError as file_not_found:
+            logging.error(file_not_found)
             # TODO: What would be a good fallback if app zip file is missing?
-            return {'status': 'error', 'reason': file_not_found_error}
+            status = {'status': 'error', 'reason': file_not_found}
+
+        return status
