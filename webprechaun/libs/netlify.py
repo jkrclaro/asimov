@@ -77,7 +77,6 @@ class Netlify:
         if not site_id:
             logging.warning(f"Site '{site_id}' not found.")
 
-        logging.debug('Opening zip file...')
         try:
             with open('webprechaun.zip', 'rb') as zip_file:
                 url = f'{self.URL_SITES}/{site_id}/deploys'
