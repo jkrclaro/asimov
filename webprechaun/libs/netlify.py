@@ -67,8 +67,8 @@ class Netlify:
         return site_id
 
     def deploy_site(
-        self, 
-        site_id: str, 
+        self,
+        site_id: str,
         file_digest: dict=None,
         zip_file: BufferedReader=None
     ) -> dict:
@@ -82,6 +82,7 @@ class Netlify:
         2. Sending a zipped website and letting Netlify unzip and deploy.
 
             :param site_id: Site ID of a site.
+            :param file_digest: Digest of file paths with SHA1 of content.
             :param zip_file: Content of zip file.
         """
         headers = copy.deepcopy(self.headers)
@@ -96,7 +97,6 @@ class Netlify:
             # TODO: Add method to allow for file digests here
         else:
             logging.error('You must supply a zip file or a file digest')
-            break
 
         response = requests.post(url, headers=headers, data=data)
         status = response.json()
