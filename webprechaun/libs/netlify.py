@@ -87,6 +87,8 @@ class Netlify:
 
         try:
             with open(f'{site_id}.zip', 'rb') as zip_file:
+                logging.info(zip_file)
+                logging.info(type(zip_file))
                 url = urljoin(self.url, 'sites')
                 url = f'{url}/{site_id}/deploys'
                 response = requests.post(url, headers=headers, data=zip_file)
