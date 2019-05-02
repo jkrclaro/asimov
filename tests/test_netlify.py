@@ -1,4 +1,4 @@
-import os
+import os, logging
 import unittest
 from dotenv import find_dotenv, load_dotenv
 
@@ -22,7 +22,8 @@ class TestNetlify(unittest.TestCase):
         assert 200 == 200
 
     def test_deploy_site(self):
-        response = self.netlify.deploy_site('webprechaun-1')
+        site_id = self.netlify.get_site_id('webprechaun-1')
+        response = self.netlify.deploy_site(site_id)
         assert 200 == 200
 
 if __name__ == '__main__':
