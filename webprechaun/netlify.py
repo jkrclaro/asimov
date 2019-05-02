@@ -1,3 +1,4 @@
+import sys
 import logging
 import copy
 from urllib.parse import urljoin
@@ -76,29 +77,29 @@ class Netlify:
 
         Netlify supports two ways of doing deploys:
 
-        1. Sending a digest of all files in your deploy and then uploading any
-        files Netlify doesn't already have on its storage servers.
+        1. Sending a digest of all files in your deploy and then uploading \t
+            any files Netlify doesn't already have on its storage servers.
 
         2. Sending a zipped website and letting Netlify unzip and deploy.
 
         The former is the recommended approach by Netlify.
 
             :param site_id: Site ID of a site.
-            :param file_digest: Digest of file paths with SHA1 of content.
+            :param file_digest: Digest of file paths and SHA1 of file paths.
             :param zip_file: Content of zip file.
         """
         headers = copy.deepcopy(self.headers)
         url = urljoin(self.url, 'sites')
         url = f'{url}/{site_id}/deploys'
 
-        if zip_file:
-            headers['Content-Type'] = 'application/zip'
-            data = zip_file
-        elif file_digest:
-            data = file_digest
+        if zip_file or file_digest:
+            if zip_file:
+                headers['Content-Type'] = 'application/zip'
+                data = zip_file
+            else:
+                data = file_digest
         else:
-            data = None
-            logging.error('You must supply a zip file or a file digest')
+            sys.exit('You must supply a zip file or a file digest')
 
         response = requests.post(url, headers=headers, data=data)
         status = response.json()
