@@ -1,8 +1,7 @@
 import sys
 import logging
 import copy
-from urllib.parse import urljoin
-from io import BufferedReader
+import io
 
 import requests
 
@@ -38,13 +37,13 @@ class Netlify:
 
             :param name: Name of site.
         """
-        url = urljoin(self.url, 'sites')
+        url = f'{self.url}/sites'
         data = {'name': name}
         return requests.post(url, data=data, headers=self.headers)
 
     def get_sites(self) -> requests.models.Response:
         """Get list of sites in Netlify."""
-        url = urljoin(self.url, 'sites')
+        url = f'{self.url}/sites'
         return requests.get(url, headers=self.headers)
 
     def get_site_id(self, name: str) -> str:
@@ -68,7 +67,7 @@ class Netlify:
         self,
         site_id: str,
         file_digest: dict=None,
-        zip_file: BufferedReader=None
+        zip_file: io.BufferedReader=None
     ) -> requests.models.Response:
         """Deploy new or updated version of website.
 
@@ -86,12 +85,11 @@ class Netlify:
             :param zip_file: Content of zip file.
         """
         headers = copy.deepcopy(self.headers)
-        url = urljoin(self.url, 'sites')
-        url = f'{url}/{site_id}/deploys'
+        url = f'{self.url}/{site_id}/deploys'
 
         if zip_file or file_digest:
             if zip_file:
-                if type(zip_file) == BufferedReader:
+                if type(zip_file) == io.BufferedReader:
                     headers['Content-Type'] = 'application/zip'
                     data = zip_file
                 else:
