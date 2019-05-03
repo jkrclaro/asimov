@@ -55,7 +55,7 @@ class TestNetlify(unittest.TestCase):
         zip_file = io.BufferedReader(io.BytesIO(b'1'))
         response = self.netlify.deploy_site(self.site_id, zip_file=zip_file)
 
-        assert io.BufferedReader == type(response.request.body)
+        assert zip_file == response.request.body
         assert self.authorization == response.request.headers['Authorization']
 
 if __name__ == '__main__':
