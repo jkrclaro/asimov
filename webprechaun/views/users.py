@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request, current_app
 
 import sqlalchemy
 
-from webprechaun.libs.jwt_manager import JWTManager
+from webprechaun.jwtmanager import JWTManager
 from webprechaun.models import db
 from webprechaun.models.users import User
 
