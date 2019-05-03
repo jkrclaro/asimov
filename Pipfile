@@ -37,6 +37,7 @@ flake8 = "*"
 alembic = "*"
 awscli = "*"
 responses = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3.7"
