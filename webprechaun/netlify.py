@@ -11,7 +11,7 @@ class Netlify:
 
     def __init__(
         self, 
-        access_token: str, 
+        access_token: str='', 
         scheme: str='https', 
         host: str='api.netlify.com', 
         version: str='/api/v1/'
@@ -28,27 +28,24 @@ class Netlify:
         self.host = host
         self.version = version
         self.url = f'{scheme}://{host}{version}'
-        self.headers = {'Authorization': f'Bearer {access_token}'}
+        if self.access_token:
+            self.headers = {'Authorization': f'Bearer {access_token}'}
+        else:
+            self.headers = {}
 
-    def create_site(self, name: str) -> dict:
+    def create_site(self, name: str) -> requests.models.Response:
         """Create a site in Netlify.
 
             :param name: Name of site.
         """
         url = urljoin(self.url, 'sites')
         data = {'name': name}
-        response = requests.post(url, data=data, headers=self.headers)
-        site = response.json()
+        return requests.post(url, data=data, headers=self.headers)
 
-        return site
-
-    def get_sites(self) -> list:
+    def get_sites(self) -> requests.models.Response:
         """Get list of sites in Netlify."""
         url = urljoin(self.url, 'sites')
-        response = requests.get(url, headers=self.headers)
-        sites = response.json()
-
-        return sites
+        return requests.get(url, headers=self.headers)
 
     def get_site_id(self, name: str) -> str:
         """Get the ID of a site by its name.
@@ -56,7 +53,7 @@ class Netlify:
             :param name: Name of site.
         """
         site_id = None
-        sites = self.get_sites()
+        sites = self.get_sites().json()
         for site in sites:
             if site['name'] == name:
                 site_id = site['id']
@@ -72,7 +69,7 @@ class Netlify:
         site_id: str,
         file_digest: dict=None,
         zip_file: BufferedReader=None
-    ) -> dict:
+    ) -> requests.models.Response:
         """Deploy new or updated version of website.
 
         Netlify supports two ways of doing deploys:
@@ -94,14 +91,18 @@ class Netlify:
 
         if zip_file or file_digest:
             if zip_file:
-                headers['Content-Type'] = 'application/zip'
-                data = zip_file
-            else:
-                data = file_digest
+                if type(zip_file) == BufferedReader:
+                    headers['Content-Type'] = 'application/zip'
+                    data = zip_file
+                else:
+                    sys.exit('Zip file must be of type BufferedReader')
+
+            if file_digest:
+                if type(file_digest) == dict:
+                    data = file_digest
+                else:
+                    sys.exit('File digest must be of type dict')
         else:
             sys.exit('You must supply a zip file or a file digest')
 
-        response = requests.post(url, headers=headers, data=data)
-        status = response.json()
-
-        return status
+        return requests.post(url, headers=headers, data=data)
