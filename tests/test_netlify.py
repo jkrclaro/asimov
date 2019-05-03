@@ -34,6 +34,7 @@ class TestNetlify(unittest.TestCase):
                 response = self.netlify.deploy_site(site_id, zip_file=zip_file)
         except FileNotFoundError as file_not_found:
             logging.error(file_not_found)
+            response = file_not_found
         assert dict == type(response)
 
 if __name__ == '__main__':
