@@ -1,5 +1,11 @@
-import os, logging
+import os
+import io
+import logging
 import unittest
+import json
+from urllib.parse import urljoin
+
+import responses
 from dotenv import find_dotenv, load_dotenv
 
 from webprechaun.netlify import Netlify
@@ -11,31 +17,46 @@ load_dotenv(find_dotenv())
 class TestNetlify(unittest.TestCase):
 
     def setUp(self):
-        self.netlify = Netlify(os.environ['NETLIFY_ACCESS_TOKEN'])
-        self.test_site = 'webprechaun-1'
-        self.test_site_id = '9e196094-68e0-4c0b-b7ec-1096902bc766'
+        self.access_token = '12345'
+        self.netlify = Netlify(self.access_token)
+        self.authorization = f'Bearer {self.access_token}'
+        self.site_name = 'test'
+        self.site_id = 'test-12345'
 
+    @responses.activate
     def test_create_site(self):
-        response = self.netlify.create_site(self.test_site)
-        assert dict == type(response)
+        url = 'https://api.netlify.com/api/v1/sites'
+        responses.add(responses.POST, url)
+        response = self.netlify.create_site(self.site_name)
 
+        assert 'name=test' == response.request.body
+        assert self.authorization == response.request.headers['Authorization']
+
+    @responses.activate
     def test_get_sites(self):
+        url = 'https://api.netlify.com/api/v1/sites'
+        responses.add(responses.GET, url)
         response = self.netlify.get_sites()
-        assert list == type(response)
 
+        assert self.authorization == response.request.headers['Authorization']
+
+    @responses.activate
     def test_get_site_id(self):
-        response = self.netlify.get_site_id(self.test_site)
-        assert self.test_site_id == response
+        url = 'https://api.netlify.com/api/v1/sites'
+        sites = [{'name': self.site_name, 'id': self.site_id}]
+        responses.add(responses.GET, url, json=sites)
 
+        assert sites[0]['id'] == self.netlify.get_site_id('test')
+
+    @responses.activate
     def test_deploy_site_via_zip_file(self):
-        site_id = self.netlify.get_site_id(self.test_site)
-        try:
-            with open(f'{site_id}.zip', 'rb') as zip_file:
-                response = self.netlify.deploy_site(site_id, zip_file=zip_file)
-        except FileNotFoundError as file_not_found:
-            logging.error(file_not_found)
-            response = file_not_found
-        assert dict == type(response)
+        url = f'https://api.netlify.com/api/v1/sites/{self.site_id}/deploys'
+        responses.add(responses.POST, url)
+        zip_file = io.BufferedReader(io.BytesIO(b'1'))
+        response = self.netlify.deploy_site(self.site_id, zip_file=zip_file)
+
+        assert io.BufferedReader == type(response.request.body)
+        assert self.authorization == response.request.headers['Authorization']
 
 if __name__ == '__main__':
     unittest.main()
