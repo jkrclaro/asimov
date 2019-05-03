@@ -5,12 +5,8 @@ import unittest
 import json
 
 import responses
-from dotenv import find_dotenv, load_dotenv
 
 from webprechaun.netlify import Netlify
-
-
-load_dotenv(find_dotenv())
 
 
 class TestNetlify(unittest.TestCase):
