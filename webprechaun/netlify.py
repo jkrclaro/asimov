@@ -73,7 +73,7 @@ class Netlify:
 
         Netlify supports two ways of doing deploys:
 
-        1. Sending a digest of all files in your deploy and then uploading \t
+        1. Sending a digest of all files in your deploy and then uploading
             any files Netlify doesn't already have on its storage servers.
 
         2. Sending a zipped website and letting Netlify unzip and deploy.
@@ -87,20 +87,20 @@ class Netlify:
         headers = copy.deepcopy(self.headers)
         url = f'{self.url}/sites/{site_id}/deploys'
 
-        if zip_file or file_digest:
-            if zip_file:
-                if type(zip_file) == io.BufferedReader:
-                    headers['Content-Type'] = 'application/zip'
-                    data = zip_file
-                else:
-                    sys.exit('Zip file must be of type BufferedReader')
+        if zip_file:
+            if type(zip_file) == io.BufferedReader:
+                headers['Content-Type'] = 'application/zip'
+                data = zip_file
+            else:
+                sys.exit('Zip file must be of type BufferedReader')
 
-            if file_digest:
-                if type(file_digest) == dict:
-                    data = file_digest
-                else:
-                    sys.exit('File digest must be of type dict')
-        else:
+        if file_digest:
+            if type(file_digest) == dict:
+                data = file_digest
+            else:
+                sys.exit('File digest must be of type dict')
+
+        if not zip_file and not file_digest:
             sys.exit('You must supply a zip file or a file digest')
 
         return requests.post(url, headers=headers, data=data)
