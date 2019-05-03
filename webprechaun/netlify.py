@@ -13,7 +13,7 @@ class Netlify:
         access_token: str='', 
         scheme: str='https', 
         host: str='api.netlify.com', 
-        version: str='/api/v1/'
+        version: str='/api/v1'
     ):
         """The primary Netlify class .
 
