@@ -2,7 +2,6 @@ import os
 import io
 import logging
 import unittest
-import json
 
 import responses
 
