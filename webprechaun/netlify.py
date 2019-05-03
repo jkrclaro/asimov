@@ -85,7 +85,7 @@ class Netlify:
             :param zip_file: Content of zip file.
         """
         headers = copy.deepcopy(self.headers)
-        url = f'{self.url}/{site_id}/deploys'
+        url = f'{self.url}/sites/{site_id}/deploys'
 
         if zip_file or file_digest:
             if zip_file:
