@@ -3,7 +3,6 @@ import io
 import logging
 import unittest
 import json
-from urllib.parse import urljoin
 
 import responses
 from dotenv import find_dotenv, load_dotenv
