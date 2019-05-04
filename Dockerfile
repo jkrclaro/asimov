@@ -16,8 +16,7 @@ COPY Pipfile.lock .
 RUN pipenv install --system --deploy
 
 # Move everything to docker
-COPY webprechaun/ .
-COPY app.py .
+COPY . .
 
 EXPOSE 5000
 ENTRYPOINT ["gunicorn"]
