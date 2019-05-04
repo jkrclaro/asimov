@@ -23,6 +23,7 @@ jobs:
           command: |
             sudo pip install pipenv
             pipenv install --dev
+            pipenv lock -r > requirements.txt
       - save_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
