@@ -1,8 +1,8 @@
 branch-defaults:
   master:
-    environment: webprechaun
+    environment: rewardg
 global:
-  application_name: webprechaun
+  application_name: rewardg
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

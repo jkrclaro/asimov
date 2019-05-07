@@ -14,10 +14,10 @@ cors = CORS()
 def create_app():
     app = Flask(__name__)
     if os.getenv('FLASK_ENV', None):
-        config = 'webprechaun.config.Development'
+        config = 'rewardg.config.Development'
         logging_level = logging.DEBUG
     else:
-        config = 'webprechaun.config.Production'
+        config = 'rewardg.config.Production'
         logging_level = logging.INFO
 
     app.logger.setLevel(logging_level)

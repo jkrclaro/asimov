@@ -1,6 +1,6 @@
 import unittest
 
-from webprechaun.models.users import User
+from rewardg.models.users import User
 
 
 class TestUserModel(unittest.TestCase):

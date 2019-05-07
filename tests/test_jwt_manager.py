@@ -1,6 +1,6 @@
 import unittest
 
-from webprechaun.jwtmanager import JWTManager
+from rewardg.jwtmanager import JWTManager
 
 
 class TestJWTManager(unittest.TestCase):

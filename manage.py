@@ -1,5 +1,5 @@
-from webprechaun import create_app
-from webprechaun.models import db
+from rewardg import create_app
+from rewardg.models import db
 
 
 if __name__ == '__main__':

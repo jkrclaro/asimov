@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from webprechaun.netlify import Netlify
+from rewardg.netlify import Netlify
 
 
 class TestNetlify(unittest.TestCase):
