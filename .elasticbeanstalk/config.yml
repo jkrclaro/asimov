@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: rewardg
+    environment: rewardg-production
 global:
   application_name: rewardg
   branch: null
