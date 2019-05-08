@@ -40,7 +40,7 @@ def create_app():
 
     @app.before_request
     def before_request():
-        if request.is_secure:
+        if request.url.startswith('https://'):
             app.logger.info('Request is secure. Redirecting...')
             url = request.url.replace('http://', 'https://', 1)
             code = 301
