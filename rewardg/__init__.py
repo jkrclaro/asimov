@@ -5,10 +5,12 @@ from flask import Flask
 from flask_mail import Mail
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
+from flask_talisman import Talisman
 
 mail = Mail()
 marshmallow = Marshmallow()
 cors = CORS()
+talisman = Talisman()
 
 
 def create_app():
@@ -19,6 +21,7 @@ def create_app():
     else:
         config = 'rewardg.config.Production'
         logging_level = logging.INFO
+        talisman.init_app(app)
 
     app.logger.setLevel(logging_level)
     app.config.from_object(config)
