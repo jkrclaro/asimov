@@ -1,7 +1,7 @@
 import os
 import logging
 
-from flask import Flask, request, redirect
+from flask import Flask
 from flask_mail import Mail
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
@@ -37,13 +37,5 @@ def create_app():
     from .views.home import home_blueprint
     app.register_blueprint(users_blueprint)
     app.register_blueprint(home_blueprint)
-
-    @app.before_request
-    def before_request():
-        if request.url.startswith('http://'):
-            app.logger.info('Request is secure. Redirecting...')
-            url = request.url.replace('http://', 'https://', 1)
-            code = 301
-            return redirect(url, code=code)
 
     return app
