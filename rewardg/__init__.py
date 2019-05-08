@@ -1,7 +1,7 @@
 import os
 import logging
 
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask_mail import Mail
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
