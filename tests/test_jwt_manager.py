@@ -1,6 +1,6 @@
 import unittest
 
-from rewardg.jwtmanager import JWTManager
+from pxdcast.jwtmanager import JWTManager
 
 
 class TestJWTManager(unittest.TestCase):

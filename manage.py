@@ -1,5 +1,5 @@
-from rewardg import create_app
-from rewardg.models import db
+from pxdcast import create_app
+from pxdcast.models import db
 
 
 if __name__ == '__main__':

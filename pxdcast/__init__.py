@@ -16,10 +16,10 @@ talisman = Talisman()
 def create_app():
     app = Flask(__name__)
     if os.getenv('FLASK_ENV', None):
-        config = 'rewardg.config.Development'
+        config = 'pxdcast.config.Development'
         logging_level = logging.DEBUG
     else:
-        config = 'rewardg.config.Production'
+        config = 'pxdcast.config.Production'
         logging_level = logging.INFO
         talisman.init_app(app)
 

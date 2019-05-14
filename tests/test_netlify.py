@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from rewardg.netlify import Netlify
+from pxdcast.netlify import Netlify
 
 
 class TestNetlify(unittest.TestCase):

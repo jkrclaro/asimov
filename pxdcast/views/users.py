@@ -4,9 +4,9 @@ from flask import Blueprint, jsonify, request, current_app
 
 import sqlalchemy
 
-from rewardg.jwtmanager import JWTManager
-from rewardg.models import db
-from rewardg.models.users import User
+from pxdcast.jwtmanager import JWTManager
+from pxdcast.models import db
+from pxdcast.models.users import User
 
 
 users_blueprint = Blueprint('user', __name__, url_prefix='/users')
@@ -65,7 +65,7 @@ def login():
     jwt_manager = JWTManager(current_app.config['SECRET_KEY'])
 
     data = jsonify(
-        iss='rewardg.com',
+        iss='pxdcast.com',
         user={'username': user.username},
         accessToken=jwt_manager.create_access_token(message),
         refreshToken=jwt_manager.create_refresh_token(message)

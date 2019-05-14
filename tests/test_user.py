@@ -1,6 +1,6 @@
 import unittest
 
-from rewardg.models.users import User
+from pxdcast.models.users import User
 
 
 class TestUserModel(unittest.TestCase):
