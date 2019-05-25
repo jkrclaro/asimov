@@ -4,9 +4,11 @@
 
 /* -- Header */
 .logo-text {
-    letter-spacing: 3.5px;
-    font-size: 36px; 
+    padding-top: 20px;
+    font-family: 'Helvetica';
+    font-size: 48px; 
     font-weight: 900;
+    color: #111;
 }
 /* Header -- */
 
@@ -22,24 +24,31 @@
 }
 
 .btn-pxdcast-primary {
-    background-color: #009E60;
-    border-color: #009E60;
+    background-color: #7F85FC;
+    border-color: #7F85FC;
     color: #fff;
 }
 .btn-pxdcast-primary:hover, .btn-pxdcast-primary:focus, .btn-pxdcast-primary:active, .btn-pxdcast-primary.active, .open > .dropdown-toggle.btn-pxdcast-primary {
-    background-color: #009E60;
-    border-color: #009E60;
+    background-color: #7F85FC;
+    border-color: #7F85FC;
     color: #fff;
 }
 .btn-pxdcast-primary-outline {
-    border-color: #009E60;
-    color: #009E60;
+    border-color: #7F85FC;
+    color: #7F85FC;
 }
 .btn-pxdcast-primary-outline:hover, .btn-pxdcast-primary-outline:focus, .btn-pxdcast-primary-outline:active, .btn-pxdcast-primary-outline.active, .open > .dropdown-toggle.btn-pxdcast-primary-outline {
-    border-color: #009E60;
-    color: #009E60;
+    border-color: #7F85FC;
+    color: #7F85FC;
 }
 /* Button -- */
+
+a {
+    color: #7F85FC;
+}
+a:hover {
+    color: #5E63BD;
+}
 
 /* -- Form */
 .form-control {
@@ -48,3 +57,13 @@
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 /* Form -- */
+
+.content-outer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.content-inner {
+    margin: auto;
+}
