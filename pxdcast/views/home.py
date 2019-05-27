@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 
 home_blueprint = Blueprint('home', __name__)
@@ -22,3 +22,9 @@ def terms():
 @home_blueprint.route('/privacy', methods=['GET'])
 def privacy():
     return render_template('privacy.html')
+
+
+@home_blueprint.route('/search', methods=['GET', 'POST'])
+def search():
+    print(request.data)
+    return render_template('search.html')
