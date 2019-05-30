@@ -16,3 +16,11 @@ Best guide: https://hackernoon.com/easy-lets-encrypt-certificates-on-aws-7938776
 - For `Certificate Body`, paste content of `scripts/letsencrypt/live/domain.com/cert.pem`
 - For `Certificate private key`, paste content of `scripts/letsencrypt/live/domain.com/privkey.pem`
 - For `Certificate chain`, paste content of `scripts/letsencrypt/live/domain.com/chain.pem`
+
+6) Now setup your load balancer to use HTTPS.
+- Go to `AWS Beanstalk > Configuration > Load Balancer > Add Listener`
+- Listener port = 443
+- Listener protocol = HTTPS
+- Instance port = 80
+- Instance protocol = HTTP
+- SSL Certificate = domain.com
