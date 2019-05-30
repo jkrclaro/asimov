@@ -12,12 +12,12 @@
         </div>
         <form action='/search' method='POST'>
             <div class='input-group input-group-lg mb-4'>
-                <input type='text' class='form-control' id='keyword' aria-describedby='keyword-help'>
+                <input type='text' class='form-control' name='keyword' id='keyword' value='Joe Rogan'>
             </div>
             <div class='col-lg-12'>
                 <div class='row justify-content-center'>
-                    <input type='submit' value='Search' class='btn btn-pxdcast-primary col-5 mb-1 mr-3'></input>
-                    <input type='submit' value='Random' class='btn btn-pxdcast-primary col-5'></input>
+                    <button type='submit' class='btn btn-pxdcast-primary col-5 mb-1 mr-3'>Search</button>
+                    <button type='submit' class='btn btn-pxdcast-primary col-5'>Random</button>
                 </div>
             </div>
         </form>

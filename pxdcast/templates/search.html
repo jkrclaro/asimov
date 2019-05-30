@@ -2,7 +2,12 @@
 
 {% block content %}
 
-
-<h1>Search</h1>
+<h1>Searching</h1>
+<a href='/'>Go back</a>
+<ul>
+    {% for podcast in podcasts %}
+        <li><a href='{{ podcast.trackViewUrl }}'>{{ podcast.trackName }}</a></li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
