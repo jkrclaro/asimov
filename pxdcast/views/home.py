@@ -28,8 +28,7 @@ def privacy():
 
 @home_blueprint.route('/search', methods=['GET', 'POST'])
 def search():
-    keyword = request.form.get('keyword')
+    keywords = request.form.get('keywords')
     itunes = Itunes()
-    podcasts = itunes.search_podcasts(keyword)
-    print(podcasts)
+    podcasts = itunes.search_podcasts(keywords)
     return render_template('search.html', podcasts=podcasts)

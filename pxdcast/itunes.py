@@ -13,11 +13,11 @@ class Itunes:
         self.host = host
         self.url = f'{scheme}://{host}'
 
-    def itunify_keyword(self, keyword):
-        return keyword.replace(' ', '+').lower()
+    def itunify_keywords(self, keywords):
+        return keywords.replace(' ', '+').lower()
 
-    def search_podcasts(self, keyword):
-        """Search for podcasts based on keyword.
+    def search_podcasts(self, keywords):
+        """Search for podcasts based on keywords.
 
         Useful keys:
             - trackViewUrl
@@ -25,12 +25,11 @@ class Itunes:
             - artistName
             - artworkUrl100
 
-            :param keyword: Keyword to be searched.
+            :param keywords: Keywords to be searched.
         """
 
-        keyword = self.itunify_keyword(keyword)
-        url = f'{self.url}/search?term={keyword}&media=podcast'
-        print(url)
+        keywords = self.itunify_keywords(keywords)
+        url = f'{self.url}/search?term={keywords}&media=podcast'
         response = requests.get(url).json()
 
         fields = ('trackViewUrl', 'trackName', 'artistName', 'artworkUrl100')
