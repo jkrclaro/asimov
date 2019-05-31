@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 
-from pxdcast.itunes import Itunes
+from pxdcast.search import Search
 
 
 home_blueprint = Blueprint('home', __name__)
@@ -29,6 +29,6 @@ def privacy():
 @home_blueprint.route('/search', methods=['GET', 'POST'])
 def search():
     keywords = request.form.get('keywords')
-    itunes = Itunes()
-    podcasts = itunes.search_podcasts(keywords)
+    search = Search()
+    podcasts = search.search_podcasts(keywords)
     return render_template('search.html', podcasts=podcasts)

@@ -2,13 +2,13 @@ import unittest
 
 import responses
 
-from pxdcast.itunes import Itunes
+from pxdcast.search import Search
 
 
-class TestItunes(unittest.TestCase):
+class TestSearch(unittest.TestCase):
 
     def setUp(self):
-        self.itunes = Itunes()
+        self.search = Search()
 
     @responses.activate
     def test_search(self):
@@ -55,7 +55,7 @@ class TestItunes(unittest.TestCase):
             ]
         }
         responses.add(responses.GET, url, json=data)
-        podcasts = self.itunes.search_podcasts('Joe Rogan')
+        podcasts = self.search.search_podcasts('Joe Rogan')
 
         test_podcasts = [
             {
