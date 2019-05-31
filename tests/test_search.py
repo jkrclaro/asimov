@@ -11,7 +11,7 @@ class TestSearch(unittest.TestCase):
         self.search = Search()
 
     @responses.activate
-    def test_search(self):
+    def test_itunes(self):
         url = 'https://itunes.apple.com/search?term=joe+rogan&media=podcast'
         data = {
             'resultCount': 1, 
@@ -55,7 +55,7 @@ class TestSearch(unittest.TestCase):
             ]
         }
         responses.add(responses.GET, url, json=data)
-        podcasts = self.search.search_podcasts('Joe Rogan')
+        podcasts = self.search.search_itunes('Joe Rogan', [])
 
         test_podcasts = [
             {
