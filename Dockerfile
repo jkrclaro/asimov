@@ -19,5 +19,4 @@ RUN pipenv install --system --deploy
 COPY . .
 
 EXPOSE 5000
-ENTRYPOINT ["gunicorn"]
-CMD ["app:app", "-b", "0.0.0.0:5000"]
+ENTRYPOINT ["python"]
