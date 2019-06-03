@@ -15,6 +15,8 @@ django-widget-tweaks = "*"
 python-dotenv = "*"
 boto3 = "*"
 gunicorn = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 pytest = "*"
