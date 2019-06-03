@@ -1,6 +1,6 @@
 import unittest
 
-from pxdcast.jwtmanager import JWTManager
+from src.pxdcast.jwtmanager import JWTManager
 
 
 class TestJWTManager(unittest.TestCase):

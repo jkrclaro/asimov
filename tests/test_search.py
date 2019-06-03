@@ -2,7 +2,7 @@ import unittest
 
 import responses
 
-from pxdcast.search import Search
+from src.pxdcast.search import Search
 
 
 class TestSearch(unittest.TestCase):
