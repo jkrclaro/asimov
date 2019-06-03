@@ -50,8 +50,6 @@ AWS_S3_REGION_NAME = 'eu-west-1'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = 'pxdcast.com'
-AWS_S3_CUSTOM_DOMAIN = 'pxdcast.com'
-AWS_S3_MEDIA_DOMAIN = 'pxdcast.com'
 
 if DEBUG:
     ALLOWED_HOSTS = ('pxdcast.localhost',)
