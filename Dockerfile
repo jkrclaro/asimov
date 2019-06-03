@@ -19,5 +19,4 @@ RUN pipenv install --system --deploy
 COPY . .
 
 EXPOSE 8000
-ENTRYPOINT ["gunicorn"]
-CMD ["src.wsgi:application"]
+CMD ["gunicorn", "src.wsgi:application"]
