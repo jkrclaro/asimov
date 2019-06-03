@@ -1,0 +1,3 @@
+CITIES = (
+    ('dublin', 'Dublin'),
+)
