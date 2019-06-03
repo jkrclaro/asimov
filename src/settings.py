@@ -46,12 +46,12 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = f"Pxdcast <{EMAIL_HOST_USER}>"
 
 # AWS
-AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
+AWS_S3_REGION_NAME = 'eu-west-1'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-AWS_S3_CUSTOM_DOMAIN = os.environ['AWS_S3_CUSTOM_DOMAIN']
-AWS_S3_MEDIA_DOMAIN = os.environ['AWS_S3_MEDIA_DOMAIN']
+AWS_STORAGE_BUCKET_NAME = 'pxdcast.com'
+AWS_S3_CUSTOM_DOMAIN = 'pxdcast.com'
+AWS_S3_MEDIA_DOMAIN = 'pxdcast.com'
 
 if DEBUG:
     ALLOWED_HOSTS = ('pxdcast.localhost',)
@@ -78,10 +78,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['RDS_DATABASE'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOST'],
+            'NAME': os.environ['POSTGRESQL_DATABASE'],
+            'USER': os.environ['POSTGRESQL_USERNAME'],
+            'PASSWORD': os.environ['POSTGRESQL_PASSWORD'],
+            'HOST': os.environ['POSTGRESQL_HOST'],
             'PORT': 5432
         }
     }
