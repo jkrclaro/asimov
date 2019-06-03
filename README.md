@@ -1,4 +1,4 @@
-<a href='https://github.com/jkrclaro/pxdcast'><img src='https://github.com/jkrclaro/pxdcast/blob/master/pxdcast/static/img/pxdcast.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/pxdcast'><img src='https://github.com/jkrclaro/pxdcast/blob/master/static/img/pxdcast.png' align='right' width='200' height='160' /></a>
 
 # Pxdcast
 [![CircleCI](https://circleci.com/gh/jkrclaro/pxdcast/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/pxdcast/tree/master)
