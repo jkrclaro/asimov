@@ -15,5 +15,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('signup', signup, name='signup'),
     path('login', login, name='login'),
-    path('pricing', TemplateView.as_view(template_name='pricing.html'), name='pricing')
+    path('pricing', TemplateView.as_view(template_name='home/pricing.html'), name='pricing')
 ]
