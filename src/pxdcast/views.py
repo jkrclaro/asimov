@@ -5,7 +5,7 @@ from .forms import SignupForm
 
 
 def index(request):
-    return render(request, 'home.html')
+    return render(request, 'home/index.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -21,3 +21,6 @@ def signup(request):
         form = SignupForm()
 
     return render(request, 'user/signup.html', {'form': form})
+
+def login(request):
+    return render(request, 'user/login.html', {'form': None})
