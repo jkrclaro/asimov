@@ -6,14 +6,7 @@ from django.contrib.auth import (
 )
 from django.contrib import messages
 
-from .forms import SignupForm, LoginForm
-
-
-def home(request):
-    if not request.user.is_authenticated:
-        return render(request, 'home/index.html')
-    else:
-        return render(request, 'dashboard/index.html')
+from src.pxdcast.forms import SignupForm, LoginForm
 
 
 def signup(request):
