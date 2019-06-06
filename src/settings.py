@@ -38,12 +38,7 @@ MESSAGE_TAGS = {
 }
 
 # Email
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = f"Pxdcast <{EMAIL_HOST_USER}>"
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 # AWS
 AWS_S3_REGION_NAME = 'eu-west-1'
@@ -174,6 +169,7 @@ AUTH_PASSWORD_VALIDATORS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'src.pxdcast.backends.EmailAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',

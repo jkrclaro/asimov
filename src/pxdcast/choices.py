@@ -1,3 +1,0 @@
-CITIES = (
-    ('dublin', 'Dublin'),
-)

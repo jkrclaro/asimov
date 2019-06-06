@@ -3,7 +3,7 @@
 }
 
 /* -- Text */
-.h1-heading, .h3-heading {
+.h1-heading, .h2-heading, .h3-heading {
     font-family: 'Poppins';
     font-weight: 700;
 }
@@ -21,9 +21,9 @@
 
 /* -- Button */
 .btn {
-    border-radius: 24px;
+    border-radius: 8px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     padding-left: 15px;
     padding-right: 15px;
@@ -64,8 +64,6 @@ a:hover {
 /* -- Form */
 .form-control {
     color: #111 !important;
-    border-radius: 24px !important;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 /* Form -- */
 

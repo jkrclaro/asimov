@@ -2,8 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.dispatch import receiver
 
-from .choices import CITIES
-from .managers import ProfileManager
+
+CITIES = (
+    ('dublin', 'Dublin'),
+)
+
+
+class ProfileManager(models.Manager):
+    pass
 
 
 class User(AbstractUser):
