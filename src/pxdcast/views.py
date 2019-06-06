@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth import (
+    login as auth_login, 
+    authenticate, 
+    logout as auth_logout
+)
 from django.contrib import messages
 
 from .forms import SignupForm, LoginForm
@@ -42,4 +46,6 @@ def login(request):
 
 
 def logout(request):
+    auth_logout(request)
+    messages.success(request, 'You have logged out')
     return redirect('pxdcast:home')
