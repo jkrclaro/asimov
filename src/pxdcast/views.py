@@ -38,10 +38,9 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
-            messages.success(request, 'Logged in!')
             return redirect('pxdcast:home')
         else:
-            messages.error(request, 'Invalid login')
+            messages.error(request, 'The email and password does not match')
             return redirect('pxdcast:login')
     else:
         form = LoginForm()
@@ -51,5 +50,4 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    messages.success(request, 'You have logged out')
     return redirect('pxdcast:home')
