@@ -26,6 +26,8 @@ def signup(request):
 
 
 def login(request):
+    auth_fail = False
+    form = LoginForm()
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -34,12 +36,13 @@ def login(request):
             auth_login(request, user)
             return redirect('pxdcast:home')
         else:
-            messages.error(request, 'The email and password does not match')
-            return redirect('pxdcast:login')
-    else:
-        form = LoginForm()
+            auth_fail = True
 
-    return render(request, 'registration/login.html', {'form': form})
+    return render(
+        request, 
+        'registration/login.html', 
+        {'form': form, 'auth_fail': auth_fail}
+    )
 
 
 def logout(request):

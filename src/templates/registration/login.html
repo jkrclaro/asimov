@@ -12,11 +12,19 @@
                 <h2 class='h2-heading text-center mb-5 mt-3'>Welcome back!</h2>
                 <form method='post'>
                     {% csrf_token %}
+                    {% if auth_fail %}
+                        <p class='text-center' style='color: red'>The email and password does not match</p>
+                    {% endif %}
                     {% for field in form %}
                         <fieldset class='form-group'>
                         <label class='control-label' for='id_{{ field.name }}'>{{ field.label }}</label>
                         <input type='{{ field.field.widget.input_type }}' class='form-control mb-3' name='{{ field.name }}' id='id_{{ field.name }}'>
                         </fieldset>
+                        {% for error in field.errors %}
+                            <ul>
+                                <li style="color: red">{{ error }}</li>
+                            </ul>
+                        {% endfor %}
                     {% endfor %}
                     <button type='submit' class='btn btn-block btn-pxdcast-primary mb-3'>Login</button>
                 </form>
