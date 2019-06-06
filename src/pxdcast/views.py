@@ -10,7 +10,11 @@ from .forms import SignupForm, LoginForm
 
 
 def home(request):
-    return render(request, 'home/index.html')
+    if not request.user.is_authenticated:
+        return render(request, 'home/index.html')
+    else:
+        return render(request, 'dashboard/index.html')
+
 
 def signup(request):
     if request.method == 'POST':
