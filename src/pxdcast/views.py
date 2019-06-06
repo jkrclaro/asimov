@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, authenticate
+from django.contrib import messages
 
-from .forms import SignupForm
+from .forms import SignupForm, LoginForm
 
 
 def home(request):
@@ -20,7 +21,25 @@ def signup(request):
     else:
         form = SignupForm()
 
-    return render(request, 'user/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 def login(request):
-    return render(request, 'user/login.html', {'form': None})
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            messages.success(request, 'Logged in!')
+            return redirect('pxdcast:home')
+        else:
+            messages.error(request, 'Invalid login')
+            return redirect('pxdcast:login')
+    else:
+        form = LoginForm()
+
+    return render(request, 'registration/login.html', {'form': form})
+
+
+def logout(request):
+    return redirect('pxdcast:home')
