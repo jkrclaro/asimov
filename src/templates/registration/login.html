@@ -9,12 +9,12 @@
     <div class='col-lg-6'>
         <div class='card'>
             <div class='card-body'>
-                <h2 class='h2-heading text-center mb-5 mt-3'>Welcome back!</h2>
+                <h2 class='h2-heading text-center mb-3 mt-3'>Welcome back!</h2>
                 <form method='post'>
                     {% csrf_token %}
-                    {% if auth_fail %}
-                        <p class='text-center' style='color: red'>The email and password does not match</p>
-                    {% endif %}
+                    {% for error in form.non_field_errors %}
+                        <div style='color: red' class='mb-3'>{{ error }}</div>
+                    {% endfor %}
                     {% for field in form %}
                         <fieldset class='form-group'>
                             <label class='control-label' for='id_{{ field.name }}'>{{ field.label }}</label>
@@ -26,9 +26,7 @@
                                     </ul>
                                 {% endfor %}
                             {% else %}
-                                {% for error in field.errors %}
-                                    <span style='color: red'>{{ error }}</span>
-                                {% endfor %}
+                                <span style='color: red'>{{ field.errors.0 }}</span>
                             {% endif %}
                         </fieldset>
                     {% endfor %}

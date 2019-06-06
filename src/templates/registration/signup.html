@@ -23,9 +23,7 @@
                                     </ul>
                                 {% endfor %}
                             {% else %}
-                                {% for error in field.errors %}
-                                    <span style='color: red'>{{ error }}</span>
-                                {% endfor %}
+                                <span style='color: red'>{{ field.errors.0 }}</span>
                             {% endif %}
                         </fieldset>
                     {% endfor %}
