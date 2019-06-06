@@ -17,14 +17,20 @@
                     {% endif %}
                     {% for field in form %}
                         <fieldset class='form-group'>
-                        <label class='control-label' for='id_{{ field.name }}'>{{ field.label }}</label>
-                        <input type='{{ field.field.widget.input_type }}' class='form-control mb-3' name='{{ field.name }}' id='id_{{ field.name }}'>
+                            <label class='control-label' for='id_{{ field.name }}'>{{ field.label }}</label>
+                            <input type='{{ field.field.widget.input_type }}' class='form-control mb-3' name='{{ field.name }}' id='id_{{ field.name }}'  value="{{ field.value | default_if_none:'' }}">
+                            {% if field.errors.count > 1 %}
+                                {% for error in field.errors %}
+                                    <ul>
+                                        <li style="color: red">{{ error }}</li>
+                                    </ul>
+                                {% endfor %}
+                            {% else %}
+                                {% for error in field.errors %}
+                                    <span style='color: red'>{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
                         </fieldset>
-                        {% for error in field.errors %}
-                            <ul>
-                                <li style="color: red">{{ error }}</li>
-                            </ul>
-                        {% endfor %}
                     {% endfor %}
                     <button type='submit' class='btn btn-block btn-pxdcast-primary mb-3'>Login</button>
                 </form>
