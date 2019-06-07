@@ -8,13 +8,22 @@ import responses
 from src.pxdcast.mailgun import Mailgun
 
 
-class TestNetlify(unittest.TestCase):
+class TestMailgun(unittest.TestCase):
 
     def setUp(self):
-        self.mailgun = Mailgun('6bbb4f8865ce1a7e18f0cee373e3d592-87cdd773-71a84f51')
+        self.mailgun = Mailgun('test-api-key-123')
 
+    @responses.activate
     def test_send_simple_message(self):
-        self.mailgun.send_simple_message('Welcome', 'Confirm your email', ['jkrclaro@gmail.com'])
+        url = 'https://api.eu.mailgun.net/v3/www.pxdcast.com/messages'
+        responses.add(responses.POST, url)
+        response = self.mailgun.send_simple_message(
+            'Welcome', 
+            'Confirm your email', 
+            ['jkrclaro@gmail.com']
+        )
+
+        assert 'from=Pxdcast+%3Cmailgun%40www.pxdcast.com%3E&to=jkrclaro%40gmail.com&subject=Welcome&text=Confirm+your+email' == response.request.body
 
 
 if __name__ == '__main__':
