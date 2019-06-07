@@ -51,8 +51,6 @@ def signup(request):
             )
 
             messages.info(request, 'Please confirm your email address')
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
             auth_login(request, user, backend='src.pxdcast.backends.EmailAuth')
             return redirect('pxdcast:home')
     else:
