@@ -10,7 +10,7 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 {% if not user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary mr-3 mb-3" href="{% url 'pxdcast:signup' %}">Get started</a></li>
+                    <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary mr-3 mb-1" href="{% url 'pxdcast:signup' %}">Get started</a></li>
                     <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary-outline" href="{% url 'pxdcast:login' %}">Login</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-item nav-link" href="{% url 'pxdcast:logout' %}">Account</a></li>
