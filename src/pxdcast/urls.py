@@ -13,5 +13,7 @@ urlpatterns = [
     path('logout', registration.logout, name='logout'),
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', registration.activate, name='activate'),
     path('dashboard', dashboard.index, name='dashboard'),
-    path('pricing', TemplateView.as_view(template_name='home/pricing.html'), name='pricing')
+    path('pricing', TemplateView.as_view(template_name='home/pricing.html'), name='pricing'),
+    path('privacy', TemplateView.as_view(template_name='home/privacy.html'), name='privacy'),
+    path('terms', TemplateView.as_view(template_name='home/terms.html'), name='terms')
 ]

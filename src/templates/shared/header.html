@@ -13,6 +13,7 @@
                     <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary ml-3" href="{% url 'pxdcast:signup' %}">Get started</a></li>
                     <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary-outline ml-3" href="{% url 'pxdcast:login' %}">Login</a></li>
                 {% else %}
+                    <li class="nav-item"><a class="nav-item nav-link" href="{% url 'pxdcast:logout' %}">Account</a></li>
                     <li class="nav-item"><a class="nav-item nav-link" href="{% url 'pxdcast:logout' %}">Logout</a></li>
                 {% endif %}
             </ul>
