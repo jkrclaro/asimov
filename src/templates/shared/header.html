@@ -3,15 +3,15 @@
         <a class="navbar-brand" href="/">
             <span class='logo-text'>pxdcast</span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-alt-markup" aria-controls="navbar-nav-alt-markup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbar-nav-alt-markup">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 {% if not user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary ml-3" href="{% url 'pxdcast:signup' %}">Get started</a></li>
-                    <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary-outline ml-3" href="{% url 'pxdcast:login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary mr-3 mb-3" href="{% url 'pxdcast:signup' %}">Get started</a></li>
+                    <li class="nav-item"><a class="nav-item btn btn-pxdcast-primary-outline" href="{% url 'pxdcast:login' %}">Login</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-item nav-link" href="{% url 'pxdcast:logout' %}">Account</a></li>
                     <li class="nav-item"><a class="nav-item nav-link" href="{% url 'pxdcast:logout' %}">Logout</a></li>
