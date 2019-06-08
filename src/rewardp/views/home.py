@@ -11,4 +11,4 @@ def index(request):
                 request, 
                 f'Please confirm your email address ({request.user.email})'
             )
-        return redirect('pxdcast:dashboard')
+        return redirect('rewardp:dashboard')

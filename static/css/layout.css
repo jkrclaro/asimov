@@ -34,31 +34,31 @@
     outline: 0 none;
 }
 
-.btn-pxdcast-primary {
-    background-color: #7F85FC;
-    border-color: #7F85FC;
+.btn-rewardp-primary {
+    background-color: #009E60;
+    border-color: #009E60;
     color: #fff;
 }
-.btn-pxdcast-primary:hover, .btn-pxdcast-primary:focus, .btn-pxdcast-primary:active, .btn-pxdcast-primary.active, .open > .dropdown-toggle.btn-pxdcast-primary {
-    background-color: #7F85FC;
-    border-color: #7F85FC;
+.btn-rewardp-primary:hover, .btn-rewardp-primary:focus, .btn-rewardp-primary:active, .btn-rewardp-primary.active, .open > .dropdown-toggle.btn-rewardp-primary {
+    background-color: #009E60;
+    border-color: #009E60;
     color: #fff;
 }
-.btn-pxdcast-primary-outline {
-    border-color: #7F85FC;
-    color: #7F85FC;
+.btn-rewardp-primary-outline {
+    border-color: #009E60;
+    color: #009E60;
 }
-.btn-pxdcast-primary-outline:hover, .btn-pxdcast-primary-outline:focus, .btn-pxdcast-primary-outline:active, .btn-pxdcast-primary-outline.active, .open > .dropdown-toggle.btn-pxdcast-primary-outline {
-    border-color: #7F85FC;
-    color: #7F85FC;
+.btn-rewardp-primary-outline:hover, .btn-rewardp-primary-outline:focus, .btn-rewardp-primary-outline:active, .btn-rewardp-primary-outline.active, .open > .dropdown-toggle.btn-rewardp-primary-outline {
+    border-color: #009E60;
+    color: #009E60;
 }
 /* Button -- */
 
 a {
-    color: #7F85FC;
+    color: #009E60;
 }
 a:hover {
-    color: #5E63BD;
+    color: #09AB0E;
 }
 
 /* -- Form */

@@ -16,16 +16,6 @@ class SignupForm(UserCreationForm):
         super(SignupForm, self).__init__(*args, **kwargs)
         self.fields['password2'].label = 'Confirm password'
 
-        import random
-        placeholders = {
-            'username': f'jkrclaro{random.randint(1,1000)}',
-            'email': 'jkrclaro@gmail.com',
-            'password1': 'Pxdc4st!',
-            'password2': 'Pxdc4st!'
-        }
-        for key, value in placeholders.items():
-            self.fields[key].initial = value
-
 
 class LoginForm(AuthenticationForm):
     

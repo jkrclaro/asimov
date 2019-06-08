@@ -25,7 +25,7 @@ ROOT_URLCONF = 'src.urls'
 WSGI_APPLICATION = 'src.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'pxdcast.User'
+AUTH_USER_MODEL = 'rewardp.User'
 MAX_UPLOAD_SIZE = 524288000
 
 # Messages
@@ -43,17 +43,17 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('MAILGUN_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = f'Pxdcast <{EMAIL_HOST_USER}>'
+DEFAULT_FROM_EMAIL = f'Rewardp <{EMAIL_HOST_USER}>'
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 # AWS
 AWS_S3_REGION_NAME = 'eu-west-1'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = 'pxdcast.com'
+AWS_STORAGE_BUCKET_NAME = 'rewardp.com'
 
 if DEBUG:
-    ALLOWED_HOSTS = ('pxdcast.localhost',)
+    ALLOWED_HOSTS = ('rewardp.localhost',)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -75,7 +75,7 @@ else:
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
-    ALLOWED_HOSTS = ('www.pxdcast.com', 'pxdcast.com')
+    ALLOWED_HOSTS = ('www.rewardp.com', 'rewardp.com')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -117,7 +117,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'debug_toolbar',
-    'src.pxdcast',
+    'src.rewardp',
     'storages',
     'social_django',
     'widget_tweaks',
@@ -171,7 +171,7 @@ AUTH_PASSWORD_VALIDATORS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'src.pxdcast.backends.EmailAuth',
+    'src.rewardp.backends.EmailAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',

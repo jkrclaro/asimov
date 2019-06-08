@@ -12,7 +12,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    path('', include('src.pxdcast.urls', namespace='pxdcast')),
+    path('', include('src.rewardp.urls', namespace='rewardp')),
     path('reset/complete', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('social/', include('social_django.urls', namespace='social')),
 ]
