@@ -7,7 +7,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar-nav-alt-markup">
-            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Products</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Resources</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-center" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Customers</a></li>
+            </ul>
             <ul class="navbar-nav">
                 {% if not user.is_authenticated %}
                     <li class="nav-item"><a class="nav-item btn btn-rewardp-primary mr-3 mb-1" href="{% url 'rewardp:signup' %}">Get started</a></li>

@@ -7,8 +7,12 @@
     color: #009E60;
 }
 
+.nav-link-center {
+    font-family: 'Poppins' !important;
+}
+
 /* -- Text */
-.h1-heading, .h2-heading, .h3-heading {
+.h1-heading, .h2-heading, .h3-heading, .h4-heading {
     font-family: 'Poppins';
     font-weight: 700;
 }
@@ -17,9 +21,9 @@
 /* -- Header */
 .logo-text {
     padding-top: 20px;
-    font-family: 'Helvetica';
+    font-family: 'Poppins';
     font-size: 48px; 
-    font-weight: 900;
+    font-weight: 700;
     color: #111;
 }
 /* Header -- */
