@@ -19,14 +19,13 @@ psycopg2-binary = "*"
 google-cloud-speech = "*"
 pydub = "*"
 ffmpeg-python = "*"
-psycopg2 = "*"
+psycopg2 = "~=2.7.7"
 
 [dev-packages]
 pytest = "*"
 flake8 = "*"
 alembic = "*"
 responses = "*"
-psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
