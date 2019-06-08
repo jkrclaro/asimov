@@ -31,11 +31,6 @@ jobs:
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
       - run: pipenv run pytest
-      - run:
-          command: |
-            pipenv run python manage.py makemigrations
-            pipenv run python manage.py migrate
-            pipenv run python manage.py collectstatic --noinput
       - store_test_results:
           path: test-results
       - store_artifacts:
