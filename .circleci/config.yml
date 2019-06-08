@@ -31,6 +31,10 @@ jobs:
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
       - run: pipenv run pytest
+      - update: |
+            pipenv run python manage.py makemigrations
+            pipenv run python manage.py migrate
+            pipenv run python manage.py collectstatic --noinput
       - store_test_results:
           path: test-results
       - store_artifacts:
@@ -53,8 +57,5 @@ jobs:
       - run:
           name: Deploy master to AWS via EB
           command: |
-            pipenv --python2.7 run python manage.py makemigrations
-            pipenv --python2.7 run python manage.py migrate
-            pipenv --python2.7 run python manage.py collectstatic --noinput
             eb deploy
       
