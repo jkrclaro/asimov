@@ -38,12 +38,12 @@ MESSAGE_TAGS = {
 }
 
 # Email
-MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
-EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('MAILGUN_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
 EMAIL_USE_TLS = True
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 # AWS
 AWS_S3_REGION_NAME = 'eu-west-1'
@@ -61,7 +61,9 @@ if DEBUG:
     }
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
+    EMAIL_HOST = 'smtp.mailgun.org'
 else:
+    EMAIL_HOST = 'smtp.eu.mailgun.org'
     SECURE_HSTS_SECONDS = 1
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
