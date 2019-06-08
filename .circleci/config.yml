@@ -30,8 +30,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
-      - run: pipenv run pytest
-      - update: |
+      - test: pipenv run pytest
+      - update:
+          command: |
             pipenv run python manage.py makemigrations
             pipenv run python manage.py migrate
             pipenv run python manage.py collectstatic --noinput
