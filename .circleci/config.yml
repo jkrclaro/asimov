@@ -53,5 +53,8 @@ jobs:
       - run:
           name: Deploy master to AWS via EB
           command: |
+            python manage.py makemigrations
+            python manage.py migrate
+            python manage.py collectstatic --noinput
             eb deploy
       
