@@ -46,7 +46,6 @@ def signup(request):
                     'token': account_activation_token.make_token(user)
                 }
             )
-
             recipient = form.cleaned_data.get('email')
             mailgun.send_simple_message(
                 'Confirm your account', 
@@ -54,7 +53,6 @@ def signup(request):
                 [recipient]
             )
 
-            messages.info(request, 'Please confirm your email address')
             auth_login(request, user, backend='src.pxdcast.backends.EmailAuth')
             return redirect('pxdcast:home')
     else:
