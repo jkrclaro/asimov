@@ -15,6 +15,7 @@ from django.contrib.auth import get_user_model
 from src.pxdcast.forms import SignupForm, LoginForm
 from src.pxdcast.mailgun import Mailgun
 from src.pxdcast.tokens import account_activation_token
+from src.pxdcast.models import Profile
 
 
 User = get_user_model()
@@ -30,8 +31,11 @@ def signup(request):
 
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False
+            user.is_active = True
             user.save()
+
+            profile = Profile.objects.create(user=user)
+            profile.save()
 
             message = render_to_string(
                 'registration/email/confirm_account.html', 
@@ -93,10 +97,10 @@ def activate(request, uidb64, token):
         user = None
 
     if user and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
+        user.profile.is_confirmed = True
+        user.profile.save()
         auth_login(request, user, backend='src.pxdcast.backends.EmailAuth')
-        messages.success(request, 'Thank your confirming your email')
+        messages.success(request, 'Thank you for confirming your email')
         return redirect('pxdcast:home')
     else:
         messages.error(request, 'Activation link is invalid')

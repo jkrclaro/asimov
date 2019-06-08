@@ -17,6 +17,7 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
+    is_confirmed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
