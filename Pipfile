@@ -16,10 +16,7 @@ python-dotenv = "*"
 boto3 = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
-google-cloud-speech = "*"
-pydub = "*"
-ffmpeg-python = "*"
-psycopg2 = "~=2.7.7"
+psycopg2 = "*"
 
 [dev-packages]
 pytest = "*"
