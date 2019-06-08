@@ -5,6 +5,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
+from django.contrib.auth.views import PasswordResetCompleteView
 
 
 admin.autodiscover()
@@ -12,6 +13,7 @@ admin.autodiscover()
 
 urlpatterns = [
     path('', include('src.pxdcast.urls', namespace='pxdcast')),
+    path('reset/complete', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('social/', include('social_django.urls', namespace='social')),
 ]
 
