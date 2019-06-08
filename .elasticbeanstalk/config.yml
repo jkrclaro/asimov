@@ -1,8 +1,8 @@
 branch-defaults:
   master:
-    environment: pxdcast-production
+    environment: rewardp-production
 global:
-  application_name: pxdcast
+  application_name: rewardp
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

@@ -5,9 +5,9 @@ from django.contrib.auth.views import (
     PasswordResetDoneView,
     PasswordResetConfirmView
 )
-from src.pxdcast.views import home, dashboard, registration
+from src.rewardp.views import home, dashboard, registration
 
-app_name = 'pxdcast'
+app_name = 'rewardp'
 
 
 urlpatterns = [
