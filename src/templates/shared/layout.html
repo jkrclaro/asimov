@@ -31,18 +31,23 @@
 </head>
 <body>
     {% include "shared/header.html" %}
-    <div class="container">
-        {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                {{ message }}
+    <div id='container'>
+        <div id='main'>
+            <div class='container'>
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% block content %}{% endblock %}
             </div>
-        {% endfor %}
-        {% block content %}{% endblock %}
-        {% include "shared/footer.html" %}
+        </div>
     </div>
+    <hr/>
+    <footer id='footer'>{% include "shared/footer.html" %}</footer>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript">window.jQuery || document.write('<script src="{% static 'js/jquery.js' %}"><\/script>')</script>

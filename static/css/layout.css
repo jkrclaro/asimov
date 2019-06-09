@@ -1,5 +1,24 @@
 * {
+    margin:0;
+    padding:0;
     font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+#container {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+}
+
+#footer {
+    position: relative;
+    clear: both;
 }
 
 .icon {
@@ -7,8 +26,12 @@
     color: #009E60;
 }
 
+.nav-link-center {
+    font-family: 'Poppins' !important;
+}
+
 /* -- Text */
-.h1-heading, .h2-heading, .h3-heading {
+.h1-heading, .h2-heading, .h3-heading, .h4-heading {
     font-family: 'Poppins';
     font-weight: 700;
 }
@@ -17,9 +40,9 @@
 /* -- Header */
 .logo-text {
     padding-top: 20px;
-    font-family: 'Helvetica';
+    font-family: 'Poppins';
     font-size: 48px; 
-    font-weight: 900;
+    font-weight: 700;
     color: #111;
 }
 /* Header -- */
@@ -45,17 +68,19 @@
     color: #fff;
 }
 .btn-rewardp-primary:hover, .btn-rewardp-primary:focus, .btn-rewardp-primary:active, .btn-rewardp-primary.active, .open > .dropdown-toggle.btn-rewardp-primary {
-    background-color: #009E60;
-    border-color: #009E60;
+    background-color: #09AB0E;
+    border-color: #09AB0E;
     color: #fff;
 }
 .btn-rewardp-primary-outline {
     border-color: #009E60;
     color: #009E60;
+    border: 2px solid;
 }
 .btn-rewardp-primary-outline:hover, .btn-rewardp-primary-outline:focus, .btn-rewardp-primary-outline:active, .btn-rewardp-primary-outline.active, .open > .dropdown-toggle.btn-rewardp-primary-outline {
-    border-color: #009E60;
-    color: #009E60;
+    border-color: #09AB0E;
+    color: #09AB0E;
+    border: 2px solid;
 }
 /* Button -- */
 
