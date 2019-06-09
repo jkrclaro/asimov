@@ -49,17 +49,19 @@
     color: #fff;
 }
 .btn-rewardp-primary:hover, .btn-rewardp-primary:focus, .btn-rewardp-primary:active, .btn-rewardp-primary.active, .open > .dropdown-toggle.btn-rewardp-primary {
-    background-color: #009E60;
-    border-color: #009E60;
+    background-color: #09AB0E;
+    border-color: #09AB0E;
     color: #fff;
 }
 .btn-rewardp-primary-outline {
     border-color: #009E60;
     color: #009E60;
+    border: 2px solid;
 }
 .btn-rewardp-primary-outline:hover, .btn-rewardp-primary-outline:focus, .btn-rewardp-primary-outline:active, .btn-rewardp-primary-outline.active, .open > .dropdown-toggle.btn-rewardp-primary-outline {
-    border-color: #009E60;
-    color: #009E60;
+    border-color: #09AB0E;
+    color: #09AB0E;
+    border: 2px solid;
 }
 /* Button -- */
 

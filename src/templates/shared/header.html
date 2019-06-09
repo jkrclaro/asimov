@@ -8,11 +8,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar-nav-alt-markup">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Products</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Pricing</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Resources</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-center" href="#">About</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-center" href="#">Customers</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-center" href="{% url 'rewardp:pricing' %}">How it works</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-center" href="{% url 'rewardp:pricing' %}">Pricing</a></li>
             </ul>
             <ul class="navbar-nav">
                 {% if not user.is_authenticated %}
