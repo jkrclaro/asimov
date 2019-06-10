@@ -2,5 +2,25 @@
 
 {% block content %}
 
-<h2 class='h2-heading'>Pricing</h2>
+<div class='row'>
+    <div class='col-lg-3'></div>
+    <div class='col-lg-6'>
+        <div class='card'>
+            <div class='card-body'>
+                <h2 class='h2-heading text-center mb-3 mt-3'>FREE for a limited time</h2>
+                <div class='mb-3'>
+                    <div>Unlimited referrals</div>
+                    <div>No commissions</div>
+                    <div>Website widget (embed on your own website)</div>
+                    <div>Unique referral website (does not require your own website)</div>
+                    <div>Quick start (easy to use promotion builder)</div>
+                    <div>Unique referrer URL and code (track every referral online and offline)</div>
+                </div>
+                <a href="{% url 'rewardp:signup' %}" class='btn btn-rewardp-primary btn-block'>Start now</a>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-3'></div>
+</div>
+
 {% endblock %}
