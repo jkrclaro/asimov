@@ -46,8 +46,10 @@
             </div>
         </div>
     </div>
-    <hr/>
-    <footer id='footer'>{% include "shared/footer.html" %}</footer>
+    {% if not user.is_authenticated %}
+        <hr/>
+        <footer id='footer'>{% include "shared/footer.html" %}</footer>
+    {% endif %}
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript">window.jQuery || document.write('<script src="{% static 'js/jquery.js' %}"><\/script>')</script>

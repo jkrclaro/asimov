@@ -87,11 +87,11 @@ html, body {
 }
 /* Button -- */
 
-a {
-    color: #009E60;
+.rewardp-anchor-muted {
+    color: #999;
 }
-a:hover {
-    color: #09AB0E;
+.rewardp-anchor-muted:hover {
+    color: #666;
 }
 
 /* -- Form */
