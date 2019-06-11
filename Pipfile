@@ -17,6 +17,7 @@ boto3 = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 psycopg2 = "*"
+pillow = "*"
 
 [dev-packages]
 pytest = "*"
