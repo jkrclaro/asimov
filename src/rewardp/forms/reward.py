@@ -1,19 +1,16 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
+from .base import BaseForm
 from src.rewardp.models.reward import Reward
 
 
-class RewardForm(forms.Form):
+class RewardForm(BaseForm):
     name = forms.CharField(max_length=100)
-    description = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'size':'40'}))
+    description = forms.CharField(max_length=280, widget=forms.Textarea(attrs={'rows': 4, 'cols': 15}))
     photo = forms.FileField()
-    is_active = forms.BooleanField()
+    is_active = forms.BooleanField(label='Active', initial=True)
 
     class Meta:
         model = Reward
         fields = ('name', 'description', 'photo', 'is_active',)
-
-    def __init__(self, *args, **kwargs):
-        super(RewardForm, self).__init__(*args, **kwargs)
-        for visible_field in self.visible_fields():
-            visible_field.field.widget.attrs['class'] = 'form-control'
