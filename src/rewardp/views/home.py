@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
+from src.rewardp.models.reward import Reward
+from src.rewardp.forms.reward import RewardForm
+
 
 def index(request):
     if not request.user.is_authenticated:
@@ -11,4 +14,6 @@ def index(request):
                 request, 
                 f'Please confirm your email address ({request.user.email})'
             )
-        return redirect('rewardp:dashboard')
+        
+        form = RewardForm()
+        return render(request, 'dashboard/index.html', {'form': form})
