@@ -1,8 +1,8 @@
 branch-defaults:
   master:
-    environment: rewardp-production
+    environment: rewardplex-production
 global:
-  application_name: rewardp
+  application_name: rewardplex
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

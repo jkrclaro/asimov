@@ -5,9 +5,9 @@ from django.contrib.auth.views import (
     PasswordResetDoneView,
     PasswordResetConfirmView
 )
-from src.rewardp.views import home, dashboard, registration
+from src.rewardplex.views import home, dashboard, registration
 
-app_name = 'rewardp'
+app_name = 'rewardplex'
 
 
 urlpatterns = [

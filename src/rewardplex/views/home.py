@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from src.rewardp.models.reward import Reward
-from src.rewardp.forms.reward import RewardForm
+from src.rewardplex.models.reward import Reward
+from src.rewardplex.forms.reward import RewardForm
 
 
 def index(request):

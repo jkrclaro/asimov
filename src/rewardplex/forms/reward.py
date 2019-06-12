@@ -2,7 +2,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .base import BaseForm
-from src.rewardp.models.reward import Reward
+from src.rewardplex.models.reward import Reward
 
 
 class RewardForm(BaseForm):

@@ -25,7 +25,7 @@
 .logo-text {
     padding-top: 20px;
     font-family: 'Poppins';
-    font-size: 48px; 
+    font-size: 36px; 
     font-weight: 700;
     color: #111;
 }
@@ -46,32 +46,32 @@
     outline: 0 none;
 }
 
-.btn-rewardp-primary {
+.btn-rewardplex-primary {
     background-color: #009E60;
     border-color: #009E60;
     color: #fff;
 }
-.btn-rewardp-primary:hover, .btn-rewardp-primary:focus, .btn-rewardp-primary:active, .btn-rewardp-primary.active, .open > .dropdown-toggle.btn-rewardp-primary {
+.btn-rewardplex-primary:hover, .btn-rewardplex-primary:focus, .btn-rewardplex-primary:active, .btn-rewardplex-primary.active, .open > .dropdown-toggle.btn-rewardplex-primary {
     background-color: #09AB0E;
     border-color: #09AB0E;
     color: #fff;
 }
-.btn-rewardp-primary-outline {
+.btn-rewardplex-primary-outline {
     border-color: #009E60;
     color: #009E60;
     border: 2px solid;
 }
-.btn-rewardp-primary-outline:hover, .btn-rewardp-primary-outline:focus, .btn-rewardp-primary-outline:active, .btn-rewardp-primary-outline.active, .open > .dropdown-toggle.btn-rewardp-primary-outline {
+.btn-rewardplex-primary-outline:hover, .btn-rewardplex-primary-outline:focus, .btn-rewardplex-primary-outline:active, .btn-rewardplex-primary-outline.active, .open > .dropdown-toggle.btn-rewardplex-primary-outline {
     border-color: #09AB0E;
     color: #09AB0E;
     border: 2px solid;
 }
 /* Button -- */
 
-.rewardp-anchor-muted {
+.rewardplex-anchor-muted {
     color: #999;
 }
-.rewardp-anchor-muted:hover {
+.rewardplex-anchor-muted:hover {
     color: #666;
 }
 

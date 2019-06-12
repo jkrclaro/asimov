@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('rewardp', '0001_initial'),
+        ('rewardplex', '0001_initial'),
     ]
 
     operations = [

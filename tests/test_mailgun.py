@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from src.rewardp.mailgun import Mailgun
+from src.rewardplex.mailgun import Mailgun
 
 
 class TestMailgun(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestMailgun(unittest.TestCase):
 
     @responses.activate
     def test_send_simple_message(self):
-        url = 'https://api.eu.mailgun.net/v3/www.rewardp.com/messages'
+        url = 'https://api.eu.mailgun.net/v3/www.rewardplex.com/messages'
         responses.add(responses.POST, url)
         response = self.mailgun.send_simple_message(
             'Welcome', 
@@ -23,7 +23,7 @@ class TestMailgun(unittest.TestCase):
             ['jkrclaro@gmail.com']
         )
 
-        assert 'from=Rewardp+%3Cmailgun%40www.rewardp.com%3E&to=jkrclaro%40gmail.com&subject=Welcome&text=Confirm+your+email' == response.request.body
+        assert 'from=Rewardplex+%3Cmailgun%40www.rewardplex.com%3E&to=jkrclaro%40gmail.com&subject=Welcome&text=Confirm+your+email' == response.request.body
 
 
 if __name__ == '__main__':
