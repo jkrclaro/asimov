@@ -47,7 +47,7 @@ def signup(request):
                 }
             )
             recipient = form.cleaned_data.get('email')
-            mailgun.send_simple_message(
+            response = mailgun.send_simple_message(
                 'Confirm your account', 
                 message, 
                 [recipient]
