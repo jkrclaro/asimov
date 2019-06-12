@@ -66,6 +66,17 @@
     color: #09AB0E;
     border: 2px solid;
 }
+
+.btn-rewardplex-secondary {
+  background-color: #f22f46;
+  border-color: #f22f46;
+  color: #fff;
+}
+.btn-rewardplex-secondary:hover, .btn-rewardplex-secondary:focus, .btn-rewardplex-secondary:active, .btn-rewardplex-secondary.active, .open > .dropdown-toggle.btn-rewardplex-secondary {
+  background-color: #FFE3BF;
+  border-color: #FFE3BF;
+  color: #856404;
+}
 /* Button -- */
 
 .rewardplex-anchor-muted {
@@ -120,11 +131,11 @@
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #009E60;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #009E60;
   }
   
   input:checked + .slider:before {
