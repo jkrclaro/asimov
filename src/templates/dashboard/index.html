@@ -9,7 +9,7 @@
     <div class='col-lg-6'>
         <div class='card'>
             <div class='card-body'>
-                <h2 class='h2-heading text-center mb-3 mt-3'>Create your first reward</h2>
+                <h2 class='h2-heading text-center mb-3 mt-3'>Setup your first reward</h2>
                 <form method='post'>
                     {% csrf_token %}
                     {% for error in form.non_field_errors %}
@@ -22,24 +22,43 @@
                     </div>
                     <div class='form-group'>
                         <small>Reward</small>
-                        <div>I want to reward the referrer <b>Once</b> when <b>10</b> of their referrals purchase on my website.</div>
+                        <div>
+                            I want to reward the referrer 
+                            <span class='ml-2 mr-2'>
+                                <select id="selectbox1">
+                                    <option value="aye">Only once</option>
+                                    <option value="eh">Each time</option>
+                                </select> 
+                            </span>
+                            when 
+                            <input type='number'/>
+                            of their referrals purchase on my website.
+                        </div>
                     </div>
-                    <small>ADVANCED SETTINGS</small>
-                    <hr/>
-                    <div class='form-group'>
-                        <small>{{ form.is_active.label_tag }}</small>
-                        <div><label class='switch'>{{ form.is_active }}<span class="slider round"></span></label></div>
-                        {{ form.is_active.errors }}
+                    <div style='cursor: pointer;' data-toggle="collapse" href="#advanced-settings" role="button" aria-expanded="false" aria-controls="advanced-settings">
+                        <small class='container'>
+                            <span><i class="fas fa-caret-right mr-3"></i>Advanced Settings</span>
+                        </small>
                     </div>
-                    <div class='form-group'>
-                        <small>{{ form.photo.label_tag }}</small>
-                        <div>{{ form.photo }}</div>
+                    <div class='collapse' id='advanced-settings'>
+                        <hr/>
+                        <div class='form-group'>
+                            <small>{{ form.is_active.label_tag }}</small>
+                            <div><label class='switch'>{{ form.is_active }}<span class="slider round"></span></label></div>
+                            {{ form.is_active.errors }}
+                        </div>
+                        <div class='form-group'>
+                            <small>{{ form.photo.label_tag }}</small>
+                            <div>{{ form.photo }}</div>
+                        </div>
+                        <div class='form-group'>
+                            <small>{{ form.description.label_tag }}</small>
+                            {{ form.description | add_class:'form-control' }}
+                        </div>
                     </div>
-                    <div class='form-group'>
-                        <small>{{ form.description.label_tag }}</small>
-                        {{ form.description | add_class:'form-control' }}
+                    <div class='mt-4'>
+                        <button type='submit' class='btn btn-block btn-rewardp-primary mb-3'>Create reward</button>
                     </div>
-                    <button type='submit' class='btn btn-block btn-rewardp-primary mb-3'>Create reward</button>
                 </form>
             </div>
         </div>

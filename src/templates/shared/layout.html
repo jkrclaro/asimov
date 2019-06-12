@@ -31,24 +31,20 @@
 </head>
 <body>
     {% include "shared/header.html" %}
-    <div id='container'>
-        <div id='main'>
-            <div class='container'>
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-                {% block content %}{% endblock %}
+    <div class='container'>
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
             </div>
-        </div>
+        {% endfor %}
+        {% block content %}{% endblock %}
     </div>
     {% if not user.is_authenticated %}
         <hr/>
-        <footer id='footer'>{% include "shared/footer.html" %}</footer>
+        {% include "shared/footer.html" %}
     {% endif %}
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
