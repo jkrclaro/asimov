@@ -5,6 +5,9 @@ RUN apk update && \
     apk add postgresql-dev
 RUN apk add libffi-dev
 
+# Pillow
+RUN apk add jpeg-dev zlib-dev
+
 # Create /app directory in docker and change directory to /app
 RUN mkdir /app
 WORKDIR /app
