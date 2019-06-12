@@ -7,8 +7,8 @@ Reward programs for eCommerce community building.
 
 # General Information
 - Website: https://www.rewardplex.com
-- Source code: https://github.com/jkrclaro/rewardplex
-- Issue tracker: https://trello.com/b/7Pm8Ltmg/rewardplex
+- Source code: https://github.com/jkrclaro/startup
+- Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
 
 ## Documentation
 
