@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from src.rewardplex.models.reward import Reward
-from src.rewardplex.forms.reward import RewardForm
+from src.rewardplex.models.reward import Referral
+from src.rewardplex.forms.reward import ReferralForm
 
 
 def index(request):
@@ -15,5 +15,5 @@ def index(request):
                 f'Please confirm your email address ({request.user.email})'
             )
         
-        form = RewardForm()
+        form = ReferralForm()
         return render(request, 'dashboard/index.html', {'form': form})

@@ -9,57 +9,16 @@
     <div class='col-lg-8'>
         <div class='card'>
             <div class='card-body'>
-                <h2 class='h2-heading text-center mb-3 mt-3'>Let's get you started</h2>
-                <form method='post'>
-                    {% csrf_token %}
-                    {% for error in form.non_field_errors %}
-                        <div style='color: red' class='mb-3'>{{ error }}</div>
-                    {% endfor %}
+                <h2 class='h2-heading text-center mb-3 mt-3'>How it works</h2>
+                <p>Earn a special reward when referring friends and family to make a purchase with us.</p>
+                <p><b>You</b> will receive a 10% off coupon</p>
+                <p><b>They</b> will receive a 10% off coupon</p>
+                <div class='form-inline'>
                     <div class='form-group'>
-                        <small>Quest</small>
-                        <div class='form-inline'>
-                            Customers will get <input type='number' class='form-control ml-2 mr-2 mb-2' value='50' style='width: 80px'/> points
-                        </div>
-                        <div class='mb-2'>
-                            if they 
-                            <span class='ml-2 mr-2 mb-2'>
-                                <select class='js-example-basic-single'>
-                                    <option value="spends">spend</option>
-                                    <option value="orders">order</option>
-                                    <option value="register">register</option>
-                                    <option value="birthday">has a birthday</option>
-                                </select> 
-                            </span>
-                        </div>
-                        <div class='form-inline'>
-                        an amount of <input type='number' class='form-control ml-2 mr-2 mb-2' value='100' style='width: 80px'/> euros
-                        </div>
+                        <input type='text' class='form-control mr-3' value='http://ref.rwdp.co/ASREG333' disabled/>
+                        <a href='/' class='btn btn-rewardplex-primary'>Copy</a>
                     </div>
-                    <div style='cursor: pointer;' data-toggle="collapse" href="#advanced-settings" role="button" aria-expanded="false" aria-controls="advanced-settings">
-                        <small class='container'>
-                            <span><i class="fas fa-caret-right mr-3"></i>Advanced Settings</span>
-                        </small>
-                    </div>
-                    <div class='collapse' id='advanced-settings'>
-                        <hr/>
-                        <div class='form-group'>
-                            <small>{{ form.is_active.label_tag }}</small>
-                            <div><label class='switch'>{{ form.is_active }}<span class="slider round"></span></label></div>
-                            {{ form.is_active.errors }}
-                        </div>
-                        <div class='form-group'>
-                            <small>{{ form.photo.label_tag }}</small>
-                            <div>{{ form.photo }}</div>
-                        </div>
-                        <div class='form-group'>
-                            <small>{{ form.description.label_tag }}</small>
-                            {{ form.description | add_class:'form-control' }}
-                        </div>
-                    </div>
-                    <div class='mt-4'>
-                        <button type='submit' class='btn btn-block btn-rewardplex-primary mb-3'>Save quest</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
