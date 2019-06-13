@@ -6,11 +6,11 @@ import requests
 
 class Mailgun:
 
-    def __init__(self, api_key='', domain='www.rewardp.com', region='eu'):
+    def __init__(self, api_key='', domain='www.rewardplex.com', region='eu'):
         self.api_key = api_key
         self.domain = domain
         self.region = region
-        self.sender = f'Rewardp <mailgun@{domain}>'
+        self.sender = f'Rewardplex <mailgun@{domain}>'
 
     def send_simple_message(self, subject, text, recipients):
         response = requests.post(
