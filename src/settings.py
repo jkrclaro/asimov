@@ -13,6 +13,7 @@ load_dotenv(find_dotenv())
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Django
+DOMAIN_NAME = 'rewardplex.com'
 SITE_ID = 1
 DEBUG = bool(strtobool(os.environ['DEBUG']))
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -50,7 +51,7 @@ MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 AWS_S3_REGION_NAME = 'eu-west-1'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = 'rewardplex.com'
+AWS_STORAGE_BUCKET_NAME = DOMAIN_NAME
 
 if DEBUG:
     ALLOWED_HOSTS = ('rewardplex.localhost',)
@@ -75,7 +76,7 @@ else:
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
-    ALLOWED_HOSTS = ('www.rewardplex.com', 'rewardplex.com')
+    ALLOWED_HOSTS = (f'www.{DOMAIN_NAME}', DOMAIN_NAME)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',

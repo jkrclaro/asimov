@@ -23,12 +23,17 @@
                         <button type="button" class="btn btn-rewardplex-primary dropdown-toggle" data-toggle="dropdown">{{ user.username }}</button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{% url 'rewardplex:dashboard' %}">Dashboard</a>
+                            <a class="dropdown-item" href="#">Quests</a>
                             <a class="dropdown-item" href="#">Rewards</a>
                             <a class="dropdown-item" href="#">Referrals</a>
+                            <a class="dropdown-item" href="#">VIP</a>
                             <a class="dropdown-item" href="#">Customers</a>
+                            <a class="dropdown-item" href="#">Reports</a>
+                            <a class="dropdown-item" href="#">Integration</a>
                             <div class="dropdown-divider"></div>
                             <span class="dropdown-item dropdown-item-text text-muted text-center">{{ user.get_full_name }}</span>
                             <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Billing</a>
                             <a class="dropdown-item" href="{% url 'rewardplex:logout' %}">Logout</a>
                         </div>
                     </div>
