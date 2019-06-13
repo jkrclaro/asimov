@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from src.rewardplex.netlify import Netlify
+from src.netprechaun.netlify import Netlify
 
 
 class TestNetlify(unittest.TestCase):

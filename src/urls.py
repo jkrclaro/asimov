@@ -12,7 +12,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    path('', include('src.rewardplex.urls', namespace='rewardplex')),
+    path('', include('src.netprechaun.urls', namespace='netprechaun')),
     path('reset/complete', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('social/', include('social_django.urls', namespace='social')),
 ]

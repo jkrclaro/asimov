@@ -2,7 +2,7 @@ import unittest
 
 import responses
 
-from src.rewardplex.search import Search
+from src.netprechaun.search import Search
 
 
 class TestSearch(unittest.TestCase):

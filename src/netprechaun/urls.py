@@ -5,9 +5,9 @@ from django.contrib.auth.views import (
     PasswordResetDoneView,
     PasswordResetConfirmView
 )
-from src.rewardplex.views import home, dashboard, registration
+from src.netprechaun.views import home, dashboard, registration
 
-app_name = 'rewardplex'
+app_name = 'netprechaun'
 
 
 urlpatterns = [

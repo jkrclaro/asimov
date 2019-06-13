@@ -1,8 +1,8 @@
 branch-defaults:
   master:
-    environment: rewardplex-production
+    environment: netprechaun-production
 global:
-  application_name: rewardplex
+  application_name: netprechaun
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

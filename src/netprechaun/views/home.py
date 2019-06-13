@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from src.rewardplex.models.reward import Referral
-from src.rewardplex.forms.reward import ReferralForm
+from src.netprechaun.models.reward import Referral
+from src.netprechaun.forms.reward import ReferralForm
 
 
 def index(request):

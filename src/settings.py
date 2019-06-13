@@ -13,7 +13,7 @@ load_dotenv(find_dotenv())
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Django
-DOMAIN_NAME = 'rewardplex.com'
+DOMAIN_NAME = 'netprechaun.com'
 SITE_ID = 1
 DEBUG = bool(strtobool(os.environ['DEBUG']))
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -26,7 +26,7 @@ ROOT_URLCONF = 'src.urls'
 WSGI_APPLICATION = 'src.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'rewardplex.User'
+AUTH_USER_MODEL = 'netprechaun.User'
 MAX_UPLOAD_SIZE = 524288000
 
 # Messages
@@ -44,7 +44,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('MAILGUN_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = f'Rewardplex <{EMAIL_HOST_USER}>'
+DEFAULT_FROM_EMAIL = f'Netprechaun <{EMAIL_HOST_USER}>'
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 # AWS
@@ -54,7 +54,7 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = DOMAIN_NAME
 
 if DEBUG:
-    ALLOWED_HOSTS = ('rewardplex.localhost',)
+    ALLOWED_HOSTS = ('netprechaun.localhost',)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'debug_toolbar',
-    'src.rewardplex',
+    'src.netprechaun',
     'storages',
     'social_django',
     'widget_tweaks',
@@ -172,7 +172,7 @@ AUTH_PASSWORD_VALIDATORS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'src.rewardplex.backends.EmailAuth',
+    'src.netprechaun.backends.EmailAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',

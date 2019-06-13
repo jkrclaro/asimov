@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('rewardplex', '0002_reward'),
+        ('netprechaun', '0002_reward'),
     ]
 
     operations = [
