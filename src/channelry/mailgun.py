@@ -6,11 +6,11 @@ import requests
 
 class Mailgun:
 
-    def __init__(self, api_key='', domain='www.netprechaun.com', region='eu'):
+    def __init__(self, api_key='', domain='www.channelry.com', region='eu'):
         self.api_key = api_key
         self.domain = domain
         self.region = region
-        self.sender = f'Netprechaun <mailgun@{domain}>'
+        self.sender = f'Channelry <mailgun@{domain}>'
 
     def send_simple_message(self, subject, text, recipients):
         response = requests.post(

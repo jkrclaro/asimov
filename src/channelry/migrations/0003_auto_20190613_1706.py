@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('netprechaun', '0002_reward'),
+        ('channelry', '0002_reward'),
     ]
 
     operations = [

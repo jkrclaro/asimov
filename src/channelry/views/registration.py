@@ -12,10 +12,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
 from django.contrib.auth import get_user_model
 
-from src.netprechaun.forms import SignupForm, LoginForm
-from src.netprechaun.mailgun import Mailgun
-from src.netprechaun.tokens import account_activation_token
-from src.netprechaun.models import Profile
+from src.channelry.forms import SignupForm, LoginForm
+from src.channelry.mailgun import Mailgun
+from src.channelry.tokens import account_activation_token
+from src.channelry.models import Profile
 
 
 User = get_user_model()
@@ -24,7 +24,7 @@ mailgun = Mailgun(settings.MAILGUN_API_KEY)
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('netprechaun:dashboard')
+        return redirect('channelry:dashboard')
 
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -53,8 +53,8 @@ def signup(request):
                 [recipient]
             )
 
-            auth_login(request, user, backend='src.netprechaun.backends.EmailAuth')
-            return redirect('netprechaun:home')
+            auth_login(request, user, backend='src.channelry.backends.EmailAuth')
+            return redirect('channelry:home')
     else:
         form = SignupForm()
 
@@ -63,7 +63,7 @@ def signup(request):
 
 def login(request):
     if request.user.is_authenticated:
-        return redirect('netprechaun:dashboard')
+        return redirect('channelry:dashboard')
 
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
@@ -74,8 +74,8 @@ def login(request):
             user = authenticate(request, username=username, password=password)
 
             if user:
-                auth_login(request, user, backend='src.netprechaun.backends.EmailAuth')
-                return redirect('netprechaun:home')
+                auth_login(request, user, backend='src.channelry.backends.EmailAuth')
+                return redirect('channelry:home')
     else:
         form = LoginForm()
 
@@ -84,7 +84,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    return redirect('netprechaun:home')
+    return redirect('channelry:home')
 
 
 def activate(request, uidb64, token):
@@ -97,9 +97,9 @@ def activate(request, uidb64, token):
     if user and account_activation_token.check_token(user, token):
         user.profile.is_confirmed = True
         user.profile.save()
-        auth_login(request, user, backend='src.netprechaun.backends.EmailAuth')
+        auth_login(request, user, backend='src.channelry.backends.EmailAuth')
         messages.success(request, 'Thank you for confirming your email')
-        return redirect('netprechaun:home')
+        return redirect('channelry:home')
     else:
         messages.error(request, 'Activation link is invalid')
-        return redirect('netprechaun:login')
+        return redirect('channelry:login')

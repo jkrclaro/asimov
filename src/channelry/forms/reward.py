@@ -2,7 +2,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .base import BaseForm
-from src.netprechaun.models.reward import Referral
+from src.channelry.models.reward import Referral
 
 
 class ReferralForm(BaseForm):

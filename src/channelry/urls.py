@@ -5,9 +5,9 @@ from django.contrib.auth.views import (
     PasswordResetDoneView,
     PasswordResetConfirmView
 )
-from src.netprechaun.views import home, dashboard, registration
+from src.channelry.views import home, dashboard, registration
 
-app_name = 'netprechaun'
+app_name = 'channelry'
 
 
 urlpatterns = [

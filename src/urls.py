@@ -12,7 +12,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    path('', include('src.netprechaun.urls', namespace='netprechaun')),
+    path('', include('src.channelry.urls', namespace='channelry')),
     path('reset/complete', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('social/', include('social_django.urls', namespace='social')),
 ]
