@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from src.channelry.netlify import Netlify
+from channelry.netlify import Netlify
 
 
 class TestNetlify(unittest.TestCase):

@@ -2,7 +2,7 @@ import unittest
 
 import responses
 
-from src.channelry.search import Search
+from channelry.search import Search
 
 
 class TestSearch(unittest.TestCase):

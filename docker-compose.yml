@@ -1,19 +1,24 @@
 version: '3.3'
 services:
     database:
-        env_file: database.env
-        image: postgres
+        env_file: database/.env
+        build:
+            context: database
+            dockerfile: Dockerfile
+        image: channelry/database
         ports:
           - "5432:5432"
         restart: always
     server:
-        env_file: .env
-        build: .
+        env_file: channelry/.env
+        build:
+            context: channelry
+            dockerfile: Dockerfile
         ports:
-         - "8000:8000"
+         - "5000:5000"
         depends_on:
           - database
         image: channelry
         volumes:
           - .:/app
-        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        command: ["app:app", "-b", "0.0.0.0:5000", "--reload"]
