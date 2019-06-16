@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     database:
-        env_file: database/.env
+        env_file: database.env
         build:
             context: database
             dockerfile: Dockerfile
@@ -10,10 +10,8 @@ services:
           - "5432:5432"
         restart: always
     server:
-        env_file: channelry/.env
-        build:
-            context: channelry
-            dockerfile: Dockerfile
+        env_file: .env
+        build: .
         ports:
          - "5000:5000"
         depends_on:
