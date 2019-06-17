@@ -2,7 +2,6 @@ import base64
 import hashlib
 
 import bcrypt
-from sqlalchemy import func
 
 from . import db
 
@@ -12,15 +11,15 @@ class User(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
-    username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, server_default=func.sysdate())
-    updated_at = db.Column(db.DateTime, server_default=func.sysdate())
+    full_name = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    def __init__(self, email, username, password):
+    def __init__(self, email, password, full_name):
         self.email = email.lower()
-        self.username = username.lower()
         self.password = self._password_hash(password).decode('utf8')
+        self.full_name = full_name
 
     def _password_hash(self, password):
         return bcrypt.hashpw(self._base64_encode(password), bcrypt.gensalt())
