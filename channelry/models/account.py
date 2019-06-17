@@ -12,14 +12,17 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
-    full_name = db.Column(db.String(255))
+    fullname = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    def __init__(self, email, password, full_name):
+    def __init__(self, email, password, fullname):
         self.email = email.lower()
         self.password = self._password_hash(password).decode('utf8')
-        self.full_name = full_name
+        self.fullname = fullname
+
+    def __repr__(self):
+        return f"<User(email={'self.email'}, fullname='{self.fullname}')"
 
     def _password_hash(self, password):
         return bcrypt.hashpw(self._base64_encode(password), bcrypt.gensalt())
