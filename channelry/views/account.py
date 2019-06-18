@@ -38,7 +38,7 @@ def signup():
             'email': email,
             'fullname': fullname,
             'password': password,
-            'confirm': password
+            'confirm': confirm
         })
 
         user = User(email, password, fullname)

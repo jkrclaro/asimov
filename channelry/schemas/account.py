@@ -1,8 +1,8 @@
 from marshmallow import (
-    Schema, 
-    fields, 
-    validate, 
-    validates_schema, 
+    Schema,
+    fields,
+    validate,
+    validates_schema,
     ValidationError
 )
 
@@ -28,10 +28,10 @@ class SignupSchema(Schema):
 
     @validates_schema
     def validate_password(self, data, **kwargs):
+        print(data['password'], data['confirm'])
         if data['password'] != data['confirm']:
             raise ValidationError(
-                'Re-enter your password confirmation so it matches your '
-                'password'
+                'Re-enter your password confirmation so it matches your password'
             )
 
 
