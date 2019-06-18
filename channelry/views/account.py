@@ -6,7 +6,8 @@ from flask import (
     jsonify,
     request,
     current_app,
-    redirect
+    redirect,
+    render_template
 )
 from flask_jwt_extended import (
     JWTManager,
@@ -18,6 +19,7 @@ from ..jwtmanager import JWTManager
 from ..models import db
 from ..models.account import User
 from ..schemas.account import SignupSchema, LoginSchema
+from ..mailgun import Mailgun
 
 
 account_bp = Blueprint('account', __name__)
@@ -59,6 +61,17 @@ def signup():
         else:
             db.session.add(user)
             db.session.commit()
+
+            html = render_template(
+                'account/email/confirm_account.html',
+                confirm_url='http://channelry.localhost:3000/email/confirm'
+            )
+            mailgun = Mailgun(current_app.config['MAILGUN_API_KEY'])
+            mailgun.send_email(
+                'Confirm your Channelry email address!',
+                [f'{fullname} {email}'],
+                html=html,
+            )
 
         return jsonify(message=f'{email} created'), 200
 

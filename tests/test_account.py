@@ -10,7 +10,7 @@ from channelry.models import db
 from channelry.models.account import User
 
 app = create_app('testing')
-EMAIL = 'john@doe.com'
+EMAIL = 'john@channelry.com'
 FULLNAME = 'John Doe'
 PASSWORD = 'johndoe12345'
 

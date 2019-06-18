@@ -1,8 +1,10 @@
-{% autoescape off %}
+{% extends 'shared/email.html' %}
 
-Hi {{ user.username }},
-Please click on the link to confirm your registration,
+{% block content %}
 
-http://{{ domain }}{% url 'channelry:activate' uidb64=uid token=token %}
+<h1 class='h1-heading'>channelry</h1>
+<hr/>
+<p>Before you can start connecting your Etsy or Shopify accounts, you need to confirm your email address.</p>
+<a href='{{ confirm_url }}' class='btn btn-channelry-primary btn-block'>Confirm email address</a>
 
-{% endautoescape %}
+{% endblock %}

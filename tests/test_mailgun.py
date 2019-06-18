@@ -14,16 +14,17 @@ class TestMailgun(unittest.TestCase):
         self.mailgun = Mailgun('test-api-key-123')
 
     @responses.activate
-    def test_send_simple_message(self):
+    def test_send_email(self):
         url = 'https://api.eu.mailgun.net/v3/www.channelry.com/messages'
         responses.add(responses.POST, url)
-        response = self.mailgun.send_simple_message(
-            'Welcome', 
-            'Confirm your email', 
-            ['jkrclaro@gmail.com']
+        response = self.mailgun.send_email(
+            'Confirm your email',
+            ['John jkrclaro@gmail.com'],
+            'Welcome',
         )
 
-        assert 'from=Channelry+%3Cmailgun%40www.channelry.com%3E&to=jkrclaro%40gmail.com&subject=Welcome&text=Confirm+your+email' == response.request.body
+        print(response.request.body)
+        assert response.request.body == 'from=Channelry+%3Cmailgun%40www.channelry.com%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
 
 
 if __name__ == '__main__':
