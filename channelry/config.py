@@ -10,8 +10,8 @@ class Config(object):
 
 class Production(Config):
     DASHBOARD_URL = 'http://channelry.com'
-    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 class Development(Config):
