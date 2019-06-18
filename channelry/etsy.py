@@ -32,8 +32,8 @@ class Etsy:
         """Perform OAuth authentication to get login URL.
 
         Get the login URL by via
-        >> response = self.request_token(['email_r'])
-        >> login_url = response.text
+        >>> response = self.request_token(['email_r'])
+        >>> login_url = response.text
 
         :param scopes: Permission scopes to be enabled.
         """
