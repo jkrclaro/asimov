@@ -5,19 +5,20 @@ import unittest
 
 import responses
 
-from channelry.mailgun import Mailgun
+from libs import mailgun
 
 
 class TestMailgun(unittest.TestCase):
 
     def setUp(self):
-        self.mailgun = Mailgun('test-api-key-123')
+        mailgun.api_key = 'api_key'
 
     @responses.activate
     def test_send_email(self):
         url = 'https://api.eu.mailgun.net/v3/www.channelry.com/messages'
         responses.add(responses.POST, url)
-        response = self.mailgun.send_email(
+
+        response = mailgun.send_email(
             'Confirm your email',
             ['John jkrclaro@gmail.com'],
             'Welcome',

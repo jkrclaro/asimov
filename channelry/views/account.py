@@ -19,7 +19,7 @@ from ..jwtmanager import JWTManager
 from ..models import db
 from ..models.account import User
 from ..schemas.account import SignupSchema, LoginSchema
-from ..mailgun import Mailgun
+from libs import mailgun
 
 
 account_bp = Blueprint('account', __name__)
@@ -66,7 +66,6 @@ def signup():
                 'account/email/confirm_account.html',
                 confirm_url='http://channelry.localhost:3000/email/confirm'
             )
-            mailgun = Mailgun(current_app.config['MAILGUN_API_KEY'])
             mailgun.send_email(
                 'Confirm your Channelry email address!',
                 [f'{fullname} {email}'],
