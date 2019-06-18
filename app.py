@@ -6,7 +6,7 @@ from channelry import create_app
 logging.getLogger().setLevel(logging.INFO)
 
 load_dotenv(find_dotenv())
-app = create_app()
+app = create_app('development')
 
 
 if __name__ == '__main__':

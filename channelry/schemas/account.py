@@ -7,7 +7,7 @@ from marshmallow import (
 )
 
 
-class UserSchema(Schema):
+class SignupSchema(Schema):
     email = fields.Email(
         required=True, 
         validate=validate.Length(min=3, max=320)
@@ -30,6 +30,19 @@ class UserSchema(Schema):
     def validate_password(self, data, **kwargs):
         if data['password'] != data['confirm']:
             raise ValidationError(
-                'Re-enter your password confirmation ' \
-                'so it matches your password'
+                'Re-enter your password confirmation so it matches your '
+                'password'
             )
+
+
+class LoginSchema(Schema):
+    email = fields.Email(
+        required=True,
+        validate=validate.Length(min=3, max=320)
+    )
+    password = fields.Str(
+        required=True,
+        validate=validate.Length(
+            min=8, error='Password must be atleast 8 characters long'
+        )
+    )

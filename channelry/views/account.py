@@ -1,64 +1,78 @@
-import json
 import logging
 
+import bcrypt
 from flask import (
-    Blueprint, jsonify, request, current_app, render_template, redirect,
-    url_for, Response
+    Blueprint,
+    jsonify,
+    request,
+    current_app,
+    session
+)
+from flask_jwt_extended import (
+    JWTManager,
+    create_access_token,
 )
 from marshmallow import ValidationError
 
-import sqlalchemy
-
 from ..jwtmanager import JWTManager
-from ..models import db, get_or_create
+from ..models import db
 from ..models.account import User
-from ..forms.account import SignupForm
-from ..schemas.account import UserSchema
+from ..schemas.account import SignupSchema, LoginSchema
 
 
 account_bp = Blueprint('account', __name__)
 
 
-@account_bp.route('/signup', methods=('GET'))
+@account_bp.route('/signup', methods=['POST'])
 def signup():
-    form = SignupForm(request.form)
-    return render_template('account/signup.html', form=form)
-
-
-@account_bp.route('/signup/action', methods=('POST'))
-def signup_action():
     try:
-        schema = UserSchema(strict=True)
-        data, _ = schema.load(request.json)
-        return redirect(url_for('home.index'))
+        schema = SignupSchema(strict=True)
+        email = request.json.get('email')
+        fullname = request.json.get('fullname')
+        password = request.json.get('password')
+        confirm = request.json.get('confirm')
+        data, _ = schema.load({
+            'email': email,
+            'fullname': fullname,
+            'password': password,
+            'confirm': password
+        })
+
+        user = User(email, password, fullname)
+
+        user_exist = User.query.filter_by(email=email).first()
+        if user_exist:
+            return jsonify(field='email', reason='Email is already taken'), 400
+        else:
+            db.session.add(user)
+            db.session.commit()
+
+        return jsonify(message=f'{email} created'), 200
+
     except ValidationError as validation_error:
         return jsonify(validation_error.messages), 400
 
 
 @account_bp.route('/login', methods=['POST'])
 def login():
-    email = request.json.get('email', None)
-    password = request.json.get('password', None)
-    if not email:
-        return jsonify(message='Email is required'), 400
-    if not password:
-        return jsonify(message='Password is required'), 400
+    try:
+        schema = LoginSchema(strict=True)
+        email = request.json.get('email')
+        password = request.json.get('password')
+        data, _ = schema.load({
+            'email': email,
+            'password': password
+        })
 
-    user = User.query.filter_by(email=email).first()
-    if not user or not user._password_match(password):
-        return jsonify(message='Email or password is incorrect'), 400
+        user = User.query.filter_by(email=email).first()
+        if user and user.password_match(password):
+            access_token = create_access_token(identity=email)
+            return jsonify(access_token=access_token), 200
+        else:
+            return jsonify(message='Email or password is incorrect'), 400
 
-    message = {'email': email}
-    jwt_manager = JWTManager(current_app.config['SECRET_KEY'])
-
-    data = jsonify(
-        iss='channelry.com',
-        user={'username': user.username},
-        accessToken=jwt_manager.create_access_token(message),
-        refreshToken=jwt_manager.create_refresh_token(message)
-    )
-
-    return data, 200
+    except ValidationError as validation_error:
+        return jsonify(validation_error.messages), 400
 
 
 @account_bp.route('/refresh', methods=['POST'])

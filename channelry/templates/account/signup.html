@@ -9,7 +9,7 @@
         <div class='card'>
             <div class='card-body'>
                 <h5 class='h5-heading text-center mb-3 mt-3'>Create your Channelry account now</h5>
-                <form method=post action="{{ url_for('account.signup_action') }}">
+                <form method=post>
                     {{ form.csrf_token }}
                     <fieldset class='form-group'>
                         {{ form.email.label(class_='control-label') }}

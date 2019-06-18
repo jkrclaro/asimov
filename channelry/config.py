@@ -29,3 +29,8 @@ class Production(Config):
 class Development(Config):
     SEND_FILE_MAX_AGE_DEFAULT = 0
     UPLOADED_PHOTOS_DEST = media
+
+
+class Testing(Config):
+    TESTING = True
+    WTF_CSRF_ENABLED = False

@@ -16,31 +16,37 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    def __init__(self, email, password, fullname):
+    def __init__(self, email: str, password: str, fullname: str):
+        """SQLAlchemy model for User.
+
+        :param email: Email of user.
+        :param password: Plaintext password of user.
+        :param fullname: First and last name of user.
+        """
         self.email = email.lower()
-        self.password = self._password_hash(password).decode('utf8')
+        self.password = self.password_hash(password).decode('utf8')
         self.fullname = fullname
 
     def __repr__(self):
-        return f"<User(email={'self.email'}, fullname='{self.fullname}')"
+        return f"<User(email='{self.email}', fullname='{self.fullname}')"
 
-    def _password_hash(self, password):
-        return bcrypt.hashpw(self._base64_encode(password), bcrypt.gensalt())
+    def password_hash(self, password):
+        return bcrypt.hashpw(self.base64_encode(password), bcrypt.gensalt())
 
-    def _password_match(self, password):
+    def password_match(self, password):
         password_encoded = self.password.encode('utf8')
-        return bcrypt.checkpw(self._base64_encode(password), password_encoded)
+        return bcrypt.checkpw(self.base64_encode(password), password_encoded)
 
-    def _base64_encode(self, password):
+    def base64_encode(self, password):
         """Generate a base64 encoded password.
 
         Cryptographic functions only work on bytes strings (or arrays in fact),
         therefore the provided password must be encoded to utf8.
-        
-        The bcrypt algorithm only handles passwords up to 72 characters, 
-        any characters beyond that are ignored.  To work around this, 
-        a common approach is to hash a password with a cryptographic hash 
-        (such as sha256) and then base64 encode it to prevent NULL byte 
+
+        The bcrypt algorithm only handles passwords up to 72 characters,
+        any characters beyond that are ignored.  To work around this,
+        a common approach is to hash a password with a cryptographic hash
+        (such as sha256) and then base64 encode it to prevent NULL byte
         problems before hashing the result with bcrypt.
         """
         password_encoded = password.encode('utf8')
