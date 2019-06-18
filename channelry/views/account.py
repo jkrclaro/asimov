@@ -6,7 +6,7 @@ from flask import (
     jsonify,
     request,
     current_app,
-    session
+    redirect
 )
 from flask_jwt_extended import (
     JWTManager,
@@ -23,8 +23,11 @@ from ..schemas.account import SignupSchema, LoginSchema
 account_bp = Blueprint('account', __name__)
 
 
-@account_bp.route('/signup', methods=['POST'])
+@account_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if request.method == 'GET':
+        return redirect('http://channelry.localhost:3000/signup')
+
     try:
         schema = SignupSchema(strict=True)
         email = request.json.get('email')
@@ -39,7 +42,6 @@ def signup():
         })
 
         user = User(email, password, fullname)
-
         user_exist = User.query.filter_by(email=email).first()
         if user_exist:
             return jsonify(field='email', reason='Email is already taken'), 400
@@ -53,8 +55,11 @@ def signup():
         return jsonify(validation_error.messages), 400
 
 
-@account_bp.route('/login', methods=['POST'])
+@account_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'GET':
+        return redirect('http://channelry.localhost:3000/login')
+
     try:
         schema = LoginSchema(strict=True)
         email = request.json.get('email')

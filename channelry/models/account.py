@@ -14,7 +14,11 @@ class User(db.Model):
     password = db.Column(db.String(255))
     fullname = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+    updated_at = db.Column(
+        db.DateTime,
+        server_default=db.func.now(),
+        server_onupdate=db.func.now()
+    )
 
     def __init__(self, email: str, password: str, fullname: str):
         """SQLAlchemy model for User.
