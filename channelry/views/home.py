@@ -1,7 +1,7 @@
 import json
 import logging
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, jsonify, current_app
 
 
 home_blueprint = Blueprint('home', __name__)
@@ -30,3 +30,8 @@ def terms():
 @home_blueprint.route('/privacy', methods=['GET'])
 def privacy():
     return render_template('home/privacy.html')
+
+
+@home_blueprint.route('/version', methods=['GET'])
+def version():
+    return jsonify({'environment': current_app.config.get('DASHBOARD_URL')})
