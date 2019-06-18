@@ -12,7 +12,7 @@ cors = CORS()
 jwtmanager = JWTManager()
 
 
-def create_app(config: str='production'):
+def create_app(config: str):
     app = Flask(__name__)
     app.config.from_object(f'channelry.config.{config.title()}')
 
