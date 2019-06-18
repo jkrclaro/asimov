@@ -12,9 +12,8 @@ cors = CORS()
 jwtmanager = JWTManager()
 
 
-def create_app(config):
+def create_app(config: str):
     app = Flask(__name__)
-    app.logger.info(f'Environment: {config.title()}')
     app.config.from_object(f'channelry.config.{config.title()}')
 
     mail.init_app(app)

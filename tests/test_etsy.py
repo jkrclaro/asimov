@@ -4,7 +4,7 @@ import responses
 from channelry.etsy import Etsy
 
 
-DECODED_URL = 'login_url=https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthsecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
+DECODED_URL = 'login_url=https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
 
 
 class TestEtsy(unittest.TestCase):
@@ -21,14 +21,14 @@ class TestEtsy(unittest.TestCase):
         assert response.url == url
 
     def test_decode_url(self):
-        url = 'login_url=https%3A%2F%2Fwww.etsy.com%2Foauth%2Fsignin%3Foauth_consumer_key%3Dapikey%26oauth_token%3Dtestoauthtoken%26service%3Dv2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthsecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
+        url = 'login_url=https%3A%2F%2Fwww.etsy.com%2Foauth%2Fsignin%3Foauth_consumer_key%3Dapikey%26oauth_token%3Dtestoauthtoken%26service%3Dv2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
         decoded_url = self.etsy.decode_url(url)
         assert decoded_url == DECODED_URL
 
     def test_login_url(self):
         login_url = self.etsy.parse_login_url(DECODED_URL)
-        assert login_url == 'https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthsecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
+        assert login_url == 'https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
 
-        token, secret = self.etsy.parse_oauth_token_and_secret(login_url)
-        assert token == 'testoauthtoken'
-        assert secret == 'testoauthsecret'
+        oauth = self.etsy.parse_oauth_token_and_secret(login_url)
+        assert oauth['oauth_token'] == 'testoauthtoken'
+        assert oauth['oauth_token_secret'] == 'testoauthtokensecret'
