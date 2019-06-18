@@ -31,6 +31,7 @@ requests = "*"
 flask-talisman = "*"
 flask-jwt-extended = "*"
 psycopg2-binary = "*"
+requests-oauthlib = "*"
 
 [dev-packages]
 pytest = "*"
