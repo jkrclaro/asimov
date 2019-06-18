@@ -18,21 +18,10 @@ PASSWORD = 'johndoe12345'
 class TestAccount(unittest.TestCase):
 
     def setUp(self):
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        self.testdb = os.path.join(basedir, 'test.db')
-        self.remove_testdb_if_exists()
         self.app = app
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{self.testdb}'
         self.client = self.app.test_client()
         with self.app.app_context():
             db.create_all(app=self.app)
-
-    def tearDown(self):
-        self.remove_testdb_if_exists()
-
-    def remove_testdb_if_exists(self):
-        if os.path.exists(self.testdb):
-            os.remove(self.testdb)
 
     def test_signup_and_login(self):
         response = self.client.post(

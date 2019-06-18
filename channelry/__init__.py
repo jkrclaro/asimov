@@ -14,6 +14,7 @@ jwtmanager = JWTManager()
 
 def create_app(config: str='production'):
     app = Flask(__name__)
+    app.logger.info(f'Running on: {config.title()}')
     app.config.from_object(f'channelry.config.{config.title()}')
 
     mail.init_app(app)
