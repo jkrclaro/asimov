@@ -23,10 +23,21 @@ from ..schemas.account import SignupSchema, LoginSchema
 account_bp = Blueprint('account', __name__)
 
 
+def jsonify_validation_error(validation_error: ValidationError):
+    """Convert validation error messages to be parsable in the Dashboard.
+
+    :param validation_error: ValidationError raised by marshmallow
+    """
+    message = {}
+    for field, reason in validation_error.messages.items():
+        message = {'field': field, 'reason': reason[0]}
+    return message
+
+
 @account_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
-        return redirect('http://channelry.localhost:3000/signup')
+        return redirect(f'{current_app.config["DASHBOARD_URL"]}/signup')
 
     try:
         schema = SignupSchema(strict=True)
@@ -52,16 +63,13 @@ def signup():
         return jsonify(message=f'{email} created'), 200
 
     except ValidationError as validation_error:
-        message = {}
-        for field, reason in validation_error.messages.items():
-            message = {'field': field, 'reason': reason[0]}
-        return jsonify(message), 400
+        return jsonify(jsonify_validation_error(validation_error)), 400
 
 
 @account_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return redirect('http://channelry.localhost:3000/login')
+        return redirect(f'{current_app.config["DASHBOARD_URL"]}/login')
 
     try:
         schema = LoginSchema(strict=True)
