@@ -16,3 +16,6 @@ Use `python db.py`
 
 Use [Alembic](https://alembic.sqlalchemy.org/en/latest/)
 
+## Schema
+
+https://stackoverflow.com/questions/3327312/how-can-i-drop-all-the-tables-in-a-postgresql-database

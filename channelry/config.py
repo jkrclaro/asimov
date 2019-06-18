@@ -18,7 +18,7 @@ class Development(Config):
     SEND_FILE_MAX_AGE_DEFAULT = 0
     UPLOADED_PHOTOS_DEST = media
     DASHBOARD_URL = 'http://dashboard.localhost:3000'
-    SQLALCHEMY_DATABASE_URI = 'postgresql://john:12345@localhost:5432/postgres'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://developer:12345@database:5432/postgres'
     SECRET_KEY = '12345'
 
 

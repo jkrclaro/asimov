@@ -32,6 +32,6 @@ def privacy():
     return render_template('home/privacy.html')
 
 
-@home_blueprint.route('/version', methods=['GET'])
-def version():
+@home_blueprint.route('/health', methods=['GET'])
+def health():
     return jsonify({'environment': current_app.config.get('DASHBOARD_URL')})
