@@ -15,11 +15,10 @@ from flask_jwt_extended import (
 )
 from marshmallow import ValidationError
 
-from ..jwtmanager import JWTManager
-from ..models import db
-from ..models.account import User
-from ..schemas.account import SignupSchema, LoginSchema
 from libs import mailgun
+from channelry.models import db
+from channelry.models.account import User
+from channelry.schemas.account import SignupSchema, LoginSchema
 
 
 account_bp = Blueprint('account', __name__)
@@ -101,18 +100,3 @@ def login():
 
     except ValidationError as validation_error:
         return jsonify(validation_error.messages), 400
-
-
-@account_bp.route('/refresh', methods=['POST'])
-def refresh():
-    logging.info(request.headers.get('refreshToken'))
-    refresh_token = request.headers.get('refreshToken', None)
-    if not refresh_token:
-        return jsonify(message='No refresh token, login again'), 401
-
-    jwt_manager = JWTManager(current_app.config['SECRET_KEY'])
-    message = jwt_manager.decode_token(refresh_token)
-    # TODO: If decoding of token fails, then return proper error status code
-
-    data = jsonify(accessToken=jwt_manager.create_access_token(message))
-    return data, 200

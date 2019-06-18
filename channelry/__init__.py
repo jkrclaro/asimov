@@ -31,8 +31,8 @@ def create_app(config: str):
     from .models.account import User
 
     from .views.account import account_bp
-    from .views.home import home_blueprint
+    from .views.home import home_bp
     app.register_blueprint(account_bp)
-    app.register_blueprint(home_blueprint)
+    app.register_blueprint(home_bp)
 
     return app
