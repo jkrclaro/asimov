@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use Let's Encrypt certbot to order a free certificate
-certbot certonly --non-interactive --manual \
+certbot certonly --non-interactive --manual --expand \
   --manual-auth-hook "./auth-hook.sh UPSERT channelry.com" \
   --manual-cleanup-hook "./auth-hook.sh DELETE channelry.com" \
   --preferred-challenge dns \
@@ -10,5 +10,5 @@ certbot certonly --non-interactive --manual \
   --logs-dir "./letsencrypt" \
   --agree-tos \
   --manual-public-ip-logging-ok \
-  --domains channelry.com,www.channelry.com \
+  --domains channelry.com,www.channelry.com,dashboard.channelry.com \
   --email john@channelry.com

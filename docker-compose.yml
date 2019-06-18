@@ -10,10 +10,10 @@ services:
         env_file: .env
         build: .
         ports:
-         - "8000:8000"
+         - "5000:5000"
         depends_on:
           - database
         image: channelry
         volumes:
           - .:/app
-        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        command: ["app:app", "-b", "0.0.0.0:5000", "--reload"]

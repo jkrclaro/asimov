@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from src.channelry.mailgun import Mailgun
+from channelry.mailgun import Mailgun
 
 
 class TestMailgun(unittest.TestCase):

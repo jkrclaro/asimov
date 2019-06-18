@@ -9,7 +9,7 @@ Guide for those perfoming database migrations
 
 ## Creating database initially
 
-Use `manage.py`
+Use `python db.py`
 
 
 ## Modifying existing tables
