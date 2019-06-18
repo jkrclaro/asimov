@@ -69,6 +69,10 @@ class TestAccount(unittest.TestCase):
             content_type='application/json'
         )
         assert response.status_code == 400, response.json
+        assert response.json == {
+            'field': 'confirm',
+            'reason': 'Re-enter your password confirmation so it matches your password'
+        }
 
 
 class TestUserModel(unittest.TestCase):

@@ -9,19 +9,22 @@ from marshmallow import (
 
 class SignupSchema(Schema):
     email = fields.Email(
-        required=True, 
+        attribute='email',
+        required=True,
         validate=validate.Length(min=3, max=320)
     )
     password = fields.Str(
+        attribute='password',
         required=True,
         validate=validate.Length(
             min=8, error='Password must be atleast 8 characters long'
         )
     )
-    confirm = fields.Str(required=True)
+    confirm = fields.Str(attribute='confirm', required=True)
     fullname = fields.Str(
+        attribute='fullname',
         validate=validate.Length(
-            max=100, 
+            max=100,
             error='Enter a fullname that is less than 100 characters long'
         ),
     )
@@ -31,7 +34,9 @@ class SignupSchema(Schema):
         print(data['password'], data['confirm'])
         if data['password'] != data['confirm']:
             raise ValidationError(
-                'Re-enter your password confirmation so it matches your password'
+                'Re-enter your password confirmation so it matches your '
+                'password',
+                field_names='confirm'
             )
 
 

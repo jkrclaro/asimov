@@ -52,7 +52,10 @@ def signup():
         return jsonify(message=f'{email} created'), 200
 
     except ValidationError as validation_error:
-        return jsonify(validation_error.messages), 400
+        message = {}
+        for field, reason in validation_error.messages.items():
+            message = {'field': field, 'reason': reason[0]}
+        return jsonify(message), 400
 
 
 @account_bp.route('/login', methods=['GET', 'POST'])
