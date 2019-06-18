@@ -36,3 +36,4 @@ class Development(Config):
 class Testing(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
+    SECRET_KEY = '12345'
