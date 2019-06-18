@@ -6,7 +6,7 @@ from requests_oauthlib import OAuth1
 
 class Etsy:
 
-    def __init__(self, api_key: str, secret_key: str, callback_uri: str):
+    def __init__(self, api_key: str, secret_key: str, callback_uri: str='oob'):
         self.api_key = api_key
         self.secret_key = secret_key
         self.callback_uri = callback_uri
