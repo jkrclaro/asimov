@@ -44,17 +44,17 @@ def signup():
     try:
         schema = SignupSchema(strict=True)
         email = request.json.get('email')
-        fullname = request.json.get('fullname')
+        name = request.json.get('name')
         password = request.json.get('password')
         confirm = request.json.get('confirm')
         data, _ = schema.load({
             'email': email,
-            'fullname': fullname,
+            'name': name,
             'password': password,
             'confirm': confirm
         })
 
-        user = User(email, password, fullname)
+        user = User(email, password, name)
         user_exist = User.query.filter_by(email=email).first()
         if user_exist:
             return jsonify(field='email', reason='Email is already taken'), 400
@@ -63,14 +63,15 @@ def signup():
             db.session.commit()
 
             confirmation_token = token.generate_confirmation_token(email)
-            confirmation_url = f'{dashboard.url()}/confirm_email?confirmation_token={confirmation_token}'
+            uri = f'email/confirm?confirmation_token={confirmation_token}'
+            confirmation_url = f'{dashboard.url()}/{uri}'
             html = render_template(
                 'account/email/confirm_email.html',
                 confirmation_url=confirmation_url
             )
             mailgun.send_email(
                 'Confirm your Channelry email address!',
-                [f'{fullname} {email}'],
+                [f'{name} {email}'],
                 html=html,
             )
 
@@ -105,7 +106,7 @@ def login():
         return jsonify(validation_error.messages), 400
 
 
-@account_bp.route('/confirm_email', methods=['POST'])
+@account_bp.route('/email/confirm', methods=['POST'])
 def confirm_email():
     try:
         confirmation_token = request.json.get('confirmation_token')

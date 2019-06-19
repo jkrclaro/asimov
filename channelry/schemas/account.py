@@ -21,11 +21,11 @@ class SignupSchema(Schema):
         )
     )
     confirm = fields.Str(attribute='confirm', required=True)
-    fullname = fields.Str(
-        attribute='fullname',
+    name = fields.Str(
+        attribute='name',
         validate=validate.Length(
             max=100,
-            error='Enter a fullname that is less than 100 characters long'
+            error='Enter a name that is less than 100 characters long'
         ),
     )
 

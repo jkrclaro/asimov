@@ -12,7 +12,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
-    fullname = db.Column(db.String(255))
+    name = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(
@@ -21,19 +21,19 @@ class User(db.Model):
         server_onupdate=db.func.now()
     )
 
-    def __init__(self, email: str, password: str, fullname: str):
+    def __init__(self, email: str, password: str, name: str):
         """SQLAlchemy model for User.
 
         :param email: Email of user.
         :param password: Plaintext password of user.
-        :param fullname: First and last name of user.
+        :param name: First and last name of user.
         """
         self.email = email.lower()
         self.password = self.password_hash(password).decode('utf8')
-        self.fullname = fullname
+        self.name = name
 
     def __repr__(self):
-        return f"<User(email='{self.email}', fullname='{self.fullname}')"
+        return f"<User(email='{self.email}', name='{self.name}')"
 
     def password_hash(self, password):
         return bcrypt.hashpw(self.base64_encode(password), bcrypt.gensalt())

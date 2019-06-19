@@ -30,7 +30,7 @@ class TestAccount(unittest.TestCase):
             '/signup',
             data=json.dumps({
                 'email': EMAIL,
-                'fullname': FULLNAME,
+                'name': FULLNAME,
                 'password': PASSWORD,
                 'confirm': PASSWORD
             }),
@@ -53,7 +53,7 @@ class TestAccount(unittest.TestCase):
             '/signup',
             data=json.dumps({
                 'email': EMAIL,
-                'fullname': FULLNAME,
+                'name': FULLNAME,
                 'password': PASSWORD,
                 'confirm': 'iamawrongincorrectpassword'
             }),
@@ -68,7 +68,7 @@ class TestAccount(unittest.TestCase):
     def test_confirm_email(self):
         confirmation_token = token.generate_confirmation_token(EMAIL)
         response = self.client.post(
-            '/confirm_email',
+            '/email/confirm',
             data=json.dumps({'confirmation_token': confirmation_token}),
             content_type='application/json'
         )
