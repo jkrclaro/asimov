@@ -32,4 +32,4 @@ class Testing(Config):
     WTF_CSRF_ENABLED = False
     SECRET_KEY = '12345'
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
-
+    DASHBOARD_URL = 'http://dashboard.localhost:3000'

@@ -9,10 +9,11 @@ def generate_confirmation_token(email: str):
     return serializer.dumps(email, salt=password_salt)
 
 
-def confirm_conformation_token(token: str, expiration: int=3600):
+def confirm_conformation_token(token: str, expiration: int=3600) -> str:
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
     try:
         email = serializer.loads(token, salt=password_salt, max_age=expiration)
     except:
-        email = False
+        email = ''
+
     return email
