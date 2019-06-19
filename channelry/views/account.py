@@ -40,6 +40,22 @@ def jsonify_validation_error(validation_error: ValidationError):
     return message
 
 
+def send_confirmation_email(email: str, name: str=''):
+    to_email = f'{name} {email}' if name else email
+    confirmation_token = token.generate_confirmation_token(email)
+    uri = f'email/confirm?confirmation_token={confirmation_token}'
+    confirmation_url = f'{dashboard.url()}/{uri}'
+    html = render_template(
+        'account/email/confirm_email.html',
+        confirmation_url=confirmation_url
+    )
+    mailgun.send_email(
+        'Confirm your Channelry email address!',
+        [to_email],
+        html=html,
+    )
+
+
 @account_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
@@ -66,18 +82,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
 
-            confirmation_token = token.generate_confirmation_token(email)
-            uri = f'email/confirm?confirmation_token={confirmation_token}'
-            confirmation_url = f'{dashboard.url()}/{uri}'
-            html = render_template(
-                'account/email/confirm_email.html',
-                confirmation_url=confirmation_url
-            )
-            mailgun.send_email(
-                'Confirm your Channelry email address!',
-                [f'{name} {email}'],
-                html=html,
-            )
+            send_confirmation_email(email, name=name)
 
         return jsonify(email=email)
 
@@ -94,6 +99,7 @@ def login():
         schema = LoginSchema(strict=True)
         email = request.json.get('email')
         password = request.json.get('password')
+        confirm_email = request.json.get('confirmEmail')
         data, _ = schema.load({
             'email': email,
             'password': password
@@ -101,6 +107,12 @@ def login():
 
         user = User.query.filter_by(email=email).first()
         if user and user.password_match(password):
+            if confirm_email:
+                current_app.logger.debug(f'Confirming email {email}')
+                user.is_confirmed = True
+                db.session.add(user)
+                db.session.commit()
+
             access_token = create_access_token(identity=email)
             refresh_token = create_refresh_token(identity=email)
             return jsonify({
@@ -135,10 +147,17 @@ def confirm_email():
         return jsonify(message='Confirmation link is invalid or expired')
     else:
         current_app.logger.debug(f'Confirmed email: {email}')
-        user.is_confirmed = True
         db.session.add(user)
         db.session.commit()
         return jsonify(email=email)
+
+
+@account_bp.route('/email/resend', methods=['POST'])
+@jwt_required
+def resend_email():
+    email = get_jwt_identity()
+    send_confirmation_email(email)
+    return jsonify(email=email)
 
 
 @account_bp.route('/refresh', methods=['POST'])
@@ -148,10 +167,22 @@ def refresh():
     return jsonify(accessToken=create_access_token(identity=email))
 
 
-@account_bp.route('/details', methods=['POST'])
+@account_bp.route('/profile/details', methods=['POST'])
 @jwt_required
-def details():
+def profile_details():
     email = get_jwt_identity()
-    current_app.logger.debug(f'Identity: {email}')
-    user = User.query.filter_by(email=get_jwt_identity()).first()
-    return jsonify(email=user.email, name=user.name)
+    user = User.query.filter_by(email=email).first()
+    if user:
+        return jsonify(
+            email=user.email,
+            name=user.name,
+            isConfirmed=user.is_confirmed
+        )
+    else:
+        return jsonify(message='Something went wrong'), 500
+
+
+@account_bp.route('/account/details', methods=['POST'])
+@jwt_required
+def account_details():
+    return jsonify(name='Underarmour')

@@ -51,11 +51,32 @@ class TestAccount(unittest.TestCase):
 
         authorization = f"Bearer {response.json['accessToken']}"
         response = self.client.post(
-            '/details',
+            '/profile/details',
             content_type='application/json',
             headers={'Authorization': authorization}
         )
         assert response.status_code == 200, response.json
+        assert response.json['isConfirmed'] is False
+
+        response = self.client.post(
+            '/login',
+            data=json.dumps({
+                'email': EMAIL,
+                'password': PASSWORD,
+                'confirmEmail': True
+            }),
+            content_type='application/json'
+        )
+        assert response.status_code == 200, response.json
+
+        authorization = f"Bearer {response.json['accessToken']}"
+        response = self.client.post(
+            '/profile/details',
+            content_type='application/json',
+            headers={'Authorization': authorization}
+        )
+        assert response.status_code == 200, response.json
+        assert response.json['isConfirmed'] is True
 
     def test_signup_confirm_does_not_match_password(self):
         response = self.client.post(
