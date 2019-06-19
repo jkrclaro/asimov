@@ -50,3 +50,32 @@ class LoginSchema(Schema):
             min=8, error='Password must be atleast 8 characters long'
         )
     )
+
+
+class ProfileEditSchema(Schema):
+    email = fields.Email(
+        attribute='email',
+        validate=validate.Length(min=3, max=320)
+    )
+    currentpassword = fields.Str(
+        attribute='currentpassword',
+        validate=validate.Length(
+            min=8, error='Password must be atleast 8 characters long'
+        )
+    )
+    newpassword = fields.Str(
+        attribute='newpassword',
+        validate=validate.Length(
+            min=8, error='Password must be atleast 8 characters long'
+        )
+    )
+    confirmpassword = fields.Str(attribute='confirmpassword', required=True)
+
+    @validates_schema
+    def validate_password(self, data, **kwargs):
+        if data['newpassword'] != data['confirmpassword']:
+            raise ValidationError(
+                'Re-enter your password confirmation so it matches your new '
+                'password',
+                field_names='confirmpassword'
+            )

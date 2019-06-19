@@ -23,7 +23,11 @@ from marshmallow import ValidationError
 from libs import mailgun, token, dashboard
 from channelry.models import db
 from channelry.models.account import User
-from channelry.schemas.account import SignupSchema, LoginSchema
+from channelry.schemas.account import (
+    SignupSchema,
+    LoginSchema,
+    ProfileEditSchema
+)
 
 
 account_bp = Blueprint('account', __name__)
@@ -116,9 +120,6 @@ def login():
             access_token = create_access_token(identity=email)
             refresh_token = create_refresh_token(identity=email)
             return jsonify({
-                'iss': 'channelry',
-                'sub': user.email,
-                'aud': ['all'],
                 'accessToken': access_token,
                 'refreshToken': refresh_token
             })
@@ -172,14 +173,57 @@ def refresh():
 def profile_details():
     email = get_jwt_identity()
     user = User.query.filter_by(email=email).first()
+    return jsonify(
+        email=user.email,
+        name=user.name,
+        isConfirmed=user.is_confirmed
+    )
+
+
+@account_bp.route('/profile/details/edit', methods=['POST'])
+@jwt_required
+def edit_profile_details():
+    email = get_jwt_identity()
+    new_email = request.json.get('email')
+    name = request.json.get('name')
+    current_password = request.json.get('currentpassword')
+    new_password = request.json.get('newpassword')
+    confirm_password = request.json.get('confirmpassword')
+    try:
+        schema = ProfileEditSchema(strict=True)
+        data, _ = schema.load({
+            'email': new_email,
+            'name': name,
+            'currentpassword': current_password,
+            'confirmpassword': confirm_password,
+            'newpassword': new_password,
+        })
+    except ValidationError as validation_error:
+        return jsonify(jsonify_validation_error(validation_error)), 400
+
+    user = User.query.filter_by(email=email).first()
     if user:
-        return jsonify(
-            email=user.email,
-            name=user.name,
-            isConfirmed=user.is_confirmed
-        )
-    else:
-        return jsonify(message='Something went wrong'), 500
+        if name:
+            user.name = name
+        if email:
+            user.email = new_email
+            user.is_confirmed = False
+        if not user.password_match(current_password):
+            return jsonify(field='currentpassword', reason='Please provide current password'), 400
+        elif new_password:
+            user.password = new_password
+
+        db.session.add(user)
+        db.session.commit()
+
+        send_confirmation_email(new_email, name=name)
+
+    return jsonify(
+        email=user.email,
+        name=user.name,
+        password=user.password,
+        isConfirmed=user.is_confirmed
+    )
 
 
 @account_bp.route('/account/details', methods=['POST'])

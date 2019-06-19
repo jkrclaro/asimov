@@ -69,14 +69,28 @@ class TestAccount(unittest.TestCase):
         )
         assert response.status_code == 200, response.json
 
-        authorization = f"Bearer {response.json['accessToken']}"
+        headers = {'Authorization': f"Bearer {response.json['accessToken']}"}
         response = self.client.post(
             '/profile/details',
             content_type='application/json',
-            headers={'Authorization': authorization}
+            headers=headers
         )
         assert response.status_code == 200, response.json
         assert response.json['isConfirmed'] is True
+
+        response = self.client.post(
+            '/profile/details/edit',
+            data=json.dumps({
+                'email': 'danielday@lewis12345432.com',
+                'name': 'Daniel Day-Lewis',
+                'currentpassword': PASSWORD,
+                'newpassword': 'danieldaylewis123',
+                'confirmpassword': 'danieldaylewis123'
+            }),
+            content_type='application/json',
+            headers=headers
+        )
+        assert response.status_code == 200, response.json
 
     def test_signup_confirm_does_not_match_password(self):
         response = self.client.post(
