@@ -25,12 +25,12 @@ class TestAccount(unittest.TestCase):
         with self.app.app_context():
             db.create_all(app=self.app)
 
-    def test_signup_and_login(self):
+    def test_signup_and_login_and_details(self):
         response = self.client.post(
             '/signup',
             data=json.dumps({
                 'email': EMAIL,
-                'fullname': FULLNAME,
+                'name': FULLNAME,
                 'password': PASSWORD,
                 'confirm': PASSWORD
             }),
@@ -44,7 +44,51 @@ class TestAccount(unittest.TestCase):
                 'email': EMAIL,
                 'password': PASSWORD
             }),
+            content_type='application/json',
+            headers={'Authorization': 'token'}
+        )
+        assert response.status_code == 200, response.json
+
+        authorization = f"Bearer {response.json['accessToken']}"
+        response = self.client.post(
+            '/profile/details',
+            content_type='application/json',
+            headers={'Authorization': authorization}
+        )
+        assert response.status_code == 200, response.json
+        assert response.json['isConfirmed'] is False
+
+        response = self.client.post(
+            '/login',
+            data=json.dumps({
+                'email': EMAIL,
+                'password': PASSWORD,
+                'confirmEmail': True
+            }),
             content_type='application/json'
+        )
+        assert response.status_code == 200, response.json
+
+        headers = {'Authorization': f"Bearer {response.json['accessToken']}"}
+        response = self.client.post(
+            '/profile/details',
+            content_type='application/json',
+            headers=headers
+        )
+        assert response.status_code == 200, response.json
+        assert response.json['isConfirmed'] is True
+
+        response = self.client.post(
+            '/profile/details/edit',
+            data=json.dumps({
+                'email': 'danielday@lewis12345432.com',
+                'name': 'Daniel Day-Lewis',
+                'currentpassword': PASSWORD,
+                'newpassword': 'danieldaylewis123',
+                'confirmpassword': 'danieldaylewis123'
+            }),
+            content_type='application/json',
+            headers=headers
         )
         assert response.status_code == 200, response.json
 
@@ -53,7 +97,7 @@ class TestAccount(unittest.TestCase):
             '/signup',
             data=json.dumps({
                 'email': EMAIL,
-                'fullname': FULLNAME,
+                'name': FULLNAME,
                 'password': PASSWORD,
                 'confirm': 'iamawrongincorrectpassword'
             }),
@@ -68,7 +112,7 @@ class TestAccount(unittest.TestCase):
     def test_confirm_email(self):
         confirmation_token = token.generate_confirmation_token(EMAIL)
         response = self.client.post(
-            '/confirm_email',
+            '/email/confirm',
             data=json.dumps({'confirmation_token': confirmation_token}),
             content_type='application/json'
         )
