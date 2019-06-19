@@ -74,5 +74,6 @@ class TestUserModel(unittest.TestCase):
         user = User(EMAIL, PASSWORD, FULLNAME)
         assert user.password_match('johndoe12345')
 
+
 if __name__ == '__main__':
     unittest.main()

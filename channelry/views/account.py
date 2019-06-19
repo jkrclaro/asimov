@@ -109,7 +109,7 @@ def login():
         return jsonify(validation_error.messages), 400
 
 
-@account_bp.route('/email/<confirmation_token>', methods=['POST'])
+@account_bp.route('/email/<confirmation_token>', methods=['GET'])
 def confirm_email(confirmation_token):
     try:
         email = token.confirm_conformation_token(confirmation_token)
