@@ -1,0 +1,2 @@
+ALTER TABLE users ADD COLUMN is_confirmed TIMESTAMP;
+ALTER TABLE users DROP COLUMN is_column;

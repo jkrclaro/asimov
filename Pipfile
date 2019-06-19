@@ -36,7 +36,6 @@ requests-oauthlib = "*"
 [dev-packages]
 pytest = "*"
 flake8 = "*"
-alembic = "*"
 responses = "*"
 pep8 = "*"
 
