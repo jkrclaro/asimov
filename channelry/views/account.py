@@ -1,4 +1,4 @@
-import logging
+import datetime
 
 import bcrypt
 from flask import (
@@ -7,7 +7,8 @@ from flask import (
     request,
     current_app,
     redirect,
-    render_template
+    render_template,
+    url_for
 )
 from flask_jwt_extended import (
     JWTManager,
@@ -15,7 +16,7 @@ from flask_jwt_extended import (
 )
 from marshmallow import ValidationError
 
-from libs import mailgun
+from libs import mailgun, token
 from channelry.models import db
 from channelry.models.account import User
 from channelry.schemas.account import SignupSchema, LoginSchema
@@ -61,9 +62,15 @@ def signup():
             db.session.add(user)
             db.session.commit()
 
+            confirmation_token = token.generate_confirmation_token(email)
+            confirmation_url = url_for(
+                'account.confirm_email',
+                confirmation_token=confirmation_token,
+                _external=True
+            )
             html = render_template(
-                'account/email/confirm_account.html',
-                confirm_url='http://channelry.localhost:3000/email/confirm'
+                'account/email/confirm_email.html',
+                confirmation_url=confirmation_url
             )
             mailgun.send_email(
                 'Confirm your Channelry email address!',
@@ -100,3 +107,20 @@ def login():
 
     except ValidationError as validation_error:
         return jsonify(validation_error.messages), 400
+
+
+@account_bp.route('/email/<confirmation_token>', methods=['POST'])
+def confirm_email(confirmation_token):
+    try:
+        email = token.confirm_conformation_token(confirmation_token)
+    except:
+        return jsonify(message='Confirmation link is invalid or expired'), 400
+
+    user = User.query.filter_by(email=email).first()
+    if user.is_confirmed:
+        return jsonify(message='Account already confirmed')
+    else:
+        user.is_confirmed = True
+        db.session.add(user)
+        db.session.commit()
+        return jsonify(message='You have confirmed your account, thanks!')

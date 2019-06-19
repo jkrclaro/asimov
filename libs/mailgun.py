@@ -2,7 +2,7 @@ import sys
 
 import requests
 
-api_key = 'test-api-key-123'
+api_key = ''
 domain = 'www.channelry.com'
 region = 'eu'
 from_email = f'Channelry <mailgun@{domain}>'
