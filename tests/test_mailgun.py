@@ -24,7 +24,6 @@ class TestMailgun(unittest.TestCase):
             'Welcome',
         )
 
-        print(response.request.body)
         assert response.request.body == 'from=Channelry+%3Cmailgun%40www.channelry.com%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
 
 

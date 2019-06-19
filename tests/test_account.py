@@ -9,8 +9,10 @@ from channelry import create_app
 from channelry.models import db
 from channelry.models.account import User
 
+from libs import token
+
 app = create_app('testing')
-EMAIL = 'john@channelry.com'
+EMAIL = 'john@johndoedomainorigin.com'
 FULLNAME = 'John Doe'
 PASSWORD = 'johndoe12345'
 
@@ -63,6 +65,15 @@ class TestAccount(unittest.TestCase):
             'reason': 'Re-enter your password confirmation so it matches your password'
         }
 
+    def test_confirm_email(self):
+        confirmation_token = token.generate_confirmation_token(EMAIL)
+        response = self.client.post(
+            '/confirm_email',
+            data=json.dumps({'confirmation_token': confirmation_token}),
+            content_type='application/json'
+        )
+        assert response.status_code == 200, response.json
+
 
 class TestUserModel(unittest.TestCase):
 
@@ -73,6 +84,7 @@ class TestUserModel(unittest.TestCase):
     def test_password_match(self):
         user = User(EMAIL, PASSWORD, FULLNAME)
         assert user.password_match('johndoe12345')
+
 
 if __name__ == '__main__':
     unittest.main()

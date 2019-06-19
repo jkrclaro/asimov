@@ -63,17 +63,3 @@ def parse_oauth_token_and_secret(url: str):
             oauth[key] = value
 
     return oauth
-
-
-if __name__ == '__main__':
-    import os
-    etsy = Etsy(
-        os.environ['ETSY_API_KEY'], 
-        os.environ['ETSY_SECRET_KEY'],
-        'http://channelry.localhost:3000'
-    )
-    scopes = ('email_r', 'listings_r', 'listings_w', 'listings_d')
-    response = etsy.request_token(scopes)
-    decoded_url = etsy.decode_url(response.text)
-    url = etsy.parse_login_url(decoded_url)
-    print(url)

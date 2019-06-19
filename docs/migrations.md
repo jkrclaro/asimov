@@ -14,7 +14,7 @@ Use `python db.py`
 
 ## Modifying existing tables
 
-Use [Alembic](https://alembic.sqlalchemy.org/en/latest/)
+[Altering existing columns](https://stackoverflow.com/questions/41149554/default-for-column-xxxx-cannot-be-cast-automatically-to-type-boolean-in-postgr)
 
 ## Schema
 

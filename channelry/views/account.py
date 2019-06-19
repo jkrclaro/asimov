@@ -16,7 +16,7 @@ from flask_jwt_extended import (
 )
 from marshmallow import ValidationError
 
-from libs import mailgun, token
+from libs import mailgun, token, dashboard
 from channelry.models import db
 from channelry.models.account import User
 from channelry.schemas.account import SignupSchema, LoginSchema
@@ -39,7 +39,7 @@ def jsonify_validation_error(validation_error: ValidationError):
 @account_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
-        return redirect(f'{current_app.config["DASHBOARD_URL"]}/signup')
+        return dashboard.go('signup')
 
     try:
         schema = SignupSchema(strict=True)
@@ -63,11 +63,7 @@ def signup():
             db.session.commit()
 
             confirmation_token = token.generate_confirmation_token(email)
-            confirmation_url = url_for(
-                'account.confirm_email',
-                confirmation_token=confirmation_token,
-                _external=True
-            )
+            confirmation_url = f'{dashboard.url()}/confirm_email?confirmation_token={confirmation_token}'
             html = render_template(
                 'account/email/confirm_email.html',
                 confirmation_url=confirmation_url
@@ -78,7 +74,7 @@ def signup():
                 html=html,
             )
 
-        return jsonify(message=f'{email} created'), 200
+        return jsonify(email=email)
 
     except ValidationError as validation_error:
         return jsonify(jsonify_validation_error(validation_error)), 400
@@ -87,7 +83,7 @@ def signup():
 @account_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return redirect(f'{current_app.config["DASHBOARD_URL"]}/login')
+        return dashboard.go('login')
 
     try:
         schema = LoginSchema(strict=True)
@@ -101,7 +97,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and user.password_match(password):
             access_token = create_access_token(identity=email)
-            return jsonify(access_token=access_token), 200
+            return jsonify(access_token=access_token)
         else:
             return jsonify(message='Email or password is incorrect'), 400
 
@@ -109,18 +105,25 @@ def login():
         return jsonify(validation_error.messages), 400
 
 
-@account_bp.route('/email/<confirmation_token>', methods=['POST'])
-def confirm_email(confirmation_token):
+@account_bp.route('/confirm_email', methods=['POST'])
+def confirm_email():
     try:
+        confirmation_token = request.json.get('confirmation_token')
+        current_app.logger.debug(f'Confirmation token: {confirmation_token}')
         email = token.confirm_conformation_token(confirmation_token)
     except:
-        return jsonify(message='Confirmation link is invalid or expired'), 400
+        current_app.logger.debug('Invalid confirmatiok token')
+        return jsonify(message='Confirmation link is invalid or expired')
 
+    current_app.logger.debug(f'Decrypted email: {email}')
     user = User.query.filter_by(email=email).first()
-    if user.is_confirmed:
-        return jsonify(message='Account already confirmed')
+
+    if not user or user.is_confirmed:
+        current_app.logger.debug('User does not exist or already confirmed')
+        return jsonify(message='Confirmation link is invalid or expired')
     else:
+        current_app.logger.debug(f'Confirmed email: {email}')
         user.is_confirmed = True
         db.session.add(user)
         db.session.commit()
-        return jsonify(message='You have confirmed your account, thanks!')
+        return jsonify(email=email)
