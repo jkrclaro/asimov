@@ -13,6 +13,10 @@ from flask import (
 from flask_jwt_extended import (
     JWTManager,
     create_access_token,
+    jwt_required,
+    get_jwt_identity,
+    create_refresh_token,
+    jwt_refresh_token_required
 )
 from marshmallow import ValidationError
 
@@ -98,12 +102,19 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and user.password_match(password):
             access_token = create_access_token(identity=email)
-            return jsonify(access_token=access_token)
+            refresh_token = create_refresh_token(identity=email)
+            return jsonify({
+                'iss': 'channelry',
+                'sub': user.email,
+                'aud': ['all'],
+                'accessToken': access_token,
+                'refreshToken': refresh_token
+            })
         else:
             return jsonify(message='Email or password is incorrect'), 400
 
     except ValidationError as validation_error:
-        return jsonify(validation_error.messages), 400
+        return jsonify(jsonify_validation_error(validation_error)), 400
 
 
 @account_bp.route('/email/confirm', methods=['POST'])
@@ -128,3 +139,19 @@ def confirm_email():
         db.session.add(user)
         db.session.commit()
         return jsonify(email=email)
+
+
+@account_bp.route('/refresh', methods=['POST'])
+@jwt_refresh_token_required
+def refresh():
+    email = get_jwt_identity()
+    return jsonify(accessToken=create_access_token(identity=email))
+
+
+@account_bp.route('/details', methods=['POST'])
+@jwt_required
+def details():
+    email = get_jwt_identity()
+    current_app.logger.debug(f'Identity: {email}')
+    user = User.query.filter_by(email=get_jwt_identity()).first()
+    return jsonify(email=user.email, name=user.name)

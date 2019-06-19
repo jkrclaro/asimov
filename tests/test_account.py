@@ -25,7 +25,7 @@ class TestAccount(unittest.TestCase):
         with self.app.app_context():
             db.create_all(app=self.app)
 
-    def test_signup_and_login(self):
+    def test_signup_and_login_and_details(self):
         response = self.client.post(
             '/signup',
             data=json.dumps({
@@ -44,7 +44,16 @@ class TestAccount(unittest.TestCase):
                 'email': EMAIL,
                 'password': PASSWORD
             }),
-            content_type='application/json'
+            content_type='application/json',
+            headers={'Authorization': 'token'}
+        )
+        assert response.status_code == 200, response.json
+
+        authorization = f"Bearer {response.json['accessToken']}"
+        response = self.client.post(
+            '/details',
+            content_type='application/json',
+            headers={'Authorization': authorization}
         )
         assert response.status_code == 200, response.json
 
