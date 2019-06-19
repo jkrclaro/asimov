@@ -72,7 +72,7 @@ class TestAccount(unittest.TestCase):
             data=json.dumps({'confirmation_token': confirmation_token}),
             content_type='application/json'
         )
-        assert response.status_code == 400, response.json
+        assert response.status_code == 200, response.json
 
 
 class TestUserModel(unittest.TestCase):
