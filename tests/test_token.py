@@ -2,16 +2,16 @@ import unittest
 
 import responses
 
-from libs import token
+from src.libs import token
 
-EMAIL = 'john@doe.com'
+from .constants import EMAIL
 
 
-class TestToken(unittest.TestCase):
+class Unit(unittest.TestCase):
 
     def test_generate_and_confirmation_of_confirmation_token(self):
         confirmation_token = token.generate(EMAIL)
-        assert len(confirmation_token) == len('ImpvaG5AZG9lLmNvbSI.XQl8SA.G_s2YhgEAo2oVmlybw0AUoL45Sg')
+        assert len(confirmation_token) == 75
 
         email = token.confirm(confirmation_token)
         assert EMAIL == email

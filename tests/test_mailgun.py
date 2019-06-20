@@ -5,13 +5,15 @@ import unittest
 
 import responses
 
-from libs import mailgun
+from src.libs import mailgun
+
+from .constants import API_KEY
 
 
-class TestMailgun(unittest.TestCase):
+class Unit(unittest.TestCase):
 
     def setUp(self):
-        mailgun.api_key = 'test-api-key-123'
+        mailgun.api_key = API_KEY
 
     @responses.activate
     def test_send_email(self):

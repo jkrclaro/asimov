@@ -20,10 +20,10 @@ from flask_jwt_extended import (
 )
 from marshmallow import ValidationError
 
-from libs import mailgun, token, dashboard
-from ..models import db
-from ..models.account import User
-from ..schemas.account import (
+from src.libs import mailgun, token, dashboard
+from src.channelry.models import db
+from src.channelry.models.account import User
+from src.channelry.schemas.account import (
     SignupSchema,
     LoginSchema,
     ProfileEditSchema

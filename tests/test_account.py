@@ -5,18 +5,17 @@ import json
 
 import pytest
 
-from channelry import create_app
-from channelry.models import db
-from channelry.models.account import User
-from libs import token
+from src.channelry import create_app
+from src.channelry.models import db
+from src.channelry.models.account import User
+from src.libs import token
+
+from .constants import EMAIL, NAME, PASSWORD
 
 app = create_app('testing')
-EMAIL = 'john@johndoedomainorigin.com'
-FULLNAME = 'John Doe'
-PASSWORD = 'johndoe12345'
 
 
-class TestAccount(unittest.TestCase):
+class Integration(unittest.TestCase):
 
     def setUp(self):
         self.app = app
@@ -29,7 +28,7 @@ class TestAccount(unittest.TestCase):
             '/signup',
             data=json.dumps({
                 'email': EMAIL,
-                'name': FULLNAME,
+                'name': NAME,
                 'password': PASSWORD,
                 'confirm': PASSWORD
             }),
@@ -96,7 +95,7 @@ class TestAccount(unittest.TestCase):
             '/signup',
             data=json.dumps({
                 'email': EMAIL,
-                'name': FULLNAME,
+                'name': NAME,
                 'password': PASSWORD,
                 'confirm': 'iamawrongincorrectpassword'
             }),
@@ -112,6 +111,17 @@ class TestAccount(unittest.TestCase):
             content_type='application/json'
         )
         assert response.status_code == 410, response.json
+
+
+class Unit(unittest.TestCase):
+
+    def test_password_hash(self):
+        user = User(EMAIL, PASSWORD, NAME)
+        assert len(user.password) == 60
+
+    def test_password_match(self):
+        user = User(EMAIL, PASSWORD, NAME)
+        assert user.password_match('johndoe12345')
 
 
 if __name__ == '__main__':

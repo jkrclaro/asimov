@@ -16,8 +16,10 @@ COPY Pipfile.lock .
 RUN pipenv install --system --deploy
 
 # Move everything to docker
-COPY src/ .
-RUN pwd channelry/
+RUN mkdir src/
+COPY src/ src/
+COPY app.py .
+RUN ls
 
 EXPOSE 5000
 ENTRYPOINT ["gunicorn"]

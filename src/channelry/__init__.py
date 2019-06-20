@@ -7,7 +7,7 @@ from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
-from libs import mailgun, token
+from src.libs import mailgun, token
 
 mail = Mail()
 marshmallow = Marshmallow()
@@ -17,7 +17,7 @@ jwtmanager = JWTManager()
 
 def create_app(config: str):
     app = Flask(__name__)
-    app.config.from_object(f'channelry.config.{config.title()}')
+    app.config.from_object(f'src.channelry.config.{config.title()}')
 
     mail.init_app(app)
     marshmallow.init_app(app)
