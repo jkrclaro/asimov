@@ -8,7 +8,6 @@ import pytest
 from channelry import create_app
 from channelry.models import db
 from channelry.models.account import User
-
 from libs import token
 
 app = create_app('testing')

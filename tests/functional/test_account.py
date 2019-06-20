@@ -1,6 +1,6 @@
 import unittest
 
-from src.channelry.models.account import User
+from channelry.models.account import User
 
 
 class TestUserModel(unittest.TestCase):
