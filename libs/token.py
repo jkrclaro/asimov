@@ -4,12 +4,12 @@ secret_key = ''
 password_salt = ''
 
 
-def generate_confirmation_token(email: str):
+def generate(data: dict):
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
-    return serializer.dumps(email, salt=password_salt)
+    return serializer.dumps(data, salt=password_salt)
 
 
-def confirm_conformation_token(token: str, expiration: int=3600) -> str:
+def confirm(token: str, expiration: int=3600) -> str:
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
     try:
         email = serializer.loads(token, salt=password_salt, max_age=expiration)

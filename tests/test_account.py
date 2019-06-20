@@ -63,7 +63,7 @@ class TestAccount(unittest.TestCase):
             data=json.dumps({
                 'email': EMAIL,
                 'password': PASSWORD,
-                'confirmEmail': True
+                'isConfirmEmail': True
             }),
             content_type='application/json'
         )
@@ -110,13 +110,13 @@ class TestAccount(unittest.TestCase):
         }
 
     def test_confirm_email(self):
-        confirmation_token = token.generate_confirmation_token(EMAIL)
+        confirmation_token = token.generate(EMAIL)
         response = self.client.post(
             '/email/confirm',
-            data=json.dumps({'confirmation_token': confirmation_token}),
+            data=json.dumps({'token': confirmation_token}),
             content_type='application/json'
         )
-        assert response.status_code == 200, response.json
+        assert response.status_code == 410, response.json
 
 
 class TestUserModel(unittest.TestCase):
