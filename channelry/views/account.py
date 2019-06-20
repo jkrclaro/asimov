@@ -117,8 +117,8 @@ def login():
                 db.session.add(user)
                 db.session.commit()
 
-            access_token = create_access_token(identity=email)
-            refresh_token = create_refresh_token(identity=email)
+            access_token = create_access_token(identity=user.id)
+            refresh_token = create_refresh_token(identity=user.id)
             return jsonify({
                 'accessToken': access_token,
                 'refreshToken': refresh_token
@@ -156,23 +156,25 @@ def confirm_email():
 @account_bp.route('/email/resend', methods=['POST'])
 @jwt_required
 def resend_email():
-    email = get_jwt_identity()
-    send_confirmation_email(email)
-    return jsonify(email=email)
+    user_id = get_jwt_identity()
+    user = User.query.filter_by(id=user_id).first()
+    if user:
+        send_confirmation_email(user.email)
+    return jsonify(email=user.email)
 
 
 @account_bp.route('/refresh', methods=['POST'])
 @jwt_refresh_token_required
 def refresh():
-    email = get_jwt_identity()
-    return jsonify(accessToken=create_access_token(identity=email))
+    user_id = get_jwt_identity()
+    return jsonify(accessToken=create_access_token(identity=user.id))
 
 
 @account_bp.route('/profile/details', methods=['POST'])
 @jwt_required
 def profile_details():
-    email = get_jwt_identity()
-    user = User.query.filter_by(email=email).first()
+    user_id = get_jwt_identity()
+    user = User.query.filter_by(id=user_id).first()
     return jsonify(
         email=user.email,
         name=user.name,
@@ -183,7 +185,7 @@ def profile_details():
 @account_bp.route('/profile/details/edit', methods=['POST'])
 @jwt_required
 def edit_profile_details():
-    email = get_jwt_identity()
+    user_id = get_jwt_identity()
     model = request.json.get('model')
     new_email = request.json.get('email')
     current_app.logger.debug(new_email)
@@ -205,7 +207,7 @@ def edit_profile_details():
         current_app.logger.debug(validation_error)
         return jsonify(jsonify_validation_error(validation_error)), 400
 
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(id=user_id).first()
     if user:
         if new_name:
             current_app.logger.debug('Updating profile name')
