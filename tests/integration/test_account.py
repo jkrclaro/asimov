@@ -25,7 +25,7 @@ class TestAccount(unittest.TestCase):
         with self.app.app_context():
             db.create_all(app=self.app)
 
-    def test_signup_and_login_and_details(self):
+    def test_signup(self):
         response = self.client.post(
             '/signup',
             data=json.dumps({
@@ -104,10 +104,6 @@ class TestAccount(unittest.TestCase):
             content_type='application/json'
         )
         assert response.status_code == 400, response.json
-        assert response.json == {
-            'field': 'confirm',
-            'reason': 'Re-enter your password confirmation so it matches your password'
-        }
 
     def test_confirm_email(self):
         confirmation_token = token.generate(EMAIL)
@@ -117,17 +113,6 @@ class TestAccount(unittest.TestCase):
             content_type='application/json'
         )
         assert response.status_code == 410, response.json
-
-
-class TestUserModel(unittest.TestCase):
-
-    def test_password_hash(self):
-        user = User(EMAIL, PASSWORD, FULLNAME)
-        assert len(user.password) == 60
-
-    def test_password_match(self):
-        user = User(EMAIL, PASSWORD, FULLNAME)
-        assert user.password_match('johndoe12345')
 
 
 if __name__ == '__main__':
