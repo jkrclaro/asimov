@@ -184,39 +184,53 @@ def profile_details():
 @jwt_required
 def edit_profile_details():
     email = get_jwt_identity()
+    model = request.json.get('model')
     new_email = request.json.get('email')
-    name = request.json.get('name')
+    current_app.logger.debug(new_email)
+    new_name = request.json.get('name')
     current_password = request.json.get('currentpassword')
     new_password = request.json.get('newpassword')
     confirm_password = request.json.get('confirmpassword')
     try:
         schema = ProfileEditSchema(strict=True)
+        schema.only = ('email', 'name')
         data, _ = schema.load({
             'email': new_email,
-            'name': name,
+            'name': new_name,
             'currentpassword': current_password,
             'confirmpassword': confirm_password,
             'newpassword': new_password,
         })
     except ValidationError as validation_error:
+        current_app.logger.debug(validation_error)
         return jsonify(jsonify_validation_error(validation_error)), 400
 
     user = User.query.filter_by(email=email).first()
     if user:
-        if name:
-            user.name = name
-        if email:
+        if new_name:
+            current_app.logger.debug('Updating profile name')
+            user.name = new_name
+        if new_email:
+            current_app.logger.debug('Updating profile email')
             user.email = new_email
             user.is_confirmed = False
-        if not user.password_match(current_password):
-            return jsonify(field='currentpassword', reason='Please provide current password'), 400
-        elif new_password:
-            user.password = new_password
+            send_confirmation_email(new_email)
 
+        if current_password and new_password and confirm_password:
+            if not user.password_match(current_password):
+                return jsonify(
+                    field='currentpassword',
+                    reason='Please provide current password'
+                ), 400
+            elif new_password:
+                current_app.logger.debug('Updating password')
+                user.password = new_password
+
+        current_app.logger.debug('Adding user...')
         db.session.add(user)
+        current_app.logger.debug('Saving user...')
         db.session.commit()
-
-        send_confirmation_email(new_email, name=name)
+        current_app.logger.debug(user)
 
     return jsonify(
         email=user.email,
