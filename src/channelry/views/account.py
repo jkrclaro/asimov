@@ -41,7 +41,7 @@ def jsonify_validation_error(validation_error: ValidationError):
     """
     message = {}
     for field, reason in validation_error.messages.items():
-        message = {'field': field, 'reason': reason[0]}
+        message[field] = reason
     return message
 
 
@@ -66,7 +66,7 @@ def signup_get():
     return render_template('account/signup.html')
 
 
-@account_bp.route('/signup', methods=['POST'])
+@account_bp.route('/api/signup', methods=['POST'])
 def signup():
     email = request.json.get('email', '')
     name = request.json.get('name', '')
@@ -83,9 +83,8 @@ def signup():
         schema = SignupSchema(strict=True)
         schema.load(data)
     except ValidationError as validation_error:
-        error = jsonify_validation_error(validation_error)
         current_app.logger.debug(validation_error)
-        return jsonify(error), 400
+        return jsonify(jsonify_validation_error(validation_error)), 400
 
     user = User(email, password, name)
     user_exist = User.query.filter_by(email=email).first()
@@ -95,7 +94,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        # TODO: Send email
+        # TODO: Send confirmation email
         return jsonify(email=email)
 
 

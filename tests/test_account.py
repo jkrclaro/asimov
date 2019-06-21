@@ -25,17 +25,21 @@ def client():
 
 def test_should_fail_signup_when_it_is_empty(client):
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({}),
         content_type='application/json'
     )
 
     assert response.status_code == 400, response.json
+    assert response.json == {
+        'email': ['Please enter a valid email.'],
+        'password': ['Your password must be at least 8 characters.']
+    }
 
 
 def test_should_pass_signup_when_it_is_valid(client):
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
@@ -46,11 +50,12 @@ def test_should_pass_signup_when_it_is_valid(client):
     )
 
     assert response.status_code == 200, response.json
+    assert response.json == {'email': 'johndoe@gmail.com'}
 
 
 def test_should_fail_signup_when_email_exists_already(client):
     client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
@@ -60,7 +65,7 @@ def test_should_fail_signup_when_email_exists_already(client):
         content_type='application/json'
     )
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
@@ -71,11 +76,12 @@ def test_should_fail_signup_when_email_exists_already(client):
     )
 
     assert response.status_code == 409, response.json
+    assert response.json == {'email': 'Email is already taken'}
 
 
 def test_should_fail_signup_when_password_and_confirm_password_does_not_match(client):
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
@@ -86,11 +92,14 @@ def test_should_fail_signup_when_password_and_confirm_password_does_not_match(cl
     )
 
     assert response.status_code == 400, response.json
+    assert response.json == {
+        'password': ['Your password must be at least 8 characters.']
+    }
 
 
 def test_should_pass_signup_when_no_name_is_provided(client):
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'password': 'johndoe12345',
@@ -100,11 +109,12 @@ def test_should_pass_signup_when_no_name_is_provided(client):
     )
 
     assert response.status_code == 200, response.json
+    assert response.json == {'email': 'johndoe@gmail.com'}
 
 
 def test_should_fail_signup_when_email_is_not_provided(client):
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'password': 'johndoe12345',
             'confirm_password': 'johndoe12345'
@@ -113,11 +123,12 @@ def test_should_fail_signup_when_email_is_not_provided(client):
     )
 
     assert response.status_code == 400, response.json
+    assert response.json == {'email': ['Please enter a valid email.']}
 
 
 def test_should_fail_signup_when_email_is_invalid(client):
     response = client.post(
-        '/signup',
+        '/api/signup',
         data=json.dumps({
             'email': 'johnjoe',
             'password': 'johndoe12345',
@@ -127,3 +138,18 @@ def test_should_fail_signup_when_email_is_invalid(client):
     )
 
     assert response.status_code == 400, response.json
+    assert response.json == {'email': ['Please enter a valid email.']}
+
+
+def test_should_fail_signup_when_password_is_empty(client):
+    response = client.post(
+        '/api/signup',
+        data=json.dumps({
+            'email': 'johnjoe@gmail.com',
+            'confirm_password': 'johndoe12345'
+        }),
+        content_type='application/json'
+    )
+
+    assert response.status_code == 400, response.json
+    assert response.json == {'password': ['Your password must be at least 8 characters.']}

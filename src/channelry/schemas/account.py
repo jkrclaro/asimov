@@ -11,24 +11,23 @@ class SignupSchema(Schema):
     email = fields.Email(
         attribute='email',
         required=True,
-        validate=validate.Length(min=3, max=320)
+        error_messages={
+            'required': 'Please enter a valid email.',
+            'invalid': 'Please enter a valid email.'
+        }
     )
     password = fields.Str(
         attribute='password',
         required=True,
         validate=validate.Length(
-            min=8, error='Password must be atleast 8 characters long'
-        )
+            min=8, error='Your password must be at least 8 characters.'
+        ),
+        error_messages={
+            'required': 'Please enter a password.',
+        }
     )
     confirm_password = fields.Str(attribute='confirm_password', required=True)
-    name = fields.Str(
-        attribute='name',
-        validate=validate.Length(
-            max=100,
-            error='Enter a name that is less than 100 characters long'
-        ),
-        required=False
-    )
+    name = fields.Str(attribute='name', required=False)
 
     @validates_schema(skip_on_field_errors=True)
     def validate_password(self, data, **kwargs):
