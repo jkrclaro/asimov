@@ -26,7 +26,7 @@ class User(db.Model, flask_login.UserMixin):
         self,
         email: str,
         password: str,
-        name: str,
+        name: str='',
         is_confirmed: bool=False
     ):
         """SQLAlchemy model for User.

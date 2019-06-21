@@ -6,6 +6,7 @@ import pytest
 
 from src.channelry import create_app
 from src.channelry.models import db
+from src.channelry.models.account import User
 
 
 @pytest.fixture
@@ -16,6 +17,9 @@ def client():
 
     with app.app_context():
         db.create_all(app=app)
+        user = User('foo@bar.com', 'foobar123456789')
+        db.session.add(user)
+        db.session.commit()
 
     yield client
 
@@ -183,3 +187,17 @@ def test_should_fail_login_when_login_form_is_invalid(client):
 
     assert response.status_code == 400, response.json
     assert response.json == {'message': 'Wrong email or password.'}
+
+
+def test_should_pass_login_when_login_form_is_valid(client):
+    response = client.post(
+        '/api/login',
+        data=json.dumps({
+            'email': 'foo@bar.com',
+            'password': 'foobar123456789'
+        }),
+        content_type='application/json'
+    )
+
+    assert response.status_code == 200, response.json
+    assert response.json == {'access_token': '12345', 'refresh_token': '12345'}
