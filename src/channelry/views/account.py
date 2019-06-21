@@ -1,14 +1,12 @@
 from flask import (
     Blueprint,
     request,
-    current_app,
     redirect,
     render_template,
-    url_for,
-    flash
+    url_for
 )
 from marshmallow import ValidationError
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required
 
 from src.libs import mailgun, token
 from src.channelry.models import db
