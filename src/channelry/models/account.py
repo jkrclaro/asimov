@@ -15,6 +15,7 @@ class User(db.Model, flask_login.UserMixin):
     password = db.Column(db.String(255))
     name = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
+    is_staff = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(
         db.DateTime,
@@ -27,7 +28,8 @@ class User(db.Model, flask_login.UserMixin):
         email: str,
         password: str,
         name: str='',
-        is_confirmed: bool=False
+        is_confirmed: bool=False,
+        is_staff: bool=False
     ):
         """SQLAlchemy model for User.
 
@@ -40,8 +42,10 @@ class User(db.Model, flask_login.UserMixin):
         self.password = self.password_hash(password).decode('utf8')
         self.name = name
         self.is_confirmed = is_confirmed
+        self.is_staff = is_staff
 
     def __repr__(self):
+        # TODO: Format this properly
         return f"<User(email='{self.email}', name='{self.name}, is_confirmed='{self.is_confirmed}')"
 
     def password_hash(self, password):

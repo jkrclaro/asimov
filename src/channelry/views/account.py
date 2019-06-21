@@ -25,11 +25,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from src.libs import mailgun, token, dashboard
 from src.channelry.models import db
 from src.channelry.models.account import User
-from src.channelry.schemas.account import (
-    SignupSchema,
-    LoginSchema,
-    ProfileEditSchema
-)
+from src.channelry.schemas.account import SignupSchema, LoginSchema
 from src.channelry.forms.account import SignupForm, LoginForm
 
 
@@ -47,14 +43,15 @@ def jsonify_validation_error(validation_error: ValidationError):
     return message
 
 
-def send_email_confirmation(generated_token: dict, email: str, name: str=''):
+def send_email_confirmation(email: str, name: str=''):
     """Send email in to_emails with expiring links via tokens.
 
     :param generated_token: Expiring token with encrypted data.  
     :param email: Email to be sent to.
     :param name: Name of recipient.
     """
-    url = f'{dashboard.url()}/email/confirm?token={generated_token}'
+    generated_token = token.generate(email)
+    url = f'/email/confirm?token={generated_token}'
     template = 'account/email/confirm_email.html'
     html = render_template(template, confirmation_url=url)
 
@@ -94,7 +91,12 @@ def signup():
         schema = SignupSchema(strict=True)
         schema.load(data)
     except ValidationError as validation_error:
-        return jsonify(jsonify_validation_error(validation_error)), 400
+        error = jsonify(jsonify_validation_error(validation_error))
+        if request.form:
+            flash(error)
+            return redirect(url_for('account.signup'))
+        else:
+            return error, 400
 
     user = User(email, password, name)
     user_exist = User.query.filter_by(email=email).first()
@@ -109,11 +111,11 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        # TODO: Send confirmation email
+        send_email_confirmation(email, name=name)
 
         if request.form:
-            # TODO: Automatically login user
-            return redirect(url_for('account.render_login'))
+            login_user(user)
+            return redirect(url_for('dashboard.index'))
         else:
             return jsonify(email=email)
 
@@ -143,7 +145,13 @@ def login():
         schema = LoginSchema(strict=True)
         schema.load(data)
     except ValidationError as validation_error:
-        return jsonify(jsonify_validation_error(validation_error)), 400
+        error = jsonify_validation_error(validation_error)
+        current_app.logger.debug(error)
+        if request.form:
+            flash(error)
+            return redirect(url_for('account.render_login'))
+        else:
+            return jsonify(error), 400
 
     user = User.query.filter_by(email=email).first()
     if user and user.password_match(password):
