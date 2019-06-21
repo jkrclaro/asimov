@@ -94,6 +94,15 @@ html, body {
 .Label--fontSize--13px {
     font-size: 13px;
 }
+.UserCircle--header {
+    font-size: 48px;
+    color: rgba(0,0,0,.5);
+    cursor: pointer;
+}
+.Bars--header {
+    font-size: 36px;
+    cursor: pointer;
+}
 
 /* Bootstrap 4 */
 
