@@ -70,4 +70,5 @@ def test_should_fail_when_signup_form_email_exists_already(client):
         content_type='application/json'
     )
 
-    assert True
+    assert response.status_code == 409, response.json
+    assert response.json == {'email': 'Email is already taken'}
