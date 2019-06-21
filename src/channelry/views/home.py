@@ -1,37 +1,50 @@
 import json
 import logging
 
-from flask import Blueprint, render_template, jsonify, current_app
+from flask import Blueprint, render_template, current_app, redirect, url_for
+from flask_login import current_user
 
 
 home_bp = Blueprint('home', __name__)
 
 
-@home_bp.route('/', methods=['GET'])
+@home_bp.route('/')
 def index():
-    return render_template('home/index.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+    else:
+        return render_template('home/index.html')
 
 
-@home_bp.route('/about', methods=['GET'])
+@home_bp.route('/about')
 def about():
-    return render_template('home/about.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+    else:
+        return render_template('home/about.html')
 
 
-@home_bp.route('/pricing', methods=['GET'])
+@home_bp.route('/pricing')
 def pricing():
-    return render_template('home/pricing.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+    else:
+        return render_template('home/pricing.html')
 
 
-@home_bp.route('/terms', methods=['GET'])
+@home_bp.route('/terms')
 def terms():
     return render_template('home/terms.html')
 
 
-@home_bp.route('/privacy', methods=['GET'])
+@home_bp.route('/privacy')
 def privacy():
     return render_template('home/privacy.html')
 
 
-@home_bp.route('/health', methods=['GET'])
+@home_bp.route('/health')
 def health():
-    return jsonify({'environment': current_app.config.get('DASHBOARD_URL')})
+    if current_user.is_staff:
+        return jsonify({'environment': current_app.config.get('FLASK_ENV')})
+    else:
+        return redirect(url_for('dashboard.index'))

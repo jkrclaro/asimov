@@ -43,7 +43,9 @@ def create_app(config: str):
 
     from .views.account import account_bp
     from .views.home import home_bp
+    from .views.dashboard import dashboard_bp
     app.register_blueprint(account_bp)
     app.register_blueprint(home_bp)
+    app.register_blueprint(dashboard_bp)
 
     return app

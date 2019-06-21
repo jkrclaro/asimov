@@ -20,7 +20,7 @@ from flask_jwt_extended import (
     jwt_refresh_token_required
 )
 from marshmallow import ValidationError
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 from src.libs import mailgun, token, dashboard
 from src.channelry.models import db
@@ -65,7 +65,10 @@ def send_email_confirmation(generated_token: dict, email: str, name: str=''):
 
 @account_bp.route('/signup')
 def render_signup():
-    return render_template('account/signup.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+    else:
+        return render_template('account/signup.html')
 
 
 @account_bp.route('/api/signup', methods=['POST'])
@@ -117,7 +120,10 @@ def signup():
 
 @account_bp.route('/login')
 def render_login():
-    return render_template('account/login.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+    else:
+        return render_template('account/login.html')
 
 
 @account_bp.route('/api/login', methods=['POST'])
@@ -144,7 +150,7 @@ def login():
         current_app.logger.debug('User and password is valid!')
         if request.form:
             login_user(user)
-            return url_for('home.index')
+            return redirect(url_for('dashboard.index'))
         else:
             return jsonify(access_token='12345', refresh_token='12345')
     else:
@@ -157,116 +163,8 @@ def login():
             return jsonify(message=message), 400
 
 
-@account_bp.route('/email/confirm', methods=['POST'])
-def confirm_email():
-    """Confirm that confirmation token is valid."""
-    try:
-        confirmation_token = request.json.get('confirmationToken')
-        current_app.logger.debug(f'Confirmation token: {confirmation_token}')
-        payload = token.confirm(confirmation_token)
-    except:
-        payload = None
-
-    if not payload:
-        current_app.logger.debug('Invalid confirmation token')
-        return jsonify(message='Confirmation link is invalid or expired'), 410
-    else:
-        current_app.logger.debug(f'Decrypted payload: {payload}')
-        return jsonify(payload)
-
-
-@account_bp.route('/email/resend', methods=['POST'])
-@jwt_required
-def resend_email():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    if user:
-        generated_token = token.generate({'email': user.email})
-        send_email_confirmation(generated_token, user.email, name=user.name)
-    return jsonify(email=user.email)
-
-
-@account_bp.route('/refresh', methods=['POST'])
-@jwt_refresh_token_required
-def refresh():
-    user_id = get_jwt_identity()
-    return jsonify(accessToken=create_access_token(identity=user_id))
-
-
-@account_bp.route('/profile/details', methods=['POST'])
-@jwt_required
-def profile_details():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    return jsonify(
-        email=user.email,
-        name=user.name,
-        isConfirmed=user.is_confirmed
-    )
-
-
-@account_bp.route('/profile/details/edit', methods=['POST'])
-@jwt_required
-def edit_profile_details():
-    user_id = get_jwt_identity()
-    model = request.json.get('model')
-    new_email = request.json.get('email')
-    new_name = request.json.get('name')
-    current_password = request.json.get('currentpassword')
-    new_password = request.json.get('newpassword')
-    confirm_password = request.json.get('confirmpassword')
-
-    try:
-        schema = ProfileEditSchema(strict=True)
-        schema.only = ('email', 'name')
-        data, _ = schema.load({
-            'email': new_email,
-            'name': new_name,
-            'currentpassword': current_password,
-            'confirmpassword': confirm_password,
-            'newpassword': new_password,
-        })
-    except ValidationError as validation_error:
-        current_app.logger.debug(validation_error)
-        return jsonify(jsonify_validation_error(validation_error)), 400
-
-    user = User.query.get(user_id)
-    new_details = {}
-    if user:
-        if new_name:
-            current_app.logger.debug('Updating profile name')
-            user.name = new_name
-            new_details['name'] = new_name
-
-        if current_password and new_password and confirm_password:
-            if not user.password_match(current_password):
-                return jsonify(
-                    field='currentpassword',
-                    reason='Please provide current password'
-                ), 400
-            elif new_password:
-                current_app.logger.debug('Updating password')
-                user.password = new_password
-
-        db.session.add(user)
-        db.session.commit()
-
-        if new_email and user.email != new_email:
-            current_app.logger.debug('Updating profile email')
-            payload = {'newEmail': new_email, 'email': user.email}
-            generated_token = token.generate(payload)
-            send_email_confirmation(generated_token, new_email, name=user.name)
-
-    current_app.logger.debug(new_details)
-    return jsonify(new_details)
-
-
-@account_bp.route('/account/details', methods=['POST'])
-@jwt_required
-def account_details():
-    return jsonify(name='Underarmour')
-
-@account_bp.route('/forgot', methods=['GET'])
-def forgot():
-    # TODO: Finish this
-    return render_template('account/forgot', form=None)
+@account_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home.index'))
