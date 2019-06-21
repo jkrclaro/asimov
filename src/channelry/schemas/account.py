@@ -46,14 +46,24 @@ class SignupSchema(Schema):
 
 class LoginSchema(Schema):
     email = fields.Email(
+        attribute='email',
         required=True,
-        validate=validate.Length(min=3, max=320)
+        error_messages={
+            'required': 'Please enter a valid email.',
+            'invalid': 'Please enter a valid email.',
+            'null': 'Please enter a valid email.'
+        }
     )
     password = fields.Str(
+        attribute='password',
         required=True,
         validate=validate.Length(
-            min=8, error='Password must be atleast 8 characters long'
-        )
+            min=8, error='Your password must be at least 8 characters.'
+        ),
+        error_messages={
+            'required': 'Please enter a password.',
+            'null': 'Please enter a password.'
+        }
     )
 
 

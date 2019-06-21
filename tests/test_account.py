@@ -23,7 +23,7 @@ def client():
     os.unlink(app.config['DATABASE'])
 
 
-def test_should_fail_signup_when_it_is_empty(client):
+def test_should_fail_signup_when_signup_form_is_empty(client):
     response = client.post(
         '/api/signup',
         data=json.dumps({}),
@@ -37,7 +37,7 @@ def test_should_fail_signup_when_it_is_empty(client):
     }
 
 
-def test_should_pass_signup_when_it_is_valid(client):
+def test_should_pass_signup_when_signup_form_is_valid(client):
     response = client.post(
         '/api/signup',
         data=json.dumps({
@@ -76,7 +76,7 @@ def test_should_fail_signup_when_email_exists_already(client):
     )
 
     assert response.status_code == 409, response.json
-    assert response.json == {'email': 'Email is already taken'}
+    assert response.json == {'email': ['Email is already taken']}
 
 
 def test_should_fail_signup_when_password_and_confirm_password_does_not_match(client):
@@ -93,7 +93,9 @@ def test_should_fail_signup_when_password_and_confirm_password_does_not_match(cl
 
     assert response.status_code == 400, response.json
     assert response.json == {
-        'confirm_password': ['Re-enter your password confirmation so it matches your password']
+        'confirm_password': [
+            'Re-enter your password confirmation so it matches your password'
+        ]
     }
 
 
@@ -153,3 +155,31 @@ def test_should_fail_signup_when_password_is_empty(client):
 
     assert response.status_code == 400, response.json
     assert response.json == {'password': ['Please enter a password.']}
+
+
+def test_should_fail_login_when_login_form_is_empty(client):
+    response = client.post(
+        '/api/login',
+        data=json.dumps({}),
+        content_type='application/json'
+    )
+
+    assert response.status_code == 400, response.json
+    assert response.json == {
+        'email': ['Please enter a valid email.'],
+        'password': ['Please enter a password.']
+    }
+
+
+def test_should_fail_login_when_login_form_is_invalid(client):
+    response = client.post(
+        '/api/login',
+        data=json.dumps({
+            'email': 'john@doe.com',
+            'password': 'johndoe1234567'
+        }),
+        content_type='application/json'
+    )
+
+    assert response.status_code == 400, response.json
+    assert response.json == {'message': 'Wrong email or password.'}

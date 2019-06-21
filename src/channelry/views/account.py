@@ -8,7 +8,8 @@ from flask import (
     current_app,
     redirect,
     render_template,
-    url_for
+    url_for,
+    flash
 )
 from flask_jwt_extended import (
     JWTManager,
@@ -19,6 +20,7 @@ from flask_jwt_extended import (
     jwt_refresh_token_required
 )
 from marshmallow import ValidationError
+from flask_login import login_user
 
 from src.libs import mailgun, token, dashboard
 from src.channelry.models import db
@@ -62,12 +64,12 @@ def send_email_confirmation(generated_token: dict, email: str, name: str=''):
 
 
 @account_bp.route('/signup')
-def signup():
+def render_signup():
     return render_template('account/signup.html')
 
 
 @account_bp.route('/api/signup', methods=['POST'])
-def api_signup():
+def signup():
     if request.form:
         email = request.form.get('email')
         name = request.form.get('name')
@@ -79,70 +81,80 @@ def api_signup():
         password = request.json.get('password')
         confirm_password = request.json.get('confirm_password')
 
-    data = {
-        'email': email,
-        'name': name,
-        'password': password,
-        'confirm_password': confirm_password
-    }
-
     try:
+        data = {
+            'email': email,
+            'name': name,
+            'password': password,
+            'confirm_password': confirm_password
+        }
         schema = SignupSchema(strict=True)
         schema.load(data)
     except ValidationError as validation_error:
-        current_app.logger.debug(validation_error)
         return jsonify(jsonify_validation_error(validation_error)), 400
 
     user = User(email, password, name)
     user_exist = User.query.filter_by(email=email).first()
     if user_exist:
-        return jsonify(email='Email is already taken'), 409
+        message = 'Email is already taken'
+        if request.form:
+            flash(message)
+            return redirect(url_for('account.render_signup'))
+        else:
+            return jsonify(email=[message]), 409
     else:
         db.session.add(user)
         db.session.commit()
 
         # TODO: Send confirmation email
-        return jsonify(email=email)
+
+        if request.form:
+            # TODO: Automatically login user
+            return redirect(url_for('account.render_login'))
+        else:
+            return jsonify(email=email)
 
 
-@account_bp.route('/login', methods=['GET', 'POST'])
+@account_bp.route('/login')
+def render_login():
+    return render_template('account/login.html')
+
+
+@account_bp.route('/api/login', methods=['POST'])
 def login():
-    if request.method == 'GET':
-        form = LoginForm()
-        return render_template('account/login.html', form=form)
-
-    try:
-        schema = LoginSchema(strict=True)
+    if request.form:
+        email = request.form.get('email')
+        password = request.form.get('password')
+    else:
         email = request.json.get('email')
         password = request.json.get('password')
-        is_confirm_email = request.json.get('isConfirmEmail')
-        new_email = request.json.get('newEmail')
-        data, _ = schema.load({
+
+    try:
+        data = {
             'email': email,
-            'password': password
-        })
-
-        user = User.query.filter_by(email=email).first()
-        if user and user.password_match(password):
-            if is_confirm_email or new_email:
-                if is_confirm_email:
-                    user.is_confirmed = True
-                if new_email:
-                    user.email = new_email
-                db.session.add(user)
-                db.session.commit()
-
-            access_token = create_access_token(identity=user.id)
-            refresh_token = create_refresh_token(identity=user.id)
-            return jsonify({
-                'accessToken': access_token,
-                'refreshToken': refresh_token
-            })
-        else:
-            return jsonify(message='Email or password is incorrect'), 400
-
+            'password': password,
+        }
+        schema = LoginSchema(strict=True)
+        schema.load(data)
     except ValidationError as validation_error:
         return jsonify(jsonify_validation_error(validation_error)), 400
+
+    user = User.query.filter_by(email=email).first()
+    if user and user.password_match(password):
+        current_app.logger.debug('User and password is valid!')
+        if request.form:
+            login_user(user)
+            return url_for('home.index')
+        else:
+            return jsonify(access_token='12345', refresh_token='12345')
+    else:
+        message = 'Wrong email or password.'
+        current_app.logger.debug(message)
+        if request.form:
+            flash(message)
+            return redirect(url_for('account.login'))
+        else:
+            return jsonify(message=message), 400
 
 
 @account_bp.route('/email/confirm', methods=['POST'])

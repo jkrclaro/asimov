@@ -8,19 +8,17 @@
     <div class='col-lg-6'>
         <div class='card'>
             <div class='card-body'>
-                <h2 class='h2-heading text-center mb-3 mt-3'>Welcome back!</h2>
-                <form method='post'>
-                    {{ form.csrf_token }}
-                    <fieldset class='form-group'>
-                        {{ form.email.label(class_='control-label') }}
-                        {{ form.email(class_='form-control', value='john@channelry.com') }}
-                    </fieldset>
-                    <fieldset class='form-group'>
-                        {{ form.password.label(class_='control-label') }}
-                        {{ form.password(class_='form-control', value='basketball12345') }}
-                    </fieldset>
-                    <p><a href="{{ url_for('account.forgot') }}">Forgot your password?</a></p>
-                    <button type='submit' class='btn btn-block btn-channelry-primary mb-3'>Login</button>
+                <h5 class='h5-heading text-center mb-3 mt-3'>Login</h5>
+                <form action="{{ url_for('account.login') }}" method="POST">
+                    <div class='form-group'>
+                        <label class="control-label" for="id_email">Email</label>
+                        <input class="form-control" id="id_email" name="email" required type="email" value="john@channelry.com">
+                    </div>
+                    <div class='form-group'>
+                        <label class="control-label" for="id_password">Password</label>
+                        <input class="form-control" id="id_password" name="password" required type="password" value="johndoe123456789">
+                    </div>
+                    <button type='submit' class='btn btn-block btn-channelry-primary'>Login</button>
                 </form>
             </div>
         </div>
@@ -30,7 +28,7 @@
     <div class='col-lg-6 mt-3'>
         <div class='card'>
             <div class='card-body text-center'>
-                Don't have an account? <a href="{{ url_for('account.signup') }}">Sign up</a> 
+                Don't have an account? <a href="{{ url_for('account.render_signup') }}">Signup</a> 
             </div>
         </div>
     </div>
