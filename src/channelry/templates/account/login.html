@@ -9,7 +9,7 @@
         <div class='card'>
             <div class='card-body'>
                 <h5 class='h5-heading text-center mb-3 mt-3'>Login</h5>
-                {% from "account/_formhelpers.html" import render_field %}
+                {% from "auth/_formhelpers.html" import render_field %}
                 <form method=post>
                     {{ render_field(form.email) }}
                     {{ render_field(form.password) }}

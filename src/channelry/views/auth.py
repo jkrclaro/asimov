@@ -10,11 +10,11 @@ from flask_login import login_user, logout_user, login_required
 
 from src.libs import mailgun, token
 from src.channelry.models import db
-from src.channelry.models.account import User
-from src.channelry.forms.account import SignupForm, LoginForm
+from src.channelry.models.auth import User
+from src.channelry.forms.auth import SignupForm, LoginForm
 
 
-account_bp = Blueprint('account', __name__)
+auth_bp = Blueprint('auth', __name__)
 
 
 def jsonify_validation_error(validation_error: ValidationError):
@@ -37,7 +37,7 @@ def send_email_confirmation(email: str, name: str=''):
     data = {'email': email}
     generated_token = token.generate(data)
     url = f'/email/confirm?token={generated_token}'
-    template = 'account/email/confirm_email.html'
+    template = 'auth/email/confirm_email.html'
     html = render_template(template, confirmation_url=url)
 
     subject = 'Confirm your Channelry email address!'
@@ -45,7 +45,7 @@ def send_email_confirmation(email: str, name: str=''):
     mailgun.send_email(subject, to_emails, html=html)
 
 
-@account_bp.route('/signup', methods=['GET', 'POST'])
+@auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -62,10 +62,10 @@ def signup():
             send_email_confirmation(email, name=name)
             login_user(user)
             return redirect(url_for('dashboard.index'))
-    return render_template('account/signup.html', form=form)
+    return render_template('auth/signup.html', form=form)
 
 
-@account_bp.route('/login', methods=['GET', 'POST'])
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -78,10 +78,10 @@ def login():
         else:
             login_user(user)
             return redirect(url_for('dashboard.index'))
-    return render_template('account/login.html', form=form)
+    return render_template('auth/login.html', form=form)
 
 
-@account_bp.route('/logout')
+@auth_bp.route('/logout')
 @login_required
 def logout():
     logout_user()

@@ -6,7 +6,7 @@ import pytest
 
 from src.channelry import create_app
 from src.channelry.models import db
-from src.channelry.models.account import User
+from src.channelry.models.auth import User
 
 
 @pytest.fixture

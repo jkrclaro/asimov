@@ -35,16 +35,16 @@ def create_app(config: str):
     from .models import db
     db.init_app(app)
 
-    from .models.account import User
+    from .models.auth import User
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    from .views.account import account_bp
+    from .views.auth import auth_bp
     from .views.home import home_bp
     from .views.dashboard import dashboard_bp
-    app.register_blueprint(account_bp)
+    app.register_blueprint(auth_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(dashboard_bp)
 

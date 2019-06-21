@@ -9,7 +9,7 @@
         <div class='card'>
             <div class='card-body'>
                 <h5 class='h5-heading text-center mb-3 mt-3'>Let's get your account set up</h5>
-                {% from "account/_formhelpers.html" import render_field %}
+                {% from "auth/_formhelpers.html" import render_field %}
                 <form method=post>
                     {{ render_field(form.email) }}
                     {{ render_field(form.name) }}
@@ -25,7 +25,7 @@
     <div class='col-lg-6 mt-3'>
         <div class='card'>
             <div class='card-body text-center'>
-                Already have an account? <a href="{{ url_for('account.login') }}">Login</a>
+                Already have an account? <a href="{{ url_for('auth.login') }}">Login</a>
             </div>
         </div>
     </div>
