@@ -35,10 +35,13 @@ def send_email_confirmation(email: str, name: str='') -> None:
     :param email: Email to be sent to.
     :param name: Name of recipient.
     """
+    template = 'auth/confirm_email_template.html'
     data = {'email': email}
     encrypted_token = token.encrypt(data)
-    url = f'/confirm_email?t={encrypted_token}'
-    template = 'auth/confirm_email_template.html'
+    endpoint = 'auth.activate'
+    url = url_for(endpoint, t=[encrypted_token], _external=True)
+    current_app.logger.debug(url)
+    current_app.logger.debug('HEYO!')
     html = render_template(template, url=url)
 
     subject = 'Confirm your Channelry email address!'
@@ -72,7 +75,6 @@ def login():
     if request.method == 'POST' and form.validate():
         email = form.email.data
         password = form.password.data
-
         user = User.query.filter_by(email=email).first()
         if not user or not user.password_match(password):
             form.email.errors = ['Wrong email or password']
@@ -91,21 +93,40 @@ def logout():
 
 @auth_bp.route('/confirm_email', methods=['GET', 'POST'])
 def activate():
+    template = 'auth/confirm_email.html'
+    message = """
+    We couldn't find your email confirmation.
+    Try sending another from your account settings.
+    """
     try:
         encrypted_token = request.args.get('t')
         data = token.decrypt(encrypted_token, max_age=86400)
-    except token.SignatureExpired:
+    except (
+            token.SignatureExpired,
+            token.BadTimeSignature,
+            token.BadSignature,
+            token.BadPayload,
+            token.BadHeader,
+            token.BadData,
+    ):
         message = 'Confirmation link is invalid or expired.'
-        return render_template('auth/confirm_email.html', message=message)
+        return render_template(template, message=message)
     except TypeError:
-        message = """
-        We couldn't find your email confirmation.
-        Try sending another from your account settings.
-        """
-        return render_template('auth/confirm_email.html', message=message)
+        return render_template(template, message=message)
 
-    form = LoginForm()
+    form = LoginForm(request.form)
+    form.email.render_kw = {'readonly': True}
     form.email.data = data.get('email')
     if request.method == 'POST' and form.validate():
-        return None
-    return render_template('auth/login.html', form=form)
+        email = form.email.data
+        password = form.password.data
+        user = User.query.filter_by(email=email).first()
+        if not user.password_match(password):
+            form.password.errors = ['Wrong password.']
+        else:
+            user.is_confirmed = True
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return redirect(url_for('dashboard.index'))
+    return render_template(template, form=form, message=message)

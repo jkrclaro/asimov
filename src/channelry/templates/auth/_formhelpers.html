@@ -1,10 +1,10 @@
 {% macro render_field(field) %}
     <div class='form-group'>
-        {{ field.label }}
+        {{ field.label(class_='Custom--label') }}
         {% if field.errors %}
             {{ field(class_='form-control is-invalid', **kwargs) | safe }}
             {% for error in field.errors %}
-                <div class="invalid-feedback">{{ error }}</div>
+                <div class="invalid-feedback"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
             {% endfor %}
         {% else %}
             {{ field(class_='form-control', **kwargs) | safe }}

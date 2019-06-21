@@ -1,7 +1,11 @@
 
 /* -- Layout */
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'System UI', sans-serif;
+}
+
+html, body {
+    background-color: #F7FAFC;
 }
 
 .icon {
@@ -34,9 +38,7 @@
 /* -- Button */
 .btn {
     border-radius: 8px;
-    font-weight: 700;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
@@ -48,8 +50,8 @@
 
 .btn-channelry-primary {
     background-color: #0060FE;
-    border-color: #0060FE;
     color: #fff;
+    border-bottom: 2px solid #0049BF;
 }
 .btn-channelry-primary:hover, .btn-channelry-primary:focus, .btn-channelry-primary:active, .btn-channelry-primary.active, .open > .dropdown-toggle.btn-channelry-primary {
     background-color: #0049BF;
@@ -86,11 +88,26 @@
     color: #666;
 }
 
-/* -- Form */
+.Uppercase {
+    text-transform: uppercase;
+}
+
+/* Bootstrap 4 */
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
 .form-control {
+    border-radius: 8px;
+    height: 48px;
+    color: #4F566B !important;
+}
+.form-control:focus, .form-control:active, .form-control.active {
     color: #111 !important;
 }
-/* Form -- */
 
 /* -- Switch */
 .switch {

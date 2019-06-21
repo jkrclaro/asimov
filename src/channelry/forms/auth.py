@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, PasswordField
+from wtforms import Form, StringField, PasswordField, SubmitField
 from wtforms.validators import (
     Email,
     InputRequired,
