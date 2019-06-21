@@ -63,40 +63,27 @@ def send_email_confirmation(generated_token: dict, email: str, name: str=''):
 
 @account_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
-    template = 'account/signup.html'
-    form = SignupForm()
+    form = SignupForm(request.form)
+    if request.method == 'POST':
+        if not request.form:
+            email = request.json.get('email')
+            name = request.json.get('name')
+            password = request.json.get('password')
+            confirm = request.json.get('confirm')
+            form.email.data = email
+            form.name.data = name
+            form.password.data = password
+            form.confirm.data = confirm
+        else:
+            email = form.email.data
+            password = form.password.data
+            name = form.name.data
 
-    if request.method == 'GET':
-        response = render_template(template, form=form)
-
-    email = request.json.get('email')
-    name = request.json.get('name')
-    password = request.json.get('password')
-    confirm = request.json.get('confirm')
-
-    form.email.data = email
-    form.name.data = name
-    form.password.data = password
-    form.confirm.data = confirm
-
-    if request.method == 'POST' and form.validate():
-        try:
-            data = {
-                'email': email,
-                'name': name,
-                'password': password,
-                'confirm': confirm
-            }
-
-            schema = SignupSchema(strict=True)
-            data, _ = schema.load(data)
-
+        if form.validate():
             user = User(email, password, name)
             user_exist = User.query.filter_by(email=email).first()
-            current_app.logger.debug(user_exist)
             if user_exist:
-                error = {'email': 'Email is already taken'}
-                response = jsonify(**error), 409
+                response = jsonify(email='Email is already taken'), 409
             else:
                 db.session.add(user)
                 db.session.commit()
@@ -104,15 +91,10 @@ def signup():
                 generated_token = token.generate({'email': email})
                 send_email_confirmation(generated_token, email, name=name)
                 response = jsonify(email=email)
-
-        except ValidationError as validation_error:
-            current_app.logger.debug(validation_error)
-            response = validation_error, 400
-
-    elif form.errors:
-        current_app.logger.debug('Form has errors')
-        current_app.logger.debug(form.errors)
-        response = jsonify(form.errors), 400
+        else:
+            response = jsonify(form.errors), 400
+    else:
+        response = render_template('account/signup.html', form=form)
 
     return response
 

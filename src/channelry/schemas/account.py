@@ -27,6 +27,7 @@ class SignupSchema(Schema):
             max=100,
             error='Enter a name that is less than 100 characters long'
         ),
+        required=False
     )
 
     @validates_schema
