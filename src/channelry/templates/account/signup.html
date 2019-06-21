@@ -9,32 +9,13 @@
         <div class='card'>
             <div class='card-body'>
                 <h5 class='h5-heading text-center mb-3 mt-3'>Let's get your account set up</h5>
-                <form action="{{ url_for('account.signup') }}" method="POST">
-                    <div class='form-group'>
-                        <label class="control-label" for="id_email">Email</label>
-                        <input class="form-control" id="id_email" name="email" required type="email" value="john@channelry.com">
-                        {% with messages = get_flashed_messages() %}
-                            {{ messages }}
-                            {% if messages %}
-                                <div class="alert alert-danger">
-                                    {{ messages[0] }}. Go to <a href="{{ url_for('account.login') }}">login page</a>.
-                                </div>
-                            {% endif %}
-                        {% endwith %}
-                    </div>
-                    <div class='form-group'>
-                        <label class="control-label" for="id_name">Name</label>
-                        <input class="form-control" id="id_name" name="name" type="text" value="John Claro">
-                    </div>
-                    <div class='form-group'>
-                        <label class="control-label" for="id_password">Password</label>
-                        <input class="form-control" id="id_password" name="password" required type="password" value="johndoe123456789">
-                    </div>
-                    <div class='form-group'>
-                        <label class="control-label" for="id_confirm_password">Confirm password</label>
-                        <input class="form-control" id="id_confirm_password" name="confirm_password" required type="password" value="johndoe123456789">
-                    </div>
-                    <button type='submit' class='btn btn-block btn-channelry-primary'>Sign up</button>
+                {% from "account/_formhelpers.html" import render_field %}
+                <form method=post>
+                    {{ render_field(form.email) }}
+                    {{ render_field(form.name) }}
+                    {{ render_field(form.password) }}
+                    {{ render_field(form.confirm_password) }}
+                    <button type='submit' class='btn btn-block btn-channelry-primary'>Signup</button>
                 </form>
             </div>
         </div>
@@ -44,7 +25,7 @@
     <div class='col-lg-6 mt-3'>
         <div class='card'>
             <div class='card-body text-center'>
-                Already have an account? <a href="{{ url_for('account.render_login') }}">Login</a> 
+                Already have an account? <a href="{{ url_for('account.login') }}">Login</a>
             </div>
         </div>
     </div>
