@@ -62,16 +62,23 @@ def send_email_confirmation(generated_token: dict, email: str, name: str=''):
 
 
 @account_bp.route('/signup')
-def signup_get():
+def signup():
     return render_template('account/signup.html')
 
 
 @account_bp.route('/api/signup', methods=['POST'])
-def signup():
-    email = request.json.get('email', '')
-    name = request.json.get('name', '')
-    password = request.json.get('password', '')
-    confirm_password = request.json.get('confirm_password', '')
+def api_signup():
+    if request.form:
+        email = request.form.get('email')
+        name = request.form.get('name')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+    else:
+        email = request.json.get('email')
+        name = request.json.get('name')
+        password = request.json.get('password')
+        confirm_password = request.json.get('confirm_password')
+
     data = {
         'email': email,
         'name': name,

@@ -13,7 +13,8 @@ class SignupSchema(Schema):
         required=True,
         error_messages={
             'required': 'Please enter a valid email.',
-            'invalid': 'Please enter a valid email.'
+            'invalid': 'Please enter a valid email.',
+            'null': 'Please enter a valid email.'
         }
     )
     password = fields.Str(
@@ -24,10 +25,15 @@ class SignupSchema(Schema):
         ),
         error_messages={
             'required': 'Please enter a password.',
+            'null': 'Please enter a password.'
         }
     )
-    confirm_password = fields.Str(attribute='confirm_password', required=True)
-    name = fields.Str(attribute='name', required=False)
+    confirm_password = fields.Str(
+        attribute='confirm_password',
+        required=False,
+        allow_none=True
+    )
+    name = fields.Str(attribute='name', required=False, allow_none=True)
 
     @validates_schema(skip_on_field_errors=True)
     def validate_password(self, data, **kwargs):
