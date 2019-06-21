@@ -25,11 +25,11 @@ def create_app(config: str):
     marshmallow.init_app(app)
     cors.init_app(app)
     jwtmanager.init_app(app)
-    login_manager.login_view = 'account.login'
+    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
     mailgun.api_key = app.config.get('MAILGUN_API_KEY')
-    token.password_salt = bcrypt.gensalt()
+    token.salt = bcrypt.gensalt()
     token.secret_key = app.config.get('SECRET_KEY')
 
     from .models import db

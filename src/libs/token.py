@@ -1,19 +1,32 @@
 import itsdangerous
+from itsdangerous.exc import (
+    SignatureExpired,
+    BadData,
+    BadHeader,
+    BadPayload,
+    BadSignature,
+    BadTimeSignature,
+)
 
 secret_key = ''
-password_salt = ''
+salt = ''
 
 
-def generate(data: dict):
+def encrypt(data: dict):
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
-    return serializer.dumps(data, salt=password_salt)
+    return serializer.dumps(data, salt=salt)
 
 
-def confirm(token: str, expiration: int=3600) -> str:
+def decrypt(token: str, max_age: int = 86400) -> dict:
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
     try:
-        email = serializer.loads(token, salt=password_salt, max_age=expiration)
-    except:
-        email = ''
-
-    return email
+        return serializer.loads(token, salt=salt, max_age=max_age)
+    except (
+            SignatureExpired,
+            BadData,
+            BadHeader,
+            BadPayload,
+            BadSignature,
+            BadTimeSignature
+    ) as decrypt_error:
+        raise decrypt_error
