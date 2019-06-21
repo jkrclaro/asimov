@@ -20,7 +20,7 @@ class SignupSchema(Schema):
             min=8, error='Password must be atleast 8 characters long'
         )
     )
-    confirm = fields.Str(attribute='confirm', required=True)
+    confirm_password = fields.Str(attribute='confirm_password', required=True)
     name = fields.Str(
         attribute='name',
         validate=validate.Length(
@@ -30,13 +30,12 @@ class SignupSchema(Schema):
         required=False
     )
 
-    @validates_schema
+    @validates_schema(skip_on_field_errors=True)
     def validate_password(self, data, **kwargs):
-        if data['password'] != data['confirm']:
+        if data['password'] != data['confirm_password']:
             raise ValidationError(
-                'Re-enter your password confirmation so it matches your '
-                'password',
-                field_names='confirm'
+                'Re-enter your password confirmation so it matches your password',
+                field_names='confirm_password'
             )
 
 
@@ -92,5 +91,5 @@ class ProfileEditSchema(Schema):
             if data['newpassword'] != data['confirmpassword']:
                 raise ValidationError(
                     'Re-enter your password confirmation so it matches your new password',
-                    field_names='confirmpassword'
+                    field_names='confirm_password'
                 )

@@ -61,42 +61,42 @@ def send_email_confirmation(generated_token: dict, email: str, name: str=''):
     mailgun.send_email(subject, to_emails, html=html)
 
 
-@account_bp.route('/signup', methods=['GET', 'POST'])
+@account_bp.route('/signup')
+def signup_get():
+    return render_template('account/signup.html')
+
+
+@account_bp.route('/signup', methods=['POST'])
 def signup():
-    form = SignupForm(request.form)
-    if request.method == 'POST':
-        if not request.form:
-            email = request.json.get('email')
-            name = request.json.get('name')
-            password = request.json.get('password')
-            confirm = request.json.get('confirm')
-            form.email.data = email
-            form.name.data = name
-            form.password.data = password
-            form.confirm.data = confirm
-        else:
-            email = form.email.data
-            password = form.password.data
-            name = form.name.data
+    email = request.json.get('email', '')
+    name = request.json.get('name', '')
+    password = request.json.get('password', '')
+    confirm_password = request.json.get('confirm_password', '')
+    data = {
+        'email': email,
+        'name': name,
+        'password': password,
+        'confirm_password': confirm_password
+    }
 
-        if form.validate():
-            user = User(email, password, name)
-            user_exist = User.query.filter_by(email=email).first()
-            if user_exist:
-                response = jsonify(email='Email is already taken'), 409
-            else:
-                db.session.add(user)
-                db.session.commit()
+    try:
+        schema = SignupSchema(strict=True)
+        schema.load(data)
+    except ValidationError as validation_error:
+        error = jsonify_validation_error(validation_error)
+        current_app.logger.debug(validation_error)
+        return jsonify(error), 400
 
-                generated_token = token.generate({'email': email})
-                send_email_confirmation(generated_token, email, name=name)
-                response = jsonify(email=email)
-        else:
-            response = jsonify(form.errors), 400
+    user = User(email, password, name)
+    user_exist = User.query.filter_by(email=email).first()
+    if user_exist:
+        return jsonify(email='Email is already taken'), 409
     else:
-        response = render_template('account/signup.html', form=form)
+        db.session.add(user)
+        db.session.commit()
 
-    return response
+        # TODO: Send email
+        return jsonify(email=email)
 
 
 @account_bp.route('/login', methods=['GET', 'POST'])

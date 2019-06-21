@@ -23,7 +23,7 @@ def client():
     os.unlink(app.config['DATABASE'])
 
 
-def test_signup_when_is_empty(client):
+def test_should_fail_signup_when_it_is_empty(client):
     response = client.post(
         '/signup',
         data=json.dumps({}),
@@ -33,14 +33,14 @@ def test_signup_when_is_empty(client):
     assert response.status_code == 400, response.json
 
 
-def test_signup_when_is_valid(client):
+def test_should_pass_signup_when_it_is_valid(client):
     response = client.post(
         '/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
             'password': 'johndoe12345',
-            'confirm': 'johndoe12345'
+            'confirm_password': 'johndoe12345'
         }),
         content_type='application/json'
     )
@@ -48,14 +48,14 @@ def test_signup_when_is_valid(client):
     assert response.status_code == 200, response.json
 
 
-def test_signup_when_email_exists_already(client):
+def test_should_fail_signup_when_email_exists_already(client):
     client.post(
         '/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
             'password': 'johndoe12345',
-            'confirm': 'johndoe12345'
+            'confirm_password': 'johndoe12345'
         }),
         content_type='application/json'
     )
@@ -65,40 +65,36 @@ def test_signup_when_email_exists_already(client):
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
             'password': 'johndoe12345',
-            'confirm': 'johndoe12345'
+            'confirm_password': 'johndoe12345'
         }),
         content_type='application/json'
     )
 
     assert response.status_code == 409, response.json
-    assert response.json == {'email': 'Email is already taken'}
 
 
-def test_signup_when_password_and_confirm_does_not_match(client):
+def test_should_fail_signup_when_password_and_confirm_password_does_not_match(client):
     response = client.post(
         '/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'name': 'John Doe',
             'password': 'johndoe',
-            'confirm': 'foobar'
+            'confirm_password': 'foobar'
         }),
         content_type='application/json'
     )
 
     assert response.status_code == 400, response.json
-    assert response.json == {
-        'password': ['Please re-enter password and confirm password as they did not match']
-    }
 
 
-def test_signup_when_name_is_optional(client):
+def test_should_pass_signup_when_no_name_is_provided(client):
     response = client.post(
         '/signup',
         data=json.dumps({
             'email': 'johndoe@gmail.com',
             'password': 'johndoe12345',
-            'confirm': 'johndoe12345'
+            'confirm_password': 'johndoe12345'
         }),
         content_type='application/json'
     )
@@ -106,30 +102,28 @@ def test_signup_when_name_is_optional(client):
     assert response.status_code == 200, response.json
 
 
-def test_signup_when_email_is_required(client):
+def test_should_fail_signup_when_email_is_not_provided(client):
     response = client.post(
         '/signup',
         data=json.dumps({
             'password': 'johndoe12345',
-            'confirm': 'johndoe12345'
+            'confirm_password': 'johndoe12345'
         }),
         content_type='application/json'
     )
 
     assert response.status_code == 400, response.json
-    assert response.json == {'email': ['Please enter an email']}
 
 
-def test_signup_when_email_is_invalid(client):
+def test_should_fail_signup_when_email_is_invalid(client):
     response = client.post(
         '/signup',
         data=json.dumps({
             'email': 'johnjoe',
             'password': 'johndoe12345',
-            'confirm': 'johndoe12345'
+            'confirm_password': 'johndoe12345'
         }),
         content_type='application/json'
     )
 
     assert response.status_code == 400, response.json
-    assert response.json == {'email': ['Please enter a valid email']}

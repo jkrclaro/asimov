@@ -2,11 +2,12 @@ import base64
 import hashlib
 
 import bcrypt
+import flask_login
 
 from . import db
 
 
-class User(db.Model):
+class User(db.Model, flask_login.UserMixin):
     __tablename__ = 'users'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
