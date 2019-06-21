@@ -9,8 +9,8 @@ html, body {
 }
 
 .icon {
-    font-size: 36px;
-    color: #0060FE;
+    font-size: 24px;
+    color: #007BE8;
 }
 /* Layout -- */
 
@@ -29,7 +29,6 @@ html, body {
 .logo-text {
     padding-top: 20px;
     font-family: 'Poppins';
-    font-size: 36px; 
     font-weight: 700;
     color: #111;
 }
@@ -49,24 +48,22 @@ html, body {
 }
 
 .btn-channelry-primary {
-    background-color: #0060FE;
+    background-color: #007BE8;
     color: #fff;
-    border-bottom: 2px solid #0049BF;
+    border-bottom: 2px solid #006ECF;
 }
 .btn-channelry-primary:hover, .btn-channelry-primary:focus, .btn-channelry-primary:active, .btn-channelry-primary.active, .open > .dropdown-toggle.btn-channelry-primary {
-    background-color: #0049BF;
-    border-color: #0049BF;
     color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
 .btn-channelry-primary-outline {
-    border-color: #0060FE;
-    color: #0060FE;
+    border-color: #007BE8;
+    color: #007BE8;
     border: 2px solid;
 }
 .btn-channelry-primary-outline:hover, .btn-channelry-primary-outline:focus, .btn-channelry-primary-outline:active, .btn-channelry-primary-outline.active, .open > .dropdown-toggle.btn-channelry-primary-outline {
-    border-color: #0049BF;
-    color: #0049BF;
-    border: 2px solid;
+    color: #007BE8;
 }
 
 .btn-channelry-secondary {
@@ -90,6 +87,12 @@ html, body {
 
 .Uppercase {
     text-transform: uppercase;
+}
+.Anchor--textDecoration-none {
+    text-decoration: none !important;
+}
+.Label--fontSize--13px {
+    font-size: 13px;
 }
 
 /* Bootstrap 4 */
@@ -148,11 +151,11 @@ html, body {
   }
   
   input:checked + .slider {
-    background-color: #0060FE;
+    background-color: #007BE8;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #0060FE;
+    box-shadow: 0 0 1px #007BE8;
   }
   
   input:checked + .slider:before {

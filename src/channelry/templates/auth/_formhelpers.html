@@ -1,6 +1,6 @@
 {% macro render_field(field) %}
     <div class='form-group'>
-        {{ field.label(class_='Custom--label') }}
+        {{ field.label(class_='Label--fontSize--13px') }}
         {% if field.errors %}
             {{ field(class_='form-control is-invalid', **kwargs) | safe }}
             {% for error in field.errors %}
