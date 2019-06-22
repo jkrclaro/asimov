@@ -15,6 +15,7 @@
                     <h5 class='h5-heading text-center mb-3 mt-3'>Confirm your email</h5>
                     {% from "auth/_formhelpers.html" import render_field %}
                     <form method=post>
+                        {{ form.csrf_token }}
                         {{ render_field(form.email) }}
                         {{ render_field(form.password) }}
                         <button type='submit' class='btn btn-block btn-channelry-primary'>Signin</button>.

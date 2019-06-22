@@ -32,6 +32,8 @@ def create_app(config: str):
     token.salt = bcrypt.gensalt()
     token.secret_key = app.config.get('SECRET_KEY')
 
+    print(app.config.get('RECAPTCHA_PRIVATE_KEY'))
+
     from .models import db
     db.init_app(app)
 

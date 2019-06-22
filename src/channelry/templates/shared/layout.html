@@ -32,21 +32,16 @@
 <body>
     {% include "shared/header.html" %}
     <div class='content-bg'>
-        <div class='container' style='padding-top: 50px; padding-bottom: 50px'>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div class="alert alert-danger">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
-        </div>
-        {% if not current_user.is_authenticated %}
-            <hr/>
-        {% endif %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-danger">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
     </div>
     {% if not current_user.is_authenticated %}
         {% include "shared/footer.html" %}

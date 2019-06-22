@@ -9,21 +9,19 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
     PASSWORD_SALT = os.environ.get('PASSWORD_SALT', 'dev-password-salt')
 
-    # sqlalchemy
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'postgresql://developer:12345@database:5432/postgres')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'postgresql://developer:12345@localhost:5432/postgres')
 
-    # mailgun
     MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY', 'key-747887c03c9d13477fe01a82f2ebcbdb')
 
-    RECAPTCHA_USE_SSL = False
-    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_SITE_KEY', 'recaptcha-site-key')
-    RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', 'recaptcha-secret-key')
+    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '123')
+    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '123')
     RECAPTCHA_OPTIONS = {'theme': 'white'}
 
 
 class Production(Config):
     DASHBOARD_URL = 'http://dashboard.channelry.com'
+    RECAPTCHA_USE_SSL = True
 
 
 class Development(Config):
