@@ -5,11 +5,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}"/>
 </head>
 <body>
-    {% include "shared/nav.html" %}
-    <div class='bg__content--white'>
-        {% include "shared/messages.html" %}
-        {% block content %}{% endblock %}
-    </div>
+    {% include "dashboard/nav.html" %}
+    {% include "shared/messages.html" %}
+    {% block content %}{% endblock %}
     {% include "shared/scripts.html" %}
 </body>
 </html>

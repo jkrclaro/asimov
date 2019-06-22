@@ -4,14 +4,12 @@
     {% include "shared/head.html" %}
 </head>
 <body>
-    {% include "shared/nav.html" %}
+    {% include "home/nav.html" %}
     <div class='bg__content--white'>
         {% include "shared/messages.html" %}
         {% block content %}{% endblock %}
     </div>
-    {% if not current_user.is_authenticated %}
-        {% include "shared/footer.html" %}
-    {% endif %}
+    {% include "home/footer.html" %}
     {% include "shared/scripts.html" %}
 </body>
 </html>

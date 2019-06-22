@@ -87,11 +87,6 @@
 .label__text--small {
     font-size: 13px;
 }
-.nav__usercircle--light {
-    font-size: 48px;
-    color: #D3D3D3;
-    cursor: pointer;
-}
 .text__invalidfeedback--small {
     font-size:80%;
     color: #DC3545;
@@ -126,17 +121,4 @@
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
-}
-.navbar {
-    box-shadow: 0 1px 1px 0 #D3D3D3;
-}
-.dropdown-item {
-    color: #556CD6;
-}
-.dropdown-item:active, .dropdown-item:hover {
-    background-color: #F8F8F8;
-    color: #111;
-}
-.active a {
-    color: #556CD6 !important;
 }
