@@ -48,3 +48,4 @@ class LoginForm(Form):
             Length(min=8, message='Your password must be at least 8 characters.'),
         ]
     )
+    recaptcha = RecaptchaField()
