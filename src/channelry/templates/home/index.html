@@ -1,0 +1,80 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+
+
+<div class='white-bg'>
+    <div class='container container-padding-top-only'>
+        <div class='row'>
+            <div class='col-lg-3'></div>
+            <div class='col-lg-6 text-center mb-5'>
+                <h1 class='h1-heading'>Selling made easy</h1>
+                <p>Multichannel inventory management for small businesses</p>
+                <div class='mb-4'>
+                    <a href="{{ url_for('auth.signup') }}" class='btn btn-channelry-primary mr-3'>Start now</a>
+                    <a href="mailto:john@channelry.com" class='btn btn-channelry-primary-outline'>Contact us</a>
+                </div>
+                <p>Already using Channelry? <a href="{{ url_for('auth.login') }}" class='Anchor--textDecoration-none'>Sign in</a>.</p>
+            </div>
+            <div class='col-lg-3'></div>
+            <div class='col-lg-6 text-center mb-5'>
+                <h2 class='h2-heading'>Never oversell again with real-time inventory syncing you can depend on</h2>
+                <p>
+                    Ever had to let a customer know that you oversold them something? 
+                    With Channelry, you’ll never have to go through that pain and embarassment again. 
+                    We’ve worked hard to build inventory syncing that works well and i
+                    s always accurate across your sales channels, 
+                    even during your biggest sale of the year.
+                </p>
+            </div>
+            <div class='col-lg-6 text-center mb-5'>
+                <img src='https://placeholder.pics/svg/300' class='img-fluid'>
+            </div>
+            <div class='col-lg-6 text-center mb-5'>
+                <img src='https://placeholder.pics/svg/300' class='img-fluid'>
+            </div>
+            <div class='col-lg-6 mb-5'>
+                <h2 class='h2-heading'>Get set up and synced within minutes even if you have thousands of SKUs</h2>
+                <p>
+                    Just connect all your sales channels and 
+                    Channelry will build its own centralized inventory from your listings. 
+                    Those that share the same SKU will automatically be linked to each other! 
+                    And like a good assistant, 
+                    Channelry will continually monitor your sales channels for 
+                    any new, updated, or removed listings so that everything is always up-to-date.
+                </p>
+            </div>
+            <div class='col-lg-6'>
+                <h2 class='h2-heading'>Have the confidence to grow your business by selling in more places</h2>
+                <p>
+                    Still on the fence about being a multi-channel business? 
+                    With Channelry, you'll finally have a good enough reason to take the plunge. 
+                    And there's no limit to how many sales channels you can connect. 
+                    Channelry works with businesses of any size ready to take their operations to the next level.
+                </p>
+            </div>
+            <div class='col-lg-6 text-center mb-5'>
+                <img src='https://placeholder.pics/svg/300' class='img-fluid'>
+            </div>
+            <div class='col-lg-6 text-center mb-5'>
+                <img src='https://placeholder.pics/svg/300' class='img-fluid'>
+            </div>
+            <div class='col-lg-6 mb-5'>
+                <h2 class='h2-heading'>Build smart bundles and kits that sync with each other and adjust like magic</h2>
+                <p>
+                    Channelry makes it easy to create powerful configurations that depend on each other. 
+                    If one changes in quantity, the others adjust based on how they’re configured. 
+                    If you have kits or want to track materials, this one’s for you!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='col-lg-12 text-center' style='background-color: #611F69; padding-top: 50px; padding-bottom: 50px;'>
+    <h2 class='h2-heading mb-5' style='color: #fff;'>Say hello to your new dashboard</h2>
+    <a href="{{ url_for('auth.signup') }}" class='btn btn-channelry-secondary mb-3 mr-3'>Create account</a>
+    <a href="mailto:john@channelry.com" class='btn btn-channelry-secondary-outline mb-3 text-center'>Contact us</a>
+</div>
+
+{% endblock %}

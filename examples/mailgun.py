@@ -1,7 +1,7 @@
 import os
 import jinja2
 
-from libs import mailgun, token
+from src.libs import mailgun, token
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     token.secret_key = '12345'
     email = 'john@channelry.com'
 
-    confirmation_token = token.generate_confirmation_token(email)
+    confirmation_token = token.generate(email)
     confirmation_url = f'http://dashboard.localhost:3000/email/confirm/{confirmation_token}'
     context = {'confirmation_url': confirmation_url}
 

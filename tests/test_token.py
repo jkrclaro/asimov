@@ -1,20 +1,26 @@
-import unittest
+import pytest
 
-import responses
-
-from libs import token
-
-EMAIL = 'john@doe.com'
+from src.libs import token
 
 
-class TestToken(unittest.TestCase):
+def test_should_pass_when_encrypted_token_is_valid():
+    data = {'email': 'john@doe.com'}
+    encrypted_token = token.encrypt(data)
+    decrypted_data = token.decrypt(encrypted_token)
+    assert decrypted_data.get('email') == 'john@doe.com'
 
-    def test_generate_and_confirmation_of_confirmation_token(self):
-        confirmation_token = token.generate_confirmation_token(EMAIL)
-        assert len(confirmation_token) == len('ImpvaG5AZG9lLmNvbSI.XQl8SA.G_s2YhgEAo2oVmlybw0AUoL45Sg')
 
-        email = token.confirm_conformation_token(confirmation_token)
-        assert EMAIL == email
+def test_should_fail_when_encrypted_token_is_expired():
+    data = {'email': 'john@doe.com'}
+    encrypted_token = token.encrypt(data)
 
-if __name__ == '__main__':
-    unittest.main()
+    with pytest.raises(token.SignatureExpired):
+        token.decrypt(encrypted_token, max_age=-1)
+
+
+def test_should_pass_when_encrypted_token_is_decrypted():
+    data = {'email': 'john@doe.com'}
+    encrypted_token = token.encrypt(data)
+
+    decrypted_data = token.decrypt(encrypted_token)
+    assert data.get('email') == decrypted_data.get('email')

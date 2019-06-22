@@ -2,17 +2,16 @@ import unittest
 
 import responses
 
-from libs import etsy
+from src.libs import etsy
+
+from .constants import API_KEY, SECRET_KEY, ETSY_DECODED_URL
 
 
-DECODED_URL = 'login_url=https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
-
-
-class TestEtsy(unittest.TestCase):
+class Unit(unittest.TestCase):
 
     def setUp(self):
-        etsy.api_key = 'apikey'
-        etsy.secret_key = 'secretkey'
+        etsy.api_key = API_KEY
+        etsy.secret_key = SECRET_KEY
 
     @responses.activate
     def test_request_login_url(self):
@@ -25,10 +24,10 @@ class TestEtsy(unittest.TestCase):
     def test_decode_url(self):
         url = 'login_url=https%3A%2F%2Fwww.etsy.com%2Foauth%2Fsignin%3Foauth_consumer_key%3Dapikey%26oauth_token%3Dtestoauthtoken%26service%3Dv2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
         decoded_url = etsy.decode_url(url)
-        assert decoded_url == DECODED_URL
+        assert decoded_url == ETSY_DECODED_URL
 
     def test_login_url(self):
-        login_url = etsy.parse_login_url(DECODED_URL)
+        login_url = etsy.parse_login_url(ETSY_DECODED_URL)
         assert login_url == 'https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'
 
         oauth = etsy.parse_oauth_token_and_secret(login_url)

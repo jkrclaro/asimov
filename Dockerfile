@@ -6,8 +6,8 @@ RUN apk update && \
 RUN apk add libffi-dev
 
 # Create /app directory in docker and change directory to /app
-RUN mkdir /app
-WORKDIR /app
+RUN mkdir /server
+WORKDIR /server
 
 # Install pipenv, move Pipefile files and install the Pipfile dependencies
 RUN pip install pipenv
@@ -16,7 +16,10 @@ COPY Pipfile.lock .
 RUN pipenv install --system --deploy
 
 # Move everything to docker
-COPY . .
+RUN mkdir src/
+COPY src/ src/
+COPY app.py .
+RUN ls
 
 EXPOSE 5000
 ENTRYPOINT ["gunicorn"]

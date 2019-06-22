@@ -1,6 +1,6 @@
 import os
 
-from libs import etsy
+from src.libs import etsy
 
 
 def main():

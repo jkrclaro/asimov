@@ -1,0 +1,35 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+
+
+<div class='container container-padding'>
+    <div class='row'>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4'>
+            <div class='card'>
+                <div class='card-body'>
+                    <h5 class='text-center mb-3 mt-3'>Welcome back!</h5>
+                    {% from "auth/_formhelpers.html" import render_field %}
+                    <form method=post>
+                        {{ form.csrf_token }}
+                        {{ render_field(form.email) }}
+                        {{ render_field(form.password) }}
+                        <button type='submit' class='btn btn-block btn-channelry-primary'>Sign in to your account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4 mt-5'>
+            <div class='text-center'>
+                Don't have an account? <a class="Anchor--textDecoration-none" href="{{ url_for('auth.signup') }}">Sign up</a>.
+            </div>
+        </div>
+        <div class='col-lg-4'></div>
+    </div>
+</div>
+
+
+{% endblock %}
