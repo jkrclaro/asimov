@@ -4,7 +4,8 @@ from flask import (
     redirect,
     render_template,
     url_for,
-    current_app
+    current_app,
+    session
 )
 from marshmallow import ValidationError
 from flask_login import login_user, logout_user, login_required
@@ -58,8 +59,8 @@ def signup():
             'response': request.form.get('g-recaptcha-response'),
             'remoteip': request.remote_addr
         }
-        is_robot = google_recaptcha.verify(data)
-        if not is_robot:
+        failed_recaptcha = google_recaptcha.verify(data)
+        if not failed_recaptcha:
             email = form.email.data
             password = form.password.data
             name = form.name.data
@@ -83,29 +84,37 @@ def signup():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    is_robot = False
-    form = LoginForm(request.form)
-    if form.validate_on_submit():
-        data = {
-            'response': request.form.get('g-recaptcha-response'),
-            'remoteip': request.remote_addr
-        }
-        is_robot = google_recaptcha.verify(data)
-        if not is_robot:
-            email = form.email.data
-            password = form.password.data
-            user = User.query.filter_by(email=email).first()
-            if not user or not user.password_match(password):
-                form.email.errors = ['Wrong email or password']
+    context = {}
+    attempt = session.get('attempt')
+    if attempt:
+        context['site_key'] = google_recaptcha.site_key
+        recaptcha_response = request.form.get('g-recaptcha-response')
+        if not recaptcha_response and attempt == 1:
+            context['failed_captcha'] = 'Please complete the CAPTCHA to ' \
+                                        'complete your login.'
+        else:
+            data = {
+                'response': recaptcha_response,
+                'remoteip': request.remote_addr
+            }
+            if google_recaptcha.verify(data):
+                context = {}
             else:
-                login_user(user)
-                return redirect(url_for('dashboard.index'))
-    return render_template(
-        'auth/login.html',
-        form=form,
-        site_key=google_recaptcha.site_key,
-        is_robot=is_robot
-    )
+                context['failed_captcha'] = 'Please provide a valid CAPTCHA.'
+    form = LoginForm(request.form)
+    if form.validate_on_submit() and not context:
+        email = form.email.data
+        password = form.password.data
+        user = User.query.filter_by(email=email).first()
+        if not user or not user.password_match(password):
+            form.email.errors = ['Wrong email or password']
+            session['attempt'] = 2 if session.get('attempt') else 1
+            context['site_key'] = google_recaptcha.site_key
+        else:
+            session.pop('attempt', None)
+            login_user(user)
+            return redirect(url_for('dashboard.index'))
+    return render_template('auth/login.html', form=form, **context)
 
 
 @auth_bp.route('/logout')
