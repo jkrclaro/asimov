@@ -1,4 +1,4 @@
-{% extends 'auth/layout.html' %}
+{% extends 'home/layout.html' %}
 
 {% block content %}
 
@@ -26,7 +26,7 @@
         <div class='col-lg-4'></div>
         <div class='col-lg-4 mt-5'>
             <div class='text-center'>
-                Don't have an account? <a class="anchor__custom--notextdecoration" href="{{ url_for('auth.signup') }}">Sign up</a>.
+                Don't have an account? <a class="anchor__custom--default" href="{{ url_for('auth.signup') }}">Sign up</a>.
             </div>
         </div>
         <div class='col-lg-4'></div>

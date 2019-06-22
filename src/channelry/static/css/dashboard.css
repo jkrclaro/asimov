@@ -3,7 +3,7 @@ html, body {
 }
 
 .bg__nav--theme {
-    background-color: #611F69;
+    background-color: #1264A3;
 }
 
 .header__logo--inverse {
@@ -11,14 +11,14 @@ html, body {
 }
 
 .active a {
-    color: #FFF;
+    color: #1264A3 !important;
 }
 .nav__usercircle--light {
     font-size: 36px;
     cursor: pointer;
 }
 .dropdown-item {
-    color: #611F69;
+    color: #1264A3;
 }
 .dropdown-item:active, .dropdown-item:hover {
     background-color: #F8F8F8;

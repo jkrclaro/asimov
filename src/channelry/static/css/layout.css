@@ -69,20 +69,20 @@
 }
 
 .anchor__custom--muted {
+    text-decoration: none !important;
     color: #999;
 }
 .anchor__custom--muted:hover {
-    color: #666;
+    text-decoration: none !important;
+    color: #1264A3;
 }
 .anchor__custom--default {
-    color: #556CD6;
+    text-decoration: none !important;
+    color: #1264A3;
 }
 
 .text__tranform--uppercase {
     text-transform: uppercase;
-}
-.anchor__custom--notextdecoration {
-    text-decoration: none !important;
 }
 .label__text--small {
     font-size: 13px;
