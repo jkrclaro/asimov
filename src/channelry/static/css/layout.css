@@ -112,7 +112,7 @@
     height: 48px;
     color: #4F566B !important;
 }
-.form-control:focus, .form-control:active, .form-control.active {
+.form-control:focus, .form-control:active {
     color: #111 !important;
 }
 .btn {
@@ -136,4 +136,7 @@
 .dropdown-item:active, .dropdown-item:hover {
     background-color: #F8F8F8;
     color: #111;
+}
+.active a {
+    color: #556CD6 !important;
 }
