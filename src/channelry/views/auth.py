@@ -9,6 +9,7 @@ from flask import (
 from marshmallow import ValidationError
 from flask_login import login_user, logout_user, login_required
 
+from src import google_recaptcha
 from src.libs import mailgun, token
 from src.channelry.models import db
 from src.channelry.models.auth import User
@@ -51,37 +52,61 @@ def send_email_confirmation(email: str, name: str='') -> None:
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
-    form = SignupForm(request.form)
-    if request.method == 'POST' and form.validate():
-        email = form.email.data
-        password = form.password.data
-        name = form.name.data
-        user = User(email, password, name)
-        user_exist = User.query.filter_by(email=email).first()
-        if user_exist:
-            form.email.errors = ['Email is already taken']
-        else:
-            db.session.add(user)
-            db.session.commit()
-            send_email_confirmation(email, name=name)
-            login_user(user)
-            return redirect(url_for('dashboard.index'))
-    return render_template('auth/signup.html', form=form)
+    is_robot = False
+    form = SignupForm()
+    if form.validate_on_submit():
+        data = {
+            'response': request.form.get('g-recaptcha-response'),
+            'remoteip': request.remote_addr
+        }
+        is_robot = google_recaptcha.verify(data)
+        if not is_robot:
+            email = form.email.data
+            password = form.password.data
+            name = form.name.data
+            user = User(email, password, name)
+            user_exist = User.query.filter_by(email=email).first()
+            if user_exist:
+                form.email.errors = ['Email is already taken']
+            else:
+                db.session.add(user)
+                db.session.commit()
+                send_email_confirmation(email, name=name)
+                login_user(user)
+                return redirect(url_for('dashboard.index'))
+    return render_template(
+        'auth/signup.html',
+        form=form,
+        site_key=google_recaptcha.site_key,
+        is_robot=is_robot
+    )
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    is_robot = False
     form = LoginForm(request.form)
-    if request.method == 'POST' and form.validate():
-        email = form.email.data
-        password = form.password.data
-        user = User.query.filter_by(email=email).first()
-        if not user or not user.password_match(password):
-            form.email.errors = ['Wrong email or password']
-        else:
-            login_user(user)
-            return redirect(url_for('dashboard.index'))
-    return render_template('auth/login.html', form=form)
+    if form.validate_on_submit():
+        data = {
+            'response': request.form.get('g-recaptcha-response'),
+            'remoteip': request.remote_addr
+        }
+        is_robot = google_recaptcha.verify(data)
+        if not is_robot:
+            email = form.email.data
+            password = form.password.data
+            user = User.query.filter_by(email=email).first()
+            if not user or not user.password_match(password):
+                form.email.errors = ['Wrong email or password']
+            else:
+                login_user(user)
+                return redirect(url_for('dashboard.index'))
+    return render_template(
+        'auth/login.html',
+        form=form,
+        site_key=google_recaptcha.site_key,
+        is_robot=is_robot
+    )
 
 
 @auth_bp.route('/logout')
@@ -114,10 +139,10 @@ def activate():
     except TypeError:
         return render_template(template, message=message)
 
-    form = LoginForm(request.form)
+    form = LoginForm()
     form.email.render_kw = {'readonly': True}
     form.email.data = data.get('email')
-    if request.method == 'POST' and form.validate():
+    if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
         user = User.query.filter_by(email=email).first()

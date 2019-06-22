@@ -18,7 +18,6 @@
     font-family: 'Poppins' !important;
 }
 
-/* -- Text */
 .header__title {
     font-family: 'Poppins';
     font-weight: 700;
@@ -33,7 +32,6 @@
     font-weight: 700;
     color: #111;
 }
-/* Header -- */
 
 .btn__custom--primary {
     background-color: #611F69;
@@ -70,7 +68,6 @@
     border-color: #FFF;
     color: #FFF;
 }
-/* Button -- */
 
 .anchor__custom--muted {
     color: #999;
@@ -92,6 +89,10 @@
     font-size: 48px;
     color: #D3D3D3;
     cursor: pointer;
+}
+.text__invalidfeedback {
+    font-size:80%;
+    color: #DC3545;
 }
 
 /* Bootstrap 4 */

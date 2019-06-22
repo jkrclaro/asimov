@@ -14,20 +14,17 @@ class Config(object):
 
     MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY', 'key-747887c03c9d13477fe01a82f2ebcbdb')
 
-    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '123')
-    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '123')
-    RECAPTCHA_OPTIONS = {'theme': 'white'}
+    RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '123')
+    RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '123')
 
 
 class Production(Config):
-    DASHBOARD_URL = 'http://dashboard.channelry.com'
     RECAPTCHA_USE_SSL = True
 
 
 class Development(Config):
     SEND_FILE_MAX_AGE_DEFAULT = 0
     UPLOADED_PHOTOS_DEST = media
-    DASHBOARD_URL = 'http://dashboard.localhost:3000'
 
 
 class Testing(Config):
@@ -35,4 +32,3 @@ class Testing(Config):
     WTF_CSRF_ENABLED = False
     SECRET_KEY = '12345'
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
-    DASHBOARD_URL = 'http://dashboard.localhost:3000'
