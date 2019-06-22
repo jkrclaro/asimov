@@ -59,8 +59,7 @@ def signup():
             'response': request.form.get('g-recaptcha-response'),
             'remoteip': request.remote_addr
         }
-        failed_recaptcha = google_recaptcha.verify(data)
-        if not failed_recaptcha:
+        if google_recaptcha.verify(data):
             email = form.email.data
             password = form.password.data
             name = form.name.data
@@ -127,10 +126,7 @@ def logout():
 @auth_bp.route('/confirm_email', methods=['GET', 'POST'])
 def activate():
     template = 'auth/confirm_email.html'
-    message = """
-    We couldn't find your email confirmation.
-    Try sending another from your account settings.
-    """
+    message = "We couldn't find your email confirmation. Try sending another from your account settings."
     try:
         encrypted_token = request.args.get('t')
         data = token.decrypt(encrypted_token, max_age=86400)
