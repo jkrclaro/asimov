@@ -10,7 +10,7 @@ html, body {
 
 .icon {
     font-size: 24px;
-    color: #007BE8;
+    color: #611F69;
 }
 /* Layout -- */
 
@@ -37,20 +37,21 @@ html, body {
 /* -- Button */
 .btn {
     border-radius: 8px;
-    letter-spacing: 0.5px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
 
 .btn-channelry-primary {
-    background-color: #007BE8;
+    background-color: #611F69;
     color: #fff;
-    border-bottom: 2px solid #006ECF;
+    border-bottom: 2px solid #411446;
 }
 .btn-channelry-primary:hover, .btn-channelry-primary:focus, .btn-channelry-primary:active, .btn-channelry-primary.active, .open > .dropdown-toggle.btn-channelry-primary {
     color: #fff;
@@ -58,12 +59,12 @@ html, body {
     transition: 0.3s;
 }
 .btn-channelry-primary-outline {
-    border-color: #007BE8;
-    color: #007BE8;
+    border-color: #611F69;
+    color: #611F69;
     border: 2px solid;
 }
 .btn-channelry-primary-outline:hover, .btn-channelry-primary-outline:focus, .btn-channelry-primary-outline:active, .btn-channelry-primary-outline.active, .open > .dropdown-toggle.btn-channelry-primary-outline {
-    color: #007BE8;
+    color: #611F69;
 }
 
 .btn-channelry-secondary {
@@ -160,11 +161,11 @@ html, body {
   }
   
   input:checked + .slider {
-    background-color: #007BE8;
+    background-color: #611F69;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #007BE8;
+    box-shadow: 0 0 1px #611F69;
   }
   
   input:checked + .slider:before {
