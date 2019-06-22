@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include "shared/head.html" %}
+    {% include "shared/head.html" %} 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}"/>
 </head>
 <body>
     {% include "shared/nav.html" %}
@@ -9,9 +10,6 @@
         {% include "shared/messages.html" %}
         {% block content %}{% endblock %}
     </div>
-    {% if not current_user.is_authenticated %}
-        {% include "shared/footer.html" %}
-    {% endif %}
     {% include "shared/scripts.html" %}
 </body>
 </html>

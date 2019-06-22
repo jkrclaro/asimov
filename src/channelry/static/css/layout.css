@@ -15,7 +15,7 @@
 }
 
 .nav__navlink--center {
-    font-family: 'Poppins' !important;
+    font-weight: 700;
 }
 
 .header__title {
@@ -74,6 +74,9 @@
 .anchor__custom--muted:hover {
     color: #666;
 }
+.anchor__custom--default {
+    color: #556CD6;
+}
 
 .text__tranform--uppercase {
     text-transform: uppercase;
@@ -126,4 +129,11 @@
 }
 .navbar {
     box-shadow: 0 1px 1px 0 #D3D3D3;
+}
+.dropdown-item {
+    color: #556CD6;
+}
+.dropdown-item:active, .dropdown-item:hover {
+    background-color: #F8F8F8;
+    color: #111;
 }
