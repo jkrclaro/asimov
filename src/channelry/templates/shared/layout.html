@@ -6,15 +6,7 @@
 <body>
     <h1 class='header__logo header__title--big text-center mt-5'>channelry</h1>
     <div class='bg__content--white'>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="alert alert-danger">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+        {% include "shared/messages.html" %}
         {% block content %}{% endblock %}
     </div>
     {% include "shared/scripts.html" %}

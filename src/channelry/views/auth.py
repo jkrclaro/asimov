@@ -125,6 +125,7 @@ def logout():
 
 @auth_bp.route('/confirm_email', methods=['GET', 'POST'])
 def activate():
+    logout_user()
     template = 'auth/confirm_email.html'
     message = "We couldn't find your email confirmation. Try sending another from your account settings."
     try:
