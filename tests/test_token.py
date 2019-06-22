@@ -1,6 +1,6 @@
 import pytest
 
-from src.libs import token
+from src import token
 
 
 def test_should_pass_when_encrypted_token_is_valid():

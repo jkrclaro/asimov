@@ -1,7 +1,7 @@
 import os
 import jinja2
 
-from src.libs import mailgun, token
+from src import mailgun, token
 
 
 def main():

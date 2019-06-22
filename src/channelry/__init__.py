@@ -8,8 +8,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_login import LoginManager
 
-from src.libs import mailgun, token
-from src import google_recaptcha
+from src import mailgun, token, google_recaptcha
 
 mail = Mail()
 marshmallow = Marshmallow()

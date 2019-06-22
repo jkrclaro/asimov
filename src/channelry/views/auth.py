@@ -9,8 +9,7 @@ from flask import (
 from marshmallow import ValidationError
 from flask_login import login_user, logout_user, login_required
 
-from src import google_recaptcha
-from src.libs import mailgun, token
+from src import mailgun, token, google_recaptcha
 from src.channelry.models import db
 from src.channelry.models.auth import User
 from src.channelry.forms.auth import SignupForm, LoginForm
