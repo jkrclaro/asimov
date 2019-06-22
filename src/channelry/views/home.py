@@ -42,6 +42,11 @@ def privacy():
     return render_template('home/privacy.html')
 
 
+@home_bp.route('/blogs')
+def blogs():
+    return render_template('home/blogs.html')
+
+
 @home_bp.route('/health')
 def health():
     if current_user.is_staff:

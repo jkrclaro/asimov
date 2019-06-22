@@ -3,28 +3,30 @@
 {% block content %}
 
 
-<div class='row'>
-    <div class='col-lg-4'></div>
-    <div class='col-lg-4'>
-        <div class='card'>
-            <div class='card-body'>
-                {% if not form %}
-                    <h5 class='h5-heading mb-3 mt-3'>Email confirmation</h5>
-                    <p>{{ message }}</p>
-                {% else %}
-                    <h5 class='h5-heading text-center mb-3 mt-3'>Confirm your email</h5>
-                    {% from "auth/_formhelpers.html" import render_field %}
-                    <form method=post>
-                        {{ form.csrf_token }}
-                        {{ render_field(form.email) }}
-                        {{ render_field(form.password) }}
-                        <button type='submit' class='btn btn-block btn-channelry-primary'>Confirm email</button>.
-                    </form>
-                {% endif %}
+<div class='container container__padding'>
+    <div class='row'>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4'>
+            <div class='card'>
+                <div class='card-body'>
+                    {% if not form %}
+                        <h5 class='header__title mb-3 mt-3'>Email confirmation</h5>
+                        <p>{{ message }}</p>
+                    {% else %}
+                        <h5 class='header__title text-center mb-3 mt-3'>Confirm your email</h5>
+                        {% from "auth/_formhelpers.html" import render_field %}
+                        <form method=post>
+                            {{ form.csrf_token }}
+                            {{ render_field(form.email) }}
+                            {{ render_field(form.password) }}
+                            <button type='submit' class='btn btn-block btn__custom--primary'>Confirm email</button>.
+                        </form>
+                    {% endif %}
+                </div>
             </div>
         </div>
+        <div class='col-lg-4'></div>
     </div>
-    <div class='col-lg-4'></div>
 </div>
 
 

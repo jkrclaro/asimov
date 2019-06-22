@@ -1,5 +1,5 @@
-from flask_wtf import RecaptchaField
-from wtforms import Form, StringField, PasswordField, SubmitField
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import (
     Email,
     InputRequired,
@@ -9,7 +9,7 @@ from wtforms.validators import (
 from wtforms.fields.html5 import EmailField
 
 
-class SignupForm(Form):
+class SignupForm(FlaskForm):
     email = EmailField(
         'Email',
         validators=[
@@ -30,10 +30,9 @@ class SignupForm(Form):
     )
     name = StringField('Full name')
     confirm_password = PasswordField('Confirm password')
-    recaptcha = RecaptchaField()
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     email = EmailField(
         'Email',
         validators=[

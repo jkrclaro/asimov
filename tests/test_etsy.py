@@ -2,7 +2,7 @@ import unittest
 
 import responses
 
-from src.libs import etsy
+from src import etsy
 
 from .constants import API_KEY, SECRET_KEY, ETSY_DECODED_URL
 

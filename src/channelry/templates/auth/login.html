@@ -1,9 +1,9 @@
-{% extends 'shared/layout.html' %}
+{% extends 'home/layout.html' %}
 
 {% block content %}
 
 
-<div class='container container-padding'>
+<div class='container container__padding'>
     <div class='row'>
         <div class='col-lg-4'></div>
         <div class='col-lg-4'>
@@ -15,7 +15,9 @@
                         {{ form.csrf_token }}
                         {{ render_field(form.email) }}
                         {{ render_field(form.password) }}
-                        <button type='submit' class='btn btn-block btn-channelry-primary'>Sign in to your account</button>
+                        {% if site_key %}<div class="g-recaptcha mb-3" data-sitekey="{{ site_key }}"></div>{% endif %}
+                        {% if failed_captcha %}<div class='text__invalidfeedback--small mb-3'><i class="fas fa-exclamation-triangle"></i> {{ failed_captcha }}</div>{% endif %}
+                        <button type='submit' class='btn btn-block btn__custom--primary'>Sign in to your account</button>
                     </form>
                 </div>
             </div>
@@ -24,12 +26,14 @@
         <div class='col-lg-4'></div>
         <div class='col-lg-4 mt-5'>
             <div class='text-center'>
-                Don't have an account? <a class="Anchor--textDecoration-none" href="{{ url_for('auth.signup') }}">Sign up</a>.
+                Don't have an account? <a class="anchor__custom--default" href="{{ url_for('auth.signup') }}">Sign up</a>.
             </div>
         </div>
         <div class='col-lg-4'></div>
     </div>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 {% endblock %}

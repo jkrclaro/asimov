@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     {% include "shared/head.html" %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}"/>
 </head>
 <body>
-    <h1 class='header__logo header__title--big text-center mt-5'>channelry</h1>
+    {% include "home/nav.html" %}
     <div class='bg__content--white'>
         {% include "shared/messages.html" %}
         {% block content %}{% endblock %}
     </div>
+    {% include "home/footer.html" %}
     {% include "shared/scripts.html" %}
 </body>
 </html>

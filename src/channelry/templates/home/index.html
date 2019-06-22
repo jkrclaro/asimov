@@ -1,24 +1,26 @@
-{% extends 'shared/layout.html' %}
+{% extends 'home/layout.html' %}
 
 {% block content %}
 
 
-<div class='white-bg'>
-    <div class='container container-padding-top-only'>
+<div class='bg__layout--white'>
+    <div class='container container__padding--top'>
         <div class='row'>
             <div class='col-lg-3'></div>
             <div class='col-lg-6 text-center mb-5'>
-                <h1 class='h1-heading'>Selling made easy</h1>
-                <p>Multichannel inventory management for small businesses</p>
-                <div class='mb-4'>
-                    <a href="{{ url_for('auth.signup') }}" class='btn btn-channelry-primary mr-3'>Start now</a>
-                    <a href="mailto:john@channelry.com" class='btn btn-channelry-primary-outline'>Contact us</a>
+                <div class='mb-5'>
+                    <h1 class='header__title header__title--big'>Selling made easy</h1>
+                    <h5>Multichannel inventory management for small businesses</h5>
                 </div>
-                <p>Already using Channelry? <a href="{{ url_for('auth.login') }}" class='Anchor--textDecoration-none'>Sign in</a>.</p>
+                <div class='mb-4'>
+                    <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mr-3'>Start now</a>
+                    <a href="mailto:john@channelry.com" class='btn btn__custom--primary-outline'>Contact us</a>
+                </div>
+                <p>Already using Channelry? <a href="{{ url_for('auth.login') }}" class='anchor__custom--default'>Sign in</a>.</p>
             </div>
             <div class='col-lg-3'></div>
-            <div class='col-lg-6 text-center mb-5'>
-                <h2 class='h2-heading'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere.</h2>
+            <div class='col-lg-6 my-auto mb-5'>
+                <h2 class='header__title'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere.</h2>
                 <p>
                     Interdum et malesuada fames ac ante ipsum primis in faucibus. 
                     In lacinia rutrum metus sed mattis. 
@@ -34,8 +36,8 @@
             <div class='col-lg-6 text-center mb-5'>
                 <img src='https://placeholder.pics/svg/300' class='img-fluid'>
             </div>
-            <div class='col-lg-6 mb-5'>
-                <h2 class='h2-heading'>Fusce in tortor vel urna bibendum vehicula id eu nibh. Praesent metus.</h2>
+            <div class='col-lg-6 my-auto mb-5'>
+                <h2 class='header__title'>Fusce in tortor vel urna bibendum vehicula id eu nibh. Praesent metus.</h2>
                 <p>
                     Ut condimentum neque mi, vel dictum neque vulputate a. 
                     Donec eget nisl vitae ex pretium ornare in eu ligula. 
@@ -44,8 +46,8 @@
                     Fusce luctus dui sed nibh bibendum, quis varius orci sed.
                 </p>
             </div>
-            <div class='col-lg-6'>
-                <h2 class='h2-heading'>Aenean tincidunt, odio dignissim sagittis facilisis, ipsum mauris sed.</h2>
+            <div class='col-lg-6 my-auto'>
+                <h2 class='header__title'>Aenean tincidunt, odio dignissim sagittis facilisis, ipsum mauris sed.</h2>
                 <p>
                     Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis. 
                     Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu. 
@@ -60,8 +62,8 @@
             <div class='col-lg-6 text-center mb-5'>
                 <img src='https://placeholder.pics/svg/300' class='img-fluid'>
             </div>
-            <div class='col-lg-6 mb-5'>
-                <h2 class='h2-heading'>Aliquam porta eget quam tincidunt hendrerit. Maecenas finibus sit sed.</h2>
+            <div class='col-lg-6 my-auto mb-5'>
+                <h2 class='header__title'>Aliquam porta eget quam tincidunt hendrerit. Maecenas finibus sit sed.</h2>
                 <p>
                     Suspendisse ornare convallis magna, eu auctor sem. 
                     Curabitur lacinia tempor nunc eu euismod. 
@@ -76,9 +78,9 @@
 </div>
 
 <div class='col-lg-12 text-center' style='background-color: #611F69; padding-top: 50px; padding-bottom: 50px;'>
-    <h2 class='h2-heading mb-5' style='color: #fff;'>Say hello to your new dashboard</h2>
-    <a href="{{ url_for('auth.signup') }}" class='btn btn-channelry-secondary mb-3 mr-3'>Create account</a>
-    <a href="mailto:john@channelry.com" class='btn btn-channelry-secondary-outline mb-3 text-center'>Contact us</a>
+    <h2 class='header__title mb-5' style='color: #fff;'>Say hello to your new dashboard</h2>
+    <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--secondary mb-3 mr-3'>Create account</a>
+    <a href="mailto:john@channelry.com" class='btn btn__custom--secondary-outline mb-3 text-center'>Contact us</a>
 </div>
 
 {% endblock %}

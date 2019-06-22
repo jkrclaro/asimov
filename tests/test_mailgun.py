@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from src.libs import mailgun
+from src import mailgun
 
 from .constants import API_KEY
 

@@ -8,7 +8,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_login import LoginManager
 
-from src.libs import mailgun, token
+from src import mailgun, token, google_recaptcha
 
 mail = Mail()
 marshmallow = Marshmallow()
@@ -31,6 +31,8 @@ def create_app(config: str):
     mailgun.api_key = app.config.get('MAILGUN_API_KEY')
     token.salt = bcrypt.gensalt()
     token.secret_key = app.config.get('SECRET_KEY')
+    google_recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
+    google_recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')
 
     from .models import db
     db.init_app(app)
