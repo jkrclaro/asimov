@@ -21,7 +21,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Multichannel inventory management for small businesses - Channelry</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:700,900">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
@@ -30,8 +29,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}"/>
 </head>
 <body>
-    {% include "shared/header.html" %}
-    <div class='content-bg'>
+    {% include "shared/nav.html" %}
+    <div class='bg__content--white'>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="alert alert-danger">

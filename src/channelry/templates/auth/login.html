@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<div class='container container-padding'>
+<div class='container container__padding'>
     <div class='row'>
         <div class='col-lg-4'></div>
         <div class='col-lg-4'>
@@ -16,7 +16,7 @@
                         {{ render_field(form.email) }}
                         {{ render_field(form.password) }}
                         {{ form.recaptcha }}
-                        <button type='submit' class='btn btn-block btn-channelry-primary mt-3'>Sign in to your account</button>
+                        <button type='submit' class='btn btn-block btn__custom--primary mt-3'>Sign in to your account</button>
                     </form>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <div class='col-lg-4'></div>
         <div class='col-lg-4 mt-5'>
             <div class='text-center'>
-                Don't have an account? <a class="Anchor--textDecoration-none" href="{{ url_for('auth.signup') }}">Sign up</a>.
+                Don't have an account? <a class="anchor__custom--notextdecoration" href="{{ url_for('auth.signup') }}">Sign up</a>.
             </div>
         </div>
         <div class='col-lg-4'></div>
