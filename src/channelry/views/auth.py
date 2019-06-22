@@ -160,3 +160,13 @@ def activate():
             login_user(user)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form, message=message)
+
+
+@auth_bp.route('/settings')
+def settings():
+    return render_template('auth/settings.html')
+
+
+@auth_bp.route('/billing')
+def billing():
+    return render_template('auth/billing.html')
