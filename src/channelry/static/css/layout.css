@@ -4,18 +4,25 @@
     font-family: 'System UI', sans-serif;
 }
 
-html, body {
-    background-color: #F7FAFC;
-}
-
 .icon {
     font-size: 24px;
     color: #611F69;
 }
-/* Layout -- */
+
+.header-bg {
+    background-color: #fff;
+}
+
+.content-bg {
+    background-color: #F8F8F8;
+}
 
 .nav-link-center {
     font-family: 'Poppins' !important;
+}
+
+.navbar {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
 }
 
 /* -- Text */
@@ -27,6 +34,7 @@ html, body {
 
 /* -- Header */
 .logo-text {
+    font-size: 24px;
     padding-top: 20px;
     font-family: 'Poppins';
     font-weight: 700;

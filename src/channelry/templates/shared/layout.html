@@ -31,20 +31,24 @@
 </head>
 <body>
     {% include "shared/header.html" %}
-    <div class='container mb-5'>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="alert alert-danger">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
+    <div class='content-bg'>
+        <div class='container' style='padding-top: 50px; padding-bottom: 50px'>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert alert-danger">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+        {% if not current_user.is_authenticated %}
+            <hr/>
+        {% endif %}
     </div>
     {% if not current_user.is_authenticated %}
-        <hr/>
         {% include "shared/footer.html" %}
     {% endif %}
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

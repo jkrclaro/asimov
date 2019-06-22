@@ -33,6 +33,7 @@ flask-jwt-extended = "*"
 psycopg2-binary = "*"
 requests-oauthlib = "*"
 flask-login = "*"
+flask-wtf = "*"
 
 [dev-packages]
 pytest = "*"

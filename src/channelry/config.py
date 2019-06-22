@@ -16,6 +16,11 @@ class Config(object):
     # mailgun
     MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY', 'key-747887c03c9d13477fe01a82f2ebcbdb')
 
+    RECAPTCHA_USE_SSL = False
+    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_SITE_KEY', 'recaptcha-site-key')
+    RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', 'recaptcha-secret-key')
+    RECAPTCHA_OPTIONS = {'theme': 'white'}
+
 
 class Production(Config):
     DASHBOARD_URL = 'http://dashboard.channelry.com'

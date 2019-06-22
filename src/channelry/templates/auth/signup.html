@@ -15,7 +15,8 @@
                     {{ render_field(form.name) }}
                     {{ render_field(form.password) }}
                     {{ render_field(form.confirm_password) }}
-                    <button type='submit' class='btn btn-block btn-channelry-primary'>Create your account</button>
+                    {{ form.recaptcha }}
+                    <button type='submit' class='btn btn-block btn-channelry-primary mt-3'>Create your account</button>
                 </form>
             </div>
         </div>
