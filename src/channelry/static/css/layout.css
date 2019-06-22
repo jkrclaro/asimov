@@ -17,7 +17,7 @@
     color: #611F69;
 }
 
-.header-bg {
+.white-bg {
     background-color: #FFF;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .navbar {
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 1px 1px 0 #D3D3D3;
 }
 
 /* -- Text */
@@ -71,7 +71,7 @@
 }
 .btn-channelry-primary:hover, .btn-channelry-primary:focus, .btn-channelry-primary:active, .btn-channelry-primary.active, .open > .dropdown-toggle.btn-channelry-primary {
     color: #FFF;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
 .btn-channelry-primary-outline {
@@ -119,7 +119,7 @@
 }
 .UserCircle--header {
     font-size: 48px;
-    color: rgba(0,0,0,.5);
+    color: #D3D3D3;
     cursor: pointer;
 }
 .Bars--header {
@@ -131,8 +131,8 @@
 
 .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+    box-shadow: 0 2px 4px 0 #D3D3D3;
+    border: 0rem !important;
 }
 
 .form-control {
