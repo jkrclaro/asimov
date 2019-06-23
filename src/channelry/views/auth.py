@@ -52,68 +52,56 @@ def send_email_confirmation(email: str, name: str='') -> None:
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
-    is_robot = False
-    form = SignupForm()
-    if form.validate_on_submit():
+    recaptcha = {'site_key': google_recaptcha.site_key}
+    if request.method == 'POST':
         data = {
             'response': request.form.get('g-recaptcha-response'),
             'remoteip': request.remote_addr
         }
-        if google_recaptcha.verify(data):
-            email = form.email.data
-            password = form.password.data
-            name = form.name.data
-            user = User(email, password, name)
-            user_exist = User.query.filter_by(email=email).first()
-            if user_exist:
-                form.email.errors = ['Email is already taken']
-            else:
-                db.session.add(user)
-                db.session.commit()
-                send_email_confirmation(email, name=name)
-                login_user(user)
-                return redirect(url_for('dashboard.index'))
-    return render_template(
-        'auth/signup.html',
-        form=form,
-        site_key=google_recaptcha.site_key,
-        is_robot=is_robot
-    )
+        recaptcha['recaptcha'] = google_recaptcha.verify(data, 'registration')
+    form = SignupForm()
+    if form.validate_on_submit() and not recaptcha.get('recaptcha'):
+        email = form.email.data
+        password = form.password.data
+        name = form.name.data
+        user = User(email, password, name)
+        user_exist = User.query.filter_by(email=email).first()
+        if user_exist:
+            form.email.errors = ['Email is already taken']
+        else:
+            db.session.add(user)
+            db.session.commit()
+            send_email_confirmation(email, name=name)
+            login_user(user)
+            return redirect(url_for('dashboard.index'))
+    return render_template('auth/signup.html', form=form, **recaptcha)
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    context = {}
-    attempt = session.get('attempt')
-    if attempt:
-        context['site_key'] = google_recaptcha.site_key
-        recaptcha_response = request.form.get('g-recaptcha-response')
-        if not recaptcha_response and attempt == 1:
-            context['failed_captcha'] = 'Please complete the CAPTCHA to ' \
-                                        'complete your login.'
-        else:
+    recaptcha = {}
+    if request.method == 'POST':
+        recaptcha = {'site_key': google_recaptcha.site_key}
+        if session.get('attempt') == 2:
             data = {
-                'response': recaptcha_response,
+                'response': request.form.get('g-recaptcha-response'),
                 'remoteip': request.remote_addr
             }
-            if google_recaptcha.verify(data):
-                context = {}
-            else:
-                context['failed_captcha'] = 'Please provide a valid CAPTCHA.'
+            recaptcha['recaptcha'] = google_recaptcha.verify(data, 'login')
     form = LoginForm(request.form)
-    if form.validate_on_submit() and not context:
+    if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
         user = User.query.filter_by(email=email).first()
         if not user or not user.password_match(password):
             form.email.errors = ['Wrong email or password']
             session['attempt'] = 2 if session.get('attempt') else 1
-            context['site_key'] = google_recaptcha.site_key
         else:
             session.pop('attempt', None)
             login_user(user)
             return redirect(url_for('dashboard.index'))
-    return render_template('auth/login.html', form=form, **context)
+    current_app.logger.debug(recaptcha)
+    return render_template('auth/login.html', form=form, **recaptcha)
 
 
 @auth_bp.route('/logout')
