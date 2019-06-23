@@ -99,7 +99,7 @@
 
 .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 2px 4px 0 #808080;
+    box-shadow: 0 4px 8px 0 rgb(218, 218, 218);
     border: 0rem !important;
 }
 .form-control {
