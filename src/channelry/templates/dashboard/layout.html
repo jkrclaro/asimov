@@ -7,7 +7,9 @@
 <body>
     {% include "dashboard/nav.html" %}
     {% include "shared/messages.html" %}
-    {% block content %}{% endblock %}
+    <div class='container container__padding'>
+        {% block content %}{% endblock %}
+    </div>
     {% include "shared/scripts.html" %}
 </body>
 </html>
