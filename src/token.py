@@ -12,7 +12,7 @@ secret_key = ''
 salt = ''
 
 
-def encrypt(data: dict):
+def encrypt(data: str):
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
     return serializer.dumps(data, salt=salt)
 
@@ -29,4 +29,4 @@ def decrypt(token: str, max_age: int = 86400) -> dict:
             BadSignature,
             BadTimeSignature
     ) as decrypt_error:
-        raise decrypt_error
+        return ''

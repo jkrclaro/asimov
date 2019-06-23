@@ -1,0 +1,36 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+
+
+<div class='container container__padding'>
+    <div class='row'>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4'>
+            <div class='card'>
+                <div class='card-body'>
+                    <h5 class='text-center mb-3 mt-3'>Forgot your password</h5>
+                    {% if form %}
+                        <p>Enter your email address below and we'll send you a link to reset your password.</p>
+                        {% from "auth/_formhelpers.html" import render_field %}
+                        <form method=post>
+                            {{ form.csrf_token }}
+                            {{ render_field(form.email) }}
+                            {% if site_key %}<div class="g-recaptcha mb-3" data-sitekey="{{ site_key }}"></div>{% endif %}
+                            {% if recaptcha %}<div class='text__feedback text__feedback--danger mb-3'><i class="fas fa-exclamation-triangle"></i> {{ recaptcha }} </div>{% endif %}
+                            <button type='submit' class='btn btn-block btn__custom--primary'>Send reset password email</button>
+                        </form>
+                    {% else %}
+                        <p class='text-center'>An email is on its way to you. Follow the instructions to reset your password.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-4'></div>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+{% endblock %}
