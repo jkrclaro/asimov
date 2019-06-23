@@ -11,9 +11,27 @@ from wtforms.fields.html5 import EmailField
 
 
 class InventoryCreateForm(FlaskForm):
-    name = StringField('Name')
-    description = StringField('Description', widget=TextArea())
-    url = StringField('URL')
-    attributes = StringField('Attributes')
-    active = BooleanField('Active')
-    product_id = IntegerField('ID')
+    name = StringField('Name:')
+    caption = StringField(
+        'Caption:',
+        description='A short one-line description of the product.'
+    )
+    description = StringField('Description:', widget=TextArea())
+    url = StringField(
+        'URL:',
+        description='The URL of the webpage for the product.'
+    )
+    attributes = StringField(
+        'Attributes:',
+        description='A comma-separated list of attributes that define the '
+                    'SKUs for this product (e.g. color, size, gender).',
+        render_kw={'placeholder': 'size, style, color'}
+    )
+    active = BooleanField(
+        'Active:',
+        description='This item is available for purchase.'
+    )
+    product_id = IntegerField(
+        'ID:',
+        description="If an ID isn't provided, we'll generate one for you."
+    )

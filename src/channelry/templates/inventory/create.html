@@ -2,22 +2,29 @@
 
 {% block content %}
 
-<div class='card'>
-    <div class='card-body'>
-        <h5 class='mb-5'>Create an inventory</h5>
-        {% from "shared/_create.html" import render_field %}
-        <form method=post>
-            {{ form.csrf_token }}
-            {{ render_field(form.name) }}
-            {{ render_field(form.description) }}
-            {{ render_field(form.url) }}
-            {{ render_field(form.attributes) }}
-            {{ render_field(form.active) }}
-            {{ render_field(form.product_id) }}
-            <button type='submit' class='btn btn__custom--primary--outline float-lg-left'>Cancel</button>
-            <button type='submit' class='btn btn__custom--primary float-lg-right'>Save inventory</button>
-        </form>
+<div class='row'>
+    <div class='col-lg-2'></div>
+    <div class='col-lg-8'>
+        <div class='card'>
+            <div class='card-body'>
+                <h3 class='text-center mb-5'>Create an inventory</h3>
+                {% from "shared/_create.html" import render_field %}
+                <form method=post>
+                    {{ form.csrf_token }}
+                    {{ render_field(form.name) }}
+                    {{ render_field(form.caption) }}
+                    {{ render_field(form.description) }}
+                    {{ render_field(form.url) }}
+                    {{ render_field(form.attributes) }}
+                    {{ render_field(form.active) }}
+                    {{ render_field(form.product_id) }}
+                    <button type='submit' class='btn btn__custom--primary--outline float-lg-left'>Cancel</button>
+                    <button type='submit' class='btn btn__custom--primary float-lg-right'>Save inventory</button>
+                </form>
+            </div>
+        </div>
     </div>
+    <div class='col-lg-2'></div>
 </div>
 
 
