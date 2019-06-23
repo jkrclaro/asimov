@@ -16,7 +16,7 @@
                         {{ render_field(form.email) }}
                         {{ render_field(form.password) }}
                         {% if site_key %}<div class="g-recaptcha mb-3" data-sitekey="{{ site_key }}"></div>{% endif %}
-                        {% if recaptcha %}<div class='text__invalidfeedback--small mb-3'><i class="fas fa-exclamation-triangle"></i> {{ recaptcha }} </div>{% endif %}
+                        {% if recaptcha %}<div class='text__feedback mb-3'><i class="fas fa-exclamation-triangle"></i> {{ recaptcha }} </div>{% endif %}
                         <button type='submit' class='btn btn-block btn__custom--primary'>Sign in to your account</button>
                     </form>
                 </div>

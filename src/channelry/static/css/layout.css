@@ -87,20 +87,20 @@
 .label__text--small {
     font-size: 13px;
 }
-.text__invalidfeedback--small {
+.text__feedback {
     font-size:80%;
+}
+.text__feedback--danger {
     color: #DC3545;
 }
-.text__invalidfeedback--default {
-    color: #DC3545;
+.text__feedback--success {
+    color: #28A745;
 }
 
 /* Bootstrap 4 */
-
 .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgb(218, 218, 218);
-    border: 0rem !important;
+    box-shadow: 0 4px 8px 0 rgb(206, 206, 206);
 }
 .form-control {
     border-radius: 8px;

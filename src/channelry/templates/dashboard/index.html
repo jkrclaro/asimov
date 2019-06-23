@@ -12,8 +12,21 @@
                 <div class="row">
                     <div class="col-lg-1 my-auto text-center"><i class="fas fa-at"></i></div>
                     <div class="col-lg-11">
-                        <h6>Confirm your email address</h6>
-                        <div>Please verify your email address before connecting your sale channels</div>
+                        {% if current_user.is_confirmed %}
+                            <div>Thank you for confirming your email! </div>
+                        {% else %}
+                            <h6>Confirm your email address</h6>
+                            <div class='row'>
+                                <div class='col-lg-8 my-auto'>Please verify your email address before connecting your sale channels</div>
+                                <div class='col-lg-4'>
+                                    {% if session['resend_confirm_email'] %}
+                                        <div class='text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
+                                    {% else %}
+                                        <a class='btn btn__custom--primary btn-block' href="{{ url_for('auth.resend_confirm_email') }}">Resend verification email</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

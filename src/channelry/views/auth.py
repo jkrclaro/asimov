@@ -5,7 +5,8 @@ from flask import (
     render_template,
     url_for,
     current_app,
-    session
+    session,
+    flash
 )
 from marshmallow import ValidationError
 from flask_login import login_user, logout_user, login_required, current_user
@@ -127,14 +128,12 @@ def login():
 @login_required
 def logout():
     logout_user()
+    session.pop('resend_confirm_email', None)
     return redirect(url_for('home.index'))
 
 
 @auth_bp.route('/confirm_email', methods=['GET', 'POST'])
 def activate():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard.index'))
-
     logout_user()
     template = 'auth/confirm_email.html'
     message = "We couldn't find your email confirmation. " \
@@ -171,6 +170,15 @@ def activate():
             login_user(user)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form, message=message)
+
+
+@auth_bp.route('/resend_confirm_email')
+@login_required
+def resend_confirm_email():
+    # TODO: Should be a post
+    send_email_confirmation(current_user.email, current_user.name)
+    session['resend_confirm_email'] = True
+    return redirect(url_for('dashboard.index'))
 
 
 @auth_bp.route('/settings')

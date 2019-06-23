@@ -26,6 +26,7 @@ def create_app(config: str):
     cors.init_app(app)
     jwtmanager.init_app(app)
     login_manager.login_view = 'auth.login'
+    login_manager.login_message_category = 'danger'
     login_manager.init_app(app)
 
     mailgun.api_key = app.config.get('MAILGUN_API_KEY')
