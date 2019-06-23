@@ -14,12 +14,6 @@ def index():
     return render_template('dashboard/index.html')
 
 
-@dashboard_bp.route('/inventory')
-@login_required
-def inventory():
-    return render_template('dashboard/inventory.html')
-
-
 @dashboard_bp.route('/listings')
 @login_required
 def listings():

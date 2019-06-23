@@ -1,0 +1,16 @@
+{% macro render_field(field) %}
+    <div class='form-group row'>
+        {{ field.label(class_='col-md-2 my-auto col-form-label text-md-right label__text--small') }}
+        <div class='col-md-10'>
+            {{ field.wdiget }}
+            {% if field.errors %}
+                {{ field(class_='form-control is-invalid', **kwargs) | safe }}
+                {% for error in field.errors %}
+                    <div class="invalid-feedback"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
+                {% endfor %}
+            {% else %}
+                {{ field(class_='form-control', **kwargs) | safe }}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

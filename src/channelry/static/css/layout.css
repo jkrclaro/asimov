@@ -110,6 +110,9 @@
 .form-control:focus, .form-control:active {
     color: #111 !important;
 }
+.form-control__custom {
+    height: 100px !important;
+}
 .btn {
     font-family: 'Open Sans';
     letter-spacing: 0.5px;
