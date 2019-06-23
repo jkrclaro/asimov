@@ -33,9 +33,9 @@
 }
 
 .btn__custom--primary {
-    background-color: #611F69;
+    background-color: #6B43FA;
     color: #FFF;
-    border-bottom: 2px solid #411446;
+    border-bottom: 2px solid rgb(83, 52, 194);
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -43,21 +43,21 @@
     transition: 0.3s;
 }
 .btn__custom--primary-outline {
-    border-color: #611F69;
-    color: #611F69;
+    border-color: #6B43FA;
+    color: #6B43FA;
     border: 2px solid;
 }
 .btn__custom--primary-outline:hover, .btn__custom--primary-outline:focus, .btn__custom--primary-outline:active, .btn__custom--primary-outline.active, .open > .dropdown-toggle.btn__custom--primary-outline {
-    color: #611F69;
+    color: #6B43FA;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #611F69;
+    color: #6B43FA;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #611F69;
+    color: #6B43FA;
 }
 .btn__custom--secondary-outline {
     border-color: #FFF;
