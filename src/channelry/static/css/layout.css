@@ -42,12 +42,12 @@
     box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
-.btn__custom--primary-outline {
+.btn__custom--primary--outline {
     border-color: #6B43FA;
     color: #6B43FA;
     border: 2px solid;
 }
-.btn__custom--primary-outline:hover, .btn__custom--primary-outline:focus, .btn__custom--primary-outline:active, .btn__custom--primary-outline.active, .open > .dropdown-toggle.btn__custom--primary-outline {
+.btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
     color: #6B43FA;
 }
 
@@ -59,11 +59,11 @@
     border-color: #FFF;
     color: #6B43FA;
 }
-.btn__custom--secondary-outline {
+.btn__custom--secondary--outline {
     border-color: #FFF;
     color: #FFF;
 }
-.btn__custom--secondary-outline:hover, .btn__custom--secondary-outline:focus, .btn__custom--secondary-outline:active, .btn__custom--secondary-outline.active, .open > .dropdown-toggle.btn__custom--secondary-outline {
+.btn__custom--secondary--outline:hover, .btn__custom--secondary--outline:focus, .btn__custom--secondary--outline:active, .btn__custom--secondary--outline.active, .open > .dropdown-toggle.btn__custom--secondary--outline {
     border-color: #FFF;
     color: #FFF;
 }
@@ -112,11 +112,8 @@
 }
 .btn {
     font-family: 'Open Sans';
-    border-radius: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
     text-transform: uppercase;
     font-weight: 700;
 }
