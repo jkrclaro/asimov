@@ -134,7 +134,7 @@ def login():
             recaptcha = {'site_key': google_recaptcha.site_key}
         else:
             session.pop('attempt', None)
-            login_user(user)
+            login_user(user, remember=form.remember.data)
             return redirect(url_for('dashboard.index'))
 
     return render_template('auth/login.html', form=form, **recaptcha)
