@@ -15,18 +15,19 @@
 }
 
 .nav__navlink--center {
+    font-family: 'Open Sans';
     font-weight: 700;
 }
 
 .header__title {
-    font-family: 'Poppins';
+    font-family: 'Open Sans';
     font-weight: 700;
 }
 .header__title--big {
     font-size: 48px;
 }
 .header__logo {
-    font-family: 'Poppins';
+    font-family: 'Open Sans';
     font-weight: 700;
     color: #111;
 }
@@ -110,6 +111,7 @@
     color: #111 !important;
 }
 .btn {
+    font-family: 'Open Sans';
     border-radius: 8px;
     padding-left: 15px;
     padding-right: 15px;
