@@ -86,27 +86,28 @@ def login():
         return redirect(url_for('dashboard.index'))
 
     recaptcha = {}
-    if request.method == 'POST':
+    if session.get('attempt'):
         recaptcha = {'site_key': google_recaptcha.site_key}
-        if session.get('attempt') == 2:
-            data = {
-                'response': request.form.get('g-recaptcha-response'),
-                'remoteip': request.remote_addr
-            }
-            recaptcha['recaptcha'] = google_recaptcha.verify(data, 'login')
+        data = {
+            'response': request.form.get('g-recaptcha-response'),
+            'remoteip': request.remote_addr
+        }
+        recaptcha['recaptcha'] = google_recaptcha.verify(data, 'login')
+
     form = LoginForm(request.form)
-    if form.validate_on_submit():
+    if form.validate_on_submit() and not recaptcha.get('recaptcha'):
         email = form.email.data
         password = form.password.data
         user = User.query.filter_by(email=email).first()
         if not user or not user.password_match(password):
             form.email.errors = ['Wrong email or password']
-            session['attempt'] = 2 if session.get('attempt') else 1
+            session['attempt'] = True
+            recaptcha = {'site_key': google_recaptcha.site_key}
         else:
             session.pop('attempt', None)
             login_user(user)
             return redirect(url_for('dashboard.index'))
-    current_app.logger.debug(recaptcha)
+
     return render_template('auth/login.html', form=form, **recaptcha)
 
 
