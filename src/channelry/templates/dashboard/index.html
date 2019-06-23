@@ -13,7 +13,9 @@
             {% else %}
                 <h6>Confirm your email address</h6>
                 <div class='row'>
-                    <div class='col-lg-8 my-auto'>Please verify your email address before connecting your sale channels</div>
+                    <div class='col-lg-8'>
+                        <p>Please verify your email address before connecting your sale channels</p>
+                    </div>
                     <div class='col-lg-4'>
                         {% if session['resend_confirm_email'] %}
                             <div class='text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
@@ -26,7 +28,9 @@
             <hr/>
             <h6>Upload an inventory</h6>
             <div class='row'>
-                <div class='col-lg-8 my-auto'>Simply create an inventory using our easy to use form</div>
+                <div class='col-lg-8 my-auto'>
+                    <p>Simply create an inventory using our easy to use form</p>
+                </div>
                 <div class='col-lg-4'>
                     <a class='btn btn__custom--primary--outline float-right btn-block' href="{{ url_for('inventory.create') }}">Add inventory <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -34,7 +38,9 @@
             <hr/>
             <h6>Connect a sales channel</h6>
             <div class='row'>
-                <div class='col-lg-8 my-auto'>Integrate your Etsy or Shopify to your account</div>
+                <div class='col-lg-8 my-auto'>
+                    <p>Integrate your Etsy or Shopify to your account</p>
+                </div>
                 <div class='col-lg-4'>
                         <a class='btn btn__custom--primary--outline float-right btn-block' href='/'>Connect channel <i class="fas fa-arrow-right"></i></a>
                 </div>

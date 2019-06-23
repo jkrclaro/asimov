@@ -29,13 +29,21 @@
 .header__logo {
     font-family: 'Open Sans';
     font-weight: 700;
+}
+.header__logo--theme {
+    color: #6B43FA;
+}
+.header__logo--theme:hover, .header__logo--theme:focus {
+    color: #6B43FA;
+}
+.header__logo--black {
     color: #111;
 }
 
 .btn__custom--primary {
     background-color: #6B43FA;
     color: #FFF;
-    border-bottom: 2px solid rgb(83, 52, 194);
+    border-bottom: 2px solid #5032BA;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -68,6 +76,9 @@
     color: #FFF;
 }
 
+.anchor__custom--notextdecoration {
+    text-decoration: none !important;
+}
 .anchor__custom--muted {
     text-decoration: none !important;
     color: #999;
