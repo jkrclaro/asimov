@@ -16,6 +16,12 @@ html, body {
 .nav__usercircle--light {
     font-size: 30px;
     cursor: pointer;
+    color: #7C7C7C;
+}
+.nav__usercircle--light:active, .nav__usercircle--light:hover, .nav__usercircle--light::selection {
+    font-size: 30px;
+    cursor: pointer;
+    color: #505050;
 }
 .dropdown-item {
     color: #6B43FA;
