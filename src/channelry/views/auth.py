@@ -57,11 +57,17 @@ def signup():
 
     recaptcha = {'site_key': google_recaptcha.site_key}
     if request.method == 'POST':
-        data = {
-            'response': request.form.get('g-recaptcha-response'),
-            'remoteip': request.remote_addr
-        }
-        recaptcha['recaptcha'] = google_recaptcha.verify(data, 'registration')
+        recaptcha_response = request.form.get('g-recaptcha-response')
+        if recaptcha_response:
+            data = {
+                'response': request.form.get('g-recaptcha-response'),
+                'remoteip': request.remote_addr
+            }
+            recaptcha['recaptcha'] = google_recaptcha.verify(data)
+        else:
+            recaptcha['recaptcha'] = 'Please complete the CAPTCHA ' \
+                                    'to complete your registration.'
+
     form = SignupForm()
     if form.validate_on_submit() and not recaptcha.get('recaptcha'):
         email = form.email.data
@@ -88,11 +94,17 @@ def login():
     recaptcha = {}
     if session.get('attempt'):
         recaptcha = {'site_key': google_recaptcha.site_key}
-        data = {
-            'response': request.form.get('g-recaptcha-response'),
-            'remoteip': request.remote_addr
-        }
-        recaptcha['recaptcha'] = google_recaptcha.verify(data, 'login')
+        g_recaptcha_response = request.form.get('g-recaptcha-response')
+        if request.method == 'POST':
+            if not g_recaptcha_response:
+                recaptcha['recaptcha'] = 'Please complete the CAPTCHA ' \
+                                        'to complete your login.'
+            else:
+                data = {
+                    'response': g_recaptcha_response,
+                    'remoteip': request.remote_addr
+                }
+                recaptcha['recaptcha'] = google_recaptcha.verify(data)
 
     form = LoginForm(request.form)
     if form.validate_on_submit() and not recaptcha.get('recaptcha'):
