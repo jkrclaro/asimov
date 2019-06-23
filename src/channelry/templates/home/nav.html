@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg__nav--white">
-    <div class='container'>
-        <a class="navbar-brand" href="/"><span class='header__logo'>channelry</span></a>
+    <div class='container mb-2 mt-2'>
+        <a class="navbar-brand header__logo" href="/">channelry</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-alt-markup" aria-controls="navbar-nav-alt-markup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar-nav-alt-markup">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item {% if request.url_rule.rule == '/about' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('home.about') }}">About</a></li>
                 <li class="nav-item {% if request.url_rule.rule == '/pricing' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('home.pricing') }}">Pricing</a></li>
             </ul>
