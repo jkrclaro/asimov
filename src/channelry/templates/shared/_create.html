@@ -9,10 +9,10 @@
                 {% endfor %}
             {% else %}
                 {% if field.type == 'BooleanField' %}
-                    {{ field(class_='mt-2 mr-2') | safe }} <label for='{{ field.name }}'><small class="text-muted">{{ field.description }}</small></small>
+                    {{ field(class_='mt-2 mr-2') | safe }} <label for='{{ field.name }}'><small class="text-muted">{{ field.description }}</small></label>
                 {% else %}
                     {{ field(class_='form-control', **kwargs) | safe }}
-                    <small id="{{ field.name }}-help-block" class="form-text text-muted">{{ field.description }}</small>
+                    <small id="{{ field.name }}-help-block" class="font__custom--family form-text text-muted">{{ field.description }}</small>
                 {% endif %}
             {% endif %}
         </div>

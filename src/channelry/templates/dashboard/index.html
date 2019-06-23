@@ -4,14 +4,14 @@
 
 <div class='card'>
     <div class='card-body'>
-        <h5>Welcome to Channelry</h5>
-        <p>Complete a few more steps to start syncing your inventory across your channels!</p>
+        <h5 class="font__custom--family font__custom--title">Welcome to Channelry</h5>
+        <p class="font__custom--family font__custom--text">Complete a few more steps to start syncing your inventory across your channels!</p>
         <hr/>
         {% if current_user.is_confirmed %}
-            <span class='text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verified.</span>
+            <span class='font__custom--family font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verified.</span>
         {% else %}
-            <h6>Confirm your email address</h6>
-            <div class='row'>
+            <h6 class="font__custom--family font__custom--title">Confirm your email address</h6>
+            <div class='row font__custom--family font__custom--text'>
                 <div class='col-lg-8'>
                     <p>Please verify your email address before connecting your sale channels</p>
                 </div>
@@ -25,8 +25,8 @@
             </div>
         {% endif %}
         <hr/>
-        <h6>Upload an inventory</h6>
-        <div class='row'>
+        <h6 class="font__custom--family font__custom--title">Upload an inventory</h6>
+        <div class='row font__custom--family font__custom--text'>
             <div class='col-lg-8 my-auto'>
                 <p>Simply create an inventory using our easy to use form</p>
             </div>
@@ -35,8 +35,8 @@
             </div>
         </div>
         <hr/>
-        <h6>Connect a sales channel</h6>
-        <div class='row'>
+        <h6 class="font__custom--family font__custom--title">Connect a sales channel</h6>
+        <div class='row font__custom--family font__custom--text'>
             <div class='col-lg-8 my-auto'>
                 <p>Integrate your Etsy or Shopify to your account</p>
             </div>

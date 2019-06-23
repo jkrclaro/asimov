@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='img/apple-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='img/apple-icon-60x60.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='img/apple-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='img/apple-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='img/apple-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='img/apple-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='img/apple-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='img/apple-icon-152x152.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-icon-180x180.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='img/android-icon-192x192.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='img/favicon-96x96.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ url_for('static', filename='img/manifest.json') }}">
-    <meta name="msapplication-TileColor" content="#6B43FA">
-    <meta name="msapplication-TileImage" content="{{ url_for('static', filename='img/ms-icon-144x144.png') }}">
-    <meta name="theme-color" content="#6B43FA">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Multichannel inventory management for small businesses - Channelry</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:700,900">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}"/>
+    {% include "shared/head.html" %}
 </head>
 <body>
     {% include "home/nav.html" %}
@@ -34,38 +10,38 @@
             <div class='row'>
                 <div class='col-lg-6 my-auto mb-5'>
                     <div class='mb-3'>
-                        <h1 class='header__title header__title--big'>Selling made easy</h1>
-                        <h2>Multichannel inventory management for small businesses</h2>
+                        <h1 class='font__custom--family font__custom--title header__title--big'>Selling made easy</h1>
+                        <h3 class='font__custom--family font__custom--text'>Multichannel inventory management for small businesses</h3>
                     </div>
                     <div class='mb-3'>
                         <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mb-3'>Start now</a>
                         <a href="mailto:john@channelry.com" class='btn btn__custom--primary--outline mb-3'>Contact us</a>
                     </div>
-                    <p>Already using Channelry? <a href="{{ url_for('auth.login') }}" class='anchor__custom--default'>Sign in</a>.</p>
+                    <p class="font__custom--family font__custom--text">Already using Channelry? <a href="{{ url_for('auth.login') }}" class='anchor__custom--default'>Sign in</a>.</p>
                 </div>
                 <div class='col-lg-6 text-center mb-5'>
                     <img src='https://placeholder.pics/svg/300' class='img-fluid'>
                 </div>
                 <div class='col-lg-12 text-center mb-5'>
-                    <h2 class='header__title'>Curabitur egestas, mauris a faucibus rutrum.</h2>
-                    <p>
-                        Proin aliquet nunc nec urna tristique mollis. 
-                        Suspendisse ac neque enim. 
-                        Sed ut dolor eu nisi tempor ultricies blandit id diam. 
-                        Curabitur odio libero, bibendum quis tristique eget, egestas sit amet dui. 
-                        Curabitur id metus purus. 
+                    <h2 class='font__custom--family font__custom--title'>Curabitur egestas, mauris a faucibus rutrum.</h2>
+                    <p class='font__custom--family font__custom--text'>
+                        Proin aliquet nunc nec urna tristique mollis.
+                        Suspendisse ac neque enim.
+                        Sed ut dolor eu nisi tempor ultricies blandit id diam.
+                        Curabitur odio libero, bibendum quis tristique eget, egestas sit amet dui.
+                        Curabitur id metus purus.
                         Mauris in leo laoreet, faucibus magna a massa nunc.
                     </p>
                     <img src='https://placeholder.pics/svg/305' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 my-auto mb-5'>
-                    <h2 class='header__title'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere.</h2>
-                    <p>
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus. 
-                        In lacinia rutrum metus sed mattis. 
-                        Sed sagittis nec nisl id condimentum. 
-                        Sed commodo tortor mi, vitae feugiat augue lacinia eu. 
-                        Integer ut lectus at ligula placerat vehicula. 
+                    <h2 class='font__custom--family font__custom--title'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere.</h2>
+                    <p class="font__custom--family font__custom--text">
+                        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                        In lacinia rutrum metus sed mattis.
+                        Sed sagittis nec nisl id condimentum.
+                        Sed commodo tortor mi, vitae feugiat augue lacinia eu.
+                        Integer ut lectus at ligula placerat vehicula.
                         Etiam interdum nisi sit amet pharetra sed.
                     </p>
                 </div>
@@ -73,12 +49,12 @@
                     <img src='https://placeholder.pics/svg/301' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 order-lg-2 my-auto mb-5'>
-                    <h2 class='header__title'>Fusce in tortor vel urna bibendum vehicula id eu nibh. Praesent metus.</h2>
-                    <p>
-                        Ut condimentum neque mi, vel dictum neque vulputate a. 
-                        Donec eget nisl vitae ex pretium ornare in eu ligula. 
-                        Phasellus aliquam sollicitudin purus nec condimentum. 
-                        Praesent tincidunt euismod eleifend. Donec nec tempus erat. 
+                    <h2 class='font__custom--family font__custom--title'>Fusce in tortor vel urna bibendum vehicula id eu nibh. Praesent metus.</h2>
+                    <p class="font__custom--family font__custom--text">
+                        Ut condimentum neque mi, vel dictum neque vulputate a.
+                        Donec eget nisl vitae ex pretium ornare in eu ligula.
+                        Phasellus aliquam sollicitudin purus nec condimentum.
+                        Praesent tincidunt euismod eleifend. Donec nec tempus erat.
                         Fusce luctus dui sed nibh bibendum, quis varius orci sed.
                     </p>
                 </div>
@@ -86,12 +62,12 @@
                     <img src='https://placeholder.pics/svg/302' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 order-lg-3 my-auto mb-5'>
-                    <h2 class='header__title'>Aenean tincidunt, odio dignissim sagittis facilisis, ipsum mauris sed.</h2>
-                    <p>
-                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis. 
-                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu. 
-                        Fusce eu sapien non purus tristique gravida. 
-                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor. 
+                    <h2 class='font__custom--family font__custom--title'>Aenean tincidunt, odio dignissim sagittis facilisis, ipsum mauris sed.</h2>
+                    <p class="font__custom--family font__custom--text">
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
                         Quisque sed eleifend lacus nullam.
                     </p>
                 </div>
@@ -99,13 +75,13 @@
                     <img src='https://placeholder.pics/svg/303' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 order-lg-6 my-auto mb-5'>
-                    <h2 class='header__title'>Aliquam porta eget quam tincidunt hendrerit. Maecenas finibus sit sed.</h2>
-                    <p>
-                        Suspendisse ornare convallis magna, eu auctor sem. 
-                        Curabitur lacinia tempor nunc eu euismod. 
-                        Nullam eget vulputate nisl. 
-                        Cras maximus massa nunc, ut convallis lacus iaculis sed. 
-                        Vivamus vel accumsan elit, eget ornare risus. 
+                    <h2 class='font__custom--family font__custom--title'>Aliquam porta eget quam tincidunt hendrerit. Maecenas finibus sit sed.</h2>
+                    <p class="font__custom--family font__custom--text">
+                        Suspendisse ornare convallis magna, eu auctor sem.
+                        Curabitur lacinia tempor nunc eu euismod.
+                        Nullam eget vulputate nisl.
+                        Cras maximus massa nunc, ut convallis lacus iaculis sed.
+                        Vivamus vel accumsan elit, eget ornare risus.
                         Sed commodo tortor dolor, in condimentum nibh cras amet.
                     </p>
                 </div>
@@ -115,7 +91,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class='col-lg-12 text-center' style='background-color: #6B43FA; padding-top: 50px; padding-bottom: 50px;'>
         <h2 class='header__title mb-5' style='color: #fff;'>Say hello to your new dashboard</h2>
         <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--secondary mb-3 mr-3'>Create account</a>

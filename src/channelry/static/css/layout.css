@@ -26,11 +26,20 @@
 
 .nav__navlink--center {
     font-family: 'Open Sans';
-    font-weight: 700;
 }
 
 .hero__page {
     min-height: 50vh;
+}
+
+.font__custom--family {
+    font-family: 'Open Sans';
+}
+.font__custom--title {
+    color: #33334F;
+}
+.font__custom--text {
+    color: #767EAD;
 }
 
 .header__title {
@@ -60,7 +69,8 @@
     color: #999;
 }
 .footer__title--muted--uppercase {
-    font-size: 14px;
+   font-size: 14px;
+   font-weight: 700;
    text-transform: uppercase;
 }
 
@@ -147,10 +157,10 @@ input[type="checkbox"], label {
 }
 .form-control {
     border-radius: 8px;
-    color: #4F566B !important;
+    color: #111 !important;
 }
 .form-control:focus, .form-control:active {
-    color: #111 !important;
+    color: #767EAD !important;
 }
 .form-control__custom {
     height: 100px !important;
