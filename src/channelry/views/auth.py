@@ -8,7 +8,7 @@ from flask import (
     session
 )
 from marshmallow import ValidationError
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 from src import mailgun, token, google_recaptcha
 from src.channelry.models import db
@@ -52,6 +52,9 @@ def send_email_confirmation(email: str, name: str='') -> None:
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+
     recaptcha = {'site_key': google_recaptcha.site_key}
     if request.method == 'POST':
         data = {
@@ -79,6 +82,9 @@ def signup():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+
     recaptcha = {}
     if request.method == 'POST':
         recaptcha = {'site_key': google_recaptcha.site_key}
@@ -113,9 +119,13 @@ def logout():
 
 @auth_bp.route('/confirm_email', methods=['GET', 'POST'])
 def activate():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard.index'))
+
     logout_user()
     template = 'auth/confirm_email.html'
-    message = "We couldn't find your email confirmation. Try sending another from your account settings."
+    message = "We couldn't find your email confirmation. " \
+        'Try sending another from your account settings.'
     try:
         encrypted_token = request.args.get('t')
         data = token.decrypt(encrypted_token, max_age=86400)
