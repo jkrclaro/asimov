@@ -3,22 +3,25 @@ html, body {
 }
 
 .bg__nav--theme {
-    background-color: #611F69;
+    background-color: #6B43FA;
 }
 
 .header__logo--inverse {
     color: #FFF;
 }
 
-.active a {
-    color: #611F69 !important;
-}
 .nav__usercircle--light {
     font-size: 30px;
     cursor: pointer;
+    color: #7C7C7C;
+}
+.nav__usercircle--light:active, .nav__usercircle--light:hover, .nav__usercircle--light::selection {
+    font-size: 30px;
+    cursor: pointer;
+    color: #505050;
 }
 .dropdown-item {
-    color: #611F69;
+    color: #6B43FA;
 }
 .dropdown-item:active, .dropdown-item:hover {
     background-color: #F8F8F8;

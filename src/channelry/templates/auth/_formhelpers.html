@@ -4,7 +4,7 @@
         {% if field.errors %}
             {{ field(class_='form-control is-invalid', **kwargs) | safe }}
             {% for error in field.errors %}
-                <div class="invalid-feedback"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
+                <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
             {% endfor %}
         {% else %}
             {{ field(class_='form-control', **kwargs) | safe }}

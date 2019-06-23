@@ -2,39 +2,46 @@
 
 {% block content %}
 
-<div class='container container__padding--top'>
-    <div class='card'>
-        <div class='card-body'>
-            <h5 class='mb-3 mt-3'>Welcome to Channelry</h5>
-            <p>Complete a few more steps to finally get started syncing your inventory across your shops!</p>
-            <div>
-                <hr/>
-                <div class="row">
-                    <div class="col-lg-1 my-auto text-center"><i class="fas fa-at"></i></div>
-                    <div class="col-lg-11">
-                        <h6>Confirm your email address</h6>
-                        <div>Please verify your email address before connecting your sale channels</div>
-                    </div>
+<div class='card'>
+    <div class='card-body'>
+        <h5 class="font__custom--family font__custom--title">Welcome to Channelry</h5>
+        <p class="font__custom--family font__custom--text">Complete a few more steps to start syncing your inventory across your channels!</p>
+        <hr/>
+        {% if current_user.is_confirmed %}
+            <span class='font__custom--family font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verified.</span>
+        {% else %}
+            <h6 class="font__custom--family font__custom--title">Confirm your email address</h6>
+            <div class='row font__custom--family font__custom--text'>
+                <div class='col-lg-8'>
+                    <p>Please verify your email address before connecting your sale channels</p>
+                </div>
+                <div class='col-lg-4'>
+                    {% if session['resend'] %}
+                        <div class='text__feedback--success float-lg-right'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
+                    {% else %}
+                        <a class='btn btn__custom--primary float-lg-right' href="{{ url_for('auth.resend') }}">Resend confirmation</a>
+                    {% endif %}
                 </div>
             </div>
-            <div>
-                <hr/>
-                <div class="row">
-                    <div class="col-lg-1 my-auto text-center"><i class="fas fa-dolly"></i></div>
-                    <div class="col-lg-11">
-                        <h6>Upload an inventory</h6>
-                        <div>Simply create an inventory using our easy to use form</div>
-                    </div>
+        {% endif %}
+        <hr/>
+        <h6 class="font__custom--family font__custom--title">Upload an inventory</h6>
+        <div class='row font__custom--family font__custom--text'>
+            <div class='col-lg-8 my-auto'>
+                <p>Simply create an inventory using our easy to use form</p>
             </div>
-            <div>
-                <hr/>
-                <div class="row">
-                    <div class="col-lg-1 my-auto text-center"><i class="fas fa-store"></i></div>
-                    <div class="col-lg-11">
-                        <h6>Connect a sales channel</h6>
-                        <div>Integrate your Etsy or Shopify to your Channelry account</div>
-                    </div>
-                </div>
+            <div class='col-lg-4'>
+                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.create') }}">Add inventory <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <hr/>
+        <h6 class="font__custom--family font__custom--title">Connect a sales channel</h6>
+        <div class='row font__custom--family font__custom--text'>
+            <div class='col-lg-8 my-auto'>
+                <p>Integrate your Etsy or Shopify to your account</p>
+            </div>
+            <div class='col-lg-4'>
+                    <a class='btn btn__custom--primary--outline float-lg-right' href='/'>Connect channel <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>

@@ -1,0 +1,36 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+
+
+<div class='container container__padding'>
+    <div class='row'>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4'>
+            <div class='card'>
+                <div class='card-body'>
+                    <h5 class='text-center mb-3 mt-3'>Reset your password</h5>
+                    {% if form %}
+                        <p class='text-center'>Enter a new password to reset the password on your account</p>
+                        {% from "auth/_formhelpers.html" import render_field %}
+                        <form method=post>
+                            {{ form.csrf_token }}
+                            {{ render_field(form.password) }}
+                            {{ render_field(form.confirm_password) }}
+                            <input type="hidden" name="reset_token" id="reset_token" value="{{ reset_token }}">
+                            <button type='submit' class='btn btn-block btn__custom--primary'>Set a new password</button>
+                        </form>
+                    {% else %}
+                        <p class='text-center'>Reset token is invalid or expired.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-4'></div>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+{% endblock %}

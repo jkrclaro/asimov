@@ -1,6 +1,14 @@
+.paragraph__text--medium {
+    font-size: 24px;
+}
+
 .container__padding {
     padding-top: 50px;
     padding-bottom: 50px;
+}
+.container__padding--high {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 .container__padding--top {
     padding-top: 50px;
@@ -15,70 +23,105 @@
 }
 
 .nav__navlink--center {
-    font-weight: 700;
+    font-family: 'Open Sans';
+}
+
+.hero__page {
+    min-height: 50vh;
+}
+
+.font__custom--family {
+    font-family: 'Open Sans';
+}
+.font__custom--title {
+    color: #33334F;
+}
+.font__custom--text {
+    color: #767EAD;
 }
 
 .header__title {
-    font-family: 'Poppins';
+    font-family: 'Open Sans';
     font-weight: 700;
 }
 .header__title--big {
     font-size: 48px;
 }
 .header__logo {
-    padding-top: 20px;
-    font-family: 'Poppins';
+    font-family: 'Open Sans';
     font-weight: 700;
+}
+.header__logo--theme {
+    color: #6B43FA !important;
+}
+.header__logo--theme:hover, .header__logo--theme:focus {
+    color: #6B43FA;
+}
+.header__logo--black {
     color: #111;
+}
+.footer__title {
+    font-family: 'Open Sans';
+}
+.footer__title--muted {
+    color: #999;
+}
+.footer__title--muted--uppercase {
+   font-size: 14px;
+   font-weight: 700;
+   text-transform: uppercase;
 }
 
 .btn__custom--primary {
-    background-color: #611F69;
+    background-color: #6B43FA;
     color: #FFF;
-    border-bottom: 2px solid #411446;
+    border-bottom: 2px solid #5032BA;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
     box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
-.btn__custom--primary-outline {
-    border-color: #611F69;
-    color: #611F69;
+.btn__custom--primary--outline {
+    border-color: #6B43FA;
+    color: #6B43FA;
     border: 2px solid;
 }
-.btn__custom--primary-outline:hover, .btn__custom--primary-outline:focus, .btn__custom--primary-outline:active, .btn__custom--primary-outline.active, .open > .dropdown-toggle.btn__custom--primary-outline {
-    color: #611F69;
+.btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
+    color: #6B43FA;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #611F69;
+    color: #6B43FA;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #611F69;
+    color: #6B43FA;
 }
-.btn__custom--secondary-outline {
+.btn__custom--secondary--outline {
     border-color: #FFF;
     color: #FFF;
 }
-.btn__custom--secondary-outline:hover, .btn__custom--secondary-outline:focus, .btn__custom--secondary-outline:active, .btn__custom--secondary-outline.active, .open > .dropdown-toggle.btn__custom--secondary-outline {
+.btn__custom--secondary--outline:hover, .btn__custom--secondary--outline:focus, .btn__custom--secondary--outline:active, .btn__custom--secondary--outline.active, .open > .dropdown-toggle.btn__custom--secondary--outline {
     border-color: #FFF;
     color: #FFF;
 }
 
+.anchor__custom--notextdecoration {
+    text-decoration: none !important;
+}
 .anchor__custom--muted {
     text-decoration: none !important;
     color: #999;
 }
 .anchor__custom--muted:hover {
     text-decoration: none !important;
-    color: #1264A3;
+    color: #3D9AE8;
 }
 .anchor__custom--default {
     text-decoration: none !important;
-    color: #1264A3;
+    color: #3D9AE8;
 }
 
 .text__tranform--uppercase {
@@ -87,35 +130,43 @@
 .label__text--small {
     font-size: 13px;
 }
-.text__invalidfeedback--small {
+.text__feedback {
     font-size:80%;
+}
+.text__feedback--danger {
     color: #DC3545;
 }
-.text__invalidfeedback--default {
-    color: #DC3545;
+.text__feedback--success {
+    color: #28A745;
+}
+.active a {
+    color: #6B43FA !important;
+}
+
+/* HTML */
+input[type="checkbox"], label {
+    cursor: pointer;
 }
 
 /* Bootstrap 4 */
-
 .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 2px 4px 0 #808080;
-    border: 0rem !important;
+    box-shadow: 0 4px 8px 0 rgb(206, 206, 206);
 }
 .form-control {
     border-radius: 8px;
-    height: 48px;
-    color: #4F566B !important;
-}
-.form-control:focus, .form-control:active {
     color: #111 !important;
 }
+.form-control:focus, .form-control:active {
+    color: #767EAD !important;
+}
+.form-control__custom {
+    height: 100px !important;
+}
 .btn {
-    border-radius: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-family: 'Open Sans';
+    letter-spacing: 0.5px;
+    border-radius: 10px;
     text-transform: uppercase;
     font-weight: 700;
 }
