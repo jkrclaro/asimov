@@ -18,7 +18,8 @@ from src.channelry.forms.auth import (
     SignupForm,
     LoginForm,
     ForgotPasswordForm,
-    ResetPasswordForm
+    ResetPasswordForm,
+    ConfirmForm
 )
 
 
@@ -95,8 +96,8 @@ def signup():
         else:
             db.session.add(user)
             db.session.commit()
-            endpoint = 'auth.activate'
-            email_template = 'auth/email/email_confirm.html'
+            endpoint = 'auth.confirm'
+            email_template = 'email/email_confirm.html'
             subject = 'Confirm Channelry your email address!'
             send_email(email, endpoint, email_template, subject, name=name)
             login_user(user)
@@ -143,24 +144,21 @@ def login():
 @login_required
 def logout():
     logout_user()
-    session.pop('resend_confirm_email', None)
+    session.pop('resend', None)
     return redirect(url_for('home.index'))
 
 
-@auth_bp.route('/confirm_email', methods=['GET', 'POST'])
-def activate():
+@auth_bp.route('/confirm', methods=['GET', 'POST'])
+def confirm():
     logout_user()
-    template = 'auth/confirm_email.html'
+    template = 'auth/confirm.html'
     encrypted_token = request.args.get('t')
-    if encrypted_token:
-        data = token.decrypt(encrypted_token, max_age=86400)
-    else:
-        message = "We couldn't find your email confirmation. Try sending another from your account settings."
-        return render_template(template, message=message)
+    confirm_token = request.args.get('t', '')
+    if not confirm_token and not token.decrypt(confirm_token):
+        return render_template(template)
 
-    form = LoginForm()
-    form.email.render_kw = {'readonly': True}
-    form.email.data = data.get('email')
+    form = ConfirmForm()
+    form.email.data = email
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
@@ -173,20 +171,20 @@ def activate():
             db.session.commit()
             login_user(user)
             return redirect(url_for('dashboard.index'))
-    return render_template(template, form=form, message=message)
+    return render_template(template, form=form)
 
 
-@auth_bp.route('/resend_confirm_email')
+@auth_bp.route('/email/resend')
 @login_required
-def resend_confirm_email():
+def resend():
     # TODO: Should be a post
     email = current_user.email
-    endpoint = 'auth.activate'
-    email_template = 'auth/email/email_confirm.html'
+    endpoint = 'auth.confirm'
+    email_template = 'email/confirm.html'
     subject = 'Confirm Channelry your email address!'
     name = current_user.name
     send_email(email, endpoint, email_template, subject, name=name)
-    session['resend_confirm_email'] = True
+    session['resend'] = True
     return redirect(url_for('dashboard.index'))
 
 
@@ -198,7 +196,7 @@ def forgot():
     if form.validate_on_submit() and not recaptcha.get('recaptcha'):
         email = form.email.data
         endpoint = 'auth.reset'
-        email_template = 'auth/email/reset.html'
+        email_template = 'email/reset.html'
         subject = 'Reset your Channelry password'
         send_email(email, endpoint, email_template, subject)
         return render_template(template)
@@ -223,7 +221,7 @@ def reset():
             message = 'Reset token is invalid or expired.'
             return render_template(template, message=message)
         endpoint = 'auth.forgot'
-        email_template = 'auth/email/reset_success.html'
+        email_template = 'email/reset_success.html'
         subject = 'Your Channelry password has been changed'
         send_email(email, endpoint, email_template, subject, with_token=False)
 

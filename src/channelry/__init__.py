@@ -30,7 +30,7 @@ def create_app(config: str):
     login_manager.init_app(app)
 
     mailgun.api_key = app.config.get('MAILGUN_API_KEY')
-    token.salt = bcrypt.gensalt()
+    token.salt = app.config.get('PASSWORD_SALT')
     token.secret_key = app.config.get('SECRET_KEY')
     google_recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
     google_recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')

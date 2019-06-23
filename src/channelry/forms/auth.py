@@ -62,6 +62,17 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember')
 
 
+class ConfirmForm(FlaskForm):
+    email = EmailField(
+        'Email',
+        validators=[
+            InputRequired(message='Please enter a valid email.'),
+            Email(message='Please enter a valid email.')
+        ],
+        render_kw={'readonly': True}
+    )
+
+
 class ForgotPasswordForm(FlaskForm):
     email = EmailField(
         'Email',
