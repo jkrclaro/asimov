@@ -2,18 +2,8 @@
 
 {% block content %}
 
-<div class='row'>
-    <div class='col-lg-3'></div>
-    <div class='col-lg-6'>
-        <div class='card'>
-            <div class='card-body'>
-                <h2 class='header__title text-center mb-3 mt-3'>Limited time offer</h2>
-                <p>Free access to everything!</p>
-                <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary btn-block'>Start now</a>
-            </div>
-        </div>
-    </div>
-    <div class='col-lg-3'></div>
-</div>
+<h2 class='header__title mb-3 mt-3'>Limited time offer</h2>
+<p>Free access to everything!</p>
+<a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary'>Start now</a>
 
 {% endblock %}

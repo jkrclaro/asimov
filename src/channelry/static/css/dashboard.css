@@ -10,9 +10,6 @@ html, body {
     color: #FFF;
 }
 
-.active a {
-    color: #6B43FA !important;
-}
 .nav__usercircle--light {
     font-size: 30px;
     cursor: pointer;

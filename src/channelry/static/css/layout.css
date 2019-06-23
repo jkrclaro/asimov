@@ -107,6 +107,9 @@
 .text__feedback--success {
     color: #28A745;
 }
+.active a {
+    color: #6B43FA !important;
+}
 
 /* HTML */
 input[type="checkbox"], label {
