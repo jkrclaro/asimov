@@ -17,7 +17,7 @@ def encrypt(data: str):
     return serializer.dumps(data, salt=salt)
 
 
-def decrypt(token: str, max_age: int = 86400) -> dict:
+def decrypt(token: str, max_age: int = 86400) -> str:
     serializer = itsdangerous.URLSafeTimedSerializer(secret_key)
     try:
         return serializer.loads(token, salt=salt, max_age=max_age)

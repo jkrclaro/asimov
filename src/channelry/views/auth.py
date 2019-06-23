@@ -97,7 +97,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
             endpoint = 'auth.confirm'
-            email_template = 'email/email_confirm.html'
+            email_template = 'email/confirm.html'
             subject = 'Confirm Channelry your email address!'
             send_email(email, endpoint, email_template, subject, name=name)
             login_user(user)
@@ -152,12 +152,14 @@ def logout():
 def confirm():
     logout_user()
     template = 'auth/confirm.html'
-    encrypted_token = request.args.get('t')
     confirm_token = request.args.get('t', '')
-    if not confirm_token and not token.decrypt(confirm_token):
+    email_from_token = token.decrypt(confirm_token)
+    if not confirm_token and not email_from_token:
         return render_template(template)
 
     form = ConfirmForm()
+
+    email = email_from_token
     form.email.data = email
     if form.validate_on_submit():
         email = form.email.data
@@ -210,16 +212,14 @@ def reset():
     template = 'auth/reset.html'
     reset_token = request.args.get('t', '')
     if not reset_token and not token.decrypt(reset_token):
-        message = 'No password reset token detected.'
         return render_template('auth/reset.html')
 
     form = ResetPasswordForm()
     if form.validate_on_submit():
-        try:
-            email = token.decrypt(request.form.get('reset_token'))
-        except:
-            message = 'Reset token is invalid or expired.'
-            return render_template(template, message=message)
+        reset_token_in_form = request.form.get('reset_token')
+        email = token.decrypt(reset_token_in_form)
+        if not email:
+            render_template(template)
         endpoint = 'auth.forgot'
         email_template = 'email/reset_success.html'
         subject = 'Your Channelry password has been changed'

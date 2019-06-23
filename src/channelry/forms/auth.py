@@ -71,6 +71,13 @@ class ConfirmForm(FlaskForm):
         ],
         render_kw={'readonly': True}
     )
+    password = PasswordField(
+        'Password',
+        validators=[
+            InputRequired(message='Please enter a password.'),
+            Length(min=8, message='Your password must be at least 8 characters.'),
+        ]
+    )
 
 
 class ForgotPasswordForm(FlaskForm):
