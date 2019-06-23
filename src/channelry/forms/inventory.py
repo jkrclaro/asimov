@@ -11,15 +11,17 @@ from wtforms.fields.html5 import EmailField
 
 
 class InventoryCreateForm(FlaskForm):
-    name = StringField('Name:')
+    name = StringField('Name:', render_kw={'placeholder': 'Blue t-shirt'})
     caption = StringField(
         'Caption:',
-        description='A short one-line description of the product.'
+        description='A short one-line description of the product.',
+        render_kw={'placeholder': 'Comfortable blue cotton t-shirt'}
     )
     description = StringField('Description:', widget=TextArea())
     url = StringField(
         'URL:',
-        description='The URL of the webpage for the product.'
+        description='The URL of the webpage for the product.',
+        render_kw={'placeholder': 'example.com/blue-shirt'}
     )
     attributes = StringField(
         'Attributes:',

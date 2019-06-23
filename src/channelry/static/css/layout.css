@@ -108,6 +108,11 @@
     color: #28A745;
 }
 
+/* HTML */
+input[type="checkbox"], label {
+    cursor: pointer;
+}
+
 /* Bootstrap 4 */
 .card {
     /* Add shadows to create the "card" effect */
@@ -132,57 +137,4 @@
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
-}
-
-/* Checkbox */
-.container-checkbox {
-    display: block;
-    padding-left: 15px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.container-checkbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 25%;
-}
-.container-checkbox:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-.container-checkbox input:checked ~ .checkmark {
-    background-color: #0060FE;
-}
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-.container-checkbox input:checked ~ .checkmark:after {
-    display: block;
-}
-.container-checkbox .checkmark:after {
-    left: 9px;
-    top: 8px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
 }

@@ -2,7 +2,6 @@
     <div class='form-group row'>
         {{ field.label(class_='col-md-2 col-form-label text-md-right label__text--small') }}
         <div class='col-md-10'>
-            {{ field.widget.id }}
             {% if field.errors %}
                 {{ field(class_='form-control is-invalid', **kwargs) | safe }}
                 {% for error in field.errors %}

@@ -5,10 +5,10 @@
 <div class='card'>
     <div class='card-body'>
         <h5>Welcome to Channelry</h5>
-        <p>Complete a few more steps to finally get started syncing your inventory across your shops!</p>
+        <p>Complete a few more steps to start syncing your inventory across your channels!</p>
         <hr/>
         {% if current_user.is_confirmed %}
-            <div>Thank you for confirming your email! </div>
+            <span class='text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verified.</span>
         {% else %}
             <h6>Confirm your email address</h6>
             <div class='row'>
@@ -17,9 +17,9 @@
                 </div>
                 <div class='col-lg-4'>
                     {% if session['resend_confirm_email'] %}
-                        <div class='text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
+                        <div class='text__feedback--success float-lg-right'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
                     {% else %}
-                        <a class='btn btn__custom--primary float-right btn-block' href="{{ url_for('auth.resend_confirm_email') }}">Resend confirmation</a>
+                        <a class='btn btn__custom--primary float-lg-right' href="{{ url_for('auth.resend_confirm_email') }}">Resend confirmation</a>
                     {% endif %}
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <p>Simply create an inventory using our easy to use form</p>
             </div>
             <div class='col-lg-4'>
-                <a class='btn btn__custom--primary--outline float-right btn-block' href="{{ url_for('inventory.create') }}">Add inventory <i class="fas fa-arrow-right"></i></a>
+                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.create') }}">Add inventory <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
         <hr/>
@@ -41,7 +41,7 @@
                 <p>Integrate your Etsy or Shopify to your account</p>
             </div>
             <div class='col-lg-4'>
-                    <a class='btn btn__custom--primary--outline float-right btn-block' href='/'>Connect channel <i class="fas fa-arrow-right"></i></a>
+                    <a class='btn btn__custom--primary--outline float-lg-right' href='/'>Connect channel <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
