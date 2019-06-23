@@ -1,7 +1,4 @@
-import os
-import bcrypt
-
-from flask import Flask
+from flask import Flask, render_template
 from flask_mail import Mail
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
@@ -15,6 +12,14 @@ marshmallow = Marshmallow()
 cors = CORS()
 jwtmanager = JWTManager()
 login_manager = LoginManager()
+
+
+def error_404_page(error):
+    return render_template('error/404.html'), 404
+
+
+def error_500_page(error):
+    return render_template('error/500.html'), 500
 
 
 def create_app(config: str):
@@ -43,6 +48,9 @@ def create_app(config: str):
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+    app.register_error_handler(404, error_404_page)
+    app.register_error_handler(500, error_500_page)
 
     from .views.auth import auth_bp
     from .views.home import home_bp
