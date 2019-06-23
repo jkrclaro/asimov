@@ -1,6 +1,3 @@
-import json
-import logging
-
 from flask import Blueprint, render_template, current_app, redirect, url_for
 from flask_login import current_user
 

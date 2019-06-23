@@ -23,6 +23,10 @@
     font-weight: 700;
 }
 
+.hero__page {
+    min-height: 50vh;
+}
+
 .header__title {
     font-family: 'Open Sans';
     font-weight: 700;
