@@ -7,7 +7,7 @@
     <div class='col-lg-8'>
         <div class='card'>
             <div class='card-body'>
-                <h3 class='text-center mb-5'>Create an inventory</h3>
+                <h3 class='text-center mb-5'>Upload inventory</h3>
                 {% from "shared/_create.html" import render_field %}
                 <form method=post>
                     {{ form.csrf_token }}
@@ -18,7 +18,7 @@
                     {{ render_field(form.attributes) }}
                     {{ render_field(form.active) }}
                     {{ render_field(form.product_id) }}
-                    <button type='submit' class='btn btn__custom--primary--outline float-lg-left'>Cancel</button>
+                    <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
                     <button type='submit' class='btn btn__custom--primary float-lg-right'>Save inventory</button>
                 </form>
             </div>

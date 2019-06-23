@@ -4,7 +4,8 @@ from wtforms.validators import (
     Email,
     InputRequired,
     EqualTo,
-    Length
+    Length,
+    Regexp
 )
 from wtforms.fields.html5 import EmailField
 
@@ -21,14 +22,25 @@ class SignupForm(FlaskForm):
         'Password',
         validators=[
             InputRequired(message='Please enter a password.'),
-            Length(min=8, message='Your password must be at least 8 characters.'),
+            Length(
+                min=8,
+                message='Your password must be at least 8 characters.'
+            ),
             EqualTo(
                 'confirm_password',
                 message='Re-enter your password confirmation so it matches your password.'
             )
         ]
     )
-    name = StringField('Full name')
+    name = StringField(
+        'Full name',
+        validators=[
+            Regexp(
+                regex=r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*",
+                message='Please enter a valid name.'
+            )
+        ]
+    )
     confirm_password = PasswordField('Confirm password')
 
 
