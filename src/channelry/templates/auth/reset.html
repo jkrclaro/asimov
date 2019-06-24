@@ -9,9 +9,9 @@
         <div class='col-lg-4'>
             <div class='card'>
                 <div class='card-body'>
-                    <h5 class='text-center mb-3 mt-3'>Reset your password</h5>
+                    <h5 class='font__custom--title text-center mb-3 mt-3'>Reset your password</h5>
                     {% if form %}
-                        <p class='text-center'>Enter a new password to reset the password on your account</p>
+                        <p class='font__custom--text text-center'>Enter a new password to reset the password on your account</p>
                         {% from "auth/_formhelpers.html" import render_field %}
                         <form method=post>
                             {{ form.csrf_token }}
@@ -21,7 +21,7 @@
                             <button type='submit' class='btn btn-block btn__custom--primary'>Set a new password</button>
                         </form>
                     {% else %}
-                        <p class='text-center'>Reset token is invalid or expired.</p>
+                        <p class='font__custom--text text-center'>Reset token is invalid or expired.</p>
                     {% endif %}
                 </div>
             </div>

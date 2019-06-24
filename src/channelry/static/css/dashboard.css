@@ -1,9 +1,10 @@
 html, body {
     background-color: #F8F8F8;
+    font-family: 'Open Sans',
 }
 
 .bg__nav--theme {
-    background-color: #6B43FA;
+    background-color: #0061FF;
 }
 
 .header__logo--inverse {
@@ -21,7 +22,7 @@ html, body {
     color: #505050;
 }
 .dropdown-item {
-    color: #6B43FA;
+    color: #0061FF;
 }
 .dropdown-item:active, .dropdown-item:hover {
     background-color: #F8F8F8;

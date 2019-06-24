@@ -1,3 +1,7 @@
+html, body {
+    font-family: 'Open Sans';
+}
+
 .paragraph__text--medium {
     font-size: 24px;
 }
@@ -30,7 +34,7 @@
     min-height: 50vh;
 }
 
-.font__custom--family {
+.{
     font-family: 'Open Sans';
 }
 .font__custom--title {
@@ -52,10 +56,10 @@
     font-weight: 700;
 }
 .header__logo--theme {
-    color: #6B43FA !important;
+    color: #0061FF !important;
 }
 .header__logo--theme:hover, .header__logo--theme:focus {
-    color: #6B43FA;
+    color: #0061FF;
 }
 .header__logo--black {
     color: #111;
@@ -73,9 +77,9 @@
 }
 
 .btn__custom--primary {
-    background-color: #6B43FA;
+    background-color: #0061FF;
     color: #FFF;
-    border-bottom: 2px solid #5032BA;
+    border-bottom: 2px solid #0058E6;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -83,21 +87,21 @@
     transition: 0.3s;
 }
 .btn__custom--primary--outline {
-    border-color: #6B43FA;
-    color: #6B43FA;
+    border-color: #0061FF;
+    color: #0061FF;
     border: 2px solid;
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
-    color: #6B43FA;
+    color: #0061FF;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #6B43FA;
+    color: #0061FF;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #6B43FA;
+    color: #0061FF;
 }
 .btn__custom--secondary--outline {
     border-color: #FFF;
@@ -140,7 +144,7 @@
     color: #28A745;
 }
 .active a {
-    color: #6B43FA !important;
+    color: #0061FF !important;
 }
 
 /* HTML */
@@ -158,17 +162,16 @@ input[type="checkbox"], label {
     color: #111 !important;
 }
 .form-control:focus, .form-control:active {
-    color: #767EAD !important;
+    color: #4F566B !important;
 }
 .form-control__custom {
     height: 100px !important;
 }
 .btn {
     font-family: 'Open Sans';
-    letter-spacing: 0.5px;
     border-radius: 10px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
