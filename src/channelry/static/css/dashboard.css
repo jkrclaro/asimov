@@ -16,6 +16,11 @@ html, body {
     cursor: pointer;
     color: #7C7C7C;
 }
+.nav__usercircle--theme {
+    font-size: 30px;
+    cursor: pointer;
+    color: #0061FF;
+}
 .nav__usercircle--light:active, .nav__usercircle--light:hover, .nav__usercircle--light::selection {
     font-size: 30px;
     cursor: pointer;
