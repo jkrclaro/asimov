@@ -31,7 +31,7 @@ def email_edit(form_email: EditEmailForm) -> None:
             if user:
                 flash('Email is already taken', 'danger')
             else:
-                helper.email_change_email(current_user, new_email)
+                helper.email_change_email(new_email)
                 message = "To finish changing your email address, " \
                     f"we've sent an email to {old_email}. " \
                           "Simply click the button in the email to " \
@@ -79,7 +79,7 @@ def password_edit(form_password: EditPasswordForm) -> None:
             hashed_password = current_user.password_hash(new_password)
             current_user.password = hashed_password.decode('utf8')
             db.session.commit(current_user)
-            helper.email_change_password_success(current_user)
+            helper.email_change_password_success()
             flash('Successfully changed your Channelry password', 'success')
         else:
             flash('Wrong old password.', 'danger')

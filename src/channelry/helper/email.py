@@ -1,11 +1,17 @@
 from flask import render_template, url_for
-
-from src.channelry.models import db
+from flask_login import current_user
 
 from src import token, mailgun
 
 
-def send_email(email: str, template: str, subject: str, endpoint: str = '', name: str = '', data: dict = {}) -> None:
+def send_email(
+        email: str,
+        template: str,
+        subject: str,
+        endpoint: str = '',
+        name: str = '',
+        data: dict = {}
+) -> None:
     """Send email in to_emails with expiring links via tokens.
 
     :param email: Email to be sent to.
@@ -27,18 +33,14 @@ def send_email(email: str, template: str, subject: str, endpoint: str = '', name
     mailgun.send_email(subject, to_emails, html=html)
 
 
-def email_confirmation(user: db.Model) -> None:
-    """Send email after successfully signing up.
-
-    :param user: SQLAlchemy model of user
-    :return: None
-    """
-    email = user.email
+def email_confirmation() -> None:
+    """Direct user where to confirm their email address"""
+    email = current_user.email
     endpoint = 'auth.confirm'
     template = 'email/confirm.html'
     subject = 'Confirm Channelry your email address!'
-    name = user.name
-    data = {'email': user.email}
+    name = current_user.name
+    data = {'email': current_user.email}
     context = {
         'endpoint': endpoint,
         'data': data,
@@ -47,84 +49,67 @@ def email_confirmation(user: db.Model) -> None:
     send_email(email, template, subject, **context)
 
 
-def email_change_email_success(user: db.Model, old_email: str) -> None:
-    """Send email after successfully confirming changing of email.
+def email_change_email_success(old_email: str) -> None:
+    """Notify old email of user that the email has been changed.
 
-    :param user: SQLAlchemy model of user
     :param old_email: Old email of user.
-    :param new_email: New email of user.
-    :return: None
     """
     template = 'email/change_email_success.html'
     subject = 'Your Channelry email address has changed'
-    name = user.name
-    data = {'new_email': user.email}
+    name = current_user.name
+    data = {'new_email': current_user.email}
     send_email(old_email, template, subject, name=name, data=data)
 
 
-def email_reset(user: db.Model):
-    """Send email when user needs to reset their password.
-
-    :param user: SQLAlchemy model of user
-    :return: None
-    """
-    email = user.email
+def email_reset() -> None:
+    """Direct user where to reset their password."""
+    email = current_user.email
     endpoint = 'auth.reset'
-    email_template = 'email/reset.html'
+    template = 'email/reset.html'
     subject = 'Reset your Channelry password'
     data = {'email': email}
     context = {
         'endpoint': endpoint,
         'data': data
     }
-    send_email(email, email_template, subject, **context)
+    send_email(email, template, subject, **context)
 
 
-def email_reset_success(user: db.Model):
-    """Send email when user successfully changes their password during reset.
-
-    :param user: SQLAlchemy model of user
-    :return: None
-    """
-    email = user.email
+def email_reset_success() -> None:
+    """Notify user that the password was successfully changed via reset."""
+    email = current_user.email
     endpoint = 'auth.forgot'
     email_template = 'email/reset_success.html'
     subject = 'Your Channelry password has been changed'
     send_email(email, email_template, subject, endpoint=endpoint)
 
 
-def email_change_password_success(user: db.Model) -> None:
-    """Send email after successfully changing password of user.
-
-    :param user: SQLAlchemy model of user
-    :return: None
-    """
+def email_change_password_success() -> None:
+    """Notify user that the password was successfully changed via profile."""
     endpoint = 'auth.reset'
     template = 'email/change_password_success.html'
-    subject = 'Your Stripe password has been changed'
+    subject = 'Your Channelry password has been changed'
     context = {
         'endpoint': endpoint,
-        'name': user.name
+        'name': current_user.name
     }
-    send_email(user, template, subject, **context)
+    send_email(current_user, template, subject, **context)
 
 
-def email_change_email(user: db.Model, new_email: str):
-    """Send email that a new email for user has been requested for change.
+def email_change_email(new_email: str) -> None:
+    """Direct user where to change email.
 
-    :param user: SQLAlchemy model of user
     :param new_email: New email of user that is yet to be confirmed.
-    :return: None
     """
     endpoint = 'auth.confirm'
     template = 'email/change_email.html'
     subject = 'Confirm your new Channelry email address!'
-    old_email = user.email
+    old_email = current_user.email
     data = {
         'old_email': old_email,
         'new_email': new_email
     }
-    name = user.name
+    name = current_user.name
     context = {
         'endpoint': endpoint,
         'name': name,
