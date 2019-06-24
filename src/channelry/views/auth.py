@@ -21,6 +21,7 @@ from src.channelry.forms.auth import (
     ResetPasswordForm,
     ConfirmForm
 )
+from src.channelry import helper_email
 
 
 auth_bp = Blueprint('auth', __name__)
@@ -52,35 +53,6 @@ def validate_recaptcha():
     return recaptcha
 
 
-def send_email(
-    email: str,
-    email_template: str,
-    subject: str,
-    endpoint: str = '',
-    name: str = '',
-    data: dict = {}
-) -> None:
-    """Send email in to_emails with expiring links via tokens.
-
-    :param email: Email to be sent to.
-    :param email_template: Email template to be rendered.
-    :param subject: Title of email.
-    :param endpoint: Primary URI for recipient to go to.
-    :param name: Name of recipient.
-    :param data: Data to be encrypted.
-    """
-    if endpoint:
-        if data:
-            url = url_for(endpoint, t=[token.encrypt(data)], _external=True)
-        else:
-            url = url_for(endpoint, _external=True)
-        data['url'] = url
-
-    html = render_template(email_template, **data)
-    to_emails = [f'{name} {email}' if name else email]
-    mailgun.send_email(subject, to_emails, html=html)
-
-
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -98,11 +70,7 @@ def signup():
         else:
             db.session.add(user)
             db.session.commit()
-            endpoint = 'auth.confirm'
-            email_template = 'email/confirm.html'
-            subject = 'Confirm Channelry your email address!'
-            data = {'email': email}
-            send_email(email, email_template, subject, endpoint=endpoint, data=data, name=name)
+            helper_email.send_confirm(user)
             login_user(user)
             return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
@@ -182,11 +150,7 @@ def confirm():
 
             if new_email and old_email:
                 flash('Your email address have been confirmed', 'success')
-                email_template = 'email/change_email_success.html'
-                subject = 'Your Channelry email address has changed'
-                name = user.name
-                data = {'new_email': new_email}
-                send_email(email, email_template, subject, name=name, data=data)
+                helper_email.send_change_email_success(user, email)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
@@ -195,13 +159,7 @@ def confirm():
 @login_required
 def resend():
     # TODO: Should be a post
-    email = current_user.email
-    endpoint = 'auth.confirm'
-    email_template = 'email/confirm.html'
-    subject = 'Confirm Channelry your email address!'
-    name = current_user.name
-    data = {'email': email}
-    send_email(email, email_template, subject, endpoint=endpoint, name=name, data=data)
+    helper_email.send_resend_confirmation(current_user)
     session['resend'] = True
     return redirect(url_for('dashboard.index'))
 
@@ -215,15 +173,7 @@ def forgot():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
         if user:
-            endpoint = 'auth.reset'
-            email_template = 'email/reset.html'
-            subject = 'Reset your Channelry password'
-            data = {'email': email}
-            context = {
-                'endpoint': endpoint,
-                'data': data
-            }
-            send_email(email, email_template, subject, **context)
+            helper_email.send_reset(user)
         else:
             # Do not send email if it does not exist in database
             return render_template(template)
@@ -252,10 +202,7 @@ def reset():
         user.password = password_hashed.decode('utf8')
         db.session.add(user)
         db.session.commit()
-        endpoint = 'auth.forgot'
-        email_template = 'email/reset_success.html'
-        subject = 'Your Channelry password has been changed'
-        send_email(email, email_template, subject, endpoint=endpoint)
+        helper_email.send_reset_success(user)
         login_user(user)
         flash('Successfully changed your Channelry password', 'success')
 
