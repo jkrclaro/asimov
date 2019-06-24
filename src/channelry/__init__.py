@@ -1,16 +1,8 @@
-from flask import Flask, render_template
-from flask_mail import Mail
-from flask_marshmallow import Marshmallow
-from flask_cors import CORS
-from flask_jwt_extended import JWTManager
+from flask import Flask, render_template, current_app
 from flask_login import LoginManager
 
 from src import mailgun, token, google_recaptcha
 
-mail = Mail()
-marshmallow = Marshmallow()
-cors = CORS()
-jwtmanager = JWTManager()
 login_manager = LoginManager()
 
 
@@ -26,10 +18,6 @@ def create_app(config: str):
     app = Flask(__name__)
     app.config.from_object(f'src.channelry.config.{config.title()}')
 
-    mail.init_app(app)
-    marshmallow.init_app(app)
-    cors.init_app(app)
-    jwtmanager.init_app(app)
     login_manager.login_view = 'auth.login'
     login_manager.login_message_category = 'danger'
     login_manager.init_app(app)
@@ -46,11 +34,15 @@ def create_app(config: str):
     from .models.auth import User
 
     @login_manager.user_loader
-    def load_user(user_id):
+    def load_user(user_id: int):
         return User.query.get(int(user_id))
 
     app.register_error_handler(404, error_404_page)
     app.register_error_handler(500, error_500_page)
+
+    @app.before_first_request
+    def create_db():
+        db.create_all(app=app)
 
     from .views.auth import auth_bp
     from .views.home import home_bp

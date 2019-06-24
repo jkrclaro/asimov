@@ -8,10 +8,9 @@ from flask import (
     session,
     flash
 )
-from marshmallow import ValidationError
 from flask_login import login_user, logout_user, login_required, current_user
 
-from src import mailgun, token, google_recaptcha
+from src import token, google_recaptcha
 from src.channelry.models import db
 from src.channelry.models.auth import User
 from src.channelry.forms.auth import (
@@ -21,21 +20,10 @@ from src.channelry.forms.auth import (
     ResetPasswordForm,
     ConfirmForm
 )
-from src.channelry import helper_email
+from src.channelry import helper
 
 
 auth_bp = Blueprint('auth', __name__)
-
-
-def jsonify_validation_error(validation_error: ValidationError):
-    """Convert validation error messages to be parsable in the Dashboard.
-
-    :param validation_error: ValidationError raised by marshmallow
-    """
-    message = {}
-    for field, reason in validation_error.messages.items():
-        message[field] = reason
-    return message
 
 
 def validate_recaptcha():
@@ -70,7 +58,7 @@ def signup():
         else:
             db.session.add(user)
             db.session.commit()
-            helper_email.send_confirm(user)
+            helper.email_confirmation()
             login_user(user)
             return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
@@ -149,8 +137,10 @@ def confirm():
             login_user(user)
 
             if new_email and old_email:
+                helper.email_change_email_success(email)
+                flash('Your email address was successfully changed', 'success')
+            else:
                 flash('Your email address have been confirmed', 'success')
-                helper_email.send_change_email_success(user, email)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
@@ -159,7 +149,7 @@ def confirm():
 @login_required
 def resend():
     # TODO: Should be a post
-    helper_email.send_resend_confirmation(current_user)
+    helper.email_confirmation()
     session['resend'] = True
     return redirect(url_for('dashboard.index'))
 
@@ -173,7 +163,7 @@ def forgot():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
         if user:
-            helper_email.send_reset(user)
+            helper.email_reset()
         return render_template(template)
     return render_template(template, form=form, **recaptcha)
 
@@ -200,7 +190,7 @@ def reset():
         user.password = password_hashed.decode('utf8')
         db.session.add(user)
         db.session.commit()
-        helper_email.send_reset_success(user)
+        helper.email_reset_success()
         login_user(user)
         flash('Successfully changed your Channelry password', 'success')
         return redirect(url_for('dashboard.index'))
