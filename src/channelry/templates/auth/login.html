@@ -10,7 +10,7 @@
             <div class='card'>
                 <div class='card-body'>
                     <h5 class='font__custom--title text-center mb-3 mt-3'>Welcome back!</h5>
-                    {% from "auth/_formhelpers.html" import render_field %}
+                    {% from "form/vertical.html" import render_field %}
                     <form method=post>
                         {{ form.csrf_token }}
                         {{ render_field(form.email) }}

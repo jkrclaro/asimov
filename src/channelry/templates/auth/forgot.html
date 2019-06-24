@@ -12,7 +12,7 @@
                     <h5 class='font__custom--title text-center mb-3 mt-3'>Forgot your password</h5>
                     {% if form %}
                         <p class="font__custom--text">Enter your email address below and we'll send you a link to reset your password.</p>
-                        {% from "auth/_formhelpers.html" import render_field %}
+                        {% from "form/vertical.html" import render_field %}
                         <form method=post>
                             {{ form.csrf_token }}
                             {{ render_field(form.email) }}

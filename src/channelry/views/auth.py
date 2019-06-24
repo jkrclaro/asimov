@@ -213,12 +213,20 @@ def forgot():
     form = ForgotPasswordForm()
     if form.validate_on_submit() and not recaptcha.get('recaptcha'):
         email = form.email.data
-        endpoint = 'auth.reset'
-        email_template = 'email/reset.html'
-        subject = 'Reset your Channelry password'
-        data = {'email': email}
-        send_email(email, email_template, subject, endpoint=endpoint, data=data)
-        return render_template(template)
+        user = User.query.filter_by(email=email).first()
+        if user:
+            endpoint = 'auth.reset'
+            email_template = 'email/reset.html'
+            subject = 'Reset your Channelry password'
+            data = {'email': email}
+            context = {
+                'endpoint': endpoint,
+                'data': data
+            }
+            send_email(email, email_template, subject, **context)
+        else:
+            # Do not send email if it does not exist in database
+            return render_template(template)
     return render_template(template, form=form, **recaptcha)
 
 
@@ -240,17 +248,16 @@ def reset():
 
         email = token_decrypted.get('email')
         user = User.query.filter_by(email=email).first()
-        user.password = user.password_hash(form.password.data).decode('utf8')
+        password_hashed = user.password_hash(form.password.data)
+        user.password = password_hashed.decode('utf8')
         db.session.add(user)
         db.session.commit()
-
         endpoint = 'auth.forgot'
         email_template = 'email/reset_success.html'
         subject = 'Your Channelry password has been changed'
         send_email(email, email_template, subject, endpoint=endpoint)
         login_user(user)
         flash('Successfully changed your Channelry password', 'success')
-        return redirect(url_for('dashboard.index'))
 
     return render_template(template, form=form, reset_token=reset_token)
 
