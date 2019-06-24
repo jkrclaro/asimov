@@ -15,5 +15,5 @@ services:
           - database
         image: channelry
         volumes:
-          - .:/app
+          - .:/server
         command: ["app:app", "-b", "0.0.0.0:5000", "--reload"]

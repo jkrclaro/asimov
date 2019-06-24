@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, current_app
 from flask_login import LoginManager
 
 from src import mailgun, token, google_recaptcha
