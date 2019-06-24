@@ -146,6 +146,9 @@ html, body {
 .text__feedback--success {
     color: #28A745;
 }
+.text__feedback__icon--big {
+    font-size: 48px !important;
+}
 .active a {
     color: #0061FF !important;
 }

@@ -45,7 +45,7 @@ class EditNameForm(FlaskForm):
         'Name',
         validators=[
             Regexp(
-                regex=r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*",
+                regex=r"^(?![\s.]+$)[a-zA-Z\s.]*$",
                 message='Please enter a valid name.'
             )
         ]

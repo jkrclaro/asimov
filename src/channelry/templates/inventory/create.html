@@ -8,7 +8,7 @@
         <div class='card'>
             <div class='card-body'>
                 <h3 class='font__custom--title text-center mb-5'>Upload inventory</h3>
-                {% from "form/vertical.html" import render_field %}
+                {% from "form/horizontal.html" import render_field %}
                 <form method=post>
                     {{ form.csrf_token }}
                     {{ render_field(form.name) }}

@@ -36,7 +36,7 @@ def email_edit(form_email: EditEmailForm) -> bool:
                 flash(message, 'success')
 
     if form_email.errors:
-        flash('Failed to change email. Please try again.', 'danger')
+        flash(form_email.email.errors[0], 'danger')
 
     return False
 
@@ -61,7 +61,7 @@ def name_edit(form_name: EditNameForm) -> bool:
             flash('Please provide a valid name', 'danger')
 
     if form_name.errors:
-        flash('Failed to change name. Please try again.', 'danger')
+        flash(form_name.name.errors[0], 'danger')
 
     return edited
 
@@ -92,7 +92,8 @@ def password_edit(form_password: EditPasswordForm) -> bool:
                 flash('Wrong old password.', 'danger')
 
     if form_password.errors:
-        flash('Failed to change password. Please try again.', 'danger')
+        flash(form_password.old_password.errors[0], 'danger')
+        flash(form_password.new_password.errors[0], 'danger')
 
     return edited
 

@@ -1,16 +1,36 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        <div class='container container__padding--top'>
-            {% for category, message in messages %}
-                <div class='text__feedback--{{ category }} text-center'>
-                    {% if category == 'danger' %}
-                        <i class="fas fa-exclamation-triangle"></i>
-                    {% elif category == 'success' %}
-                        <i class="fas fa-check-circle"></i>
-                    {% endif %}
-                    {{ message }}
+        <div class="modal" id="message-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container container__padding--top">
+                            <div class="text-center">
+                                {% for category, message in messages %}
+                                    <div class='text__feedback--{{ category }} text-center'>
+                                        {% if category == 'danger' %}
+                                             <i class="fas fa-exclamation-triangle text__feedback--{{ category }} text__feedback__icon--big mb-3"></i>
+                                             <p>{{ message }}</p>
+                                        {% elif category == 'success' %}
+                                             <i class="fas fa-check-circle text__feedback--{{ category }} text__feedback__icon--big mb-3"></i>
+                                             <p>{{ message }}</p>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn__custom--primary" data-dismiss="modal">Cancel</button>
+                    </div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(window).on('load',function(){
+                $('#message-modal').modal('show');
+            });
+        </script>
     {% endif %}
 {% endwith %}
