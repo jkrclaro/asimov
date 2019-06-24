@@ -134,6 +134,7 @@ html, body {
     text-transform: uppercase;
 }
 .label__text--small {
+    color: #33334F;
     font-size: 13px;
 }
 .text__feedback {

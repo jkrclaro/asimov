@@ -27,7 +27,7 @@ class EditPasswordForm(FlaskForm):
             )
         ]
     )
-    submit = SubmitField('Save')
+    submit = SubmitField('Change password')
 
 
 class EditEmailForm(FlaskForm):
@@ -37,7 +37,7 @@ class EditEmailForm(FlaskForm):
             Email(message='Please enter a valid email.')
         ]
     )
-    submit = SubmitField('Save')
+    submit = SubmitField('Change email')
 
 
 class EditNameForm(FlaskForm):
@@ -50,4 +50,4 @@ class EditNameForm(FlaskForm):
             )
         ]
     )
-    submit = SubmitField('Save')
+    submit = SubmitField('Change name')
