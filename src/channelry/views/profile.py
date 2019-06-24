@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, current_app
+from flask import Blueprint, render_template, flash
 from flask_login import login_required, current_user
 
 from src.channelry.models import db
@@ -11,6 +11,12 @@ from src.channelry import helper_email
 profile_bp = Blueprint('profile', __name__)
 
 
+def flash_errors(errors):
+    for error_index, error in enumerate(errors[:]):
+        flash(error, 'danger')
+        errors.remove(error)
+
+
 def email_edit(form_email: EditEmailForm) -> bool:
     """Send change of email to user.
 
@@ -21,12 +27,12 @@ def email_edit(form_email: EditEmailForm) -> bool:
         old_email = current_user.email
         new_email = form_email.email.data
         if new_email == old_email:
-            errors = ['New email should be different from old email']
-            form_email.email.errors = errors
+            form_email.email.errors = []
+            flash('New email should be different from old email', 'danger')
         else:
             user = User.query.filter_by(email=new_email).first()
             if user:
-                form_email.email.errors = ['Email is already taken']
+                flash('Email is already taken', 'danger')
             else:
                 helper_email.send_change_email(current_user, new_email)
                 message = "To finish changing your email address, " \
@@ -36,7 +42,7 @@ def email_edit(form_email: EditEmailForm) -> bool:
                 flash(message, 'success')
 
     if form_email.errors:
-        flash(form_email.email.errors[0], 'danger')
+        flash_errors(form_email.email.errors)
 
     return False
 
@@ -51,8 +57,8 @@ def name_edit(form_name: EditNameForm) -> bool:
     if form_name.validate_on_submit():
         new_name = form_name.name.data
         if new_name == current_user.name:
-            errors = ['New name should be different from old name']
-            form_name.name.errors = errors
+            form_name.name.errors = []
+            flash('New name should be different from old name', 'danger')
         elif new_name:
             current_user.name = new_name
             flash('Successfully changed your Channelry name.', 'success')
@@ -61,7 +67,7 @@ def name_edit(form_name: EditNameForm) -> bool:
             flash('Please provide a valid name', 'danger')
 
     if form_name.errors:
-        flash(form_name.name.errors[0], 'danger')
+        flash_errors(form_name.name.errors)
 
     return edited
 
@@ -92,8 +98,8 @@ def password_edit(form_password: EditPasswordForm) -> bool:
                 flash('Wrong old password.', 'danger')
 
     if form_password.errors:
-        flash(form_password.old_password.errors[0], 'danger')
-        flash(form_password.new_password.errors[0], 'danger')
+        flash_errors(form_password.old_password.errors)
+        flash_errors(form_password.new_password.errors)
 
     return edited
 
