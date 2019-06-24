@@ -16,8 +16,7 @@
                         <form method=post>
                             {{ form.csrf_token }}
                             {{ render_field(form.email) }}
-                            {% if site_key %}<div class="g-recaptcha mb-3" data-sitekey="{{ site_key }}"></div>{% endif %}
-                            {% if recaptcha %}<div class='text__feedback text__feedback--danger mb-3'><i class="fas fa-exclamation-triangle"></i> {{ recaptcha }} </div>{% endif %}
+                            {% include "shared/recaptcha.html" %}
                             <button type='submit' class='btn btn-block btn__custom--primary'>Send reset password email</button>
                         </form>
                     {% else %}

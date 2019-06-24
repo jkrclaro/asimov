@@ -91,7 +91,7 @@ def signup():
         email = form.email.data
         password = form.password.data
         name = form.name.data
-        user = User(email, password, name)
+        user = User(email, password, name=name)
         user_exist = User.query.filter_by(email=email).first()
         if user_exist:
             form.email.errors = ['Email is already taken']
@@ -237,13 +237,17 @@ def reset():
         token_decrypted = token.decrypt(reset_token_in_form)
         if not token_decrypted:
             render_template(template)
+
         email = token_decrypted.get('email')
+        user = User.query.filter_by(email=email).first()
+        user.password = user.password_hash(form.password.data).decode('utf8')
+        db.session.add(user)
+        db.session.commit()
+
         endpoint = 'auth.forgot'
         email_template = 'email/reset_success.html'
         subject = 'Your Channelry password has been changed'
-        send_email(email, endpoint, email_template, subject)
-
-        user = User.query.filter_by(email=email).first()
+        send_email(email, email_template, subject, endpoint=endpoint)
         login_user(user)
         flash('Successfully changed your Channelry password', 'success')
         return redirect(url_for('dashboard.index'))

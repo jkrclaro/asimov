@@ -135,7 +135,7 @@ html, body {
     font-size: 13px;
 }
 .text__feedback {
-    font-size:80%;
+    font-size: 80%;
 }
 .text__feedback--danger {
     color: #DC3545;
