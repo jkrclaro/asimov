@@ -34,7 +34,7 @@ html, body {
     min-height: 50vh;
 }
 
-.{
+.font__custom--family {
     font-family: 'Open Sans';
 }
 .font__custom--title {
@@ -170,7 +170,6 @@ input[type="checkbox"], label {
 .btn {
     font-family: 'Open Sans';
     border-radius: 10px;
-    text-transform: uppercase;
     font-weight: 400;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {

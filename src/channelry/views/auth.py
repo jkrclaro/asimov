@@ -163,10 +163,11 @@ def confirm():
 
     old_email = token_decrypted.get('old_email')
     new_email = token_decrypted.get('new_email')
-    email = old_email if old_email else token_decrypted.get('email')
-    form.email.data = new_email
+    email = token_decrypted.get('email')
+    form.email.data = new_email if new_email else email
     if form.validate_on_submit():
         password = form.password.data
+        email = old_email if old_email else email
         user = User.query.filter_by(email=email).first()
         current_app.logger.debug(user)
         if not user or not user.password_match(password):
@@ -178,12 +179,14 @@ def confirm():
             db.session.add(user)
             db.session.commit()
             login_user(user)
-            flash('Your email address have been confirmed', 'success')
-            email_template = 'email/change_email_success.html'
-            subject = 'Your Channelry email address has changed'
-            name = user.name
-            data = {'new_email': new_email}
-            send_email(email, email_template, subject, name=name, data=data)
+
+            if new_email and old_email:
+                flash('Your email address have been confirmed', 'success')
+                email_template = 'email/change_email_success.html'
+                subject = 'Your Channelry email address has changed'
+                name = user.name
+                data = {'new_email': new_email}
+                send_email(email, email_template, subject, name=name, data=data)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
