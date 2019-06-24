@@ -14,11 +14,11 @@ from src.channelry import helper
 profile_bp = Blueprint('profile', __name__)
 
 
-def email_edit(form_email: EditEmailForm) -> bool:
+def email_edit(form_email: EditEmailForm) -> None:
     """Send change of email to user.
 
-    :param form_email: Instance of Flask-WTF form for editing email
-    :return: Always false because new email needs to be confirmed first
+    :param form_email: For for editing email
+    :return: None
     """
     if form_email.validate_on_submit():
         old_email = current_user.email
@@ -40,16 +40,13 @@ def email_edit(form_email: EditEmailForm) -> bool:
     else:
         helper.flash_errors(form_email.email.errors)
 
-    return False
 
-
-def name_edit(form_name: EditNameForm) -> bool:
+def name_edit(form_name: EditNameForm) -> None:
     """Assign new name to current user if valid
 
-    :param form_name: Instance of Flask-WTF form for editing name
-    :return: False if no new name has been assigned
+    :param form_name: Form for editing name
+    :return: None
     """
-    edited = False
     old_name = current_user.name
 
     if form_name.validate_on_submit():
@@ -58,23 +55,20 @@ def name_edit(form_name: EditNameForm) -> bool:
             flash('New name should be different from old name', 'danger')
         elif new_name:
             current_user.name = new_name
+            db.session.commit(current_user)
             flash('Successfully changed your Channelry name.', 'success')
-            edited = True
         else:
             flash('Please provide a valid name', 'danger')
     else:
         helper.flash_errors(form_name.name.errors)
 
-    return edited
 
-
-def password_edit(form_password: EditPasswordForm) -> bool:
+def password_edit(form_password: EditPasswordForm) -> None:
     """Send change of password to old email of user and assign new password.
 
-    :param form_password: Instance of Flask-WTF form for editing name
-    :return: False if no new password has been assigned
+    :param form_password: Form for editing password
+    :return: None
     """
-    edited = False
     if form_password.validate_on_submit():
         old_password = form_password.old_password.data
         new_password = form_password.new_password.data
@@ -84,16 +78,14 @@ def password_edit(form_password: EditPasswordForm) -> bool:
         elif current_user.password_match(old_password):
             hashed_password = current_user.password_hash(new_password)
             current_user.password = hashed_password.decode('utf8')
+            db.session.commit(current_user)
             helper.email_change_password_success(current_user)
-            edited = True
             flash('Successfully changed your Channelry password', 'success')
         else:
             flash('Wrong old password.', 'danger')
     else:
         helper.flash_errors(form_password.old_password.errors)
         helper.flash_errors(form_password.new_password.errors)
-
-    return edited
 
 
 @profile_bp.route('/profile', methods=['GET', 'POST'])
@@ -104,22 +96,17 @@ def index():
     form_password = EditPasswordForm(prefix='form_password')
 
     if form_email.submit.data:
-        edited = email_edit(form_email)
+        email_edit(form_email)
     elif form_name.submit.data:
-        edited = name_edit(form_name)
+        name_edit(form_name)
     elif form_password.submit.data:
-        edited = password_edit(form_password)
-    else:
-        edited = False
-
-    if edited:
-        db.session.add(current_user)
-        db.session.commit()
+        password_edit(form_password)
 
     form_email.email.data = None
     form_name.name.data = None
     form_password.old_password.data = None
     form_password.new_password.data = None
+
     forms = {
         'form_email': form_email,
         'form_name': form_name,
