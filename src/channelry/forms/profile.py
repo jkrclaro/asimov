@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import (
     Email,
     Regexp,
@@ -8,25 +8,7 @@ from wtforms.validators import (
 from wtforms.fields.html5 import EmailField
 
 
-class ChangeProfileForm(FlaskForm):
-    email = EmailField(
-        'Email',
-        validators=[
-            Email(message='Please enter a valid email.')
-        ]
-    )
-    name = StringField(
-        'Full name',
-        validators=[
-            Regexp(
-                regex=r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*",
-                message='Please enter a valid name.'
-            )
-        ]
-    )
-
-
-class ChangePasswordForm(FlaskForm):
+class EditPasswordForm(FlaskForm):
     old_password = PasswordField(
         'Old password',
         validators=[
@@ -45,3 +27,27 @@ class ChangePasswordForm(FlaskForm):
             )
         ]
     )
+    submit = SubmitField('Save')
+
+
+class EditEmailForm(FlaskForm):
+    email = EmailField(
+        'Email',
+        validators=[
+            Email(message='Please enter a valid email.')
+        ]
+    )
+    submit = SubmitField('Save')
+
+
+class EditNameForm(FlaskForm):
+    name = StringField(
+        'Name',
+        validators=[
+            Regexp(
+                regex=r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*",
+                message='Please enter a valid name.'
+            )
+        ]
+    )
+    submit = SubmitField('Save')
