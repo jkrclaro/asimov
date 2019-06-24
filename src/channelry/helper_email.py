@@ -5,7 +5,14 @@ from src.channelry.models import db
 from src import token, mailgun
 
 
-def send_email(email: str, template: str, subject: str, endpoint: str = '', name: str = '', data: dict = {}) -> None:
+def send_email(
+        email: str,
+        template: str,
+        subject: str,
+        endpoint: str = '',
+        name: str = '',
+        data: dict = {}
+) -> None:
     """Send email in to_emails with expiring links via tokens.
 
     :param email: Email to be sent to.
