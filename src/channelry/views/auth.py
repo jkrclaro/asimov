@@ -8,10 +8,9 @@ from flask import (
     session,
     flash
 )
-from marshmallow import ValidationError
 from flask_login import login_user, logout_user, login_required, current_user
 
-from src import mailgun, token, google_recaptcha
+from src import token, google_recaptcha
 from src.channelry.models import db
 from src.channelry.models.auth import User
 from src.channelry.forms.auth import (
@@ -25,17 +24,6 @@ from src.channelry import helper_email
 
 
 auth_bp = Blueprint('auth', __name__)
-
-
-def jsonify_validation_error(validation_error: ValidationError):
-    """Convert validation error messages to be parsable in the Dashboard.
-
-    :param validation_error: ValidationError raised by marshmallow
-    """
-    message = {}
-    for field, reason in validation_error.messages.items():
-        message[field] = reason
-    return message
 
 
 def validate_recaptcha():
