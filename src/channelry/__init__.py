@@ -40,6 +40,10 @@ def create_app(config: str):
     app.register_error_handler(404, error_404_page)
     app.register_error_handler(500, error_500_page)
 
+    @app.before_first_request
+    def create_db():
+        db.create_all(app=app)
+
     from .views.auth import auth_bp
     from .views.home import home_bp
     from .views.dashboard import dashboard_bp
