@@ -8,8 +8,8 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item {% if request.url_rule.rule == '/dashboard' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.index') }}"><i class='fas fa-home'></i> Home</a></li>
                 <li class="nav-item {% if request.blueprint == 'inventory' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('inventory.retrieve') }}"><i class='fas fa-dolly'></i> Inventory</a></li>
-                <li class="nav-item {% if request.url_rule.rule == '/listings' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.listings') }}"><i class='fas fa-list'></i> Listings</a></li>
                 <li class="nav-item {% if request.url_rule.rule == '/channels' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.channels') }}"><i class='fas fa-store'></i> Channels</a></li>
+                <li class="nav-item {% if request.url_rule.rule == '/listings' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.listings') }}"><i class='fas fa-list'></i> Listings</a></li>
                 <li class="nav-item {% if request.blueprint == 'account' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('account.index') }}"><i class='fas fa-cog'></i> Settings</a></li>
             </ul>
             <ul class="navbar-nav">
@@ -18,6 +18,7 @@
                         <i class="fas fa-user-circle nav__usercircle--{% if request.blueprint == 'profile'%}theme{%else%}light{%endif%}" data-toggle="dropdown"></i>
                         <div class="dropdown-menu dropdown-menu-right">
                             <h6 class="dropdown-header">{{ current_user.name }}</h6>
+                            <h6 class="dropdown-header">{{ current_user.email }}</h6>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item " href="{{ url_for('profile.index') }}">Profile</a>
                             <a class="dropdown-item " href="{{ url_for('auth.logout') }}">Logout</a>

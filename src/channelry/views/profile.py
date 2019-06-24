@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, flash, current_app
 from flask_login import login_required, current_user
 
 from src.channelry.models import db
+from src.channelry.models.auth import User
 from src.channelry.forms.profile import ChangeProfileForm, ChangePasswordForm
 from src.channelry.views.auth import send_email
 
@@ -44,19 +45,33 @@ def index():
             flash('Wrong old password.', 'danger')
     elif change_profile_form.validate_on_submit():
         edited = False
-        if change_profile_form.email.data != current_user.email:
+        if change_profile_form.email.data == current_user.email:
+            change_profile_form.email.errors = [
+                'New email should be different from old email'
+            ]
+        else:
             email = change_profile_form.email.data
-            endpoint = 'auth.confirm'
-            email_template = 'email/change_email.html'
-            subject = 'Confirm your new Channelry email address!'
-            data = {
-                'old_email': current_user.email,
-                'new_email': email
-            }
-            name = current_user.name
-            send_email(email, email_template, subject, endpoint=endpoint, name=name, data=data)
-            flash(f"To finish changing your email address, we've sent an email to {email}. Simply click the link in the email to complete the process.", 'success')
-        elif change_profile_form.name.data != current_user.name:
+            user = User.query.filter_by(email=email).first()
+            if user:
+                change_profile_form.email.errors = [
+                    'Email is already taken'
+                ]
+            else:
+                endpoint = 'auth.confirm'
+                email_template = 'email/change_email.html'
+                subject = 'Confirm your new Channelry email address!'
+                data = {
+                    'old_email': current_user.email,
+                    'new_email': email
+                }
+                name = current_user.name
+                send_email(email, email_template, subject, endpoint=endpoint, name=name, data=data)
+                flash(f"To finish changing your email address, we've sent an email to {email}. Simply click the link in the email to complete the process.", 'success')
+        if change_profile_form.name.data == current_user.name:
+            change_profile_form.name.errors = [
+                'New name should be different from old name'
+            ]
+        else:
             current_user.name = change_profile_form.name.data
             flash('Successfully changed your Channelry name.', 'success')
             edited = True

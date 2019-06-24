@@ -93,6 +93,8 @@ html, body {
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
     color: #0061FF;
+    box-shadow: 0 4px 8px 0 #D3D3D3;
+    transition: 0.3s;
 }
 
 .btn__custom--secondary {
