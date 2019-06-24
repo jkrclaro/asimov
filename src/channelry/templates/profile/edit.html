@@ -1,0 +1,29 @@
+{% extends 'dashboard/layout.html' %}
+
+{% block content %}
+
+
+<div class='row'>
+    <div class='col-lg-2'></div>
+    <div class='col-lg-8'>
+        <div class='card'>
+            <div class='card-body'>
+                <h3 class='font__custom--title ml-3 mt-3 mb-5'>Profile</h3>
+                {% from "shared/_create.html" import render_field %}
+                <form method=post>
+                    {{ form.csrf_token }}
+                    {{ render_field(form.email) }}
+                    {{ render_field(form.name) }}
+                    <div class="float-lg-right">
+                        <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline'>Cancel</a>
+                        <button type='submit' class='btn btn__custom--primary'>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-2'></div>
+</div>
+
+
+{% endblock %}

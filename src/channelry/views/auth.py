@@ -54,27 +54,29 @@ def validate_recaptcha():
 
 def send_email(
     email: str,
-    endpoint: str,
     email_template: str,
     subject: str,
-    with_token: bool=True,
-    name: str='',
+    endpoint: str = '',
+    name: str = '',
+    data: dict = {}
 ) -> None:
     """Send email in to_emails with expiring links via tokens.
 
     :param email: Email to be sent to.
-    :param endpoint: Primary URI for recipient to go to.
     :param email_template: Email template to be rendered.
     :param subject: Title of email.
-    :param with_token: Add a token query string in endpoint.
+    :param endpoint: Primary URI for recipient to go to.
     :param name: Name of recipient.
+    :param data: Data to be encrypted.
     """
-    if with_token:
-        url = url_for(endpoint, t=[token.encrypt(email)], _external=True)
-    else:
-        url = url_for(endpoint, _external=True)
+    if endpoint:
+        if data:
+            url = url_for(endpoint, t=[token.encrypt(data)], _external=True)
+        else:
+            url = url_for(endpoint, _external=True)
+        data['url'] = url
 
-    html = render_template(email_template, url=url, email=email)
+    html = render_template(email_template, **data)
     to_emails = [f'{name} {email}' if name else email]
     mailgun.send_email(subject, to_emails, html=html)
 
@@ -99,7 +101,8 @@ def signup():
             endpoint = 'auth.confirm'
             email_template = 'email/confirm.html'
             subject = 'Confirm Channelry your email address!'
-            send_email(email, endpoint, email_template, subject, name=name)
+            data = {'email': email}
+            send_email(email, email_template, subject, endpoint=endpoint, data=data, name=name)
             login_user(user)
             return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
@@ -152,25 +155,35 @@ def confirm():
     logout_user()
     template = 'auth/confirm.html'
     confirm_token = request.args.get('t', '')
-    email_from_token = token.decrypt(confirm_token)
-    if not confirm_token and not email_from_token:
+    token_decrypted = token.decrypt(confirm_token)
+    if not confirm_token and not token_decrypted:
         return render_template(template)
 
     form = ConfirmForm()
 
-    email = email_from_token
-    form.email.data = email
+    old_email = token_decrypted.get('old_email')
+    new_email = token_decrypted.get('new_email')
+    email = old_email if old_email else token_decrypted.get('email')
+    form.email.data = new_email
     if form.validate_on_submit():
-        email = form.email.data
         password = form.password.data
         user = User.query.filter_by(email=email).first()
-        if not user.password_match(password):
+        current_app.logger.debug(user)
+        if not user or not user.password_match(password):
             form.password.errors = ['Wrong password.']
         else:
+            if new_email:
+                user.email = new_email
             user.is_confirmed = True
             db.session.add(user)
             db.session.commit()
             login_user(user)
+            flash('Your email address have been confirmed', 'success')
+            email_template = 'email/change_email_success.html'
+            subject = 'Your Channelry email address has changed'
+            name = user.name
+            data = {'new_email': new_email}
+            send_email(email, email_template, subject, name=name, data=data)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
@@ -184,7 +197,8 @@ def resend():
     email_template = 'email/confirm.html'
     subject = 'Confirm Channelry your email address!'
     name = current_user.name
-    send_email(email, endpoint, email_template, subject, name=name)
+    data = {'email': email}
+    send_email(email, email_template, subject, endpoint=endpoint, name=name, data=data)
     session['resend'] = True
     return redirect(url_for('dashboard.index'))
 
@@ -199,7 +213,8 @@ def forgot():
         endpoint = 'auth.reset'
         email_template = 'email/reset.html'
         subject = 'Reset your Channelry password'
-        send_email(email, endpoint, email_template, subject)
+        data = {'email': email}
+        send_email(email, email_template, subject, endpoint=endpoint, data=data)
         return render_template(template)
     return render_template(template, form=form, **recaptcha)
 
@@ -216,13 +231,14 @@ def reset():
     form = ResetPasswordForm()
     if form.validate_on_submit():
         reset_token_in_form = request.form.get('reset_token')
-        email = token.decrypt(reset_token_in_form)
-        if not email:
+        token_decrypted = token.decrypt(reset_token_in_form)
+        if not token_decrypted:
             render_template(template)
+        email = token_decrypted.get('email')
         endpoint = 'auth.forgot'
         email_template = 'email/reset_success.html'
         subject = 'Your Channelry password has been changed'
-        send_email(email, endpoint, email_template, subject, with_token=False)
+        send_email(email, endpoint, email_template, subject)
 
         user = User.query.filter_by(email=email).first()
         login_user(user)

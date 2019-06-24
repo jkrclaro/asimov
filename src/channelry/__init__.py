@@ -56,9 +56,11 @@ def create_app(config: str):
     from .views.home import home_bp
     from .views.dashboard import dashboard_bp
     from .views.inventory import inventory_bp
+    from .views.profile import profile_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(inventory_bp)
+    app.register_blueprint(profile_bp)
 
     return app
