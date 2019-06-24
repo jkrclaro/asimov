@@ -174,9 +174,7 @@ def forgot():
         user = User.query.filter_by(email=email).first()
         if user:
             helper_email.send_reset(user)
-        else:
-            # Do not send email if it does not exist in database
-            return render_template(template)
+        return render_template(template)
     return render_template(template, form=form, **recaptcha)
 
 
@@ -205,6 +203,7 @@ def reset():
         helper_email.send_reset_success(user)
         login_user(user)
         flash('Successfully changed your Channelry password', 'success')
+        return redirect(url_for('dashboard.index'))
 
     return render_template(template, form=form, reset_token=reset_token)
 
