@@ -33,7 +33,7 @@ def email_edit(form_email: EditEmailForm) -> None:
             else:
                 helper.email_change_email(new_email)
                 message = "To finish changing your email address, " \
-                    f"we've sent an email to {old_email}. " \
+                    f"we've sent an email to {new_email}. " \
                           "Simply click the button in the email to " \
                           "complete the process."
                 flash(message, 'success')

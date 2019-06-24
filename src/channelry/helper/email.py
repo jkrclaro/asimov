@@ -115,4 +115,4 @@ def email_change_email(new_email: str) -> None:
         'name': name,
         'data': data
     }
-    send_email(old_email, template, subject, **context)
+    send_email(new_email, template, subject, **context)

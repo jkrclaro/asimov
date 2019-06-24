@@ -138,7 +138,9 @@ def confirm():
 
             if new_email and old_email:
                 helper.email_change_email_success(email)
-            flash('Your email address have been confirmed', 'success')
+                flash('Your email address was successfully changed', 'success')
+            else:
+                flash('Your email address have been confirmed', 'success')
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
