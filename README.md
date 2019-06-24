@@ -3,7 +3,7 @@
 # Channelry
 [![CircleCI](https://circleci.com/gh/jkrclaro/channelry/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/channelry/tree/master)
 
-Multi-channel selling software for Etsy and Shopify.
+Multichannel inventory management for small businesses.
 
 # General Information
 - Website: https://www.channelry.com
