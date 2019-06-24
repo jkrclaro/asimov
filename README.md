@@ -1,4 +1,4 @@
-<a href='https://github.com/jkrclaro/channelry'><img src='https://github.com/jkrclaro/channelry/blob/master/static/img/channelry.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/channelry'><img src='https://github.com/jkrclaro/channelry/blob/master/src/channelry/static/img/channelry.png' align='right' width='200' height='160' /></a>
 
 # Channelry
 [![CircleCI](https://circleci.com/gh/jkrclaro/channelry/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/channelry/tree/master)
