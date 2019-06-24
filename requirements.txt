@@ -16,8 +16,6 @@ idna==2.8
 itsdangerous==1.1.0
 jinja2==2.10.1
 markupsafe==1.1.0
-marshmallow-sqlalchemy==0.15.0
-marshmallow==2.18.0
 oauthlib==3.0.1
 psycopg2-binary==2.8.3
 pycparser==2.19
