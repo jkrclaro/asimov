@@ -20,7 +20,7 @@ from src.channelry.forms.auth import (
     ResetPasswordForm,
     ConfirmForm
 )
-from src.channelry import helper_email
+from src.channelry import helper
 
 
 auth_bp = Blueprint('auth', __name__)
@@ -58,7 +58,7 @@ def signup():
         else:
             db.session.add(user)
             db.session.commit()
-            helper_email.send_confirm(user)
+            helper.email_confirmation(user)
             login_user(user)
             return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
@@ -138,7 +138,7 @@ def confirm():
 
             if new_email and old_email:
                 flash('Your email address have been confirmed', 'success')
-                helper_email.send_change_email_success(user, email)
+                helper.email_change_email_success(user, email)
             return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
@@ -147,7 +147,7 @@ def confirm():
 @login_required
 def resend():
     # TODO: Should be a post
-    helper_email.send_resend_confirmation(current_user)
+    helper.email_confirmation(current_user)
     session['resend'] = True
     return redirect(url_for('dashboard.index'))
 
@@ -161,7 +161,7 @@ def forgot():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
         if user:
-            helper_email.send_reset(user)
+            helper.email_reset(user)
         return render_template(template)
     return render_template(template, form=form, **recaptcha)
 
@@ -188,7 +188,7 @@ def reset():
         user.password = password_hashed.decode('utf8')
         db.session.add(user)
         db.session.commit()
-        helper_email.send_reset_success(user)
+        helper.email_reset_success(user)
         login_user(user)
         flash('Successfully changed your Channelry password', 'success')
         return redirect(url_for('dashboard.index'))

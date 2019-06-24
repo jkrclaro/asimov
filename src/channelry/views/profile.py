@@ -4,17 +4,14 @@ from flask_login import login_required, current_user
 from src.channelry.models import db
 from src.channelry.models.auth import User
 from src.channelry.forms.profile import (
-    EditEmailForm, EditNameForm, EditPasswordForm
+    EditEmailForm,
+    EditNameForm,
+    EditPasswordForm
 )
-from src.channelry import helper_email
+from src.channelry import helper
+
 
 profile_bp = Blueprint('profile', __name__)
-
-
-def flash_errors(errors):
-    for error_index, error in enumerate(errors[:]):
-        flash(error, 'danger')
-        errors.remove(error)
 
 
 def email_edit(form_email: EditEmailForm) -> bool:
@@ -34,7 +31,7 @@ def email_edit(form_email: EditEmailForm) -> bool:
             if user:
                 flash('Email is already taken', 'danger')
             else:
-                helper_email.send_change_email(current_user, new_email)
+                helper.email_change_email(current_user, new_email)
                 message = "To finish changing your email address, " \
                     f"we've sent an email to {old_email}. " \
                           "Simply click the button in the email to " \
@@ -42,7 +39,7 @@ def email_edit(form_email: EditEmailForm) -> bool:
                 flash(message, 'success')
 
     if form_email.errors:
-        flash_errors(form_email.email.errors)
+        helper.flash_errors(form_email.email.errors)
 
     return False
 
@@ -67,7 +64,7 @@ def name_edit(form_name: EditNameForm) -> bool:
             flash('Please provide a valid name', 'danger')
 
     if form_name.errors:
-        flash_errors(form_name.name.errors)
+        helper.flash_errors(form_name.name.errors)
 
     return edited
 
@@ -90,7 +87,7 @@ def password_edit(form_password: EditPasswordForm) -> bool:
             elif current_user.password_match(old_password):
                 hashed_password = current_user.password_hash(new_password)
                 current_user.password = hashed_password.decode('utf8')
-                helper_email.send_change_password_success(current_user)
+                helper.email_change_password_success(current_user)
                 edited = True
                 msg = 'Successfully changed your Channelry password'
                 flash(msg, 'success')
@@ -98,8 +95,8 @@ def password_edit(form_password: EditPasswordForm) -> bool:
                 flash('Wrong old password.', 'danger')
 
     if form_password.errors:
-        flash_errors(form_password.old_password.errors)
-        flash_errors(form_password.new_password.errors)
+        helper.flash_errors(form_password.old_password.errors)
+        helper.flash_errors(form_password.new_password.errors)
 
     return edited
 
@@ -124,6 +121,10 @@ def index():
         db.session.add(current_user)
         db.session.commit()
 
+    form_email.email.data = None
+    form_name.name.data = None
+    form_password.old_password.data = None
+    form_password.new_password.data = None
     forms = {
         'form_email': form_email,
         'form_name': form_name,
