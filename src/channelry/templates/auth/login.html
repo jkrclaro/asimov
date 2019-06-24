@@ -10,13 +10,12 @@
             <div class='card'>
                 <div class='card-body'>
                     <h5 class='font__custom--title text-center mb-3 mt-3'>Welcome back!</h5>
-                    {% from "auth/_formhelpers.html" import render_field %}
+                    {% from "form/vertical.html" import render_field %}
                     <form method=post>
                         {{ form.csrf_token }}
                         {{ render_field(form.email) }}
                         {{ render_field(form.password) }}
-                        {% if site_key %}<div class="g-recaptcha mb-3" data-sitekey="{{ site_key }}"></div>{% endif %}
-                        {% if recaptcha %}<div class='text__feedback mb-3'><i class="fas fa-exclamation-triangle"></i> {{ recaptcha }} </div>{% endif %}
+                        {% include "shared/recaptcha.html" %}
                         <div class='mb-3'>
                             <span class='text-left'>{{ form.remember }} <label for='remember'><small class='text-muted'>Remember me</small></label></span>
                             <span class='float-right'><small><a class='anchor__custom--default' href="{{ url_for('auth.forgot') }}">Forgot your password?</a></small></span>

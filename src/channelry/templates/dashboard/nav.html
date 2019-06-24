@@ -8,8 +8,8 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item {% if request.url_rule.rule == '/dashboard' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.index') }}"><i class='fas fa-home'></i> Home</a></li>
                 <li class="nav-item {% if request.blueprint == 'inventory' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('inventory.retrieve') }}"><i class='fas fa-dolly'></i> Inventory</a></li>
-                <li class="nav-item {% if request.url_rule.rule == '/listings' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.listings') }}"><i class='fas fa-list'></i> Listings</a></li>
                 <li class="nav-item {% if request.url_rule.rule == '/channels' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.channels') }}"><i class='fas fa-store'></i> Channels</a></li>
+                <li class="nav-item {% if request.url_rule.rule == '/listings' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.listings') }}"><i class='fas fa-list'></i> Listings</a></li>
                 <li class="nav-item {% if request.blueprint == 'account' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('account.index') }}"><i class='fas fa-cog'></i> Settings</a></li>
             </ul>
             <ul class="navbar-nav">

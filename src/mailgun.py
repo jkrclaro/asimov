@@ -1,5 +1,3 @@
-import sys
-
 import requests
 
 api_key = ''
@@ -8,7 +6,7 @@ region = 'eu'
 from_email = f'Channelry <mailgun@{domain}>'
 
 
-def send_email(subject: str, to_emails: list, text: str='', html: str=''):
+def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):
     """Send an email.
 
     :param subject: Title of email.  

@@ -93,6 +93,8 @@ html, body {
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
     color: #0061FF;
+    box-shadow: 0 4px 8px 0 #D3D3D3;
+    transition: 0.3s;
 }
 
 .btn__custom--secondary {
@@ -132,10 +134,11 @@ html, body {
     text-transform: uppercase;
 }
 .label__text--small {
+    color: #33334F;
     font-size: 13px;
 }
 .text__feedback {
-    font-size:80%;
+    font-size: 80%;
 }
 .text__feedback--danger {
     color: #DC3545;
