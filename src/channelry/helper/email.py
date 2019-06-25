@@ -2,6 +2,7 @@ from flask import render_template, url_for
 from flask_login import current_user
 
 from src import token, mailgun
+from src.channelry.models import db
 
 
 def send_email(
@@ -34,7 +35,7 @@ def send_email(
 
 
 def email_confirmation() -> None:
-    """Direct user where to confirm their email address"""
+    """Direct user where to confirm their email address."""
     email = current_user.email
     endpoint = 'auth.confirm'
     template = 'email/confirm.html'

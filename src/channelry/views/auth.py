@@ -58,8 +58,8 @@ def signup():
         else:
             db.session.add(user)
             db.session.commit()
-            helper.email_confirmation()
             login_user(user)
+            helper.email_confirmation()
             return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
 
