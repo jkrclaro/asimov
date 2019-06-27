@@ -7,13 +7,13 @@
     <div class='col-lg-8'>
         <div class='card'>
             <div class='card-body'>
-                <h3 class='font__custom--title text-center mb-5'>Upload inventory</h3>
-                {% from "form/horizontal.html" import render_field %}
+                <h3 class='font__custom--title text-center mb-5'>Add a product</h3>
+                {% from "form/vertical.html" import render_field %}
                 <form method=post>
                     {{ form.csrf_token }}
                     {{ render_field(form.title) }}
                     <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
-                    <button type='submit' class='btn btn__custom--primary float-lg-right'>Save inventory</button>
+                    <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
                 </form>
             </div>
         </div>

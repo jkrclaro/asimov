@@ -28,6 +28,7 @@ psycopg2-binary = "*"
 requests-oauthlib = "*"
 flask-login = "*"
 flask-wtf = "*"
+flask-migrate = "*"
 
 [dev-packages]
 pytest = "*"

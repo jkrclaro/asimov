@@ -3,6 +3,7 @@ import hashlib
 
 import bcrypt
 import flask_login
+from sqlalchemy.orm import relationship
 
 from . import db
 
@@ -16,12 +17,9 @@ class User(db.Model, flask_login.UserMixin):
     name = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
+    accounts = db.relationship('Account')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(
-        db.DateTime,
-        server_default=db.func.now(),
-        server_onupdate=db.func.now()
-    )
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     def __init__(
         self,
@@ -70,3 +68,13 @@ class User(db.Model, flask_login.UserMixin):
         password_encoded = password.encode('utf8')
         password_sha256 = hashlib.sha256(password_encoded).digest()
         return base64.b64encode(password_sha256)
+
+
+class Account(db.Model):
+    __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String(255))
+    products = db.relationship('Product')
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
