@@ -39,13 +39,23 @@
             </div>
         {% endif %}
         <hr/>
-        <h6 class="font__custom--title">Upload an inventory</h6>
+        <h6 class="font__custom--title">Upload product</h6>
         <div class='row font__custom--text'>
             <div class='col-lg-8 my-auto'>
-                <p>Simply create an inventory using our easy to use form</p>
+                <p>Easily upload your product using our simple form</p>
             </div>
             <div class='col-lg-4'>
-                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.create') }}">Add inventory</a>
+                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.create') }}">Upload product</a>
+            </div>
+        </div>
+        <hr/>
+        <h6 class="font__custom--title">Manage inventory</h6>
+        <div class='row font__custom--text'>
+            <div class='col-lg-8 my-auto'>
+                <p>Edit or modify the number of inventory for your product across many channels all in one</p>
+            </div>
+            <div class='col-lg-4'>
+                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.create') }}">Manage inventory</a>
             </div>
         </div>
         <hr/>
