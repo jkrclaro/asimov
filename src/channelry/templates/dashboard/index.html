@@ -25,6 +25,20 @@
             </div>
         {% endif %}
         <hr/>
+        {% if session['etsy_oauth_token'] %}
+            <span class='font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Channel connected</span>
+        {% else %}
+            <h6 class="font__custom--title">Connect a sales channel</h6>
+            <div class='row font__custom--text'>
+                <div class='col-lg-8 my-auto'>
+                    <p>Integrate your Etsy shop to your account</p>
+                </div>
+                <div class='col-lg-4'>
+                    <a class='btn btn__custom--primary float-lg-right' href="{{ url_for('channel.connect_etsy') }}">Connect channel</a>
+                </div>
+            </div>
+        {% endif %}
+        <hr/>
         <h6 class="font__custom--title">Upload an inventory</h6>
         <div class='row font__custom--text'>
             <div class='col-lg-8 my-auto'>
@@ -32,16 +46,6 @@
             </div>
             <div class='col-lg-4'>
                 <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.create') }}">Add inventory</a>
-            </div>
-        </div>
-        <hr/>
-        <h6 class="font__custom--title">Connect a sales channel</h6>
-        <div class='row font__custom--text'>
-            <div class='col-lg-8 my-auto'>
-                <p>Integrate your Etsy shop to your account</p>
-            </div>
-            <div class='col-lg-4'>
-                <a class='btn btn__custom--primary--outline float-lg-right' href='/'>Connect channel</a>
             </div>
         </div>
         <hr/>

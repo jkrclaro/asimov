@@ -12,8 +12,8 @@ inventory_bp = Blueprint('inventory', __name__)
 
 @inventory_bp.route('/inventory')
 @login_required
-def retrieve():
-    return render_template('inventory/retrieve.html')
+def index():
+    return render_template('inventory/index.html')
 
 
 @inventory_bp.route('/inventory/create')

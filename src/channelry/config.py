@@ -17,6 +17,9 @@ class Config(object):
     RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '6Le8KqoUAAAAABQKibcESXgH4taQ-zy3uRHoI7GO')
     RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '6Le8KqoUAAAAAOeqk8SSFp_4MLAIVc3SZEsuxJbN')
 
+    ETSY_API_KEY = os.environ.get('ETSY_API_KEY', 'tqoskxgptlbrc4l9nocxbks9')
+    ETSY_SECRET_KEY = os.environ.get('ETSY_SECRET_KEY', '9nu3b32vl7')
+
 
 class Production(Config):
     RECAPTCHA_USE_SSL = True
