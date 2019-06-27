@@ -17,7 +17,7 @@ class User(db.Model, flask_login.UserMixin):
     name = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
-    accounts = db.relationship('Account')
+    accounts = db.relationship('Account', backref='user')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -26,8 +26,8 @@ class User(db.Model, flask_login.UserMixin):
         email: str,
         password: str,
         name: str = '',
-        is_confirmed: bool=False,
-        is_staff: bool=False
+        is_confirmed: bool = False,
+        is_staff: bool = False
     ):
         """SQLAlchemy model for User.
 
@@ -75,8 +75,7 @@ class Account(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(255))
-    user_id = db.Column(db.Integer, primary_key=True)
-    user = db.relationship('User', back_populates='accounts')
-    products = db.relationship('Product')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    products = db.relationship('Product', backref='accounts')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
