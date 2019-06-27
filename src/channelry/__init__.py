@@ -1,9 +1,11 @@
 from flask import Flask, render_template, current_app
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
 from src import mailgun, token, google_recaptcha, etsy
 
 login_manager = LoginManager()
+migrate = Migrate()
 
 
 def error_404_page(error):
@@ -32,6 +34,7 @@ def create_app(config: str):
 
     from .models import db
     db.init_app(app)
+    migrate.init_app(app, db)
 
     from .models.auth import User
 

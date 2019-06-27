@@ -10,7 +10,7 @@ class Config(object):
     PASSWORD_SALT = os.environ.get('PASSWORD_SALT', 'dev-password-salt')
 
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'postgresql://developer:12345@database:5432/postgres')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', 'postgresql://developer:12345@localhost:5432/postgres')
 
     MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY', 'key-747887c03c9d13477fe01a82f2ebcbdb')
 

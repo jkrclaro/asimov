@@ -71,10 +71,12 @@ class User(db.Model, flask_login.UserMixin):
 
 
 class Account(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'accounts'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, primary_key=True)
+    user = db.relationship('User', back_populates='accounts')
     products = db.relationship('Product')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
