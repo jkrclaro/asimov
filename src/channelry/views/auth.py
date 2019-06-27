@@ -102,7 +102,7 @@ def login():
 @auth_bp.route('/logout')
 def logout():
     logout_user()
-    session.pop('resend', None)
+    session.clear()
     return redirect(url_for('home.index'))
 
 

@@ -1,15 +1,16 @@
-{% extends 'home/layout.html' %}
+{% extends 'shared/layout.html' %}
 
 {% block content %}
 
 
-<div class="hero__page ">
+<div class="container container__padding">
     <h2 class="font__custom--title">Uh oh... Something went wrong!</h2>
     <p class="font__custom--text paragraph__text--medium">
         The server encountered an internal error and was unable to complete your request.
     </p>
     <p class="font__custom--text">
-        If the problem persists, please <a class="anchor__custom--default" href="mailto:john@channelry.com">report</a>
+        You can <a class="anchor__custom--default" href="{{ url_for('home.index') }}">return to your home page</a>, or
+        if the problem persists, please <a class="anchor__custom--default" href="mailto:john@channelry.com">report</a>
         your problem and mention this error message and the query that caused it.
     </p>
 </div>

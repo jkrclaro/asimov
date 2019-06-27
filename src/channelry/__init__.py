@@ -1,9 +1,11 @@
 from flask import Flask, render_template, current_app
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
-from src import mailgun, token, google_recaptcha
+from src import mailgun, token, google_recaptcha, etsy
 
 login_manager = LoginManager()
+migrate = Migrate()
 
 
 def error_404_page(error):
@@ -27,9 +29,12 @@ def create_app(config: str):
     token.secret_key = app.config.get('SECRET_KEY')
     google_recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
     google_recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')
+    etsy.api_key = app.config.get('ETSY_API_KEY')
+    etsy.secret_key = app.config.get('ETSY_SECRET_KEY')
 
     from .models import db
     db.init_app(app)
+    migrate.init_app(app, db)
 
     from .models.auth import User
 
@@ -50,11 +55,19 @@ def create_app(config: str):
     from .views.inventory import inventory_bp
     from .views.profile import profile_bp
     from .views.account import account_bp
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(home_bp)
-    app.register_blueprint(dashboard_bp)
-    app.register_blueprint(inventory_bp)
-    app.register_blueprint(profile_bp)
-    app.register_blueprint(account_bp)
+    from .views.channel import channel_bp
+    from .views.product import product_bp
+    blueprints = (
+        auth_bp,
+        home_bp,
+        dashboard_bp,
+        inventory_bp,
+        profile_bp,
+        account_bp,
+        channel_bp,
+        product_bp
+    )
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)
 
     return app
