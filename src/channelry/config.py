@@ -23,11 +23,13 @@ class Config(object):
 
 class Production(Config):
     RECAPTCHA_USE_SSL = True
+    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']
 
 
 class Development(Config):
     SEND_FILE_MAX_AGE_DEFAULT = 0
     UPLOADED_PHOTOS_DEST = media
+    SQLALCHEMY_DATABASE_URI = 'postgresql://developer:12345@database:5432/postgres'
 
 
 class Testing(Config):
