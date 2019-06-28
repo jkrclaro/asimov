@@ -12,7 +12,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 from src import token, google_recaptcha
 from src.channelry.models import db
-from src.channelry.models.auth import User
+from src.channelry.models.auth import User, Profile, Account
 from src.channelry.forms.auth import (
     SignupForm,
     LoginForm,
@@ -49,14 +49,19 @@ def signup():
     form = SignupForm()
     if form.validate_on_submit() and not recaptcha.get('recaptcha'):
         email = form.email.data
-        password = form.password.data
-        name = form.name.data
-        user = User(email, password, name=name)
         user_exist = User.query.filter_by(email=email).first()
         if user_exist:
             form.email.errors = ['Email is already taken']
         else:
+            password = form.password.data
+            name = form.name.data
+            user = User(email, password)
             db.session.add(user)
+            db.session.commit()
+            profile = Profile(user.id, name=name)
+            account = Account(user.id)
+            db.session.add(profile)
+            db.session.add(account)
             db.session.commit()
             login_user(user)
             helper.email_confirmation()

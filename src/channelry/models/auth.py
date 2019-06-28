@@ -2,22 +2,21 @@ import base64
 import hashlib
 
 import bcrypt
-import flask_login
-from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 from . import db
 
 
-class User(db.Model, flask_login.UserMixin):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
-    name = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
-    accounts = db.relationship('Account', backref='user')
+    account = db.relationship('Account', uselist=False, back_populates='user')
+    profile = db.relationship('Profile', uselist=False, back_populates='user')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -25,7 +24,6 @@ class User(db.Model, flask_login.UserMixin):
         self,
         email: str,
         password: str,
-        name: str = '',
         is_confirmed: bool = False,
         is_staff: bool = False
     ):
@@ -38,13 +36,21 @@ class User(db.Model, flask_login.UserMixin):
         """
         self.email = email.lower()
         self.password = self.password_hash(password).decode('utf8')
-        self.name = name
         self.is_confirmed = is_confirmed
         self.is_staff = is_staff
 
     def __repr__(self):
-        # TODO: Format this properly
-        return f"<User(email='{self.email}', name='{self.name}, is_confirmed='{self.is_confirmed}')"
+        return '<User(' \
+               'email={email},' \
+               'password={password},' \
+               'is_confirmed={is_confirmed},' \
+               'is_staff={is_staff}' \
+               ')>'.format(
+                email=self.email,
+                password=self.password,
+                is_confirmed=self.is_confirmed,
+                is_staff=self.is_staff
+                )
 
     def password_hash(self, password):
         return bcrypt.hashpw(self.base64_encode(password), bcrypt.gensalt())
@@ -70,12 +76,50 @@ class User(db.Model, flask_login.UserMixin):
         return base64.b64encode(password_sha256)
 
 
+class Profile(db.Model):
+    __tablename__ = 'profiles'
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', back_populates='profile')
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+
+    def __init__(self, user_id: int, name: str = ''):
+        self.user_id = user_id
+        self.name = name
+
+    def __repr__(self):
+        return '<Profile(' \
+               'name={name},' \
+               'user_id={user_id}' \
+               ')>'.format(
+                name=self.name,
+                user_id=self.user_id
+                )
+
+
 class Account(db.Model):
     __tablename__ = 'accounts'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', back_populates='account')
     products = db.relationship('Product', backref='accounts')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+
+    def __init__(self, user_id: int, address: str = ''):
+        self.user_id = user_id
+        self.address = address
+
+    def __repr__(self):
+        return '<Account(' \
+               'address={address},' \
+               'user_id={user_id}' \
+               ')>'.format(
+                address=self.address,
+                user_id=self.user_id
+                )

@@ -17,7 +17,7 @@
                     <div class="dropdown">
                         <i class="fas fa-user-circle nav__usercircle--{% if request.blueprint == 'profile'%}theme{%else%}light{%endif%}" data-toggle="dropdown"></i>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <h6 class="dropdown-header">{{ current_user.name }}</h6>
+                            <h6 class="dropdown-header">{{ current_user.profile.name }}</h6>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item " href="{{ url_for('profile.index') }}">Profile</a>
                             <a class="dropdown-item " href="{{ url_for('auth.logout') }}">Logout</a>

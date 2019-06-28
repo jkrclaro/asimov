@@ -3,10 +3,18 @@
 {% block content %}
 
 
-<div class='card'>
-    <div class='card-body'>
-        <h5 class='mb-3 mt-3'>Product</h5>
+<div class='container'>
+    <div class='card'>
+        <div class='card-body'>
+            <h5 class='font__custom--title mb-3 mt-3'>Your products</h5>
+            {% for product in products %}
+                <ul>
+                    <li>{{ product.title }}, {{ product.account_id }}</li>
+                </ul>
+            {% endfor %}
+        </div>
     </div>
 </div>
+
 
 {% endblock %}

@@ -1,11 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-
-
-category_choices = [
-    ('accessory', 'Accessory')
-]
+from wtforms.validators import InputRequired
 
 
 class CreateProductForm(FlaskForm):
-    title = StringField('Title', render_kw={'placeholder': 'Blue t-shirt'})
+    title = StringField(
+        'Title',
+        render_kw={'placeholder': 'Blue t-shirt'},
+        validators=[
+            InputRequired(message='Please enter a valid email.'),
+        ]
+    )

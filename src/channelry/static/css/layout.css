@@ -168,7 +168,22 @@ input[type="checkbox"], label {
     color: #111 !important;
 }
 .form-control:focus, .form-control:active {
-    color: #4F566B !important;
+    color: #808080;
+}
+.form-control::-webkit-input-placeholder {
+    color: lightgray;
+}
+.form-control:-moz-placeholder {
+    color: lightgray;
+}
+.form-control::-moz-placeholder {
+    color: lightgray;
+}
+.form-control:-ms-input-placeholder {
+    color: lightgray;
+}
+.form-control::-ms-input-placeholder {
+    color: lightgray;
 }
 .form-control__custom {
     height: 100px !important;

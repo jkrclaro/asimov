@@ -25,7 +25,7 @@
             </div>
         {% endif %}
         <hr/>
-        {% if session['etsy_oauth_token'] %}
+        {% if channel %}
             <span class='font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Channel connected</span>
         {% else %}
             <h6 class="font__custom--title">Connect a sales channel</h6>
@@ -39,17 +39,21 @@
             </div>
         {% endif %}
         <hr/>
-        <h6 class="font__custom--title">Add a product</h6>
-        <div class='row font__custom--text'>
-            <div class='col-lg-8 my-auto'>
-                <p>Get closer to your first sale by adding products, or import your existing product inventory.</p>
+        {% if product %}
+            <span class='font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Product added</span>
+        {% else %}
+            <h6 class="font__custom--title">Add a product</h6>
+            <div class='row font__custom--text'>
+                <div class='col-lg-8 my-auto'>
+                    <p>Get closer to your first sale by adding products, or import your existing product inventory.</p>
+                </div>
+                <div class='col-lg-4'>
+                    <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('product.create') }}">Add product</a>
+                </div>
             </div>
-            <div class='col-lg-4'>
-                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('product.create') }}">Add product</a>
-            </div>
-        </div>
+        {% endif %}
         <hr/>
-        <h6 class="font__custom--title">Sync your inventory</h6>
+        <h6 class="font__custom--title">Manage your inventory</h6>
         <div class='row font__custom--text'>
             <div class='col-lg-8 my-auto'>
                 <p>Enable inventory tracking for each of your products to see when stock levels are low.</p>
