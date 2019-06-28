@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
-    accounts = db.relationship('Account', backref='user')
+    account = db.relationship('Account', uselist=False, back_populates='user')
     profile = db.relationship('Profile', uselist=False, back_populates='user')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
@@ -84,6 +84,10 @@ class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', back_populates='account')
     products = db.relationship('Product', backref='accounts')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+
+    def __init__(self, user_id):
+        self.user_id = user_id
