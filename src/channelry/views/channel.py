@@ -10,6 +10,7 @@ from flask import (
 from flask_login import login_required
 
 from src import etsy
+from src.channelry.models.channel import Channel
 
 
 channel_bp = Blueprint('channel', __name__)

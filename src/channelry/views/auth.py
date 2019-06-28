@@ -71,7 +71,7 @@ def signup():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    if current_user.emis_authenticated:
+    if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
     recaptcha = {}
     if session.get('attempt'):

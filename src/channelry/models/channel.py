@@ -37,7 +37,7 @@ class Platform(db.Model):
     __tablename__ = 'platforms'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30))
+    name = db.Column(db.String(30), unique=True)
     channel = db.relationship('Channel', uselist=False, back_populates='platform')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())

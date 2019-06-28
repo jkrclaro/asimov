@@ -1,6 +1,7 @@
 from flask import Flask, render_template, current_app
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from sqlalchemy.exc import IntegrityError
 
 from src import mailgun, token, google_recaptcha, etsy
 
@@ -37,17 +38,19 @@ def create_app(config: str):
     migrate.init_app(app, db)
 
     from .models.auth import User
-
     @login_manager.user_loader
     def load_user(user_id: int):
         return User.query.get(int(user_id))
 
-    app.register_error_handler(404, error_404_page)
-    app.register_error_handler(500, error_500_page)
-
+    from .models.channel import Platform
     @app.before_first_request
     def create_db():
         db.create_all(app=app)
+        try:
+            db.session.add(Platform('etsy'))
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
 
     from .views.auth import auth_bp
     from .views.home import home_bp
@@ -69,5 +72,8 @@ def create_app(config: str):
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
+
+    app.register_error_handler(404, error_404_page)
+    app.register_error_handler(500, error_500_page)
 
     return app
