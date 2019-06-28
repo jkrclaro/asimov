@@ -7,10 +7,11 @@ from flask import (
     flash,
     render_template
 )
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from src import etsy
-from src.channelry.models.channel import Channel
+from src.channelry.models import db
+from src.channelry.models.channel import Channel, Platform
 
 
 channel_bp = Blueprint('channel', __name__)
@@ -28,8 +29,13 @@ def connect_etsy():
 @channel_bp.route('/etsy/cb')
 @login_required
 def connect_etsy_cb():
-    session['etsy_oauth_token'] = request.args.get('oauth_token')
-    session['etsy_oauth_verifier'] = request.args.get('oauth_verifier')
+    token = request.args.get('oauth_token')
+    secret = ''
+    platform_id = Platform.query.filter_by(name='etsy').first().id
+    account_id = current_user.account.id
+    channel = Channel(token, secret, platform_id, account_id)
+    db.session.add(channel)
+    db.session.commit()
     flash('Successfully connected your Etsy account', 'success')
     return redirect(url_for('dashboard.index'))
 

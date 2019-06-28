@@ -10,8 +10,16 @@ dashboard_bp = Blueprint('dashboard', __name__)
 @dashboard_bp.route('/dashboard')
 @login_required
 def index():
+    channel = Channel.\
+        query.\
+        filter_by(account_id=current_user.account.id).\
+        first()
     product = Product.\
         query.\
         filter_by(account_id=current_user.account.id).\
         first()
-    return render_template('dashboard/index.html', product=product)
+    context = {
+        'product': product,
+        'channel': channel
+    }
+    return render_template('dashboard/index.html', **context)
