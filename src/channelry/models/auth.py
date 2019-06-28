@@ -40,8 +40,17 @@ class User(db.Model, UserMixin):
         self.is_staff = is_staff
 
     def __repr__(self):
-        # TODO: Format this properly
-        return f"<User(email='{self.email}', name='{self.name}, is_confirmed='{self.is_confirmed}')"
+        return '<User(' \
+               'email={email},' \
+               'password={password},' \
+               'is_confirmed={is_confirmed},' \
+               'is_staff={is_staff}' \
+               ')>'.format(
+                email=self.email,
+                password=self.password,
+                is_confirmed=self.is_confirmed,
+                is_staff=self.is_staff
+                )
 
     def password_hash(self, password):
         return bcrypt.hashpw(self.base64_encode(password), bcrypt.gensalt())
@@ -77,6 +86,19 @@ class Profile(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
+    def __init__(self, user_id: int, name: str = ''):
+        self.user_id = user_id
+        self.name = name
+
+    def __repr__(self):
+        return '<Profile(' \
+               'name={name},' \
+               'user_id={user_id}' \
+               ')>'.format(
+                name=self.name,
+                user_id=self.user_id
+                )
+
 
 class Account(db.Model):
     __tablename__ = 'accounts'
@@ -89,5 +111,15 @@ class Account(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    def __init__(self, user_id):
+    def __init__(self, user_id: int, address: str = ''):
         self.user_id = user_id
+        self.address = address
+
+    def __repr__(self):
+        return '<Account(' \
+               'address={address},' \
+               'user_id={user_id}' \
+               ')>'.format(
+                address=self.address,
+                user_id=self.user_id
+                )

@@ -40,7 +40,7 @@ def email_confirmation() -> None:
     endpoint = 'auth.confirm'
     template = 'email/confirm.html'
     subject = 'Confirm Channelry your email address!'
-    name = current_user.name
+    name = current_user.profile.name
     data = {'email': current_user.email}
     context = {
         'endpoint': endpoint,
@@ -57,7 +57,7 @@ def email_change_email_success(old_email: str) -> None:
     """
     template = 'email/change_email_success.html'
     subject = 'Your Channelry email address has changed'
-    name = current_user.name
+    name = current_user.profile.name
     data = {'new_email': current_user.email}
     send_email(old_email, template, subject, name=name, data=data)
 
@@ -92,7 +92,7 @@ def email_change_password_success() -> None:
     subject = 'Your Channelry password has been changed'
     context = {
         'endpoint': endpoint,
-        'name': current_user.name
+        'name': current_user.profile.name
     }
     send_email(current_user, template, subject, **context)
 
@@ -110,7 +110,7 @@ def email_change_email(new_email: str) -> None:
         'old_email': old_email,
         'new_email': new_email
     }
-    name = current_user.name
+    name = current_user.profile.name
     context = {
         'endpoint': endpoint,
         'name': name,

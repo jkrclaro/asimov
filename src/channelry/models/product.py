@@ -15,4 +15,10 @@ class Product(db.Model):
         self.account_id = account_id
 
     def __repr__(self):
-        return f"<Product <title={self.title}, account_id={self.account_id}>"
+        return '<Product(' \
+               'id={id},' \
+               'title={title}' \
+               ')>'.format(
+                id=self.id,
+                title=self.title
+                )

@@ -47,14 +47,14 @@ def name_edit(form_name: EditNameForm) -> None:
     :param form_name: Form for editing name
     :return: None
     """
-    old_name = current_user.name
+    old_name = current_user.profile.name
 
     if form_name.validate_on_submit():
         new_name = form_name.name.data
         if new_name == old_name:
             flash('New name should be different from old name', 'danger')
         elif new_name:
-            current_user.name = new_name
+            current_user.profile.name = new_name
             db.session.commit(current_user)
             flash('Successfully changed your Channelry name.', 'success')
         else:
