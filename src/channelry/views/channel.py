@@ -20,15 +20,16 @@ channel_bp = Blueprint('channel', __name__)
 @channel_bp.route('/etsy/connect')
 @login_required
 def connect_etsy():
-    etsy.callback_uri = url_for('channel.connect_etsy_cb', _external=True)
+    etsy_callback = 'channel.connect_etsy_callback'
+    etsy.callback_uri = url_for(etsy_callback, _external=True)
     scopes = ('email_r', 'listings_r', 'listings_w', 'listings_d')
     login_url = etsy.authenticate(scopes)
     return redirect(login_url)
 
 
-@channel_bp.route('/etsy/cb')
+@channel_bp.route('/etsy/callback')
 @login_required
-def connect_etsy_cb():
+def connect_etsy_callback():
     token = request.args.get('oauth_token')
     secret = ''
     platform_id = Platform.query.filter_by(name='etsy').first().id
