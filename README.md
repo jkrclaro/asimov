@@ -6,7 +6,7 @@
 Multichannel inventory management for small businesses.
 
 # General Information
-- Website: https://www.camel.com
+- Website: https://www.trycamel.com
 - Source code: https://github.com/jkrclaro/startup
 - Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
 

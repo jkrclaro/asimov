@@ -1,8 +1,7 @@
-from flask import render_template, url_for
+from flask import render_template, url_for, abort
 from flask_login import current_user
 
 from src import token, mailgun
-from src.camel.models import db
 
 
 def send_email(
@@ -31,7 +30,9 @@ def send_email(
 
     html = render_template(template, **data)
     to_emails = [f'{name} {email}' if name else email]
-    mailgun.send_email(subject, to_emails, html=html)
+    response = mailgun.send_email(subject, to_emails, html=html)
+    if response.status_code != 200:
+        abort(500)
 
 
 def email_confirmation() -> None:
