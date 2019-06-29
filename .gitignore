@@ -135,7 +135,7 @@ staticfiles/
 !.elasticbeanstalk/*.global.yml
 
 # letsencrypt
-letsencrypt/letsencrypt/
+scripts/letsencrypt/letsencrypt/
 
 # PyCharm
 .idea/
