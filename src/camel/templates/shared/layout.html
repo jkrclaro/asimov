@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1 class='text-center mt-5'>
-        <a href='/' class='header__logo header__logo--theme header__title--big anchor__custom--notextdecoration'>camel</a>
+        <a href='/' class='header__logo header__logo--theme header__title--big anchor__custom--notextdecoration'>
+            <img src="{{ url_for('static', filename='img/camel.png') }}" class="img-fluid" width="50" height="50">
+        </a>
     </h1>
     {% include "shared/messages.html" %}
     {% block content %}{% endblock %}
