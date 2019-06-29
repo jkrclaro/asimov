@@ -14,8 +14,8 @@ class Config(object):
 
     MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY', 'key-747887c03c9d13477fe01a82f2ebcbdb')
 
-    RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '6Le8KqoUAAAAABQKibcESXgH4taQ-zy3uRHoI7GO')
-    RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '6Le8KqoUAAAAAOeqk8SSFp_4MLAIVc3SZEsuxJbN')
+    RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '6LcsS6sUAAAAAAizvn3pLskUbL02e5u2AWQ55Gff')
+    RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '6LcsS6sUAAAAABmbCKxQzCQj1QM3HU2QNQxs9hZq')
 
     ETSY_API_KEY = os.environ.get('ETSY_API_KEY', 'tqoskxgptlbrc4l9nocxbks9')
     ETSY_SECRET_KEY = os.environ.get('ETSY_SECRET_KEY', '9nu3b32vl7')
