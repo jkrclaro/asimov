@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: channelry-production
+    environment: camel-production
     group_suffix: null
 global:
-  application_name: channelry
+  application_name: camel
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

@@ -6,7 +6,7 @@ from src import etsy
 def main():
     etsy.api_key = os.environ.get('ETSY_API_KEY')
     etsy.secret_key = os.environ.get('ETSY_SECRET_KEY')
-    etsy.callback_uri = 'http://channelry.localhost:3000'
+    etsy.callback_uri = 'http://camel.localhost:3000'
 
     scopes = ('email_r', 'listings_r', 'listings_w', 'listings_d')
     response = etsy.request_token(scopes)

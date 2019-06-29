@@ -3,10 +3,10 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import find_dotenv, load_dotenv
 
-from src.channelry import create_app
-from src.channelry.models import db
+from src.camel import create_app
+from src.camel.models import db
 
-from src.channelry import create_app
+from src.camel import create_app
 
 
 def main():

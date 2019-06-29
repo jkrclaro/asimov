@@ -5,10 +5,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.channelry import create_app
-from src.channelry.models import db
-from src.channelry.models.auth import User, Account
-from src.channelry.models.product import Product
+from src.camel import create_app
+from src.camel.models import db
+from src.camel.models.auth import User, Account
+from src.camel.models.product import Product
 
 
 @pytest.fixture

@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.channelry import create_app
-from src.channelry.models import db
-from src.channelry.models.auth import User
+from src.camel import create_app
+from src.camel.models import db
+from src.camel.models.auth import User
 
 
 @pytest.fixture

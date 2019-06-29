@@ -8,7 +8,7 @@ def main():
     mailgun.api_key = os.environ.get('MAILGUN_API_KEY')
     token.api_key = '123'
     token.secret_key = '12345'
-    email = 'john@channelry.com'
+    email = 'john@cameldash.com'
 
     confirmation_token = token.generate(email)
     confirmation_url = f'http://dashboard.localhost:3000/email/confirm/{confirmation_token}'
@@ -16,10 +16,10 @@ def main():
 
     # Requires an app context to use flask.render_template so just use jinja2
     html = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('channelry/templates/')
+        loader=jinja2.FileSystemLoader('camel/templates/')
     ).get_template('account/email/confirm_email.html').render(context)
     mailgun.send_email(
-        'Confirm your Channelry email address!',
+        'Confirm your Camel email address!',
         [f'John {email}'],
         html=html,
     )

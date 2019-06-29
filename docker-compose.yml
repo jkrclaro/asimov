@@ -12,7 +12,7 @@ services:
          - "5000:5000"
         depends_on:
           - database
-        image: channelry
+        image: camel
         volumes:
           - .:/server
         command: ["app:app", "-b", "0.0.0.0:5000", "--reload", "--worker-tmp-dir", "/dev/shm", "--workers", "2", "--threads", "4", "--worker-class", "gthread"]
