@@ -8,7 +8,7 @@ def main():
     mailgun.api_key = os.environ.get('MAILGUN_API_KEY')
     token.api_key = '123'
     token.secret_key = '12345'
-    email = 'john@trycamel.com.com'
+    email = 'john@trycamel.com'
 
     confirmation_token = token.generate(email)
     confirmation_url = f'http://dashboard.localhost:3000/email/confirm/{confirmation_token}'
