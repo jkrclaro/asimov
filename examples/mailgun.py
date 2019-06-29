@@ -5,19 +5,20 @@ from src import mailgun, token
 
 
 def main():
-    mailgun.api_key = os.environ.get('MAILGUN_API_KEY')
-    token.api_key = '123'
-    token.secret_key = '12345'
-    email = 'john@trycamel.com'
+    mailgun.username = os.environ.get('MAILGUN_USERNAME')
+    mailgun.password = os.environ.get('MAILGUN_PASSWORD')
+    token.secret_key = '123'
+    token.salt = '12345'
+    email = {'email': 'john@trycamel.com'}
 
-    confirmation_token = token.generate(email)
-    confirmation_url = f'http://dashboard.localhost:3000/email/confirm/{confirmation_token}'
-    context = {'confirmation_url': confirmation_url}
+    data = token.encrypt(email)
+    url = f'http://dashboard.localhost:3000/confirm?t={data}'
+    context = {'url': url}
 
     # Requires an app context to use flask.render_template so just use jinja2
     html = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('camel/templates/')
-    ).get_template('account/email/confirm_email.html').render(context)
+        loader=jinja2.FileSystemLoader('src/camel/templates/')
+    ).get_template('email/confirm.html').render(context)
     mailgun.send_email(
         'Confirm your Camel email address!',
         [f'John {email}'],

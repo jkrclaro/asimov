@@ -1,7 +1,7 @@
 import requests
 
 api_key = ''
-domain = 'www.camel.com'
+domain = 'www.trycamel.com'
 region = 'eu'
 from_email = f'Camel <mailgun@{domain}>'
 

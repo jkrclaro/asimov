@@ -55,8 +55,9 @@ def name_edit(form_name: EditNameForm) -> None:
             flash('New name should be different from old name', 'danger')
         elif new_name:
             current_user.profile.name = new_name
-            db.session.commit(current_user)
-            flash('Successfully changed your Camel name.', 'success')
+            db.session.add(current_user)
+            db.session.commit()
+            flash('Successfully changed your profile name.', 'success')
         else:
             flash('Please provide a valid name', 'danger')
     else:
@@ -78,9 +79,10 @@ def password_edit(form_password: EditPasswordForm) -> None:
         elif current_user.password_match(old_password):
             hashed_password = current_user.password_hash(new_password)
             current_user.password = hashed_password.decode('utf8')
-            db.session.commit(current_user)
+            db.session.add(current_user)
+            db.session.commit()
             helper.email_change_password_success()
-            flash('Successfully changed your Camel password', 'success')
+            flash('Successfully changed your password', 'success')
         else:
             flash('Wrong old password.', 'danger')
     else:

@@ -16,7 +16,7 @@
                     <p>Please verify your email address before connecting your sale channels</p>
                 </div>
                 <div class='col-lg-4'>
-                    {% if session['resend'] %}
+                    {% if False %}
                         <div class='text__feedback--success float-lg-right'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
                     {% else %}
                         <a class='btn btn__custom--primary float-lg-right' href="{{ url_for('auth.resend') }}">Resend confirmation</a>
