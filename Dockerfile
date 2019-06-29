@@ -19,7 +19,6 @@ RUN pipenv install --system --deploy
 RUN mkdir src/
 COPY src/ src/
 COPY app.py .
-RUN ls
 
 EXPOSE 5000
 ENTRYPOINT ["gunicorn"]
