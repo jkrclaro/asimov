@@ -103,7 +103,7 @@ html, body {
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #111;
+    color: #FFBC00;
 }
 .btn__custom--secondary--outline {
     border-color: #FFF;
@@ -112,6 +112,15 @@ html, body {
 .btn__custom--secondary--outline:hover, .btn__custom--secondary--outline:focus, .btn__custom--secondary--outline:active, .btn__custom--secondary--outline.active, .open > .dropdown-toggle.btn__custom--secondary--outline {
     border-color: #FFF;
     color: #FFF;
+}
+.btn__custom--muted--outline {
+    border-color: lightgray !important;
+    border: 2px solid;
+}
+.btn__custom--muted--outline:hover, .btn__custom--muted--outline:focus, .btn__custom--muted--outline:active, .btn__custom--muted--outline.active, .open > .dropdown-toggle.btn__custom--muted--outline {
+    color: gray;
+    box-shadow: 0 4px 8px 0 #D3D3D3;
+    transition: 0.3s;
 }
 
 .anchor__custom--notextdecoration {

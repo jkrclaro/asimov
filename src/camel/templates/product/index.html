@@ -3,18 +3,27 @@
 {% block content %}
 
 
-<div class='container'>
     <div class='card'>
         <div class='card-body'>
-            <h5 class='font__custom--title'>Your products</h5>
-            {% for product in products %}
-                <ul>
-                    <li>{{ product.title }}, {{ product.account_id }}</li>
-                </ul>
-            {% endfor %}
+            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary--outline mb-3">Create</a>
+            <table class="table table-sm" style="border: 1px solid white !important;">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Account ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td scope="row">{{ product.title }}</td>
+                        <td>{{ product.account_id }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
 
 
 {% endblock %}

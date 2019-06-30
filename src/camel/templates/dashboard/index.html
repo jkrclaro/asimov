@@ -1,69 +1,16 @@
 {% extends 'dashboard/layout.html' %}
-
 {% block content %}
 
-<div class='card'>
-    <div class='card-body'>
-        <h5 class="font__custom--title">Welcome to Camel</h5>
-        <p class="font__custom--text">Complete a few more steps to start syncing your inventory across your channels!</p>
-        <hr/>
-        {% if current_user.is_confirmed %}
-            <span class='font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Email confirmed</span>
-        {% else %}
-            <h6 class="font__custom--title">Confirm your email address</h6>
-            <div class='row font__custom--text'>
-                <div class='col-lg-8'>
-                    <p>Please verify your email address before connecting your sale channels</p>
-                </div>
-                <div class='col-lg-4'>
-                    {% if False %}
-                        <div class='text__feedback--success float-lg-right'><i class="fas fa-check-circle mr-3"></i>Email verification sent!</div>
-                    {% else %}
-                        <a class='btn btn__custom--primary float-lg-right' href="{{ url_for('auth.resend') }}">Resend confirmation</a>
-                    {% endif %}
-                </div>
-            </div>
-        {% endif %}
-        <hr/>
-        {% if channel %}
-            <span class='font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Channel connected</span>
-        {% else %}
-            <h6 class="font__custom--title">Connect a sales channel</h6>
-            <div class='row font__custom--text'>
-                <div class='col-lg-8 my-auto'>
-                    <p>Integrate your Etsy shop to your account</p>
-                </div>
-                <div class='col-lg-4'>
-                    <a class='btn btn__custom--primary float-lg-right' href="{{ url_for('channel.connect_etsy') }}">Connect channel</a>
-                </div>
-            </div>
-        {% endif %}
-        <hr/>
-        {% if product %}
-            <span class='font__custom--text text__feedback--success'><i class="fas fa-check-circle mr-3"></i>Product added</span>
-        {% else %}
-            <h6 class="font__custom--title">Add a product</h6>
-            <div class='row font__custom--text'>
-                <div class='col-lg-8 my-auto'>
-                    <p>Get closer to your first sale by adding products, or import your existing product inventory.</p>
-                </div>
-                <div class='col-lg-4'>
-                    <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('product.create') }}">Add product</a>
-                </div>
-            </div>
-        {% endif %}
-        <hr/>
-        <h6 class="font__custom--title">Manage your inventory</h6>
-        <div class='row font__custom--text'>
-            <div class='col-lg-8 my-auto'>
-                <p>Enable inventory tracking for each of your products to see when stock levels are low.</p>
-            </div>
-            <div class='col-lg-4'>
-                <a class='btn btn__custom--primary--outline float-lg-right' href="{{ url_for('inventory.index') }}">Manage inventory</a>
-            </div>
-        </div>
+{% if True %}
+    <div class='text-center'>
+        <h5 class="font__custom--title mb-3">Let's get your account setup!</h5>
+        <a class='btn btn__custom--primary' href="{{ url_for('channel.connect') }}">Connect your sale channels</a>
     </div>
-</div>
+{% else %}
+    {% for channel in channels %}
+        {{ channel }}
+    {% endfor %}
+{% endif %}
 
 
 {% endblock %}

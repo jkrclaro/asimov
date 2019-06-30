@@ -1,17 +1,23 @@
 {% extends 'dashboard/layout.html' %}
-
+{% from "form/vertical.html" import render_field %}
 {% block content %}
 
 <div class='row'>
     <div class='col-lg-2'></div>
-    <div class='col-lg-8'>
+    <div class='col-lg-8 mb-3'>
         <div class='card'>
             <div class='card-body'>
-                <h3 class='font__custom--title text-center mb-5'>Add a product</h3>
-                {% from "form/vertical.html" import render_field %}
                 <form method=post>
-                    {{ form.csrf_token }}
-                    {{ render_field(form.title) }}
+                    <div class='mb-5'>
+                        <h3 class='font__custom--title mb-3'>Product</h3>
+                        {{ form.csrf_token }}
+                        {{ render_field(form.title) }}
+                    </div>
+                    <div class="mb-3">
+                        <h3 class='font__custom--title mb-3'>Inventory</h3>
+                        {{ render_field(form.quantity) }}
+                        {{ render_field(form.channels) }}
+                    </div>
                     <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
                     <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
                 </form>
