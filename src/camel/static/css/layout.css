@@ -172,50 +172,6 @@ html, body {
 .active a {
     color: #FFBC00 !important;
 }
-
-/* HTML */
-input[type="checkbox"], label {
-    cursor: pointer;
-}
-
-/* Bootstrap 4 */
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgb(206, 206, 206);
-}
-.form-control {
-    border-radius: 8px;
-    color: #111 !important;
-}
-.form-control:focus, .form-control:active {
-    color: #808080;
-}
-.form-control::-webkit-input-placeholder {
-    color: lightgray;
-}
-.form-control:-moz-placeholder {
-    color: lightgray;
-}
-.form-control::-moz-placeholder {
-    color: lightgray;
-}
-.form-control:-ms-input-placeholder {
-    color: lightgray;
-}
-.form-control::-ms-input-placeholder {
-    color: lightgray;
-}
-.form-control__custom {
-    height: 100px !important;
-}
-.btn {
-    font-family: 'Open Sans';
-    border-radius: 10px;
-    font-weight: 400;
-}
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
-}
 [class*="dropdown-menu-tip-"]::after {
   content: '';
   position: absolute;
@@ -261,4 +217,54 @@ input[type="checkbox"], label {
   left: 1rem;
   bottom: calc(-.25rem - 1px);
   transform: rotate(135deg);
+}
+
+/* HTML */
+input[type="checkbox"], label {
+    cursor: pointer;
+}
+
+/* Bootstrap 4 */
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgb(206, 206, 206);
+}
+.form-control {
+    border-radius: 8px;
+    color: #111 !important;
+}
+.form-control:focus, .form-control:active {
+    color: #808080;
+}
+.form-control::-webkit-input-placeholder {
+    color: lightgray;
+}
+.form-control:-moz-placeholder {
+    color: lightgray;
+}
+.form-control::-moz-placeholder {
+    color: lightgray;
+}
+.form-control:-ms-input-placeholder {
+    color: lightgray;
+}
+.form-control::-ms-input-placeholder {
+    color: lightgray;
+}
+.form-control__custom {
+    height: 100px !important;
+}
+.btn {
+    font-family: 'Open Sans';
+    border-radius: 10px;
+    font-weight: 400;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+.nav-item {
+    cursor: pointer;
 }
