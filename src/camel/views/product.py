@@ -10,7 +10,7 @@ from flask_login import login_required, current_user
 
 from src.camel.models import db
 from src.camel.models.product import Product
-from src.camel.forms.product import CreateProductForm
+from src.camel.forms.product import CreateProductEtsyForm
 
 
 product_bp = Blueprint('product', __name__)
@@ -26,7 +26,12 @@ def index():
 @product_bp.route('/products/create', methods=['GET', 'POST'])
 @login_required
 def create():
-    form = CreateProductForm()
+    form = CreateProductEtsyForm()
+    form.title.data = 'Blue T-Shirt'
+    form.description.data = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt imperdiet justo ac lobortis. Etiam eu purus metus. Aenean a sed.'
+    form.price.data = 60
+    form.quantity.data = 10
+    form.sku.data = 'blue-tshirt'
     if form.validate_on_submit():
         title = form.title.data
         account_id = current_user.account.id

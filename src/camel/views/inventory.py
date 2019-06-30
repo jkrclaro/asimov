@@ -5,7 +5,7 @@ from flask_login import login_required
 inventory_bp = Blueprint('inventory', __name__)
 
 
-@inventory_bp.route('/inventory')
+@inventory_bp.route('/inventories')
 @login_required
 def index():
     return render_template('inventory/index.html')

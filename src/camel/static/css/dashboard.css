@@ -26,6 +26,17 @@ html, body {
     cursor: pointer;
     color: #505050;
 }
+.table__custom--default {
+    border-collapse: collapse;
+    width: 100%;
+}
+.table__custom--th--td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #111;
+}
+
+/* Bootstrap 4 */
 .dropdown-item {
     color: #FFBC00;
 }

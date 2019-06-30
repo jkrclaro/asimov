@@ -14,7 +14,7 @@ from src.camel.models import db
 from src.camel.models.channel import Channel, Platform
 
 
-channel_bp = Blueprint('channel', __name__)
+channel_bp = Blueprint('channel', __name__, url_prefix='/channels')
 
 
 @channel_bp.route('/etsy/connect')
@@ -41,7 +41,8 @@ def connect_etsy_callback():
     return redirect(url_for('dashboard.index'))
 
 
-@channel_bp.route('/channels')
+@channel_bp.route('/')
 @login_required
 def index():
-    return render_template('channel/index.html')
+    channels = Channel.query.filter_by(account_id=current_user.account.id)
+    return render_template('channel/index.html', channels=channels)
