@@ -67,6 +67,9 @@ html, body {
 .footer__title {
     font-family: 'Open Sans';
 }
+.footer__title--theme {
+    color: #FFBC00;
+}
 .footer__title--muted {
     color: #999;
 }
@@ -138,6 +141,14 @@ html, body {
     text-decoration: none !important;
     color: #3D9AE8;
 }
+.anchor__custom--theme {
+    text-decoration: none !important;
+    color: #FFBC00;
+}
+.anchor__custom--theme:hover {
+    text-decoration: none !important;
+    color: #E3A600;
+}
 
 .text__tranform--uppercase {
     text-transform: uppercase;
@@ -204,4 +215,50 @@ input[type="checkbox"], label {
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
+}
+[class*="dropdown-menu-tip-"]::after {
+  content: '';
+  position: absolute;
+  width: .5rem;
+  height: .5rem;
+  background-color: white; /* For SCSS use $dropdown-bg */
+  border: solid 1px rgba(0, 0, 0, .15); /* For SCSS use $dropdown-bg */
+  border-bottom: none;
+  border-left: none;
+}
+/* North */
+.dropdown-menu-tip-n::after {
+  top: calc(-.25rem - 1px);
+  left: calc(50% - .25rem);
+  transform: rotate(-45deg);
+}
+/* Northeast */
+.dropdown-menu-tip-ne::after {
+  top: calc(-.25rem - 1px);
+  right: 1rem;
+  transform: rotate(-45deg);
+}
+/* Northwest */
+.dropdown-menu-tip-nw::after {
+  top: calc(-.25rem - 1px);
+  left: 1rem;
+  transform: rotate(-45deg);
+}
+/* South */
+.dropdown-menu-tip-s::after {
+  left: calc(50% - .25rem);
+  bottom: calc(-.25rem - 1px);
+  transform: rotate(135deg);
+}
+/* Southeast */
+.dropdown-menu-tip-se::after {
+  right: 1rem;
+  bottom: calc(-.25rem - 1px);
+  transform: rotate(135deg);
+}
+/* Southwest */
+.dropdown-menu-tip-sw::after {
+  left: 1rem;
+  bottom: calc(-.25rem - 1px);
+  transform: rotate(135deg);
 }
