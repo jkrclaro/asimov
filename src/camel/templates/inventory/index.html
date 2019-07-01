@@ -17,17 +17,17 @@
                 </tr>
             </thead>
             <tbody>
-            {% for inventory in inventories %}
+            {% for product in products %}
                 <tr>
                     <td scope="row">
                         <img src='https://placeholder.pics/svg/20' class='img-fluid'>
-                        {{ inventory.product.title }}
+                        {{ product.title }}
                     </td>
-                    <td>{{ inventory.channels }}</td>
-                    <td>{{ inventory.sku }}</td>
-                    <td>{{ inventory.when_sold }}</td>
-                    <td>{{ inventory.incoming }}</td>
-                    <td>{{ inventory.quantity }}</td>
+                    <td>{{ product.inventory.channels | length }}</td>
+                    <td>{{ product.inventory.sku }}</td>
+                    <td>{{ product.inventory.when_sold }}</td>
+                    <td>{{ product.inventory.incoming }}</td>
+                    <td>{{ product.inventory.quantity }}</td>
                 </tr>
             {% endfor %}
             </tbody>

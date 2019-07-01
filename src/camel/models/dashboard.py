@@ -133,6 +133,9 @@ class Channel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.String(255))
     secret = db.Column(db.String(255))
+    shop_id = db.Column(db.String(255))
+    shop_name = db.Column(db.String(255))
+    user_id = db.Column(db.String(255))
     platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
     platform = db.relationship('Platform', back_populates='channel')
     inventories = db.relationship('Listing', back_populates='channel')
@@ -144,11 +147,23 @@ class Channel(db.Model):
         server_onupdate=db.func.now()
     )
 
-    def __init__(self, token, secret, platform_id, account_id):
+    def __init__(
+            self,
+            token: str,
+            secret: str,
+            platform_id: int,
+            account_id: str,
+            shop_id: str,
+            shop_name: str,
+            user_id: str
+    ):
         self.token = token
         self.secret = secret
         self.platform_id = platform_id
         self.account_id = account_id
+        self.shop_id = shop_id
+        self.shop_name = shop_name
+        self.user_id = user_id
 
     def __repr__(self):
         return '<Channel(token={token},secret={secret},' \

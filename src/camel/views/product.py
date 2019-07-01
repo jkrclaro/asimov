@@ -28,7 +28,10 @@ def index():
 def create():
     form = CreateProductEtsyForm()
     form.title.data = 'Blue T-Shirt'
-    form.description.data = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt imperdiet justo ac lobortis. Etiam eu purus metus. Aenean a sed.'
+    form.description.data = 'Lorem ipsum dolor sit amet, ' \
+                            'consectetur adipiscing elit. ' \
+                            'Maecenas tincidunt imperdiet justo ac lobortis. ' \
+                            'Etiam eu purus metus. Aenean a sed.'
     form.price.data = 60
     form.quantity.data = 10
     form.sku.data = 'blue-tshirt'

@@ -40,7 +40,7 @@ def email_confirmation() -> None:
     email = current_user.email
     endpoint = 'auth.confirm'
     template = 'email/confirm.html'
-    subject = 'Confirm Camel your email address!'
+    subject = 'Confirm your Camel email address!'
     name = current_user.profile.name
     data = {'email': current_user.email}
     context = {

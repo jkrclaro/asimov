@@ -7,7 +7,7 @@
             <div class="col-lg-6 mb-5">
                 <h3 class='font__custom--title mb-3'>Manage sale channels</h3>
                 {% for channel in channels %}
-                    <div>{{ channel.id }}</div>
+                    <div><i class="fab fa-etsy mr-3 ml-3"></i> {{ channel.shop_name }}</div>
                 {% else %}
                     <p>You currently do not have any sale channels connected</p>
                 {% endfor %}
