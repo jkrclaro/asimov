@@ -66,7 +66,7 @@ class Inventory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     product = db.relationship('Product', back_populates='inventory')
-    channels = db.relationship('ChannelInventory', back_populates='inventory')
+    channels = db.relationship('Listing', back_populates='inventory')
     quantity = db.Column(db.Integer)
     sku = db.Column(db.String(255))
     when_sold = db.Column(db.String(30))
@@ -78,9 +78,34 @@ class Inventory(db.Model):
         server_onupdate=db.func.now()
     )
 
+    def __init__(
+            self,
+            product_id: int,
+            channels: list,
+            quantity: int,
+            sku: str,
+            when_sold: str,
+            incoming: int
+    ):
+        """SQLAlchemy model for Product
 
-class ChannelInventory(db.Model):
-    __tablename__ = 'channel_inventories'
+        :param product_id: ID for SQLAlchemy model of Product
+        :param channels: List of channels where inventory is current sold to
+        :param quantity: Number of available stocks
+        :param sku: Stock keeping unit for this inventory
+        :param when_sold: What to do when inventory is sold out
+        :param incoming: Number of stocks incoming
+        """
+        self.product_id = product_id
+        self.channels = channels
+        self.quantity = quantity
+        self.sku = sku
+        self.when_sold = when_sold
+        self.incoming = incoming
+
+
+class Listing(db.Model):
+    __tablename__ = 'listings'
     __table_args__ = {'extend_existing': True}
     inventory_id = db.Column(
         db.Integer,
@@ -110,7 +135,7 @@ class Channel(db.Model):
     secret = db.Column(db.String(255))
     platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
     platform = db.relationship('Platform', back_populates='channel')
-    inventories = db.relationship('ChannelInventory', back_populates='channel')
+    inventories = db.relationship('Listing', back_populates='channel')
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(

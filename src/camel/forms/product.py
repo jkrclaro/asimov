@@ -10,7 +10,7 @@ renewal_choices = [
     ('manual', 'Manual')
 ]
 
-type_choices = [
+kind_choices = [
     ('physical', 'Physical'),
     ('digital', 'Digital')
 ]
@@ -47,7 +47,7 @@ class CreateProductEtsyForm(FlaskForm):
         ]
     )
     category = SelectField('Category', choices=category_choices)
-    type = SelectField('Type', choices=type_choices)
+    kind = SelectField('Type', choices=kind_choices)
     description = StringField('Description', widget=widgets.TextArea())
     renewal = SelectField('Renewal', choices=renewal_choices)
 

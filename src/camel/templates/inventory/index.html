@@ -11,7 +11,7 @@
                     <th scope="col">Channels</th>
                     <th scope="col">SKU</th>
                     <th scope="col">Renewal</th>
-                    <th scope="col">Incoming</th>
+                    <th scope="col">When sold...</th>
                     <th scope="col">Available</th>
                     <th scope="col">Edit</th>
                 </tr>
@@ -25,9 +25,9 @@
                     </td>
                     <td>{{ inventory.channels }}</td>
                     <td>{{ inventory.sku }}</td>
-                    <td>{{ inventory.renewal }}</td>
+                    <td>{{ inventory.when_sold }}</td>
                     <td>{{ inventory.incoming }}</td>
-                    <td>{{ inventory.available }}</td>
+                    <td>{{ inventory.quantity }}</td>
                 </tr>
             {% endfor %}
             </tbody>
