@@ -4,7 +4,34 @@
 
 <div class='card'>
     <div class='card-body'>
-        <h5>Inventory</h5>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Channels</th>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Renewal</th>
+                    <th scope="col">Incoming</th>
+                    <th scope="col">Available</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for inventory in inventories %}
+                <tr>
+                    <td scope="row">
+                        <img src='https://placeholder.pics/svg/20' class='img-fluid'>
+                        {{ inventory.product.title }}
+                    </td>
+                    <td>{{ inventory.channels }}</td>
+                    <td>{{ inventory.sku }}</td>
+                    <td>{{ inventory.renewal }}</td>
+                    <td>{{ inventory.incoming }}</td>
+                    <td>{{ inventory.available }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 

@@ -8,7 +8,7 @@ from flask import Flask
 from src.camel import create_app
 from src.camel.models import db
 from src.camel.models.auth import User, Account
-from src.camel.models.product import Product
+from src.camel.models.dashboard import Product
 
 
 @pytest.fixture

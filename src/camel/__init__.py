@@ -42,7 +42,7 @@ def create_app(config: str):
     def load_user(user_id: int):
         return User.query.get(int(user_id))
 
-    from .models.channel import Platform
+    from .models.dashboard import Platform
     @app.before_first_request
     def create_db():
         db.create_all(app=app)

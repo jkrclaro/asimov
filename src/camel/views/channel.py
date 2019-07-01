@@ -11,7 +11,7 @@ from flask_login import login_required, current_user
 
 from src import etsy
 from src.camel.models import db
-from src.camel.models.channel import Channel, Platform
+from src.camel.models.dashboard import Channel, Platform
 
 
 channel_bp = Blueprint('channel', __name__, url_prefix='/channels')

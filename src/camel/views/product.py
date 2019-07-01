@@ -9,7 +9,7 @@ from flask import (
 from flask_login import login_required, current_user
 
 from src.camel.models import db
-from src.camel.models.product import Product
+from src.camel.models.dashboard import Product
 from src.camel.forms.product import CreateProductEtsyForm
 
 
@@ -35,7 +35,11 @@ def create():
     if form.validate_on_submit():
         title = form.title.data
         account_id = current_user.account.id
-        product = Product(title, account_id)
+        category = form.category.data
+        renewal = form.renewal.data
+        type = form.type.data
+        description = form.description.data
+        product = Product(title, account_id, category, renewal, type, description)
         db.session.add(product)
         db.session.commit()
         flash(f'Successfully added {title}', 'success')
