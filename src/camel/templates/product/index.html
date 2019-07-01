@@ -10,9 +10,8 @@
             <thead>
                 <tr>
                     <th scope="col">Title</th>
+                    <th scope="col">Inventory</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Renewal</th>
-                    <th scope="col">Type</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,9 +21,8 @@
                         <img src='https://placeholder.pics/svg/20' class='img-fluid'>
                         {{ product.title }}
                     </td>
+                    <td>{{ product.inventory.quantity }} in stock</td>
                     <td>{{ product.category }}</td>
-                    <td>{{ product.renewal }}</td>
-                    <td>{{ product.type }}</td>
                 </tr>
             {% endfor %}
             </tbody>
