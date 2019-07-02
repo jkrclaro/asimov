@@ -4,13 +4,17 @@ from flask import (
     flash,
     redirect,
     url_for,
+    abort,
     current_app,
 )
 from flask_login import login_required, current_user
 
 from src.camel.models import db
 from src.camel.models.dashboard import Product, Inventory, Listing
-from src.camel.forms.product import CreateProductEtsyForm
+from src.camel.forms.product import (
+    CreateProductEtsyForm,
+    InventorySKUForm
+)
 
 
 product_bp = Blueprint('product', __name__)
@@ -32,21 +36,21 @@ def retrieve(unique_id):
             account_id=current_user.account.id,
             unique_id=unique_id
         ).first()
-    return render_template('product/retrieve.html', product=product)
+    if not product:
+        abort(404)
+
+    form = InventorySKUForm()
+    context = {
+        'form': form,
+        'product': product
+    }
+    return render_template('product/retrieve.html', **context)
 
 
 @product_bp.route('/products/create', methods=['GET', 'POST'])
 @login_required
 def create():
     form = CreateProductEtsyForm()
-    form.title.data = 'Blue T-Shirt'
-    form.description.data = 'Lorem ipsum dolor sit amet, ' \
-                            'consectetur adipiscing elit. ' \
-                            'Maecenas tincidunt imperdiet justo ac lobortis. ' \
-                            'Etiam eu purus metus. Aenean a sed.'
-    form.price.data = 60
-    form.quantity.data = 10
-    form.sku.data = 'blue-tshirt'
     if form.validate_on_submit():
         title = form.title.data
         product_data = {
@@ -62,10 +66,10 @@ def create():
         db.session.commit()
         inventory_data = {
             'product_id': product.id,
-            'quantity': form.quantity.data,
-            'sku': form.sku.data,
+            'available': 0,
             'when_sold': 'Stop selling',
-            'incoming': 10
+            'incoming': 0,
+            'price': 0
         }
         inventory = Inventory(**inventory_data)
         db.session.add(inventory)

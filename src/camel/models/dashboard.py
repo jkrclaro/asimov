@@ -58,7 +58,7 @@ class Product(db.Model):
         self.kind = kind
         self.description = description
         self.status = status
-        self.unique_id = f'product_{generate_unique_id()}'
+        self.unique_id = f'prd_{generate_unique_id()}'
 
     def __repr__(self):
         return f"{self.account_id}'s {self.title}"
@@ -68,10 +68,12 @@ class Inventory(db.Model):
     __tablename__ = 'inventories'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
-    quantity = db.Column(db.Integer)
+    price = db.Column(db.Integer)
+    available = db.Column(db.Integer)
     sku = db.Column(db.String(255))
     when_sold = db.Column(db.String(30))
     incoming = db.Column(db.Integer)
+    is_active = db.Column(db.Boolean, default=False)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     channels = db.relationship('Listing', back_populates='inventory')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
@@ -84,27 +86,31 @@ class Inventory(db.Model):
     def __init__(
             self,
             product_id: int,
-            quantity: int,
-            sku: str,
+            available: int,
             when_sold: str,
-            incoming: int
+            incoming: int,
+            price: int = 0,
+            sku: str = '',
+            is_active: bool = False
     ):
         """SQLAlchemy model for Product
 
         :param product_id: ID for SQLAlchemy model of Product
-        :param quantity: Number of available stocks
+        :param available: Number of available stocks
         :param sku: Stock keeping unit for this inventory
         :param when_sold: What to do when inventory is sold out
         :param incoming: Number of stocks incoming
         """
         self.product_id = product_id
-        self.quantity = quantity
-        self.sku = f'sku_{generate_unique_id()}'
+        self.available = available
         self.when_sold = when_sold
         self.incoming = incoming
+        self.price = price
+        self.is_active = is_active
+        self.sku = sku if sku else f'sku_{generate_unique_id()}'
 
     def __repr__(self):
-        return f"{self.product.title} has {self.quantity} in stock"
+        return f"{self.product.title} has {self.available} in stock"
 
 
 class Listing(db.Model):

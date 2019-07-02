@@ -1,5 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField, widgets
+from wtforms import (
+    StringField,
+    IntegerField,
+    SelectField,
+    widgets,
+    BooleanField,
+    SubmitField
+)
 from wtforms.validators import InputRequired
 from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
 
@@ -64,7 +71,7 @@ class CreateProductEtsyForm(FlaskForm):
 
     # Inventory
     price = IntegerField('Price')
-    quantity = IntegerField('Quantity')
+    available = IntegerField('Available')
     sku = StringField('SKU')
 
     # Shipping
@@ -94,3 +101,17 @@ class CreateProductEtsyForm(FlaskForm):
         choices=what_you_will_charge_choices
     )
 
+
+class InventorySKUForm(FlaskForm):
+    sku = StringField('SKU')
+    is_active = BooleanField('Active')
+    price = IntegerField('Price')
+    available = IntegerField('Available')
+    incoming = IntegerField('Incoming')
+    submit = SubmitField('Add SKU')
+    when_sold = SelectField(
+        'When sold...',
+        choices=[
+            ('Stop selling', 'Stop selling')
+        ]
+    )

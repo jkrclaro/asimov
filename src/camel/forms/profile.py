@@ -14,7 +14,7 @@ class EditPasswordForm(FlaskForm):
         validators=[
             Length(
                 min=8,
-                message='Your password must be at least 8 characters.'
+                message='Your password must be at least 8 characters'
             )
         ]
     )
@@ -23,7 +23,7 @@ class EditPasswordForm(FlaskForm):
         validators=[
             Length(
                 min=8,
-                message='Your password must be at least 8 characters.'
+                message='Your password must be at least 8 characters'
             )
         ]
     )
@@ -34,7 +34,7 @@ class EditEmailForm(FlaskForm):
     email = EmailField(
         'Email',
         validators=[
-            Email(message='Please enter a valid email.')
+            Email(message='Please enter a valid email')
         ]
     )
     submit = SubmitField('Change email')
@@ -46,7 +46,7 @@ class EditNameForm(FlaskForm):
         validators=[
             Regexp(
                 regex=r"^(?![\s.]+$)[a-zA-Z\s.]*$",
-                message='Please enter a valid name.'
+                message='Please enter a valid name'
             )
         ]
     )

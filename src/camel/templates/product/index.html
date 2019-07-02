@@ -1,24 +1,6 @@
 {% extends 'dashboard/layout.html' %}
 {% block content %}
 
-<div class="modal" id="change-name-modal" tabindex="-1" role="dialog" aria-labelledby="change-name-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="change-name-modal-title">Change name</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <form method="post">
-                <div class="modal-body mt-3">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <div class='card'>
     <div class='card-body'>
         {% if not products %}
@@ -27,12 +9,11 @@
             <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary">Create a product now</a>
         {% else %}
             <h3 class='font__custom--title float-left mb-3'>Product</h3>
-            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary float-right mb-3">Create</a>
+            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary float-right mb-3"><i class="fas fa-plus mr-2"></i>Create</a>
             <table class="table table-sm table-responsive-lg table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Title</th>
-                        <th scope="col">Status</th>
                         <th scope="col">ID</th>
                         <th scope="col">SKU</th>
                         <th scope="col">Last updated</th>
@@ -44,13 +25,6 @@
                         <td scope="row">
                             <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
                             {{ product.title }}
-                        </td>
-                        <td>
-                            {% if product.status == 'unlisted' %}
-                                <span class="badge badge-secondary">{{ product.status | title }}</span>
-                            {% else %}
-                                <span class="badge badge-success">{{ product.status | title }}</span>
-                            {% endif %}
                         </td>
                         <td>{{ product.unique_id }}</td>
                         <td>{{ product.inventories | length }} SKU</td>
