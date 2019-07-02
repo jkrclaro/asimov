@@ -1,6 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField, widgets, FileField
+from wtforms import StringField, IntegerField, SelectField, widgets
 from wtforms.validators import InputRequired
+from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
+
+from src.camel.models.dashboard import Channel
+
 
 category_choices = [
     ('accessories', 'Accessories')
@@ -46,10 +50,17 @@ class CreateProductEtsyForm(FlaskForm):
             InputRequired(message='Please enter a valid email.'),
         ]
     )
+    unique_id = StringField('Unique ID')
     category = SelectField('Category', choices=category_choices)
     kind = SelectField('Type', choices=kind_choices)
     description = StringField('Description', widget=widgets.TextArea())
     renewal = SelectField('Renewal', choices=renewal_choices)
+
+    # Channels
+    channels = QuerySelectMultipleField(
+        'Channels',
+        query_factory=lambda: Channel.query.all()
+    )
 
     # Inventory
     price = IntegerField('Price')

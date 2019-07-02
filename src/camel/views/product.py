@@ -9,7 +9,7 @@ from flask import (
 from flask_login import login_required, current_user
 
 from src.camel.models import db
-from src.camel.models.dashboard import Product, Inventory
+from src.camel.models.dashboard import Product, Inventory, Listing
 from src.camel.forms.product import CreateProductEtsyForm
 
 
@@ -19,8 +19,20 @@ product_bp = Blueprint('product', __name__)
 @product_bp.route('/products')
 @login_required
 def index():
-    products = Product.query.filter_by(account_id=current_user.account.id)
+    products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('product/index.html', products=products)
+
+
+@product_bp.route('/products/<unique_id>')
+@login_required
+def retrieve(unique_id):
+    product = Product.\
+        query.\
+        filter_by(
+            account_id=current_user.account.id,
+            unique_id=unique_id
+        ).first()
+    return render_template('product/retrieve.html', product=product)
 
 
 @product_bp.route('/products/create', methods=['GET', 'POST'])
@@ -50,7 +62,6 @@ def create():
         db.session.commit()
         inventory_data = {
             'product_id': product.id,
-            'channels': [],
             'quantity': form.quantity.data,
             'sku': form.sku.data,
             'when_sold': 'Stop selling',
@@ -58,6 +69,11 @@ def create():
         }
         inventory = Inventory(**inventory_data)
         db.session.add(inventory)
+        db.session.commit()
+
+        for channel in form.channels.data:
+            listing = Listing(inventory.id, channel.id)
+            db.session.add(listing)
         db.session.commit()
 
         flash(f'Successfully added {title}', 'success')

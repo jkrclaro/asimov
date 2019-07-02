@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbar-nav-alt-markup">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item {% if request.url_rule.rule == '/dashboard' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('dashboard.index') }}"><i class='fas fa-home'></i> Home</a></li>
-                <li class="nav-item {% if request.blueprint == 'product' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('product.index') }}"><i class='fas fa-cubes'></i> Products</a></li>
+                <li class="nav-item {% if request.blueprint == 'product' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('product.index') }}"><i class='fas fa-boxes'></i> Products</a></li>
                 <li class="nav-item {% if request.blueprint == 'inventory' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('inventory.index') }}"><i class='fas fa-dolly'></i> Inventory</a></li>
                 <li class="nav-item {% if request.blueprint == 'channel' %} active {% endif %}"><a class="nav-link nav__navlink--center" href="{{ url_for('channel.index') }}"><i class='fas fa-store'></i> Channels</a></li>
             </ul>

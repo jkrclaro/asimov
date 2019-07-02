@@ -4,37 +4,43 @@
 
 <div class='card'>
     <div class='card-body'>
-        <h3 class='font__custom--title float-left mb-3'>Inventory</h3>
-        <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary float-right mb-3">Filters</a>
-        <table class="table table-sm table-responsive-lg">
-            <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Channels</th>
-                    <th scope="col">SKU</th>
-                    <th scope="col">When sold...</th>
-                    <th scope="col">Available</th>
-                    <th scope="col">Incoming</th>
-                    <th scope="col">Edit</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td scope="row">
-                        <img src='https://placeholder.pics/svg/20' class='img-fluid'>
-                        {{ product.title }}
-                    </td>
-                    <td>{{ product.inventory.channels | length }}</td>
-                    <td>{{ product.inventory.sku }}</td>
-                    <td>{{ product.inventory.when_sold }}</td>
-                    <td>{{ product.inventory.incoming }}</td>
-                    <td>{{ product.inventory.quantity }}</td>
-                    <td><a class="btn btn__custom--primary" href="/">Edit</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% if not products %}
+            <h3 class='font__custom--title mb-3'>Inventory</h3>
+            <p class="mt-3  ">You do not have any products yet.</p>
+            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary">Create a product now</a>
+        {% else %}
+            <h3 class='font__custom--title float-left mb-3'>Inventory</h3>
+            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary float-right mb-3">Filters</a>
+            <table class="table table-sm table-responsive-lg table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Channels</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">When sold...</th>
+                        <th scope="col">Available</th>
+                        <th scope="col">Incoming</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    {% for inventory in product.inventories %}
+                        <tr>
+                            <td scope="row">
+                                <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
+                                {{ product.title }}
+                            </td>
+                            <td>{{ inventory.channels | length }}</td>
+                            <td>{{ inventory.sku }}</td>
+                            <td>{{ inventory.when_sold }}</td>
+                            <td>{{ inventory.incoming }}</td>
+                            <td>{{ inventory.quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
 </div>
 

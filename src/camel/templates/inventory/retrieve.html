@@ -1,12 +1,24 @@
 {% extends 'dashboard/layout.html' %}
-
 {% block content %}
 
-<div class='card'>
-    <div class='card-body'>
-        <h5>Inventory</h5>
+<div class='row'>
+    <div class='col-lg-2'></div>
+    <div class='col-lg-8 mb-3'>
+        <div class='card mb-5'>
+            <div class='card-body'>
+                <h3 class='font__custom--title mb-3'>Details</h3>
+                <div>{{ inventory.sku }}</div>
+            </div>
+        </div>
+        <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
+        <button type='submit' class='btn btn__custom--primary float-lg-right'>Edit</button>
     </div>
+    <div class='col-lg-2'></div>
 </div>
+
+
+{% endblock %}
+
 
 
 {% endblock %}
