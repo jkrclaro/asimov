@@ -8,7 +8,7 @@ from flask import Flask
 from src.camel import create_app
 from src.camel.models import db
 from src.camel.models.auth import User, Account
-from src.camel.models.product import Product
+from src.camel.models.dashboard import Product
 
 
 @pytest.fixture
@@ -36,7 +36,13 @@ def test_product_model_create(app: Flask):
         user = User.query.get(1)
         title = 'Blue T-Shirt'
         account_id = user.account.id
-        product = Product(title, account_id)
+        category = 'Category'
+        renewal = 'Manual'
+        kind = 'Accessories'
+        description = 'Lipsumkdfsmfkdmsfksfkds'
+        product = Product(
+            title, account_id, category, renewal, kind, description
+        )
         db.session.add(product)
         db.session.commit()
         assert user.account.id == product.account_id

@@ -3,27 +3,32 @@
 {% block content %}
 
 
-    <div class='card'>
-        <div class='card-body'>
-            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary--outline float-right mb-3">Create</a>
-            <table class="table table-sm" style="border: 1px solid white !important;">
-                <thead>
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Account ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
-                    <tr>
-                        <td scope="row">{{ product.title }}</td>
-                        <td>{{ product.account_id }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+<div class='card'>
+    <div class='card-body'>
+        <table class="table table-sm table-responsive-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Inventory</th>
+                    <th scope="col">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td scope="row">
+                        <img src='https://placeholder.pics/svg/20' class='img-fluid'>
+                        {{ product.title }}
+                    </td>
+                    <td>{{ product.inventory.quantity }} in stock</td>
+                    <td>{{ product.category }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary--outline float-right mb-3">Create</a>
     </div>
+</div>
 
 
 {% endblock %}

@@ -4,15 +4,13 @@ from src import etsy
 
 
 def main():
-    etsy.api_key = os.environ.get('ETSY_API_KEY')
-    etsy.secret_key = os.environ.get('ETSY_SECRET_KEY')
-    etsy.callback_uri = 'http://camel.localhost:3000'
+    etsy.api_key = os.environ.get('ETSY_API_KEY', 'tqoskxgptlbrc4l9nocxbks9')
+    etsy.secret_key = os.environ.get('ETSY_SECRET_KEY', '9nu3b32vl7')
+    etsy.callback_uri = 'oob'
 
     scopes = ('email_r', 'listings_r', 'listings_w', 'listings_d')
-    response = etsy.request_token(scopes)
-    decoded_url = etsy.decode_url(response.text)
-    url = etsy.parse_login_url(decoded_url)
-    print(url)
+    login_url = etsy.authenticate(scopes)
+    print(login_url)
 
 
 if __name__ == '__main__':

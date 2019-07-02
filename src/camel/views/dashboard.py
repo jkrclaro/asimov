@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 
-from src.camel.models.product import Product
-from src.camel.models.channel import Channel
+from src.camel.models.dashboard import Product
+from src.camel.models.dashboard import Channel
 
 dashboard_bp = Blueprint('dashboard', __name__)
 

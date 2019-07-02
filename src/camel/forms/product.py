@@ -5,8 +5,12 @@ from wtforms.validators import InputRequired
 category_choices = [
     ('accessories', 'Accessories')
 ]
+renewal_choices = [
+    ('automatic', 'Automatic'),
+    ('manual', 'Manual')
+]
 
-type_choices = [
+kind_choices = [
     ('physical', 'Physical'),
     ('digital', 'Digital')
 ]
@@ -24,7 +28,7 @@ shipping_carrier_choices = [
 ]
 
 delivery_time_choices = [
-    (1, '1')
+    ('1', '1')
 ]
 
 what_you_will_charge_choices = [
@@ -43,8 +47,9 @@ class CreateProductEtsyForm(FlaskForm):
         ]
     )
     category = SelectField('Category', choices=category_choices)
-    type = SelectField('Type', choices=type_choices)
+    kind = SelectField('Type', choices=kind_choices)
     description = StringField('Description', widget=widgets.TextArea())
+    renewal = SelectField('Renewal', choices=renewal_choices)
 
     # Inventory
     price = IntegerField('Price')
