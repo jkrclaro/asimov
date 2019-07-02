@@ -5,6 +5,8 @@
 
 <div class='card'>
     <div class='card-body'>
+        <h3 class='font__custom--title float-left mb-3'>Product</h3>
+        <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary float-right mb-3">Create</a>
         <table class="table table-sm table-responsive-sm">
             <thead>
                 <tr>
@@ -26,7 +28,6 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary--outline float-right mb-3">Create</a>
     </div>
 </div>
 
