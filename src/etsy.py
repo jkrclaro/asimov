@@ -30,14 +30,21 @@ def authenticate(scopes: tuple) -> dict:
     return data
 
 
-def get_access_token(data: dict, request_token: str, request_token_secret: str):
+def get_access_token(
+        data: dict,
+        request_token: str,
+        request_token_secret: str
+) -> requests.Response:
     url = f'{base_url}/oauth/access_token'
     oauth = OAuth1(api_key, secret_key, request_token, request_token_secret)
     response = requests.post(url, auth=oauth, data=data)
     return response
 
 
-def get_user_details(oauth_token: str, oauth_token_secret: str):
+def get_user_details(
+        oauth_token: str,
+        oauth_token_secret: str
+) -> requests.Response:
     url = f'{base_url}/users/__SELF__'
     oauth = OAuth1(api_key, secret_key, oauth_token, oauth_token_secret)
     response = requests.get(url, auth=oauth)
@@ -48,7 +55,7 @@ def find_all_user_shops(
     user_id: str,
     oauth_token: str,
     oauth_token_secret: str
-):
+) -> requests.Response:
     url = f'{base_url}/users/{user_id}/shops'
     oauth = OAuth1(api_key, secret_key, oauth_token, oauth_token_secret)
     response = requests.get(url, auth=oauth)
