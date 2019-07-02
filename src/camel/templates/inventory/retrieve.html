@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit-inventory-modal-title">Add a SKU</h5>
+                <h5 class="modal-title" id="edit-inventory-modal-title">Edit SKU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <form method="post">
@@ -18,6 +18,7 @@
                     {{ render_field(form.incoming) }}
                     {{ render_field(form.when_sold) }}
                     {{ render_field(form.is_active) }}
+                    {{ render_field(form.channels) }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
@@ -56,6 +57,14 @@
                     <p class="col-lg-9 font__custom--text">
                         {% if inventory.is_active %}<i class="fas fa-check-circle"></i>{% else %}<i class="fas fa-times-circle"></i>{% endif %}
                     </p>
+                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Channels</h6>
+                    <div class="col-lg-9">
+                        {% for listing in inventory.channels %}
+                            <div><a href="#" class="anchor__custom--default">{{ listing.channel }}</a></div>
+                        {% else %}
+                            <p class="font__custom--text">Not listed anywhere</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

@@ -110,7 +110,7 @@ class Inventory(db.Model):
         self.sku = sku if sku else f'sku_{generate_unique_id()}'
 
     def __repr__(self):
-        return f"{self.product.title} has {self.available} in stock"
+        return self.sku
 
 
 class Listing(db.Model):

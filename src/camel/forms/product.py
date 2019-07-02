@@ -63,12 +63,6 @@ class CreateProductEtsyForm(FlaskForm):
     description = StringField('Description', widget=widgets.TextArea())
     renewal = SelectField('Renewal', choices=renewal_choices)
 
-    # Channels
-    channels = QuerySelectMultipleField(
-        'Channels',
-        query_factory=lambda: Channel.query.all()
-    )
-
     # Inventory
     price = IntegerField('Price')
     available = IntegerField('Available')
@@ -115,3 +109,9 @@ class InventorySKUForm(FlaskForm):
             ('Stop selling', 'Stop selling')
         ]
     )
+    # Channels
+    channels = QuerySelectMultipleField(
+        'Channels',
+        query_factory=lambda: Channel.query.all()
+    )
+
