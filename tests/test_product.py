@@ -36,7 +36,13 @@ def test_product_model_create(app: Flask):
         user = User.query.get(1)
         title = 'Blue T-Shirt'
         account_id = user.account.id
-        product = Product(title, account_id)
+        category = 'Category'
+        renewal = 'Manual'
+        kind = 'Accessories'
+        description = 'Lipsumkdfsmfkdmsfksfkds'
+        product = Product(
+            title, account_id, category, renewal, kind, description
+        )
         db.session.add(product)
         db.session.commit()
         assert user.account.id == product.account_id

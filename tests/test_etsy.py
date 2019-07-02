@@ -24,7 +24,8 @@ def test_request_token():
         'oauth_callback=oob'
     responses.add(responses.POST, url, body=body)
     scopes = ('email_r', 'listings_r', 'listings_w', 'listings_d',)
-    login_url = etsy.authenticate(scopes)
+    data = etsy.authenticate(scopes)
+    login_url = data.get('login_url')
     assert login_url == 'https://www.etsy.com/oauth/signin?' \
         'oauth_consumer_key=apikey&' \
         'oauth_token=testoauthtoken&' \
