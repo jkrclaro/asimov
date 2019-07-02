@@ -17,19 +17,19 @@ from src.camel.forms.product import (
 )
 
 
-product_bp = Blueprint('product', __name__)
+product_bp = Blueprint('product', __name__, url_prefix='/products')
 
 
-@product_bp.route('/products')
+@product_bp.route('/')
 @login_required
 def index():
     products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('product/index.html', products=products)
 
 
-@product_bp.route('/products/<unique_id>')
+@product_bp.route('/<unique_id>')
 @login_required
-def retrieve(unique_id):
+def retrieve(unique_id: str):
     product = Product.\
         query.\
         filter_by(
@@ -47,7 +47,7 @@ def retrieve(unique_id):
     return render_template('product/retrieve.html', **context)
 
 
-@product_bp.route('/products/create', methods=['GET', 'POST'])
+@product_bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     form = CreateProductEtsyForm()

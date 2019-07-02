@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, abort
+from flask import Blueprint, render_template, flash, redirect, url_for, abort, current_app
 from flask_login import login_required, current_user
 
 from src.camel.models import db
@@ -17,7 +17,7 @@ def index():
     return render_template('inventory/index.html', products=products)
 
 
-@inventory_bp.route('/<unique_id>/createsku', methods=['POST'])
+@inventory_bp.route('/<unique_id>/create', methods=['POST'])
 @login_required
 def create(unique_id):
     product = Product.query.filter_by(unique_id=unique_id).first()
@@ -43,10 +43,15 @@ def create(unique_id):
     return redirect(url_for('product.retrieve', unique_id=unique_id))
 
 
-@inventory_bp.route('/products/<unique_id>/inventory/<sku>', methods=['GET', 'POST'])
+@inventory_bp.route('/<unique_id>/<sku>', methods=['GET', 'POST'])
 @login_required
 def retrieve(unique_id, sku):
-    product = Product.query.filter_by(unique_id=unique_id).first()
+    product = Product.\
+        query.\
+        filter_by(
+            unique_id=unique_id,
+            account_id=current_user.account.id
+        ).first()
     if not product:
         abort(404)
 
