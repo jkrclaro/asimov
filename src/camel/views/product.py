@@ -4,37 +4,53 @@ from flask import (
     flash,
     redirect,
     url_for,
+    abort,
     current_app,
 )
 from flask_login import login_required, current_user
 
 from src.camel.models import db
-from src.camel.models.dashboard import Product, Inventory
-from src.camel.forms.product import CreateProductEtsyForm
+from src.camel.models.dashboard import Product, Inventory, Listing
+from src.camel.forms.product import (
+    CreateProductEtsyForm,
+    InventorySKUForm
+)
 
 
-product_bp = Blueprint('product', __name__)
+product_bp = Blueprint('product', __name__, url_prefix='/products')
 
 
-@product_bp.route('/products')
+@product_bp.route('/')
 @login_required
 def index():
-    products = Product.query.filter_by(account_id=current_user.account.id)
+    products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('product/index.html', products=products)
 
 
-@product_bp.route('/products/create', methods=['GET', 'POST'])
+@product_bp.route('/<unique_id>')
+@login_required
+def retrieve(unique_id: str):
+    product = Product.\
+        query.\
+        filter_by(
+            account_id=current_user.account.id,
+            unique_id=unique_id
+        ).first()
+    if not product:
+        abort(404)
+
+    form = InventorySKUForm()
+    context = {
+        'form': form,
+        'product': product
+    }
+    return render_template('product/retrieve.html', **context)
+
+
+@product_bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     form = CreateProductEtsyForm()
-    form.title.data = 'Blue T-Shirt'
-    form.description.data = 'Lorem ipsum dolor sit amet, ' \
-                            'consectetur adipiscing elit. ' \
-                            'Maecenas tincidunt imperdiet justo ac lobortis. ' \
-                            'Etiam eu purus metus. Aenean a sed.'
-    form.price.data = 60
-    form.quantity.data = 10
-    form.sku.data = 'blue-tshirt'
     if form.validate_on_submit():
         title = form.title.data
         product_data = {
@@ -50,14 +66,18 @@ def create():
         db.session.commit()
         inventory_data = {
             'product_id': product.id,
-            'channels': [],
-            'quantity': form.quantity.data,
-            'sku': form.sku.data,
+            'available': 0,
             'when_sold': 'Stop selling',
-            'incoming': 10
+            'incoming': 0,
+            'price': 0
         }
         inventory = Inventory(**inventory_data)
         db.session.add(inventory)
+        db.session.commit()
+
+        for channel in form.channels.data:
+            listing = Listing(inventory.id, channel.id)
+            db.session.add(listing)
         db.session.commit()
 
         flash(f'Successfully added {title}', 'success')

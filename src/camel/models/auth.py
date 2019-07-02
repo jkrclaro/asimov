@@ -40,17 +40,7 @@ class User(db.Model, UserMixin):
         self.is_staff = is_staff
 
     def __repr__(self):
-        return '<User(' \
-               'email={email},' \
-               'password={password},' \
-               'is_confirmed={is_confirmed},' \
-               'is_staff={is_staff}' \
-               ')>'.format(
-                email=self.email,
-                password=self.password,
-                is_confirmed=self.is_confirmed,
-                is_staff=self.is_staff
-                )
+        return self.email
 
     def password_hash(self, password):
         return bcrypt.hashpw(self.base64_encode(password), bcrypt.gensalt())
@@ -91,13 +81,7 @@ class Profile(db.Model):
         self.name = name
 
     def __repr__(self):
-        return '<Profile(' \
-               'name={name},' \
-               'user_id={user_id}' \
-               ')>'.format(
-                name=self.name,
-                user_id=self.user_id
-                )
+        return f"{self.user.email}'s profile"
 
 
 class Account(db.Model):
@@ -116,10 +100,4 @@ class Account(db.Model):
         self.address = address
 
     def __repr__(self):
-        return '<Account(' \
-               'address={address},' \
-               'user_id={user_id}' \
-               ')>'.format(
-                address=self.address,
-                user_id=self.user_id
-                )
+        return f"{self.user.email}'s account"

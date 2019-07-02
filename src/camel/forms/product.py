@@ -1,6 +1,17 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField, widgets, FileField
+from wtforms import (
+    StringField,
+    IntegerField,
+    SelectField,
+    widgets,
+    BooleanField,
+    SubmitField
+)
 from wtforms.validators import InputRequired
+from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
+
+from src.camel.models.dashboard import Channel
+
 
 category_choices = [
     ('accessories', 'Accessories')
@@ -46,6 +57,7 @@ class CreateProductEtsyForm(FlaskForm):
             InputRequired(message='Please enter a valid email.'),
         ]
     )
+    unique_id = StringField('Unique ID')
     category = SelectField('Category', choices=category_choices)
     kind = SelectField('Type', choices=kind_choices)
     description = StringField('Description', widget=widgets.TextArea())
@@ -53,7 +65,7 @@ class CreateProductEtsyForm(FlaskForm):
 
     # Inventory
     price = IntegerField('Price')
-    quantity = IntegerField('Quantity')
+    available = IntegerField('Available')
     sku = StringField('SKU')
 
     # Shipping
@@ -81,5 +93,25 @@ class CreateProductEtsyForm(FlaskForm):
     what_you_will_charge_ = SelectField(
         "What you'll charge",
         choices=what_you_will_charge_choices
+    )
+
+
+class InventorySKUForm(FlaskForm):
+    sku = StringField('SKU')
+    is_active = BooleanField('Active')
+    price = IntegerField('Price')
+    available = IntegerField('Available')
+    incoming = IntegerField('Incoming')
+    submit = SubmitField('Add SKU')
+    when_sold = SelectField(
+        'When sold...',
+        choices=[
+            ('Stop selling', 'Stop selling')
+        ]
+    )
+    # Channels
+    channels = QuerySelectMultipleField(
+        'Channels',
+        query_factory=lambda: Channel.query.all()
     )
 

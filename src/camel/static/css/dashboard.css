@@ -44,3 +44,6 @@ html, body {
     background-color: #F8F8F8;
     color: #111;
 }
+.table-hover {
+    cursor: pointer;
+}

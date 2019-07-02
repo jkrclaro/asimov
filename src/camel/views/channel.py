@@ -90,3 +90,9 @@ def connect_etsy_callback():
 def index():
     channels = Channel.query.filter_by(account_id=current_user.account.id)
     return render_template('channel/index.html', channels=channels)
+
+
+@channel_bp.route('/connect')
+@login_required
+def connect():
+    return render_template('channel/connect.html')

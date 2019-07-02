@@ -38,7 +38,7 @@ def email_edit(form_email: EditEmailForm) -> None:
                           "complete the process."
                 flash(message, 'success')
     else:
-        helper.flash_errors(form_email.email.errors)
+        helper.flash_errors(form_email.errors)
 
 
 def name_edit(form_name: EditNameForm) -> None:
@@ -57,11 +57,11 @@ def name_edit(form_name: EditNameForm) -> None:
             current_user.profile.name = new_name
             db.session.add(current_user)
             db.session.commit()
-            flash('Successfully changed your profile name.', 'success')
+            flash('Successfully changed your profile name', 'success')
         else:
             flash('Please provide a valid name', 'danger')
     else:
-        helper.flash_errors(form_name.name.errors)
+        helper.flash_errors(form_name.errors)
 
 
 def password_edit(form_password: EditPasswordForm) -> None:
@@ -84,10 +84,9 @@ def password_edit(form_password: EditPasswordForm) -> None:
             helper.email_change_password_success()
             flash('Successfully changed your password', 'success')
         else:
-            flash('Wrong old password.', 'danger')
+            flash('Wrong old password', 'danger')
     else:
-        helper.flash_errors(form_password.old_password.errors)
-        helper.flash_errors(form_password.new_password.errors)
+        helper.flash_errors(form_password.errors)
 
 
 @profile_bp.route('/profile', methods=['GET', 'POST'])

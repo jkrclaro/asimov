@@ -262,9 +262,6 @@ input[type="checkbox"], label {
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
-.dropdown:hover>.dropdown-menu {
-    display: block;
-}
 .nav-item {
     cursor: pointer;
 }

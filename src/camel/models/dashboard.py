@@ -1,20 +1,29 @@
+import string
+import random
+
 from . import db
+
+
+def generate_unique_id():
+    unique_id = ''.join(
+        random.SystemRandom().choice(string.ascii_letters + string.digits)
+        for _ in range(14)
+    )
+    return unique_id
 
 
 class Product(db.Model):
     __tablename__ = 'products'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
+    status = db.Column(db.String(30))
+    unique_id = db.Column(db.String(255))
     title = db.Column(db.String(255))
     category = db.Column(db.String(255))
     renewal = db.Column(db.String(30))
     type = db.Column(db.String(30))
     description = db.Column(db.String(255))
-    inventory = db.relationship(
-        'Inventory',
-        uselist=False,
-        back_populates='product'
-    )
+    inventories = db.relationship('Inventory', backref='products')
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(
@@ -30,7 +39,8 @@ class Product(db.Model):
             category: str,
             renewal: str,
             kind: str,
-            description: str
+            description: str,
+            status: str = 'unlisted'
     ):
         """SQLAlchemy model for Product
 
@@ -47,30 +57,25 @@ class Product(db.Model):
         self.renewal = renewal
         self.kind = kind
         self.description = description
+        self.status = status
+        self.unique_id = f'prd_{generate_unique_id()}'
 
     def __repr__(self):
-        return '<Product(id={id},title={title},category={category},' \
-           'renewal={renewal},kind={kind},description={description})>'.format(
-            id=self.id,
-            title=self.title,
-            category=self.category,
-            renewal=self.renewal,
-            kind=self.kind,
-            description=self.description
-            )
+        return f"{self.account_id}'s {self.title}"
 
 
 class Inventory(db.Model):
     __tablename__ = 'inventories'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-    product = db.relationship('Product', back_populates='inventory')
-    channels = db.relationship('Listing', back_populates='inventory')
-    quantity = db.Column(db.Integer)
+    price = db.Column(db.Integer)
+    available = db.Column(db.Integer)
     sku = db.Column(db.String(255))
     when_sold = db.Column(db.String(30))
     incoming = db.Column(db.Integer)
+    is_active = db.Column(db.Boolean, default=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+    channels = db.relationship('Listing', back_populates='inventory')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(
         db.DateTime,
@@ -81,27 +86,31 @@ class Inventory(db.Model):
     def __init__(
             self,
             product_id: int,
-            channels: list,
-            quantity: int,
-            sku: str,
+            available: int,
             when_sold: str,
-            incoming: int
+            incoming: int,
+            price: int = 0,
+            sku: str = '',
+            is_active: bool = False
     ):
         """SQLAlchemy model for Product
 
         :param product_id: ID for SQLAlchemy model of Product
-        :param channels: List of channels where inventory is current sold to
-        :param quantity: Number of available stocks
+        :param available: Number of available stocks
         :param sku: Stock keeping unit for this inventory
         :param when_sold: What to do when inventory is sold out
         :param incoming: Number of stocks incoming
         """
         self.product_id = product_id
-        self.channels = channels
-        self.quantity = quantity
-        self.sku = sku
+        self.available = available
         self.when_sold = when_sold
         self.incoming = incoming
+        self.price = price
+        self.is_active = is_active
+        self.sku = sku if sku else f'sku_{generate_unique_id()}'
+
+    def __repr__(self):
+        return self.sku
 
 
 class Listing(db.Model):
@@ -125,6 +134,13 @@ class Listing(db.Model):
         server_default=db.func.now(),
         server_onupdate=db.func.now()
     )
+
+    def __init__(self, inventory_id, channel_id):
+        self.inventory_id = inventory_id
+        self.channel_id = channel_id
+
+    def __repr__(self):
+        return f"{self.inventory} in {self.channel}"
 
 
 class Channel(db.Model):
@@ -166,13 +182,7 @@ class Channel(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return '<Channel(token={token},secret={secret},' \
-           'platform_id={platform_id},account_id={account_id})>'.format(
-                token=self.token,
-                secret=self.secret,
-                platform_id=self.platform_id,
-                account_id=self.account_id
-            )
+        return f"{self.platform.name.title()}'s {self.shop_name}"
 
 
 class Platform(db.Model):
@@ -196,7 +206,4 @@ class Platform(db.Model):
         self.name = name
 
     def __repr__(self):
-        return '<Platform(id={id},name={name})>'.format(
-            id=self.id,
-            name=self.name
-        )
+        return f'{self.name}'
