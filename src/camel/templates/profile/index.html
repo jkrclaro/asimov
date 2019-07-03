@@ -1,5 +1,5 @@
 {% extends 'dashboard/layout.html' %}
-
+{% from "form/horizontal.html" import render_field %}
 {% block content %}
 
 <div class="modal" id="change-name-modal" tabindex="-1" role="dialog" aria-labelledby="change-name-modal-title" aria-hidden="true">
@@ -9,7 +9,6 @@
                 <h5 class="modal-title" id="change-name-modal-title">Change name</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            {% from "form/vertical.html" import render_field %}
             <form method="post">
                 {{ form_name.csrf_token }}
                 <div class="modal-body mt-3">
@@ -32,7 +31,6 @@
                 <h5 class="modal-title" id="change-email-modal-title">Change email</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            {% from "form/vertical.html" import render_field %}
             <form method="post">
                 {{ form_email.csrf_token }}
                 <div class="modal-body mt-3">
@@ -56,7 +54,6 @@
                 <h5 class="modal-title" id="change-password-modal-title">Change password</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            {% from "form/vertical.html" import render_field %}
             <form method="post">
                 {{ form_password.csrf_token }}
                 <div class="modal-body mt-3">

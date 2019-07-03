@@ -41,19 +41,19 @@
                 </div>
                 <div class="row">
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Title</h6>
-                    <p class='col-lg-9 font__custom--text'>{{ product.title }}</p>
+                    <p class='col-lg-9 font__custom--text'>{{ product.get_title() }}</p>
                 </div>
                 <div class="row">
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Category</h6>
-                    <p class='col-lg-9 font__custom--text'>{{ product.category }}</p>
+                    <p class='col-lg-9 font__custom--text'>{{ product.get_category() }}</p>
                 </div>
                 <div class="row">
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Renewal</h6>
-                    <p class="col-lg-9 font__custom--text">{{ product.renewal }}</p>
+                    <p class="col-lg-9 font__custom--text">{{ product.get_renewal() }}</p>
                 </div>
                 <div class="row">
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Description</h6>
-                    <p class="col-lg-9 font__custom--text">{{ product.description }}</p>
+                    <p class="col-lg-9 font__custom--text">{{ product.get_description() }}</p>
                 </div>
             </div>
         </div>

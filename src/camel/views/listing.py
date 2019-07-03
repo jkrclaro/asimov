@@ -1,7 +1,8 @@
 from flask import Blueprint, flash, redirect, url_for, abort
 from flask_login import login_required, current_user
 
-from src.camel.models.dashboard import Listing, Channel, Inventory
+from src import etsy
+from src.camel.models.dashboard import Channel, Inventory
 
 
 listing_bp = Blueprint('listing', __name__, url_prefix='/listing')
@@ -17,8 +18,10 @@ def sync(channel_id, product_uid, inventory_id):
     inventory = Inventory.query.get(inventory_id)
     if not inventory:
         abort(404)
+    # Get listing
+    # If listing exists, update
+    # If listing does not exist, create it
 
-    # TODO: Update or create listing on ETSY here
     flash('Successfully synced listing', 'success')
 
     context = {
