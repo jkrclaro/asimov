@@ -12,7 +12,8 @@ dashboard_bp = Blueprint('dashboard', __name__)
 def index():
     channels = Channel.\
         query.\
-        filter_by(account_id=current_user.account.id)
+        filter_by(account_id=current_user.account.id).\
+        all()
     product = Product.\
         query.\
         filter_by(account_id=current_user.account.id).\

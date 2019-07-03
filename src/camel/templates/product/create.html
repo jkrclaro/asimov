@@ -15,21 +15,10 @@
                     {{ render_field(form.renewal) }}
                     {{ render_field(form.kind) }}
                     {{ render_field(form.description) }}
+                    <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
+                    <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
                 </div>
             </div>
-            <div class="card mb-5">
-                <div class="card-body">
-                    <h3 class='font__custom--title mb-3'>Shipping</h3>
-                    {{ render_field(form.shipping_origin) }}
-                    {{ render_field(form.processing_time) }}
-                    {{ render_field(form.shipping_carrier) }}
-                    {{ render_field(form.delivery_time_range_start) }}
-                    {{ render_field(form.delivery_time_range_end) }}
-                    {{ render_field(form.what_you_will_charge_) }}
-                </div>
-            </div>
-            <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
-            <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
         </form>
     </div>
     <div class='col-lg-2'></div>

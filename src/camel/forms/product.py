@@ -57,7 +57,7 @@ class CreateProductEtsyForm(FlaskForm):
             InputRequired(message='Please enter a valid email.'),
         ]
     )
-    unique_id = StringField('Unique ID')
+    uid = StringField('Unique ID')
     category = SelectField('Category', choices=category_choices)
     kind = SelectField('Type', choices=kind_choices)
     description = StringField('Description', widget=widgets.TextArea())

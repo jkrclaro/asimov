@@ -60,6 +60,7 @@ def create_app(config: str):
     from .views.account import account_bp
     from .views.channel import channel_bp
     from .views.product import product_bp
+    from .views.listing import listing_bp
     blueprints = (
         auth_bp,
         home_bp,
@@ -68,7 +69,8 @@ def create_app(config: str):
         profile_bp,
         account_bp,
         channel_bp,
-        product_bp
+        product_bp,
+        listing_bp
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)

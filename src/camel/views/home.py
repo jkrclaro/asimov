@@ -1,4 +1,12 @@
-from flask import Blueprint, render_template, current_app, redirect, url_for, abort
+from flask import (
+    Blueprint,
+    render_template,
+    current_app,
+    redirect,
+    url_for,
+    jsonify,
+    abort
+)
 from flask_login import current_user
 
 
@@ -9,24 +17,24 @@ home_bp = Blueprint('home', __name__)
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
-    else:
-        return render_template('home/index.html')
+
+    return render_template('home/index.html')
 
 
 @home_bp.route('/about')
 def about():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
-    else:
-        return render_template('home/about.html')
+
+    return render_template('home/about.html')
 
 
 @home_bp.route('/pricing')
 def pricing():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
-    else:
-        return render_template('home/pricing.html')
+
+    return render_template('home/pricing.html')
 
 
 @home_bp.route('/terms')
@@ -48,5 +56,5 @@ def blogs():
 def health():
     if current_user.is_staff:
         return jsonify({'environment': current_app.config.get('FLASK_ENV')})
-    else:
-        return redirect(url_for('dashboard.index'))
+
+    return redirect(url_for('dashboard.index'))

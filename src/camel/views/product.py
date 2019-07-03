@@ -27,14 +27,14 @@ def index():
     return render_template('product/index.html', products=products)
 
 
-@product_bp.route('/<unique_id>')
+@product_bp.route('/<uid>')
 @login_required
-def retrieve(unique_id: str):
+def retrieve(uid: str):
     product = Product.\
         query.\
         filter_by(
             account_id=current_user.account.id,
-            unique_id=unique_id
+            uid=uid
         ).first()
     if not product:
         abort(404)
@@ -63,21 +63,6 @@ def create():
         }
         product = Product(**product_data)
         db.session.add(product)
-        db.session.commit()
-        inventory_data = {
-            'product_id': product.id,
-            'available': 0,
-            'when_sold': 'Stop selling',
-            'incoming': 0,
-            'price': 0
-        }
-        inventory = Inventory(**inventory_data)
-        db.session.add(inventory)
-        db.session.commit()
-
-        for channel in form.channels.data:
-            listing = Listing(inventory.id, channel.id)
-            db.session.add(listing)
         db.session.commit()
 
         flash(f'Successfully added {title}', 'success')

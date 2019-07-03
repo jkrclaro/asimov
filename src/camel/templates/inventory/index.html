@@ -12,10 +12,12 @@
             <h3 class='font__custom--title float-left mb-3'>Inventory</h3>
             <div class="float-right">
                 <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary mb-3 mr-2">Filters <i class="fas fa-filter"></i></a>
+                <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary mb-3 mr-2">Actions <i class="fas fa-caret-down"></i></a>
             </div>
             <table class="table table-sm table-responsive-lg table-hover">
                 <thead>
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col">SKU</th>
                         <th scope="col">Available</th>
                         <th scope="col">Incoming</th>
@@ -27,7 +29,8 @@
                 <tbody>
                 {% for product in products %}
                     {% for inventory in product.inventories %}
-                        <tr onClick="window.location.href='{{ url_for('inventory.retrieve', unique_id=product.unique_id, sku=inventory.sku) }}'">
+                        <tr onClick="window.location.href='{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}'">
+                            <td>{{ loop.index }}</td>
                             <td scope="row">
                                 <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
                                 {{ inventory.sku }}
@@ -35,7 +38,7 @@
                             <td>{{ inventory.available }}</td>
                             <td>{{ inventory.incoming }}</td>
                             <td>{{ inventory.when_sold }}</td>
-                            <td>{{ product.title }}</td>
+                            <td><a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.title }}</a></td>
                             <td>{{ inventory.channels | length }}</td>
                         </tr>
                     {% endfor %}
