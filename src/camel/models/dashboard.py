@@ -1,15 +1,17 @@
 import string
 import random
 
+from slugify import slugify
+
 from . import db
 
 
 def generate_unique_id():
-    unique_id = ''.join(
+    uid = ''.join(
         random.SystemRandom().choice(string.ascii_letters + string.digits)
         for _ in range(14)
     )
-    return unique_id
+    return uid
 
 
 class Product(db.Model):
@@ -17,7 +19,7 @@ class Product(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(30))
-    unique_id = db.Column(db.String(255))
+    uid = db.Column(db.String(255))
     title = db.Column(db.String(255))
     category = db.Column(db.String(255))
     renewal = db.Column(db.String(30))
@@ -58,7 +60,7 @@ class Product(db.Model):
         self.kind = kind
         self.description = description
         self.status = status
-        self.unique_id = f'prd_{generate_unique_id()}'
+        self.uid = f'prd-{generate_unique_id()}'
 
     def __repr__(self):
         return f"{self.account_id}'s {self.title}"
@@ -107,7 +109,7 @@ class Inventory(db.Model):
         self.incoming = incoming
         self.price = price
         self.is_active = is_active
-        self.sku = sku if sku else f'sku_{generate_unique_id()}'
+        self.sku = slugify(sku) if sku else f'sku-{generate_unique_id()}'
 
     def __repr__(self):
         return self.sku
@@ -147,6 +149,7 @@ class Channel(db.Model):
     __tablename__ = 'channels'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
+    slug = db.Column(db.String(255))
     token = db.Column(db.String(255))
     secret = db.Column(db.String(255))
     shop_id = db.Column(db.String(255))
@@ -180,9 +183,10 @@ class Channel(db.Model):
         self.shop_id = shop_id
         self.shop_name = shop_name
         self.user_id = user_id
+        self.slug = slugify(self.shop_name)
 
     def __repr__(self):
-        return f"{self.platform.name.title()}'s {self.shop_name}"
+        return self.shop_name
 
 
 class Platform(db.Model):

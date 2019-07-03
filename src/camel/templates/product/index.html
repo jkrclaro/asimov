@@ -21,12 +21,12 @@
                 </thead>
                 <tbody>
                 {% for product in products %}
-                    <tr onClick="window.location.href='{{ url_for('product.retrieve', unique_id=product.unique_id) }}'">
+                    <tr onClick="window.location.href='{{ url_for('product.retrieve', uid=product.uid) }}'">
                         <td scope="row">
                             <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
                             {{ product.title }}
                         </td>
-                        <td>{{ product.unique_id }}</td>
+                        <td>{{ product.uid }}</td>
                         <td>{{ product.inventories | length }} SKU</td>
                         <td>{{ product.updated_at }}</td>
                     </tr>

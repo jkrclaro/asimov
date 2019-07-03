@@ -1,8 +1,16 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, abort, current_app
+from flask import (
+    Blueprint,
+    render_template,
+    flash,
+    redirect,
+    url_for,
+    abort,
+    current_app
+)
 from flask_login import login_required, current_user
 
 from src.camel.models import db
-from src.camel.models.dashboard import Product, Inventory
+from src.camel.models.dashboard import Product, Inventory, Listing
 from src.camel.forms.product import InventorySKUForm
 from src.camel import helper
 
@@ -17,10 +25,10 @@ def index():
     return render_template('inventory/index.html', products=products)
 
 
-@inventory_bp.route('/<unique_id>/create', methods=['POST'])
+@inventory_bp.route('/<uid>/create', methods=['POST'])
 @login_required
-def create(unique_id):
-    product = Product.query.filter_by(unique_id=unique_id).first()
+def create(uid):
+    product = Product.query.filter_by(uid=uid).first()
     if not product:
         abort(404)
 
@@ -40,16 +48,16 @@ def create(unique_id):
     else:
         helper.flash.flash_errors(form.errors)
 
-    return redirect(url_for('product.retrieve', unique_id=unique_id))
+    return redirect(url_for('product.retrieve', uid=uid))
 
 
-@inventory_bp.route('/<unique_id>/<sku>', methods=['GET', 'POST'])
+@inventory_bp.route('/<uid>/<sku>', methods=['GET', 'POST'])
 @login_required
-def retrieve(unique_id, sku):
+def retrieve(uid, sku):
     product = Product.\
         query.\
         filter_by(
-            unique_id=unique_id,
+            uid=uid,
             account_id=current_user.account.id
         ).first()
     if not product:
@@ -64,15 +72,23 @@ def retrieve(unique_id, sku):
 
     form = InventorySKUForm(obj=inventory)
     if form.validate_on_submit():
-        inventory.price = form.price.data
-        inventory.available = form.available.data
-        inventory.sku = form.sku.data
-        inventory.when_sold = form.when_sold.data
-        inventory.incoming = form.incoming.data
-        db.session.add(inventory)
+        if form.channels.data:
+            for channel in form.channels.data:
+                listing = Listing(inventory.id, channel.id)
+                db.session.add(listing)
+            flash('Successfully linked channel to SKU', 'success')
+        else:
+            inventory.price = form.price.data
+            inventory.available = form.available.data
+            inventory.sku = form.sku.data
+            inventory.when_sold = form.when_sold.data
+            inventory.incoming = form.incoming.data
+            inventory.is_active = form.is_active.data
+            flash('Successfully updated SKU', 'success')
+            db.session.add(inventory)
         db.session.commit()
-        flash('Successfully updated SKU', 'success')
-        return redirect(url_for('inventory.retrieve', unique_id=unique_id, sku=sku))
+
+        return redirect(url_for('inventory.retrieve', uid=uid, sku=sku))
     else:
         helper.flash.flash_errors(form.errors)
 

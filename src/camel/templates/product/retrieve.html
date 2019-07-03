@@ -9,7 +9,7 @@
                 <h5 class="modal-title" id="create-sku-modal-title">Add a SKU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form method="post" action="{{ url_for('inventory.create', unique_id=product.unique_id) }}">
+            <form method="post" action="{{ url_for('inventory.create', uid=product.uid) }}">
                 {{ form.csrf_token }}
                 <div class="modal-body mt-3">
                     {{ render_field(form.sku) }}
@@ -33,7 +33,12 @@
     <div class='col-lg-8 mb-3'>
         <div class='card mb-5'>
             <div class='card-body'>
-                <h3 class='font__custom--title mb-3'>Details</h3>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class='font__custom--title mb-3 float-left'>Details</h3>
+                        <a href="#" class="btn btn__custom--primary float-right" data-toggle="modal" data-target="#create-sku-modal"><i class="fas fa-edit mr-2"></i>Edit</a>
+                    </div>
+                </div>
                 <div class="row">
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Title</h6>
                     <p class='col-lg-9 font__custom--text'>{{ product.title }}</p>
@@ -61,7 +66,7 @@
                     </div>
                 </div>
                 {% for inventory in product.inventories %}
-                    <div onClick="window.location.href='{{ url_for('inventory.retrieve', unique_id=product.unique_id, sku=inventory.sku) }}'" style="cursor: pointer;">
+                    <div onClick="window.location.href='{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}'" style="cursor: pointer;">
                         <i class="fas fa-chevron-right mr-2"></i>
                         <a class="anchor__custom--default" href="#">{{ inventory.sku }}</a>
                         {% if not loop.last %}<hr/>{% endif %}

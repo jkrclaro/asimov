@@ -29,6 +29,7 @@ requests-oauthlib = "*"
 flask-login = "*"
 flask-wtf = "*"
 flask-migrate = "*"
+python-slugify = "*"
 
 [dev-packages]
 pytest = "*"
