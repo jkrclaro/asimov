@@ -9,8 +9,9 @@ from flask import (
 )
 from flask_login import login_required, current_user
 
+from src.camel import helper
 from src.camel.models import db
-from src.camel.models.dashboard import Product, Inventory, Listing
+from src.camel.models.dashboard import Product
 from src.camel.forms.product import (
     CreateProductEtsyForm,
     InventorySKUForm
@@ -27,7 +28,7 @@ def index():
     return render_template('product/index.html', products=products)
 
 
-@product_bp.route('/<uid>')
+@product_bp.route('/<uid>', methods=['GET', 'POST'])
 @login_required
 def retrieve(uid: str):
     product = Product.\
@@ -39,9 +40,19 @@ def retrieve(uid: str):
     if not product:
         abort(404)
 
-    form = InventorySKUForm()
+    form = CreateProductEtsyForm(obj=product)
+    if form.validate_on_submit():
+        product.uid = form.uid.data
+        db.session.add(product)
+        db.session.commit()
+        flash('Successfully updated product', 'success')
+        return redirect(url_for('product.retrieve', uid=uid))
+    else:
+        helper.flash_errors(form.errors)
+
     context = {
         'form': form,
+        'form_inventory': InventorySKUForm(),
         'product': product
     }
     return render_template('product/retrieve.html', **context)

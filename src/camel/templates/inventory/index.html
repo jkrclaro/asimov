@@ -38,7 +38,7 @@
                             <td>{{ inventory.available }}</td>
                             <td>{{ inventory.incoming }}</td>
                             <td>{{ inventory.when_sold }}</td>
-                            <td><a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.title }}</a></td>
+                            <td><a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.get_title() }}</a></td>
                             <td>{{ inventory.channels | length }}</td>
                         </tr>
                     {% endfor %}

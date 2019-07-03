@@ -14,7 +14,6 @@
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col">Title</th>
                         <th scope="col">ID</th>
                         <th scope="col">SKU</th>
                         <th scope="col">Last updated</th>
@@ -26,9 +25,8 @@
                         <td>{{ loop.index }}</td>
                         <td scope="row">
                             <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
-                            {{ product.get_title() }}
+                            {{ product.uid }}
                         </td>
-                        <td>{{ product.uid }}</td>
                         <td>{{ product.inventories | length }} SKU</td>
                         <td>{{ product.updated_at }}</td>
                     </tr>

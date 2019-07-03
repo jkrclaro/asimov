@@ -76,6 +76,7 @@ def retrieve(uid, sku):
             for channel in form.channels.data:
                 listing = Listing(inventory.id, channel.id)
                 db.session.add(listing)
+            db.session.commit()
             flash('Successfully linked channel to SKU', 'success')
         else:
             inventory.price = form.price.data
@@ -84,9 +85,9 @@ def retrieve(uid, sku):
             inventory.when_sold = form.when_sold.data
             inventory.incoming = form.incoming.data
             inventory.is_active = form.is_active.data
-            flash('Successfully updated SKU', 'success')
             db.session.add(inventory)
-        db.session.commit()
+            db.session.commit()
+            flash('Successfully updated SKU', 'success')
 
         return redirect(url_for('inventory.retrieve', uid=uid, sku=sku))
     else:
