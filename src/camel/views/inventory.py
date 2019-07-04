@@ -4,14 +4,13 @@ from flask import (
     flash,
     redirect,
     url_for,
-    abort,
-    current_app
+    abort
 )
 from flask_login import login_required, current_user
 
 from src.camel.models import db
 from src.camel.models.dashboard import Product, Inventory, Listing
-from src.camel.forms.product import InventoryEditForm, InventoryCreateForm
+from src.camel.forms import InventoryBaseForm, InventoryCreateForm
 from src.camel import helper
 
 
@@ -21,13 +20,19 @@ inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
 @inventory_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
+    products = Product.query.filter_by(account_id=current_user.account.id).all()
+    return render_template('inventory/index.html', products=products)
+
+
+@inventory_bp.route('/create', methods=['GET', 'POST'])
+@login_required
+def create():
     form = InventoryCreateForm()
     if form.validate_on_submit():
-        product = form.product.data
         data = {
-            'product_id': product.id,
+            'product_id': form.product.data.id,
+            'when_sold_id': form.when_sold.data.id,
             'available': form.available.data,
-            'when_sold': form.when_sold.data,
             'price': form.price.data,
             'sku': form.sku.data,
         }
@@ -35,26 +40,25 @@ def index():
         db.session.add(inventory)
         db.session.commit()
         flash('Successfully added SKU', 'success')
+        return redirect(url_for('inventory.index'))
     else:
         helper.flash.flash_errors(form.errors)
-
-    products = Product.query.filter_by(account_id=current_user.account.id).all()
-    return render_template('inventory/index.html', products=products, form=form)
+    return render_template('inventory/create.html', form=form)
 
 
-@inventory_bp.route('/<uid>/create', methods=['POST'])
+@inventory_bp.route('/<uid>/create', methods=['GET', 'POST'])
 @login_required
-def create(uid):
+def create_with_product_uid(uid):
     product = Product.query.filter_by(uid=uid).first()
     if not product:
         abort(404)
 
-    form = InventoryEditForm()
+    form = InventoryBaseForm()
     if form.validate_on_submit():
         data = {
             'product_id': product.id,
+            'when_sold_id': form.when_sold.data.id,
             'available': form.available.data,
-            'when_sold': form.when_sold.data,
             'price': form.price.data,
             'sku': form.sku.data,
         }
@@ -64,7 +68,6 @@ def create(uid):
         flash('Successfully added SKU', 'success')
     else:
         helper.flash.flash_errors(form.errors)
-
     return redirect(url_for('product.retrieve', uid=uid))
 
 
@@ -87,7 +90,7 @@ def retrieve(uid, sku):
     if not inventory:
         abort(404)
 
-    form = InventoryEditForm(obj=inventory)
+    form = InventoryBaseForm(obj=inventory)
     if form.validate_on_submit():
         if form.channels.data:
             for channel in form.channels.data:

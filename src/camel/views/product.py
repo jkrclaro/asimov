@@ -12,7 +12,7 @@ from flask_login import login_required, current_user
 from src.camel import helper
 from src.camel.models import db
 from src.camel.models.dashboard import Product
-from src.camel.forms.product import ProductCreateForm, InventoryEditForm
+from src.camel.forms import ProductCreateForm, InventoryBaseForm
 
 
 product_bp = Blueprint('product', __name__, url_prefix='/products')
@@ -73,7 +73,7 @@ def retrieve(uid: str):
 
     context = {
         'form': form,
-        'form_inventory': InventoryEditForm(),
+        'form_inventory': InventoryBaseForm(),
         'product': product
     }
     return render_template('product/retrieve.html', **context)

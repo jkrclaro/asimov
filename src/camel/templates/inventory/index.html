@@ -2,32 +2,6 @@
 {% from "form/horizontal.html" import render_field %}
 {% block content %}
 
-<div class="modal" id="create-sku-modal" tabindex="-1" role="dialog" aria-labelledby="create-sku-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="create-sku-modal-title">Add a SKU</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <form method="post">
-                {{ form.csrf_token }}
-                <div class="modal-body mt-3">
-                    {{ render_field(form.product) }}
-                    {{ render_field(form.sku) }}
-                    {{ render_field(form.price) }}
-                    {{ render_field(form.available) }}
-                    {{ render_field(form.when_sold) }}
-                    {{ render_field(form.is_active) }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
-                    <input class="btn btn__custom--primary" name="submit" type="submit" value="Add SKU">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <div class='card'>
     <div class='card-body'>
         {% if not products %}
@@ -41,7 +15,7 @@
                         {% if loop.first %}
                             <h3 class='font__custom--title float-left mb-3'>Inventory</h3>
                             <div class="float-right">
-                                <a href="#" class="btn btn__custom--primary mb-3" data-toggle="modal" data-target="#create-sku-modal"><i class="fas fa-plus mr-2"></i>Create</a>
+                                <a href="{{ url_for('inventory.create') }}" class="btn btn__custom--primary--outline mb-3"><i class="fas fa-plus mr-2"></i>Create</a>
                                 <span class="btn btn__custom--primary mb-3" data-toggle="dropdown">Actions <i class="fas fa-caret-down"></i></span>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-tip-ne">
                                         <a class="dropdown-item" href="#">Continue selling when out of stock</a>

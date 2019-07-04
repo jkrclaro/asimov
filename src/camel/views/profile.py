@@ -3,11 +3,7 @@ from flask_login import login_required, current_user
 
 from src.camel.models import db
 from src.camel.models.auth import User
-from src.camel.forms.profile import (
-    EditEmailForm,
-    EditNameForm,
-    EditPasswordForm
-)
+from src.camel.forms import EditEmailForm, EditNameForm, EditPasswordForm
 from src.camel import helper
 
 

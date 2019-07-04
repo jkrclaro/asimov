@@ -13,7 +13,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from src import token, google_recaptcha
 from src.camel.models import db
 from src.camel.models.auth import User, Profile, Account
-from src.camel.forms.auth import (
+from src.camel.forms import (
     SignupForm,
     LoginForm,
     ForgotPasswordForm,

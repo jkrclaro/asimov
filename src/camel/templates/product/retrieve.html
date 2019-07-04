@@ -9,7 +9,7 @@
                 <h5 class="modal-title" id="create-sku-modal-title">Add a SKU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form method="post" action="{{ url_for('inventory.create', uid=product.uid) }}">
+            <form method="post" action="{{ url_for('inventory.create_with_product_uid', uid=product.uid) }}">
                 {{ form_inventory.csrf_token }}
                 <div class="modal-body mt-3">
                     {{ render_field(form_inventory.sku) }}

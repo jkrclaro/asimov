@@ -101,7 +101,10 @@ class Inventory(db.Model, BaseModel):
     price = db.Column(db.Integer)
     available = db.Column(db.Integer)
     is_active = db.Column(db.Boolean, default=False)
-    when_sold_id = db.Column(db.Integer, db.ForeignKey('inventories_when_sold.id'))
+    when_sold_id = db.Column(
+        db.Integer,
+        db.ForeignKey('inventories_when_sold.id')
+    )
     when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     channels = db.relationship('Listing', back_populates='inventory')
@@ -109,7 +112,7 @@ class Inventory(db.Model, BaseModel):
     def __init__(
             self,
             product_id: int,
-            when_sold: str = 'Stop selling',
+            when_sold_id: int,
             available: int = 0,
             price: int = 0,
             sku: str = '',
@@ -118,14 +121,14 @@ class Inventory(db.Model, BaseModel):
         """SQLALchemy model for inventories table.
 
         :param product_id: ID for SQLAlchemy model of Product
+        :param when_sold_id: ID for SQLAlchemy model of InventoryWhenSold
         :param available: Number of available stocks
-        :param when_sold: What to do when inventory is sold out
         :param sku: Stock keeping unit for this inventory
         :param is_active: If inventory is currently listed somewhere
         """
         self.product_id = product_id
+        self.when_sold_id = when_sold_id
         self.available = available
-        self.when_sold = when_sold
         self.price = price
         self.is_active = is_active
         self.sku = sku
