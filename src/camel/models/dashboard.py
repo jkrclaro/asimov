@@ -1,4 +1,3 @@
-from slugify import slugify
 from sqlalchemy.orm import synonym
 
 from . import db, BaseModel, generate_uid
@@ -60,21 +59,6 @@ class Product(db.Model, BaseModel):
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)
 
-    def get_title(self):
-        return self.etsy.title
-
-    def get_category(self):
-        return self.etsy.category
-
-    def get_renewal(self):
-        return self.etsy.renewal
-
-    def get_type(self):
-        return self.etsy.type
-
-    def get_description(self):
-        return self.etsy.description
-
 
 class ProductEtsy(db.Model, BaseModel):
     __tablename__ = 'products_etsy'
@@ -113,9 +97,9 @@ class ProductEtsy(db.Model, BaseModel):
 
 class Inventory(db.Model, BaseModel):
     __tablename__ = 'inventories'
+    _sku = db.Column('sku', db.String(255))
     price = db.Column(db.Integer)
     available = db.Column(db.Integer)
-    sku = db.Column(db.String(255))
     when_sold = db.Column(db.String(30))
     incoming = db.Column(db.Integer)
     is_active = db.Column(db.Boolean, default=False)
@@ -147,10 +131,23 @@ class Inventory(db.Model, BaseModel):
         self.incoming = incoming
         self.price = price
         self.is_active = is_active
-        self.sku = slugify(sku) if sku else f'sku-{generate_uid()}'
+        self.sku = sku
+
+    @property
+    def sku(self):
+        return self._sku
+
+    @sku.setter
+    def sku(self, value: str):
+        self._sku = value if value else f'sku-{generate_uid()}'
+
+    sku = synonym('_sku', descriptor=sku)  # https://bit.ly/2xsVGAF
+
+    def __str__(self):
+        return self.sku
 
     def __repr__(self):
-        return self.sku
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
 
 class Listing(db.Model, BaseModel):
@@ -159,7 +156,11 @@ class Listing(db.Model, BaseModel):
     channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
     inventory = db.relationship('Inventory', back_populates='channels')
     channel = db.relationship('Channel', back_populates='inventories')
-    etsy = db.relationship('ListingEtsy', uselist=False, back_populates='listing')
+    etsy = db.relationship(
+        'ListingEtsy',
+        uselist=False,
+        back_populates='listing'
+    )
 
     def __init__(self, inventory_id, channel_id):
         """SQLAlchemy association table for inventories and channels"""
@@ -193,7 +194,11 @@ class Channel(db.Model, BaseModel):
     platform = db.relationship('Platform', back_populates='channel')
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     inventories = db.relationship('Listing', back_populates='channel')
-    etsy = db.relationship('ChannelEtsy', uselist=False, back_populates='channel')
+    etsy = db.relationship(
+        'ChannelEtsy',
+        uselist=False,
+        back_populates='channel'
+    )
 
     def __init__(self, platform_id, account_id):
         """SQLAlchemy model for channels table
@@ -247,7 +252,11 @@ class ChannelEtsy(db.Model, BaseModel):
 class Platform(db.Model, BaseModel):
     __tablename__ = 'platforms'
     name = db.Column(db.String(30), unique=True)
-    channel = db.relationship('Channel', uselist=False, back_populates='platform')
+    channel = db.relationship(
+        'Channel',
+        uselist=False,
+        back_populates='platform'
+    )
 
     def __init__(self, name):
         """SQLAlchemy model for platforms table.

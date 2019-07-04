@@ -95,9 +95,9 @@
                     </div>
                 </div>
                 {% for inventory in product.inventories %}
-                    <div onClick="window.location.href='{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}'" style="cursor: pointer;">
+                    <div>
                         <i class="fas fa-chevron-right mr-2"></i>
-                        <a class="anchor__custom--default" href="#">{{ inventory.sku }}</a>
+                        <a class="anchor__custom--default" href="{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}">{{ inventory.sku }}</a>
                         {% if not loop.last %}<hr/>{% endif %}
                     </div>
                 {% endfor %}

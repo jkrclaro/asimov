@@ -30,6 +30,7 @@ flask-login = "*"
 flask-wtf = "*"
 flask-migrate = "*"
 python-slugify = "*"
+babel = "*"
 
 [dev-packages]
 pytest = "*"

@@ -1,3 +1,4 @@
+import babel
 from flask import Flask, render_template, current_app
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -7,6 +8,10 @@ from src import mailgun, token, google_recaptcha, etsy
 
 login_manager = LoginManager()
 migrate = Migrate()
+
+
+def format_datetime(value):
+    return babel.dates.format_datetime(value, 'dd/MM/YYYY, HH:mm', locale='en')
 
 
 def error_404_page(error):
@@ -77,5 +82,7 @@ def create_app(config: str):
 
     app.register_error_handler(404, error_404_page)
     app.register_error_handler(500, error_500_page)
+
+    app.jinja_env.filters['datetime'] = format_datetime
 
     return app

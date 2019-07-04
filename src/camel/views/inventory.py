@@ -37,7 +37,8 @@ def create(uid):
         data = {
             'product_id': product.id,
             'available': form.available.data,
-            'when_sold': 'Stop selling',
+            'when_sold': form.when_sold.data,
+            'price': form.price.data,
             'incoming': form.incoming.data,
             'sku': form.sku.data,
         }
@@ -89,7 +90,8 @@ def retrieve(uid, sku):
             db.session.commit()
             flash('Successfully updated SKU', 'success')
 
-        return redirect(url_for('inventory.retrieve', uid=uid, sku=sku))
+        url = url_for('inventory.retrieve', uid=uid, sku=inventory.sku)
+        return redirect(url)
     else:
         helper.flash.flash_errors(form.errors)
 
