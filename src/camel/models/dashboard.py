@@ -10,11 +10,15 @@ class Product(db.Model, BaseModel):
     url = db.Column(db.String(255))
     caption = db.Column(db.String(255))
     description = db.Column(db.Text)
-    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
+    account_id = db.Column(
+        db.Integer,
+        db.ForeignKey('accounts.id', ondelete='CASCADE')
+    )
     etsy = db.relationship(
         'ProductEtsy',
         uselist=False,
-        back_populates='product'
+        back_populates='product',
+        passive_deletes=True
     )
     inventories = db.relationship('Inventory', backref='products')
 
@@ -66,8 +70,15 @@ class ProductEtsy(db.Model, BaseModel):
     renewal = db.Column(db.String(30))
     type = db.Column(db.String(30))
     description = db.Column(db.String(255))
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-    product = db.relationship('Product', back_populates='etsy')
+    product_id = db.Column(
+        db.Integer,
+        db.ForeignKey('products.id', ondelete='CASCADE')
+    )
+    product = db.relationship(
+        'Product',
+        back_populates='etsy',
+        passive_deletes=True
+    )
 
     def __init__(
             self,
@@ -103,11 +114,22 @@ class Inventory(db.Model, BaseModel):
     is_active = db.Column(db.Boolean, default=False)
     when_sold_id = db.Column(
         db.Integer,
-        db.ForeignKey('inventories_when_sold.id')
+        db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE')
     )
-    when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-    channels = db.relationship('Listing', back_populates='inventory')
+    when_sold = db.relationship(
+        'InventoryWhenSold',
+        back_populates='inventory',
+        passive_deletes=True
+    )
+    product_id = db.Column(
+        db.Integer,
+        db.ForeignKey('products.id', ondelete='CASCADE')
+    )
+    channels = db.relationship(
+        'Listing',
+        back_populates='inventory',
+        passive_deletes=True
+    )
 
     def __init__(
             self,
@@ -156,7 +178,8 @@ class InventoryWhenSold(db.Model, BaseModel):
     inventory = db.relationship(
         'Inventory',
         uselist=False,
-        back_populates='when_sold'
+        back_populates='when_sold',
+        passive_deletes=True
     )
 
     def __init__(self, name):
@@ -175,10 +198,24 @@ class InventoryWhenSold(db.Model, BaseModel):
 
 class Listing(db.Model, BaseModel):
     __tablename__ = 'listings'
-    inventory_id = db.Column(db.Integer, db.ForeignKey('inventories.id'))
-    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
-    inventory = db.relationship('Inventory', back_populates='channels')
-    channel = db.relationship('Channel', back_populates='inventories')
+    inventory_id = db.Column(
+        db.Integer,
+        db.ForeignKey('inventories.id', ondelete='CASCADE')
+    )
+    channel_id = db.Column(
+        db.Integer,
+        db.ForeignKey('channels.id', ondelete='CASCADE')
+    )
+    inventory = db.relationship(
+        'Inventory',
+        back_populates='channels',
+        passive_deletes=True
+    )
+    channel = db.relationship(
+        'Channel',
+        back_populates='inventories',
+        passive_deletes=True
+    )
     etsy = db.relationship(
         'ListingEtsy',
         uselist=False,
@@ -246,8 +283,16 @@ class ChannelEtsy(db.Model, BaseModel):
     shop_id = db.Column(db.String(255))
     shop_name = db.Column(db.String(255))
     user_id = db.Column(db.String(255))
-    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
-    channel = db.relationship('Channel', uselist=False, back_populates='etsy')
+    channel_id = db.Column(
+        db.Integer,
+        db.ForeignKey('channels.id', ondelete='CASCADE'),
+    )
+    channel = db.relationship(
+        'Channel',
+        uselist=False,
+        back_populates='etsy',
+        passive_deletes=True
+    )
 
     def __init__(
             self,
