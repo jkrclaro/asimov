@@ -12,10 +12,7 @@ from flask_login import login_required, current_user
 from src.camel import helper
 from src.camel.models import db
 from src.camel.models.dashboard import Product
-from src.camel.forms.product import (
-    CreateProductEtsyForm,
-    InventorySKUForm
-)
+from src.camel.forms.product import ProductCreateForm, InventorySKUForm
 
 
 product_bp = Blueprint('product', __name__, url_prefix='/products')
@@ -40,13 +37,17 @@ def retrieve(uid: str):
     if not product:
         abort(404)
 
-    form = CreateProductEtsyForm(obj=product)
+    form = ProductCreateForm(obj=product)
     if form.validate_on_submit():
+        product.title = form.title.data
+        product.url = form.url.data
+        product.caption = form.caption.data
+        product.description = form.description.data
         product.uid = form.uid.data
         db.session.add(product)
         db.session.commit()
         flash('Successfully updated product', 'success')
-        return redirect(url_for('product.retrieve', uid=uid))
+        return redirect(url_for('product.retrieve', uid=product.uid))
     else:
         helper.flash_errors(form.errors)
 
@@ -61,21 +62,23 @@ def retrieve(uid: str):
 @product_bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-    form = CreateProductEtsyForm()
+    form = ProductCreateForm()
     if form.validate_on_submit():
         title = form.title.data
-        product_data = {
-            'title': title,
+        data_product = {
             'account_id': current_user.account.id,
-            'category': form.category.data,
-            'renewal': form.renewal.data,
-            'kind': form.kind.data,
-            'description': form.description.data
+            'title': title,
+            'url': form.url.data,
+            'caption': form.caption.data,
+            'description': form.description.data,
+            'uid': form.uid.data,
         }
-        product = Product(**product_data)
+        current_app.logger.debug(data_product)
+        product = Product(**data_product)
         db.session.add(product)
         db.session.commit()
-
         flash(f'Successfully added {title}', 'success')
         return redirect(url_for('product.index'))
+    else:
+        helper.flash_errors(form.errors)
     return render_template('product/create.html', form=form)

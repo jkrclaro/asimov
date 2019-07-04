@@ -1,36 +1,64 @@
-import string
-import random
-
 from slugify import slugify
+from sqlalchemy.orm import synonym
 
-from . import db, TimestampMixin
-
-
-def generate_uid() -> str:
-    return ''.join(
-        random.SystemRandom().choice(string.ascii_letters + string.digits)
-        for _ in range(14)
-    )
+from . import db, BaseModel, generate_uid
 
 
-class Product(db.Model, TimestampMixin):
+class Product(db.Model, BaseModel):
     __tablename__ = 'products'
-    uid = db.Column(db.String(255))
+    _uid = db.Column('uid', db.String(255))
+    title = db.Column(db.String(255))
+    url = db.Column(db.String(255))
+    caption = db.Column(db.String(255))
+    description = db.Column(db.Text)
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
-    etsy = db.relationship('ProductEtsy', uselist=False, back_populates='product')
+    etsy = db.relationship(
+        'ProductEtsy',
+        uselist=False,
+        back_populates='product'
+    )
     inventories = db.relationship('Inventory', backref='products')
 
-    def __init__(self, account_id: int, uid: str = ''):
+    def __init__(
+            self,
+            account_id: int,
+            title: str,
+            url: str,
+            caption: str,
+            description: str,
+            uid: str = ''
+    ):
         """SQLALchemy model for products table.
 
         :param account_id: Account ID associated that owns this product.
+        :param title: Title of product.
+        :param url: Web page of official product.
+        :param caption: Short one-line description of product.
+        :param description: Full description of product.
         :param uid: Unique ID for product.
         """
         self.account_id = account_id
-        self.uid = uid if uid else f'prd-{generate_uid()}'
+        self.title = title
+        self.url = url
+        self.caption = caption
+        self.description = description
+        self.uid = uid
+
+    @property
+    def uid(self):
+        return self._uid
+
+    @uid.setter
+    def uid(self, value: str):
+        self._uid = value if value else f'product-{generate_uid()}'
+
+    uid = synonym('_uid', descriptor=uid)  # https://bit.ly/2xsVGAF
+
+    def __str__(self):
+        return self.uid
 
     def __repr__(self):
-        return self.uid
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
     def get_title(self):
         return self.etsy.title
@@ -48,9 +76,8 @@ class Product(db.Model, TimestampMixin):
         return self.etsy.description
 
 
-class ProductEtsy(db.Model, TimestampMixin):
+class ProductEtsy(db.Model, BaseModel):
     __tablename__ = 'products_etsy'
-    title = db.Column(db.String(255))
     category = db.Column(db.String(255))
     renewal = db.Column(db.String(30))
     type = db.Column(db.String(30))
@@ -84,7 +111,7 @@ class ProductEtsy(db.Model, TimestampMixin):
         return self.id
 
 
-class Inventory(db.Model, TimestampMixin):
+class Inventory(db.Model, BaseModel):
     __tablename__ = 'inventories'
     price = db.Column(db.Integer)
     available = db.Column(db.Integer)
@@ -126,7 +153,7 @@ class Inventory(db.Model, TimestampMixin):
         return self.sku
 
 
-class Listing(db.Model, TimestampMixin):
+class Listing(db.Model, BaseModel):
     __tablename__ = 'listings'
     inventory_id = db.Column(db.Integer, db.ForeignKey('inventories.id'))
     channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
@@ -143,7 +170,7 @@ class Listing(db.Model, TimestampMixin):
         return f"{self.inventory} in {self.channel}"
 
 
-class ListingEtsy(db.Model, TimestampMixin):
+class ListingEtsy(db.Model, BaseModel):
     __tablename__ = 'listings_etsy'
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
     listing = db.relationship('Listing', uselist=False, back_populates='etsy')
@@ -160,7 +187,7 @@ class ListingEtsy(db.Model, TimestampMixin):
         return self.listing_etsy_id
 
 
-class Channel(db.Model, TimestampMixin):
+class Channel(db.Model, BaseModel):
     __tablename__ = 'channels'
     platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
     platform = db.relationship('Platform', back_populates='channel')
@@ -181,7 +208,7 @@ class Channel(db.Model, TimestampMixin):
         return f'{self.etsy}'
 
 
-class ChannelEtsy(db.Model, TimestampMixin):
+class ChannelEtsy(db.Model, BaseModel):
     __tablename__ = 'channels_etsy'
     oauth_token = db.Column(db.String(255))
     oauth_token_secret = db.Column(db.String(255))
@@ -217,14 +244,10 @@ class ChannelEtsy(db.Model, TimestampMixin):
         return self.shop_name
 
 
-class Platform(db.Model, TimestampMixin):
+class Platform(db.Model, BaseModel):
     __tablename__ = 'platforms'
     name = db.Column(db.String(30), unique=True)
-    channel = db.relationship(
-        'Channel',
-        uselist=False,
-        back_populates='platform'
-    )
+    channel = db.relationship('Channel', uselist=False, back_populates='platform')
 
     def __init__(self, name):
         """SQLAlchemy model for platforms table.

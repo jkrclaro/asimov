@@ -39,6 +39,10 @@
                 {{ form.csrf_token }}
                 <div class="modal-body mt-3">
                     {{ render_field(form.uid) }}
+                    {{ render_field(form.title) }}
+                    {{ render_field(form.caption) }}
+                    {{ render_field(form.url) }}
+                    {{ render_field(form.description) }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
@@ -60,10 +64,26 @@
                         <a href="#" class="btn btn__custom--primary float-right" data-toggle="modal" data-target="#edit-product-modal"><i class="fas fa-edit mr-2"></i>Edit</a>
                     </div>
                 </div>
-                <div class="row">
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">UID</h6>
-                    <p class='col-lg-9 font__custom--text'>{{ product.uid }}</p>
-                </div>
+                {% for attribute in ('title', 'uid', 'url', 'caption', 'description') %}
+                    <div class="row">
+                        <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">
+                            {% if attribute == 'uid' %}
+                                ID
+                            {% elif attribute == 'url' %}
+                                URL
+                            {% else %}
+                                {{ attribute | title }}
+                            {% endif %}
+                        </h6>
+                        <p class='col-lg-9 font__custom--text'>
+                            {% if attribute == 'url' %}
+                                <a href="{{ product[attribute] }}" class="anchor__custom--default">{{ product[attribute] }}</a>
+                            {% else %}
+                                {{ product[attribute] }}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div class="card mb-3">

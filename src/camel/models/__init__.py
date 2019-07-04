@@ -1,3 +1,5 @@
+import string
+import random
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, event
@@ -6,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class TimestampMixin(object):
+class BaseModel(object):
     """Timestamping mixin"""
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -21,3 +23,11 @@ class TimestampMixin(object):
     @classmethod
     def __declare_last__(cls):
         event.listen(cls, 'before_update', cls._updated_at)
+
+
+def generate_uid() -> str:
+    uid = ''.join(
+        random.SystemRandom().choice(string.ascii_letters + string.digits)
+        for _ in range(14)
+    )
+    return uid

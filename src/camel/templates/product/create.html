@@ -1,5 +1,5 @@
 {% extends 'dashboard/layout.html' %}
-{% from "form/vertical.html" import render_field %}
+{% from "form/horizontal.html" import render_field %}
 {% block content %}
 
 <div class='row'>
@@ -9,8 +9,12 @@
             {{ form.csrf_token }}
             <div class='card mb-5'>
                 <div class='card-body'>
-                    <h3 class='font__custom--title mb-3'>Details</h3>
+                    <h3 class='font__custom--title mb-3'>Create a product</h3>
                     {{ render_field(form.uid) }}
+                    {{ render_field(form.title) }}
+                    {{ render_field(form.caption) }}
+                    {{ render_field(form.url) }}
+                    {{ render_field(form.description) }}
                     <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
                     <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
                 </div>

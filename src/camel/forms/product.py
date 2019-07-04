@@ -47,7 +47,7 @@ what_you_will_charge_choices = [
 ]
 
 
-class CreateProductEtsyForm(FlaskForm):
+class ProductCreateForm(FlaskForm):
     # Listing
     title = StringField(
         'Title',
@@ -56,11 +56,19 @@ class CreateProductEtsyForm(FlaskForm):
             InputRequired(message='Please enter a valid email.'),
         ]
     )
-    uid = StringField('Unique ID')
-    category = SelectField('Category', choices=category_choices)
-    type = SelectField('Type', choices=type_choices)
+    uid = StringField(
+        'ID',
+        description="If an ID isn't provided, we'll generate one for you."
+    )
+    caption = StringField(
+        'Caption',
+        description='A short one-line description of the product.'
+    )
+    url = StringField(
+        'URL',
+        description='The URL of the webpage for the product.'
+    )
     description = StringField('Description', widget=widgets.TextArea())
-    renewal = SelectField('Renewal', choices=renewal_choices)
 
     # Shipping
     # shipping_origin = SelectField(
