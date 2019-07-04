@@ -15,7 +15,6 @@
                     {{ render_field(form_inventory.sku) }}
                     {{ render_field(form_inventory.price) }}
                     {{ render_field(form_inventory.available) }}
-                    {{ render_field(form_inventory.incoming) }}
                     {{ render_field(form_inventory.when_sold) }}
                     {{ render_field(form_inventory.is_active) }}
                 </div>
@@ -54,7 +53,6 @@
 </div>
 
 <div class='row'>
-    <div class='col-lg-2'></div>
     <div class='col-lg-8 mb-3'>
         <div class='card mb-5'>
             <div class='card-body'>
@@ -86,6 +84,8 @@
                 {% endfor %}
             </div>
         </div>
+    </div>
+    <div class='col-lg-4'>
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row">
@@ -104,7 +104,6 @@
             </div>
         </div>
     </div>
-    <div class='col-lg-2'></div>
 </div>
 
 

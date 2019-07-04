@@ -47,12 +47,14 @@ def create_app(config: str):
     def load_user(user_id: int):
         return User.query.get(int(user_id))
 
-    from .models.dashboard import Platform
+    from .models.dashboard import Platform, InventoryWhenSold
     @app.before_first_request
     def create_db():
         db.create_all(app=app)
         try:
             db.session.add(Platform('etsy'))
+            db.session.add(InventoryWhenSold('Stop selling'))
+            db.session.add(InventoryWhenSold('Continue selling'))
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
@@ -66,6 +68,7 @@ def create_app(config: str):
     from .views.channel import channel_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
+    from .views.etsy import etsy_bp
     blueprints = (
         auth_bp,
         home_bp,
@@ -75,7 +78,8 @@ def create_app(config: str):
         account_bp,
         channel_bp,
         product_bp,
-        listing_bp
+        listing_bp,
+        etsy_bp
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)

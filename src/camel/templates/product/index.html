@@ -1,5 +1,31 @@
 {% extends 'dashboard/layout.html' %}
+{% from "form/horizontal.html" import render_field %}
 {% block content %}
+
+<div class="modal" id="create-product-modal" tabindex="-1" role="dialog" aria-labelledby="create-product-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="create-product-modal-title">Create a product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form.uid) }}
+                    {{ render_field(form.title) }}
+                    {{ render_field(form.caption) }}
+                    {{ render_field(form.url) }}
+                    {{ render_field(form.description) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
+                    <input class="btn btn__custom--primary" name="submit" type="submit" value="Create product">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class='card'>
     <div class='card-body'>
@@ -9,10 +35,15 @@
             <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary">Create a product now</a>
         {% else %}
             <h3 class='font__custom--title float-left mb-3'>Product</h3>
-            <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary float-right mb-3"><i class="fas fa-plus mr-2"></i>Create</a>
+            <div class="float-right">
+                <a href="#" class="btn btn__custom--primary mb-3" data-toggle="modal" data-target="#create-product-modal"><i class="fas fa-plus mr-2"></i>Create</a>
+            </div>
             <table class="table table-sm table-responsive-lg table-hover">
                 <thead>
                     <tr>
+                        <th scope="col">
+                            <input type="checkbox" id="select-all">
+                        </th>
                         <th scope="col"></th>
                         <th scope="col">Title</th>
                         <th scope="col">ID</th>
@@ -23,6 +54,7 @@
                 <tbody>
                 {% for product in products %}
                     <tr>
+                        <td><input type="checkbox"></td>
                         <td>{{ loop.index }}</td>
                         <td scope="row">
                             <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>

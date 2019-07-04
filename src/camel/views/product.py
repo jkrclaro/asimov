@@ -12,17 +12,37 @@ from flask_login import login_required, current_user
 from src.camel import helper
 from src.camel.models import db
 from src.camel.models.dashboard import Product
-from src.camel.forms.product import ProductCreateForm, InventorySKUForm
+from src.camel.forms.product import ProductCreateForm, InventoryEditForm
 
 
 product_bp = Blueprint('product', __name__, url_prefix='/products')
 
 
-@product_bp.route('/')
+@product_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
+    form = ProductCreateForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        data_product = {
+            'account_id': current_user.account.id,
+            'title': title,
+            'url': form.url.data,
+            'caption': form.caption.data,
+            'description': form.description.data,
+            'uid': form.uid.data,
+        }
+        current_app.logger.debug(data_product)
+        product = Product(**data_product)
+        db.session.add(product)
+        db.session.commit()
+        flash(f'Successfully added {title}', 'success')
+        return redirect(url_for('product.index'))
+    else:
+        helper.flash_errors(form.errors)
+
     products = Product.query.filter_by(account_id=current_user.account.id).all()
-    return render_template('product/index.html', products=products)
+    return render_template('product/index.html', products=products, form=form)
 
 
 @product_bp.route('/<uid>', methods=['GET', 'POST'])
@@ -53,7 +73,7 @@ def retrieve(uid: str):
 
     context = {
         'form': form,
-        'form_inventory': InventorySKUForm(),
+        'form_inventory': InventoryEditForm(),
         'product': product
     }
     return render_template('product/retrieve.html', **context)

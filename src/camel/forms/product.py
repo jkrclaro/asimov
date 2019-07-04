@@ -2,15 +2,18 @@ from flask_wtf import FlaskForm
 from wtforms import (
     StringField,
     IntegerField,
-    SelectField,
     widgets,
     BooleanField,
     SubmitField
 )
 from wtforms.validators import InputRequired
-from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
+from wtforms.ext.sqlalchemy.fields import (
+    QuerySelectMultipleField,
+    QuerySelectField
+)
+from flask_login import current_user
 
-from src.camel.models.dashboard import Channel
+from src.camel.models.dashboard import Channel, Product, InventoryWhenSold
 
 
 category_choices = [
@@ -70,50 +73,33 @@ class ProductCreateForm(FlaskForm):
     )
     description = StringField('Description', widget=widgets.TextArea())
 
-    # Shipping
-    # shipping_origin = SelectField(
-    #     'Shipping origin',
-    #     choices=shipping_origin_choices
-    # )
-    # processing_time = SelectField(
-    #     'Processing time',
-    #     choices=processing_time_choices
-    # )
-    #
-    # shipping_carrier = SelectField(
-    #     'Shipping carier',
-    #     choices=shipping_carrier_choices
-    # )
-    # delivery_time_range_start = SelectField(
-    #     'Delivery time start',
-    #     choices=delivery_time_choices
-    # )
-    # delivery_time_range_end = SelectField(
-    #     'Delivery time end',
-    #     choices=delivery_time_choices
-    # )
-    # what_you_will_charge_ = SelectField(
-    #     "What you'll charge",
-    #     choices=what_you_will_charge_choices
-    # )
 
-
-class InventorySKUForm(FlaskForm):
-    sku = StringField('SKU')
+class InventoryBaseForm(FlaskForm):
+    sku = StringField(
+        'SKU',
+        description="If a SKU isn't provided, we'll generate one for you."
+    )
     is_active = BooleanField('Active')
     price = IntegerField('Price')
     available = IntegerField('Available')
-    incoming = IntegerField('Incoming')
     submit = SubmitField('Add SKU')
-    when_sold = SelectField(
+    when_sold = QuerySelectField(
         'When sold...',
-        choices=[
-            ('Stop selling', 'Stop selling')
-        ]
+        query_factory=lambda: InventoryWhenSold.query.all()
     )
-    # Channels
     channels = QuerySelectMultipleField(
         'Channels',
         query_factory=lambda: Channel.query.all()
+    )
+
+
+class InventoryEditForm(InventoryBaseForm):
+    pass
+
+
+class InventoryCreateForm(InventoryBaseForm):
+    product = QuerySelectField(
+        'Product',
+        query_factory=lambda: Product.query.all()
     )
 

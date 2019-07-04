@@ -2,7 +2,8 @@ from flask import Blueprint, redirect, session, url_for, flash, request
 from flask_login import login_required, current_user
 
 from src import etsy
-from src.camel.models.dashboard import Platform, Channel, db
+from src.camel.models import db
+from src.camel.models.dashboard import Platform, Channel, ChannelEtsy
 
 etsy_bp = Blueprint('etsy', __name__, url_prefix='/etsy')
 
@@ -58,17 +59,23 @@ def connect_callback():
 
     shops = response.json()['results']
     for shop in shops:
-        channel_data = {
-            'token': oauth_token,
-            'secret': oauth_token_secret,
+        data_channel = {
             'platform_id': Platform.query.filter_by(name='etsy').first().id,
             'account_id': current_user.account.id,
+        }
+        channel = Channel(**data_channel)
+        db.session.add(channel)
+        db.session.commit()
+        data_channel_etsy = {
+            'oauth_token': oauth_token,
+            'oauth_token_secret': oauth_token_secret,
             'shop_id': shop['shop_id'],
             'shop_name': shop['shop_name'],
-            'user_id': user_id
+            'user_id': user_id,
+            'channel_id': channel.id,
         }
-        channel = Channel(**channel_data)
-        db.session.add(channel)
+        channel_etsy = ChannelEtsy(**data_channel_etsy)
+        db.session.add(channel_etsy)
         db.session.commit()
     flash('Successfully connected your Etsy account', 'success')
     return redirect(url_for('dashboard.index'))

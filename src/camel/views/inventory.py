@@ -11,18 +11,35 @@ from flask_login import login_required, current_user
 
 from src.camel.models import db
 from src.camel.models.dashboard import Product, Inventory, Listing
-from src.camel.forms.product import InventorySKUForm
+from src.camel.forms.product import InventoryEditForm, InventoryCreateForm
 from src.camel import helper
 
 
 inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
 
 
-@inventory_bp.route('/')
+@inventory_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
+    form = InventoryCreateForm()
+    if form.validate_on_submit():
+        product = form.product.data
+        data = {
+            'product_id': product.id,
+            'available': form.available.data,
+            'when_sold': form.when_sold.data,
+            'price': form.price.data,
+            'sku': form.sku.data,
+        }
+        inventory = Inventory(**data)
+        db.session.add(inventory)
+        db.session.commit()
+        flash('Successfully added SKU', 'success')
+    else:
+        helper.flash.flash_errors(form.errors)
+
     products = Product.query.filter_by(account_id=current_user.account.id).all()
-    return render_template('inventory/index.html', products=products)
+    return render_template('inventory/index.html', products=products, form=form)
 
 
 @inventory_bp.route('/<uid>/create', methods=['POST'])
@@ -32,14 +49,13 @@ def create(uid):
     if not product:
         abort(404)
 
-    form = InventorySKUForm()
+    form = InventoryEditForm()
     if form.validate_on_submit():
         data = {
             'product_id': product.id,
             'available': form.available.data,
             'when_sold': form.when_sold.data,
             'price': form.price.data,
-            'incoming': form.incoming.data,
             'sku': form.sku.data,
         }
         inventory = Inventory(**data)
@@ -71,7 +87,7 @@ def retrieve(uid, sku):
     if not inventory:
         abort(404)
 
-    form = InventorySKUForm(obj=inventory)
+    form = InventoryEditForm(obj=inventory)
     if form.validate_on_submit():
         if form.channels.data:
             for channel in form.channels.data:
@@ -84,7 +100,6 @@ def retrieve(uid, sku):
             inventory.available = form.available.data
             inventory.sku = form.sku.data
             inventory.when_sold = form.when_sold.data
-            inventory.incoming = form.incoming.data
             inventory.is_active = form.is_active.data
             db.session.add(inventory)
             db.session.commit()

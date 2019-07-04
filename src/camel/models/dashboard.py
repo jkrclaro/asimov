@@ -100,9 +100,9 @@ class Inventory(db.Model, BaseModel):
     _sku = db.Column('sku', db.String(255))
     price = db.Column(db.Integer)
     available = db.Column(db.Integer)
-    when_sold = db.Column(db.String(30))
-    incoming = db.Column(db.Integer)
     is_active = db.Column(db.Boolean, default=False)
+    when_sold_id = db.Column(db.Integer, db.ForeignKey('inventories_when_sold.id'))
+    when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     channels = db.relationship('Listing', back_populates='inventory')
 
@@ -111,7 +111,6 @@ class Inventory(db.Model, BaseModel):
             product_id: int,
             when_sold: str = 'Stop selling',
             available: int = 0,
-            incoming: int = 0,
             price: int = 0,
             sku: str = '',
             is_active: bool = False
@@ -121,14 +120,12 @@ class Inventory(db.Model, BaseModel):
         :param product_id: ID for SQLAlchemy model of Product
         :param available: Number of available stocks
         :param when_sold: What to do when inventory is sold out
-        :param incoming: Number of stocks incoming
         :param sku: Stock keeping unit for this inventory
         :param is_active: If inventory is currently listed somewhere
         """
         self.product_id = product_id
         self.available = available
         self.when_sold = when_sold
-        self.incoming = incoming
         self.price = price
         self.is_active = is_active
         self.sku = sku
@@ -145,6 +142,29 @@ class Inventory(db.Model, BaseModel):
 
     def __str__(self):
         return self.sku
+
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__, self.__dict__)
+
+
+class InventoryWhenSold(db.Model, BaseModel):
+    __tablename__ = 'inventories_when_sold'
+    name = db.Column(db.String(30))
+    inventory = db.relationship(
+        'Inventory',
+        uselist=False,
+        back_populates='when_sold'
+    )
+
+    def __init__(self, name):
+        """SQLAlchemy model for inventories_when_sold table.
+
+        :param name: Name of when sold
+        """
+        self.name = name
+
+    def __str__(self):
+        return self.name
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)
@@ -209,8 +229,11 @@ class Channel(db.Model, BaseModel):
         self.platform_id = platform_id
         self.account_id = account_id
 
+    def __str__(self):
+        return f'Etsy {self.etsy}' if self.etsy else 'N/A'
+
     def __repr__(self):
-        return f'{self.etsy}'
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
 
 class ChannelEtsy(db.Model, BaseModel):
@@ -229,7 +252,8 @@ class ChannelEtsy(db.Model, BaseModel):
             oauth_token_secret: str,
             shop_id: str,
             shop_name: str,
-            user_id: str
+            user_id: str,
+            channel_id: int
     ):
         """SQLAlchemy model for channels_etsy table.
 
@@ -244,9 +268,13 @@ class ChannelEtsy(db.Model, BaseModel):
         self.shop_id = shop_id
         self.shop_name = shop_name
         self.user_id = user_id
+        self.channel_id = channel_id
+
+    def __str__(self):
+        return self.shop_name
 
     def __repr__(self):
-        return self.shop_name
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
 
 class Platform(db.Model, BaseModel):
