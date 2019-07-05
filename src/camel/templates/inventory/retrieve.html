@@ -15,7 +15,6 @@
                     {{ render_field(form.sku) }}
                     {{ render_field(form.price) }}
                     {{ render_field(form.available) }}
-                    {{ render_field(form.incoming) }}
                     {{ render_field(form.when_sold) }}
                     {{ render_field(form.is_active) }}
                 </div>
@@ -50,7 +49,6 @@
 </div>
 
 <div class='row'>
-    <div class='col-lg-2'></div>
     <div class='col-lg-8 mb-3'>
         <div class='card mb-5'>
             <div class='card-body'>
@@ -69,8 +67,6 @@
                     <p class="col-lg-9 font__custom--text">{{ inventory.price }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Available</h6>
                     <p class="col-lg-9 font__custom--text">{{ inventory.available }}</p>
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Incoming</h6>
-                    <p class="col-lg-9 font__custom--text">{{ inventory.incoming }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">When sold...</h6>
                     <p class="col-lg-9 font__custom--text">{{ inventory.when_sold }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Active</h6>
@@ -80,7 +76,8 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class='col-lg-4'>
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row mb-3">
@@ -91,14 +88,7 @@
                 </div>
                 {% for listing in inventory.channels %}
                     <div>
-                        <div class="row">
-                            <div class="col-lg-6 my-auto">
-                                <i class="fas fa-chevron-right mr-2"></i><a class="col-lg-6 anchor__custom--default" href="#">{{ listing.channel }}</a>
-                            </div>
-                            <div class="col-lg-6 text-lg-right">
-                                <a href="{{ url_for('listing.sync', inventory_id=listing.inventory_id, channel_id=listing.channel_id, product_uid=product.uid) }}" class="btn btn__custom--primary"><i class="fas fa-sync mr-2"></i> Sync</a>
-                            </div>
-                        </div>
+                        <i class="fas fa-chevron-right mr-2"></i><a class="col-lg-6 anchor__custom--default" href="#">{{ listing.channel }}</a>
                         {% if not loop.last %}<hr/>{% endif %}
                     </div>
                 {% else %}
@@ -107,7 +97,6 @@
             </div>
         </div>
     </div>
-    <div class='col-lg-2'></div>
 </div>
 
 {% endblock %}

@@ -1,3 +1,4 @@
+import babel
 from flask import Flask, render_template, current_app
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -7,6 +8,10 @@ from src import mailgun, token, google_recaptcha, etsy
 
 login_manager = LoginManager()
 migrate = Migrate()
+
+
+def format_datetime(value):
+    return babel.dates.format_datetime(value, 'dd/MM/YYYY, HH:mm', locale='en')
 
 
 def error_404_page(error):
@@ -42,12 +47,14 @@ def create_app(config: str):
     def load_user(user_id: int):
         return User.query.get(int(user_id))
 
-    from .models.dashboard import Platform
+    from .models.dashboard import Platform, InventoryWhenSold
     @app.before_first_request
     def create_db():
         db.create_all(app=app)
         try:
             db.session.add(Platform('etsy'))
+            db.session.add(InventoryWhenSold('Stop selling'))
+            db.session.add(InventoryWhenSold('Continue selling'))
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
@@ -61,6 +68,7 @@ def create_app(config: str):
     from .views.channel import channel_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
+    from .views.etsy import etsy_bp
     blueprints = (
         auth_bp,
         home_bp,
@@ -70,12 +78,15 @@ def create_app(config: str):
         account_bp,
         channel_bp,
         product_bp,
-        listing_bp
+        listing_bp,
+        etsy_bp
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
 
     app.register_error_handler(404, error_404_page)
     app.register_error_handler(500, error_500_page)
+
+    app.jinja_env.filters['datetime'] = format_datetime
 
     return app

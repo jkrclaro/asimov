@@ -9,15 +9,14 @@
                 <h5 class="modal-title" id="create-sku-modal-title">Add a SKU</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form method="post" action="{{ url_for('inventory.create', uid=product.uid) }}">
-                {{ form.csrf_token }}
+            <form method="post" action="{{ url_for('inventory.create_with_product_uid', uid=product.uid) }}">
+                {{ form_inventory.csrf_token }}
                 <div class="modal-body mt-3">
-                    {{ render_field(form.sku) }}
-                    {{ render_field(form.price) }}
-                    {{ render_field(form.available) }}
-                    {{ render_field(form.incoming) }}
-                    {{ render_field(form.when_sold) }}
-                    {{ render_field(form.is_active) }}
+                    {{ render_field(form_inventory.sku) }}
+                    {{ render_field(form_inventory.price) }}
+                    {{ render_field(form_inventory.available) }}
+                    {{ render_field(form_inventory.when_sold) }}
+                    {{ render_field(form_inventory.is_active) }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
@@ -28,35 +27,65 @@
     </div>
 </div>
 
+<div class="modal" id="edit-product-modal" tabindex="-1" role="dialog" aria-labelledby="edit-product-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-product-modal-title">Edit product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form.uid) }}
+                    {{ render_field(form.title) }}
+                    {{ render_field(form.caption) }}
+                    {{ render_field(form.url) }}
+                    {{ render_field(form.description) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn__custom--primary--outline" data-dismiss="modal">Cancel</button>
+                    <input class="btn btn__custom--primary" name="submit" type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class='row'>
-    <div class='col-lg-2'></div>
     <div class='col-lg-8 mb-3'>
         <div class='card mb-5'>
             <div class='card-body'>
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class='font__custom--title mb-3 float-left'>Details</h3>
-                        <a href="#" class="btn btn__custom--primary float-right" data-toggle="modal" data-target="#create-sku-modal"><i class="fas fa-edit mr-2"></i>Edit</a>
+                        <a href="#" class="btn btn__custom--primary float-right" data-toggle="modal" data-target="#edit-product-modal"><i class="fas fa-edit mr-2"></i>Edit</a>
                     </div>
                 </div>
-                <div class="row">
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Title</h6>
-                    <p class='col-lg-9 font__custom--text'>{{ product.get_title() }}</p>
-                </div>
-                <div class="row">
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Category</h6>
-                    <p class='col-lg-9 font__custom--text'>{{ product.get_category() }}</p>
-                </div>
-                <div class="row">
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Renewal</h6>
-                    <p class="col-lg-9 font__custom--text">{{ product.get_renewal() }}</p>
-                </div>
-                <div class="row">
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Description</h6>
-                    <p class="col-lg-9 font__custom--text">{{ product.get_description() }}</p>
-                </div>
+                {% for attribute in ('title', 'uid', 'url', 'caption', 'description') %}
+                    <div class="row">
+                        <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">
+                            {% if attribute == 'uid' %}
+                                ID
+                            {% elif attribute == 'url' %}
+                                URL
+                            {% else %}
+                                {{ attribute | title }}
+                            {% endif %}
+                        </h6>
+                        <p class='col-lg-9 font__custom--text'>
+                            {% if attribute == 'url' %}
+                                <a href="{{ product[attribute] }}" class="anchor__custom--default">{{ product[attribute] }}</a>
+                            {% else %}
+                                {{ product[attribute] }}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
+    </div>
+    <div class='col-lg-4'>
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row">
@@ -66,16 +95,15 @@
                     </div>
                 </div>
                 {% for inventory in product.inventories %}
-                    <div onClick="window.location.href='{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}'" style="cursor: pointer;">
+                    <div>
                         <i class="fas fa-chevron-right mr-2"></i>
-                        <a class="anchor__custom--default" href="#">{{ inventory.sku }}</a>
+                        <a class="anchor__custom--default" href="{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}">{{ inventory.sku }}</a>
                         {% if not loop.last %}<hr/>{% endif %}
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
-    <div class='col-lg-2'></div>
 </div>
 
 
