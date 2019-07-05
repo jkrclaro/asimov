@@ -5,44 +5,44 @@
 <div class='card'>
     <div class='card-body'>
         {% if not products %}
-            <h3 class='font__custom--title mb-3'>Inventory</h3>
+            <h3 class='font__custom--title mb-3'>Inventories</h3>
             <p class="mt-3  ">You do not have any products yet.</p>
             <a href="{{ url_for('product.create') }}" class="btn btn__custom--primary">Create a product now</a>
         {% else %}
             <table class="table table-sm table-responsive-lg table-hover">
+                <h3 class='font__custom--title float-left mb-3'>Inventories</h3>
+                <div class="float-right">
+                    <a href="{{ url_for('inventory.create') }}" class="btn btn__custom--primary--outline mb-3"><i class="fas fa-plus mr-2"></i>Create</a>
+                    <span class="btn btn__custom--primary mb-3" data-toggle="dropdown">Actions <i class="fas fa-caret-down"></i></span>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-tip-ne">
+                            <a class="dropdown-item" href="#">Continue selling when out of stock</a>
+                            <a class="dropdown-item" href="#">Stop selling when out of stock</a>
+                            <a class="dropdown-item" href="#">Sync to channels</a>
+                            <a class="dropdown-item" href="#">Link channels</a>
+                            <a class="dropdown-item" href="#">Update quantity</a>
+                            <a class="dropdown-item" href="#">Delete inventory</a>
+                        </div>
+                    </span>
+                </div>
+                <thead>
+                    <tr>
+                        <th scope="col"><input type="checkbox" id="select-all"></th>
+                        <th scope="col"></th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Available</th>
+                        <th scope="col">When sold...</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Channels</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% set indexes = namespace(current=1) %}
                 {% for product in products %}
                     {% for inventory in product.inventories %}
-                        {% if loop.first %}
-                            <h3 class='font__custom--title float-left mb-3'>Inventory</h3>
-                            <div class="float-right">
-                                <a href="{{ url_for('inventory.create') }}" class="btn btn__custom--primary--outline mb-3"><i class="fas fa-plus mr-2"></i>Create</a>
-                                <span class="btn btn__custom--primary mb-3" data-toggle="dropdown">Actions <i class="fas fa-caret-down"></i></span>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-tip-ne">
-                                        <a class="dropdown-item" href="#">Continue selling when out of stock</a>
-                                        <a class="dropdown-item" href="#">Stop selling when out of stock</a>
-                                        <a class="dropdown-item" href="#">Sync to channels</a>
-                                        <a class="dropdown-item" href="#">Link channels</a>
-                                        <a class="dropdown-item" href="#">Update quantity</a>
-                                        <a class="dropdown-item" href="#">Delete inventory</a>
-                                    </div>
-                                </span>
-                            </div>
-                            <thead>
-                                <tr>
-                                    <th scope="col"><input type="checkbox" id="select-all"></th>
-                                    <th scope="col"></th>
-                                    <th scope="col">SKU</th>
-                                    <th scope="col">Available</th>
-                                    <th scope="col">When sold...</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Channels</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        {% endif %}
                         <tr>
                             <td><input type="checkbox" id="id_{{ inventory.id }}"></td>
-                            <td>{{ loop.index }}</td>
+                            <td>{{ indexes.current }} {% set indexes.current = indexes.current + 1 %}</td>
                             <td scope="row">
                                 <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
                                 <a href="{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}" class="anchor__custom--default">{{ inventory.sku }}</a>
@@ -52,10 +52,6 @@
                             <td><a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.uid }}</a></td>
                             <td>{{ inventory.channels | length }}</td>
                         </tr>
-                    {% else %}
-                        <h3 class='font__custom--title mb-3'>Inventory</h3>
-                        <p class="font__custom--text">You do not have any inventory yet.</p>
-                        <a class="btn btn__custom--primary" href="#" data-toggle="modal" data-target="#create-sku-modal">Create an inventory now</a>
                     {% endfor %}
                 {% endfor %}
                 </tbody>
