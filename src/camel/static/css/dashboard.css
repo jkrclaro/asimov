@@ -38,9 +38,9 @@ html, body {
 
 /* Bootstrap 4 */
 .dropdown-item {
-    color: #FFBC00;
+    color: #111;
 }
 .dropdown-item:active, .dropdown-item:hover {
     background-color: #F8F8F8;
-    color: #111;
+    color: #FFBC00;
 }
