@@ -8,8 +8,6 @@ Update files in `pytest.ini` to modify how pytest works
 
 ## Usage
 
-To run one singular test method
-
 ```
-pipenv run pytest tests/test_netlify.py::TestNetlify::test_deploy_site
+pytest tests/test_auth.py
 ```
