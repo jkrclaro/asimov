@@ -4,7 +4,7 @@
 
 ```
 pipenv shell
-pipenv install
+pipenv install --dev
 export FLASK_APP=server.py
 export FLASK_ENV=development
 flask run
@@ -23,9 +23,4 @@ alias python=python3
 alias pip=pip3
 alias d=docker
 alias dc=docker-compose
-```
-
-To run tests
-```
-pytest
 ```
