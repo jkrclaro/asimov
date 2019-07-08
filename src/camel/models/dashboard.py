@@ -17,8 +17,7 @@ class Product(db.Model, BaseModel):
     etsy = db.relationship(
         'ProductEtsy',
         uselist=False,
-        back_populates='product',
-        passive_deletes=True
+        back_populates='product'
     )
     inventories = db.relationship('Inventory', backref='products')
 
@@ -116,11 +115,7 @@ class Inventory(db.Model, BaseModel):
         db.Integer,
         db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE')
     )
-    when_sold = db.relationship(
-        'InventoryWhenSold',
-        back_populates='inventory',
-        passive_deletes=True
-    )
+    when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
     product_id = db.Column(
         db.Integer,
         db.ForeignKey('products.id', ondelete='CASCADE')
@@ -206,16 +201,8 @@ class Listing(db.Model, BaseModel):
         db.Integer,
         db.ForeignKey('channels.id', ondelete='CASCADE')
     )
-    inventory = db.relationship(
-        'Inventory',
-        back_populates='channels',
-        passive_deletes=True
-    )
-    channel = db.relationship(
-        'Channel',
-        back_populates='inventories',
-        passive_deletes=True
-    )
+    inventory = db.relationship('Inventory', back_populates='channels')
+    channel = db.relationship('Channel', back_populates='inventories')
     etsy = db.relationship(
         'ListingEtsy',
         uselist=False,
@@ -254,11 +241,7 @@ class Channel(db.Model, BaseModel):
     platform = db.relationship('Platform', back_populates='channel')
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     inventories = db.relationship('Listing', back_populates='channel')
-    etsy = db.relationship(
-        'ChannelEtsy',
-        uselist=False,
-        back_populates='channel'
-    )
+    etsy = db.relationship('ChannelEtsy', uselist=False)
 
     def __init__(self, platform_id, account_id):
         """SQLAlchemy model for channels table
