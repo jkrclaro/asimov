@@ -13,8 +13,6 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
     steps:
       - checkout
       - restore_cache:

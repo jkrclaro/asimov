@@ -128,8 +128,11 @@ class ListingEtsy(db.Model, BaseModel):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def __repr__(self):
+    def __str__(self):
         return self.listing_etsy_id
+
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
 
 class Channel(db.Model, BaseModel):
