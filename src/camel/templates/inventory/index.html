@@ -47,7 +47,7 @@
                                 <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>
                                 <a href="{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}" class="anchor__custom--default">{{ inventory.sku }}</a>
                             </td>
-                            <td>{{ inventory.available }}</td>
+                            <td>{{ inventory.quantity }}</td>
                             <td>{{ inventory.when_sold }}</td>
                             <td><a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.uid }}</a></td>
                             <td>{{ inventory.channels | length }}</td>

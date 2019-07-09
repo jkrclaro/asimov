@@ -10,41 +10,12 @@ class Product(db.Model, BaseModel):
     url = db.Column(db.String(255))
     caption = db.Column(db.String(255))
     description = db.Column(db.Text)
-    account_id = db.Column(
-        db.Integer,
-        db.ForeignKey('accounts.id', ondelete='CASCADE')
-    )
-    etsy = db.relationship(
-        'ProductEtsy',
-        uselist=False,
-        back_populates='product'
-    )
+    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
+    etsy = db.relationship('ProductEtsy', uselist=False, back_populates='product')
     inventories = db.relationship('Inventory', backref='products')
 
-    def __init__(
-            self,
-            account_id: int,
-            title: str,
-            url: str,
-            caption: str,
-            description: str,
-            uid: str = ''
-    ):
-        """SQLALchemy model for products table.
-
-        :param account_id: Account ID associated that owns this product.
-        :param title: Title of product.
-        :param url: Web page of official product.
-        :param caption: Short one-line description of product.
-        :param description: Full description of product.
-        :param uid: Unique ID for product.
-        """
-        self.account_id = account_id
-        self.title = title
-        self.url = url
-        self.caption = caption
-        self.description = description
-        self.uid = uid
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     @property
     def uid(self):
@@ -68,87 +39,38 @@ class ProductEtsy(db.Model, BaseModel):
     category = db.Column(db.String(255))
     renewal = db.Column(db.String(30))
     type = db.Column(db.String(30))
-    description = db.Column(db.String(255))
-    product_id = db.Column(
-        db.Integer,
-        db.ForeignKey('products.id', ondelete='CASCADE')
-    )
-    product = db.relationship(
-        'Product',
-        back_populates='etsy',
-        passive_deletes=True
-    )
+    section = db.Column(db.String(255))
+    who_made_it = db.Column(db.String(30))
+    what_is_it = db.Column(db.String(30))
+    when_was_it_made = db.Column(db.String(30))
+    tags = db.Column(db.Text)
+    materials = db.Column(db.Text)
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
+    product = db.relationship('Product', back_populates='etsy')
 
-    def __init__(
-            self,
-            title: str,
-            category: str,
-            renewal: str,
-            type: str,
-            description: str
-    ):
-        """SQLALchemy model for products_etsy table.
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
-        :param title: Title of product.
-        :param category: Category of this product.
-        :param renewal: How product will be renewed after expiring.
-        :param type: If product is digital or physical.
-        :param description: Long description of product.
-        """
-        self.title = title
-        self.category = category
-        self.renewal = renewal
-        self.type = type
-        self.description = description
+    def __str__(self):
+        return self.id
 
     def __repr__(self):
-        return self.id
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
 
 class Inventory(db.Model, BaseModel):
     __tablename__ = 'inventories'
     _sku = db.Column('sku', db.String(255))
     price = db.Column(db.Integer)
-    available = db.Column(db.Integer)
+    quantity = db.Column(db.Integer)
     is_active = db.Column(db.Boolean, default=False)
-    when_sold_id = db.Column(
-        db.Integer,
-        db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE')
-    )
+    when_sold_id = db.Column(db.Integer, db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE'))
     when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
-    product_id = db.Column(
-        db.Integer,
-        db.ForeignKey('products.id', ondelete='CASCADE')
-    )
-    channels = db.relationship(
-        'Listing',
-        back_populates='inventory',
-        passive_deletes=True
-    )
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
+    channels = db.relationship('Listing', back_populates='inventory', passive_deletes=True)
 
-    def __init__(
-            self,
-            product_id: int,
-            when_sold_id: int,
-            available: int = 0,
-            price: int = 0,
-            sku: str = '',
-            is_active: bool = False
-    ):
-        """SQLALchemy model for inventories table.
-
-        :param product_id: ID for SQLAlchemy model of Product
-        :param when_sold_id: ID for SQLAlchemy model of InventoryWhenSold
-        :param available: Number of available stocks
-        :param sku: Stock keeping unit for this inventory
-        :param is_active: If inventory is currently listed somewhere
-        """
-        self.product_id = product_id
-        self.when_sold_id = when_sold_id
-        self.available = available
-        self.price = price
-        self.is_active = is_active
-        self.sku = sku
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     @property
     def sku(self):
@@ -170,19 +92,10 @@ class Inventory(db.Model, BaseModel):
 class InventoryWhenSold(db.Model, BaseModel):
     __tablename__ = 'inventories_when_sold'
     name = db.Column(db.String(30))
-    inventory = db.relationship(
-        'Inventory',
-        uselist=False,
-        back_populates='when_sold',
-        passive_deletes=True
-    )
+    inventory = db.relationship('Inventory', uselist=False, back_populates='when_sold', passive_deletes=True)
 
-    def __init__(self, name):
-        """SQLAlchemy model for inventories_when_sold table.
-
-        :param name: Name of when sold
-        """
-        self.name = name
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def __str__(self):
         return self.name
@@ -193,29 +106,17 @@ class InventoryWhenSold(db.Model, BaseModel):
 
 class Listing(db.Model, BaseModel):
     __tablename__ = 'listings'
-    inventory_id = db.Column(
-        db.Integer,
-        db.ForeignKey('inventories.id', ondelete='CASCADE')
-    )
-    channel_id = db.Column(
-        db.Integer,
-        db.ForeignKey('channels.id', ondelete='CASCADE')
-    )
+    inventory_id = db.Column(db.Integer, db.ForeignKey('inventories.id', ondelete='CASCADE'))
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id', ondelete='CASCADE'))
     inventory = db.relationship('Inventory', back_populates='channels')
     channel = db.relationship('Channel', back_populates='inventories')
-    etsy = db.relationship(
-        'ListingEtsy',
-        uselist=False,
-        back_populates='listing'
-    )
+    etsy = db.relationship('ListingEtsy', uselist=False, back_populates='listing')
 
-    def __init__(self, inventory_id, channel_id):
-        """SQLAlchemy association table for inventories and channels"""
-        self.inventory_id = inventory_id
-        self.channel_id = channel_id
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def __repr__(self):
-        return f"{self.inventory} in {self.channel}"
+        return '%s(%r)' % (self.__class__, self.__dict__)
 
 
 class ListingEtsy(db.Model, BaseModel):
@@ -224,12 +125,8 @@ class ListingEtsy(db.Model, BaseModel):
     listing = db.relationship('Listing', uselist=False, back_populates='etsy')
     listing_etsy_id = db.Column(db.Integer)
 
-    def __init__(self, listing_etsy_id: int):
-        """SQLALchemy model for listings_etsy table.
-
-        :param listing_etsy_id: Listing ID as on Etsy.
-        """
-        self.listing_etsy_id = listing_etsy_id
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def __repr__(self):
         return self.listing_etsy_id
@@ -243,14 +140,8 @@ class Channel(db.Model, BaseModel):
     inventories = db.relationship('Listing', back_populates='channel')
     etsy = db.relationship('ChannelEtsy', uselist=False)
 
-    def __init__(self, platform_id, account_id):
-        """SQLAlchemy model for channels table
-
-        :param platform_id: ID of platform
-        :param account_id: Account ID of a user
-        """
-        self.platform_id = platform_id
-        self.account_id = account_id
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def __str__(self):
         return f'Etsy {self.etsy}' if self.etsy else 'N/A'
@@ -266,40 +157,11 @@ class ChannelEtsy(db.Model, BaseModel):
     shop_id = db.Column(db.String(255))
     shop_name = db.Column(db.String(255))
     user_id = db.Column(db.String(255))
-    channel_id = db.Column(
-        db.Integer,
-        db.ForeignKey('channels.id', ondelete='CASCADE'),
-    )
-    channel = db.relationship(
-        'Channel',
-        uselist=False,
-        back_populates='etsy',
-        passive_deletes=True
-    )
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id', ondelete='CASCADE'))
+    channel = db.relationship('Channel', uselist=False, back_populates='etsy')
 
-    def __init__(
-            self,
-            oauth_token: str,
-            oauth_token_secret: str,
-            shop_id: str,
-            shop_name: str,
-            user_id: str,
-            channel_id: int
-    ):
-        """SQLAlchemy model for channels_etsy table.
-
-        :param oauth_token: Token key received from access token
-        :param oauth_token_secret: Token secret received from access token
-        :param shop_id: ID of an Etsy shop
-        :param shop_name: Name of an Etsy shop
-        :param user_id: ID of an Etsy user
-        """
-        self.oauth_token = oauth_token
-        self.oauth_token_secret = oauth_token_secret
-        self.shop_id = shop_id
-        self.shop_name = shop_name
-        self.user_id = user_id
-        self.channel_id = channel_id
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def __str__(self):
         return self.shop_name
@@ -311,18 +173,13 @@ class ChannelEtsy(db.Model, BaseModel):
 class Platform(db.Model, BaseModel):
     __tablename__ = 'platforms'
     name = db.Column(db.String(30), unique=True)
-    channel = db.relationship(
-        'Channel',
-        uselist=False,
-        back_populates='platform'
-    )
+    channel = db.relationship('Channel', uselist=False, back_populates='platform')
 
-    def __init__(self, name):
-        """SQLAlchemy model for platforms table.
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
-        :param name: Name of platform
-        """
-        self.name = name
+    def __str__(self):
+        return self.name
 
     def __repr__(self):
-        return self.name
+        return '%s(%r)' % (self.__class__, self.__dict__)

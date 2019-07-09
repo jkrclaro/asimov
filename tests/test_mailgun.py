@@ -1,19 +1,11 @@
-import os
-import io
-import logging
 import unittest
 
 import responses
 
 from src import mailgun
 
-from .constants import API_KEY
-
 
 class Unit(unittest.TestCase):
-
-    def setUp(self):
-        mailgun.api_key = API_KEY
 
     @responses.activate
     def test_send_email(self):

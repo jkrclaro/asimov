@@ -1,6 +1,0 @@
-EMAIL = 'john@johndoedomainorigin.com'
-NAME = 'John Doe'
-PASSWORD = 'johndoe12345'
-API_KEY = 'apikey123'
-SECRET_KEY = 'secretkey123'
-ETSY_DECODED_URL = 'login_url=https://www.etsy.com/oauth/signin?oauth_consumer_key=apikey&oauth_token=testoauthtoken&service=v2_prod&oauth_token=testoauthtoken&oauth_token_secret=testoauthtokensecret&oauth_callback_confirmed=true&oauth_consumer_key=apikey&oauth_callback=oob'

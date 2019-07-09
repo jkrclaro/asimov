@@ -14,7 +14,7 @@
                 <div class="modal-body mt-3">
                     {{ render_field(form.sku) }}
                     {{ render_field(form.price) }}
-                    {{ render_field(form.available) }}
+                    {{ render_field(form.quantity) }}
                     {{ render_field(form.when_sold) }}
                     {{ render_field(form.is_active) }}
                 </div>
@@ -66,7 +66,7 @@
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Price</h6>
                     <p class="col-lg-9 font__custom--text">{{ inventory.price }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Available</h6>
-                    <p class="col-lg-9 font__custom--text">{{ inventory.available }}</p>
+                    <p class="col-lg-9 font__custom--text">{{ inventory.quantity }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">When sold...</h6>
                     <p class="col-lg-9 font__custom--text">{{ inventory.when_sold }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Active</h6>

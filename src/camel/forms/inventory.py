@@ -20,7 +20,7 @@ class InventoryBaseForm(FlaskForm):
     )
     is_active = BooleanField('Active')
     price = IntegerField('Price')
-    available = IntegerField('Available')
+    quantity = IntegerField('Available')
     submit = SubmitField('Add SKU')
     when_sold = QuerySelectField(
         'When sold...',

@@ -10,10 +10,8 @@ RUN mkdir /server
 WORKDIR /server
 
 # Install pipenv, move Pipefile files and install the Pipfile dependencies
-RUN pip install pipenv
-COPY Pipfile .
-COPY Pipfile.lock .
-RUN pipenv install --system --deploy
+COPY requirements/production.txt requirements.txt
+RUN pip install -r requirements.txt
 
 # Move everything to docker
 RUN mkdir src/

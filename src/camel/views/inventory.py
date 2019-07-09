@@ -32,7 +32,7 @@ def create():
         data = {
             'product_id': form.product.data.id,
             'when_sold_id': form.when_sold.data.id,
-            'available': form.available.data,
+            'quantity': form.quantity.data,
             'price': form.price.data,
             'sku': form.sku.data,
         }
@@ -58,7 +58,7 @@ def create_with_product_uid(uid):
         data = {
             'product_id': product.id,
             'when_sold_id': form.when_sold.data.id,
-            'available': form.available.data,
+            'quantity': form.quantity.data,
             'price': form.price.data,
             'sku': form.sku.data,
         }
@@ -94,13 +94,17 @@ def retrieve(uid, sku):
     if form.validate_on_submit():
         if form.channels.data:
             for channel in form.channels.data:
-                listing = Listing(inventory.id, channel.id)
+                data_listing = {
+                    'inventory_id': inventory.id,
+                    'channel_id': channel.id
+                }
+                listing = Listing(**data_listing)
                 db.session.add(listing)
             db.session.commit()
             flash('Successfully linked channel to SKU', 'success')
         else:
             inventory.price = form.price.data
-            inventory.available = form.available.data
+            inventory.quantity = form.quantity.data
             inventory.sku = form.sku.data
             inventory.when_sold = form.when_sold.data
             inventory.is_active = form.is_active.data

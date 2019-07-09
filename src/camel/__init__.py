@@ -52,9 +52,9 @@ def create_app(config: str):
     def create_db():
         db.create_all(app=app)
         try:
-            db.session.add(Platform('etsy'))
-            db.session.add(InventoryWhenSold('Stop selling'))
-            db.session.add(InventoryWhenSold('Continue selling'))
+            db.session.add(Platform(name='etsy'))
+            db.session.add(InventoryWhenSold(name='Stop selling'))
+            db.session.add(InventoryWhenSold(name='Continue selling'))
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
