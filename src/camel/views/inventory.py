@@ -4,7 +4,9 @@ from flask import (
     flash,
     redirect,
     url_for,
-    abort
+    abort,
+    request,
+    current_app
 )
 from flask_login import login_required, current_user
 
@@ -17,11 +19,48 @@ from src.camel import helper
 inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
 
 
+class Operator:
+
+    def __init__(self, operate, inventories):
+        self.inventories = inventories
+        method = operate.lower().replace(' ', '_')
+        getattr(self, method)()
+
+    def continue_selling_when_out_of_stock(self):
+        current_app.logger.info(f'Continue: {self.inventories}')
+        pass
+
+    def stop_selling_when_out_of_stock(self):
+        pass
+
+    def sync_to_channels(self):
+        pass
+
+    def link_channels(self):
+        pass
+
+    def update_quantity(self):
+        pass
+
+    def delete_inventory(self):
+        pass
+
+
 @inventory_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('inventory/index.html', products=products)
+
+
+@inventory_bp.route('/perform', methods=['GET', 'POST'])
+@login_required
+def perform():
+    operate = request.form.get('operate')
+    inventories = request.form.getlist('inventories_selected')
+    Operator(operate, inventories)
+    flash('Successfully performed!', 'success')
+    return redirect(url_for('inventory.index'))
 
 
 @inventory_bp.route('/create', methods=['GET', 'POST'])
