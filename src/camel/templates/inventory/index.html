@@ -16,12 +16,12 @@
                         <a href="{{ url_for('inventory.create') }}" class="btn btn__custom--primary--outline mb-3"><i class="fas fa-plus mr-2"></i>Create</a>
                         <span class="btn btn__custom--primary mb-3" data-toggle="dropdown">Actions <i class="fas fa-caret-down"></i></span>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-tip-ne">
-                                <input type="submit" class="dropdown-item" name="operate" value="Continue selling when out of stock">
-                                <input type="submit" class="dropdown-item" name="operate" value="Stop selling when out of stock">
-                                <input type="submit" class="dropdown-item" name="operate" value="Sync to channels">
-                                <input type="submit" class="dropdown-item" name="operate" value="Link channels">
-                                <input type="submit" class="dropdown-item" name="operate" value="Update quantity">
-                                <input type="submit" class="dropdown-item" name="operate" value="Delete inventory">
+                                <input type="submit" class="dropdown-item" name="action" value="Continue selling when out of stock">
+                                <input type="submit" class="dropdown-item" name="action" value="Stop selling when out of stock">
+                                <input type="submit" class="dropdown-item" name="action" value="Sync to channels">
+                                <input type="submit" class="dropdown-item" name="action" value="Link channels">
+                                <input type="submit" class="dropdown-item" name="action" value="Update quantity">
+                                <input type="submit" class="dropdown-item" name="action" value="Delete inventory">
                             </div>
                         </span>
                     </div>
@@ -41,7 +41,7 @@
                     {% for product in products %}
                         {% for inventory in product.inventories %}
                             <tr>
-                                <td><input type="checkbox" name="inventories_selected" value="{{ product.uid }}_{{ inventory.sku }}" id="id_inventories_selected"></td>
+                                <td><input type="checkbox" name="inventories_selected" value="{{ inventory.id }}" id="id_inventories_selected"></td>
                                 <td>{{ indexes.current }} {% set indexes.current = indexes.current + 1 %}</td>
                                 <td scope="row">
                                     <img src='https://5.imimg.com/data5/XQ/IH/MY-29746767/t-shirt-500x500.jpg' width="20" height="20" class='img-fluid'>

@@ -4,12 +4,12 @@ from flask import (
     flash,
     redirect,
     url_for,
-    abort,
     current_app,
 )
 from flask_login import login_required, current_user
 
-from src.camel import helper
+from src.camel import helpers
+from src.camel.helpers.model import get_or_404
 from src.camel.models import db
 from src.camel.models.dashboard import Product
 from src.camel.forms import ProductCreateForm, InventoryBaseForm
@@ -32,14 +32,13 @@ def index():
             'description': form.description.data,
             'uid': form.uid.data,
         }
-        current_app.logger.debug(data_product)
         product = Product(**data_product)
         db.session.add(product)
         db.session.commit()
         flash(f'Successfully added {title}', 'success')
         return redirect(url_for('product.index'))
     else:
-        helper.flash_errors(form.errors)
+        helpers.flash.form_errors(form.errors)
 
     products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('product/index.html', products=products, form=form)
@@ -48,14 +47,8 @@ def index():
 @product_bp.route('/<uid>', methods=['GET', 'POST'])
 @login_required
 def retrieve(uid: str):
-    product = Product.\
-        query.\
-        filter_by(
-            account_id=current_user.account.id,
-            uid=uid
-        ).first()
-    if not product:
-        abort(404)
+    options = {'account_id': current_user.account.id, 'uid': uid}
+    product = get_or_404(Product, options)
 
     form = ProductCreateForm(obj=product)
     if form.validate_on_submit():
@@ -69,7 +62,7 @@ def retrieve(uid: str):
         flash('Successfully updated product', 'success')
         return redirect(url_for('product.retrieve', uid=product.uid))
     else:
-        helper.flash_errors(form.errors)
+        helpers.flash.form_errors(form.errors)
 
     context = {
         'form': form,
@@ -93,12 +86,11 @@ def create():
             'description': form.description.data,
             'uid': form.uid.data,
         }
-        current_app.logger.debug(data_product)
         product = Product(**data_product)
         db.session.add(product)
         db.session.commit()
         flash(f'Successfully added {title}', 'success')
         return redirect(url_for('product.index'))
     else:
-        helper.flash_errors(form.errors)
+        helpers.flash.form_errors(form.errors)
     return render_template('product/create.html', form=form)

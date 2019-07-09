@@ -4,7 +4,11 @@ from flask_login import login_required, current_user
 from src.camel.models import db
 from src.camel.models.auth import User
 from src.camel.forms import EditEmailForm, EditNameForm, EditPasswordForm
-from src.camel import helper
+from src.camel.helpers.email import (
+    email_change_email,
+    email_change_password_success
+)
+from src.camel.helpers.flash import flash_form_errors
 
 
 profile_bp = Blueprint('profile', __name__)
@@ -27,14 +31,14 @@ def email_edit(form_email: EditEmailForm) -> None:
             if user:
                 flash('Email is already taken', 'danger')
             else:
-                helper.email_change_email(new_email)
+                email_change_email(new_email)
                 message = "To finish changing your email address, " \
                     f"we've sent an email to {new_email}. " \
                           "Simply click the button in the email to " \
                           "complete the process."
                 flash(message, 'success')
     else:
-        helper.flash_errors(form_email.errors)
+        flash_form_errors(form_email.errors)
 
 
 def name_edit(form_name: EditNameForm) -> None:
@@ -57,7 +61,7 @@ def name_edit(form_name: EditNameForm) -> None:
         else:
             flash('Please provide a valid name', 'danger')
     else:
-        helper.flash_errors(form_name.errors)
+        flash_form_errors(form_name.errors)
 
 
 def password_edit(form_password: EditPasswordForm) -> None:
@@ -77,12 +81,12 @@ def password_edit(form_password: EditPasswordForm) -> None:
             current_user.password = hashed_password.decode('utf8')
             db.session.add(current_user)
             db.session.commit()
-            helper.email_change_password_success()
+            email_change_password_success()
             flash('Successfully changed your password', 'success')
         else:
             flash('Wrong old password', 'danger')
     else:
-        helper.flash_errors(form_password.errors)
+        flash_form_errors(form_password.errors)
 
 
 @profile_bp.route('/profile', methods=['GET', 'POST'])

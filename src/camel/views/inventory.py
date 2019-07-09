@@ -4,7 +4,6 @@ from flask import (
     flash,
     redirect,
     url_for,
-    abort,
     request,
     current_app
 )
@@ -13,37 +12,11 @@ from flask_login import login_required, current_user
 from src.camel.models import db
 from src.camel.models.dashboard import Product, Inventory, Listing
 from src.camel.forms import InventoryBaseForm, InventoryCreateForm
-from src.camel import helper
-
+from src.camel.helpers.model import get_or_404
+from src.camel.helpers.flash import flash_form_errors
+from src.camel.helpers.inventory import Action
 
 inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
-
-
-class Operator:
-
-    def __init__(self, operate, inventories):
-        self.inventories = inventories
-        method = operate.lower().replace(' ', '_')
-        getattr(self, method)()
-
-    def continue_selling_when_out_of_stock(self):
-        current_app.logger.info(f'Continue: {self.inventories}')
-        pass
-
-    def stop_selling_when_out_of_stock(self):
-        pass
-
-    def sync_to_channels(self):
-        pass
-
-    def link_channels(self):
-        pass
-
-    def update_quantity(self):
-        pass
-
-    def delete_inventory(self):
-        pass
 
 
 @inventory_bp.route('/', methods=['GET', 'POST'])
@@ -51,16 +24,6 @@ class Operator:
 def index():
     products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('inventory/index.html', products=products)
-
-
-@inventory_bp.route('/perform', methods=['GET', 'POST'])
-@login_required
-def perform():
-    operate = request.form.get('operate')
-    inventories = request.form.getlist('inventories_selected')
-    Operator(operate, inventories)
-    flash('Successfully performed!', 'success')
-    return redirect(url_for('inventory.index'))
 
 
 @inventory_bp.route('/create', methods=['GET', 'POST'])
@@ -81,16 +44,16 @@ def create():
         flash('Successfully added SKU', 'success')
         return redirect(url_for('inventory.index'))
     else:
-        helper.flash.flash_errors(form.errors)
+        flash_form_errors(form.errors)
+
     return render_template('inventory/create.html', form=form)
 
 
 @inventory_bp.route('/<uid>/create', methods=['GET', 'POST'])
 @login_required
 def create_with_product_uid(uid):
-    product = Product.query.filter_by(uid=uid).first()
-    if not product:
-        abort(404)
+    options = {'uid': uid}
+    product = get_or_404(Product, options)
 
     form = InventoryBaseForm()
     if form.validate_on_submit():
@@ -106,28 +69,19 @@ def create_with_product_uid(uid):
         db.session.commit()
         flash('Successfully added SKU', 'success')
     else:
-        helper.flash.flash_errors(form.errors)
+        flash_form_errors(form.errors)
+
     return redirect(url_for('product.retrieve', uid=uid))
 
 
 @inventory_bp.route('/<uid>/<sku>', methods=['GET', 'POST'])
 @login_required
 def retrieve(uid, sku):
-    product = Product.\
-        query.\
-        filter_by(
-            uid=uid,
-            account_id=current_user.account.id
-        ).first()
-    if not product:
-        abort(404)
+    options = {'uid': uid, 'account_id': current_user.account.id}
+    product = get_or_404(Product, options)
 
-    inventory = Inventory.\
-        query.\
-        filter_by(product_id=product.id, sku=sku).\
-        first()
-    if not inventory:
-        abort(404)
+    options = {'product_id': product.id, 'sku': sku}
+    inventory = get_or_404(Inventory, options)
 
     form = InventoryBaseForm(obj=inventory)
     if form.validate_on_submit():
@@ -154,11 +108,16 @@ def retrieve(uid, sku):
         url = url_for('inventory.retrieve', uid=uid, sku=inventory.sku)
         return redirect(url)
     else:
-        helper.flash.flash_errors(form.errors)
+        flash_form_errors(form.errors)
 
-    context = {
-        'inventory': inventory,
-        'form': form,
-        'product': product
-    }
+    context = {'inventory': inventory, 'form': form, 'product': product}
     return render_template('inventory/retrieve.html', **context)
+
+
+@inventory_bp.route('/perform', methods=['GET', 'POST'])
+@login_required
+def perform():
+    action = request.form.get('action')
+    inventories = request.form.getlist('inventories_selected')
+    Action(action, inventories)
+    return redirect(url_for('inventory.index'))
