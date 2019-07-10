@@ -8,7 +8,7 @@ from flask import (
 )
 from flask_login import login_required, current_user
 
-from src.camel import helpers
+from src.camel.helpers.flash import flash_form_errors
 from src.camel.helpers.model import get_or_404
 from src.camel.models import db
 from src.camel.models.dashboard import Product
@@ -38,7 +38,7 @@ def index():
         flash(f'Successfully added {title}', 'success')
         return redirect(url_for('product.index'))
     else:
-        helpers.flash.form_errors(form.errors)
+        flash_form_errors(form.errors)
 
     products = Product.query.filter_by(account_id=current_user.account.id).all()
     return render_template('product/index.html', products=products, form=form)
@@ -62,7 +62,7 @@ def retrieve(uid: str):
         flash('Successfully updated product', 'success')
         return redirect(url_for('product.retrieve', uid=product.uid))
     else:
-        helpers.flash.form_errors(form.errors)
+        flash_form_errors(form.errors)
 
     context = {
         'form': form,
@@ -92,5 +92,5 @@ def create():
         flash(f'Successfully added {title}', 'success')
         return redirect(url_for('product.index'))
     else:
-        helpers.flash.form_errors(form.errors)
+        flash_form_errors(form.errors)
     return render_template('product/create.html', form=form)

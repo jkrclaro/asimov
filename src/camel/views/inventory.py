@@ -14,7 +14,7 @@ from src.camel.models.dashboard import Product, Inventory, Listing
 from src.camel.forms import InventoryBaseForm, InventoryCreateForm
 from src.camel.helpers.model import get_or_404
 from src.camel.helpers.flash import flash_form_errors
-from src.camel.helpers.inventory import Action
+from src.camel.helpers.inventory import Actioner
 
 inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
 
@@ -119,5 +119,5 @@ def retrieve(uid, sku):
 def perform():
     action = request.form.get('action')
     inventories = request.form.getlist('inventories_selected')
-    Action(action, inventories)
+    Actioner(action, inventories)
     return redirect(url_for('inventory.index'))
