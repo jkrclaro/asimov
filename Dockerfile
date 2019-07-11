@@ -5,15 +5,12 @@ RUN apk update && \
     apk add postgresql-dev
 RUN apk add libffi-dev
 
-# Create /app directory in docker and change directory to /app
 RUN mkdir /server
 WORKDIR /server
 
-# Install pipenv, move Pipefile files and install the Pipfile dependencies
 COPY requirements/production.txt requirements.txt
 RUN pip install -r requirements.txt
 
-# Move everything to docker
 RUN mkdir src/
 COPY src/ src/
 COPY app.py .
