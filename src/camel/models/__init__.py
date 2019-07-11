@@ -26,8 +26,7 @@ class BaseModel(object):
 
 
 def generate_uid() -> str:
-    uid = ''.join(
+    return ''.join(
         random.SystemRandom().choice(string.ascii_letters + string.digits)
         for _ in range(14)
     )
-    return uid

@@ -13,29 +13,29 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
     steps:
       - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements/development.txt" }}
+      - run:
+          name: Install python dependencies in a virtualenv
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements/development.txt
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements/development.txt" }}
+          paths:
+            - "venv"
       - run:
           command: |
-            sudo pip install pipenv
-            pipenv install --dev
-            pipenv lock -r > requirements.txt
-      - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
-      - run: pipenv run pytest
-      - store_test_results:
-          path: test-results
+            . venv/bin/activate
+            pytest
       - store_artifacts:
-          path: test-results
+          path: test-reports/
           destination: tr1
+      - store_test_results:
+          path: test-reports/
   deploy:
     docker:
       - image: circleci/python:2.7

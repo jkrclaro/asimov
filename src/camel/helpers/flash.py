@@ -1,7 +1,7 @@
 from flask import flash
 
 
-def flash_errors(errors: dict) -> None:
+def flash_form_errors(errors: dict) -> None:
     """Flashes error message then removes it from the list.
 
     :param errors: Flask-WTF form errors that needs to be removed once flashed

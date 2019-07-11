@@ -20,25 +20,16 @@ from src.camel.forms import (
     ResetPasswordForm,
     ConfirmForm
 )
-from src.camel import helper
+from src.camel.helpers.email import (
+    email_confirmation,
+    email_change_email_success,
+    email_reset,
+    email_reset_success
+)
+from src.camel.helpers.recaptcha import validate_recaptcha
 
 
 auth_bp = Blueprint('auth', __name__)
-
-
-def validate_recaptcha():
-    recaptcha = {'site_key': google_recaptcha.site_key}
-    if request.method == 'POST':
-        recaptcha_response = request.form.get('g-recaptcha-response')
-        if recaptcha_response:
-            data = {
-                'response': recaptcha_response,
-                'remoteip': request.remote_addr
-            }
-            recaptcha['recaptcha'] = google_recaptcha.verify(data)
-        else:
-            recaptcha['recaptcha'] = 'Please complete the CAPTCHA.'
-    return recaptcha
 
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
@@ -64,7 +55,7 @@ def signup():
             db.session.add(account)
             db.session.commit()
             login_user(user)
-            helper.email_confirmation()
+            email_confirmation()
             return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
 
@@ -142,7 +133,7 @@ def confirm():
             login_user(user)
 
             if new_email and old_email:
-                helper.email_change_email_success(email)
+                email_change_email_success(email)
                 flash('Your email address was successfully changed', 'success')
             else:
                 flash('Your email address have been confirmed', 'success')
@@ -154,7 +145,7 @@ def confirm():
 @login_required
 def resend():
     # TODO: Should be a post
-    helper.email_confirmation()
+    email_confirmation()
     session['resend'] = True
     return redirect(url_for('dashboard.index'))
 
@@ -168,7 +159,7 @@ def forgot():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
         if user:
-            helper.email_reset()
+            email_reset()
         return render_template(template)
     return render_template(template, form=form, **recaptcha)
 
@@ -195,7 +186,7 @@ def reset():
         user.password = password_hashed.decode('utf8')
         db.session.add(user)
         db.session.commit()
-        helper.email_reset_success()
+        email_reset_success()
         login_user(user)
         flash('Successfully changed your Camel password', 'success')
         return redirect(url_for('dashboard.index'))

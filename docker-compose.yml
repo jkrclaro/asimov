@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     database:
-        env_file: database.env
+        env_file: env/database.env
         image: postgres
         ports:
           - "5432:5432"
