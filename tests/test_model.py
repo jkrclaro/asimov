@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.camel import create_app
-from src.camel.models import db
-from src.camel.models.auth import User, Account
-from src.camel.models.dashboard import (
+from src.distogo import create_app
+from src.distogo.models import db
+from src.distogo.models.auth import User, Account
+from src.distogo.models.dashboard import (
     Product,
     ProductEtsy,
     Inventory,
@@ -142,7 +142,7 @@ def test_channel_etsy(app: Flask):
             'oauth_token': '12345',
             'oauth_token_secret': '12345',
             'shop_id': 'shop-id-1',
-            'shop_name': 'test-camel',
+            'shop_name': 'test-distogo',
             'user_id': 'j12k3kdsl',
             'channel_id': 1
         }

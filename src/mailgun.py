@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.trycamel.com'
+domain = 'www.distogo.com'
 region = 'eu'
-from_email = f'Camel <mailgun@{domain}>'
+from_email = f'Distogo <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.camel import create_app
-from src.camel.models import db
-from src.camel.models.auth import User
+from src.distogo import create_app
+from src.distogo.models import db
+from src.distogo.models.auth import User
 
 
 @pytest.fixture

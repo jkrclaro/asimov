@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: camel-production
+    environment: distogo-production
     group_suffix: null
 global:
-  application_name: camel
+  application_name: distogo
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce
