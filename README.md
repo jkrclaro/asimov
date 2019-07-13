@@ -1,6 +1,6 @@
-<a href='https://github.com/jkrclaro/heroable'><img src='https://github.com/jkrclaro/heroable/blob/master/src/heroable/static/img/heroable.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/heroable'><img src='https://github.com/jkrclaro/heroable/blob/master/src/heroable/static/img/logo.png' align='right' width='200' height='160' /></a>
 
-# Ortogo
+# Heroable
 [![CircleCI](https://circleci.com/gh/jkrclaro/heroable/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/heroable/tree/master)
 
 Multichannel inventory management for small businesses.

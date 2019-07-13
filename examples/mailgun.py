@@ -20,7 +20,7 @@ def main():
         loader=jinja2.FileSystemLoader('src/heroable/templates/')
     ).get_template('email/confirm.html').render(context)
     mailgun.send_email(
-        'Confirm your Ortogo email address!',
+        'Confirm your Heroable email address!',
         [f'John {email}'],
         html=html,
     )
