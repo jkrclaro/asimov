@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.distogo.com'
+domain = 'www.heroable.com'
 region = 'eu'
-from_email = f'Distogo <mailgun@{domain}>'
+from_email = f'Ortogo <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

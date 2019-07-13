@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.distogo import create_app
-from src.distogo.models import db
-from src.distogo.models.auth import User
+from src.heroable import create_app
+from src.heroable.models import db
+from src.heroable.models.auth import User
 
 
 @pytest.fixture
