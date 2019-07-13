@@ -56,10 +56,10 @@ html, body {
     font-weight: 700;
 }
 .header__logo--theme {
-    color: #FFBC00 !important;
+    color: #EB1700 !important;
 }
 .header__logo--theme:hover, .header__logo--theme:focus {
-    color: #FFBC00;
+    color: #EB1700;
 }
 .header__logo--black {
     color: #111;
@@ -68,7 +68,7 @@ html, body {
     font-family: 'Open Sans';
 }
 .footer__title--theme {
-    color: #FFBC00;
+    color: #EB1700;
 }
 .footer__title--muted {
     color: #999;
@@ -80,9 +80,9 @@ html, body {
 }
 
 .btn__custom--primary {
-    background-color: #FFBC00;
+    background-color: #EB1700;
     color: #FFF;
-    border-bottom: 2px solid #DEA400;
+    border-bottom: 2px solid #EB1700;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -90,23 +90,23 @@ html, body {
     transition: 0.3s;
 }
 .btn__custom--primary--outline {
-    border-color: #FFBC00;
-    color: #FFBC00;
+    border-color: #EB1700;
+    color: #EB1700;
     border: 2px solid;
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
-    color: #FFBC00;
+    color: #EB1700;
     box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #FFBC00;
+    color: #EB1700;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #FFBC00;
+    color: #EB1700;
 }
 .btn__custom--secondary--outline {
     border-color: #FFF;
@@ -143,7 +143,7 @@ html, body {
 }
 .anchor__custom--theme {
     text-decoration: none !important;
-    color: #FFBC00;
+    color: #EB1700;
 }
 .anchor__custom--theme:hover {
     text-decoration: none !important;
@@ -170,7 +170,7 @@ html, body {
     font-size: 48px !important;
 }
 .active a {
-    color: #FFBC00 !important;
+    color: #EB1700 !important;
 }
 [class*="dropdown-menu-tip-"]::after {
   content: '';
