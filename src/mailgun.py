@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.heroable.com'
+domain = 'www.webtail.app'
 region = 'eu'
-from_email = f'Heroable <mailgun@{domain}>'
+from_email = f'Webtail <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

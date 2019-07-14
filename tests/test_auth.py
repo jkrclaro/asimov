@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.heroable import create_app
-from src.heroable.models import db
-from src.heroable.models.auth import User
+from src.webtail import create_app
+from src.webtail.models import db
+from src.webtail.models.auth import User
 
 
 @pytest.fixture
