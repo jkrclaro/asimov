@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: webtail-production
+    environment: doshless-production
     group_suffix: null
 global:
-  application_name: webtail
+  application_name: doshless
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

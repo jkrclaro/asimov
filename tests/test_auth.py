@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.webtail import create_app
-from src.webtail.models import db
-from src.webtail.models.auth import User
+from src.doshless import create_app
+from src.doshless.models import db
+from src.doshless.models.auth import User
 
 
 @pytest.fixture

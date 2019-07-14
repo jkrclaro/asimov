@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.webtail import create_app
-from src.webtail.models import db
-from src.webtail.models.auth import User, Account
-from src.webtail.models.dashboard import (
+from src.doshless import create_app
+from src.doshless.models import db
+from src.doshless.models.auth import User, Account
+from src.doshless.models.dashboard import (
     Product,
     ProductEtsy,
     Inventory,
@@ -142,7 +142,7 @@ def test_channel_etsy(app: Flask):
             'oauth_token': '12345',
             'oauth_token_secret': '12345',
             'shop_id': 'shop-id-1',
-            'shop_name': 'test-webtail',
+            'shop_name': 'test-doshless',
             'user_id': 'j12k3kdsl',
             'channel_id': 1
         }
