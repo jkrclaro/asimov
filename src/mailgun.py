@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.doshless.com'
+domain = 'www.wadless.com'
 region = 'eu'
-from_email = f'Doshless <mailgun@{domain}>'
+from_email = f'Wadless <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

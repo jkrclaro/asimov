@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.doshless import create_app
-from src.doshless.models import db
-from src.doshless.models.auth import User, Account
-from src.doshless.models.dashboard import (
+from src.wadless import create_app
+from src.wadless.models import db
+from src.wadless.models.auth import User, Account
+from src.wadless.models.dashboard import (
     Product,
     ProductEtsy,
     Inventory,
@@ -142,7 +142,7 @@ def test_channel_etsy(app: Flask):
             'oauth_token': '12345',
             'oauth_token_secret': '12345',
             'shop_id': 'shop-id-1',
-            'shop_name': 'test-doshless',
+            'shop_name': 'test-wadless',
             'user_id': 'j12k3kdsl',
             'channel_id': 1
         }
