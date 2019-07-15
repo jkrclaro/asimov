@@ -50,7 +50,6 @@ def create_app(config: str):
     def create_db():
         db.create_all(app=app)
         try:
-            db.session.add(Platform(name='etsy'))
             db.session.add(InventoryWhenSold(name='Stop selling'))
             db.session.add(InventoryWhenSold(name='Continue selling'))
             db.session.commit()
@@ -63,7 +62,7 @@ def create_app(config: str):
     from .views.inventory import inventory_bp
     from .views.profile import profile_bp
     from .views.account import account_bp
-    from .views.menu import channel_bp
+    from .views.menu import menu_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
     blueprints = (
@@ -73,7 +72,7 @@ def create_app(config: str):
         inventory_bp,
         profile_bp,
         account_bp,
-        channel_bp,
+        menu_bp,
         product_bp,
         listing_bp,
     )

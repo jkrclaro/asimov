@@ -106,6 +106,8 @@ class Listing(db.Model, BaseModel):
 
 class Menu(db.Model, BaseModel):
     __tablename__ = 'menus'
+    title = db.Column(db.String(255))
+    is_active = db.Column(db.Boolean, default=False)
     platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     platform = db.relationship('Platform', uselist=False, back_populates='menu')

@@ -2,19 +2,21 @@ from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 
 from src.wadless.models.dashboard import Menu
+from src.wadless.forms.menu import MenuCreateForm
 
 
-channel_bp = Blueprint('menu', __name__, url_prefix='/menus')
+menu_bp = Blueprint('menu', __name__, url_prefix='/menus')
 
 
-@channel_bp.route('/')
+@menu_bp.route('/')
 @login_required
 def index():
     menus = Menu.query.filter_by(account_id=current_user.account.id)
     return render_template('menu/index.html', menus=menus)
 
 
-@channel_bp.route('/connect')
+@menu_bp.route('/create')
 @login_required
-def connect():
-    return render_template('menu/connect.html')
+def create():
+    form = MenuCreateForm()
+    return render_template('menu/create.html', form=form)
