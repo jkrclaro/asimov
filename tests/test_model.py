@@ -13,7 +13,6 @@ from src.wadless.models.dashboard import (
     Inventory,
     InventoryWhenSold,
     Listing,
-    ListingEtsy,
     Channel,
     ChannelEtsy,
     Platform
@@ -116,15 +115,6 @@ def test_listing(app: Flask):
             'channel_id': 1
         }
         create_and_test(Listing, data)
-
-
-def test_listing_etsy(app: Flask):
-    with app.app_context():
-        data = {
-            'listing_id': 1,
-            'listing_etsy_id': 718275147
-        }
-        create_and_test(ListingEtsy, data)
 
 
 def test_channel(app: Flask):
