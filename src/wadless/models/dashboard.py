@@ -35,6 +35,7 @@ class Product(db.Model, BaseModel):
 
 class Variant(db.Model, BaseModel):
     __tablename__ = 'variants'
+    title = db.Column(db.String(255))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
 
     def __init__(self, **kwargs):
@@ -108,8 +109,8 @@ class Menu(db.Model, BaseModel):
     __tablename__ = 'menus'
     title = db.Column(db.String(255))
     is_active = db.Column(db.Boolean, default=False)
-    platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
-    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
+    platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id', ondelete='CASCADE'))
+    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
     platform = db.relationship('Platform', uselist=False, back_populates='menu')
     inventories = db.relationship('Listing', back_populates='menu')
 

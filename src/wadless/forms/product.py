@@ -3,12 +3,12 @@ from wtforms import StringField, widgets
 from wtforms.validators import InputRequired
 
 
-class ProductCreateForm(FlaskForm):
+class ProductBaseForm(FlaskForm):
     title = StringField(
         'Title',
-        render_kw={'placeholder': 'Blue t-shirt'},
+        render_kw={'placeholder': 'Tea'},
         validators=[
-            InputRequired(message='Please enter a valid email.'),
+            InputRequired(message='Please enter a valid product title.'),
         ]
     )
     uid = StringField(
