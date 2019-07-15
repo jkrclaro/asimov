@@ -1,7 +1,7 @@
 import requests
 
 api_key = ''
-domain = 'www.doshless.app'
+domain = 'www.doshless.com'
 region = 'eu'
 from_email = f'Doshless <mailgun@{domain}>'
 

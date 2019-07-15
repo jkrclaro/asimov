@@ -9,7 +9,7 @@ def main():
     mailgun.password = os.environ.get('MAILGUN_PASSWORD')
     token.secret_key = '123'
     token.salt = '12345'
-    email = {'email': 'john@doshless.app'}
+    email = {'email': 'john@doshless.com'}
 
     data = token.encrypt(email)
     url = f'http://dashboard.localhost:3000/confirm?t={data}'

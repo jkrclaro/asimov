@@ -6,7 +6,7 @@
 Multichannel inventory management for small businesses.
 
 # General Information
-- Website: https://www.doshless.app
+- Website: https://www.doshless.com
 - Source code: https://github.com/jkrclaro/startup
 - Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
 
