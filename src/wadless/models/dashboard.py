@@ -11,7 +11,6 @@ class Product(db.Model, BaseModel):
     caption = db.Column(db.String(255))
     description = db.Column(db.Text)
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
-    etsy = db.relationship('ProductEtsy', uselist=False, back_populates='product')
     inventories = db.relationship('Inventory', backref='products')
 
     def __init__(self, **kwargs):
@@ -29,30 +28,6 @@ class Product(db.Model, BaseModel):
 
     def __str__(self):
         return self.uid
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__, self.__dict__)
-
-
-class ProductEtsy(db.Model, BaseModel):
-    __tablename__ = 'products_etsy'
-    category = db.Column(db.String(255))
-    renewal = db.Column(db.String(30))
-    type = db.Column(db.String(30))
-    section = db.Column(db.String(255))
-    who_made_it = db.Column(db.String(30))
-    what_is_it = db.Column(db.String(30))
-    when_was_it_made = db.Column(db.String(30))
-    tags = db.Column(db.Text)
-    materials = db.Column(db.Text)
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
-    product = db.relationship('Product', back_populates='etsy')
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    def __str__(self):
-        return self.id
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)

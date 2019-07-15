@@ -9,7 +9,6 @@ from src.wadless.models import db
 from src.wadless.models.auth import User, Account
 from src.wadless.models.dashboard import (
     Product,
-    ProductEtsy,
     Inventory,
     InventoryWhenSold,
     Listing,
@@ -68,23 +67,6 @@ def test_product(app: Flask):
             'account_id': 1
         }
         create_and_test(Product, data)
-
-
-def test_product_etsy(app: Flask):
-    with app.app_context():
-        data = {
-            'category': "Men's coat",
-            'renewal': 'Manual',
-            'type': 'Physical',
-            'section': 'Custom section',
-            'who_made_it': 'I did',
-            'what_is_it': 'A finished product',
-            'when_was_it_made': 'Made to order',
-            'tags': 'Shape, colour, style, function, etc.',
-            'materials': 'Ingredients, components',
-            'product_id': 1
-        }
-        create_and_test(ProductEtsy, data)
 
 
 def test_inventory(app: Flask):
