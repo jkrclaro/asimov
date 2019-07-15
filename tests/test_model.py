@@ -13,7 +13,6 @@ from src.wadless.models.dashboard import (
     InventoryWhenSold,
     Listing,
     Channel,
-    ChannelEtsy,
     Platform
 )
 
@@ -106,19 +105,6 @@ def test_channel(app: Flask):
             'account_id': 1,
         }
         create_and_test(Channel, data)
-
-
-def test_channel_etsy(app: Flask):
-    with app.app_context():
-        data = {
-            'oauth_token': '12345',
-            'oauth_token_secret': '12345',
-            'shop_id': 'shop-id-1',
-            'shop_name': 'test-wadless',
-            'user_id': 'j12k3kdsl',
-            'channel_id': 1
-        }
-        create_and_test(ChannelEtsy, data)
 
 
 def test_platform(app: Flask):

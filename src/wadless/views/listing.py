@@ -1,7 +1,6 @@
 from flask import Blueprint, flash, redirect, url_for, abort
 from flask_login import login_required, current_user
 
-from src import etsy
 from src.wadless.models.dashboard import Channel, Inventory
 
 

@@ -99,33 +99,12 @@ class Channel(db.Model, BaseModel):
     platform = db.relationship('Platform', back_populates='channel')
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     inventories = db.relationship('Listing', back_populates='channel')
-    etsy = db.relationship('ChannelEtsy', uselist=False)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def __str__(self):
-        return f'Etsy {self.etsy}' if self.etsy else 'N/A'
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__, self.__dict__)
-
-
-class ChannelEtsy(db.Model, BaseModel):
-    __tablename__ = 'channels_etsy'
-    oauth_token = db.Column(db.String(255))
-    oauth_token_secret = db.Column(db.String(255))
-    shop_id = db.Column(db.String(255))
-    shop_name = db.Column(db.String(255))
-    user_id = db.Column(db.String(255))
-    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id', ondelete='CASCADE'))
-    channel = db.relationship('Channel', uselist=False, back_populates='etsy')
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    def __str__(self):
-        return self.shop_name
+        return f'{self.id}'
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)

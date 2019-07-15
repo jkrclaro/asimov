@@ -4,7 +4,7 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from sqlalchemy.exc import IntegrityError
 
-from src import mailgun, token, google_recaptcha, etsy
+from src import mailgun, token, google_recaptcha
 
 login_manager = LoginManager()
 migrate = Migrate()
@@ -35,8 +35,6 @@ def create_app(config: str):
     token.secret_key = app.config.get('SECRET_KEY')
     google_recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
     google_recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')
-    etsy.api_key = app.config.get('ETSY_API_KEY')
-    etsy.secret_key = app.config.get('ETSY_SECRET_KEY')
 
     from .models import db
     db.init_app(app)
@@ -68,7 +66,6 @@ def create_app(config: str):
     from .views.channel import channel_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
-    from .views.etsy import etsy_bp
     blueprints = (
         auth_bp,
         home_bp,
@@ -79,7 +76,6 @@ def create_app(config: str):
         channel_bp,
         product_bp,
         listing_bp,
-        etsy_bp
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
