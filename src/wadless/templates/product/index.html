@@ -42,7 +42,7 @@
                             <a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.title }}</a>
                         </td>
                         <td>{{ product.uid }}</td>
-                        <td>{{ product.inventories | length }} SKU</td>
+                        <td>{{ product.variants | length }} SKU</td>
                         <td>{{ product.updated_at | datetime }}</td>
                     </tr>
                 {% endfor %}

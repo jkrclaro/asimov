@@ -11,7 +11,7 @@ class Product(db.Model, BaseModel):
     caption = db.Column(db.String(255))
     description = db.Column(db.Text)
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
-    inventories = db.relationship('Inventory', backref='products')
+    variants = db.relationship('Variant', backref='products')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -33,6 +33,17 @@ class Product(db.Model, BaseModel):
         return '%s(%r)' % (self.__class__, self.__dict__)
 
 
+class Variant(db.Model, BaseModel):
+    __tablename__ = 'variants'
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__, self.__dict__)
+
+
 class Inventory(db.Model, BaseModel):
     __tablename__ = 'inventories'
     _sku = db.Column('sku', db.String(255))
@@ -40,9 +51,9 @@ class Inventory(db.Model, BaseModel):
     quantity = db.Column(db.Integer)
     is_active = db.Column(db.Boolean, default=False)
     when_sold_id = db.Column(db.Integer, db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE'))
-    when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
+    variant_id = db.Column(db.Integer, db.ForeignKey('variants.id', ondelete='CASCADE'))
     menus = db.relationship('Listing', back_populates='inventory', passive_deletes=True)
+    when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -98,7 +109,7 @@ class Menu(db.Model, BaseModel):
     platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
     platform = db.relationship('Platform', uselist=False, back_populates='menu')
-    listings = db.relationship('Listing', back_populates='menu')
+    inventories = db.relationship('Listing', back_populates='menu')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

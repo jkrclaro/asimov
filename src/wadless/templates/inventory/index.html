@@ -39,7 +39,7 @@
                     <tbody>
                     {% set indexes = namespace(current=1) %}
                     {% for product in products %}
-                        {% for inventory in product.inventories %}
+                        {% for inventory in product.variants %}
                             <tr>
                                 <td><input type="checkbox" name="inventories_selected" value="{{ inventory.id }}" id="id_inventories_selected"></td>
                                 <td>{{ indexes.current }} {% set indexes.current = indexes.current + 1 %}</td>
