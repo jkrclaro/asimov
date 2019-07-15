@@ -110,26 +110,9 @@ class Listing(db.Model, BaseModel):
     channel_id = db.Column(db.Integer, db.ForeignKey('channels.id', ondelete='CASCADE'))
     inventory = db.relationship('Inventory', back_populates='channels')
     channel = db.relationship('Channel', back_populates='inventories')
-    etsy = db.relationship('ListingEtsy', uselist=False, back_populates='listing')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__, self.__dict__)
-
-
-class ListingEtsy(db.Model, BaseModel):
-    __tablename__ = 'listings_etsy'
-    listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'))
-    listing = db.relationship('Listing', uselist=False, back_populates='etsy')
-    listing_etsy_id = db.Column(db.Integer)
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    def __str__(self):
-        return self.listing_etsy_id
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)
