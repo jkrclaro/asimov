@@ -12,7 +12,7 @@ from src.wadless.models.dashboard import (
     Inventory,
     InventoryWhenSold,
     Listing,
-    Channel,
+    Menu,
     Platform
 )
 
@@ -98,13 +98,13 @@ def test_listing(app: Flask):
         create_and_test(Listing, data)
 
 
-def test_channel(app: Flask):
+def test_menu(app: Flask):
     with app.app_context():
         data = {
             'platform_id': 1,
             'account_id': 1,
         }
-        create_and_test(Channel, data)
+        create_and_test(Menu, data)
 
 
 def test_platform(app: Flask):

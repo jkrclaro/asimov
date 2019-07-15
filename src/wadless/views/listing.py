@@ -1,17 +1,17 @@
 from flask import Blueprint, flash, redirect, url_for, abort
 from flask_login import login_required, current_user
 
-from src.wadless.models.dashboard import Channel, Inventory
+from src.wadless.models.dashboard import Menu, Inventory
 
 
 listing_bp = Blueprint('listing', __name__, url_prefix='/listing')
 
 
-@listing_bp.route('/<channel_id>/<product_uid>/<inventory_id>/sync')
+@listing_bp.route('/<menu_id>/<product_uid>/<inventory_id>/sync')
 @login_required
-def sync(channel_id, product_uid, inventory_id):
-    channel = Channel.query.get(channel_id)
-    if not channel:
+def sync(menu_id, product_uid, inventory_id):
+    menu = Menu.query.get(menu_id)
+    if not menu:
         abort(404)
 
     inventory = Inventory.query.get(inventory_id)

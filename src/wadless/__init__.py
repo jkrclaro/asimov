@@ -63,7 +63,7 @@ def create_app(config: str):
     from .views.inventory import inventory_bp
     from .views.profile import profile_bp
     from .views.account import account_bp
-    from .views.channel import channel_bp
+    from .views.menu import channel_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
     blueprints = (

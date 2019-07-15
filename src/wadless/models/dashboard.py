@@ -42,7 +42,7 @@ class Inventory(db.Model, BaseModel):
     when_sold_id = db.Column(db.Integer, db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE'))
     when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
     product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'))
-    channels = db.relationship('Listing', back_populates='inventory', passive_deletes=True)
+    menus = db.relationship('Listing', back_populates='inventory', passive_deletes=True)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -82,9 +82,9 @@ class InventoryWhenSold(db.Model, BaseModel):
 class Listing(db.Model, BaseModel):
     __tablename__ = 'listings'
     inventory_id = db.Column(db.Integer, db.ForeignKey('inventories.id', ondelete='CASCADE'))
-    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id', ondelete='CASCADE'))
-    inventory = db.relationship('Inventory', back_populates='channels')
-    channel = db.relationship('Channel', back_populates='inventories')
+    menu_id = db.Column(db.Integer, db.ForeignKey('menus.id', ondelete='CASCADE'))
+    inventory = db.relationship('Inventory', back_populates='menus')
+    menu = db.relationship('Menu', back_populates='inventories')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -93,12 +93,12 @@ class Listing(db.Model, BaseModel):
         return '%s(%r)' % (self.__class__, self.__dict__)
 
 
-class Channel(db.Model, BaseModel):
-    __tablename__ = 'channels'
+class Menu(db.Model, BaseModel):
+    __tablename__ = 'menus'
     platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'))
-    platform = db.relationship('Platform', back_populates='channel')
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
-    inventories = db.relationship('Listing', back_populates='channel')
+    platform = db.relationship('Platform', uselist=False, back_populates='menu')
+    listings = db.relationship('Listing', back_populates='menu')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -113,7 +113,7 @@ class Channel(db.Model, BaseModel):
 class Platform(db.Model, BaseModel):
     __tablename__ = 'platforms'
     name = db.Column(db.String(30), unique=True)
-    channel = db.relationship('Channel', uselist=False, back_populates='platform')
+    menu = db.relationship('Menu', uselist=False, back_populates='platform')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

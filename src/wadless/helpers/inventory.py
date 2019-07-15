@@ -19,11 +19,11 @@ class Actioner:
         pass
 
     def sync_to_channels(self):
-        current_app.logger.info('Syncing to channels...')
+        current_app.logger.info('Syncing to menus...')
         pass
 
     def link_channels(self):
-        current_app.logger.info('Linking channels...')
+        current_app.logger.info('Linking menus...')
         pass
 
     def update_quantity(self):

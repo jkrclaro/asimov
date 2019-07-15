@@ -85,16 +85,16 @@ def retrieve(uid, sku):
 
     form = InventoryBaseForm(obj=inventory)
     if form.validate_on_submit():
-        if form.channels.data:
-            for channel in form.channels.data:
+        if form.menus.data:
+            for menu in form.menus.data:
                 data_listing = {
                     'inventory_id': inventory.id,
-                    'channel_id': channel.id
+                    'menu_id': menu.id
                 }
                 listing = Listing(**data_listing)
                 db.session.add(listing)
             db.session.commit()
-            flash('Successfully linked channel to SKU', 'success')
+            flash('Successfully linked menu to SKU', 'success')
         else:
             inventory.price = form.price.data
             inventory.quantity = form.quantity.data
