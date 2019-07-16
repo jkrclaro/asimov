@@ -3,6 +3,25 @@ from sqlalchemy.orm import synonym
 from . import db, BaseModel, generate_uid
 
 
+class Merchant(db.Model, BaseModel):
+    __tablename__ = 'merchants'
+    name = db.Column(db.String(255))
+    address = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', back_populates='merchant')
+    products = db.relationship('Product', backref='merchants')
+    menus = db.relationship('Menu', backref='merchants')
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__, self.__dict__)
+
+
 class Product(db.Model, BaseModel):
     __tablename__ = 'products'
     _uid = db.Column('uid', db.String(255))
@@ -10,7 +29,7 @@ class Product(db.Model, BaseModel):
     url = db.Column(db.String(255))
     caption = db.Column(db.String(255))
     description = db.Column(db.Text)
-    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
+    merchant_id = db.Column(db.Integer, db.ForeignKey('merchants.id', ondelete='CASCADE'))
     variants = db.relationship('Variant', backref='products')
 
     def __init__(self, **kwargs):
@@ -92,7 +111,7 @@ class Menu(db.Model, BaseModel):
     __tablename__ = 'menus'
     title = db.Column(db.String(255))
     is_active = db.Column(db.Boolean, default=False)
-    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
+    merchant_id = db.Column(db.Integer, db.ForeignKey('merchants.id', ondelete='CASCADE'))
     inventories = db.relationship('Listing', back_populates='menu')
 
     def __init__(self, **kwargs):

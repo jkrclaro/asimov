@@ -5,7 +5,7 @@ from .auth import (
     ResetPasswordForm,
     SignupForm
 )
-from .profile import EditPasswordForm, EditNameForm, EditEmailForm
+from .customer import EditPasswordForm, EditNameForm, EditEmailForm
 
 from .product import ProductBaseForm
 from .inventory import InventoryBaseForm, InventoryCreateForm

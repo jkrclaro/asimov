@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
-    account = db.relationship('Account', uselist=False, back_populates='user')
-    profile = db.relationship('Profile', uselist=False, back_populates='user')
+    merchant = db.relationship('Merchant', uselist=False, back_populates='user')
+    customer = db.relationship('Customer', uselist=False, back_populates='user')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -64,40 +64,3 @@ class User(db.Model, UserMixin):
         password_encoded = password.encode('utf8')
         password_sha256 = hashlib.sha256(password_encoded).digest()
         return base64.b64encode(password_sha256)
-
-
-class Profile(db.Model):
-    __tablename__ = 'profiles'
-    __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', back_populates='profile')
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
-
-    def __init__(self, user_id: int, name: str = ''):
-        self.user_id = user_id
-        self.name = name
-
-    def __repr__(self):
-        return f"{self.user.email}'s profile"
-
-
-class Account(db.Model):
-    __tablename__ = 'accounts'
-    __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(255))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', back_populates='account')
-    products = db.relationship('Product', backref='accounts')
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
-
-    def __init__(self, user_id: int, address: str = ''):
-        self.user_id = user_id
-        self.address = address
-
-    def __repr__(self):
-        return f"{self.user.email}'s account"

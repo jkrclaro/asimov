@@ -11,7 +11,7 @@ from src.wadless.helpers.email import (
 from src.wadless.helpers.flash import flash_form_errors
 
 
-profile_bp = Blueprint('profile', __name__)
+customer_bp = Blueprint('customer', __name__)
 
 
 def email_edit(form_email: EditEmailForm) -> None:
@@ -47,17 +47,17 @@ def name_edit(form_name: EditNameForm) -> None:
     :param form_name: Form for editing name
     :return: None
     """
-    old_name = current_user.profile.name
+    old_name = current_user.customer.name
 
     if form_name.validate_on_submit():
         new_name = form_name.name.data
         if new_name == old_name:
             flash('New name should be different from old name', 'danger')
         elif new_name:
-            current_user.profile.name = new_name
+            current_user.customer.name = new_name
             db.session.add(current_user)
             db.session.commit()
-            flash('Successfully changed your profile name', 'success')
+            flash('Successfully changed your customer name', 'success')
         else:
             flash('Please provide a valid name', 'danger')
     else:
@@ -89,7 +89,7 @@ def password_edit(form_password: EditPasswordForm) -> None:
         flash_form_errors(form_password.errors)
 
 
-@profile_bp.route('/profile', methods=['GET', 'POST'])
+@customer_bp.route('/customer', methods=['GET', 'POST'])
 @login_required
 def index():
     form_email = EditEmailForm(prefix='form_email')
@@ -113,4 +113,4 @@ def index():
         'form_name': form_name,
         'form_password': form_password
     }
-    return render_template('profile/index.html', **forms)
+    return render_template('customer/index.html', **forms)

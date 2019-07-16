@@ -22,7 +22,7 @@ inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
 @inventory_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-    products = Product.query.filter_by(account_id=current_user.account.id).all()
+    products = Product.query.filter_by(merchant_id=current_user.merchant.id).all()
     return render_template('inventory/index.html', products=products)
 
 
@@ -75,7 +75,7 @@ def create_with_product_uid(uid):
 @inventory_bp.route('/<uid>/<sku>', methods=['GET', 'POST'])
 @login_required
 def retrieve(uid, sku):
-    options = {'uid': uid, 'account_id': current_user.account.id}
+    options = {'uid': uid, 'merchant_id': current_user.merchant.id}
     product = get_or_404(Product, options)
 
     options = {'product_id': product.id, 'sku': sku}

@@ -53,8 +53,8 @@ def create_app(config: str):
     from .views.home import home_bp
     from .views.merchant import merchant_bp
     from .views.inventory import inventory_bp
-    from .views.profile import profile_bp
-    from .views.account import account_bp
+    from .views.customer import customer_bp
+    from .views.merchant import merchant_bp
     from .views.menu import menu_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
@@ -63,8 +63,8 @@ def create_app(config: str):
         home_bp,
         merchant_bp,
         inventory_bp,
-        profile_bp,
-        account_bp,
+        customer_bp,
+        merchant_bp,
         menu_bp,
         product_bp,
         listing_bp,

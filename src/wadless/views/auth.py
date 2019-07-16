@@ -12,7 +12,9 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 from src import token, google_recaptcha
 from src.wadless.models import db
-from src.wadless.models.auth import User, Profile, Account
+from src.wadless.models.auth import User
+from src.wadless.models.customer import Customer
+from src.wadless.models.merchant import Merchant
 from src.wadless.forms import (
     SignupForm,
     LoginForm,
@@ -49,10 +51,10 @@ def signup():
             user = User(email, password)
             db.session.add(user)
             db.session.commit()
-            profile = Profile(user.id, name=name)
-            account = Account(user.id)
-            db.session.add(profile)
-            db.session.add(account)
+            customer = Customer(user.id, name=name)
+            merchant = Merchant(user.id)
+            db.session.add(customer)
+            db.session.add(merchant)
             db.session.commit()
             login_user(user)
             email_confirmation()

@@ -11,7 +11,7 @@ menu_bp = Blueprint('menu', __name__, url_prefix='/menus')
 @menu_bp.route('/')
 @login_required
 def index():
-    menus = Menu.query.filter_by(account_id=current_user.account.id)
+    menus = Menu.query.filter_by(merchant_id=current_user.merchant.id)
     return render_template('menu/index.html', menus=menus)
 
 

@@ -29,7 +29,7 @@ def index():
     if form.validate_on_submit():
         title = form.title.data
         data_product = {
-            'account_id': current_user.account.id,
+            'merchant_id': current_user.merchant.id,
             'title': title,
             'url': form.url.data,
             'caption': form.caption.data,
@@ -44,14 +44,14 @@ def index():
     else:
         flash_form_errors(form.errors)
 
-    products = Product.query.filter_by(account_id=current_user.account.id).all()
+    products = Product.query.filter_by(merchant_id=current_user.merchant.id).all()
     return render_template('product/index.html', products=products, form=form)
 
 
 @product_bp.route('/<uid>', methods=['GET', 'POST'])
 @login_required
 def retrieve(uid: str):
-    options = {'account_id': current_user.account.id, 'uid': uid}
+    options = {'merchant_id': current_user.merchant.id, 'uid': uid}
     product = get_or_404(Product, options)
 
     form = ProductBaseForm(obj=product)
@@ -92,7 +92,7 @@ def create():
 
         if forms_validated:
             data_product = {
-                'account_id': current_user.account.id,
+                'merchant_id': current_user.merchant.id,
                 'title': form_product.title.data,
                 'url': form_product.url.data,
                 'caption': form_product.caption.data,

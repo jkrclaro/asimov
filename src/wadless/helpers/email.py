@@ -41,7 +41,7 @@ def email_confirmation() -> None:
     endpoint = 'auth.confirm'
     template = 'email/confirm.html'
     subject = 'Confirm your Wadless email address!'
-    name = current_user.profile.name
+    name = current_user.customer.name
     data = {'email': current_user.email}
     context = {
         'endpoint': endpoint,
@@ -58,7 +58,7 @@ def email_change_email_success(old_email: str) -> None:
     """
     template = 'email/change_email_success.html'
     subject = 'Your Wadless email address has changed'
-    name = current_user.profile.name
+    name = current_user.customer.name
     data = {'new_email': current_user.email}
     send_email(old_email, template, subject, name=name, data=data)
 
@@ -87,13 +87,13 @@ def email_reset_success() -> None:
 
 
 def email_change_password_success() -> None:
-    """Notify user that the password was successfully changed via profile."""
+    """Notify user that the password was successfully changed via customer."""
     endpoint = 'auth.reset'
     template = 'email/change_password_success.html'
     subject = 'Your Wadless password has been changed'
     context = {
         'endpoint': endpoint,
-        'name': current_user.profile.name
+        'name': current_user.customer.name
     }
     send_email(current_user, template, subject, **context)
 
@@ -111,7 +111,7 @@ def email_change_email(new_email: str) -> None:
         'old_email': old_email,
         'new_email': new_email
     }
-    name = current_user.profile.name
+    name = current_user.customer.name
     context = {
         'endpoint': endpoint,
         'name': name,

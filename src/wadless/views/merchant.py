@@ -12,11 +12,11 @@ merchant_bp = Blueprint('merchant', __name__)
 def index():
     menus = Menu.\
         query.\
-        filter_by(account_id=current_user.account.id).\
+        filter_by(merchant_id=current_user.merchant.id).\
         all()
     product = Product.\
         query.\
-        filter_by(account_id=current_user.account.id).\
+        filter_by(merchant_id=current_user.merchant.id).\
         first()
     context = {
         'product': product,

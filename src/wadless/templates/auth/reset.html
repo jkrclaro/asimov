@@ -11,7 +11,7 @@
                 <div class='card-body'>
                     <h5 class='font__custom--title text-center mb-3 mt-3'>Reset your password</h5>
                     {% if form %}
-                        <p class='font__custom--text text-center'>Enter a new password to reset the password on your account</p>
+                        <p class='font__custom--text text-center'>Enter a new password to reset the password on your merchant</p>
                         {% from "form/vertical.html" import render_field %}
                         <form method=post>
                             {{ form.csrf_token }}
