@@ -19,12 +19,16 @@
                     {{ render_field(form_product.url) }}
                     {{ render_field(form_product.description) }}
                 </div>
+            </div>
 
+            <div class='card mb-5'>
                 <div class='card-body'>
                     <h5 class='font__custom--title mb-3'>Variant</h5>
-                    {{ render_field(form_variant.title) }}
+                    <a href="#" class="btn btn__custom--primary">Add a variant</a>
                 </div>
+            </div>
 
+            <div class='card mb-5'>
                 <div class='card-body'>
                     <h5 class='font__custom--title mb-3'>Inventory</h5>
                     {{ render_field(form_inventory.sku) }}
