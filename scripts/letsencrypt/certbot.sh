@@ -10,5 +10,5 @@ certbot certonly --non-interactive --manual --expand \
   --logs-dir "./letsencrypt" \
   --agree-tos \
   --manual-public-ip-logging-ok \
-  --domains wadless.com,www.wadless.com,beta.wadless.com \
+  --domains wadless.com,www.wadless.com,beta.wadless.com,merchant.wadless.com \
   --email john@wadless.com
