@@ -33,7 +33,6 @@ def create():
     if form.validate_on_submit():
         data = {
             'product_id': form.product.data.id,
-            'when_sold_id': form.when_sold.data.id,
             'quantity': form.quantity.data,
             'price': form.price.data,
             'sku': form.sku.data,
@@ -59,7 +58,6 @@ def create_with_product_uid(uid):
     if form.validate_on_submit():
         data = {
             'product_id': product.id,
-            'when_sold_id': form.when_sold.data.id,
             'quantity': form.quantity.data,
             'price': form.price.data,
             'sku': form.sku.data,
@@ -99,7 +97,6 @@ def retrieve(uid, sku):
             inventory.price = form.price.data
             inventory.quantity = form.quantity.data
             inventory.sku = form.sku.data
-            inventory.when_sold = form.when_sold.data
             inventory.is_active = form.is_active.data
             db.session.add(inventory)
             db.session.commit()

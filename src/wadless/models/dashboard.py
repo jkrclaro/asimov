@@ -51,10 +51,8 @@ class Inventory(db.Model, BaseModel):
     price = db.Column(db.Integer)
     quantity = db.Column(db.Integer)
     is_active = db.Column(db.Boolean, default=False)
-    when_sold_id = db.Column(db.Integer, db.ForeignKey('inventories_when_sold.id', ondelete='CASCADE'))
     variant_id = db.Column(db.Integer, db.ForeignKey('variants.id', ondelete='CASCADE'))
     menus = db.relationship('Listing', back_populates='inventory', passive_deletes=True)
-    when_sold = db.relationship('InventoryWhenSold', back_populates='inventory')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -71,21 +69,6 @@ class Inventory(db.Model, BaseModel):
 
     def __str__(self):
         return self.sku
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__, self.__dict__)
-
-
-class InventoryWhenSold(db.Model, BaseModel):
-    __tablename__ = 'inventories_when_sold'
-    name = db.Column(db.String(30))
-    inventory = db.relationship('Inventory', uselist=False, back_populates='when_sold', passive_deletes=True)
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    def __str__(self):
-        return self.name
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)

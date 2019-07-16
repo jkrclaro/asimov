@@ -10,7 +10,7 @@ from wtforms.ext.sqlalchemy.fields import (
     QuerySelectField
 )
 
-from src.wadless.models.dashboard import Menu, Product, InventoryWhenSold
+from src.wadless.models.dashboard import Menu, Product
 
 
 class InventoryBaseForm(FlaskForm):
@@ -22,10 +22,6 @@ class InventoryBaseForm(FlaskForm):
     price = IntegerField('Price')
     quantity = IntegerField('Quantity')
     submit = SubmitField('Add SKU')
-    when_sold = QuerySelectField(
-        'When sold...',
-        query_factory=lambda: InventoryWhenSold.query.all()
-    )
     menus = QuerySelectMultipleField(
         'Menus',
         query_factory=lambda: Menu.query.all()

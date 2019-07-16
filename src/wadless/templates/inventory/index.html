@@ -48,7 +48,6 @@
                                     <a href="{{ url_for('inventory.retrieve', uid=product.uid, sku=inventory.sku) }}" class="anchor__custom--default">{{ inventory.sku }}</a>
                                 </td>
                                 <td>{{ inventory.quantity }}</td>
-                                <td>{{ inventory.when_sold }}</td>
                                 <td><a href="{{ url_for('product.retrieve', uid=product.uid) }}" class="anchor__custom--default">{{ product.uid }}</a></td>
                                 <td>{{ inventory.menus | length }}</td>
                             </tr>

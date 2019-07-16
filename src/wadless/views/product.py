@@ -113,7 +113,6 @@ def create():
 
             data_inventory = {
                 'variant_id': variant.id,
-                'when_sold_id': form_inventory.when_sold.data.id,
                 'quantity': form_inventory.quantity.data,
                 'price': form_inventory.price.data,
                 'sku': form_inventory.sku.data,

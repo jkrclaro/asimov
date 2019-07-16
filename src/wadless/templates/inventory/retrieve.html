@@ -15,7 +15,6 @@
                     {{ render_field(form.sku) }}
                     {{ render_field(form.price) }}
                     {{ render_field(form.quantity) }}
-                    {{ render_field(form.when_sold) }}
                     {{ render_field(form.is_active) }}
                 </div>
                 <div class="modal-footer">
@@ -67,8 +66,6 @@
                     <p class="col-lg-9 font__custom--text">{{ inventory.price }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Quantity</h6>
                     <p class="col-lg-9 font__custom--text">{{ inventory.quantity }}</p>
-                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">When sold...</h6>
-                    <p class="col-lg-9 font__custom--text">{{ inventory.when_sold }}</p>
                     <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Active</h6>
                     <p class="col-lg-9 font__custom--text">
                         {% if inventory.is_active %}<i class="fas fa-check-circle"></i>{% else %}<i class="fas fa-times-circle"></i>{% endif %}
