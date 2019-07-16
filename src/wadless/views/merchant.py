@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 
-from src.wadless.models.dashboard import Product
-from src.wadless.models.dashboard import Menu
+from src.wadless.models.merchant import Product
+from src.wadless.models.merchant import Menu
 
-dashboard_bp = Blueprint('dashboard', __name__)
+merchant_bp = Blueprint('merchant', __name__)
 
 
-@dashboard_bp.route('/dashboard')
+@merchant_bp.route('/merchant')
 @login_required
 def index():
     menus = Menu.\
@@ -22,4 +22,4 @@ def index():
         'product': product,
         'menus': menus
     }
-    return render_template('dashboard/index.html', **context)
+    return render_template('merchant/index.html', **context)

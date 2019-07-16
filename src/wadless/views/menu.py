@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 
-from src.wadless.models.dashboard import Menu
+from src.wadless.models.merchant import Menu
 from src.wadless.forms.menu import MenuCreateForm
 
 

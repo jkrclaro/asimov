@@ -10,7 +10,7 @@ from flask import (
 from flask_login import login_required, current_user
 
 from src.wadless.models import db
-from src.wadless.models.dashboard import Product, Inventory, Listing
+from src.wadless.models.merchant import Product, Inventory, Listing
 from src.wadless.forms import InventoryBaseForm, InventoryCreateForm
 from src.wadless.helpers.model import get_or_404
 from src.wadless.helpers.flash import flash_form_errors

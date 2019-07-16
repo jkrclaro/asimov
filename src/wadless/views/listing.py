@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, redirect, url_for, abort
 from flask_login import login_required, current_user
 
-from src.wadless.models.dashboard import Menu, Inventory
+from src.wadless.models.merchant import Menu, Inventory
 
 
 listing_bp = Blueprint('listing', __name__, url_prefix='/listing')

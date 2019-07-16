@@ -51,7 +51,7 @@ def create_app(config: str):
 
     from .views.auth import auth_bp
     from .views.home import home_bp
-    from .views.dashboard import dashboard_bp
+    from .views.merchant import merchant_bp
     from .views.inventory import inventory_bp
     from .views.profile import profile_bp
     from .views.account import account_bp
@@ -61,7 +61,7 @@ def create_app(config: str):
     blueprints = (
         auth_bp,
         home_bp,
-        dashboard_bp,
+        merchant_bp,
         inventory_bp,
         profile_bp,
         account_bp,

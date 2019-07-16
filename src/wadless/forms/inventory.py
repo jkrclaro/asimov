@@ -10,7 +10,7 @@ from wtforms.ext.sqlalchemy.fields import (
     QuerySelectField
 )
 
-from src.wadless.models.dashboard import Menu, Product
+from src.wadless.models.merchant import Menu, Product
 
 
 class InventoryBaseForm(FlaskForm):

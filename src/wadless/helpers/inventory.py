@@ -1,6 +1,6 @@
 from flask import current_app
 
-from src.wadless.models.dashboard import Inventory
+from src.wadless.models.merchant import Inventory
 
 
 class Actioner:
