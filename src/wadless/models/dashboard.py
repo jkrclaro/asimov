@@ -109,9 +109,7 @@ class Menu(db.Model, BaseModel):
     __tablename__ = 'menus'
     title = db.Column(db.String(255))
     is_active = db.Column(db.Boolean, default=False)
-    platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id', ondelete='CASCADE'))
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
-    platform = db.relationship('Platform', uselist=False, back_populates='menu')
     inventories = db.relationship('Listing', back_populates='menu')
 
     def __init__(self, **kwargs):
@@ -119,21 +117,6 @@ class Menu(db.Model, BaseModel):
 
     def __str__(self):
         return f'{self.id}'
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__, self.__dict__)
-
-
-class Platform(db.Model, BaseModel):
-    __tablename__ = 'platforms'
-    name = db.Column(db.String(30), unique=True)
-    menu = db.relationship('Menu', uselist=False, back_populates='platform')
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    def __str__(self):
-        return self.name
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)

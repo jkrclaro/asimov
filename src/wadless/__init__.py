@@ -45,7 +45,7 @@ def create_app(config: str):
     def load_user(user_id: int):
         return User.query.get(int(user_id))
 
-    from .models.dashboard import Platform, InventoryWhenSold
+    from .models.dashboard import InventoryWhenSold
     @app.before_first_request
     def create_db():
         db.create_all(app=app)
