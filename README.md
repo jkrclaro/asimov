@@ -3,7 +3,7 @@
 # Wadless
 [![CircleCI](https://circleci.com/gh/jkrclaro/wadless/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/wadless/tree/master)
 
-Multichannel inventory management for small businesses.
+Mobile ordering for busy people.
 
 # General Information
 - Website: https://www.wadless.com
