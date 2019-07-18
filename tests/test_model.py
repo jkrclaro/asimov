@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.homelantis import create_app
-from src.homelantis.models import db
-from src.homelantis.models.auth import User, Account
-from src.homelantis.models.merchant import (
+from src.oslerkit import create_app
+from src.oslerkit.models import db
+from src.oslerkit.models.auth import User, Account
+from src.oslerkit.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,

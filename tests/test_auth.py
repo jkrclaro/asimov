@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.homelantis import create_app
-from src.homelantis.models import db
-from src.homelantis.models.auth import User
+from src.oslerkit import create_app
+from src.oslerkit.models import db
+from src.oslerkit.models.auth import User
 
 
 @pytest.fixture

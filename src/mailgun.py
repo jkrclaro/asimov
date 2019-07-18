@@ -1,7 +1,7 @@
 import requests
 
 api_key = ''
-domain = 'www.homelantis.com'
+domain = 'www.oslerkit.com'
 region = 'eu'
 from_email = f'Wadless <mailgun@{domain}>'
 
