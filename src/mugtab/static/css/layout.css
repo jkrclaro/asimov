@@ -57,10 +57,10 @@ html, body {
     font-size: 24px;
 }
 .header__logo--theme {
-    color: #21CE99 !important;
+    color: #EA4933 !important;
 }
 .header__logo--theme:hover, .header__logo--theme:focus {
-    color: #21CE99;
+    color: #EA4933;
 }
 .header__logo--black {
     color: #111;
@@ -69,7 +69,7 @@ html, body {
     font-family: 'Open Sans';
 }
 .footer__title--theme {
-    color: #21CE99;
+    color: #EA4933;
 }
 .footer__title--muted {
     color: #999;
@@ -81,9 +81,9 @@ html, body {
 }
 
 .btn__custom--primary {
-    background-color: #21CE99;
+    background-color: #EA4933;
     color: #FFF;
-    border-bottom: 2px solid #21CE99;
+    border-bottom: 2px solid #EA4933;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -91,23 +91,23 @@ html, body {
     transition: 0.3s;
 }
 .btn__custom--primary--outline {
-    border-color: #21CE99;
-    color: #21CE99;
+    border-color: #EA4933;
+    color: #EA4933;
     border: 2px solid;
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
-    color: #21CE99;
+    color: #EA4933;
     box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #21CE99;
+    color: #EA4933;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #21CE99;
+    color: #EA4933;
 }
 .btn__custom--secondary--outline {
     border-color: #FFF;
@@ -136,19 +136,19 @@ html, body {
 }
 .anchor__custom--muted:hover {
     text-decoration: none !important;
-    color: #21CE99;
+    color: #EA4933;
 }
 .anchor__custom--default {
     text-decoration: none !important;
-    color: #21CE99;
+    color: #EA4933;
 }
 .anchor__custom--default:hover {
     text-decoration: none !important;
-    color: #21CE99;
+    color: #EA4933;
 }
 .anchor__custom--theme {
     text-decoration: none !important;
-    color: #21CE99;
+    color: #EA4933;
 }
 .anchor__custom--theme:hover {
     text-decoration: none !important;
@@ -175,7 +175,7 @@ html, body {
     font-size: 48px !important;
 }
 .active a {
-    color: #21CE99 !important;
+    color: #EA4933 !important;
 }
 [class*="dropdown-menu-tip-"]::after {
   content: '';

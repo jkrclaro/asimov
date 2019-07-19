@@ -13,7 +13,6 @@ from flask_login import login_user, logout_user, login_required, current_user
 from src import token, google_recaptcha
 from src.mugtab.models import db
 from src.mugtab.models.auth import User
-from src.mugtab.models.customer import Customer
 from src.mugtab.models.merchant import Merchant
 from src.mugtab.forms import (
     SignupForm,
@@ -51,9 +50,7 @@ def signup():
             user = User(email, password)
             db.session.add(user)
             db.session.commit()
-            customer = Customer(user.id, name=name)
-            merchant = Merchant(user.id)
-            db.session.add(customer)
+            merchant = Merchant(user_id=user.id, name=name)
             db.session.add(merchant)
             db.session.commit()
             login_user(user)
