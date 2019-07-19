@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.oslerkit import create_app
-from src.oslerkit.models import db
-from src.oslerkit.models.auth import User, Account
-from src.oslerkit.models.merchant import (
+from src.mugtab import create_app
+from src.mugtab.models import db
+from src.mugtab.models.auth import User, Account
+from src.mugtab.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,

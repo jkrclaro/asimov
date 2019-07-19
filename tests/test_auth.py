@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.oslerkit import create_app
-from src.oslerkit.models import db
-from src.oslerkit.models.auth import User
+from src.mugtab import create_app
+from src.mugtab.models import db
+from src.mugtab.models.auth import User
 
 
 @pytest.fixture

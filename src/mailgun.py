@@ -1,7 +1,7 @@
 import requests
 
 api_key = ''
-domain = 'www.oslerkit.com'
+domain = 'www.mugtab.com'
 region = 'eu'
 from_email = f'Wadless <mailgun@{domain}>'
 
