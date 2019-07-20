@@ -1,0 +1,17 @@
+{% extends 'email/layout.html' %}
+
+{% block content %}
+
+<p>Somebody (hopefully you) requested a new password for the Validpage merchant for {{ email }}. No changes have been made to your merchant yet.</p>
+
+<p>You can reset your password by clicking the link below:</p>
+ <!-- btn btn-primary btn-block -->
+<a href='{{ url }}' style='display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem; color:#fff;background-color:#21CE99;border-color:#21CE99; text-decoration:none'>
+    Reset password
+</a>
+
+<p>If you did not request a new password, please let me know immediately by replying to this email.</p>
+
+<p>John from Validpage</p>
+
+{% endblock %}

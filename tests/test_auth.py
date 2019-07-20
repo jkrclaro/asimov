@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.wadless import create_app
-from src.wadless.models import db
-from src.wadless.models.auth import User
+from src.validpage import create_app
+from src.validpage.models import db
+from src.validpage.models.auth import User
 
 
 @pytest.fixture

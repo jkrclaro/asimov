@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.wadless import create_app
-from src.wadless.models import db
-from src.wadless.models.auth import User, Account
-from src.wadless.models.merchant import (
+from src.validpage import create_app
+from src.validpage.models import db
+from src.validpage.models.auth import User, Account
+from src.validpage.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,

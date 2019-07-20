@@ -9,7 +9,7 @@ class Unit(unittest.TestCase):
 
     @responses.activate
     def test_send_email(self):
-        url = 'https://api.eu.mailgun.net/v3/www.wadless.com/messages'
+        url = 'https://api.eu.mailgun.net/v3/www.validpage.com/messages'
         responses.add(responses.POST, url)
 
         response = mailgun.send_email(
@@ -18,7 +18,7 @@ class Unit(unittest.TestCase):
             'Welcome',
         )
 
-        assert response.request.body == 'from=Wadless+%3Cmailgun%40www.wadless.com%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
+        assert response.request.body == 'from=Validpage+%3Cmailgun%40www.validpage.com%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
 
 
 if __name__ == '__main__':
