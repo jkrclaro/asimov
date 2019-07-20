@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.mugtab import create_app
-from src.mugtab.models import db
-from src.mugtab.models.auth import User, Account
-from src.mugtab.models.merchant import (
+from src.wadless import create_app
+from src.wadless.models import db
+from src.wadless.models.auth import User, Account
+from src.wadless.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,

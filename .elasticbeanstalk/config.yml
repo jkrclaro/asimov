@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: mugtab-production
+    environment: wadless-production
     group_suffix: null
 global:
-  application_name: mugtab
+  application_name: wadless
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

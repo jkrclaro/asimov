@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.mugtab import create_app
-from src.mugtab.models import db
-from src.mugtab.models.auth import User
+from src.wadless import create_app
+from src.wadless.models import db
+from src.wadless.models.auth import User
 
 
 @pytest.fixture
