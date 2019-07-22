@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.validpage.com'
+domain = 'www.selfcarty.com'
 region = 'eu'
-from_email = f'Validpage <mailgun@{domain}>'
+from_email = f'Selfcarty <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

@@ -2,13 +2,13 @@
 
 # Use Let's Encrypt certbot to order a free certificate
 certbot certonly --non-interactive --manual --expand \
-  --manual-auth-hook "./auth-hook.sh UPSERT validpage.com" \
-  --manual-cleanup-hook "./auth-hook.sh DELETE validpage.com" \
+  --manual-auth-hook "./auth-hook.sh UPSERT selfcarty.com" \
+  --manual-cleanup-hook "./auth-hook.sh DELETE selfcarty.com" \
   --preferred-challenge dns \
   --config-dir "./letsencrypt" \
   --work-dir "./letsencrypt" \
   --logs-dir "./letsencrypt" \
   --agree-tos \
   --manual-public-ip-logging-ok \
-  --domains validpage.com,www.validpage.com,beta.validpage.com,merchant.validpage.com \
-  --email john@validpage.com
+  --domains selfcarty.com,www.selfcarty.com,beta.selfcarty.com,merchant.selfcarty.com \
+  --email john@selfcarty.com

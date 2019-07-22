@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.validpage import create_app
-from src.validpage.models import db
-from src.validpage.models.auth import User
+from src.selfcarty import create_app
+from src.selfcarty.models import db
+from src.selfcarty.models.auth import User
 
 
 @pytest.fixture

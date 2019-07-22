@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.validpage import create_app
-from src.validpage.models import db
-from src.validpage.models.auth import User, Account
-from src.validpage.models.merchant import (
+from src.selfcarty import create_app
+from src.selfcarty.models import db
+from src.selfcarty.models.auth import User, Account
+from src.selfcarty.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,
