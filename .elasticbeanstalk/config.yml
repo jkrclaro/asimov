@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: selfcarty-production
+    environment: healthstruct-production
     group_suffix: null
 global:
-  application_name: selfcarty
+  application_name: healthstruct
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

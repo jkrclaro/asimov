@@ -2,13 +2,13 @@
 
 # Use Let's Encrypt certbot to order a free certificate
 certbot certonly --non-interactive --manual --expand \
-  --manual-auth-hook "./auth-hook.sh UPSERT selfcarty.com" \
-  --manual-cleanup-hook "./auth-hook.sh DELETE selfcarty.com" \
+  --manual-auth-hook "./auth-hook.sh UPSERT healthstruct.com" \
+  --manual-cleanup-hook "./auth-hook.sh DELETE healthstruct.com" \
   --preferred-challenge dns \
   --config-dir "./letsencrypt" \
   --work-dir "./letsencrypt" \
   --logs-dir "./letsencrypt" \
   --agree-tos \
   --manual-public-ip-logging-ok \
-  --domains selfcarty.com,www.selfcarty.com,beta.selfcarty.com,merchant.selfcarty.com \
-  --email john@selfcarty.com
+  --domains healthstruct.com,www.healthstruct.com,beta.healthstruct.com,merchant.healthstruct.com \
+  --email john@healthstruct.com

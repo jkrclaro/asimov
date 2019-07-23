@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.selfcarty import create_app
-from src.selfcarty.models import db
-from src.selfcarty.models.auth import User
+from src.healthstruct import create_app
+from src.healthstruct.models import db
+from src.healthstruct.models.auth import User
 
 
 @pytest.fixture
