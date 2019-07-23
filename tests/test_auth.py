@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.healthstruct import create_app
-from src.healthstruct.models import db
-from src.healthstruct.models.auth import User
+from src.selfcarto import create_app
+from src.selfcarto.models import db
+from src.selfcarto.models.auth import User
 
 
 @pytest.fixture

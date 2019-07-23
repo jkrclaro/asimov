@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: healthstruct-production
+    environment: selfcarto-production
     group_suffix: null
 global:
-  application_name: healthstruct
+  application_name: selfcarto
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.healthstruct.com'
+domain = 'www.selfcarto.com'
 region = 'eu'
-from_email = f'Healthstruct <mailgun@{domain}>'
+from_email = f'Selfcarto <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

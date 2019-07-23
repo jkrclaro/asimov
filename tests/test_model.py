@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.healthstruct import create_app
-from src.healthstruct.models import db
-from src.healthstruct.models.auth import User, Account
-from src.healthstruct.models.merchant import (
+from src.selfcarto import create_app
+from src.selfcarto.models import db
+from src.selfcarto.models.auth import User, Account
+from src.selfcarto.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,
