@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.selfcarto import create_app
-from src.selfcarto.models import db
-from src.selfcarto.models.auth import User, Account
-from src.selfcarto.models.merchant import (
+from src.storemecha import create_app
+from src.storemecha.models import db
+from src.storemecha.models.auth import User, Account
+from src.storemecha.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,

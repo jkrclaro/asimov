@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.selfcarto import create_app
-from src.selfcarto.models import db
-from src.selfcarto.models.auth import User
+from src.storemecha import create_app
+from src.storemecha.models import db
+from src.storemecha.models.auth import User
 
 
 @pytest.fixture

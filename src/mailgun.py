@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.selfcarto.com'
+domain = 'www.storemecha.com'
 region = 'eu'
-from_email = f'Selfcarto <mailgun@{domain}>'
+from_email = f'Storemecha <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):
