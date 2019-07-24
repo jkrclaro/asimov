@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.storemecha import create_app
-from src.storemecha.models import db
-from src.storemecha.models.auth import User, Account
-from src.storemecha.models.merchant import (
+from src.sedison import create_app
+from src.sedison.models import db
+from src.sedison.models.auth import User, Account
+from src.sedison.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,

@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.storemecha import create_app
-from src.storemecha.models import db
-from src.storemecha.models.auth import User
+from src.sedison import create_app
+from src.sedison.models import db
+from src.sedison.models.auth import User
 
 
 @pytest.fixture
