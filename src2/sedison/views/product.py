@@ -12,7 +12,7 @@ from flask_login import login_required, current_user
 from sedison.sedison.helpers.flash import flash_form_errors
 from sedison.sedison.helpers.model import get_or_404
 from sedison.sedison.models import db
-from sedison.sedison.models.merchant import Product, Variant, Inventory
+from sedison.sedison.models.auth import Product, Variant, Inventory
 from sedison.sedison.forms import (
     ProductBaseForm,
     VariantBaseForm,

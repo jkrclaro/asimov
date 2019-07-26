@@ -10,7 +10,7 @@ from flask import (
 from flask_login import login_required, current_user
 
 from sedison.sedison.models import db
-from sedison.sedison.models.merchant import Product, Inventory, Listing
+from sedison.sedison.models.auth import Product, Inventory, Listing
 from sedison.sedison.forms import InventoryBaseForm, InventoryCreateForm
 from sedison.sedison.helpers.model import get_or_404
 from sedison.sedison.helpers.flash import flash_form_errors

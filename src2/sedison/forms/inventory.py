@@ -10,7 +10,7 @@ from wtforms.ext.sqlalchemy.fields import (
     QuerySelectField
 )
 
-from sedison.sedison.models.merchant import Menu, Product
+from sedison.sedison.models.auth import Menu, Product
 
 
 class InventoryBaseForm(FlaskForm):

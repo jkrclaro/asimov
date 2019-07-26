@@ -13,7 +13,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from src import token, google_recaptcha
 from sedison.sedison.models import db
 from sedison.sedison.models.auth import User
-from sedison.sedison.models.merchant import Merchant
+from sedison.sedison.models.auth import Merchant
 from sedison.sedison.forms import (
     SignupForm,
     LoginForm,

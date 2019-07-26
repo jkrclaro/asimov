@@ -7,7 +7,7 @@ from flask import Flask
 from sedison.sedison import create_app
 from sedison.sedison.models import db
 from sedison.sedison.models.auth import User, Account
-from sedison.sedison.models.merchant import (
+from sedison.sedison.models.auth import (
     Product,
     Inventory,
     InventoryWhenSold,

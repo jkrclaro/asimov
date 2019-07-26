@@ -1,1 +1,1 @@
-from .merchant import *
+from .auth import *

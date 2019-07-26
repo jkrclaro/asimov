@@ -19,8 +19,8 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    path('', home.index, name='home'),
-    path('reset/complete', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('', include('sedison.sedison.urls.home', namespace='home')),
+    path('', include('sedison.sedison.urls.auth', namespace='auth')),
     path('social/', include('social_django.urls', namespace='social')),
 ]
 

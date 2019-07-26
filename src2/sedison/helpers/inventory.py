@@ -1,6 +1,6 @@
 from flask import current_app
 
-from sedison.sedison.models.merchant import Inventory
+from sedison.sedison.models.auth import Inventory
 
 
 class Actioner:
