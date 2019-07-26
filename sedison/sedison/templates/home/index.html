@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     {% include "shared/head.html" %}
 </head>
 <body>
@@ -10,8 +11,8 @@
             <div class='row'>
                 <div class='col-lg-6 my-auto mb-5'>
                     <div class='mb-3'>
-                        <h1 class='font__custom--title header__title--big'>Easy online store for inventors</h1>
-                        <h3 class='font__custom--text'>We make it simple to build a unique online store, sell your invention, and run a thriving business.</h3>
+                        <h1 class='font__custom--title header__title--big'>Setup an online store</h1>
+                        <h3 class='font__custom--text'>We make it simple to build a unique online store, sell your product, and run a thriving business.</h3>
                     </div>
                     <div class='mb-3'>
                         <a href="{% url 'auth:signup' %}" class='btn btn__custom--primary mb-3 mr-3'>START NOW</a>
@@ -20,10 +21,10 @@
                     <p class="font__custom--text">Already using Sedison? <a href="{% url 'auth:login' %}" class='anchor__custom--default'>Sign in</a></p>
                 </div>
                 <div class='col-lg-6 text-center mb-5'>
-                    <img src='https://placeholder.pics/svg/300' class='img-fluid'>
+                    <img src="{% static 'img/vector-1.png' %}" class='img-fluid'>
                 </div>
                 <div class='col-lg-12 text-center mb-5'>
-                    <h2 class='font__custom--title'>Curabitur egestas, mauris a faucibus rutrum.</h2>
+                    <h2 class='font__custom--title'>Made to sell useful inventions</h2>
                     <p class='font__custom--text'>
                         Proin aliquet nunc nec urna tristique mollis.
                         Suspendisse ac neque enim.
@@ -35,7 +36,7 @@
                     <img src='https://placeholder.pics/svg/305' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere.</h2>
+                    <h2 class='font__custom--title'>Integrate plugins</h2>
                     <p class="font__custom--text">
                         Interdum et malesuada fames ac ante ipsum primis in faucibus.
                         In lacinia rutrum metus sed mattis.
@@ -49,7 +50,7 @@
                     <img src='https://placeholder.pics/svg/301' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 order-lg-2 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Fusce in tortor vel urna bibendum vehicula id eu nibh. Praesent metus.</h2>
+                    <h2 class='font__custom--title'>SEO friendly</h2>
                     <p class="font__custom--text">
                         Ut condimentum neque mi, vel dictum neque vulputate a.
                         Donec eget nisl vitae ex pretium ornare in eu ligula.
@@ -62,7 +63,7 @@
                     <img src='https://placeholder.pics/svg/302' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 order-lg-3 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Aenean tincidunt, odio dignissim sagittis facilisis, ipsum mauris sed.</h2>
+                    <h2 class='font__custom--title'>Mobile support</h2>
                     <p class="font__custom--text">
                         Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
                         Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
@@ -75,7 +76,7 @@
                     <img src='https://placeholder.pics/svg/303' class='img-fluid'>
                 </div>
                 <div class='col-lg-6 order-lg-6 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Aliquam porta eget quam tincidunt hendrerit. Maecenas finibus sit sed.</h2>
+                    <h2 class='font__custom--title'>Customer service</h2>
                     <p class="font__custom--text">
                         Suspendisse ornare convallis magna, eu auctor sem.
                         Curabitur lacinia tempor nunc eu euismod.
@@ -91,7 +92,7 @@
             </div>
         </div>
     </div>
-    <div class='col-lg-12 text-center' style='background-color: #172A3B; padding-top: 50px; padding-bottom: 50px;'>
+    <div class='col-lg-12 text-center' style='background-color: #3B44FE; padding-top: 50px; padding-bottom: 50px;'>
         <h2 class='header__title mb-5' style='color: #FFF;'>Say hello to your new online store</h2>
         <a href="{% url 'auth:signup' %}" class='btn btn__custom--secondary mb-3 mr-3'>CREATE ACCOUNT</a>
         <a href="mailto:john@sedison.com" class='btn btn__custom--secondary--outline mb-3 text-center'>CONTACT US</a>

@@ -5,7 +5,10 @@ RUN apk update && \
     apk add postgresql-dev
 RUN apk add libffi-dev
 
-# Create /app directory in docker and change directory to /app
+# Pillow
+RUN apk add jpeg-dev zlib-dev
+
+# Create /server directory in docker and change directory to /server
 RUN mkdir /server
 WORKDIR /server
 
@@ -16,10 +19,8 @@ COPY Pipfile.lock .
 RUN pipenv install --system --deploy
 
 # Move everything to docker
-RUN mkdir src/
-COPY src/ src/
-COPY app.py .
+COPY . .
 
-EXPOSE 5000
+EXPOSE 8000
 ENTRYPOINT ["gunicorn"]
-CMD ["app:app", "-b", "0.0.0.0:5000", "--worker-tmp-dir", "/dev/shm", "--workers", "2", "--threads", "4", "--worker-class", "gthread"]
+CMD ["sedison.wsgi:application", "-b", "0.0.0.0:8000", "--worker-tmp-dir", "/dev/shm", "--workers", "2", "--threads", "4", "--worker-class", "gthread"]

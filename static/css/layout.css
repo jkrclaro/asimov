@@ -57,10 +57,10 @@ html, body {
     font-size: 24px;
 }
 .header__logo--theme {
-    color: #172A3B !important;
+    color: #3B44FE !important;
 }
 .header__logo--theme:hover, .header__logo--theme:focus {
-    color: #172A3B;
+    color: #3B44FE;
 }
 .header__logo--black {
     color: #111;
@@ -69,7 +69,7 @@ html, body {
     font-family: 'Open Sans';
 }
 .footer__title--theme {
-    color: #172A3B;
+    color: #3B44FE;
 }
 .footer__title--muted {
     color: #999;
@@ -81,9 +81,9 @@ html, body {
 }
 
 .btn__custom--primary {
-    background-color: #172A3B;
+    background-color: #3B44FE;
     color: #FFF;
-    border-bottom: 2px solid #172A3B;
+    border-bottom: 2px solid #3B44FE;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -91,23 +91,23 @@ html, body {
     transition: 0.3s;
 }
 .btn__custom--primary--outline {
-    border-color: #172A3B;
-    color: #172A3B;
+    border-color: #3B44FE;
+    color: #3B44FE;
     border: 2px solid;
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
-    color: #172A3B;
+    color: #3B44FE;
     box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #172A3B;
+    color: #3B44FE;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #172A3B;
+    color: #3B44FE;
 }
 .btn__custom--secondary--outline {
     border-color: #FFF;
@@ -136,20 +136,19 @@ html, body {
 }
 .anchor__custom--muted:hover {
     text-decoration: none !important;
-    color: #172A3B;
+    color: #3B44FE;
 }
 .anchor__custom--default {
-    text-decoration: underline !important;
-    text-decoration-style: dotted !important;
-    color: #172A3B;
+    text-decoration: none !important;
+    color: #3B44FE;
 }
 .anchor__custom--default:hover {
     text-decoration: none !important;
-    color: #172A3B;
+    color: #3B44FE;
 }
 .anchor__custom--theme {
     text-decoration: none !important;
-    color: #172A3B;
+    color: #3B44FE;
 }
 .anchor__custom--theme:hover {
     text-decoration: none !important;
@@ -176,7 +175,7 @@ html, body {
     font-size: 48px !important;
 }
 .active a {
-    color: #172A3B !important;
+    color: #3B44FE !important;
 }
 [class*="dropdown-menu-tip-"]::after {
   content: '';

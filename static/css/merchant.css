@@ -4,7 +4,7 @@ html, body {
 }
 
 .bg__nav--theme {
-    background-color: #172A3B;
+    background-color: #3B44FE;
 }
 
 .header__logo--inverse {
@@ -19,7 +19,7 @@ html, body {
 .nav__usercircle--theme {
     font-size: 30px;
     cursor: pointer;
-    color: #172A3B;
+    color: #3B44FE;
 }
 .nav__usercircle--light:active, .nav__usercircle--light:hover, .nav__usercircle--light::selection {
     font-size: 30px;
@@ -43,5 +43,5 @@ html, body {
 }
 .dropdown-item:active, .dropdown-item:hover {
     background-color: #F8F8F8;
-    color: #172A3B;
+    color: #3B44FE;
 }

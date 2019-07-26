@@ -1,0 +1,33 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+
+
+<div class='container container__padding '>
+    <div class='row'>
+        <div class='col-lg-4'></div>
+        <div class='col-lg-4'>
+            <div class='card'>
+                <div class='card-body'>
+                    {% if form %}
+                        <h5 class='font__custom--title text-center mb-3 mt-3'>Confirm your email</h5>
+                        {% from "form/vertical.html" import render_field %}
+                        <form method=post>
+                            {{ form.csrf_token }}
+                            {{ render_field(form.email) }}
+                            {{ render_field(form.password) }}
+                            <button type='submit' class='btn btn-block btn__custom--primary'>Confirm email</button>
+                        </form>
+                    {% else %}
+                        <h5 class='font__custom--title  text-center mb-3 mt-3'>Email confirmation</h5>
+                        <p class='font__custom--text text-center'>Email confirmation token is invalid or expired.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class='col-lg-4'></div>
+    </div>
+</div>
+
+
+{% endblock %}

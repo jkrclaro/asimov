@@ -38,7 +38,7 @@ def signup(request):
             profile.save()
 
             message = render_to_string(
-                'registration/email/confirm_account.html',
+                'auth/email/confirm_account.html',
                 {
                     'user': user,
                     'domain': get_current_site(request),
@@ -58,7 +58,7 @@ def signup(request):
     else:
         form = SignupForm()
 
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'auth/signup.html', {'form': form})
 
 
 def login(request):
@@ -79,7 +79,7 @@ def login(request):
     else:
         form = LoginForm()
 
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'auth/login.html', {'form': form})
 
 
 def logout(request):
