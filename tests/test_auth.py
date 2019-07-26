@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.sedison import create_app
-from src.sedison.models import db
-from src.sedison.models.auth import User
+from sedison.sedison import create_app
+from sedison.sedison.models import db
+from sedison.sedison.models.auth import User
 
 
 @pytest.fixture

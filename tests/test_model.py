@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.sedison import create_app
-from src.sedison.models import db
-from src.sedison.models.auth import User, Account
-from src.sedison.models.merchant import (
+from sedison.sedison import create_app
+from sedison.sedison.models import db
+from sedison.sedison.models.auth import User, Account
+from sedison.sedison.models.merchant import (
     Product,
     Inventory,
     InventoryWhenSold,
