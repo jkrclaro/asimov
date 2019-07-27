@@ -23,4 +23,4 @@ COPY . .
 
 EXPOSE 8000
 ENTRYPOINT ["gunicorn"]
-CMD ["sedison.wsgi:application", "-b", "0.0.0.0:8000", "--worker-tmp-dir", "/dev/shm", "--workers", "2", "--threads", "4", "--worker-class", "gthread"]
+CMD ["selfcarto.wsgi:application", "-b", "0.0.0.0:8000", "--worker-tmp-dir", "/dev/shm", "--workers", "2", "--threads", "4", "--worker-class", "gthread"]
