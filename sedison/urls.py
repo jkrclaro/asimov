@@ -12,15 +12,15 @@ from django.contrib.auth.views import (
     PasswordResetConfirmView
 )
 
-from selfcarto.selfcarto.views import home
+from sedison.sedison.views import home
 
 
 admin.autodiscover()
 
 
 urlpatterns = [
-    path('', include('selfcarto.selfcarto.urls.home', namespace='home')),
-    path('', include('selfcarto.selfcarto.urls.auth', namespace='auth')),
+    path('', include('sedison.sedison.urls.home', namespace='home')),
+    path('', include('sedison.sedison.urls.auth', namespace='auth')),
     path('social/', include('social_django.urls', namespace='social')),
 ]
 

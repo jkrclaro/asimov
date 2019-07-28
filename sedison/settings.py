@@ -13,7 +13,7 @@ load_dotenv(find_dotenv('env/development.env'))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Django
-DOMAIN_NAME = 'selfcarto.com'
+DOMAIN_NAME = 'sedison.com'
 SITE_ID = 1
 DEBUG = bool(strtobool(os.environ['DEBUG']))
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -22,11 +22,11 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-ROOT_URLCONF = 'selfcarto.urls'
-WSGI_APPLICATION = 'selfcarto.wsgi.application'
+ROOT_URLCONF = 'sedison.urls'
+WSGI_APPLICATION = 'sedison.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'selfcarto.User'
+AUTH_USER_MODEL = 'sedison.User'
 MAX_UPLOAD_SIZE = 524288000
 
 # Messages
@@ -44,7 +44,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('MAILGUN_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = f'Selfcarto <{EMAIL_HOST_USER}>'
+DEFAULT_FROM_EMAIL = f'Sedison <{EMAIL_HOST_USER}>'
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 # AWS
@@ -54,7 +54,7 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = DOMAIN_NAME
 
 if DEBUG:
-    ALLOWED_HOSTS = ('selfcarto.localhost',)
+    ALLOWED_HOSTS = ('sedison.localhost',)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -88,10 +88,10 @@ else:
         }
     }
     # Used by storage
-    STATICFILES_STORAGE = 'selfcarto.storage.Static'
+    STATICFILES_STORAGE = 'sedison.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'selfcarto.storage.Media'
+    DEFAULT_FILE_STORAGE = 'sedison.storage.Media'
 
     DOMAIN = f'https://s3-{AWS_S3_REGION_NAME}.amazonaws.com'
     MEDIA_URL = f'{DOMAIN}/{AWS_STORAGE_BUCKET_NAME}/{MEDIAFILES_LOCATION}/'
@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'debug_toolbar',
-    'selfcarto.selfcarto',
+    'sedison.sedison',
     'storages',
     'social_django',
     'widget_tweaks',
@@ -172,7 +172,7 @@ AUTH_PASSWORD_VALIDATORS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'selfcarto.backends.EmailAuth',
+    'sedison.backends.EmailAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
