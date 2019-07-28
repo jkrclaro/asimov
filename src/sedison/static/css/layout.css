@@ -39,6 +39,7 @@ html, body {
 }
 .font__custom--title {
     color: #33334F;
+    font-weight: 900 !important;
 }
 .font__custom--text {
     color: #767EAD;
@@ -57,10 +58,10 @@ html, body {
     font-size: 24px;
 }
 .header__logo--theme {
-    color: #DB3236 !important;
+    color: #21CE99 !important;
 }
 .header__logo--theme:hover, .header__logo--theme:focus {
-    color: #DB3236;
+    color: #21CE99;
 }
 .header__logo--black {
     color: #111;
@@ -69,7 +70,7 @@ html, body {
     font-family: 'Open Sans';
 }
 .footer__title--theme {
-    color: #DB3236;
+    color: #21CE99;
 }
 .footer__title--muted {
     color: #999;
@@ -81,9 +82,9 @@ html, body {
 }
 
 .btn__custom--primary {
-    background-color: #DB3236;
+    background-color: #21CE99;
     color: #FFF;
-    border-bottom: 2px solid #DB3236;
+    border-bottom: 2px solid #21CE99;
 }
 .btn__custom--primary:hover, .btn__custom--primary:focus, .btn__custom--primary:active, .btn__custom--primary.active, .open > .dropdown-toggle.btn__custom--primary {
     color: #FFF;
@@ -91,23 +92,23 @@ html, body {
     transition: 0.3s;
 }
 .btn__custom--primary--outline {
-    border-color: #DB3236;
-    color: #DB3236;
+    border-color: #21CE99;
+    color: #21CE99;
     border: 2px solid;
 }
 .btn__custom--primary--outline:hover, .btn__custom--primary--outline:focus, .btn__custom--primary--outline:active, .btn__custom--primary--outline.active, .open > .dropdown-toggle.btn__custom--primary--outline {
-    color: #DB3236;
+    color: #21CE99;
     box-shadow: 0 4px 8px 0 #D3D3D3;
     transition: 0.3s;
 }
 
 .btn__custom--secondary {
     background-color: #FFF;
-    color: #DB3236;
+    color: #21CE99;
 }
 .btn__custom--secondary:hover, .btn__custom--secondary:focus, .btn__custom--secondary:active, .btn__custom--secondary.active, .open > .dropdown-toggle.btn__custom--secondary {
     border-color: #FFF;
-    color: #DB3236;
+    color: #21CE99;
 }
 .btn__custom--secondary--outline {
     border-color: #FFF;
@@ -136,19 +137,19 @@ html, body {
 }
 .anchor__custom--muted:hover {
     text-decoration: none !important;
-    color: #DB3236;
+    color: #21CE99;
 }
 .anchor__custom--default {
     text-decoration: none !important;
-    color: #DB3236;
+    color: #21CE99;
 }
 .anchor__custom--default:hover {
     text-decoration: none !important;
-    color: #DB3236;
+    color: #21CE99;
 }
 .anchor__custom--theme {
     text-decoration: none !important;
-    color: #DB3236;
+    color: #21CE99;
 }
 .anchor__custom--theme:hover {
     text-decoration: none !important;
@@ -171,11 +172,14 @@ html, body {
 .text__feedback--success {
     color: #28A745;
 }
-.text__feedback__icon--big {
-    font-size: 48px !important;
+.icon__custom--big {
+    font-size: 36px !important;
+}
+.icon__custom-color--theme {
+    color: #21CE99 !important;
 }
 .active a {
-    color: #DB3236 !important;
+    color: #21CE99 !important;
 }
 [class*="dropdown-menu-tip-"]::after {
   content: '';
@@ -235,7 +239,6 @@ input[type="checkbox"], label {
     box-shadow: 0 4px 8px 0 rgb(206, 206, 206);
 }
 .form-control {
-    border-radius: 8px;
     color: #111 !important;
 }
 .form-control:focus, .form-control:active {
@@ -261,7 +264,6 @@ input[type="checkbox"], label {
 }
 .btn {
     font-family: 'Open Sans';
-    border-radius: 10px;
     font-weight: 400;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {

@@ -8,10 +8,13 @@
     <div class='bg__layout--white mb-5'>
         <div class='container container__padding--top'>
             <div class='row'>
-                <div class='col-lg-5 my-auto mb-5'>
+                <div class='col-lg-6 my-auto mb-5'>
                     <div class='mb-3'>
-                        <h1 class='font__custom--title header__title--big'>Website builder for car dealers</h1>
-                        <h3 class='font__custom--text'>Create free, mobile and responsive websites without any coding knowledge.</h3>
+                        <h1 class='font__custom--title header__title--big'>Start an online shop</h1>
+                        <h3 class='font__custom--text'>
+                            Sedison simplifies how to build a unique store,
+                            sell your products and run an online business.
+                        </h3>
                     </div>
                     <div class='mb-3'>
                         <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mb-3 mr-3'>START NOW</a>
@@ -19,37 +22,14 @@
                     </div>
                     <p class="font__custom--text">Already using Sedison? <a href="{{ url_for('auth.login') }}" class='anchor__custom--default'>Sign in</a></p>
                 </div>
-                <div class='col-lg-7 text-center mb-5'>
-                    <img src='https://placeholder.pics/svg/300' class='img-fluid'>
+                <div class='col-lg-6 my-auto text-center mb-5'>
+                    <img src="{{ url_for('static', filename='img/vector-1.png') }}" class="img-fluid" width="300" height="300">
                 </div>
-                <div class='col-lg-12 text-center mb-5'>
-                    <h2 class='font__custom--title'>Curabitur egestas, mauris a faucibus rutrum.</h2>
-                    <p class='font__custom--text'>
-                        Proin aliquet nunc nec urna tristique mollis.
-                        Suspendisse ac neque enim.
-                        Sed ut dolor eu nisi tempor ultricies blandit id diam.
-                        Curabitur odio libero, bibendum quis tristique eget, egestas sit amet dui.
-                        Curabitur id metus purus.
-                        Mauris in leo laoreet, faucibus magna a massa nunc.
-                    </p>
-                    <img src='https://placeholder.pics/svg/305' class='img-fluid'>
+                <div class='col-lg-6 text-center mt-5 mb-5'>
+                    <img src="{{ url_for('static', filename='img/vector-2.png') }}" class="img-fluid" width="300" height="300">
                 </div>
-                <div class='col-lg-6 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere.</h2>
-                    <p class="font__custom--text">
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        In lacinia rutrum metus sed mattis.
-                        Sed sagittis nec nisl id condimentum.
-                        Sed commodo tortor mi, vitae feugiat augue lacinia eu.
-                        Integer ut lectus at ligula placerat vehicula.
-                        Etiam interdum nisi sit amet pharetra sed.
-                    </p>
-                </div>
-                <div class='col-lg-6 text-center mb-5'>
-                    <img src='https://placeholder.pics/svg/301' class='img-fluid'>
-                </div>
-                <div class='col-lg-6 order-lg-2 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Fusce in tortor vel urna bibendum vehicula id eu nibh. Praesent metus.</h2>
+                <div class='col-lg-6 my-auto mt-5 mb-5'>
+                    <h2 class='font__custom--title'>Toolkit for an e-commerce store</h2>
                     <p class="font__custom--text">
                         Ut condimentum neque mi, vel dictum neque vulputate a.
                         Donec eget nisl vitae ex pretium ornare in eu ligula.
@@ -58,11 +38,53 @@
                         Fusce luctus dui sed nibh bibendum, quis varius orci sed.
                     </p>
                 </div>
-                <div class='col-lg-6 order-lg-1 text-center mb-5'>
-                    <img src='https://placeholder.pics/svg/302' class='img-fluid'>
+                <div class='col-lg-12 mb-5'>
+                    <div class="text-lg-center">
+                        <h2 class='font__custom--title'>An interconnected world</h2>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <p class='font__custom--text'>
+                                    We believe the future of trade are small businesses and e-commerce.
+                                    We obsess in providing our merchants the best
+                                    tools possible so that they can deliver amazing
+                                    products to their customers from anywhere around the world.
+                                    Because of this obsession, we're passionate in equipping our
+                                    merchants the ability to manage an online shop as easy as possible.
+                                </p>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='img/vector-3.png') }}" class="img-fluid" width="300" height="300">
+                    </div>
                 </div>
-                <div class='col-lg-6 order-lg-3 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Aenean tincidunt, odio dignissim sagittis facilisis, ipsum mauris sed.</h2>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-project-diagram icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Integrations</h2>
+                    <p class="font__custom--text">
+                        Ut condimentum neque mi, vel dictum neque vulputate a.
+                        Donec eget nisl vitae ex pretium ornare in eu ligula.
+                        Phasellus aliquam sollicitudin purus nec condimentum.
+                        Praesent tincidunt euismod eleifend. Donec nec tempus erat.
+                        Fusce luctus dui sed nibh bibendum, quis varius orci sed.
+                    </p>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-search icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>SEO friendly</h2>
+                    <p class="font__custom--text">
+                        Ut condimentum neque mi, vel dictum neque vulputate a.
+                        Donec eget nisl vitae ex pretium ornare in eu ligula.
+                        Phasellus aliquam sollicitudin purus nec condimentum.
+                        Praesent tincidunt euismod eleifend. Donec nec tempus erat.
+                        Fusce luctus dui sed nibh bibendum, quis varius orci sed.
+                    </p>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-mobile-alt icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Mobile friendliness</h2>
                     <p class="font__custom--text">
                         Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
                         Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
@@ -71,30 +93,46 @@
                         Quisque sed eleifend lacus nullam.
                     </p>
                 </div>
-                <div class='col-lg-6 order-lg-4 text-center mb-5'>
-                    <img src='https://placeholder.pics/svg/303' class='img-fluid'>
-                </div>
-                <div class='col-lg-6 order-lg-6 my-auto mb-5'>
-                    <h2 class='font__custom--title'>Aliquam porta eget quam tincidunt hendrerit. Maecenas finibus sit sed.</h2>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-headset icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Customer service</h2>
                     <p class="font__custom--text">
-                        Suspendisse ornare convallis magna, eu auctor sem.
-                        Curabitur lacinia tempor nunc eu euismod.
-                        Nullam eget vulputate nisl.
-                        Cras maximus massa nunc, ut convallis lacus iaculis sed.
-                        Vivamus vel accumsan elit, eget ornare risus.
-                        Sed commodo tortor dolor, in condimentum nibh cras amet.
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
+                        Quisque sed eleifend lacus nullam.
                     </p>
                 </div>
-                <div class='col-lg-6 order-lg-5 text-center mb-5'>
-                    <img src='https://placeholder.pics/svg/304' class='img-fluid'>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-lock icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Security</h2>
+                    <p class="font__custom--text">
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
+                        Quisque sed eleifend lacus nullam.
+                    </p>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-angle-double-up icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Scalability</h2>
+                    <p class="font__custom--text">
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
+                        Quisque sed eleifend lacus nullam.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class='col-lg-12 text-center' style='background-color: #DB3236; padding-top: 50px; padding-bottom: 50px;'>
-        <h2 class='header__title mb-5' style='color: #FFF;'>Say hello to your new car dealership website</h2>
-        <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--secondary mb-3 mr-3'>CREATE ACCOUNT</a>
-        <a href="mailto:john@sedison.com" class='btn btn__custom--secondary--outline mb-3 text-center'>CONTACT US</a>
+    <div class='col-lg-12 text-center' style='background-color: #F7F9FD; padding-top: 50px; padding-bottom: 50px;'>
+        <h2 class='header__title mb-5'>Say hello to your new online store</h2>
+        <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mb-3 mr-3'>CREATE ACCOUNT</a>
+        <a href="mailto:john@sedison.com" class='btn btn__custom--primary--outline mb-3 text-center'>CONTACT US</a>
     </div>
     {% include "home/footer.html" %}
     {% include "shared/scripts.html" %}
