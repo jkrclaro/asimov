@@ -39,6 +39,7 @@ html, body {
 }
 .font__custom--title {
     color: #33334F;
+    font-weight: 900 !important;
 }
 .font__custom--text {
     color: #767EAD;
@@ -171,8 +172,11 @@ html, body {
 .text__feedback--success {
     color: #28A745;
 }
-.text__feedback__icon--big {
-    font-size: 48px !important;
+.icon__custom--big {
+    font-size: 36px !important;
+}
+.icon__custom-color--theme {
+    color: #21CE99 !important;
 }
 .active a {
     color: #21CE99 !important;
