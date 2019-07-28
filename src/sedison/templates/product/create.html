@@ -1,0 +1,48 @@
+{% extends 'merchant/layout.html' %}
+{% from "form/horizontal.html" import render_field %}
+{% block content %}
+
+<div class='row'>
+    <div class='col-lg-2'></div>
+    <div class='col-lg-8 mb-3'>
+        <form method=post>
+            {{ form_product.csrf_token }}
+            {{ form_variant.csrf_token }}
+            {{ form_inventory.csrf_token }}
+            <div class='card mb-5'>
+                <div class='card-body'>
+                    <h3 class='font__custom--title text-center mb-3'>Create a product</h3>
+                    <h5 class='font__custom--title mb-3'>Details</h5>
+                    {{ render_field(form_product.uid) }}
+                    {{ render_field(form_product.title) }}
+                    {{ render_field(form_product.caption) }}
+                    {{ render_field(form_product.url) }}
+                    {{ render_field(form_product.description) }}
+                </div>
+            </div>
+
+            <div class='card mb-5'>
+                <div class='card-body'>
+                    <h5 class='font__custom--title mb-3'>Variant</h5>
+                    {{ render_field(form_variant.title) }}
+                </div>
+            </div>
+
+            <div class='card mb-5'>
+                <div class='card-body'>
+                    <h5 class='font__custom--title mb-3'>Inventory</h5>
+                    {{ render_field(form_inventory.sku) }}
+                    {{ render_field(form_inventory.price) }}
+                    {{ render_field(form_inventory.quantity) }}
+                    {{ render_field(form_inventory.is_active) }}
+                    <a href="{{ url_for('merchant.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
+                    <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='col-lg-2'></div>
+</div>
+
+
+{% endblock %}
