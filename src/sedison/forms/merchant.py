@@ -4,18 +4,11 @@ from wtforms.validators import InputRequired
 
 
 class MerchantBaseForm(FlaskForm):
-    first_name = StringField(
-        'First name',
-        render_kw={'placeholder': 'Thomas'},
+    name = StringField(
+        'Name',
+        render_kw={'placeholder': 'Thomas Edison'},
         validators=[
             InputRequired(message='Please enter a valid first name.'),
-        ]
-    )
-    last_name = StringField(
-        'Last name',
-        render_kw={'placeholder': 'Edison'},
-        validators=[
-            InputRequired(message='Please enter a valid last name.'),
         ]
     )
     address = StringField(
@@ -58,6 +51,6 @@ class MerchantBaseForm(FlaskForm):
         ]
     )
     website = StringField(
-        'Business / Personal website (optional)',
+        'Website (optional)',
     )
 

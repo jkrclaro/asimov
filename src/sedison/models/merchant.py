@@ -5,8 +5,7 @@ from . import db, BaseModel, generate_uid
 
 class Merchant(db.Model, BaseModel):
     __tablename__ = 'merchants'
-    first_name = db.Column(db.String(255))
-    last_name = db.Column(db.String(255))
+    name = db.Column(db.String(255))
     address = db.Column(db.String(255))
     apartment = db.Column(db.String(255))
     city = db.Column(db.String(255))

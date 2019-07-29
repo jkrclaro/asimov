@@ -25,8 +25,7 @@ def setup():
     if form.validate_on_submit():
         data = {}
         fields = (
-            'first_name',
-            'last_name',
+            'name',
             'address',
             'apartment',
             'city',
