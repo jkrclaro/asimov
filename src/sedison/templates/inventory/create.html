@@ -1,4 +1,4 @@
-{% extends 'merchant/layout.html' %}
+{% extends 'dashboard/layout.html' %}
 {% from "form/horizontal.html" import render_field %}
 {% block content %}
 
@@ -15,7 +15,7 @@
                     {{ render_field(form.price) }}
                     {{ render_field(form.quantity) }}
                     {{ render_field(form.is_active) }}
-                    <a href="{{ url_for('merchant.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
+                    <a href="{{ url_for('dashboard.index') }}" class='btn btn__custom--primary--outline float-lg-left'>Cancel</a>
                     <button type='submit' class='btn btn__custom--primary float-lg-right'>Save</button>
                 </div>
             </div>

@@ -36,7 +36,7 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for('merchant.index'))
+        return redirect(url_for('dashboard.index'))
     recaptcha = validate_recaptcha()
     form = SignupForm()
     if form.validate_on_submit() and not recaptcha.get('recaptcha'):
@@ -57,14 +57,14 @@ def signup():
             db.session.commit()
             login_user(user)
             email_confirmation()
-            return redirect(url_for('merchant.index'))
+            return redirect(url_for('dashboard.index'))
     return render_template('auth/signup.html', form=form, **recaptcha)
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('merchant.index'))
+        return redirect(url_for('dashboard.index'))
     recaptcha = {}
     if session.get('attempt'):
         recaptcha = {'site_key': google_recaptcha.site_key}
@@ -91,7 +91,7 @@ def login():
         else:
             session.pop('attempt', None)
             login_user(user, remember=form.remember.data)
-            return redirect(url_for('merchant.index'))
+            return redirect(url_for('dashboard.index'))
 
     return render_template('auth/login.html', form=form, **recaptcha)
 
@@ -138,7 +138,7 @@ def confirm():
                 flash('Your email address was successfully changed', 'success')
             else:
                 flash('Your email address have been confirmed', 'success')
-            return redirect(url_for('merchant.index'))
+            return redirect(url_for('dashboard.index'))
     return render_template(template, form=form)
 
 
@@ -148,7 +148,7 @@ def resend():
     # TODO: Should be a post
     email_confirmation()
     session['resend'] = True
-    return redirect(url_for('merchant.index'))
+    return redirect(url_for('dashboard.index'))
 
 
 @auth_bp.route('/forgot', methods=['GET', 'POST'])
@@ -190,7 +190,7 @@ def reset():
         email_reset_success()
         login_user(user)
         flash('Successfully changed your Sedison password', 'success')
-        return redirect(url_for('merchant.index'))
+        return redirect(url_for('dashboard.index'))
 
     return render_template(template, form=form, reset_token=reset_token)
 

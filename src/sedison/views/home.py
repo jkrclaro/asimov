@@ -16,7 +16,7 @@ home_bp = Blueprint('home', __name__)
 @home_bp.route('/')
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for('merchant.index'))
+        return redirect(url_for('dashboard.index'))
 
     return render_template('home/index.html')
 
@@ -24,7 +24,7 @@ def index():
 @home_bp.route('/about')
 def about():
     if current_user.is_authenticated:
-        return redirect(url_for('merchant.index'))
+        return redirect(url_for('dashboard.index'))
 
     return render_template('home/about.html')
 
@@ -32,7 +32,7 @@ def about():
 @home_bp.route('/pricing')
 def pricing():
     if current_user.is_authenticated:
-        return redirect(url_for('merchant.index'))
+        return redirect(url_for('dashboard.index'))
 
     return render_template('home/pricing.html')
 
@@ -57,4 +57,4 @@ def health():
     if current_user.is_staff:
         return jsonify({'environment': current_app.config.get('FLASK_ENV')})
 
-    return redirect(url_for('merchant.index'))
+    return redirect(url_for('dashboard.index'))
