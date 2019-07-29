@@ -25,7 +25,6 @@ class Product(db.Model, BaseModel):
     __tablename__ = 'products'
     _uid = db.Column('uid', db.String(255))
     title = db.Column(db.String(255))
-    url = db.Column(db.String(255))
     description = db.Column(db.Text)
     merchant_id = db.Column(db.Integer, db.ForeignKey('merchants.id', ondelete='CASCADE'))
     variants = db.relationship('Variant', backref='products')
