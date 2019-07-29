@@ -57,6 +57,7 @@ def create_app(config: str):
     from .views.menu import menu_bp
     from .views.product import product_bp
     from .views.listing import listing_bp
+    from .views.merchant import merchant_bp
     blueprints = (
         auth_bp,
         home_bp,
@@ -66,6 +67,7 @@ def create_app(config: str):
         menu_bp,
         product_bp,
         listing_bp,
+        merchant_bp,
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)

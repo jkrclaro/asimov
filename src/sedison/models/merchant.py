@@ -5,7 +5,16 @@ from . import db, BaseModel, generate_uid
 
 class Merchant(db.Model, BaseModel):
     __tablename__ = 'merchants'
+    first_name = db.Column(db.String(255))
+    last_name = db.Column(db.String(255))
     address = db.Column(db.String(255))
+    apartment = db.Column(db.String(255))
+    city = db.Column(db.String(255))
+    zip_code = db.Column(db.String(255))
+    country = db.Column(db.String(255))
+    county = db.Column(db.String(255))
+    phone_number = db.Column(db.String(255))
+    website = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', back_populates='merchant')
     products = db.relationship('Product', backref='merchants')
