@@ -25,6 +25,9 @@ html, body {
 .bg__content--white {
     background-color: #F8F8F8;
 }
+.bg__footer--theme {
+    background-color: #F1F4F9;
+}
 
 .nav__navlink--center {
     font-family: 'Open Sans';
