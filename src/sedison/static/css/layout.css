@@ -275,3 +275,6 @@ input[type="checkbox"], label {
 .nav-item {
     cursor: pointer;
 }
+.borderless td, .borderless th {
+    border: none;
+}

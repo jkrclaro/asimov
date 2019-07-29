@@ -9,10 +9,10 @@
                                 {% for category, message in messages %}
                                     <div class='text__feedback--{{ category }} text-center'>
                                         {% if category == 'danger' %}
-                                             <i class="fas fa-exclamation-triangle text__feedback--{{ category }} text__feedback__icon--big mb-3"></i>
+                                             <i class="fas fa-exclamation-triangle text__feedback--danger text__feedback__icon--big mb-3"></i>
                                              <p>{{ message }}</p>
                                         {% elif category == 'success' %}
-                                             <i class="fas fa-check-circle text__feedback--{{ category }} text__feedback__icon--big mb-3"></i>
+                                             <i class="fas fa-check-circle text__feedback--success text__feedback__icon--big mb-3"></i>
                                              <p>{{ message }}</p>
                                         {% endif %}
                                     </div>
