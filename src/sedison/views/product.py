@@ -57,8 +57,6 @@ def retrieve(uid: str):
     form = ProductBaseForm(obj=product)
     if form.validate_on_submit():
         product.title = form.title.data
-        product.url = form.url.data
-        product.caption = form.caption.data
         product.description = form.description.data
         product.uid = form.uid.data
         db.session.add(product)
@@ -94,8 +92,6 @@ def create():
             data_product = {
                 'merchant_id': current_user.merchant.id,
                 'title': form_product.title.data,
-                'url': form_product.url.data,
-                'caption': form_product.caption.data,
                 'description': form_product.description.data,
                 'uid': form_product.uid.data,
             }
