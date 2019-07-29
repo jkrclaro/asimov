@@ -32,6 +32,7 @@ def setup():
             'zipcode',
             'country',
             'phone',
+            'county',
             'website'
         )
         for field in fields:

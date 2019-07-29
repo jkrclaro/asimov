@@ -20,7 +20,7 @@
                 {% endfor %}
 
                 <h3 class='font__custom--title mb-3'>Address</h3>
-                {% for field in ('address', 'apartment', 'country', 'county', 'city', 'zipcode') %}
+                {% for field in ('address', 'apartment', 'zipcode', 'city', 'county', 'country',) %}
                     <div class='form-group row'>
                         <small class="col-md-3 col-form-label text-md-right label__text--small"> {{ field | title }}</small>
                         <div class="col-md-6">

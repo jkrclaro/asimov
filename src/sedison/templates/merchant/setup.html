@@ -86,30 +86,15 @@
 
                             <div class="col-lg-6">
                                 <div class='form-group'>
-                                    {% if form.country.errors %}
-                                        {{ form.country.label(class_='label__text--small text__feedback--danger') }}
-                                        {{ form.country(class_='form-control is-invalid') | safe }}
-                                        {% for error in form.country.errors %}
+                                    {% if form.zipcode.errors %}
+                                        {{ form.zipcode.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.zipcode(class_='form-control is-invalid') | safe }}
+                                        {% for error in form.zipcode.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
                                         {% endfor %}
                                     {% else %}
-                                        {{ form.country.label(class_='label__text--small') }}
-                                        {{ form.country(class_='form-control') | safe }}
-                                    {% endif %}
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class='form-group'>
-                                    {% if form.county.errors %}
-                                        {{ form.county.label(class_='label__text--small text__feedback--danger') }}
-                                        {{ form.county(class_='form-control is-invalid') | safe }}
-                                        {% for error in form.county.errors %}
-                                            <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
-                                        {% endfor %}
-                                    {% else %}
-                                        {{ form.county.label(class_='label__text--small') }}
-                                        {{ form.county(class_='form-control') | safe }}
+                                        {{ form.zipcode.label(class_='label__text--small') }}
+                                        {{ form.zipcode(class_='form-control') | safe }}
                                     {% endif %}
                                 </div>
                             </div>
@@ -129,17 +114,32 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                           <div class="col-lg-6">
                                 <div class='form-group'>
-                                    {% if form.zipcode.errors %}
-                                        {{ form.zipcode.label(class_='label__text--small text__feedback--danger') }}
-                                        {{ form.zipcode(class_='form-control is-invalid') | safe }}
-                                        {% for error in form.zipcode.errors %}
+                                    {% if form.county.errors %}
+                                        {{ form.county.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.county(class_='form-control is-invalid') | safe }}
+                                        {% for error in form.county.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
                                         {% endfor %}
                                     {% else %}
-                                        {{ form.zipcode.label(class_='label__text--small') }}
-                                        {{ form.zipcode(class_='form-control') | safe }}
+                                        {{ form.county.label(class_='label__text--small') }}
+                                        {{ form.county(class_='form-control') | safe }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class='form-group'>
+                                    {% if form.country.errors %}
+                                        {{ form.country.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.country(class_='form-control is-invalid') | safe }}
+                                        {% for error in form.country.errors %}
+                                            <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
+                                        {% endfor %}
+                                    {% else %}
+                                        {{ form.country.label(class_='label__text--small') }}
+                                        {{ form.country(class_='form-control') | safe }}
                                     {% endif %}
                                 </div>
                             </div>
