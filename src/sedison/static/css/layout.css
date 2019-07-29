@@ -175,6 +175,9 @@ html, body {
 .text__feedback--success {
     color: #28A745;
 }
+.text__feedback__icon--big {
+    font-size: 48px !important;
+}
 .icon__custom--big {
     font-size: 36px !important;
 }
@@ -274,6 +277,7 @@ input[type="checkbox"], label {
 }
 .nav-item {
     cursor: pointer;
+    font-weight: 900;
 }
 .borderless td, .borderless th {
     border: none;

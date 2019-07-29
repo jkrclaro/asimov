@@ -12,7 +12,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 from src import token, google_recaptcha
 from src.sedison.models import db
-from src.sedison.models.auth import User
+from src.sedison.models.auth import User, Profile
 from src.sedison.models.merchant import Merchant
 from src.sedison.forms import (
     SignupForm,
@@ -50,8 +50,10 @@ def signup():
             user = User(email, password)
             db.session.add(user)
             db.session.commit()
-            merchant = Merchant(user_id=user.id, name=name)
+            merchant = Merchant(user_id=user.id)
+            profile = Profile(name=name)
             db.session.add(merchant)
+            db.session.add(profile)
             db.session.commit()
             login_user(user)
             email_confirmation()

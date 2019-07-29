@@ -5,7 +5,6 @@ from . import db, BaseModel, generate_uid
 
 class Merchant(db.Model, BaseModel):
     __tablename__ = 'merchants'
-    name = db.Column(db.String(255))
     address = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', back_populates='merchant')
@@ -16,7 +15,7 @@ class Merchant(db.Model, BaseModel):
         super().__init__(**kwargs)
 
     def __str__(self):
-        return self.name
+        return self.address
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__, self.__dict__)

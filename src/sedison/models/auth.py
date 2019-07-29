@@ -4,7 +4,7 @@ import hashlib
 import bcrypt
 from flask_login import UserMixin
 
-from . import db
+from . import db, BaseModel
 
 
 class User(db.Model, UserMixin):
@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255))
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
+    profile = db.relationship('Profile', uselist=False, back_populates='user')
     merchant = db.relationship('Merchant', uselist=False, back_populates='user')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
@@ -63,3 +64,19 @@ class User(db.Model, UserMixin):
         password_encoded = password.encode('utf8')
         password_sha256 = hashlib.sha256(password_encoded).digest()
         return base64.b64encode(password_sha256)
+
+
+class Profile(db.Model, BaseModel):
+    __tablename__ = 'profiles'
+    name = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', back_populates='profile')
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__, self.__dict__)

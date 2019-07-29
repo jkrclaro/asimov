@@ -4,9 +4,11 @@
 {% if not menus %}
     <div class='text-center'>
         <h5 class="font__custom--title mb-3">Let's get your store setup!</h5>
-        <a class='btn btn__custom--primary mb-3' href="{{ url_for('product.create') }}">Create your first product</a>
+        <a class='btn btn__custom--primary mb-3' href="{{ url_for('product.create') }}">Create product</a>
         <br/>
-        <a class='btn btn__custom--primary' href="{{ url_for('menu.create') }}">Setup your first menu</a>
+        <a class='btn btn__custom--primary mb-3' href="{{ url_for('menu.create') }}">Stylize theme</a>
+        <br/>
+        <a class='btn btn__custom--primary' href="{{ url_for('menu.create') }}">Connect domain</a>
     </div>
 {% else %}
     <div class="card mb-3">
