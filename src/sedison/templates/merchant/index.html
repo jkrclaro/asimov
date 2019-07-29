@@ -6,8 +6,8 @@
     <div class='col-lg-6'>
         <div class='card'>
             <div class='card-body'>
-                <h3 class='font__custom--title mt-3 mb-5'>Profile</h3>
-                {% for field in ('name',) %}
+                <h3 class='font__custom--title mt-3 mb-5'>Account</h3>
+                {% for field in ('name', 'phone', 'website', 'address', 'apartment', 'country', 'county', 'city', 'zipcode') %}
                     <div class='form-group row'>
                         <small class="col-md-3 col-form-label text-md-right label__text--small"> {{ field | title }}</small>
                         <div class="col-md-6">
@@ -18,6 +18,9 @@
                         </div>
                     </div>
                 {% endfor %}
+                <div class="col-lg-12">
+                    <button type='submit' class='btn btn-block btn__custom--primary'>Update account</button>
+                </div>
             </div>
         </div>
     </div>

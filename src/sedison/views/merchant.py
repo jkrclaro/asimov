@@ -29,9 +29,9 @@ def setup():
             'address',
             'apartment',
             'city',
-            'zip_code',
+            'zipcode',
             'country',
-            'phone_number',
+            'phone',
             'website'
         )
         for field in fields:

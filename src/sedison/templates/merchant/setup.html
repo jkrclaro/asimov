@@ -26,15 +26,15 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class='form-group'>
-                                    {% if form.phone_number.errors %}
-                                        {{ form.phone_number.label(class_='label__text--small text__feedback--danger') }}
-                                        {{ form.phone_number(class_='form-control is-invalid') | safe }}
-                                        {% for error in form.phone_number.errors %}
+                                    {% if form.phone.errors %}
+                                        {{ form.phone.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.phone(class_='form-control is-invalid') | safe }}
+                                        {% for error in form.phone.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
                                         {% endfor %}
                                     {% else %}
-                                        {{ form.phone_number.label(class_='label__text--small') }}
-                                        {{ form.phone_number(class_='form-control') | safe }}
+                                        {{ form.phone.label(class_='label__text--small') }}
+                                        {{ form.phone(class_='form-control') | safe }}
                                     {% endif %}
                                 </div>
                             </div>
@@ -131,15 +131,15 @@
 
                             <div class="col-lg-6">
                                 <div class='form-group'>
-                                    {% if form.zip_code.errors %}
-                                        {{ form.zip_code.label(class_='label__text--small text__feedback--danger') }}
-                                        {{ form.zip_code(class_='form-control is-invalid') | safe }}
-                                        {% for error in form.zip_code.errors %}
+                                    {% if form.zipcode.errors %}
+                                        {{ form.zipcode.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.zipcode(class_='form-control is-invalid') | safe }}
+                                        {% for error in form.zipcode.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
                                         {% endfor %}
                                     {% else %}
-                                        {{ form.zip_code.label(class_='label__text--small') }}
-                                        {{ form.zip_code(class_='form-control') | safe }}
+                                        {{ form.zipcode.label(class_='label__text--small') }}
+                                        {{ form.zipcode(class_='form-control') | safe }}
                                     {% endif %}
                                 </div>
                             </div>

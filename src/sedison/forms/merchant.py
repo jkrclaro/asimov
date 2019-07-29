@@ -26,8 +26,8 @@ class MerchantBaseForm(FlaskForm):
             InputRequired(message='Please enter a valid city.'),
         ]
     )
-    zip_code = StringField(
-        'Zipcode / Postcode',
+    zipcode = StringField(
+        'Zip code / Postal code',
         validators=[
             InputRequired(message='Please enter a valid zipcode or postcode.'),
         ]
@@ -44,7 +44,7 @@ class MerchantBaseForm(FlaskForm):
             InputRequired(message='Please enter a valid county.'),
         ]
     )
-    phone_number = StringField(
+    phone = StringField(
         'Phone number',
         validators=[
             InputRequired(message='Please enter a valid phone number.'),
