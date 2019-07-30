@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from sedison.sedison import create_app
-from sedison.sedison.models import db
-from sedison.sedison.models.auth import User, Account
-from sedison.sedison.models.auth import (
+from selfcarte.selfcarte import create_app
+from selfcarte.selfcarte.models import db
+from selfcarte.selfcarte.models.auth import User, Account
+from selfcarte.selfcarte.models.auth import (
     Product,
     Inventory,
     InventoryWhenSold,

@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from sedison.sedison import create_app
-from sedison.sedison.models import db
-from sedison.sedison.models.auth import User
+from selfcarte.selfcarte import create_app
+from selfcarte.selfcarte.models import db
+from selfcarte.selfcarte.models.auth import User
 
 
 @pytest.fixture

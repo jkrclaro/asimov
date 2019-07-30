@@ -1,6 +1,6 @@
 Create apps
 
 ```
-mkdir sedison/merchant
-python manage.py startapp merchant sedison/merchant
+mkdir selfcarte/merchant
+python manage.py startapp merchant selfcarte/merchant
 ```
