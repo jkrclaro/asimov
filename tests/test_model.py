@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from selfcarte.selfcarte import create_app
-from selfcarte.selfcarte.models import db
-from selfcarte.selfcarte.models.auth import User, Account
-from selfcarte.selfcarte.models.auth import (
+from src.selfcarte import create_app
+from src.selfcarte.models import db
+from src.selfcarte.models.auth import User, Account
+from src.selfcarte.models.auth import (
     Product,
     Inventory,
     InventoryWhenSold,
