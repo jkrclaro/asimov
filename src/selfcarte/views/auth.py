@@ -50,7 +50,7 @@ def signup():
             user = User(email, password)
             db.session.add(user)
             db.session.commit()
-            profile = Profile(name=name)
+            profile = Profile(name=name, user_id=user.id)
             db.session.add(profile)
             db.session.commit()
             login_user(user)
