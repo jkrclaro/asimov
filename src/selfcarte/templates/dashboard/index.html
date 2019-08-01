@@ -1,29 +1,94 @@
 {% extends 'dashboard/layout.html' %}
 {% block content %}
 
-{% if not menus %}
-    <div class='text-center'>
-        <h5 class="font__custom--title mb-3">Let's get your store setup!</h5>
-        <a class='btn btn__custom--primary mb-3' href="{{ url_for('product.create') }}">Create product</a>
-        <br/>
-        <a class='btn btn__custom--primary mb-3' href="{{ url_for('menu.create') }}">Stylize theme</a>
-        <br/>
-        <a class='btn btn__custom--primary' href="{{ url_for('menu.create') }}">Connect domain</a>
-    </div>
-{% else %}
-    <div class="card mb-3">
-        <div class="card-body">
-            <h3>Analytics</h3>
-            <img src='https://placeholder.pics/svg/1400x100' class='img-fluid'>
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center mt-3 mb-5">
+                    <h3 class="font__custom--title">Welcome to Selfcarte!</h3>
+                    <div class="font__custom--text">
+                        You're a few steps closer in fully utilizing our services.
+                    </div>
+                    <div class="font__custom--text">We've outlined below how you can activate them.</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-2 text-lg-right font__custom--text">
+                        <i class='fas fa-envelope'></i>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="font__custom--text"><b>Verify your email</b></p>
+                        <p class="font__custom--text">Please verify your email before activating your account.</p>
+                    </div>
+                    <div class="col-lg-4 my-auto">
+                        <a href="{{ url_for('merchant.setup') }}" class="btn btn__custom--primary btn-block">Resend verification email</a>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-2 text-lg-right font__custom--text">
+                        <i class='fas fa-store'></i>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="font__custom--text"><b>Activate your Selfcarte account</b></p>
+                        <p class="font__custom--text">Before you start selling online, tell us a few details about you and your online business.</p>
+                    </div>
+                    <div class="col-lg-4 my-auto">
+                        <a href="{{ url_for('merchant.setup') }}" class="btn btn__custom--primary btn-block">Start</a>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-2 text-lg-right font__custom--text">
+                        <i class='fas fa-cube'></i>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="font__custom--text"><b>Add your first product</b></p>
+                        <p class="font__custom--text">You can add physical items, digital downloads, services, or anything else you dream up.</p>
+                    </div>
+                    <div class="col-lg-4 my-auto">
+                        <a href="{{ url_for('merchant.setup') }}" class="btn btn__custom--primary btn-block">Add product</a>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-2 text-lg-right font__custom--text">
+                        <i class='fas fa-palette'></i>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="font__custom--text"><b>Edit the look and feel of your online store</b></p>
+                        <p class="font__custom--text">Choose a theme and add a logo, product slideshow, and colors that match your brand.</p>
+                    </div>
+                    <div class="col-lg-4 my-auto">
+                        <a href="{{ url_for('merchant.setup') }}" class="btn btn__custom--primary btn-block">Customize theme</a>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-2 text-lg-right font__custom--text">
+                        <i class='fas fa-globe'></i>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="font__custom--text"><b>Strengthen your brand with a custom domain</b></p>
+                        <p class="font__custom--text">Your current domain is nike.selfcarte.com but you can add a custom domain to help customers find your online store.</p>
+                    </div>
+                    <div class="col-lg-4 my-auto">
+                        <a href="{{ url_for('merchant.setup') }}" class="btn btn__custom--primary btn-block">Add domain</a>
+                    </div>
+                    <hr/>
+                </div>
+
+            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h3>Reports</h3>
-            <img src='https://placeholder.pics/svg/1400x100' class='img-fluid'>
-        </div>
-    </div>
-{% endif %}
+    <div class="col-lg-2"></div>
+</div>
 
 
 {% endblock %}

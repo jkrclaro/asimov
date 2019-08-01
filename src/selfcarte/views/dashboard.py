@@ -7,7 +7,4 @@ dashboard_bp = Blueprint('dashboard', __name__)
 @dashboard_bp.route('/dashboard')
 @login_required
 def index():
-    if not current_user.merchant:
-        return redirect(url_for('merchant.setup'))
-
     return render_template('dashboard/index.html')
