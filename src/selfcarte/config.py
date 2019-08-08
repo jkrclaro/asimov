@@ -20,6 +20,8 @@ class Config(object):
     ETSY_API_KEY = os.environ.get('ETSY_API_KEY', 'tqoskxgptlbrc4l9nocxbks9')
     ETSY_SECRET_KEY = os.environ.get('ETSY_SECRET_KEY', '9nu3b32vl7')
 
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 class Production(Config):
     RECAPTCHA_USE_SSL = True
