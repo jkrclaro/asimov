@@ -1,4 +1,5 @@
 {
     "name": "selfcarte",
-    "description": "AWS Lambda Functions to launch websites"
+    "description": "AWS Lambda Functions to launch websites",
+    "region": "eu-west-1"
 }

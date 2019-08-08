@@ -18,6 +18,18 @@ class Website {
             console.log(stderr);
         })
     }
+
+    hey() {
+        console.log('Hey!')
+    }
 }
 
 module.exports = Website;
+
+
+if (require.main === module) {
+    const website = new Website();
+    website.create();
+} else {
+    console.log('oh no!')
+}

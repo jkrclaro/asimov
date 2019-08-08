@@ -1,10 +1,7 @@
-const Netlify = require('netlify');
+const website = require('./Website');
 
 
 exports.handle = async (event, context) => {
-  const netlify = new Netlify(event.netlify_access_token);
-  const sites = await netlify.listSites();
-  console.log(sites);
-  console.log(context);
+  console.log(website.hey());
   context.succeed({ 'success': 'Well done!' })
 }
