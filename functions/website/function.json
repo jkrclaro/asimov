@@ -1,8 +1,0 @@
-{
-    "name": "Website",
-    "description": "Build a minified bundle of ReactJS.",
-    "runtime": "nodejs8.10",
-    "memory": 128,
-    "timeout": 5,
-    "role": "arn:aws:iam::616698895185:role/lambda"
-}
