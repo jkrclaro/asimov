@@ -8,32 +8,34 @@
     <div class='bg__layout--white mb-5'>
         <div class='container container__padding--top'>
             <div class='row'>
-                <div class='col-lg-6 my-auto mb-5'>
+                <div class='col-lg-3'></div>
+                <div class='col-lg-6 mb-5'>
                     <div class='mb-3'>
-                        <h1 class='font__custom--title header__title--big'>Take your cafe online</h1>
-                        <h3 class='font__custom--text'>
-                            Spidxr makes it easy to build a unique cafe website
-                            and manage it online.
+                        <h1 class='font__custom--title header__title--big'>Connect with anyone</h1>
+                        <h3 class='font__custom--text mb-3'>
+                            Spidxr lets you find email addresses in seconds and
+                            connect with the people that matter for your business.
                         </h3>
+                        <div class="input-group">
+                            <input class="form-control" id="domain" name="email" placeholder="company.com" required="" type="text" value="">
+                            <div class="input-group-append">
+                                <button type='submit' class='btn btn-block btn__custom--primary'>FIND EMAIL ADDRESSSES</button>
+                            </div>
+                        </div>
+                        <small class='font__custom--text'>Enter a domain name to launch the search. For example, spidxr.com.</small>
                     </div>
-                    <div class='mb-3'>
-                        <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mb-3 mr-3'>START NOW</a>
-                        <a href="mailto:john@spidxr.com" class='btn btn__custom--primary--outline mb-3'>CONTACT US</a>
-                    </div>
-                    <p class="font__custom--text">Already using Spidxr? <a href="{{ url_for('auth.login') }}" class='anchor__custom--default'>Sign in</a></p>
                 </div>
+                <div class='col-lg-3'></div>
                 <div class='col-lg-6 my-auto text-center mb-5'>
                     <img src="{{ url_for('static', filename='img/vector-1.png') }}" class="img-fluid mb-5" width="400" height="400">
                 </div>
-                <div class='col-lg-6 text-center mt-5 mb-5'>
-                    <img src="{{ url_for('static', filename='img/vector-2.png') }}" class="img-fluid" width="300" height="300">
-                </div>
                 <div class='col-lg-6 my-auto mt-5 mb-5'>
-                    <h2 class='font__custom--title'>The complete toolkit for cafes</h2>
+                    <h2 class='font__custom--title'>Get the email addresses behind any website.</h2>
                     <p class="font__custom--text">
-                        We're passionate in building effective and adaptable tools
-                        so that our merchants are equipped with a great product
-                        to manage an online shop as easily as possible.
+                        The Domain Search lists all the people working in a
+                        company with their name and email address found on the web.
+                        With 200+ million email addresses indexed, effective search filters and scoring,
+                        it's the most powerful email-finding tool ever created.
                     </p>
                 </div>
                 <div class='col-lg-12 mb-5'>
