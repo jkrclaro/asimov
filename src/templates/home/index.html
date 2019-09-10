@@ -1,0 +1,53 @@
+{% extends 'shared/layout.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class='row mt-5'>
+    <div class='col-lg-3'></div>
+    <div class='col-lg-6 mb-5 my-auto'>
+        <h1 class='h1-heading'>Connect with anyone</h1>
+        <p>Spidxr lets you find email addresses in seconds and connect with the people that matter for your business.</p>
+        <div class="input-group mb-5">
+            <input class="form-control" id="domain" name="email" placeholder="company.com" required="" type="text" value="">
+            <div class="input-group-append">
+                <button type='submit' class='btn btn-block btn-spidxr-primary'>FIND EMAIL ADDRESSSES</button>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-3'></div>
+    <div class='col-lg-6 my-auto mb-5'>
+        <h3 class='h1-heading'>Get the email addresses behind any website</h3>
+        <p>
+            The Domain Search lists all the people working in a company with their name and email address found on the web.
+            With 200+ million email addresses indexed, effective search filters and scoring,
+            it's the most powerful email-finding tool ever created.
+        </p>
+    </div>
+    <div class='col-lg-6 text-center mb-5'>
+        <img src="https://via.placeholder.com/400" class='img-fluid'/>
+    </div>
+    <div class='col-lg-6 text-center mb-5'>
+        <img src="https://via.placeholder.com/400" class='img-fluid'/>
+    </div>
+    <div class='col-lg-6 my-auto mb-5'>
+        <h3 class='h1-heading'>Find the email address of any professional</h3>
+        <p>
+            Find the email addresses of people you want to contact one by one or in bulk to enrich your database.
+            The Email Finder uses a large number of signals to find the proven or most probable email address of anyone in a fraction of second.
+        </p>
+    </div>
+    <div class='col-lg-6 my-auto mb-5'>
+        <h3 class='h1-heading'>Verify the deliverability of any email address</h3>
+        <p>
+            The Email Verifier does a complete check of the email address to let you send your emails with a complete confidence.
+            As it uses our unique set of data, the Email Verifier can return a result even where other standard verification tools fail.
+        </p>
+    </div>
+    <div class='col-lg-6 text-center mb-5'>
+        <img src="https://via.placeholder.com/400" class='img-fluid'/>
+    </div>
+</div>
+
+{% endblock %}

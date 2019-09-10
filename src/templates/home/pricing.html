@@ -1,0 +1,19 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+
+<div class='row'>
+    <div class='col-lg-3'></div>
+    <div class='col-lg-6'>
+        <div class='card'>
+            <div class='card-body'>
+                <h2 class='h2-heading text-center mb-3 mt-3'>Limited time offer</h2>
+                <p>Free access to everything!</p>
+                <a href="{% url 'spidxr:signup' %}" class='btn btn-spidxr-primary btn-block'>Start now</a>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-3'></div>
+</div>
+
+{% endblock %}

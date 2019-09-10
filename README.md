@@ -1,9 +1,9 @@
-<a href='https://github.com/jkrclaro/spidxr'><img src='https://github.com/jkrclaro/spidxr/blob/master/src/spidxr/static/img/logo.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/spidxr'><img src='https://github.com/jkrclaro/spidxr/blob/master/static/img/spidxr.png' align='right' width='200' height='160' /></a>
 
 # Spidxr
 [![CircleCI](https://circleci.com/gh/jkrclaro/spidxr/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/spidxr/tree/master)
 
-Create and customize an online store.
+Multi-channel selling software for Etsy and Shopify.
 
 # General Information
 - Website: https://www.spidxr.com

@@ -7,19 +7,12 @@ Guide for those perfoming database migrations
 - Alembic
 - Flask-SQLAlchemy
 
-# Ensure alembic_version is up to date with latest revision
-- Connect via PSQL
-- Match version in `alembic_versions` table with latest revision in `migrations/`
-
 ## Creating database initially
 
-Use `python db.py`
+Use `manage.py`
 
 
 ## Modifying existing tables
 
-[Altering existing columns](https://stackoverflow.com/questions/41149554/default-for-column-xxxx-cannot-be-cast-automatically-to-type-boolean-in-postgr)
+Use [Alembic](https://alembic.sqlalchemy.org/en/latest/)
 
-## Schema
-
-https://stackoverflow.com/questions/3327312/how-can-i-drop-all-the-tables-in-a-postgresql-database
