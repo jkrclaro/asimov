@@ -1,6 +1,6 @@
 Create apps
 
 ```
-mkdir selfcarte/merchant
-python manage.py startapp merchant selfcarte/merchant
+mkdir spidxr/merchant
+python manage.py startapp merchant spidxr/merchant
 ```

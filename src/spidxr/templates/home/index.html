@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "shared/head.html" %}
+</head>
+<body>
+    {% include "home/nav.html" %}
+    <div class='bg__layout--white mb-5'>
+        <div class='container container__padding--top'>
+            <div class='row'>
+                <div class='col-lg-6 my-auto mb-5'>
+                    <div class='mb-3'>
+                        <h1 class='font__custom--title header__title--big'>Take your cafe online</h1>
+                        <h3 class='font__custom--text'>
+                            Spidxr makes it easy to build a unique cafe website
+                            and manage it online.
+                        </h3>
+                    </div>
+                    <div class='mb-3'>
+                        <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mb-3 mr-3'>START NOW</a>
+                        <a href="mailto:john@spidxr.com" class='btn btn__custom--primary--outline mb-3'>CONTACT US</a>
+                    </div>
+                    <p class="font__custom--text">Already using Spidxr? <a href="{{ url_for('auth.login') }}" class='anchor__custom--default'>Sign in</a></p>
+                </div>
+                <div class='col-lg-6 my-auto text-center mb-5'>
+                    <img src="{{ url_for('static', filename='img/vector-1.png') }}" class="img-fluid mb-5" width="400" height="400">
+                </div>
+                <div class='col-lg-6 text-center mt-5 mb-5'>
+                    <img src="{{ url_for('static', filename='img/vector-2.png') }}" class="img-fluid" width="300" height="300">
+                </div>
+                <div class='col-lg-6 my-auto mt-5 mb-5'>
+                    <h2 class='font__custom--title'>The complete toolkit for cafes</h2>
+                    <p class="font__custom--text">
+                        We're passionate in building effective and adaptable tools
+                        so that our merchants are equipped with a great product
+                        to manage an online shop as easily as possible.
+                    </p>
+                </div>
+                <div class='col-lg-12 mb-5'>
+                    <div class="text-lg-center">
+                        <i class="far fa-lightbulb icon__custom--big icon__custom-color--theme mb-3"></i>
+                        <h2 class='font__custom--title'>Entrepreneurs first</h2>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8">
+                                <p class='font__custom--text'>
+                                    Spidxr was built with the mindset to
+                                    reduce the barrier to entry for entrepreneurs
+                                    when it comes to building a great brand for
+                                    their cafe's website.
+                                </p>
+                            </div>
+                            <div class="col-lg-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-search icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>SEO friendly</h2>
+                    <p class="font__custom--text">
+                        Ut condimentum neque mi, vel dictum neque vulputate a.
+                        Donec eget nisl vitae ex pretium ornare in eu ligula.
+                        Phasellus aliquam sollicitudin purus nec condimentum.
+                        Praesent tincidunt euismod eleifend. Donec nec tempus erat.
+                        Fusce luctus dui sed nibh bibendum, quis varius orci sed.
+                    </p>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-mobile-alt icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Mobile responsive</h2>
+                    <p class="font__custom--text">
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
+                        Quisque sed eleifend lacus nullam.
+                    </p>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-lock icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Security</h2>
+                    <p class="font__custom--text">
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
+                        Quisque sed eleifend lacus nullam.
+                    </p>
+                </div>
+                <div class='col-lg-6 mb-5'>
+                    <i class="fas fa-angle-double-up icon__custom--big icon__custom-color--theme mb-3"></i>
+                    <h2 class='font__custom--title'>Scalability</h2>
+                    <p class="font__custom--text">
+                        Praesent dignissim ullamcorper magna, ut imperdiet urna venenatis mattis.
+                        Aliquam dignissim justo nunc, eu venenatis urna rhoncus eu.
+                        Fusce eu sapien non purus tristique gravida.
+                        Donec hendrerit placerat sem, at iaculis nisi tincidunt porttitor.
+                        Quisque sed eleifend lacus nullam.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-12 text-center' style='background-color: #F7F9FD; padding-top: 50px; padding-bottom: 50px;'>
+        <h2 class='header__title mb-5'>Say hello to your new cafe website</h2>
+        <a href="{{ url_for('auth.signup') }}" class='btn btn__custom--primary mb-3 mr-3'>CREATE ACCOUNT</a>
+        <a href="mailto:john@spidxr.com" class='btn btn__custom--primary--outline mb-3 text-center'>CONTACT US</a>
+    </div>
+    {% include "home/footer.html" %}
+    {% include "shared/scripts.html" %}
+</body>
+</html>

@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: selfcarte-production
+    environment: spidxr-production
     group_suffix: null
 global:
-  application_name: selfcarte
+  application_name: spidxr
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

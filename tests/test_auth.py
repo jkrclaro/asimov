@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.selfcarte import create_app
-from src.selfcarte.models import db
-from src.selfcarte.models.auth import User
+from src.spidxr import create_app
+from src.spidxr.models import db
+from src.spidxr.models.auth import User
 
 
 @pytest.fixture
