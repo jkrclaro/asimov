@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from src.spidxr.models.reward import Referral
-from src.spidxr.forms.reward import ReferralForm
+from src.spidxr.forms import CrawlForm
 
 
 def index(request):
+    form = CrawlForm()
+    if request.method == 'POST':
+        form = CrawlForm(request.POST)
+        if form.is_valid():
+            return redirect('spidxr:search')
+
     if not request.user.is_authenticated:
-        return render(request, 'home/index.html')
+        return render(request, 'home/index.html', {'form': form})
     else:
         if not request.user.profile.is_confirmed:
             messages.warning(
@@ -15,5 +20,4 @@ def index(request):
                 f'Please confirm your email address ({request.user.email})'
             )
         
-        form = ReferralForm()
         return render(request, 'dashboard/index.html', {'form': form})

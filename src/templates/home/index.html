@@ -1,6 +1,6 @@
 {% extends 'shared/layout.html' %}
 {% load static %}
-
+{% load widget_tweaks %}
 {% block content %}
 
 
@@ -9,12 +9,15 @@
     <div class='col-lg-6 mb-5 my-auto'>
         <h1 class='h1-heading'>Connect with anyone</h1>
         <p>Spidxr lets you find email addresses in seconds and connect with the people that matter for your business.</p>
-        <div class="input-group mb-5">
-            <input class="form-control" id="domain" name="email" placeholder="company.com" required="" type="text" value="">
-            <div class="input-group-append">
-                <button type='submit' class='btn btn-block btn-spidxr-primary'>FIND EMAIL ADDRESSSES</button>
+        <form>
+            {% csrf_token %}
+            <div class="input-group mb-5">
+                {{ form.email | add_class:"form-control" | attr:"placeholder:spidxr.com" }}
+                <div class="input-group-append">
+                    <button type='submit' class='btn btn-block btn-spidxr-primary'>FIND EMAIL ADDRESSSES</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class='col-lg-3'></div>
     <div class='col-lg-6 my-auto mb-5'>
