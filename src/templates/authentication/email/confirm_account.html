@@ -1,7 +1,7 @@
 {% autoescape off %}
 
 Hi {{ user.username }},
-Please click on the link to confirm your registration,
+Please click on the link to confirm your authentication,
 
 http://{{ domain }}{% url 'spidxr:activate' uidb64=uid token=token %}
 
