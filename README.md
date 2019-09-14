@@ -3,8 +3,6 @@
 # Spidxr
 [![CircleCI](https://circleci.com/gh/jkrclaro/spidxr/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/spidxr/tree/master)
 
-Multi-channel selling software for Etsy and Shopify.
-
 # General Information
 - Website: https://www.spidxr.com
 - Source code: https://github.com/jkrclaro/startup
