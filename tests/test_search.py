@@ -2,7 +2,7 @@ import unittest
 
 import responses
 
-from src.spidxr.search import Search
+from src.sxftware.search import Search
 
 
 class TestSearch(unittest.TestCase):

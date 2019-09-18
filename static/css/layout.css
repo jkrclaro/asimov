@@ -6,7 +6,7 @@
 
 .icon {
     font-size: 36px;
-    color: #DC143C;
+    color: #6772E5;
 }
 /* Layout -- */
 
@@ -46,43 +46,43 @@
     outline: 0 none;
 }
 
-.btn-spidxr-primary {
-    background-color: #DC143C;
-    border-color: #DC143C;
+.btn-sxftware-primary {
+    background-color: #6772E5;
+    border-color: #6772E5;
     color: #fff;
 }
-.btn-spidxr-primary:hover, .btn-spidxr-primary:focus, .btn-spidxr-primary:active, .btn-spidxr-primary.active, .open > .dropdown-toggle.btn-spidxr-primary {
+.btn-sxftware-primary:hover, .btn-sxftware-primary:focus, .btn-sxftware-primary:active, .btn-sxftware-primary.active, .open > .dropdown-toggle.btn-sxftware-primary {
     background-color: #C21135;
     border-color: #C21135;
     color: #fff;
 }
-.btn-spidxr-primary-outline {
-    border-color: #DC143C;
-    color: #DC143C;
+.btn-sxftware-primary-outline {
+    border-color: #6772E5;
+    color: #6772E5;
     border: 2px solid;
 }
-.btn-spidxr-primary-outline:hover, .btn-spidxr-primary-outline:focus, .btn-spidxr-primary-outline:active, .btn-spidxr-primary-outline.active, .open > .dropdown-toggle.btn-spidxr-primary-outline {
+.btn-sxftware-primary-outline:hover, .btn-sxftware-primary-outline:focus, .btn-sxftware-primary-outline:active, .btn-sxftware-primary-outline.active, .open > .dropdown-toggle.btn-sxftware-primary-outline {
     border-color: #C21135;
     color: #C21135;
     border: 2px solid;
 }
 
-.btn-spidxr-secondary {
+.btn-sxftware-secondary {
   background-color: #f22f46;
   border-color: #f22f46;
   color: #fff;
 }
-.btn-spidxr-secondary:hover, .btn-spidxr-secondary:focus, .btn-spidxr-secondary:active, .btn-spidxr-secondary.active, .open > .dropdown-toggle.btn-spidxr-secondary {
+.btn-sxftware-secondary:hover, .btn-sxftware-secondary:focus, .btn-sxftware-secondary:active, .btn-sxftware-secondary.active, .open > .dropdown-toggle.btn-sxftware-secondary {
   background-color: #FFE3BF;
   border-color: #FFE3BF;
   color: #856404;
 }
 /* Button -- */
 
-.spidxr-anchor-muted {
+.sxftware-anchor-muted {
     color: #999;
 }
-.spidxr-anchor-muted:hover {
+.sxftware-anchor-muted:hover {
     color: #666;
 }
 
@@ -131,11 +131,11 @@
   }
   
   input:checked + .slider {
-    background-color: #DC143C;
+    background-color: #6772E5;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #DC143C;
+    box-shadow: 0 0 1px #6772E5;
   }
   
   input:checked + .slider:before {

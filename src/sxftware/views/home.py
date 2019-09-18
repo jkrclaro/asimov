@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from src.spidxr.forms import CrawlForm
+from src.sxftware.forms import CrawlForm
 
 
 def index(request):
@@ -9,7 +9,7 @@ def index(request):
     if request.method == 'POST':
         form = CrawlForm(request.POST)
         if form.is_valid():
-            return redirect('spidxr:search')
+            return redirect('sxftware:search')
 
     if not request.user.is_authenticated:
         return render(request, 'home/index.html', {'form': form})

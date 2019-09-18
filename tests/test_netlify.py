@@ -5,7 +5,7 @@ import unittest
 
 import responses
 
-from src.spidxr.netlify import Netlify
+from src.sxftware.netlify import Netlify
 
 
 class TestNetlify(unittest.TestCase):

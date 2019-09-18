@@ -12,7 +12,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    path('', include('src.spidxr.urls', namespace='spidxr')),
+    path('', include('src.sxftware.urls', namespace='sxftware')),
     path('reset/complete', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('social/', include('social_django.urls', namespace='social')),
 ]
