@@ -1,0 +1,26 @@
+/* Creates a sticky footer */
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
+
+.main-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+  
+.sub-body {
+    flex: 1 0 auto;
+    padding: var(--space) var(--space) 0;
+    width: 100%;
+}
+
+/* Layout */
+.sxftware-bg {
+    background-color: #fff;
+}
+
+* { 
+    font-family: 'Arial';
+}

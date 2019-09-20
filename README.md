@@ -1,13 +1,4 @@
-<a href='https://github.com/jkrclaro/sxftware'><img src='https://github.com/jkrclaro/sxftware/blob/master/static/img/sxftware.png' align='right' width='200' height='160' /></a>
+# sxftware.github.io
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ecd93342-3fed-477a-af2b-1e0cbe387179/deploy-status)](https://app.netlify.com/sites/clever-yonath-0ab906/deploys)
 
-# Sxftware
-[![CircleCI](https://circleci.com/gh/jkrclaro/sxftware/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/sxftware/tree/master)
-
-# General Information
-- Website: https://www.sxftware.com
-- Source code: https://github.com/jkrclaro/startup
-- Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
-
-## Documentation
-
-For more documentations, [see docs.](https://github.com/jkrclaro/sxftware/tree/master/docs)
+My personal website.
