@@ -1,7 +1,7 @@
 
 /* -- Layout */
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .icon {
@@ -18,6 +18,13 @@
 .h1-heading, .h2-heading, .h3-heading, .h4-heading, .h5-heading {
     font-family: 'Open Sans';
     font-weight: 700;
+}
+.common-Heading {
+    font-weight: 700;
+    color: #32325D;
+}
+.common-Paragraph {
+    color: #424770;
 }
 /* Text -- */
 
@@ -36,7 +43,6 @@
     border-radius: 8px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
@@ -52,8 +58,8 @@
     color: #fff;
 }
 .btn-sxftware-primary:hover, .btn-sxftware-primary:focus, .btn-sxftware-primary:active, .btn-sxftware-primary.active, .open > .dropdown-toggle.btn-sxftware-primary {
-    background-color: #C21135;
-    border-color: #C21135;
+    background-color: #688BFF;
+    border-color: #688BFF;
     color: #fff;
 }
 .btn-sxftware-primary-outline {
@@ -62,8 +68,8 @@
     border: 2px solid;
 }
 .btn-sxftware-primary-outline:hover, .btn-sxftware-primary-outline:focus, .btn-sxftware-primary-outline:active, .btn-sxftware-primary-outline.active, .open > .dropdown-toggle.btn-sxftware-primary-outline {
-    border-color: #C21135;
-    color: #C21135;
+    border-color: #688BFF;
+    color: #688BFF;
     border: 2px solid;
 }
 
