@@ -24,3 +24,41 @@
 * { 
     font-family: 'Arial';
 }
+
+/* Button */
+.btn {
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.button-Primary {
+    background-color: #6772E5 !important;;
+    border-color: #6772E5 !important;;
+    color: #fff !important;;
+}
+.button-Primary:hover, .button-Primary:focus, .button-Primary:active, .button-Primary.active, .open > .dropdown-toggle.button-Primary {
+    background-color: #658DFC !important;;
+    border-color: #658DFC !important;;
+    color: #fff !important;;
+}
+
+/* Image */
+img {
+    border-radius: 1% !important;
+}
+
+/* Anchor */
+a {
+    color: #6772E5 !important;
+}
+a:hover {
+    color: #658DFC !important;
+}
