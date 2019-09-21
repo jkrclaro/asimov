@@ -1,4 +1,13 @@
-# sxftware.github.io
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ecd93342-3fed-477a-af2b-1e0cbe387179/deploy-status)](https://app.netlify.com/sites/clever-yonath-0ab906/deploys)
+<a href='https://github.com/jkrclaro/wxbsite'><img src='https://github.com/jkrclaro/wxbsite/blob/master/static/img/wxbsite.png' align='right' width='200' height='160' /></a>
 
-My personal website.
+# Wxbsite
+[![CircleCI](https://circleci.com/gh/jkrclaro/wxbsite/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/wxbsite/tree/master)
+
+# General Information
+- Website: https://www.wxbsite.com
+- Source code: https://github.com/jkrclaro/startup
+- Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
+
+## Documentation
+
+For more documentations, [see docs.](https://github.com/jkrclaro/wxbsite/tree/master/docs)

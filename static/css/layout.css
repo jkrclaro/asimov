@@ -6,7 +6,7 @@
 
 .icon {
     font-size: 36px;
-    color: #6772E5;
+    color: #24B47E;
 }
 /* Layout -- */
 
@@ -52,43 +52,43 @@
     outline: 0 none;
 }
 
-.btn-sxftware-primary {
-    background-color: #6772E5;
-    border-color: #6772E5;
+.btn-wxbsite-primary {
+    background-color: #24B47E;
+    border-color: #24B47E;
     color: #fff;
 }
-.btn-sxftware-primary:hover, .btn-sxftware-primary:focus, .btn-sxftware-primary:active, .btn-sxftware-primary.active, .open > .dropdown-toggle.btn-sxftware-primary {
-    background-color: #688BFF;
-    border-color: #688BFF;
+.btn-wxbsite-primary:hover, .btn-wxbsite-primary:focus, .btn-wxbsite-primary:active, .btn-wxbsite-primary.active, .open > .dropdown-toggle.btn-wxbsite-primary {
+    background-color: #2EB89B;
+    border-color: #2EB89B;
     color: #fff;
 }
-.btn-sxftware-primary-outline {
-    border-color: #6772E5;
-    color: #6772E5;
+.btn-wxbsite-primary-outline {
+    border-color: #24B47E;
+    color: #24B47E;
     border: 2px solid;
 }
-.btn-sxftware-primary-outline:hover, .btn-sxftware-primary-outline:focus, .btn-sxftware-primary-outline:active, .btn-sxftware-primary-outline.active, .open > .dropdown-toggle.btn-sxftware-primary-outline {
-    border-color: #688BFF;
-    color: #688BFF;
+.btn-wxbsite-primary-outline:hover, .btn-wxbsite-primary-outline:focus, .btn-wxbsite-primary-outline:active, .btn-wxbsite-primary-outline.active, .open > .dropdown-toggle.btn-wxbsite-primary-outline {
+    border-color: #2EB89B;
+    color: #2EB89B;
     border: 2px solid;
 }
 
-.btn-sxftware-secondary {
+.btn-wxbsite-secondary {
   background-color: #f22f46;
   border-color: #f22f46;
   color: #fff;
 }
-.btn-sxftware-secondary:hover, .btn-sxftware-secondary:focus, .btn-sxftware-secondary:active, .btn-sxftware-secondary.active, .open > .dropdown-toggle.btn-sxftware-secondary {
+.btn-wxbsite-secondary:hover, .btn-wxbsite-secondary:focus, .btn-wxbsite-secondary:active, .btn-wxbsite-secondary.active, .open > .dropdown-toggle.btn-wxbsite-secondary {
   background-color: #FFE3BF;
   border-color: #FFE3BF;
   color: #856404;
 }
 /* Button -- */
 
-.sxftware-anchor-muted {
+.wxbsite-anchor-muted {
     color: #999;
 }
-.sxftware-anchor-muted:hover {
+.wxbsite-anchor-muted:hover {
     color: #666;
 }
 
@@ -137,11 +137,11 @@
   }
   
   input:checked + .slider {
-    background-color: #6772E5;
+    background-color: #24B47E;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #6772E5;
+    box-shadow: 0 0 1px #24B47E;
   }
   
   input:checked + .slider:before {
