@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.wxbsite import create_app
-from src.wxbsite.models import db
-from src.wxbsite.models.auth import User
+from src.sxftware import create_app
+from src.sxftware.models import db
+from src.sxftware.models.auth import User
 
 
 @pytest.fixture

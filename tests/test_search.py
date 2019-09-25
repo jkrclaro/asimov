@@ -2,7 +2,7 @@ import unittest
 
 import responses
 
-from src.wxbsite.search import Search
+from src.sxftware.search import Search
 
 
 class TestSearch(unittest.TestCase):

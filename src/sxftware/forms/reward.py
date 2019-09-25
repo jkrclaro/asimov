@@ -1,7 +1,7 @@
 from django import forms
 
 from .base import BaseForm
-from src.wxbsite.models.reward import Referral
+from src.sxftware.models.reward import Referral
 
 
 class ReferralForm(BaseForm):

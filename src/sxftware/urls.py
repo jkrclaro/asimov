@@ -5,9 +5,9 @@ from django.contrib.auth.views import (
     PasswordResetDoneView,
     PasswordResetConfirmView
 )
-from src.wxbsite.views import home, dashboard, authentication
+from src.sxftware.views import home, dashboard, authentication
 
-app_name = 'wxbsite'
+app_name = 'sxftware'
 
 
 urlpatterns = [

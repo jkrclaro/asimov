@@ -13,7 +13,7 @@ load_dotenv(find_dotenv('env/development.env'))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Django
-DOMAIN_NAME = 'wxbsite.com'
+DOMAIN_NAME = 'sxftware.com'
 SITE_ID = 1
 DEBUG = bool(strtobool(os.environ['DEBUG']))
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -26,7 +26,7 @@ ROOT_URLCONF = 'src.urls'
 WSGI_APPLICATION = 'src.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'wxbsite.User'
+AUTH_USER_MODEL = 'sxftware.User'
 MAX_UPLOAD_SIZE = 524288000
 
 # Messages
@@ -44,7 +44,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('MAILGUN_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = f'Wxbsite <{EMAIL_HOST_USER}>'
+DEFAULT_FROM_EMAIL = f'Sxftware <{EMAIL_HOST_USER}>'
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 
 # AWS
@@ -54,7 +54,7 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = DOMAIN_NAME
 
 if DEBUG:
-    ALLOWED_HOSTS = ('wxbsite.localhost',)
+    ALLOWED_HOSTS = ('sxftware.localhost',)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'debug_toolbar',
-    'src.wxbsite',
+    'src.sxftware',
     'storages',
     'social_django',
     'widget_tweaks',
@@ -172,7 +172,7 @@ AUTH_PASSWORD_VALIDATORS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'src.wxbsite.backends.EmailAuth',
+    'src.sxftware.backends.EmailAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',

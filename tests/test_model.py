@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.wxbsite import create_app
-from src.wxbsite.models import db
-from src.wxbsite.models.auth import User, Profile
-from src.wxbsite.models.merchant import (
+from src.sxftware import create_app
+from src.sxftware.models import db
+from src.sxftware.models.auth import User, Profile
+from src.sxftware.models.merchant import (
     Product,
     Inventory,
     Listing,
