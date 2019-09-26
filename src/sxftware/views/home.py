@@ -9,6 +9,8 @@ from flask import (
 )
 from flask_login import current_user
 
+from ..forms import NewsletterForm
+
 
 home_bp = Blueprint('home', __name__)
 
@@ -17,8 +19,10 @@ home_bp = Blueprint('home', __name__)
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
+    
+    form = NewsletterForm()
 
-    return render_template('home/index.html')
+    return render_template('home/index.html', form=form)
 
 
 @home_bp.route('/about')
