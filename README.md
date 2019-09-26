@@ -1,7 +1,9 @@
-<a href='https://github.com/jkrclaro/sxftware'><img src='https://github.com/jkrclaro/sxftware/blob/master/static/img/sxftware.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/sxftware'><img src='https://github.com/jkrclaro/sxftware/blob/master/src/sxftware/static/img/logo.png' align='right' width='200' height='160' /></a>
 
 # Sxftware
 [![CircleCI](https://circleci.com/gh/jkrclaro/sxftware/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/sxftware/tree/master)
+
+Create and customize an online store.
 
 # General Information
 - Website: https://www.sxftware.com

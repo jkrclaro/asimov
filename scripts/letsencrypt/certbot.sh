@@ -10,5 +10,5 @@ certbot certonly --non-interactive --manual --expand \
   --logs-dir "./letsencrypt" \
   --agree-tos \
   --manual-public-ip-logging-ok \
-  --domains sxftware.com,www.sxftware.com\
-  --email sxftware@gmail.com
+  --domains sxftware.com,www.sxftware.com,beta.sxftware.com,merchant.sxftware.com \
+  --email john@sxftware.com

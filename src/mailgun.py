@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.coderlib.com'
+domain = 'www.sxftware.com'
 region = 'eu'
-from_email = f'Coderlib <mailgun@{domain}>'
+from_email = f'Sxftware <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

@@ -1,19 +1,18 @@
 version: '3.3'
 services:
     database:
-        env_file: database.env
+        env_file: env/database.env
         image: postgres
         ports:
           - "5432:5432"
         restart: always
     server:
-        env_file: .env
         build: .
         ports:
-         - "8000:8000"
+         - "5000:5000"
         depends_on:
           - database
         image: sxftware
         volumes:
-          - .:/app
-        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+          - .:/server
+        command: ["app:app", "-b", "0.0.0.0:5000", "--reload", "--worker-tmp-dir", "/dev/shm", "--workers", "2", "--threads", "4", "--worker-class", "gthread"]
