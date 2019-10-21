@@ -2,13 +2,13 @@
 
 # Use Let's Encrypt certbot to order a free certificate
 certbot certonly --non-interactive --manual --expand \
-  --manual-auth-hook "./auth-hook.sh UPSERT sxftware.com" \
-  --manual-cleanup-hook "./auth-hook.sh DELETE sxftware.com" \
+  --manual-auth-hook "./auth-hook.sh UPSERT scrapeguin.com" \
+  --manual-cleanup-hook "./auth-hook.sh DELETE scrapeguin.com" \
   --preferred-challenge dns \
   --config-dir "./letsencrypt" \
   --work-dir "./letsencrypt" \
   --logs-dir "./letsencrypt" \
   --agree-tos \
   --manual-public-ip-logging-ok \
-  --domains sxftware.com,www.sxftware.com,beta.sxftware.com,merchant.sxftware.com \
-  --email john@sxftware.com
+  --domains scrapeguin.com,www.scrapeguin.com,beta.scrapeguin.com,merchant.scrapeguin.com \
+  --email john@scrapeguin.com

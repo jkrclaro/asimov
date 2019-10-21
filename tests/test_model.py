@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.sxftware import create_app
-from src.sxftware.models import db
-from src.sxftware.models.auth import User, Profile
-from src.sxftware.models.merchant import (
+from src.scrapeguin import create_app
+from src.scrapeguin.models import db
+from src.scrapeguin.models.auth import User, Profile
+from src.scrapeguin.models.merchant import (
     Product,
     Inventory,
     Listing,

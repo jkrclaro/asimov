@@ -9,7 +9,7 @@ def main():
     mailgun.password = os.environ.get('MAILGUN_PASSWORD')
     token.secret_key = '123'
     token.salt = '12345'
-    email = {'email': 'john@sxftware.com'}
+    email = {'email': 'john@scrapeguin.com'}
 
     data = token.encrypt(email)
     url = f'http://dashboard.localhost:3000/confirm?t={data}'
@@ -17,10 +17,10 @@ def main():
 
     # Requires an app context to use flask.render_template so just use jinja2
     html = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('src/sxftware/templates/')
+        loader=jinja2.FileSystemLoader('src/scrapeguin/templates/')
     ).get_template('email/confirm.html').render(context)
     mailgun.send_email(
-        'Confirm your Sxftware email address!',
+        'Confirm your Scrapeguin email address!',
         [f'John {email}'],
         html=html,
     )

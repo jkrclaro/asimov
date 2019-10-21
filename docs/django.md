@@ -1,6 +1,6 @@
 Create apps
 
 ```
-mkdir sxftware/merchant
-python manage.py startapp merchant sxftware/merchant
+mkdir scrapeguin/merchant
+python manage.py startapp merchant scrapeguin/merchant
 ```

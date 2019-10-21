@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.sxftware import create_app
-from src.sxftware.models import db
-from src.sxftware.models.auth import User
+from src.scrapeguin import create_app
+from src.scrapeguin.models import db
+from src.scrapeguin.models.auth import User
 
 
 @pytest.fixture

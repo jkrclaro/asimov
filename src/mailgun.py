@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.sxftware.com'
+domain = 'www.scrapeguin.com'
 region = 'eu'
-from_email = f'Sxftware <mailgun@{domain}>'
+from_email = f'Scrapeguin <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):
