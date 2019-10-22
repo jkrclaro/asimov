@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.scrapeguin import create_app
-from src.scrapeguin.models import db
-from src.scrapeguin.models.auth import User
+from src.scrapebug import create_app
+from src.scrapebug.models import db
+from src.scrapebug.models.auth import User
 
 
 @pytest.fixture

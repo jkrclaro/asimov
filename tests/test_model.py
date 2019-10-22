@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.scrapeguin import create_app
-from src.scrapeguin.models import db
-from src.scrapeguin.models.auth import User, Profile
-from src.scrapeguin.models.merchant import (
+from src.scrapebug import create_app
+from src.scrapebug.models import db
+from src.scrapebug.models.auth import User, Profile
+from src.scrapebug.models.merchant import (
     Product,
     Inventory,
     Listing,

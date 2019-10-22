@@ -2,7 +2,7 @@ import os
 import logging
 from dotenv import find_dotenv, load_dotenv
 
-from src.scrapeguin import create_app
+from src.scrapebug import create_app
 
 logging.getLogger().setLevel(logging.INFO)
 load_dotenv(find_dotenv('env/development.env'))

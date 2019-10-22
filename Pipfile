@@ -32,8 +32,6 @@ flask-migrate = "*"
 python-slugify = "*"
 babel = "*"
 boto3 = "*"
-scrapy = "*"
-bs4 = "*"
 
 [dev-packages]
 pytest = "*"
