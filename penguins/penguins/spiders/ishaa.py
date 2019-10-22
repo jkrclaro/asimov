@@ -22,12 +22,8 @@ class Ishaa(scrapy.Spider):
                 lead = anchor.text.strip()
                 lead = lead.split()
 
-                if 'Dr.' in lead:
-                    del lead[0]
-
                 if len(lead) > 1:
                     name = lead[0]
-                    name = name.replace('Mr.', '')
                     name = name.title()
 
                     if name != 'Find':
@@ -39,19 +35,30 @@ class Ishaa(scrapy.Spider):
         soup = BeautifulSoup(response.text, 'lxml')
 
         email = soup.find('a', {'class': 'email_link'})
-        email = email['href'].replace('mailto:', '')
+        try:
+            email = email['href'].replace('mailto:', '')
+        except TypeError:
+            email = 'N/A'
 
         anchors = soup.find_all('a', href=True)
         website = 'N/A'
         for anchor in anchors:
             href = anchor['href']
-            if 'www' in href and 'togetherdigital.ie' not in href and 'ishaa.ie' not in href:
+            if (
+                'www' in href and
+                'togetherdigital.ie' not in href and
+                'ishaa.ie' not in href
+            ):
                 website = href
 
         name = soup.find('h1')
         name = name.text
         name = name.replace(' MISHAA', '')
+        name = name.replace(' FISHAA', '')
+        name = name.replace('Mr.', '')
+        name = name.replace('Dr.', '')
         name = name.strip()
+        name = name.split()[0]
 
         lead['name'] = name
         lead['email'] = email
