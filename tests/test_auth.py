@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.scrapebug import create_app
-from src.scrapebug.models import db
-from src.scrapebug.models.auth import User
+from src.customerable import create_app
+from src.customerable.models import db
+from src.customerable.models.auth import User
 
 
 @pytest.fixture

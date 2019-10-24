@@ -1,0 +1,14 @@
+{% extends 'email/layout.html' %}
+
+{% block content %}
+
+<p>
+    The email address on your Customerable merchant has been successfully changed to {{ new_email }}.
+    I'm letting you know about this at your old e-mail address to make sure that this was, in fact, you making the change.
+</p>
+
+<p>If you did not request this change, please let me know immediately by replying to this email.</p>
+
+<p>John from Customerable</p>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 Create apps
 
 ```
-mkdir scrapebug/merchant
-python manage.py startapp merchant scrapebug/merchant
+mkdir customerable/merchant
+python manage.py startapp merchant customerable/merchant
 ```

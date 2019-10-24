@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: scrapebug-production
+    environment: customerable-production
     group_suffix: null
 global:
-  application_name: scrapebug
+  application_name: customerable
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce
