@@ -5,53 +5,116 @@
 </head>
 <body>
     {% include "home/nav.html" %}
-    <div class='bg__layout--white mb-5'>
-        <div class='container container__padding--top'>
-            <div class="row">
-                <div class='col-lg-8'>
-                    <h1 class='font__custom--title'>The smart way to serve images.</h1>
-                    <p class='font__custom--text'>
-                        Easy image management, manipulation and delivery.
-                        Drive your business forward with the new breed of image CDN.
-                    </p>
-                    <a href='#' class="btn btn__custom--primary">GET STARTED</a>
-                    <a href='#' class="btn btn__custom--primary--outline">CONTACT SALES</a>
-                </div>
-                <div class="col-lg-4">
+    <section id='landingpage'>
+        <div style='background-color: #24292E; color: #FFF; padding-top: 50px; padding-bottom: 50px;'>
+            <div class='container'>
+                <div class="row">
+                    <div class='col-lg-8'>
+                        <h1>The smart way to serve images.</h1>
+                        <p>
+                            Easy image management, manipulation and delivery.
+                            Drive your business forward with the new breed of image CDN.
+                        </p>
+                        <a href='#' class="btn btn__custom--primary">GET STARTED</a>
+                        <a href='#' class="btn btn__custom--primary--outline">CONTACT SALES</a>
+                    </div>
+                    <div class="col-lg-4">
 
+                    </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
-    <div class='col-lg-12' style='background-color: #F7F9FD; padding-top: 50px; padding-bottom: 50px;'>
-        <div class='row'>
-            <div class='col-lg-3'></div>
-            <div class='col-lg-6'>
+        <div class='mb-5' style='padding-top: 50px;'>
+            <div class='container'>
                 <div class='row'>
-                    <div class='col-lg-6'>
-                        <h3 class='font__custom--title'>Keep in touch</h3>
-                        <p class='font__custom--text'>
-                            Share your email so we can send you occasional email updates about Staticfile.
+                    <div class='col-lg-6 my-auto'>
+                        <h3>The complete toolkit for internet businesses.</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Maecenas at libero et nulla auctor mattis.
+                            Aenean elementum bibendum ex, et congue metus condimentum vel.
+                            In rutrum fermentum finibus.
+                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
+                            Nunc at mauris sagittis amet.
                         </p>
                     </div>
-                    <div class='col-lg-6 my-auto'>
-                        <form method=post>
-                            {{ form.csrf_token }}
-                            <span class='input-group'>
-                                {{ form.email(class_='form-control', placeholder='Your email') | safe }}
-                                <span class="input-group-append">
-                                    <span class="btn btn__custom--primary"><i class="fas fa-arrow-right"></i></span>
-                                </span>
-                            </span>
-                            <small class='text-muted'>No spam. Unsubscribe at anytime</small>
-                        </form>
+                    <div class='col-lg-6 text-center'>
+                        <img src='https://via.placeholder.com/300' class='img-fluid'>
                     </div>
                 </div>
             </div>
-            <div class='col-lg-3'></div>
         </div>
-    </div>
+        <div class='mb-5'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-lg-2'></div>
+                    <div class='col-lg-8 mt-5 mb-5'>
+                        <div class='text-lg-center'>
+                            <h3>Developers first.</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Maecenas at libero et nulla auctor mattis.
+                                Aenean elementum bibendum ex, et congue metus condimentum vel.
+                                In rutrum fermentum finibus.
+                                Vestibulum lacinia viverra neque, nec sollicitudin libero.
+                                Nunc at mauris sagittis amet.
+                            </p>
+                        </div>
+                        <div class='text-center'>
+                            <img src='https://via.placeholder.com/300' class='img-fluid'>
+                        </div>
+                    </div>
+                    <div class='col-lg-2'></div>
+                </div>
+            </div>
+        </div>
+        <div style='background-color: #FFF; color: #24292E' class='mb-5'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-lg-6 mb-5'>
+                        <h3>Always improving.</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Maecenas at libero et nulla auctor mattis.
+                            Aenean elementum bibendum ex, et congue metus condimentum vel.
+                            In rutrum fermentum finibus.
+                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
+                            Nunc at mauris sagittis amet.
+                        </p>
+                    </div>
+                    <div class='col-lg-6'>
+                        <h3>Global scale.</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Maecenas at libero et nulla auctor mattis.
+                            Aenean elementum bibendum ex, et congue metus condimentum vel.
+                            In rutrum fermentum finibus.
+                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
+                            Nunc at mauris sagittis amet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style='background-color: #24292E; color: #FFF; padding-top: 50px; padding-bottom: 50px;'>
+            <div class='container'>
+                <div class="row">
+                    <div class='col-lg-6 mb-3'>
+                        <h2>Ready to get started?</h2>
+                        <h4>
+                            Get in touch or create an account
+                        </h4>
+                    </div>
+                    <div class="col-lg-6 my-auto text-lg-center">
+                        <a href='#' class="btn btn__custom--primary">GET STARTED</a>
+                        <a href='#' class="btn btn__custom--primary--outline">CONTACT SALES</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     {% include "home/footer.html" %}
     {% include "shared/scripts.html" %}
 </body>
