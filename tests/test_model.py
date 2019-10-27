@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.customerable import create_app
-from src.customerable.models import db
-from src.customerable.models.auth import User, Profile
-from src.customerable.models.merchant import (
+from src.staticfile import create_app
+from src.staticfile.models import db
+from src.staticfile.models.auth import User, Profile
+from src.staticfile.models.merchant import (
     Product,
     Inventory,
     Listing,

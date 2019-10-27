@@ -1,6 +1,6 @@
 Create apps
 
 ```
-mkdir customerable/merchant
-python manage.py startapp merchant customerable/merchant
+mkdir staticfile/merchant
+python manage.py startapp merchant staticfile/merchant
 ```

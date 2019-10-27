@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.customerable import create_app
-from src.customerable.models import db
-from src.customerable.models.auth import User
+from src.staticfile import create_app
+from src.staticfile.models import db
+from src.staticfile.models.auth import User
 
 
 @pytest.fixture

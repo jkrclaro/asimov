@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.customerable.com'
+domain = 'www.staticfile.io'
 region = 'eu'
-from_email = f'Customerable <mailgun@{domain}>'
+from_email = f'Staticfile <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

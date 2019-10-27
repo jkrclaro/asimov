@@ -9,7 +9,7 @@ class Unit(unittest.TestCase):
 
     @responses.activate
     def test_send_email(self):
-        url = 'https://api.eu.mailgun.net/v3/www.customerable.com/messages'
+        url = 'https://api.eu.mailgun.net/v3/www.staticfile.io/messages'
         responses.add(responses.POST, url)
 
         response = mailgun.send_email(
@@ -18,7 +18,7 @@ class Unit(unittest.TestCase):
             'Welcome',
         )
 
-        assert response.request.body == 'from=Customerable+%3Cmailgun%40www.customerable.com%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
+        assert response.request.body == 'from=Customerable+%3Cmailgun%40www.staticfile.io%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
 
 
 if __name__ == '__main__':
