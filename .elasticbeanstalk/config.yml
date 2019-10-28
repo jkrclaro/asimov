@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: staticfile-production
+    environment: hapload-production
     group_suffix: null
 global:
-  application_name: staticfile
+  application_name: hapload
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

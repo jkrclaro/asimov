@@ -9,7 +9,7 @@ def main():
     mailgun.password = os.environ.get('MAILGUN_PASSWORD')
     token.secret_key = '123'
     token.salt = '12345'
-    email = {'email': 'john@staticfile.io'}
+    email = {'email': 'john@hapload.com'}
 
     data = token.encrypt(email)
     url = f'http://dashboard.localhost:3000/confirm?t={data}'
@@ -17,7 +17,7 @@ def main():
 
     # Requires an app context to use flask.render_template so just use jinja2
     html = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('src/staticfile/templates/')
+        loader=jinja2.FileSystemLoader('src/hapload/templates/')
     ).get_template('email/confirm.html').render(context)
     mailgun.send_email(
         'Confirm your Customerable email address!',

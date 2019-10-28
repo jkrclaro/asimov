@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.staticfile import create_app
-from src.staticfile.models import db
-from src.staticfile.models.auth import User
+from src.hapload import create_app
+from src.hapload.models import db
+from src.hapload.models.auth import User
 
 
 @pytest.fixture

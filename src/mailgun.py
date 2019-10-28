@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.staticfile.io'
+domain = 'www.hapload.com'
 region = 'eu'
-from_email = f'Staticfile <mailgun@{domain}>'
+from_email = f'Hapload <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):
