@@ -6,20 +6,20 @@
 <body>
     {% include "home/nav.html" %}
     <section id='landingpage'>
-        <div style='background-color: #24292E; color: #FFF; padding-top: 50px; padding-bottom: 50px;'>
+        <div style='padding-bottom: 50px;'>
             <div class='container'>
                 <div class="row">
-                    <div class='col-lg-8'>
-                        <h1>The smart way to serve images.</h1>
+                    <div class='col-lg-6 my-auto'>
+                        <h1>Simple, developer-friendly way to manage static files.</h1>
                         <p>
-                            Easy image management, manipulation and delivery.
-                            Drive your business forward with the new breed of image CDN.
+                            In ligula ante, ullamcorper id imperdiet eu, blandit volutpat nisl.
+                            Donec sit amet nisl at tortor faucibus vehicula non sed ante massa nunc.
                         </p>
-                        <a href='#' class="btn btn__custom--primary">GET STARTED</a>
-                        <a href='#' class="btn btn__custom--primary--outline">CONTACT SALES</a>
+                        <a href="{{ url_for('auth.signup') }}" class="btn btn-Primary mr-2">GET STARTED</a>
+                        <a href='mailto:john@staticfile.io' class="btn btn-Primary--outline">GET IN TOUCH</a>
                     </div>
-                    <div class="col-lg-4">
-
+                    <div class="col-lg-6 mt-5 text-center">
+                        <img src="{{ url_for('static', filename='img/vector1.png') }}" class='img-fluid' height=400 width=400>
                     </div>
                 </div>
 
@@ -31,12 +31,9 @@
                     <div class='col-lg-6 my-auto'>
                         <h3>The complete toolkit for internet businesses.</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Maecenas at libero et nulla auctor mattis.
-                            Aenean elementum bibendum ex, et congue metus condimentum vel.
-                            In rutrum fermentum finibus.
-                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
-                            Nunc at mauris sagittis amet.
+                            Quisque eleifend mollis nulla eget condimentum.
+                            Duis nisi leo, consectetur id leo sit amet, posuere consequat ante.
+                            Curabitur dolor posuere.
                         </p>
                     </div>
                     <div class='col-lg-6 text-center'>
@@ -52,15 +49,15 @@
                     <div class='col-lg-8 mt-5 mb-5'>
                         <div class='text-lg-center'>
                             <h3>Developers first.</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Maecenas at libero et nulla auctor mattis.
-                                Aenean elementum bibendum ex, et congue metus condimentum vel.
-                                In rutrum fermentum finibus.
-                                Vestibulum lacinia viverra neque, nec sollicitudin libero.
-                                Nunc at mauris sagittis amet.
-                            </p>
                         </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Maecenas at libero et nulla auctor mattis.
+                            Aenean elementum bibendum ex, et congue metus condimentum vel.
+                            In rutrum fermentum finibus.
+                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
+                            Nunc at mauris sagittis amet.
+                        </p>
                         <div class='text-center'>
                             <img src='https://via.placeholder.com/300' class='img-fluid'>
                         </div>
@@ -69,47 +66,42 @@
                 </div>
             </div>
         </div>
-        <div style='background-color: #FFF; color: #24292E' class='mb-5'>
+        <div class='mb-5'>
             <div class='container'>
                 <div class='row'>
                     <div class='col-lg-6 mb-5'>
                         <h3>Always improving.</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Maecenas at libero et nulla auctor mattis.
-                            Aenean elementum bibendum ex, et congue metus condimentum vel.
-                            In rutrum fermentum finibus.
-                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
-                            Nunc at mauris sagittis amet.
+                            Praesent consequat non sapien a viverra.
+                            Praesent dictum augue sit amet dui interdum, sed rutrum ligula iaculis.
+                            Maecenas aliquet lectus id.
                         </p>
                     </div>
                     <div class='col-lg-6'>
                         <h3>Global scale.</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Maecenas at libero et nulla auctor mattis.
-                            Aenean elementum bibendum ex, et congue metus condimentum vel.
-                            In rutrum fermentum finibus.
-                            Vestibulum lacinia viverra neque, nec sollicitudin libero.
-                            Nunc at mauris sagittis amet.
+                            Pellentesque ut est felis.
+                            Phasellus congue neque nibh, quis efficitur nunc tincidunt id.
+                            Praesent dictum mi ut ultrices pretium.
+                            Donec sed.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div style='background-color: #24292E; color: #FFF; padding-top: 50px; padding-bottom: 50px;'>
+        <div style='padding-top: 50px; padding-bottom: 50px;'>
             <div class='container'>
                 <div class="row">
+                    <div class='col-lg-3'></div>
                     <div class='col-lg-6 mb-3'>
                         <h2>Ready to get started?</h2>
-                        <h4>
-                            Get in touch or create an account
-                        </h4>
+                        <p>
+                            Get in touch or create an account.
+                        </p>
+                        <a href="{{ url_for('auth.signup') }}" class="btn btn-Primary mr-2 mb-3">CREATE STATICFILE ACCOUNT</a>
+                        <a href='mailto:john@staticfile.io' class="btn btn-Primary--outline mb-3">GET IN TOUCH</a>
                     </div>
-                    <div class="col-lg-6 my-auto text-lg-center">
-                        <a href='#' class="btn btn__custom--primary">GET STARTED</a>
-                        <a href='#' class="btn btn__custom--primary--outline">CONTACT SALES</a>
-                    </div>
+                    <div class='col-lg-3'></div>
                 </div>
 
             </div>

@@ -17,7 +17,7 @@
                             {{ form.csrf_token }}
                             {{ render_field(form.email) }}
                             {% include "shared/recaptcha.html" %}
-                            <button type='submit' class='btn btn-block btn__custom--primary'>Send reset password email</button>
+                            <button type='submit' class='btn btn-block btn-Primary'>Send reset password email</button>
                         </form>
                     {% else %}
                         <p class='font__custom--text text-center'>An email is on its way to you. Follow the instructions to reset your password.</p>
