@@ -123,7 +123,7 @@ dmypy.json
 
 # local
 config/
-staticfiles/
+cloudfiles/
 
 # vscode
 .vscode

@@ -1,6 +1,6 @@
 Create apps
 
 ```
-mkdir hapload/merchant
-python manage.py startapp merchant hapload/merchant
+mkdir cloudfile/merchant
+python manage.py startapp merchant cloudfile/merchant
 ```

@@ -9,7 +9,7 @@ class Unit(unittest.TestCase):
 
     @responses.activate
     def test_send_email(self):
-        url = 'https://api.eu.mailgun.net/v3/www.hapload.com/messages'
+        url = 'https://api.eu.mailgun.net/v3/www.cloudfile.dev/messages'
         responses.add(responses.POST, url)
 
         response = mailgun.send_email(
@@ -18,7 +18,7 @@ class Unit(unittest.TestCase):
             'Welcome',
         )
 
-        assert response.request.body == 'from=Customerable+%3Cmailgun%40www.hapload.com%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
+        assert response.request.body == 'from=Customerable+%3Cmailgun%40www.cloudfile.dev%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
 
 
 if __name__ == '__main__':
