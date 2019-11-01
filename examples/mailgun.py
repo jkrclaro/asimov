@@ -20,7 +20,7 @@ def main():
         loader=jinja2.FileSystemLoader('src/cloudfile/templates/')
     ).get_template('email/confirm.html').render(context)
     mailgun.send_email(
-        'Confirm your Customerable email address!',
+        'Confirm your Cloudfile email address!',
         [f'John {email}'],
         html=html,
     )

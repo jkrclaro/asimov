@@ -18,7 +18,7 @@ class Unit(unittest.TestCase):
             'Welcome',
         )
 
-        assert response.request.body == 'from=Customerable+%3Cmailgun%40www.cloudfile.dev%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
+        assert response.request.body == 'from=Cloudfile+%3Cmailgun%40www.cloudfile.dev%3E&to=John+jkrclaro%40gmail.com&subject=Confirm+your+email&text=Welcome&html='
 
 
 if __name__ == '__main__':
