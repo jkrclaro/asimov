@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.cloudfile.dev'
+domain = 'www.warkphone.com'
 region = 'eu'
-from_email = f'Cloudfile <mailgun@{domain}>'
+from_email = f'Warkphone <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

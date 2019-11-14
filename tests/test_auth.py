@@ -3,9 +3,9 @@ import tempfile
 
 import pytest
 
-from src.cloudfile import create_app
-from src.cloudfile.models import db
-from src.cloudfile.models.auth import User
+from src.warkphone import create_app
+from src.warkphone.models import db
+from src.warkphone.models.auth import User
 
 
 @pytest.fixture

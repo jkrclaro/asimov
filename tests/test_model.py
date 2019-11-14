@@ -4,10 +4,10 @@ import tempfile
 import pytest
 from flask import Flask
 
-from src.cloudfile import create_app
-from src.cloudfile.models import db
-from src.cloudfile.models.auth import User, Profile
-from src.cloudfile.models.merchant import (
+from src.warkphone import create_app
+from src.warkphone.models import db
+from src.warkphone.models.auth import User, Profile
+from src.warkphone.models.merchant import (
     Product,
     Inventory,
     Listing,
