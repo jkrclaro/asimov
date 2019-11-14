@@ -220,6 +220,7 @@ input[type="checkbox"], label {
     box-shadow: 0 4px 8px 0 rgb(206, 206, 206);
 }
 .form-control {
+    border-radius: 0px;
     color: #111 !important;
 }
 .form-control:focus, .form-control:active {
