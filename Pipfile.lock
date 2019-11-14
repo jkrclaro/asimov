@@ -3,6 +3,7 @@
         "hash": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             "sha256": "c050c304c5c58090f9a2bc6a6ee731ed481e55e0ddb27ceb6beb1f772b194716"
 =======
             "sha256": "8b9b521e5ccfa0246a7d1b91a2200b62b68c68d113a70244ccebe3f34b8b3c3f"
@@ -10,6 +11,9 @@
 =======
             "sha256": "8b9b521e5ccfa0246a7d1b91a2200b62b68c68d113a70244ccebe3f34b8b3c3f"
 >>>>>>> Add twilio
+=======
+            "sha256": "a73719050a8fece6849bc7f5e4b8449e6800b7010090a9acfcbdde96b9874e44"
+>>>>>>> Bump werkzeug from 0.14.1 to 0.15.3
         },
         "pipfile-spec": 6,
         "requires": {
@@ -535,11 +539,11 @@
         },
         "werkzeug": {
             "hashes": [
-                "sha256:c3fd7a7d41976d9f44db327260e263132466836cef6f91512889ed60ad26557c",
-                "sha256:d5da73735293558eb1651ee2fddc4d0dedcfa06538b8813a2e20011583c9e49b"
+                "sha256:97660b282aa7e29f94f3fe378e5c7162d7ab9d601a8dbb1cbb2ffc8f0e54607d",
+                "sha256:cfd1281b1748288e59762c0e174d64d8bcb2b70e7c57bc4a1203c8825af24ac3"
             ],
             "index": "pypi",
-            "version": "==0.14.1"
+            "version": "==0.15.3"
         },
         "wtforms": {
             "hashes": [
