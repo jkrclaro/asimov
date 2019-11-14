@@ -32,6 +32,7 @@ flask-migrate = "*"
 python-slugify = "*"
 babel = "*"
 boto3 = "*"
+twilio = "*"
 
 [dev-packages]
 pytest = "*"
