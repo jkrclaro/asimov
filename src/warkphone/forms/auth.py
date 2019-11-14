@@ -33,7 +33,7 @@ class SignupForm(FlaskForm):
         ]
     )
     name = StringField(
-        'Name of shop',
+        'Name',
         validators=[
             Regexp(
                 regex=r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*",
