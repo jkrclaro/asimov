@@ -32,6 +32,10 @@ flask-migrate = "*"
 python-slugify = "*"
 babel = "*"
 boto3 = "*"
+<<<<<<< HEAD
+=======
+twilio = "*"
+>>>>>>> Add speech-bubble CSS
 
 [dev-packages]
 pytest = "*"

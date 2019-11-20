@@ -4,10 +4,17 @@ import tempfile
 import pytest
 from flask import Flask
 
+<<<<<<< HEAD
 from src.warkphone import create_app
 from src.warkphone.models import db
 from src.warkphone.models.auth import User, Profile
 from src.warkphone.models.merchant import (
+=======
+from src.sidefone import create_app
+from src.sidefone.models import db
+from src.sidefone.models.auth import User, Profile
+from src.sidefone.models.merchant import (
+>>>>>>> Add speech-bubble CSS
     Product,
     Inventory,
     Listing,
