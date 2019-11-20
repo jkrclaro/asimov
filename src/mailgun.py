@@ -1,9 +1,15 @@
 import requests
 
 api_key = ''
+<<<<<<< HEAD
 domain = 'www.warkphone.com'
 region = 'eu'
 from_email = f'Warkphone <mailgun@{domain}>'
+=======
+domain = 'www.sidefone.com'
+region = 'eu'
+from_email = f'Sidefone <mailgun@{domain}>'
+>>>>>>> Add speech-bubble CSS
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):

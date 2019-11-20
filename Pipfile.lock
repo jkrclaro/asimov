@@ -1,7 +1,11 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD
             "sha256": "c050c304c5c58090f9a2bc6a6ee731ed481e55e0ddb27ceb6beb1f772b194716"
+=======
+            "sha256": "8b9b521e5ccfa0246a7d1b91a2200b62b68c68d113a70244ccebe3f34b8b3c3f"
+>>>>>>> Add speech-bubble CSS
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,9 +22,15 @@
     "default": {
         "alembic": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:9f907d7e8b286a1cfb22db9084f9ce4fde7ad7956bb496dc7c952e10ac90e36a"
             ],
             "version": "==1.2.1"
+=======
+                "sha256:49277bb7242192bbb9eac58fed4fe02ec6c3a2a4b4345d2171197459266482b2"
+            ],
+            "version": "==1.3.1"
+>>>>>>> Add speech-bubble CSS
         },
         "babel": {
             "hashes": [
@@ -64,6 +74,7 @@
         },
         "boto3": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:839285fbd6f3ab16170af449ae9e33d0eccf97ca22de17d9ff68b8da2310ea06",
                 "sha256:d93f1774c4bc66e02acdda2067291acb9e228a035435753cb75f83ad2904cbe3"
             ],
@@ -76,6 +87,20 @@
                 "sha256:dc080aed4f9b220a9e916ca29ca97a9d37e8e1d296fe89cbaeef929bf0c8066b"
             ],
             "version": "==1.12.253"
+=======
+                "sha256:69a8df48365dde32744e1c62fbfd09e98cb494380498b21c2b2ee8310fa4f686",
+                "sha256:eff5d983f6849e4f866ce30ef2fd5048dc5f07de7639b5f988faca56b793a294"
+            ],
+            "index": "pypi",
+            "version": "==1.10.17"
+        },
+        "botocore": {
+            "hashes": [
+                "sha256:331f624a145be872852e6bff56ed53f5881a8ddb309df2c18e197482c59f5bc8",
+                "sha256:fc79a28d2f8e04e30b3e02b8d3779b4b721d71e5dbe57c6b265ef99575fd9667"
+            ],
+            "version": "==1.13.17"
+>>>>>>> Add speech-bubble CSS
         },
         "certifi": {
             "hashes": [
@@ -308,11 +333,19 @@
                 "sha256:84156313f258eafff716b2961644a4483a9be44a5d43551d554844d15d4d224e",
                 "sha256:8578d6b8192e4c805e85f187bc530d0f52ba86c39172e61cd51f68fddd648103",
                 "sha256:890167d5091279a27e2505ff0e1fb273f8c48c41d35c5b92adbf4af80e6b2ed6",
+<<<<<<< HEAD
+=======
+                "sha256:98e10634792ac0e9e7a92a76b4991b44c2325d3e7798270a808407355e7bb0a1",
+>>>>>>> Add speech-bubble CSS
                 "sha256:9aadff9032e967865f9778485571e93908d27dab21d0fdfdec0ca779bb6f8ad9",
                 "sha256:9f24f383a298a0c0f9b3113b982e21751a8ecde6615494a3f1470eb4a9d70e9e",
                 "sha256:a73021b44813b5c84eda4a3af5826dd72356a900bac9bd9dd1f0f81ee1c22c2f",
                 "sha256:afd96845e12638d2c44d213d4810a08f4dc4a563f9a98204b7428e567014b1cd",
                 "sha256:b73ddf033d8cd4cc9dfed6324b1ad2a89ba52c410ef6877998422fcb9c23e3a8",
+<<<<<<< HEAD
+=======
+                "sha256:b8f490f5fad1767a1331df1259763b3bad7d7af12a75b950c2843ba319b2415f",
+>>>>>>> Add speech-bubble CSS
                 "sha256:dbc5cd56fff1a6152ca59445178652756f4e509f672e49ccdf3d79c1043113a4",
                 "sha256:eac8a3499754790187bb00574ab980df13e754777d346f85e0ff6df929bcd964",
                 "sha256:eaed1c65f461a959284649e37b5051224f4db6ebdc84e40b5e65f2986f101a08"
@@ -383,11 +416,19 @@
         },
         "requests-oauthlib": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:bd6533330e8748e94bf0b214775fed487d309b8b8fe823dc45641ebcd9a32f57",
                 "sha256:d3ed0c8f2e3bbc6b344fa63d6f933745ab394469da38db16bdddb461c7e25140"
             ],
             "index": "pypi",
             "version": "==1.2.0"
+=======
+                "sha256:7f71572defaecd16372f9006f33c2ec8c077c3cfa6f5911a9a90202beb513f3d",
+                "sha256:b4261601a71fd721a8bd6d7aa1cc1d6a8a93b4a9f5e96626f8e4d91e8beeaa6a"
+            ],
+            "index": "pypi",
+            "version": "==1.3.0"
+>>>>>>> Add speech-bubble CSS
         },
         "s3transfer": {
             "hashes": [
@@ -418,6 +459,7 @@
             ],
             "version": "==1.3"
         },
+<<<<<<< HEAD
         "urllib3": {
             "hashes": [
                 "sha256:3de946ffbed6e6746608990594d08faac602528ac7015ac28d33cee6a45b7398",
@@ -425,6 +467,22 @@
             ],
             "markers": "python_version >= '3.4'",
             "version": "==1.25.6"
+=======
+        "twilio": {
+            "hashes": [
+                "sha256:668c71d17fa1f48137e883c73c6dc56f0c2afeaca5883ad8033384d8c8e6c793"
+            ],
+            "index": "pypi",
+            "version": "==6.33.1"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:a8a318824cc77d1fd4b2bec2ded92646630d7fe8619497b142c84a9e6f5a7293",
+                "sha256:f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"
+            ],
+            "markers": "python_version >= '3.4'",
+            "version": "==1.25.7"
+>>>>>>> Add speech-bubble CSS
         },
         "werkzeug": {
             "hashes": [
@@ -481,11 +539,19 @@
         },
         "flake8": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:19241c1cbc971b9962473e4438a2ca19749a7dd002dd1a946eaba171b4114548",
                 "sha256:8e9dfa3cecb2400b3738a42c54c3043e821682b9c840b0448c0503f781130696"
             ],
             "index": "pypi",
             "version": "==3.7.8"
+=======
+                "sha256:45681a117ecc81e870cbf1262835ae4af5e7a8b08e40b944a8a6e6b895914cfb",
+                "sha256:49356e766643ad15072a789a20915d3c91dc89fd313ccd71802303fd67e4deca"
+            ],
+            "index": "pypi",
+            "version": "==3.7.9"
+>>>>>>> Add speech-bubble CSS
         },
         "idna": {
             "hashes": [
@@ -561,6 +627,7 @@
         },
         "pyparsing": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80",
                 "sha256:d9338df12903bbf5d65a0e4e87c2161968b10d2e489652bb47001d82a9b028b4"
             ],
@@ -573,6 +640,20 @@
             ],
             "index": "pypi",
             "version": "==5.2.1"
+=======
+                "sha256:20f995ecd72f2a1f4bf6b072b63b22e2eb457836601e76d6e5dfcd75436acc1f",
+                "sha256:4ca62001be367f01bd3e92ecbb79070272a9d4964dce6a48a82ff0b8bc7e683a"
+            ],
+            "version": "==2.4.5"
+        },
+        "pytest": {
+            "hashes": [
+                "sha256:27abc3fef618a01bebb1f0d6d303d2816a99aa87a5968ebc32fe971be91eb1e6",
+                "sha256:58cee9e09242937e136dbb3dab466116ba20d6b7828c7620f23947f37eb4dae4"
+            ],
+            "index": "pypi",
+            "version": "==5.2.2"
+>>>>>>> Add speech-bubble CSS
         },
         "requests": {
             "hashes": [
@@ -600,11 +681,19 @@
         },
         "urllib3": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:3de946ffbed6e6746608990594d08faac602528ac7015ac28d33cee6a45b7398",
                 "sha256:9a107b99a5393caf59c7aa3c1249c16e6879447533d0887f4336dde834c7be86"
             ],
             "markers": "python_version >= '3.4'",
             "version": "==1.25.6"
+=======
+                "sha256:a8a318824cc77d1fd4b2bec2ded92646630d7fe8619497b142c84a9e6f5a7293",
+                "sha256:f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"
+            ],
+            "markers": "python_version >= '3.4'",
+            "version": "==1.25.7"
+>>>>>>> Add speech-bubble CSS
         },
         "wcwidth": {
             "hashes": [

@@ -1,0 +1,99 @@
+{% extends 'dashboard/layout.html' %}
+{% from "form/horizontal.html" import render_field %}
+{% block content %}
+
+<div class="modal" id="edit-inventory-modal" tabindex="-1" role="dialog" aria-labelledby="edit-inventory-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-inventory-modal-title">Edit SKU</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form.sku) }}
+                    {{ render_field(form.price) }}
+                    {{ render_field(form.quantity) }}
+                    {{ render_field(form.is_active) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-Primary--outline" data-dismiss="modal">Cancel</button>
+                    <input class="btn btn-Primary" name="submit" type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="link-menu-modal" tabindex="-1" role="dialog" aria-labelledby="link-menu-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="link-menu-modal-title">Link menu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form.menus) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-Primary--outline" data-dismiss="modal">Cancel</button>
+                    <input class="btn btn-Primary" name="submit" type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-lg-8 mb-3'>
+        <div class='card mb-5'>
+            <div class='card-body'>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class='font__custom--title mb-3 float-left'>Details</h3>
+                        <a href="#" class="btn btn-Primary float-right" data-toggle="modal" data-target="#edit-inventory-modal"><i class="fas fa-edit mr-2"></i>Edit</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Product</h6>
+                    <a class="col-lg-9 anchor__custom--default mb-3" href="{{ url_for('product.retrieve', uid=product.uid) }}">{{ product.title }}</a>
+                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">SKU</h6>
+                    <p class="col-lg-9 font__custom--text">{{ inventory.sku }}</p>
+                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Price</h6>
+                    <p class="col-lg-9 font__custom--text">{{ inventory.price }}</p>
+                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Quantity</h6>
+                    <p class="col-lg-9 font__custom--text">{{ inventory.quantity }}</p>
+                    <h6 class='col-lg-3 font__custom--title text-lg-right' style="padding-top: 3px;">Active</h6>
+                    <p class="col-lg-9 font__custom--text">
+                        {% if inventory.is_active %}<i class="fas fa-check-circle"></i>{% else %}<i class="fas fa-times-circle"></i>{% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-4'>
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-lg-12">
+                        <h3 class='font__custom--title mb-3 float-left'>Menus</h3>
+                        <a href="#" class="btn btn-Primary float-right" data-toggle="modal" data-target="#link-menu-modal"><i class="fas fa-plus"></i> Link</a>
+                    </div>
+                </div>
+                {% for listing in inventory.menus %}
+                    <div>
+                        <i class="fas fa-chevron-right mr-2"></i><a class="col-lg-6 anchor__custom--default" href="#">{{ listing.menu }}</a>
+                        {% if not loop.last %}<hr/>{% endif %}
+                    </div>
+                {% else %}
+                    <p class="font__custom--text">Not listed anywhere</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

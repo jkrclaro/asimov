@@ -3,9 +3,15 @@ import tempfile
 
 import pytest
 
+<<<<<<< HEAD
 from src.warkphone import create_app
 from src.warkphone.models import db
 from src.warkphone.models.auth import User
+=======
+from src.sidefone import create_app
+from src.sidefone.models import db
+from src.sidefone.models.auth import User
+>>>>>>> Add speech-bubble CSS
 
 
 @pytest.fixture
