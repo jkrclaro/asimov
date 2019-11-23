@@ -13,8 +13,12 @@ from src.warkphone.models.merchant import (
 from src.sidefone import create_app
 from src.sidefone.models import db
 from src.sidefone.models.auth import User, Profile
+<<<<<<< HEAD
 from src.sidefone.models.merchant import (
 >>>>>>> Add speech-bubble CSS
+=======
+from src.sidefone.models.account import (
+>>>>>>> Remove unused
     Product,
     Inventory,
     Listing,

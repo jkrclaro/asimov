@@ -10,7 +10,7 @@ from wtforms.ext.sqlalchemy.fields import (
     QuerySelectField
 )
 
-from src.sidefone.models.merchant import Menu, Product, Inventory
+from src.sidefone.models.account import Menu, Product, Inventory
 
 
 class MenuCreateForm(FlaskForm):

@@ -20,7 +20,6 @@ sms_bp = Blueprint('sms', __name__, url_prefix='/sms')
 
 
 @sms_bp.route('/')
-@login_required
 def index():
     account_sid = current_app.config['TWILIO_ACCOUNT_SID']
     auth_token = current_app.config['TWILIO_AUTH_TOKEN']
@@ -41,7 +40,6 @@ def index():
 
 
 @sms_bp.route('/<number>', methods=['GET'])
-@login_required
 def get_chats(number):
     account_sid = current_app.config['TWILIO_ACCOUNT_SID']
     auth_token = current_app.config['TWILIO_AUTH_TOKEN']
@@ -52,7 +50,6 @@ def get_chats(number):
 
 
 @sms_bp.route('/create', methods=['GET', 'POST'])
-@login_required
 def create():
     form = SMSForm()
 

@@ -50,27 +50,11 @@ def create_app(config: str):
         db.create_all(app=app)
 
     from .views.auth import auth_bp
-    from .views.home import home_bp
-    from .views.inventory import inventory_bp
     from .views.profile import profile_bp
     from .views.dashboard import dashboard_bp
-    from .views.menu import menu_bp
-    from .views.product import product_bp
-    from .views.listing import listing_bp
-    from .views.merchant import merchant_bp
+    from .views.account import account_bp
     from .views.sms import sms_bp
-    blueprints = (
-        auth_bp,
-        home_bp,
-        inventory_bp,
-        profile_bp,
-        dashboard_bp,
-        menu_bp,
-        product_bp,
-        listing_bp,
-        merchant_bp,
-        sms_bp
-    )
+    blueprints = (auth_bp, profile_bp, dashboard_bp, account_bp, sms_bp)
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
 

@@ -3,8 +3,8 @@ from sqlalchemy.orm import synonym
 from . import db, BaseModel, generate_uid
 
 
-class Merchant(db.Model, BaseModel):
-    __tablename__ = 'merchants'
+class Account(db.Model, BaseModel):
+    __tablename__ = 'accounts'
     name = db.Column(db.String(255))
     phone = db.Column(db.String(255))
     website = db.Column(db.String(255))
@@ -15,9 +15,9 @@ class Merchant(db.Model, BaseModel):
     city = db.Column(db.String(255))
     zipcode = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', back_populates='merchant')
-    products = db.relationship('Product', backref='merchants')
-    menus = db.relationship('Menu', backref='merchants')
+    user = db.relationship('User', back_populates='account')
+    products = db.relationship('Product', backref='accounts')
+    menus = db.relationship('Menu', backref='accounts')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -34,7 +34,7 @@ class Product(db.Model, BaseModel):
     _uid = db.Column('uid', db.String(255))
     title = db.Column(db.String(255))
     description = db.Column(db.Text)
-    merchant_id = db.Column(db.Integer, db.ForeignKey('merchants.id', ondelete='CASCADE'))
+    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
     variants = db.relationship('Variant', backref='products')
 
     def __init__(self, **kwargs):
@@ -116,7 +116,7 @@ class Menu(db.Model, BaseModel):
     __tablename__ = 'menus'
     title = db.Column(db.String(255))
     is_active = db.Column(db.Boolean, default=False)
-    merchant_id = db.Column(db.Integer, db.ForeignKey('merchants.id', ondelete='CASCADE'))
+    account_id = db.Column(db.Integer, db.ForeignKey('accounts.id', ondelete='CASCADE'))
     inventories = db.relationship('Listing', back_populates='menu')
 
     def __init__(self, **kwargs):

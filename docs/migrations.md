@@ -11,10 +11,6 @@ Guide for those perfoming database migrations
 - Connect via PSQL
 - Match version in `alembic_versions` table with latest revision in `migrations/`
 
-## Creating database initially
-
-Use `python db.py`
-
 
 ## Modifying existing tables
 

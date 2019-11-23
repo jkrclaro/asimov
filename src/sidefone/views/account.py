@@ -2,26 +2,21 @@ from flask import Blueprint, render_template, redirect, url_for, current_app
 from flask_login import login_required, current_user
 
 from ..helpers.flash import flash_form_errors
-from ..models.merchant import Merchant
-from ..forms.merchant import MerchantBaseForm
+from ..models.account import Account
+from ..forms.account import AccountBaseForm
 from ..models import db
 
-merchant_bp = Blueprint('merchant', __name__)
+account_bp = Blueprint('account', __name__)
 
 
-@merchant_bp.route('/merchant/settings')
-@login_required
+@account_bp.route('/account/settings')
 def index():
-    if not current_user.merchant:
-        return redirect(url_for('merchant.setup'))
-
-    return render_template('merchant/index.html')
+    return render_template('account/index.html')
 
 
-@merchant_bp.route('/merchant/setup', methods=['GET', 'POST'])
-@login_required
+@account_bp.route('/account/setup', methods=['GET', 'POST'])
 def setup():
-    form = MerchantBaseForm()
+    form = AccountBaseForm()
     if form.validate_on_submit():
         data = {}
         fields = (
@@ -37,11 +32,11 @@ def setup():
         )
         for field in fields:
             data[field] = getattr(form, field).data
-        merchant = Merchant(**data, user_id=current_user.id)
-        db.session.add(merchant)
+        account = Account(**data, user_id=current_user.id)
+        db.session.add(account)
         db.session.commit()
         return redirect(url_for('dashboard.index'))
     else:
         flash_form_errors(form.errors)
 
-    return render_template('merchant/setup.html', form=form)
+    return render_template('account/setup.html', form=form)

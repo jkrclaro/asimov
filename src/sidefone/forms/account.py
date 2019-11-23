@@ -3,7 +3,7 @@ from wtforms import StringField
 from wtforms.validators import InputRequired
 
 
-class MerchantBaseForm(FlaskForm):
+class AccountBaseForm(FlaskForm):
     name = StringField(
         'Name',
         render_kw={'placeholder': 'Thomas Edison'},
