@@ -14,20 +14,20 @@ html, body {
 }
 
 .btn-Primary {
-  background-color: #0076B5;
+  background-color: #FB6517;
   color: #FFF;
 }
 .btn-Primary:hover, .btn-Primary:focus, .btn-Primary:active, .btn-Primary.active, .open > .dropdown-toggle.btn-Primary {
-  background-color: #0076B5;
+  background-color: #FB6517;
   color: #FFF;
 }
 .btn-Primary--outline {
   background-color: #FFF;
-  color: #0076B5;
+  color: #FB6517;
   box-shadow: 0 4px 8px 0 lightgray;
 }
 .btn-Primary--outline:hover, .btn-Primary--outline:focus, .btn-Primary--outline:active, .btn-Primary--outline.active, .open > .dropdown-toggle.btn-Primary--outline {
-  color: #0076B5;
+  color: #FB6517;
   box-shadow: 0 4px 8px 0 lightgray;
 }
 .btn--Success {
@@ -87,7 +87,7 @@ html, body {
     letter-spacing: -2px;
 }
 .header__logo--theme {
-    color: #3F4358 !important;
+    color: #FB6517 !important;
 }
 .header__logo--black {
     color: #111;
@@ -96,7 +96,7 @@ html, body {
     font-family: 'Open Sans';
 }
 .footer__title--theme {
-    color: #0076B5;
+    color: #FB6517;
 }
 .footer__title--muted {
     color: #999;
@@ -116,19 +116,19 @@ html, body {
 }
 .anchor__custom--muted:hover {
     text-decoration: none !important;
-    color: #0076B5;
+    color: #FB6517;
 }
 .anchor__custom--default {
     text-decoration: none !important;
-    color: #0076B5;
+    color: #FB6517;
 }
 .anchor__custom--default:hover {
     text-decoration: none !important;
-    color: #0076B5;
+    color: #FB6517;
 }
 .anchor__custom--theme {
     text-decoration: none !important;
-    color: #0076B5;
+    color: #FB6517;
 }
 .anchor__custom--theme:hover {
     text-decoration: none !important;
@@ -158,10 +158,10 @@ html, body {
     font-size: 36px !important;
 }
 .icon__custom-color--theme {
-    color: #0076B5 !important;
+    color: #FB6517 !important;
 }
 .active a {
-    color: #0076B5 !important;
+    color: #FB6517 !important;
 }
 [class*="dropdown-menu-tip-"]::after {
   content: '';
