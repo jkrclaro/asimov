@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     is_confirmed = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=False)
     profile = db.relationship('Profile', uselist=False, back_populates='user')
-    merchant = db.relationship('Merchant', uselist=False, back_populates='user')
+    account = db.relationship('Account', uselist=False, back_populates='user')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 

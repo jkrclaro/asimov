@@ -13,7 +13,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from src import token, google_recaptcha
 from src.sidefone.models import db
 from src.sidefone.models.auth import User, Profile
-from src.sidefone.models.merchant import Merchant
+from src.sidefone.models.account import Account
 from src.sidefone.forms import (
     SignupForm,
     LoginForm,
@@ -98,7 +98,7 @@ def login():
 def logout():
     logout_user()
     session.clear()
-    return redirect(url_for('home.index'))
+    return redirect(url_for('dashboard.index'))
 
 
 @auth_bp.route('/confirm', methods=['GET', 'POST'])
@@ -141,7 +141,6 @@ def confirm():
 
 
 @auth_bp.route('/email/resend')
-@login_required
 def resend():
     # TODO: Should be a post
     email_confirmation()

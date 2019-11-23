@@ -18,6 +18,12 @@
 - Source code: https://github.com/jkrclaro/startup
 - Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
 
+## Migrations
+
+```
+./scripts/db/migrate.sh
+```
+
 ## Documentation
 
 <<<<<<< HEAD

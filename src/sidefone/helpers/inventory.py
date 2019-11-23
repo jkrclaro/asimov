@@ -1,6 +1,6 @@
 from flask import current_app
 
-from src.sidefone.models.merchant import Inventory
+from src.sidefone.models.account import Inventory
 
 
 class Actioner:

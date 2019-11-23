@@ -7,8 +7,6 @@ from .auth import (
 )
 from .profile import EditPasswordForm, EditNameForm, EditEmailForm
 
-from .product import ProductBaseForm
 from .inventory import InventoryBaseForm, InventoryCreateForm
-from .variant import VariantBaseForm
 from .newsletter import NewsletterForm
 from .sms import SMSForm
