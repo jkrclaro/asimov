@@ -140,7 +140,8 @@ sidefones/
 # letsencrypt
 scripts/letsencrypt/letsencrypt
 
-# PyCharm
+# local
 .idea/
 .DS_Store
 node_modules
+.env
