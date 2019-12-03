@@ -3,12 +3,6 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
 jobs:
   build:
     docker:
@@ -36,21 +30,3 @@ jobs:
       - store_artifacts:
           path: test-results
           destination: tr1
-  deploy:
-    docker:
-      - image: circleci/python:2.7
-    steps:
-      - checkout
-      - run:
-          command: |
-            sudo pip install awsebcli
-      - save_cache:
-          key: deps9-{{ .Branch }}-awsebcli
-          paths:
-            - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python2.7/site-packages"
-      - run:
-          name: Deploy master to AWS via EB
-          command: |
-            eb deploy
