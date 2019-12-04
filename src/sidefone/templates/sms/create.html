@@ -2,7 +2,7 @@
 {% from "form/horizontal.html" import render_field %}
 {% block content %}
 
-<div class='row'>
+<div class='row mt-5'>
     <div class='col-lg-2'></div>
     <div class='col-lg-8 mb-3'>
         <form method=post>
@@ -14,7 +14,7 @@
                     {{ render_field(form.receiver) }}
                     {{ render_field(form.message) }}
                     <a href="{{ url_for('dashboard.index') }}" class='btn btn-Primary--outline float-lg-left'>Cancel</a>
-                    <button type='submit' class='btn btn-Primary float-lg-right'>Send</button>
+                    <button type='submit' class='btn btn-primary float-lg-right'>Send</button>
                 </div>
             </div>
         </form>

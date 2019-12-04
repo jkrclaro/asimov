@@ -7,11 +7,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active"><a class="nav-link" href="#"><i class="fas fa-home mr-3"></i> Home <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-sms mr-3"></i> SMS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-phone-alt mr-3"></i> Call</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-video mr-3"></i> Video</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog mr-3"></i> Settings</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{ url_for('static', filename='img/') }}{{ phones[0].platform }}.png" class="platform-icon mr-3"> {{ phones[0].number }}
@@ -21,9 +16,12 @@
                         <a class="dropdown-item" href="#"><img src="{{ url_for('static', filename='img/') }}{{ phone.platform }}.png" class="platform-icon mr-3"> {{ phone.number }}</a>
                     {% endfor %}
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-cog mr-3"></i> Settings</a>
                     <a class="dropdown-item" href="#"><i class="fas fa-plus-circle mr-3"></i>  New number</a>
                 </div>
             </li>
+            <li class="nav-item"><a class="nav-link" href="#"><img src="https://www.aceshowbiz.com/images/photo/lebron_james.jpg" class="mr-3" height="25" width="25" style="border-radius: 25px;"> Lebron James <span class="sr-only">(current)</span></a></li>
+
         </ul>
     </div>
 </nav>
