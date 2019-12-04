@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="list-group list-group-flush">
-        <a href="{{ url_for('sms.index') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-plus-circle mr-3"></i> Add contact</a>
+        <a href="{{ url_for('sms.create') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-plus-circle mr-3"></i> Add contact</a>
         {% for number, chats in contacts.items() %}
             <a href="{{ url_for('sms.get_chats', number=number) }}" class="list-group-item list-group-item-action bg-light">
                 <div class="row">
