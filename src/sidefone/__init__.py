@@ -95,8 +95,15 @@ def create_app(config: str):
     from .views.dashboard import dashboard_bp
     from .views.account import account_bp
     from .views.sms import sms_bp
-    blueprints = (auth_bp, profile_bp, dashboard_bp, account_bp, sms_bp)
-    for blueprint in blueprints:
+    from .views.number import number_bp
+    for blueprint in (
+        auth_bp,
+        profile_bp,
+        dashboard_bp,
+        account_bp,
+        sms_bp,
+        number_bp
+    ):
         app.register_blueprint(blueprint)
 
     app.register_error_handler(404, error_404_page)
