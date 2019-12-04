@@ -3,6 +3,7 @@ from flask import Flask, render_template, current_app, g
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
+import telnyx
 from twilio.rest import Client as TwilioClient
 
 from src import mailgun, token, google_recaptcha
@@ -59,6 +60,8 @@ def create_app(config: str):
             {'number': twilio_number.phone_number, 'platform': 'twilio'}
             for twilio_number in twilio_client.incoming_phone_numbers.list()
         ]
+
+        telnyx_phones = telnyx.AvailablePhoneNumber()
 
         g.phones = phones
 
