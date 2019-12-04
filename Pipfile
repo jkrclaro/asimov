@@ -36,10 +36,14 @@ boto3 = "*"
 <<<<<<< HEAD
 =======
 twilio = "*"
+<<<<<<< HEAD
 >>>>>>> Add speech-bubble CSS
 =======
 twilio = "*"
 >>>>>>> Add twilio
+=======
+telnyx = "==v1.0.0b0"
+>>>>>>> Install telnyx v1.0.0b0
 
 [dev-packages]
 pytest = "*"
