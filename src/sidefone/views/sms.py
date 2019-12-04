@@ -2,14 +2,9 @@ from flask import (
     Blueprint,
     render_template,
     current_app,
-    redirect,
-    url_for,
-    jsonify,
-    abort,
     flash,
     g
 )
-from flask_login import login_required
 
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioException, TwilioRestException
@@ -46,8 +41,7 @@ def get_chats(number):
     auth_token = current_app.config['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
 
-    chats = client.messages.list(to=number) * 10
-    chats = reversed(chats)
+    chats = client.messages.list(to=number)
 
     form = SMSForm()
 
