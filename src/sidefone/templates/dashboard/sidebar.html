@@ -1,15 +1,14 @@
 <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading dropdown">
         <span class="dropdown-toggle sidebar-dropdown" id="sidebarNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{{ url_for('static', filename='img/') }}{{ phones[0].platform }}.png" class="platform-icon mr-3">  {{ phones[0].number }}
+            <img src="{{ url_for('static', filename='img/') }}{{ current_phone.platform }}.png" class="platform-icon mr-3">  {{ current_phone.number }}
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarNavbarDropdown">
-            {% for phone in phones %}
-                <a class="dropdown-item" href="#"><img src="{{ url_for('static', filename='img/') }}{{ phones[0].platform }}.png" class="platform-icon mr-3"> {{ phone.number }}</a>
-            {% endfor %}
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-3"></i> Settings</a>
             <a class="dropdown-item" href="{{ url_for('number.add') }}"><i class="fas fa-plus-circle mr-3"></i> New number</a>
+            <div class="dropdown-divider"></div>
+            {% for phone in phones %}
+                <a class="dropdown-item" href="{{ url_for('number.select', number=phone.number) }}"><img src="{{ url_for('static', filename='img/') }}{{ phone.platform }}.png" class="platform-icon mr-3"> {{ phone.number }}</a>
+            {% endfor %}
         </div>
     </div>
     <div class="list-group list-group-flush">

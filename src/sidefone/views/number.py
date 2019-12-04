@@ -2,12 +2,10 @@ from flask import (
     Blueprint,
     render_template,
     current_app,
-    flash,
-    g
+    redirect,
+    url_for,
+    session
 )
-
-from twilio.rest import Client
-from twilio.base.exceptions import TwilioException, TwilioRestException
 
 
 number_bp = Blueprint('number', __name__, url_prefix='/numbers')
@@ -17,3 +15,12 @@ number_bp = Blueprint('number', __name__, url_prefix='/numbers')
 def add():
     numbers = []
     return render_template('number/add.html', numbers=numbers)
+
+
+@number_bp.route('/select/<number>')
+def select(number):
+    for phone in session['phones']:
+        if phone['number'] == number:
+            session['current_phone'] = phone
+
+    return redirect(url_for('dashboard.index'))
