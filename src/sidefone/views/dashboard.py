@@ -1,7 +1,4 @@
-import json
-
-from flask import Blueprint, render_template, flash, redirect, url_for, current_app
-import boto3
+from flask import Blueprint, render_template, current_app
 
 dashboard_bp = Blueprint('dashboard', __name__)
 
