@@ -6,7 +6,17 @@
 </head>
 <body>
     {% include "shared/messages.html" %}
-    {% block content %}{% endblock %}
+    <div class="d-flex" id="wrapper">
+        {% include 'dashboard/sidebar.html' %}
+
+        <div id="page-content-wrapper">
+            {% include 'dashboard/navbar.html' %}
+
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
     {% include "shared/scripts.html" %}
 </body>
 </html>
