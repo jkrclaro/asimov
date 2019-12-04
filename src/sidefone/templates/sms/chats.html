@@ -5,10 +5,14 @@
 
 <h3 class='font__custom--title text-center mt-5 mb-3'><b>{{ number }}</b></h3>
 
-<div class='overflow-chats mb-3'>
-    {% for chat in chats %}
-        <div>{{ chat.body }}</div>
-    {% endfor %}
+<div class="card mb-3">
+    <div class="card-body">
+        <div class='overflow-chats'>
+            {% for chat in chats %}
+                <div>{{ chat.body }}</div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 
