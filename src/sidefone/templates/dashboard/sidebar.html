@@ -1,13 +1,15 @@
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading dropdown">
+    <div class="sidebar-heading dropdown text-right">
         <span class="dropdown-toggle sidebar-dropdown" id="sidebarNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{{ url_for('static', filename='img/') }}{{ current_phone.platform }}.png" class="platform-icon mr-3">  {{ current_phone.number }}
+            <img src="{{ url_for('static', filename='img/') }}{{ current_phone.platform }}.png" class="platform-icon mb-1 mr-3"><b>{{ current_phone.number }}</b>
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarNavbarDropdown">
             <a class="dropdown-item" href="{{ url_for('number.add') }}"><i class="fas fa-plus-circle mr-3"></i> New number</a>
             <div class="dropdown-divider"></div>
             {% for phone in phones %}
-                <a class="dropdown-item" href="{{ url_for('number.select', number=phone.number) }}"><img src="{{ url_for('static', filename='img/') }}{{ phone.platform }}.png" class="platform-icon mr-3"> {{ phone.number }}</a>
+                {% if phone.number != current_phone.number %}
+                    <a class="dropdown-item" href="{{ url_for('number.select', number=phone.number) }}"><img src="{{ url_for('static', filename='img/') }}{{ phone.platform }}.png" class="platform-icon mr-3"> {{ phone.number }}</a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
