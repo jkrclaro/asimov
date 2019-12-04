@@ -2,24 +2,14 @@
 {% from "form/horizontal.html" import render_field %}
 {% block content %}
 
-<div class='row'>
+<div class='row mt-5'>
     <div class='col-lg-2'></div>
     <div class='col-lg-8 mb-3'>
         <div class='card mb-5'>
             <div class='card-body'>
-                <h3 class='font__custom--title text-center mb-3'>{{ number }}</h3>
+                <h3 class='font__custom--title text-center mb-3'><b>{{ number }}</b></h3>
                 {% for chat in chats %}
-                        <div class="mine messages">
-                            <div class="message last">
-                                {{ chat.body }}
-                            </div>
-                        </div>
-
-                        <div class="yours messages">
-                            <div class="message last">
-                                {{ chat.body }}
-                            </div>
-                        </div>
+                    <div>{{ chat.body }}</div>
                 {% endfor %}
             </div>
         </div>
