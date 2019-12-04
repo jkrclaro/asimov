@@ -23,6 +23,8 @@ class Config(object):
     TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
     TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
 
+    TELNYX_API_KEY = os.environ.get('TELNYX_API_KEY')
+
 
 class Production(Config):
     RECAPTCHA_USE_SSL = True
