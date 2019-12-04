@@ -46,7 +46,7 @@ def get_chats(number):
     form = SMSForm()
 
     if form.validate_on_submit():
-        sender = g.phones[0]['number']
+        sender = g.current_phone['number']
         receiver = form.receiver.data
         message = form.message.data
 
@@ -70,7 +70,7 @@ def create():
         auth_token = current_app.config['TWILIO_AUTH_TOKEN']
         client = Client(account_sid, auth_token)
 
-        sender = g.phones[0]['number']
+        sender = g.current_phone['number']
         receiver = form.receiver.data
         message = form.message.data
 

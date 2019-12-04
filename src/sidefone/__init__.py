@@ -1,5 +1,5 @@
 import babel
-from flask import Flask, render_template, current_app, g
+from flask import Flask, render_template, current_app, g, session
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
@@ -38,6 +38,8 @@ def create_app(config: str):
     google_recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
     google_recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')
 
+    telnyx.api_key = app.config.get('TELNYX_API_KEY')
+
     from .models import db
     db.init_app(app)
     migrate.init_app(app, db)
@@ -47,48 +49,63 @@ def create_app(config: str):
     def load_user(user_id: int):
         return User.query.get(int(user_id))
 
-    @app.before_first_request
+    @app.before_request
     def create_db():
         db.create_all(app=app)
 
     @app.before_request
-    def get_numbers():
-        account_sid = current_app.config['TWILIO_ACCOUNT_SID']
-        auth_token = current_app.config['TWILIO_AUTH_TOKEN']
-        twilio_client = TwilioClient(account_sid, auth_token)
-        phones = [
-            {'number': twilio_number.phone_number, 'platform': 'twilio'}
-            for twilio_number in twilio_client.incoming_phone_numbers.list()
-        ]
+    def get_phones():
+        if 'phones' not in session.keys():
+            account_sid = app.config['TWILIO_ACCOUNT_SID']
+            auth_token = app.config['TWILIO_AUTH_TOKEN']
+            twilio_client = TwilioClient(account_sid, auth_token)
+            twilio_phones = [
+                {'number': twilio_number.phone_number, 'platform': 'twilio'}
+                for twilio_number in twilio_client.incoming_phone_numbers.list()
+            ]
 
-        telnyx.api_key = app.config.get('TELNYX_API_KEY')
-        telnyx_phones = telnyx.AvailablePhoneNumber()
-        current_app.logger.info(telnyx_phones)
+            telnyx_phones = telnyx.MessagingPhoneNumber.list()['data']
+            telnyx_phones = [
+                {'number': telnyx_phone['phone_number'], 'platform': 'telnyx'}
+                for telnyx_phone in telnyx_phones
+            ]
 
-        g.phones = phones
+            phones = twilio_phones + telnyx_phones
+            session['phones'] = phones
 
     @app.before_request
     def get_contacts():
-        account_sid = current_app.config['TWILIO_ACCOUNT_SID']
-        auth_token = current_app.config['TWILIO_AUTH_TOKEN']
-        twilio_client = TwilioClient(account_sid, auth_token)
+        if 'contacts' not in session.keys():
+            account_sid = app.config['TWILIO_ACCOUNT_SID']
+            auth_token = app.config['TWILIO_AUTH_TOKEN']
+            twilio_client = TwilioClient(account_sid, auth_token)
 
-        messages = twilio_client.messages.list()
-        chats = {}
+            messages = twilio_client.messages.list()
+            contacts = {}
 
-        for message in messages:
-            number = message.to
-            if number not in chats.keys():
-                chats[number] = {
-                    'last_message': message.body,
-                    'last_message_date_sent': message.date_sent,
-                }
+            for message in messages:
+                number = message.to
+                if number not in contacts.keys():
+                    contacts[number] = {
+                        'last_message': message.body,
+                        'last_message_date_sent': message.date_sent,
+                    }
 
-        g.contacts = chats
+            session['contacts'] = contacts
 
     @app.context_processor
     def inject_numbers():
-        return dict(phones=g.phones, contacts=g.contacts)
+        if 'current_phone' in session.keys():
+            current_phone = session['current_phone']
+        else:
+            current_phone = session['phones'][0]
+
+        context = {
+            'phones': session['phones'],
+            'contacts': session['contacts'],
+            'current_phone': current_phone
+        }
+        return dict(**context)
 
     from .views.auth import auth_bp
     from .views.profile import profile_bp
