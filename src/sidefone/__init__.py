@@ -1,8 +1,9 @@
 import babel
-from flask import Flask, render_template, current_app
+from flask import Flask, render_template, current_app, g
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from sqlalchemy.exc import IntegrityError
+
+from twilio.rest import Client as TwilioClient
 
 from src import mailgun, token, google_recaptcha
 
@@ -48,6 +49,22 @@ def create_app(config: str):
     @app.before_first_request
     def create_db():
         db.create_all(app=app)
+
+    @app.before_request
+    def get_numbers():
+        account_sid = current_app.config['TWILIO_ACCOUNT_SID']
+        auth_token = current_app.config['TWILIO_AUTH_TOKEN']
+        twilio_client = TwilioClient(account_sid, auth_token)
+        twilio_numbers = [
+            twilio_number.phone_number
+            for twilio_number in twilio_client.incoming_phone_numbers.list()
+        ]
+
+        g.numbers = twilio_numbers
+
+    @app.context_processor
+    def inject_numbers():
+        return dict(numbers=g.numbers)
 
     from .views.auth import auth_bp
     from .views.profile import profile_bp
