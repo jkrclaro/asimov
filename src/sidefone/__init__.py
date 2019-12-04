@@ -61,13 +61,30 @@ def create_app(config: str):
             for twilio_number in twilio_client.incoming_phone_numbers.list()
         ]
 
-        telnyx_phones = telnyx.AvailablePhoneNumber()
-
         g.phones = phones
+
+    @app.before_request
+    def get_contacts():
+        account_sid = current_app.config['TWILIO_ACCOUNT_SID']
+        auth_token = current_app.config['TWILIO_AUTH_TOKEN']
+        twilio_client = TwilioClient(account_sid, auth_token)
+
+        messages = twilio_client.messages.list()
+        chats = {}
+
+        for message in messages:
+            number = message.to
+            if number not in chats.keys():
+                chats[number] = {
+                    'last_message': message.body,
+                    'last_message_date_sent': message.date_sent,
+                }
+
+        g.contacts = chats
 
     @app.context_processor
     def inject_numbers():
-        return dict(phones=g.phones)
+        return dict(phones=g.phones, contacts=g.contacts)
 
     from .views.auth import auth_bp
     from .views.profile import profile_bp

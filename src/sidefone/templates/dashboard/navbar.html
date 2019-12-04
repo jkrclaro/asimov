@@ -20,8 +20,9 @@
                     <a class="dropdown-item" href="#"><i class="fas fa-plus-circle mr-3"></i>  New number</a>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#"><img src="https://www.aceshowbiz.com/images/photo/lebron_james.jpg" class="mr-3" height="25" width="25" style="border-radius: 25px;"> Lebron James <span class="sr-only">(current)</span></a></li>
-
+            {% for number, chats in contacts.items() %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('sms.get_chats', number=number) }}"><img src="https://home.iitm.ac.in/mvp/img/team/default.jpg" height="20" width="20" class="mr-3" style="border-radius: 50%"> {{ number }} <span class="sr-only">(current)</span></a></li>
+            {% endfor %}
         </ul>
     </div>
 </nav>
