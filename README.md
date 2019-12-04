@@ -10,7 +10,7 @@
 <a href='https://github.com/jkrclaro/sidefone'><img src='https://github.com/jkrclaro/sidefone/blob/master/src/sidefone/static/img/logo.png' align='right' width='200' height='160' /></a>
 
 # Sidefone
-[![CircleCI](https://circleci.com/gh/jkrclaro/sidefone/tree/master.svg?style=svg&circle-token=6e39dbce5406cefdb75a5cd1e6eec03c225c055d)](https://circleci.com/gh/jkrclaro/sidefone/tree/master)
+[![CircleCI](https://circleci.com/gh/jkrclaro/sidefone.svg?style=svg)](https://circleci.com/gh/jkrclaro/sidefone)
 
 # General Information
 - Website: https://www.sidefone.com
