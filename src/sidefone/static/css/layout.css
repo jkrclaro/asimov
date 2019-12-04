@@ -55,3 +55,12 @@ body {
 .sidebar-dropdown {
     cursor: pointer;
 }
+
+.form-control-message {
+    height: 100px;
+}
+
+.overflow-chats {
+    height: 400px;
+    overflow: scroll;
+}

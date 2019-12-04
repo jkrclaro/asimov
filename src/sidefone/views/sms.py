@@ -45,8 +45,24 @@ def get_chats(number):
     auth_token = current_app.config['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
 
-    chats = client.messages.list(to=number)
-    return render_template('sms/chats.html', number=number, chats=chats)
+    chats = client.messages.list(to=number) * 10
+
+    form = SMSForm()
+
+    if form.validate_on_submit():
+        sender = form.sender.data
+        receiver = form.receiver.data
+        message = form.message.data
+
+        try:
+            client.messages.create(body=message, from_=sender, to=receiver)
+            message, category = f"Successfully sent your " \
+                                f"message to {receiver}", 'success'
+        except (TwilioException, TwilioRestException) as error:
+            message, category = error.msg, 'danger'
+        flash(message, category)
+
+    return render_template('sms/chats.html', number=number, chats=chats, form=form)
 
 
 @sms_bp.route('/create', methods=['GET', 'POST'])
