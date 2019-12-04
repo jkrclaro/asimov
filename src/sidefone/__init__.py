@@ -55,16 +55,16 @@ def create_app(config: str):
         account_sid = current_app.config['TWILIO_ACCOUNT_SID']
         auth_token = current_app.config['TWILIO_AUTH_TOKEN']
         twilio_client = TwilioClient(account_sid, auth_token)
-        twilio_numbers = [
-            twilio_number.phone_number
+        phones = [
+            {'number': twilio_number.phone_number, 'platform': 'twilio'}
             for twilio_number in twilio_client.incoming_phone_numbers.list()
         ]
 
-        g.numbers = twilio_numbers
+        g.phones = phones
 
     @app.context_processor
     def inject_numbers():
-        return dict(numbers=g.numbers)
+        return dict(phones=g.phones)
 
     from .views.auth import auth_bp
     from .views.profile import profile_bp

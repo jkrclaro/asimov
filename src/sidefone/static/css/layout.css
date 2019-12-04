@@ -46,3 +46,12 @@ body {
     display: none;
   }
 }
+
+.platform-icon {
+    height: 15px;
+    width: 15px;
+}
+
+.sidebar-dropdown {
+    cursor: pointer;
+}
