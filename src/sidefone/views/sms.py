@@ -6,7 +6,8 @@ from flask import (
     url_for,
     jsonify,
     abort,
-    flash
+    flash,
+    g
 )
 from flask_login import login_required
 
@@ -46,11 +47,12 @@ def get_chats(number):
     client = Client(account_sid, auth_token)
 
     chats = client.messages.list(to=number) * 10
+    chats = reversed(chats)
 
     form = SMSForm()
 
     if form.validate_on_submit():
-        sender = form.sender.data
+        sender = g.phones[0]['number']
         receiver = form.receiver.data
         message = form.message.data
 
@@ -74,7 +76,7 @@ def create():
         auth_token = current_app.config['TWILIO_AUTH_TOKEN']
         client = Client(account_sid, auth_token)
 
-        sender = form.sender.data
+        sender = g.phones[0]['number']
         receiver = form.receiver.data
         message = form.message.data
 

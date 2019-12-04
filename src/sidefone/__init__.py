@@ -61,6 +61,10 @@ def create_app(config: str):
             for twilio_number in twilio_client.incoming_phone_numbers.list()
         ]
 
+        telnyx.api_key = app.config.get('TELNYX_API_KEY')
+        telnyx_phones = telnyx.AvailablePhoneNumber()
+        current_app.logger.info(telnyx_phones)
+
         g.phones = phones
 
     @app.before_request
