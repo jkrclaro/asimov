@@ -14,8 +14,7 @@ from src.sidefone.models.account import Menu, Product
 
 
 class SMSForm(FlaskForm):
-    sender = StringField('Sender')
-    receiver = StringField('Receiver')
+    receiver = StringField('To')
     message = TextAreaField('Message')
     submit = SubmitField('Send')
     # sender = QuerySelectMultipleField(
