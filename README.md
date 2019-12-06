@@ -32,7 +32,7 @@ Modern business phone on your browser.
 
 |     | Features
 :---: | :---
-::speech_balloon: | **Message someone**. Send a text to someone using your Sidefone.
+:speech_balloon: | **Message someone**. Send a text to someone using your Sidefone.
 
 ## Requirements
 
