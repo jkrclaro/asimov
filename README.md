@@ -12,22 +12,61 @@
 # Sidefone
 [![CircleCI](https://circleci.com/gh/jkrclaro/sidefone.svg?style=svg)](https://circleci.com/gh/jkrclaro/sidefone)
 
+<<<<<<< HEAD
 # General Information
 - Website: https://www.sidefone.com
 >>>>>>> Add speech-bubble CSS
 - Source code: https://github.com/jkrclaro/startup
 - Issue tracker: https://trello.com/b/7Pm8Ltmg/startup
+=======
+Chess game engine that leads all moves to a checkmate.
+>>>>>>> Update README
 
-## Migrations
+## Overview
+
+<img src="assets/demo.png" alt="Demo on Google Chrome" width="610">
+
+[Watch demo](https://www.youtube.com/watch?v=YjFNnriRKK0)
+
+|     | Features
+:---: | :---
+::crown: | **All moves links to a checkmate**. Sidefone enables you to easily find the most used path to a checkmate!
+
+## Requirements
+
+You'll need the following:
+
+- [Python](https://www.python.org/) >= 3.8+
+- [Docker](https://www.docker.com/)
+- Modern browser like Google Chrome
+
+
+## Getting started
+
+Install dependencies using [Pipenv](https://github.com/pypa/pipenv):
+
+```sh-session
+pipenv install
+```
+
+Run the app locally using docker-compose
+
+```sh-session
+docker-compose up
+```
+
+Lastly, you will see the URL can be visited in
 
 ```
-./scripts/db/migrate.sh
+localhost:5000
 ```
 
-## Documentation
-
+<<<<<<< HEAD
 <<<<<<< HEAD
 For more documentations, [see docs.](https://github.com/jkrclaro/warkphone/tree/master/docs)
 =======
 For more documentations, [see docs.](https://github.com/jkrclaro/sidefone/tree/master/docs)
 >>>>>>> Add speech-bubble CSS
+=======
+Use this URL in your browser to start the app.
+>>>>>>> Update README
