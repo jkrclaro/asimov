@@ -13,6 +13,7 @@
 [![CircleCI](https://circleci.com/gh/jkrclaro/sidefone.svg?style=svg)](https://circleci.com/gh/jkrclaro/sidefone)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # General Information
 - Website: https://www.sidefone.com
 >>>>>>> Add speech-bubble CSS
@@ -21,16 +22,17 @@
 =======
 Chess game engine that leads all moves to a checkmate.
 >>>>>>> Update README
+=======
+Modern business phone on your browser.
+>>>>>>> Update README
 
 ## Overview
 
 <img src="assets/demo.png" alt="Demo on Google Chrome" width="610">
 
-[Watch demo](https://www.youtube.com/watch?v=YjFNnriRKK0)
-
 |     | Features
 :---: | :---
-::crown: | **All moves links to a checkmate**. Sidefone enables you to easily find the most used path to a checkmate!
+::speech_balloon: | **Message someone**. Send a text to someone using your Sidefone.
 
 ## Requirements
 
