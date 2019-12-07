@@ -1,5 +1,5 @@
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading dropdown text-right">
+    <div class="sidebar-heading dropdown">
         <span class="dropdown-toggle sidebar-dropdown" id="sidebarNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="{{ url_for('static', filename='img/') }}{{ current_phone.platform }}.png" class="platform-icon mb-1 mr-3"><b>{{ current_phone.number }}</b>
         </span>
@@ -14,16 +14,16 @@
         </div>
     </div>
     <div class="list-group list-group-flush">
-        <a href="{{ url_for('sms.create') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-plus-circle mr-3"></i> Create SMS</a>
+        <a href="{{ url_for('sms.create') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sms mr-3"></i> Create SMS</a>
         {% for number, chats in contacts.items() %}
             <a href="{{ url_for('sms.get_chats', number=number) }}" class="list-group-item list-group-item-action bg-light">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-2 my-auto">
                         <img src="https://home.iitm.ac.in/mvp/img/team/default.jpg" class="img-fluid" style="border-radius: 50%">
                     </div>
                     <div class="col-10">
-                        {{ number }} <small class="float-right">{{ chats.last_message_date_sent | datetime }}</small>
-                        <div>{{ chats.last_message }}</div>
+                        <b>{{ number }}</b> <small class="float-right">{{ chats.last_message_date_sent | datetime }}</small>
+                        <div class="text-muted">{{ chats.last_message }}</div>
                     </div>
                 </div>
             </a>
