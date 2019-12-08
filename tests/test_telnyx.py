@@ -3,10 +3,10 @@ import responses
 
 from src import helpers
 
+telnyx.api_key = 'test_api_key'
+
 
 class TestTelnyx:
-
-    api_key = 'test_api_key'
 
     @responses.activate
     def test_get_phones(self):
