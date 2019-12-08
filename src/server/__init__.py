@@ -62,9 +62,9 @@ def create_app(config: str):
     @app.before_request
     def get_phones():
         if 'phones' not in session.keys():
-            twilios = helpers.twilio.get_phones(twilio)
-            telnyxs = helpers.telnyx.get_phones(telnyx)
-            session['phones'] = twilios + telnyxs
+            phones_twilio = helpers.twilio.get_phones(twilio)
+            phones_telnyx = helpers.telnyx.get_phones(telnyx)
+            session['phones'] = phones_twilio + phones_telnyx
 
     @app.before_request
     def get_contacts():

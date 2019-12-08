@@ -23,8 +23,9 @@ class TestTwilio:
         responses.add(responses.GET, responses_url, json=responses_json)
 
         phones = helpers.twilio.get_phones(self.client)
+        phones_expected = [{'number': '+0123456789', 'platform': 'twilio'}]
 
-        assert [{'number': '+0123456789', 'platform': 'twilio'}] == phones
+        assert phones == phones_expected
 
     @responses.activate
     def test_get_contacts(self):
@@ -47,8 +48,9 @@ class TestTwilio:
             ]
         }
         responses.add(responses.GET, responses_url, json=responses_json)
+
         contacts = helpers.twilio.get_contacts(self.client)
-        assert {
+        contacts_expected = {
             '+353894518912': {
                 'last_message': 'Sent from your Twilio trial account - '
                                 'Hello neighbour',
@@ -63,4 +65,6 @@ class TestTwilio:
                     2019, 12, 4, 17, 46, 29, tzinfo=datetime.timezone.utc
                 )
             }
-        } == contacts
+        }
+
+        assert contacts == contacts_expected
