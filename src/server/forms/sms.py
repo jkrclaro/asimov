@@ -10,7 +10,7 @@ from wtforms.ext.sqlalchemy.fields import (
     QuerySelectField
 )
 
-from src.sidefone.models.account import Menu, Product
+from src.server.models.account import Menu, Product
 
 
 class SMSForm(FlaskForm):
