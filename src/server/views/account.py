@@ -1,10 +1,10 @@
-from flask import Blueprint, render_template, redirect, url_for, current_app
-from flask_login import login_required, current_user
+from flask import Blueprint, render_template, redirect, url_for
+from flask_login import current_user
 
-from ..helpers.flash import flash_form_errors
 from ..models.account import Account
 from ..forms.account import AccountBaseForm
 from ..models import db
+from ...sidefone.flash import flash_form_errors
 
 account_bp = Blueprint('account', __name__)
 
