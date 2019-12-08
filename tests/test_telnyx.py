@@ -21,7 +21,3 @@ class TestTelnyx:
         phones = helpers.telnyx.get_phones(telnyx)
         phones_expected = [{'number': '+17652649135', 'platform': 'telnyx'}]
         assert phones == phones_expected
-
-    def test_send_sms(self):
-        helpers.telnyx.send_sms()
-        assert True
