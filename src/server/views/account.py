@@ -4,7 +4,7 @@ from flask_login import current_user
 from ..models.account import Account
 from ..forms.account import AccountBaseForm
 from ..models import db
-from ...sidefone.flash import flash_form_errors
+from ...helpers.flash import flash_form_errors
 
 account_bp = Blueprint('account', __name__)
 

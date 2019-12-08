@@ -10,7 +10,7 @@ from flask import (
 )
 from flask_login import login_user, logout_user, current_user
 
-from src.sidefone import token
+from src.helpers import token
 from src.server.models import db
 from src.server.models.auth import User, Profile
 from src.server.forms import (
@@ -20,7 +20,7 @@ from src.server.forms import (
     ResetPasswordForm,
     ConfirmForm
 )
-from src.sidefone.email import (
+from src.helpers.email import (
     email_confirmation,
     email_change_email_success,
     email_reset,
