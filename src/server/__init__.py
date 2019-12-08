@@ -4,13 +4,13 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 
 import telnyx
-from twilio.rest import Client as TwilioClient
 
 from src import helpers
 from src.helpers import mailgun, token, recaptcha
 
 login_manager = LoginManager()
 migrate = Migrate()
+twilio = helpers.twilio.Twilio()
 
 
 def format_datetime(value):
@@ -41,10 +41,7 @@ def create_app(config: str):
 
     telnyx.api_key = app.config.get('TELNYX_API_KEY')
 
-    twilio = TwilioClient(
-        app.config.get('TWILIO_ACCOUNT_SID'),
-        app.config.get('TWILIO_AUTH_TOKEN')
-    )
+    twilio.init_app(app)
 
     from .models import db
     db.init_app(app)
@@ -62,14 +59,14 @@ def create_app(config: str):
     @app.before_request
     def get_phones():
         if 'phones' not in session.keys():
-            phones_twilio = helpers.twilio.get_phones(twilio)
+            phones_twilio = helpers.twilio.get_phones(twilio.client)
             phones_telnyx = helpers.telnyx.get_phones(telnyx)
             session['phones'] = phones_twilio + phones_telnyx
 
     @app.before_request
     def get_contacts():
         if 'contacts' not in session.keys():
-            session['contacts'] = helpers.twilio.get_contacts(twilio)
+            session['contacts'] = helpers.twilio.get_contacts(twilio.client)
 
     @app.context_processor
     def inject_numbers():
