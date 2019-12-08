@@ -1,7 +1,7 @@
 from flask import render_template, url_for, abort
 from flask_login import current_user
 
-from src.sidefone import token, mailgun
+from src.helpers import token, mailgun
 
 
 def send_email(

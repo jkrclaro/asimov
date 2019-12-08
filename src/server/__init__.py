@@ -6,7 +6,8 @@ from flask_migrate import Migrate
 import telnyx
 from twilio.rest import Client as TwilioClient
 
-from src.sidefone import mailgun, token, recaptcha
+from src import helpers
+from src.helpers import mailgun, token, recaptcha
 
 login_manager = LoginManager()
 migrate = Migrate()
@@ -40,6 +41,11 @@ def create_app(config: str):
 
     telnyx.api_key = app.config.get('TELNYX_API_KEY')
 
+    twilio = TwilioClient(
+        app.config.get('TWILIO_ACCOUNT_SID'),
+        app.config.get('TWILIO_AUTH_TOKEN')
+    )
+
     from .models import db
     db.init_app(app)
     migrate.init_app(app, db)
@@ -56,42 +62,14 @@ def create_app(config: str):
     @app.before_request
     def get_phones():
         if 'phones' not in session.keys():
-            account_sid = app.config['TWILIO_ACCOUNT_SID']
-            auth_token = app.config['TWILIO_AUTH_TOKEN']
-            twilio_client = TwilioClient(account_sid, auth_token)
-            twilio_phones = [
-                {'number': twilio_number.phone_number, 'platform': 'twilio'}
-                for twilio_number in twilio_client.incoming_phone_numbers.list()
-            ]
-
-            telnyx_phones = telnyx.MessagingPhoneNumber.list()['data']
-            telnyx_phones = [
-                {'number': telnyx_phone['phone_number'], 'platform': 'telnyx'}
-                for telnyx_phone in telnyx_phones
-            ]
-
-            phones = twilio_phones + telnyx_phones
-            session['phones'] = phones
+            twilios = helpers.twilio.get_phones(twilio)
+            telnyxs = helpers.telnyx.get_phones(telnyx)
+            session['phones'] = twilios + telnyxs
 
     @app.before_request
     def get_contacts():
         if 'contacts' not in session.keys():
-            account_sid = app.config['TWILIO_ACCOUNT_SID']
-            auth_token = app.config['TWILIO_AUTH_TOKEN']
-            twilio_client = TwilioClient(account_sid, auth_token)
-
-            messages = twilio_client.messages.list()
-            contacts = {}
-
-            for message in messages:
-                number = message.to
-                if number not in contacts.keys():
-                    contacts[number] = {
-                        'last_message': message.body,
-                        'last_message_date_sent': message.date_sent,
-                    }
-
-            session['contacts'] = contacts
+            session['contacts'] = helpers.twilio.get_contacts(twilio)
 
     @app.context_processor
     def inject_numbers():
