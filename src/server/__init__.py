@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 import telnyx
 from twilio.rest import Client as TwilioClient
 
-from src import mailgun, token, google_recaptcha
+from src.sidefone import mailgun, token, recaptcha
 
 login_manager = LoginManager()
 migrate = Migrate()
@@ -35,8 +35,8 @@ def create_app(config: str):
     mailgun.api_key = app.config.get('MAILGUN_API_KEY')
     token.salt = app.config.get('PASSWORD_SALT')
     token.secret_key = app.config.get('SECRET_KEY')
-    google_recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
-    google_recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')
+    recaptcha.site_key = app.config.get('RECAPTCHA_SITE_KEY')
+    recaptcha.secret_key = app.config.get('RECAPTCHA_SECRET_KEY')
 
     telnyx.api_key = app.config.get('TELNYX_API_KEY')
 

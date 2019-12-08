@@ -8,12 +8,11 @@ from flask import (
     session,
     flash
 )
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, current_user
 
-from src import token, google_recaptcha
+from src.sidefone import token
 from src.server.models import db
 from src.server.models.auth import User, Profile
-from src.server.models.account import Account
 from src.server.forms import (
     SignupForm,
     LoginForm,
@@ -21,13 +20,12 @@ from src.server.forms import (
     ResetPasswordForm,
     ConfirmForm
 )
-from src.server.helpers.email import (
+from src.sidefone.email import (
     email_confirmation,
     email_change_email_success,
     email_reset,
     email_reset_success
 )
-from src.server.helpers.recaptcha import validate_recaptcha
 
 
 auth_bp = Blueprint('auth', __name__)
@@ -37,9 +35,8 @@ auth_bp = Blueprint('auth', __name__)
 def signup():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
-    recaptcha = validate_recaptcha()
     form = SignupForm()
-    if form.validate_on_submit() and not recaptcha.get('recaptcha'):
+    if form.validate_on_submit():
         email = form.email.data
         user_exist = User.query.filter_by(email=email).first()
         if user_exist:
@@ -56,42 +53,26 @@ def signup():
             login_user(user)
             email_confirmation()
             return redirect(url_for('dashboard.index'))
-    return render_template('auth/signup.html', form=form, **recaptcha)
+    return render_template('auth/signup.html', form=form)
 
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard.index'))
-    recaptcha = {}
-    if session.get('attempt'):
-        recaptcha = {'site_key': google_recaptcha.site_key}
-        g_recaptcha_response = request.form.get('g-recaptcha-response')
-        if request.method == 'POST':
-            if not g_recaptcha_response:
-                recaptcha['recaptcha'] = 'Please complete the CAPTCHA ' \
-                                        'to complete your login.'
-            else:
-                data = {
-                    'response': g_recaptcha_response,
-                    'remoteip': request.remote_addr
-                }
-                recaptcha['recaptcha'] = google_recaptcha.verify(data)
     form = LoginForm(request.form)
-    if form.validate_on_submit() and not recaptcha.get('recaptcha'):
+    if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
         user = User.query.filter_by(email=email).first()
         if not user or not user.password_match(password):
             form.email.errors = ['Wrong email or password']
-            session['attempt'] = True
-            recaptcha = {'site_key': google_recaptcha.site_key}
         else:
             session.pop('attempt', None)
             login_user(user, remember=form.remember.data)
             return redirect(url_for('dashboard.index'))
 
-    return render_template('auth/login.html', form=form, **recaptcha)
+    return render_template('auth/login.html', form=form)
 
 
 @auth_bp.route('/logout')
@@ -151,15 +132,14 @@ def resend():
 @auth_bp.route('/forgot', methods=['GET', 'POST'])
 def forgot():
     template = 'auth/forgot.html'
-    recaptcha = validate_recaptcha()
     form = ForgotPasswordForm()
-    if form.validate_on_submit() and not recaptcha.get('recaptcha'):
+    if form.validate_on_submit():
         email = form.email.data
         user = User.query.filter_by(email=email).first()
         if user:
             email_reset()
         return render_template(template)
-    return render_template(template, form=form, **recaptcha)
+    return render_template(template, form=form)
 
 
 @auth_bp.route('/reset', methods=['GET', 'POST'])

@@ -1,7 +1,7 @@
 from flask import render_template, url_for, abort
 from flask_login import current_user
 
-from src import token, mailgun
+from src.sidefone import token, mailgun
 
 
 def send_email(
@@ -10,7 +10,7 @@ def send_email(
         subject: str,
         endpoint: str = '',
         name: str = '',
-        data: dict = {}
+        data: dict = None
 ) -> None:
     """Send email in to_emails with expiring links via tokens.
 
