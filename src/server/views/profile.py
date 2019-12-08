@@ -1,14 +1,14 @@
 from flask import Blueprint, render_template, flash
 from flask_login import login_required, current_user
 
-from src.sidefone.models import db
-from src.sidefone.models.auth import User
-from src.sidefone.forms import EditEmailForm, EditNameForm, EditPasswordForm
-from src.sidefone.helpers.email import (
+from src.server.models import db
+from src.server.models.auth import User
+from src.server.forms import EditEmailForm, EditNameForm, EditPasswordForm
+from src.server.helpers.email import (
     email_change_email,
     email_change_password_success
 )
-from src.sidefone.helpers.flash import flash_form_errors
+from src.server.helpers.flash import flash_form_errors
 
 
 profile_bp = Blueprint('profile', __name__)

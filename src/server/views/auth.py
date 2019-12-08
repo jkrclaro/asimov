@@ -11,23 +11,23 @@ from flask import (
 from flask_login import login_user, logout_user, login_required, current_user
 
 from src import token, google_recaptcha
-from src.sidefone.models import db
-from src.sidefone.models.auth import User, Profile
-from src.sidefone.models.account import Account
-from src.sidefone.forms import (
+from src.server.models import db
+from src.server.models.auth import User, Profile
+from src.server.models.account import Account
+from src.server.forms import (
     SignupForm,
     LoginForm,
     ForgotPasswordForm,
     ResetPasswordForm,
     ConfirmForm
 )
-from src.sidefone.helpers.email import (
+from src.server.helpers.email import (
     email_confirmation,
     email_change_email_success,
     email_reset,
     email_reset_success
 )
-from src.sidefone.helpers.recaptcha import validate_recaptcha
+from src.server.helpers.recaptcha import validate_recaptcha
 
 
 auth_bp = Blueprint('auth', __name__)

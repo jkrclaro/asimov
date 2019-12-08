@@ -1,5 +1,5 @@
 import babel
-from flask import Flask, render_template, current_app, g, session
+from flask import Flask, render_template, current_app, session
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
@@ -26,7 +26,7 @@ def error_500_page(error):
 
 def create_app(config: str):
     app = Flask(__name__)
-    app.config.from_object(f'src.sidefone.config.{config.title()}')
+    app.config.from_object(f'src.server.config.{config.title()}')
 
     login_manager.login_view = 'auth.login'
     login_manager.login_message_category = 'danger'
