@@ -39,8 +39,8 @@ class TestTelnyx:
         phones_expected = [{'number': '+17652649135', 'platform': 'telnyx'}]
         assert phones == phones_expected
 
-    @responses.activate
-    def test_sms_send_permission_error(self):
+    # @responses.activate
+    def test_sms_send_for_permission_error(self):
         responses_url = 'https://api.telnyx.com/v2/messages'
         responses.add_callback(
             responses.POST,
@@ -56,15 +56,17 @@ class TestTelnyx:
         message, category = helpers.telnyx.sms_send(telnyx, data)
 
         message_expected = "Level 2 account verification is required to " \
-                           "perform this action. Check the 'verifications' " \
-                           "tab under 'account' on the portal for more " \
-                           "information."
+                           "perform this action. " \
+                           "Check the 'verifications' tab under 'account' " \
+                           "on the portal for more information. " \
+                           "https://developers.telnyx.com/docs/overview/" \
+                           "errors/20017"
         category_expected = "danger"
 
         assert message == message_expected
         assert category == category_expected
 
-    def test_build_message(self):
+    def test_sms_build(self):
         payload = {
             'sender': '+123',
             'receiver': '+456',
