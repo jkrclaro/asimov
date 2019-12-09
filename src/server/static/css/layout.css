@@ -47,20 +47,35 @@ body {
   }
 }
 
+/* Custom */
 .platform-icon {
     height: 18px;
     width: 18px;
 }
-
 .sidebar-dropdown {
     cursor: pointer;
 }
-
 .form-control-message {
     height: 100px;
 }
-
 .overflow-chats {
     height: 350px;
     overflow: scroll;
+}
+.feedback {
+    font-size: 48px;
+}
+.success {
+    color: #28A745;
+}
+.danger {
+    color: #DC3545;
+}
+.btn-Theme {
+  background-color: #FB6517;
+  color: #FFF;
+}
+.btn-Theme:hover, .btn-Theme:focus, .btn-Theme:active, .btn-Theme.active, .open > .dropdown-toggle.btn-Theme {
+  background-color: #FB6517;
+  color: #FFF;
 }

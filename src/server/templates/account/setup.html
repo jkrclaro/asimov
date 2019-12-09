@@ -13,7 +13,7 @@
                             <div class="col-lg-4">
                                 <div class='form-group'>
                                     {% if form.name.errors %}
-                                        {{ form.name.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.name.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.name(class_='form-control is-invalid') | safe }}
                                         {% for error in form.name.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -27,7 +27,7 @@
                             <div class="col-lg-4">
                                 <div class='form-group'>
                                     {% if form.phone.errors %}
-                                        {{ form.phone.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.phone.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.phone(class_='form-control is-invalid') | safe }}
                                         {% for error in form.phone.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -42,7 +42,7 @@
                             <div class="col-lg-4">
                                 <div class='form-group'>
                                     {% if form.website.errors %}
-                                        {{ form.website.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.website.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.website(class_='form-control is-invalid') | safe }}
                                         {% for error in form.website.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -61,7 +61,7 @@
                             <div class="col-lg-12">
                                 <div class='form-group'>
                                     {% if form.address.errors %}
-                                        {{ form.address.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.address.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.address(class_='form-control is-invalid') | safe }}
                                         {% for error in form.address.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -76,7 +76,7 @@
                             <div class="col-lg-12">
                                 <div class='form-group'>
                                     {% if form.apartment.errors %}
-                                        {{ form.apartment.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.apartment.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.apartment(class_='form-control is-invalid') | safe }}
                                         {% for error in form.apartment.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -91,7 +91,7 @@
                             <div class="col-lg-6">
                                 <div class='form-group'>
                                     {% if form.zipcode.errors %}
-                                        {{ form.zipcode.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.zipcode.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.zipcode(class_='form-control is-invalid') | safe }}
                                         {% for error in form.zipcode.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -106,7 +106,7 @@
                             <div class="col-lg-6">
                                 <div class='form-group'>
                                     {% if form.city.errors %}
-                                        {{ form.city.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.city.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.city(class_='form-control is-invalid') | safe }}
                                         {% for error in form.city.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -121,7 +121,7 @@
                            <div class="col-lg-6">
                                 <div class='form-group'>
                                     {% if form.county.errors %}
-                                        {{ form.county.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.county.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.county(class_='form-control is-invalid') | safe }}
                                         {% for error in form.county.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
@@ -136,7 +136,7 @@
                             <div class="col-lg-6">
                                 <div class='form-group'>
                                     {% if form.country.errors %}
-                                        {{ form.country.label(class_='label__text--small text__feedback--danger') }}
+                                        {{ form.country.label(class_='label__text--small feedback-Danger') }}
                                         {{ form.country(class_='form-control is-invalid') | safe }}
                                         {% for error in form.country.errors %}
                                             <div class="invalid-feedback font__custom"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
