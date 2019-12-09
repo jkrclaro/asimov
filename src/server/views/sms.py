@@ -3,11 +3,14 @@ from flask import (
     render_template,
     current_app,
     flash,
-    g
+    g,
+    request
 )
 
+import telnyx
 from twilio.base.exceptions import TwilioException, TwilioRestException
 
+from src import helpers
 from ..forms import SMSForm
 from src.server import twilio
 
@@ -44,24 +47,21 @@ def create():
     form = SMSForm()
 
     if form.validate_on_submit():
-        sender = form.sender.data
-        recipient = form.receiver.data
-        message = form.message.data
-        platform = form.platform.data
-        message_success = f"Successfully sent your message to {recipient}"
+        payload = request.form.to_dict()
 
-        if platform == 'telnyx':
-            message = 'Successfully sent message using Telnyx'
-            category = 'success'
-        elif platform == 'twilio':
+        if payload['platform'] == 'telnyx':
+            sms = helpers.telnyx.sms_build(payload)
+            message, category = helpers.telnyx.sms_send(telnyx, sms)
+        elif payload['platform'] == 'twilio':
             try:
-                data = {
-                    'from_': sender,
-                    'to': recipient,
-                    'body': message
-                }
+                # data = {
+                #     'from_': sender,
+                #     'to': recipient,
+                #     'body': message
+                # }
+                data = {}
                 current_app.twilio.create(**data)
-                message, category = message_success, 'success'
+                message, category = "Successfully sent your message", 'success'
             except (TwilioException, TwilioRestException) as error:
                 message, category = error.msg, 'danger'
         else:
