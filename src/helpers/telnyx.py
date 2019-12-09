@@ -13,18 +13,25 @@ def get_phones(client: telnyx) -> list:
     ]
 
 
-def sms_create(client: telnyx, message: dict) -> (str, str):
+def sms_build(payload):
+    return {
+        'from': payload['sender'],
+        'to': payload['receiver'],
+        'text': payload['message']
+    }
+
+
+def sms_send(client: telnyx, sms: dict) -> (str, str):
     """
 
     :param client:
-    :param message:
+    :param sms:
     :return:
     """
-    response = {}
     category = 'danger'
 
     try:
-        response = client.Message.create(**message)
+        response = client.Message.create(**sms)
         if response:
             message = 'Message sent via Telnyx'
             category = 'success'
