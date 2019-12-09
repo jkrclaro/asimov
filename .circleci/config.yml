@@ -26,7 +26,7 @@ jobs:
             - "/usr/local/lib/python3.7/site-packages"
       - run: pipenv run pytest
       - store_test_results:
-          path: test-results
+          path: sidefone-test-results
       - store_artifacts:
-          path: test-results
+          path: sidefone-test-results
           destination: tr1
