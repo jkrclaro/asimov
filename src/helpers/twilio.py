@@ -27,7 +27,8 @@ class Twilio:
                     account_sid = username
                 password = current_app.config['TWILIO_AUTH_TOKEN']
                 ctx.twilio_client = Client(
-                    username=username, password=password,
+                    username=username,
+                    password=password,
                     account_sid=account_sid
                 )
             return ctx.twilio_client
