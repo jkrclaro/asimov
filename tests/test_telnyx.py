@@ -11,7 +11,8 @@ telnyx.api_key = 'test_api_key'
 def telnyx_permission_error_callback(request):
     error = {
         'errors': [{
-            'code': '20017', 'title': 'Account not level 2 verified',
+            'code': '20017',
+            'title': 'Account not level 2 verified',
             'detail': "Level 2 account verification is "
                       "required to perform this action. "
                       "Check the 'verifications' tab under 'account' "
@@ -39,7 +40,7 @@ class TestTelnyx:
         phones_expected = [{'number': '+17652649135', 'platform': 'telnyx'}]
         assert phones == phones_expected
 
-    # @responses.activate
+    @responses.activate
     def test_sms_send_for_permission_error(self):
         responses_url = 'https://api.telnyx.com/v2/messages'
         responses.add_callback(
