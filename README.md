@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <a href='https://github.com/jkrclaro/warkphone'><img src='https://github.com/jkrclaro/warkphone/blob/master/src/warkphone/static/img/logo.png' align='right' width='200' height='160' /></a>
 
 # Warkphone
@@ -8,6 +9,9 @@
 - Website: https://www.warkphone.com
 =======
 <a href='https://github.com/jkrclaro/sidefone'><img src='https://github.com/jkrclaro/sidefone/blob/master/src/sidefone/static/img/logo.png' align='right' width='200' height='160' /></a>
+=======
+<a href='https://github.com/jkrclaro/sidefone'><img src='https://github.com/jkrclaro/sidefone/blob/master/src/server/static/img/logo.png' align='right' width='200' height='160' /></a>
+>>>>>>> Point to src/server
 
 # Sidefone
 [![CircleCI](https://circleci.com/gh/jkrclaro/sidefone.svg?style=svg)](https://circleci.com/gh/jkrclaro/sidefone)
