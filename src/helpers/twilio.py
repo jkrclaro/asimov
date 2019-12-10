@@ -2,6 +2,7 @@ from flask import current_app
 from flask import _app_ctx_stack as stack
 
 from twilio.rest import Client
+from twilio.base.exceptions import TwilioException, TwilioRestException
 
 
 class Twilio:
@@ -37,6 +38,35 @@ class Twilio:
         context = stack.top
         if hasattr(context, 'twilio_client'):
             del context.twilio_client
+
+
+def sms_build(payload: dict) -> dict:
+    """
+
+    :param payload:
+    :return:
+    """
+    return {
+        'from_': payload['sender'],
+        'to': payload['receiver'],
+        'body': payload['message']
+    }
+
+
+def sms_send(client: Client, sms: dict) -> (str, str):
+    """
+
+    :param client:
+    :param sms:
+    :return:
+    """
+    message, category = "Successfully sent your message", 'success'
+    try:
+        client.messages.create(**sms)
+    except (TwilioException, TwilioRestException) as error:
+        message, category = error.msg, 'danger'
+
+    return message, category
 
 
 def get_phones(client: Client) -> list:
