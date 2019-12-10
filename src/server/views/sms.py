@@ -1,10 +1,9 @@
 from flask import (
     Blueprint,
     render_template,
-    current_app,
     flash,
-    g,
-    request
+    request,
+    current_app,
 )
 
 import telnyx
@@ -19,26 +18,18 @@ sms_bp = Blueprint('sms', __name__, url_prefix='/sms')
 
 @sms_bp.route('/<number>', methods=['GET'])
 def get_chats(number):
+    form = SMSForm()
     chats = twilio.client.messages.list(to=number)
 
-    form = SMSForm()
-
     if form.validate_on_submit():
-        sender = g.current_phone['number']
-        receiver = form.receiver.data
-        message = form.message.data
+        payload = request.form.to_dict()
 
-        try:
-            current_app.twilio.messages.create(
-                body=message, from_=sender, to=receiver
-            )
-            message, category = f"Successfully sent your " \
-                                f"message to {receiver}", 'success'
-        except (TwilioException, TwilioRestException) as error:
-            message, category = error.msg, 'danger'
+        sms = helpers.twilio.sms_build(payload)
+        message, category = helpers.twilio.sms_send(twilio.client, sms)
         flash(message, category)
 
-    return render_template('sms/chats.html', number=number, chats=chats, form=form)
+    context = {'number': number, 'chats': chats, 'form': form}
+    return render_template('sms/chats.html', **context)
 
 
 @sms_bp.route('/create', methods=['GET', 'POST'])
