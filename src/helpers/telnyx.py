@@ -33,6 +33,7 @@ def sms_send(client: telnyx, sms: dict) -> (str, str):
     :param sms:
     :return:
     """
+    message = ''
     category = 'danger'
 
     try:
@@ -40,12 +41,8 @@ def sms_send(client: telnyx, sms: dict) -> (str, str):
         if response:
             message = 'Message sent via Telnyx'
             category = 'success'
-        else:
-            message = '???'
     except telnyx.error.PermissionError as permission_error:
-        detail = permission_error.errors[0]['detail']
-        meta = permission_error.errors[0]['meta']['url']
-        message = f'{detail} {meta}'
+        message = permission_error.errors[0]['detail']
     except telnyx.error.APIConnectionError as api_connection_error:
         message = api_connection_error.user_message
     except telnyx.error.InvalidRequestError as invalid_request_error:

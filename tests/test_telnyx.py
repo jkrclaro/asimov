@@ -5,7 +5,7 @@ import responses
 
 from src import helpers
 
-telnyx.api_key = 'test_api_key'
+telnyx.api_key = 'KEY016ECD376ACDEC4F066297DF1B9F040C_JecFZZvfM5AuCWz39mfENS'
 
 
 def telnyx_permission_error_callback(request):
@@ -59,9 +59,7 @@ class TestTelnyx:
         message_expected = "Level 2 account verification is required to " \
                            "perform this action. " \
                            "Check the 'verifications' tab under 'account' " \
-                           "on the portal for more information. " \
-                           "https://developers.telnyx.com/docs/overview/" \
-                           "errors/20017"
+                           "on the portal for more information."
         category_expected = "danger"
 
         assert message == message_expected
