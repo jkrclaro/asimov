@@ -60,10 +60,8 @@ def create_app(config: str):
     def initialize():
         if 'other_phones' not in session.keys():
             session['current_phone'] = {'chats': {}}
-            app.logger.info('=== UPDATING ===')
             twilio_phones = helpers.twilio.get_phones(twilio.client)
             telnyx_phones = helpers.telnyx.get_phones(telnyx)
-
             other_phones = twilio_phones + telnyx_phones
 
             session['other_phones'] = other_phones
@@ -72,7 +70,6 @@ def create_app(config: str):
             'other_phones': session['other_phones'],
             'current_phone': session['current_phone']
         }
-        current_app.logger.info(f'=> {context}')
         return dict(**context)
 
     from .views.auth import auth_bp

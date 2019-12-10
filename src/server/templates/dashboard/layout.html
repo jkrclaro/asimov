@@ -7,7 +7,9 @@
 <body>
     {% include "shared/messages.html" %}
     <div class="d-flex" id="wrapper">
-        {% include 'dashboard/sidebar.html' %}
+        {% if current_phone.number %}
+            {% include 'dashboard/sidebar.html' %}
+        {% endif %}
 
         <div id="page-content-wrapper">
             {% include 'dashboard/navbar.html' %}
