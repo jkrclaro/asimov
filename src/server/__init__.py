@@ -56,30 +56,23 @@ def create_app(config: str):
     def create_db():
         db.create_all(app=app)
 
-    @app.before_request
-    def get_phones():
-        if 'phones' not in session.keys():
-            phones_twilio = helpers.twilio.get_phones(twilio.client)
-            phones_telnyx = helpers.telnyx.get_phones(telnyx)
-            session['phones'] = phones_twilio + phones_telnyx
-
-    @app.before_request
-    def get_contacts():
-        if 'contacts' not in session.keys():
-            session['contacts'] = helpers.twilio.get_contacts(twilio.client)
-
     @app.context_processor
-    def inject_numbers():
-        if 'current_phone' in session.keys():
-            current_phone = session['current_phone']
-        else:
-            current_phone = session['phones'][0]
+    def initialize():
+        if 'other_phones' not in session.keys():
+            session['current_phone'] = {'chats': {}}
+            app.logger.info('=== UPDATING ===')
+            twilio_phones = helpers.twilio.get_phones(twilio.client)
+            telnyx_phones = helpers.telnyx.get_phones(telnyx)
+
+            other_phones = twilio_phones + telnyx_phones
+
+            session['other_phones'] = other_phones
 
         context = {
-            'phones': session['phones'],
-            'contacts': session['contacts'],
-            'current_phone': current_phone
+            'other_phones': session['other_phones'],
+            'current_phone': session['current_phone']
         }
+        current_app.logger.info(f'=> {context}')
         return dict(**context)
 
     from .views.auth import auth_bp

@@ -1,32 +1,32 @@
-<div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading dropdown">
-        <span class="dropdown-toggle sidebar-dropdown" id="sidebarNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{{ url_for('static', filename='img/') }}{{ current_phone.platform }}.png" class="platform-icon mb-1 mr-3"><b>{{ current_phone.number }}</b>
-        </span>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarNavbarDropdown">
-            <a class="dropdown-item" href="{{ url_for('number.add') }}"><i class="fas fa-plus-circle mr-3"></i> New number</a>
-            <div class="dropdown-divider"></div>
-            {% for phone in phones %}
-                {% if phone.number != current_phone.number %}
-                    <a class="dropdown-item" href="{{ url_for('number.select', number=phone.number) }}"><img src="{{ url_for('static', filename='img/') }}{{ phone.platform }}.png" class="platform-icon mr-3"> {{ phone.number }}</a>
-                {% endif %}
+{% if current_phone.number %}
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading dropdown">
+            <span class="dropdown-toggle sidebar-dropdown" id="sidebarNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{ url_for('static', filename='img/') }}{{ current_phone.platform }}.png" class="platform-icon mb-1 mr-3"><b>{{ current_phone.number }}</b>
+            </span>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarNavbarDropdown">
+                <a class="dropdown-item" href="{{ url_for('number.add') }}"><i class="fas fa-plus-circle mr-3"></i> New number</a>
+                <div class="dropdown-divider"></div>
+                {% for other_phone in other_phones %}
+                    <a class="dropdown-item" href="{{ url_for('number.select', number=other_phone.number) }}"><img src="{{ url_for('static', filename='img/') }}{{ other_phone.platform }}.png" class="platform-icon mr-3"> {{ other_phone.number }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="{{ url_for('sms.create') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sms mr-3"></i> Create SMS</a>
+            {% for number, chats in current_phone.chats.items() %}
+                <a href="{{ url_for('sms.get_chats', number=number) }}" class="list-group-item list-group-item-action bg-light">
+                    <div class="row">
+                        <div class="col-2 my-auto">
+                            <img src="https://home.iitm.ac.in/mvp/img/team/default.jpg" class="img-fluid" style="border-radius: 50%">
+                        </div>
+                        <div class="col-10">
+                            <b>{{ number }}</b> <small class="float-right">{{ chats.last_message_date_sent | datetime }}</small>
+                            <div class="text-muted">{{ chats.last_message }}</div>
+                        </div>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </div>
-    <div class="list-group list-group-flush">
-        <a href="{{ url_for('sms.create') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-sms mr-3"></i> Create SMS</a>
-        {% for number, chats in contacts.items() %}
-            <a href="{{ url_for('sms.get_chats', number=number) }}" class="list-group-item list-group-item-action bg-light">
-                <div class="row">
-                    <div class="col-2 my-auto">
-                        <img src="https://home.iitm.ac.in/mvp/img/team/default.jpg" class="img-fluid" style="border-radius: 50%">
-                    </div>
-                    <div class="col-10">
-                        <b>{{ number }}</b> <small class="float-right">{{ chats.last_message_date_sent | datetime }}</small>
-                        <div class="text-muted">{{ chats.last_message }}</div>
-                    </div>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
-</div>
+{% endif %}
