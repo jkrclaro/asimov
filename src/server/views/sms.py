@@ -8,7 +8,6 @@ from flask import (
 )
 
 import telnyx
-from twilio.base.exceptions import TwilioException, TwilioRestException
 
 from src import helpers
 from ..forms import SMSForm
@@ -48,25 +47,15 @@ def create():
 
     if form.validate_on_submit():
         payload = request.form.to_dict()
+        message = 'Unknown communications platform. SMS not sent.'
+        category = 'danger'
 
         if payload['platform'] == 'telnyx':
             sms = helpers.telnyx.sms_build(payload)
             message, category = helpers.telnyx.sms_send(telnyx, sms)
         elif payload['platform'] == 'twilio':
-            try:
-                # data = {
-                #     'from_': sender,
-                #     'to': recipient,
-                #     'body': message
-                # }
-                data = {}
-                current_app.twilio.create(**data)
-                message, category = "Successfully sent your message", 'success'
-            except (TwilioException, TwilioRestException) as error:
-                message, category = error.msg, 'danger'
-        else:
-            message = 'Unknown communications platform. Message not sent.'
-            category = 'danger'
+            sms = helpers.twilio.sms_build(payload)
+            message, category = helpers.twilio.sms_send(twilio.client, sms)
 
         flash(message, category)
 
