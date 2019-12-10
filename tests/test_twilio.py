@@ -7,14 +7,14 @@ from src import helpers
 
 
 class TestTwilio:
-    account_sid = 'test_account_sid'
-    auth_token = 'test_auth_token'
-    client = Client(account_sid, auth_token)
+    TWILIO_ACCOUNT_SID = 'test_account_sid'
+    TWILIO_AUTH_TOKEN = 'test_auth_token'
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
     @responses.activate
     def test_get_phones(self):
         responses_url = f'https://api.twilio.com/2010-04-01/Accounts/' \
-              f'{self.account_sid}/IncomingPhoneNumbers.json'
+              f'{self.TWILIO_ACCOUNT_SID}/IncomingPhoneNumbers.json'
         responses_json = {
             "incoming_phone_numbers": [
                 {"phone_number": "+0123456789"},
@@ -30,7 +30,7 @@ class TestTwilio:
     @responses.activate
     def test_get_contacts(self):
         responses_url = f'https://api.twilio.com/2010-04-01/Accounts/' \
-                        f'{self.account_sid}/Messages.json'
+                        f'{self.TWILIO_ACCOUNT_SID}/Messages.json'
         responses_json = {
             'messages': [
                 {
@@ -68,3 +68,34 @@ class TestTwilio:
         }
 
         assert contacts == contacts_expected
+
+    def test_sms_build(self):
+        payload = {
+            'sender': '+123',
+            'receiver': '+456',
+            'message': 'Test'
+        }
+        sms = helpers.twilio.sms_build(payload)
+        sms_expected = {
+            'from_': payload['sender'],
+            'to': payload['receiver'],
+            'body': payload['message']
+        }
+        assert sms == sms_expected
+
+    @responses.activate
+    def test_sms_send(self):
+        responses_url = f'https://api.twilio.com/2010-04-01/Accounts/' \
+                        f'{self.TWILIO_ACCOUNT_SID}/Messages.json'
+        response_json = {}
+        responses.add(responses.POST, responses_url, json=response_json)
+        sms = {
+            'from_': '+123',
+            'to': '+456',
+            'body': 'Testing'
+        }
+        message, category = helpers.twilio.sms_send(self.client, sms)
+        message_expected = 'Successfully sent your message'
+        category_expected = 'success'
+        assert message == message_expected
+        assert category == category_expected

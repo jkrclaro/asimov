@@ -65,6 +65,8 @@ def sms_send(client: Client, sms: dict) -> (str, str):
         client.messages.create(**sms)
     except (TwilioException, TwilioRestException) as error:
         message, category = error.msg, 'danger'
+    except Exception as exception_error:
+        message, category = exception_error, 'danger'
 
     return message, category
 
