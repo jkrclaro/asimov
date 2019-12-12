@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "shared/head.html" %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/shared.css') }}"/>
+</head>
+<body>
+    <h1 class='text-center mt-5'>
+        {% include 'shared/brand.html' %}
+    </h1>
+    {% include "shared/messages.html" %}
+    {% block content %}{% endblock %}
+    {% include "shared/scripts.html" %}
+</body>
+</html>
