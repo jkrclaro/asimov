@@ -32,18 +32,8 @@ flask-migrate = "*"
 python-slugify = "*"
 babel = "*"
 boto3 = "*"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 twilio = "*"
-<<<<<<< HEAD
->>>>>>> Add speech-bubble CSS
-=======
-twilio = "*"
->>>>>>> Add twilio
-=======
 telnyx = "==v1.0.0b0"
->>>>>>> Install telnyx v1.0.0b0
 
 [dev-packages]
 pytest = "*"
