@@ -1,0 +1,110 @@
+{% extends 'dashboard/layout.html' %}
+{% from "form/horizontal.html" import render_field %}
+{% block content %}
+
+<div class="modal" id="change-name-modal" tabindex="-1" role="dialog" aria-labelledby="change-name-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="change-name-modal-title">Change name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form_name.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form_name.name) }}ß
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-Primary--outline" data-dismiss="modal">Cancel</button>
+                    {{ form_name.submit(class_='btn btn-Primary') }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="change-email-modal" tabindex="-1" role="dialog" aria-labelledby="change-email-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="change-email-modal-title">Change email</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form_email.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form_email.email) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-Primary--outline" data-dismiss="modal">Cancel</button>
+                    {{ form_email.submit(class_='btn btn-Primary') }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="change-password-modal" tabindex="-1" role="dialog"
+     aria-labelledby="change-password-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="change-password-modal-title">Change password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                {{ form_password.csrf_token }}
+                <div class="modal-body mt-3">
+                    {{ render_field(form_password.old_password) }}
+                    {{ render_field(form_password.new_password) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-Primary--outline" data-dismiss="modal">Cancel</button>
+                    {{ form_password.submit(class_='btn btn-Primary') }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class='row'>
+    <div class='col-lg-3'></div>
+    <div class='col-lg-6'>
+        <div class='card'>
+            <div class='card-body'>
+                <h3 class='font__custom--title mt-3 mb-5'>Profile</h3>
+                <div class='form-group row'>
+                    <small class="col-md-3 col-form-label text-md-right label__text--small">Email</small>
+                    <div class="col-md-6">
+                        <p class="font__custom--text mt-1">{{ current_user.email }}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-Primary" data-toggle="modal" data-target="#change-email-modal">Edit</button>
+                    </div>
+                </div>
+                <div class='form-group row'>
+                    <small class="col-md-3 col-form-label text-md-right label__text--small">Shop name</small>
+                    <div class="col-md-6">
+                        <p class="font__custom--text mt-1">{{ current_user.profile.name }}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-Primary" data-toggle="modal" data-target="#change-name-modal">Edit</button>
+                    </div>
+                </div>
+                <div class='form-group row'>
+                    <small class="col-md-3 col-form-label text-md-right label__text--small">Password</small>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-Primary" data-toggle="modal" data-target="#change-password-modal">Change password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='col-lg-3'></div>
+</div>
+
+
+{% endblock %}
