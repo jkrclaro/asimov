@@ -1,0 +1,27 @@
+{% extends 'dashboard/layout.html' %}
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="mb-3"><b>Welcome to your Sidefone</b></h3>
+                <p>Choose your phone.</p>
+                <hr/>
+                {% for other_phone in other_phones %}
+                    <div onclick="location.href='{{ url_for('number.select', number=other_phone.number) }}'" style="cursor: pointer;">
+                        <i class="fas fa-chevron-right mr-3"></i>
+                        <img src="{{ url_for('static', filename='img/') }}{{ other_phone.platform }}.png" class="platform-icon mr-3">
+                        {{ other_phone.number }}
+                    </div>
+                    {% if not loop.last %} <hr/> {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+
+{% endblock %}
