@@ -1,3 +1,0 @@
-# Etsy
-
-Doc for Etsy
