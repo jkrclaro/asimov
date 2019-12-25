@@ -1,0 +1,35 @@
+{% extends 'dashboard/layout.html' %}
+{% from "form/horizontal.html" import render_field %}
+{% block content %}
+
+<div class='row mt-5'>
+    <div class='col-lg-2'></div>
+    <div class='col-lg-8 mb-3'>
+        <form method=post>
+            <div class='card mb-5'>
+                <div class='card-body'>
+                    <h3 class='font__custom--title mb-5'>
+                        <b>Messages</b>
+                        <a href="{{ url_for('sms.create') }}" class="btn btn-primary float-right">Create</a>
+                    </h3>
+
+                    <div>
+                        {% for number, chat in chats.items() %}
+                            <b><a href="{{ url_for('sms.get_chats', number=number) }}">{{ number }}</a></b>
+                            <span class="text-muted float-right">{{ chat.last_message_date_sent | datetime }}</span>
+                            <div>{{ chat.last_message }}</div>
+
+                            {% if not loop.last %}
+                                <hr/>
+                            {%endif%}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='col-lg-2'></div>
+</div>
+
+
+{% endblock %}

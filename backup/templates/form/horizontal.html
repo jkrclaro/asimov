@@ -1,0 +1,23 @@
+{% macro render_field(field) %}
+    <div class='form-group row'>
+        {{ field.label(class_='col-md-2 col-form-label text-md-right label__text--small') }}
+        <div class='col-md-10'>
+            {% if field.errors %}
+                {{ field(class_='form-control is-invalid', **kwargs) | safe }}
+                {% for error in field.errors %}
+                    <div class="invalid-feedback"><i class="fas fa-exclamation-triangle"></i> {{ error }}</div>
+                {% endfor %}
+            {% else %}
+                {% if field.type == 'BooleanField' %}
+                    {{ field(class_='mt-2 mr-2') | safe }} <label for='{{ field.name }}'><small class="text-muted">{{ field.description }}</small></label>
+                {% elif field.type == 'IntegerField' %}
+                    {{ field(class_='form-control col-4', **kwargs) | safe }}
+                    <small id="{{ field.name }}-int-help-block" class="font__custom--family form-text text-muted">{{ field.description }}</small>
+                {% else %}
+                    {{ field(class_='form-control', **kwargs) | safe }}
+                    <small id="{{ field.name }}-help-block" class="font__custom--family form-text text-muted">{{ field.description }}</small>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
