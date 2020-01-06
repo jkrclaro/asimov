@@ -1,4 +1,4 @@
-<a href='https://github.com/jkrclaro/claro'><img src='https://github.com/jkrclaro/claro/blob/master/src/server/static/img/logo.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/claro'><img src='https://github.com/jkrclaro/claro/blob/master/assets/logo.png' align='right' width='200' height='160' /></a>
 
 # Claro
 [![CircleCI](https://circleci.com/gh/jkrclaro/claro.svg?style=svg)](https://circleci.com/gh/jkrclaro/claro)
