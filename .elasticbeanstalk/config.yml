@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: nucleus-production
+    environment: claro-production
     group_suffix: null
 global:
-  application_name: nucleus
+  application_name: claro
   branch: null
   default_ec2_keyname: null
   default_platform: Docker 18.06.1-ce

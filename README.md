@@ -1,7 +1,7 @@
-<a href='https://github.com/jkrclaro/nucleus'><img src='https://github.com/jkrclaro/nucleus/blob/master/src/server/static/img/logo.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/claro'><img src='https://github.com/jkrclaro/claro/blob/master/src/server/static/img/logo.png' align='right' width='200' height='160' /></a>
 
-# Nucleus
-[![CircleCI](https://circleci.com/gh/jkrclaro/nucleus.svg?style=svg)](https://circleci.com/gh/jkrclaro/nucleus)
+# Claro
+[![CircleCI](https://circleci.com/gh/jkrclaro/claro.svg?style=svg)](https://circleci.com/gh/jkrclaro/claro)
 
 Backend for all my projects.
 
