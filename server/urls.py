@@ -11,7 +11,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    path('', include('sidefone.sidefone.urls', namespace='sidefone')),
+    path('sidefone/', include('server.sidefone.urls', namespace='nucleus')),
 ]
 
 if settings.DEBUG:
