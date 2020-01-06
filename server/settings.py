@@ -12,8 +12,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Django
 SITE_ID = 1
-DEBUG = bool(strtobool(os.environ['DEBUG']))
-SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = bool(strtobool(os.environ.get('DEBUG', 'True')))
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key-dev')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
