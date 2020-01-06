@@ -78,7 +78,7 @@ def login():
 @auth_bp.route('/logout')
 def logout():
     logout_user()
-    session.clear()
+    session.claro()
     return redirect(url_for('dashboard.index'))
 
 

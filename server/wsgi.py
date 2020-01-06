@@ -1,5 +1,5 @@
 """
-WSGI config for nucleus project.
+WSGI config for claro project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
