@@ -19,11 +19,11 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-ROOT_URLCONF = 'sidefone.urls'
-WSGI_APPLICATION = 'sidefone.wsgi.application'
+ROOT_URLCONF = 'server.urls'
+WSGI_APPLICATION = 'server.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'sidefone.User'
+AUTH_USER_MODEL = 'nucleus.User'
 MAX_UPLOAD_SIZE = 524288000
 
 # Messages
@@ -36,7 +36,7 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-    ALLOWED_HOSTS = ('sidefone.localhost',)
+    ALLOWED_HOSTS = ('nucleus.localhost',)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -56,7 +56,7 @@ else:
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
-    ALLOWED_HOSTS = ('www.sidefone.com', 'sidefone.com')
+    ALLOWED_HOSTS = ('www.nucleus.com', 'nucleus.com')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -68,10 +68,10 @@ else:
         }
     }
     # Used by storage
-    STATICFILES_STORAGE = 'sidefone.storage.Static'
+    STATICFILES_STORAGE = 'nucleus.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'sidefone.storage.Media'
+    DEFAULT_FILE_STORAGE = 'nucleus.storage.Media'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -90,7 +90,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'debug_toolbar',
-    'sidefone.sidefone',
+    'server.nucleus',
+    'server.sidefone',
 )
 
 MIDDLEWARE = (
@@ -107,7 +108,7 @@ MIDDLEWARE = (
 TEMPLATES = (
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'sidefone/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'nucleus/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': (

@@ -40,7 +40,7 @@ def email_confirmation() -> None:
     email = current_user.email
     endpoint = 'auth.confirm'
     template = 'email/confirm.html'
-    subject = 'Confirm your Sidefone email address!'
+    subject = 'Confirm your Nucleus email address!'
     name = current_user.profile.name
     data = {'email': current_user.email}
     context = {
@@ -57,7 +57,7 @@ def email_change_email_success(old_email: str) -> None:
     :param old_email: Old email of user.
     """
     template = 'email/change_email_success.html'
-    subject = 'Your Sidefone email address has changed'
+    subject = 'Your Nucleus email address has changed'
     name = current_user.profile.name
     data = {'new_email': current_user.email}
     send_email(old_email, template, subject, name=name, data=data)
@@ -68,7 +68,7 @@ def email_reset() -> None:
     email = current_user.email
     endpoint = 'auth.reset'
     template = 'email/reset.html'
-    subject = 'Reset your Sidefone password'
+    subject = 'Reset your Nucleus password'
     data = {'email': email}
     context = {
         'endpoint': endpoint,
@@ -82,7 +82,7 @@ def email_reset_success() -> None:
     email = current_user.email
     endpoint = 'auth.forgot'
     email_template = 'email/reset_success.html'
-    subject = 'Your Sidefone password has been changed'
+    subject = 'Your Nucleus password has been changed'
     send_email(email, email_template, subject, endpoint=endpoint)
 
 
@@ -90,7 +90,7 @@ def email_change_password_success() -> None:
     """Notify user that the password was successfully changed via /profile."""
     endpoint = 'auth.reset'
     template = 'email/change_password_success.html'
-    subject = 'Your Sidefone password has been changed'
+    subject = 'Your Nucleus password has been changed'
     context = {
         'endpoint': endpoint,
         'name': current_user.profile.name
@@ -105,7 +105,7 @@ def email_change_email(new_email: str) -> None:
     """
     endpoint = 'auth.confirm'
     template = 'email/change_email.html'
-    subject = 'Confirm your new Sidefone email address!'
+    subject = 'Confirm your new Nucleus email address!'
     old_email = current_user.email
     data = {
         'old_email': old_email,

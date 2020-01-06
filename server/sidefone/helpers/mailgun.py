@@ -1,9 +1,9 @@
 import requests
 
 api_key = ''
-domain = 'www.sidefone.com'
+domain = 'www.nucleus.com'
 region = 'eu'
-from_email = f'Sidefone <mailgun@{domain}>'
+from_email = f'Nucleus <mailgun@{domain}>'
 
 
 def send_email(subject: str, to_emails: list, text: str = '', html: str = ''):
