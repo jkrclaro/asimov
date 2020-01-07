@@ -14,6 +14,7 @@ class Contact(models.Model):
     company = models.CharField(max_length=254)
     agent = models.CharField(max_length=254)
     background = models.TextField()
+    img = models.ImageField(upload_to='sidefone')
 
     class Meta:
         db_table = 'sidefone_contacts'
