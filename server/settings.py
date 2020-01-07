@@ -45,6 +45,7 @@ if DEBUG:
     }
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
+    CORS_ORIGIN_ALLOW_ALL = True
 else:
     SECURE_HSTS_SECONDS = 1
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -92,6 +93,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'phonenumber_field',
     'rest_framework',
+    'corsheaders',
     'server.claro',
     'server.sidefone',
 )
@@ -104,6 +106,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -111,7 +115,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 TEMPLATES = (
