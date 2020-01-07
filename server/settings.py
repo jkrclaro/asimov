@@ -120,7 +120,9 @@ MIDDLEWARE = (
 TEMPLATES = (
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'claro/templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'server/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': (
@@ -136,18 +138,10 @@ TEMPLATES = (
 
 PASSWORD_VALIDATION = 'django.contrib.auth.password_validation'
 AUTH_PASSWORD_VALIDATORS = (
-    {
-        'NAME': f'{PASSWORD_VALIDATION}.UserAttributeSimilarityValidator'
-    },
-    {
-        'NAME': f'{PASSWORD_VALIDATION}.MinimumLengthValidator'
-    },
-    {
-        'NAME': f'{PASSWORD_VALIDATION}.CommonPasswordValidator'
-    },
-    {
-        'NAME': f'{PASSWORD_VALIDATION}.NumericPasswordValidator'
-    },
+    {'NAME': f'{PASSWORD_VALIDATION}.UserAttributeSimilarityValidator'},
+    {'NAME': f'{PASSWORD_VALIDATION}.MinimumLengthValidator'},
+    {'NAME': f'{PASSWORD_VALIDATION}.CommonPasswordValidator'},
+    {'NAME': f'{PASSWORD_VALIDATION}.NumericPasswordValidator'},
 )
 
 AUTHENTICATION_BACKENDS = (
