@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
-from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
@@ -13,7 +12,12 @@ from .sidefone.urls import router as router_sidefone
 
 admin.autodiscover()
 
+router = routers.DefaultRouter()
+router.registry.extend(router_sidefone.registry)
+
+
 urlpatterns = [
+    path('', include(router.urls)),
     path('sidefone/', include('server.sidefone.urls')),
     path('auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
