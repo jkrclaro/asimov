@@ -4,6 +4,8 @@ from django.conf.urls import include
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
 
 from rest_framework import routers
 
@@ -17,7 +19,9 @@ router.registry.extend(router_sidefone.registry)
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('articles/', TemplateView.as_view(template_name='articles.html'), name='home'),
+    path('api/', include(router.urls)),
     path('sidefone/', include('server.sidefone.urls')),
     path('auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

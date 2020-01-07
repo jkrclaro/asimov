@@ -7,7 +7,8 @@ Backend for all my projects.
 
 ## Overview
 
-Powering these apps:
+Powering these websites
+- [My personal website](https://www.jkrclaro.com)
 - [Sidefone](https://www.sidefone.com)
 
 ## Requirements
