@@ -6,12 +6,16 @@ from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
+from rest_framework import routers
+
+from .sidefone.urls import router as router_sidefone
+
 
 admin.autodiscover()
 
-
 urlpatterns = [
-    path('sidefone/', include('server.sidefone.urls', namespace='claro')),
+    path('sidefone/', include('server.sidefone.urls')),
+    path('auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
 if settings.DEBUG:

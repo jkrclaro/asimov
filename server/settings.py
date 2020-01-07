@@ -91,9 +91,17 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'debug_toolbar',
     'phonenumber_field',
+    'rest_framework',
     'server.claro',
     'server.sidefone',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DATETIME_FORMAT': '%m/%d/%Y %H:%M:%S"'
+}
 
 MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',

@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Contact(models.Model):
+    name = models.CharField(max_length=100)
     email = models.EmailField(max_length=254)
     phone = PhoneNumberField()
     job = models.CharField(max_length=254)
@@ -16,3 +17,6 @@ class Contact(models.Model):
 
     class Meta:
         db_table = 'sidefone_contacts'
+
+    def __str__(self):
+        return self.name

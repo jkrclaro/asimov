@@ -1,5 +1,10 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+
+from .models import Contact
+from .serializers import ContactSerializer
 
 
-def index(request):
-    return render(request, 'dashboard/index.html')
+class ContactViewset(viewsets.ModelViewSet):
+    """API that allows contacts to be viewed or edited."""
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer

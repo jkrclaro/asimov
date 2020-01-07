@@ -1,11 +1,10 @@
-from django.urls import re_path, path
-from django.views.generic import TemplateView
-
-from .views import index
-
+from django.urls import include, path
+from rest_framework import routers
+from . import views
 
 app_name = 'sidefone'
 
-urlpatterns = [
-    path('', index, name='index'),
-]
+router = routers.DefaultRouter()
+router.register('contacts', views.ContactViewset, 'contacts')
+
+urlpatterns = router.urls
