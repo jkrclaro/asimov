@@ -145,3 +145,4 @@ scripts/letsencrypt/letsencrypt
 .DS_Store
 node_modules
 .env
+media/
