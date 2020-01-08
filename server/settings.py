@@ -6,6 +6,7 @@ from distutils.util import strtobool
 from django.contrib.messages import constants as messages
 
 import django_heroku
+import dj_database_url
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
@@ -26,6 +27,12 @@ LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'claro.User'
 MAX_UPLOAD_SIZE = 524288000
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Messages
 MESSAGE_TAGS = {
@@ -38,12 +45,6 @@ MESSAGE_TAGS = {
 
 if DEBUG:
     ALLOWED_HOSTS = ('claro.localhost',)
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
     CORS_ORIGIN_ALLOW_ALL = True
@@ -59,16 +60,8 @@ else:
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
     ALLOWED_HOSTS = ('www.claro.com', 'claro.com')
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['RDS_DATABASE'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOST'],
-            'PORT': 5432
-        }
-    }
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
     # Used by storage
     STATICFILES_STORAGE = 'claro.storage.Static'
     STATICFILES_LOCATION = 'static'
