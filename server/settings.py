@@ -60,7 +60,10 @@ else:
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
     ALLOWED_HOSTS = ('www.claro.com', 'claro.com')
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'] = dj_database_url.config(
+        os.environ['DATABASE_URL'],
+        conn_max_age=600
+    )
 
     # Used by storage
     STATICFILES_STORAGE = 'claro.storage.Static'
