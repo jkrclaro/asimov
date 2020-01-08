@@ -8,7 +8,6 @@ from django.contrib.messages import constants as messages
 import django_heroku
 from dotenv import load_dotenv, find_dotenv
 
-django_heroku.settings(locals())
 load_dotenv(find_dotenv())
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -157,3 +156,4 @@ AWS_S3_OBJECT_PARAMETERS = {
 INTERNAL_IPS = ('127.0.0.1',)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+django_heroku.settings(locals())
