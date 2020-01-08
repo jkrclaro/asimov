@@ -5,8 +5,10 @@ from distutils.util import strtobool
 
 from django.contrib.messages import constants as messages
 
+import django_heroku
 from dotenv import load_dotenv, find_dotenv
 
+django_heroku.settings(locals())
 load_dotenv(find_dotenv())
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
