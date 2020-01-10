@@ -5,7 +5,6 @@ from distutils.util import strtobool
 
 from django.contrib.messages import constants as messages
 
-import django_heroku
 import dj_database_url
 from dotenv import load_dotenv, find_dotenv
 
@@ -152,4 +151,3 @@ AWS_S3_OBJECT_PARAMETERS = {
 INTERNAL_IPS = ('127.0.0.1',)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-django_heroku.settings(locals())
