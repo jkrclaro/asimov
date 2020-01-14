@@ -6,23 +6,19 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-
 from rest_framework import routers
 
 from .sidefone.urls import router as router_sidefone
 
-
 admin.autodiscover()
-
 router = routers.DefaultRouter()
 router.registry.extend(router_sidefone.registry)
-
-
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('articles/', TemplateView.as_view(template_name='articles.html'), name='home'),
-    path('api/', include(router.urls)),
-    path('api/sidefone/', include('server.sidefone.urls')),
+    path('api/', include(router.urls), name='api'),
+    path('api/sidefone/', include('server.sidefone.urls'), name='sidefone'),
+    path('api/pxdcast/', include('server.pxdcast.urls'), name='pxdcast'),
     path('api/auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
