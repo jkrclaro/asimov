@@ -63,6 +63,9 @@ else:
         os.environ['DATABASE_URL'],
         conn_max_age=600
     )
+    CORS_ORIGIN_WHITELIST = [
+        "https://pxdcast.jkrclaro.com",
+    ]
 
     # Used by django-storages
     STATICFILES_STORAGE = 'claro.storage.Static'
