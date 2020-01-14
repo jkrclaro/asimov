@@ -58,7 +58,7 @@ else:
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
-    ALLOWED_HOSTS = ('www.claro.com', 'claro.com')
+    ALLOWED_HOSTS = ('www.jkrclaro.com', 'jkrclaro.com')
     DATABASES['default'] = dj_database_url.config(
         os.environ['DATABASE_URL'],
         conn_max_age=600
