@@ -64,7 +64,7 @@ else:
         conn_max_age=600
     )
 
-    # Used by storage
+    # Used by django-storages
     STATICFILES_STORAGE = 'claro.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
