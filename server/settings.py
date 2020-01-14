@@ -66,7 +66,13 @@ else:
         "https://pxdcast.jkrclaro.com",
     ]
 
+    # AWS
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
     # Used by django-storages
+    AWS_STORAGE_BUCKET_NAME = 'claro'
     STATICFILES_STORAGE = 'server.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
