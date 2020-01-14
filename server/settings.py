@@ -68,10 +68,10 @@ else:
     ]
 
     # Used by django-storages
-    STATICFILES_STORAGE = 'claro.storage.Static'
+    STATICFILES_STORAGE = 'server.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'claro.storage.Media'
+    DEFAULT_FILE_STORAGE = 'server.storage.Media'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
