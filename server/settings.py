@@ -72,7 +72,7 @@ else:
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
     # Used by django-storages
-    AWS_STORAGE_BUCKET_NAME = 'claro'
+    AWS_STORAGE_BUCKET_NAME = 'jkrclaro.com'
     STATICFILES_STORAGE = 'server.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
