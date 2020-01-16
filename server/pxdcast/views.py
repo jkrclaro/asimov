@@ -9,12 +9,12 @@ def podcast_list(request):
         {
             'id': 1,
             'name': 'Diet Coke',
-            'img': 'https://secureimg.stitcher.com/feedimagesplain328/16374.jpg'
+            'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?'
         },
         {
             'id': 2,
             'name': 'Pepsi Cola',
-            'img': 'https://secureimg.stitcher.com/feedimagesplain328/16374.jpg'
+            'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?'
         },
     ]
     return jsonify(data)
@@ -24,29 +24,30 @@ def podcast_retrieve(request, pk):
     time.sleep(1)
     data = {
         'id': 1,
-        'name': '99% Invisible',
-        'img': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/'
-               '99pi.svg/1200px-99pi.svg.png',
-        'author': 'Roman Mars',
-        'website': '99percentinvisible.org',
-        'summary': "Design is everywhere in our lives, perhaps most importantly "
-                   "in the places where we've just stopped noticing. "
-                   "99% Invisible is a weekly exploration of the process and "
-                   "power of design and architecture. "
-                   "From award winning producer Roman Mars. "
-                   "Learn more at 99percentinvisible.org. "
-                   "A proud member of Radiotopia, from PRX. "
-                   "Learn more at radiotopia.fm.",
+        'name': 'Software Engineering Daily',
+        'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?',
+        'author': 'Jeff Meyerson',
+        'website': 'softwareengineeringdaily.com',
+        'summary': "Technical interviews about software topics.",
         'episodes': [
             {
-                'name': '384-Mini-Stories: Volume 8',
-                'uploaded_at': 'January 7',
-                'duration': '50 mins'},
+                'id': 3,
+                'name': 'JS Party with Kevin Ball',
+                'uploaded_at': 'January 16',
+                'duration': '1h 4m'
+            },
             {
-                'name': '383-Mini-Stories: Volume 7',
-                'uploaded_at': 'Dec 19, 2019',
-                'duration': '40 mins'
-            }
+                'id': 2,
+                'name': 'Packet: Baremetal Infrastructure with Zachary Smith and Nathan Goulding',
+                'uploaded_at': 'January 15',
+                'duration': '53 mins'
+            },
+            {
+                'id': 1,
+                'name': 'Edge Computing Platform with Jaromir Coufal',
+                'uploaded_at': 'January 14',
+                'duration': '53 mins'
+            },
         ]
     }
     return jsonify(data)
