@@ -8,13 +8,13 @@ def podcast_list(request):
     data = [
         {
             'id': 1,
-            'name': 'Diet Coke',
+            'name': 'Software Engineering Daily',
             'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?'
         },
         {
             'id': 2,
-            'name': 'Pepsi Cola',
-            'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?'
+            'name': 'a16z Podcast',
+            'img': 'https://imagecdn.acast.com/a16z/a16z-podcast-the-asshole-survival-guide/image.jpg'
         },
     ]
     return jsonify(data)
@@ -22,14 +22,30 @@ def podcast_list(request):
 
 def podcast_retrieve(request, pk):
     time.sleep(1)
-    data = {
-        'id': 1,
-        'name': 'Software Engineering Daily',
-        'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?',
-        'author': 'Jeff Meyerson',
-        'website': 'softwareengineeringdaily.com',
-        'summary': "Technical interviews about software topics."
-    }
+    podcasts = [
+        {
+            'id': 1,
+            'name': 'Software Engineering Daily',
+            'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?',
+            'author': 'Jeff Meyerson',
+            'website': 'softwareengineeringdaily.com',
+            'summary': "Technical interviews about software topics."
+        },
+        {
+            'id': 2,
+            'name': 'a16z Podcast',
+            'img': 'https://imagecdn.acast.com/a16z/a16z-podcast-the-asshole-survival-guide/image.jpg',
+            'author': 'Andreessen Horowitz',
+            'website': 'a16z.com',
+            'summary': "The a16z Podcast discusses tech and culture trends, news, and the future – especially as ‘software eats the world’. It features industry experts, business leaders, and other interesting thinkers and voices from around the world. This podcast is produced by Andreessen Horowitz (aka “a16z”), a Silicon Valley-based venture capital firm. Multiple episodes are released every week; visit a16z.com for more details and to sign up for our newsletters and other content as well!"
+        }
+    ]
+    pk = int(pk)
+    data = {}
+    for podcast in podcasts:
+        print(f"{podcast['id'] == pk}")
+        if podcast['id'] == pk:
+            data = podcast
     return jsonify(data)
 
 
