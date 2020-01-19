@@ -53,23 +53,33 @@ def episode_list(request, pk):
     time.sleep(1)
     data = [
         {
+            'id': 'apollo-graphql-with-geoff-schmidt',
+            'name': 'Apollo GraphQL with Geoff Schmidt',
+            'uploaded_at': 'January 17',
+            'duration': '1h 9m',
+            'url': 'http://traffic.libsyn.com/joeroganexp/p1413.mp3'
+        },
+        {
             'id': 'js-party-with-kevin-ball',
             'name': 'JS Party with Kevin Ball',
             'uploaded_at': 'January 16',
-            'duration': '1h 4m'
+            'duration': '1h 4m',
+            'url': 'http://traffic.libsyn.com/joeroganexp/p1412.mp3',
         },
         {
             'id': 'packet-baremetal-infrastructure-with-zachary-smith-and-nathan-goulding',
             'name': 'Packet: Baremetal Infrastructure with Zachary Smith and Nathan Goulding',
             'uploaded_at': 'January 15',
-            'duration': '53 mins'
+            'duration': '53 mins',
+            'url': 'http://traffic.libsyn.com/joeroganexp/p1411.mp3',
         },
         {
             'id': 'edge-computing-platform-with-jaromir-coufal',
             'name': 'Edge Computing Platform with Jaromir Coufal',
             'uploaded_at': 'January 14',
-            'duration': '53 mins'
-        },
+            'duration': '53 mins',
+            'url': 'http://traffic.libsyn.com/joeroganexp/p1410.mp3',
+        }
     ]
     return jsonify(data)
 
