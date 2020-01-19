@@ -14,7 +14,7 @@ def podcast_list(request):
         {
             'id': 2,
             'name': 'a16z Podcast',
-            'img': 'https://imagecdn.acast.com/a16z/a16z-podcast-the-asshole-survival-guide/image.jpg'
+            'img': 'https://i.scdn.co/image/9843fa080da4fc3455bb348d68f8dd5b0aa402ce'
         },
     ]
     return jsonify(data)
@@ -34,7 +34,7 @@ def podcast_retrieve(request, pk):
         {
             'id': 2,
             'name': 'a16z Podcast',
-            'img': 'https://imagecdn.acast.com/a16z/a16z-podcast-the-asshole-survival-guide/image.jpg',
+            'img': 'https://i.scdn.co/image/9843fa080da4fc3455bb348d68f8dd5b0aa402ce',
             'author': 'Andreessen Horowitz',
             'website': 'a16z.com',
             'summary': "The a16z Podcast discusses tech and culture trends, news, and the future – especially as ‘software eats the world’. It features industry experts, business leaders, and other interesting thinkers and voices from around the world. This podcast is produced by Andreessen Horowitz (aka “a16z”), a Silicon Valley-based venture capital firm. Multiple episodes are released every week; visit a16z.com for more details and to sign up for our newsletters and other content as well!"
