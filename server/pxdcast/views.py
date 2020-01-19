@@ -1,5 +1,6 @@
 import time
 
+from server.pxdcast.search import Search
 from server.utils.jsonify import jsonify
 
 
@@ -17,7 +18,11 @@ def podcast_list(request):
             'img': 'https://i.scdn.co/image/9843fa080da4fc3455bb348d68f8dd5b0aa402ce'
         },
     ]
-    return jsonify(data)
+    search = Search()
+    a16z = search.search_podcasts('a16z')
+    sed = search.search_podcasts('software engineering daily')
+    podcasts = a16z + sed
+    return jsonify(podcasts)
 
 
 def podcast_retrieve(request, pk):
