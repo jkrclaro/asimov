@@ -17,7 +17,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('articles/', TemplateView.as_view(template_name='articles.html'), name='articles'),
     path('books/', TemplateView.as_view(template_name='books.html'), name='books'),
-    path('the-lean-startup/', TemplateView.as_view(template_name='books/the-lean-startup.html'), name='the-lean-startup'),
+    path('mindset/', TemplateView.as_view(template_name='books/mindset.html'), name='mindset'),
     path('pxdcast/', include('server.pxdcast.urls'), name='pxdcast'),
     # path('api/', include(router.urls), name='api'),
     # path('api/sidefone/', include('server.sidefone.urls'), name='sidefone'),
