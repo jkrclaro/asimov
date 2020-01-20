@@ -1,27 +1,16 @@
 import time
 
-from server.pxdcast.search import Search
+from server.pxdcast.applepodcasts import ApplePodcasts
 from server.utils.jsonify import jsonify
 
 
 def podcast_list(request):
     time.sleep(1)
-    data = [
-        {
-            'id': 1,
-            'name': 'Software Engineering Daily',
-            'img': 'https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/software-engineering-daily/PWairgiOpneHvkGJri7RVbtORKI2?'
-        },
-        {
-            'id': 2,
-            'name': 'a16z Podcast',
-            'img': 'https://i.scdn.co/image/9843fa080da4fc3455bb348d68f8dd5b0aa402ce'
-        },
-    ]
-    search = Search()
-    a16z = search.search_podcasts('a16z')
-    sed = search.search_podcasts('software engineering daily')
-    podcasts = a16z + sed
+    apple_podcasts = ApplePodcasts()
+    a16z = apple_podcasts.search('a16z')
+    sed = apple_podcasts.search('software engineering daily')
+    jr = apple_podcasts.search('joe rogan')
+    podcasts = a16z + sed + jr
     return jsonify(podcasts)
 
 
