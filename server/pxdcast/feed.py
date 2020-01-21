@@ -57,5 +57,5 @@ class Feed:
             ]
         }
 
-        episodes = data[podcast_id]
+        episodes = data.get(podcast_id, None)
         return episodes
