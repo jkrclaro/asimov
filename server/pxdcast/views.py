@@ -11,7 +11,8 @@ def podcast_list(request):
     a16z = apple_podcasts.search_podcasts('a16z')
     sed = apple_podcasts.search_podcasts('software engineering daily')
     jr = apple_podcasts.search_podcasts('joe rogan')
-    podcasts = a16z + sed + jr
+    recode_decode = apple_podcasts.search_podcasts('recode decode')
+    podcasts = a16z + sed + jr + recode_decode
     return jsonify(podcasts)
 
 

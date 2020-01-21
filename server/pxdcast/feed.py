@@ -15,6 +15,7 @@ class Feed:
         - duration
         - url
         """
+        # https://stackoverflow.com/questions/28282797/feedparser-parse-ssl-certificate-verify-failed
         if hasattr(ssl, '_create_unverified_context'):
             ssl._create_default_https_context = ssl._create_unverified_context
 
