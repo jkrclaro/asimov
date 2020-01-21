@@ -59,5 +59,5 @@ class ApplePodcasts:
             }
         }
 
-        podcast = data[podcast_id]
+        podcast = data.get(podcast_id, None)
         return podcast
