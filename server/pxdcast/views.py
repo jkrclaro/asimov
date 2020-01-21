@@ -16,7 +16,11 @@ def podcast_list(request):
 
 
 def podcast_retrieve(request, pk):
-    podcast_model = Podcast.objects.get(apple_podcasts_id=pk)
+    try:
+        podcast_model = Podcast.objects.get(apple_podcasts_id=pk)
+    except Podcast.DoesNotExist:
+        podcast_model = None
+
     if podcast_model:
         podcast = {
             'name': podcast_model.name,
