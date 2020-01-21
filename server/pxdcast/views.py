@@ -1,7 +1,8 @@
 import time
 
-from server.pxdcast.applepodcasts import ApplePodcasts
-from server.pxdcast.feed import Feed
+from .models import Podcast
+from .applepodcasts import ApplePodcasts
+from .feed import Feed
 from server.utils.jsonify import jsonify
 
 
@@ -17,12 +18,16 @@ def podcast_list(request):
 def podcast_retrieve(request, pk):
     apple_podcasts = ApplePodcasts()
     podcast = apple_podcasts.search_podcast(pk)
+    Podcast.objects.get_or_create_podcast(**podcast)
     return jsonify(podcast)
 
 
 def episode_list(request, pk):
-    feed = Feed()
-    data = feed.parse(pk)
+    podcast = Podcast.objects.get(apple_podcasts_id=pk)
+    data = {}
+    if podcast:
+        feed = Feed()
+        data = feed.parse(podcast.feed)
     return jsonify(data)
 
 
