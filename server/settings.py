@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'server.claro',
     'server.sidefone',
+    'server.pxdcast',
 )
 
 REST_FRAMEWORK = {

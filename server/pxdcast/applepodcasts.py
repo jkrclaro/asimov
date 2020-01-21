@@ -6,11 +6,11 @@ class ApplePodcasts:
     def __init__(self):
         self.url = 'https://itunes.apple.com'
         self.fields = {
-            'trackViewUrl': 'website',
+            # 'trackViewUrl': 'website',
             'trackName': 'name',
             'artistName': 'author',
             'artworkUrl100': 'img',
-            'feedUrl': 'feed',
+            'feedUrl': 'website',
             'trackId': 'id',
         }
 
