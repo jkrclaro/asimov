@@ -6,7 +6,6 @@ from server.utils.jsonify import jsonify
 
 
 def podcast_list(request):
-    time.sleep(1)
     apple_podcasts = ApplePodcasts()
     a16z = apple_podcasts.search_podcasts('a16z')
     sed = apple_podcasts.search_podcasts('software engineering daily')
@@ -16,21 +15,18 @@ def podcast_list(request):
 
 
 def podcast_retrieve(request, pk):
-    time.sleep(1)
     apple_podcasts = ApplePodcasts()
     podcast = apple_podcasts.search_podcast(pk)
     return jsonify(podcast)
 
 
 def episode_list(request, pk):
-    time.sleep(1)
     feed = Feed()
     data = feed.parse(pk)
     return jsonify(data)
 
 
 def episode_retrieve(request, podcast_pk, pk):
-    time.sleep(1)
     data = {
         'id': 'js-party-with-kevin-ball',
         'name': 'JS Party with Kevin Ball',
