@@ -16,9 +16,20 @@ def podcast_list(request):
 
 
 def podcast_retrieve(request, pk):
-    apple_podcasts = ApplePodcasts()
-    podcast = apple_podcasts.search_podcast(pk)
-    Podcast.objects.get_or_create_podcast(**podcast)
+    podcast_model = Podcast.objects.get(apple_podcasts_id=pk)
+    if podcast_model:
+        podcast = {
+            'name': podcast_model.name,
+            'author': podcast_model.author,
+            'img': podcast_model.img,
+            'feed': podcast_model.website,
+            'website': podcast_model.website,
+            'id': podcast_model.apple_podcasts_id
+        }
+    else:
+        apple_podcasts = ApplePodcasts()
+        podcast = apple_podcasts.search_podcast(pk)
+        Podcast.objects.get_or_create_podcast(**podcast)
     return jsonify(podcast)
 
 
