@@ -8,7 +8,6 @@ Backend for all my projects.
 ## Overview
 
 Powering these websites
-- [My personal website](https://www.jkrclaro.com)
 - [Sidefone](https://sidefone.jkrclaro.com)
 - [Pxdcast](https://pxdcast.jkrclaro.com)
 
