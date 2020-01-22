@@ -29,7 +29,7 @@ class Feed:
 
             episode = {
                 'name': entry['title'],
-                'uploaded_at': entry['published'],
+                'uploaded_at': 'Today',
                 'duration': entry['itunes_duration'],
                 'url': url
             }
