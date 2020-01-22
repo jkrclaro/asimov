@@ -58,10 +58,7 @@ else:
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
     ALLOWED_HOSTS = ('www.jkrclaro.com', 'jkrclaro.com')
-    DATABASES['default'] = dj_database_url.config(
-        os.environ['DATABASE_URL'],
-        conn_max_age=600
-    )
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
     CORS_ORIGIN_WHITELIST = [
         "https://pxdcast.jkrclaro.com",
     ]
