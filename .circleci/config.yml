@@ -23,7 +23,7 @@ jobs:
             - "/usr/local/lib/python3.8/site-packages"
       - run: python manage.py test
       - store_test_results:
-          path: claro-test-results
+          path: jarvis-test-results
       - store_artifacts:
-          path: claro-test-results
+          path: jarvis-test-results
           destination: tr1
