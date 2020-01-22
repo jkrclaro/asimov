@@ -20,8 +20,8 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-ROOT_URLCONF = 'server.urls'
-WSGI_APPLICATION = 'server.wsgi.application'
+ROOT_URLCONF = 'jarvis.urls'
+WSGI_APPLICATION = 'jarvis.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'auth.User'
@@ -70,10 +70,10 @@ else:
 
     # Used by django-storages
     AWS_STORAGE_BUCKET_NAME = 'jkrclaro.com'
-    STATICFILES_STORAGE = 'server.storage.Static'
+    STATICFILES_STORAGE = 'jarvis.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'server.storage.Media'
+    DEFAULT_FILE_STORAGE = 'jarvis.storage.Media'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -95,9 +95,9 @@ INSTALLED_APPS = (
     'phonenumber_field',
     'rest_framework',
     'corsheaders',
-    'server.auth',
-    'server.sidefone',
-    'server.pxdcast',
+    'jarvis.auth',
+    'jarvis.sidefone',
+    'jarvis.pxdcast',
 )
 
 REST_FRAMEWORK = {

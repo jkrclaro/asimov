@@ -3,7 +3,7 @@ import time
 from .models import Podcast
 from .applepodcasts import ApplePodcasts
 from .feed import Feed
-from server.utils.jsonify import jsonify
+from jarvis.utils.jsonify import jsonify
 
 
 def podcast_list(request):
