@@ -1,6 +1,6 @@
 from flask import abort
 
-from src.server.models import db
+from src.jarvis.models import db
 
 
 def get_or_404(model: db.Model, options: dict) -> db.Model:

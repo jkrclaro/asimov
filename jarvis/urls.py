@@ -18,9 +18,9 @@ urlpatterns = [
     path('articles/', TemplateView.as_view(template_name='articles.html'), name='articles'),
     path('books/', TemplateView.as_view(template_name='books.html'), name='books'),
     path('mindset/', TemplateView.as_view(template_name='books/mindset.html'), name='mindset'),
-    path('pxdcast/', include('server.pxdcast.urls'), name='pxdcast'),
+    path('pxdcast/', include('jarvis.pxdcast.urls'), name='pxdcast'),
     # path('api/', include(router.urls), name='api'),
-    # path('api/sidefone/', include('server.sidefone.urls'), name='sidefone'),
+    # path('api/sidefone/', include('jarvis.sidefone.urls'), name='sidefone'),
     # path('api/auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
