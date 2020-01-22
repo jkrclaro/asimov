@@ -24,7 +24,7 @@ ROOT_URLCONF = 'server.urls'
 WSGI_APPLICATION = 'server.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'claro.User'
+AUTH_USER_MODEL = 'auth.User'
 MAX_UPLOAD_SIZE = 524288000
 DATABASES = {
     'default': {
@@ -42,7 +42,7 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-    ALLOWED_HOSTS = ('claro.localhost',)
+    ALLOWED_HOSTS = ('jkrclaro.localhost',)
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
     CORS_ORIGIN_ALLOW_ALL = True
@@ -95,7 +95,7 @@ INSTALLED_APPS = (
     'phonenumber_field',
     'rest_framework',
     'corsheaders',
-    'server.claro',
+    'server.auth',
     'server.sidefone',
     'server.pxdcast',
 )
