@@ -24,7 +24,7 @@ ROOT_URLCONF = 'jarvis.urls'
 WSGI_APPLICATION = 'jarvis.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'accounts.User'
 MAX_UPLOAD_SIZE = 524288000
 DATABASES = {
     'default': {
@@ -95,7 +95,7 @@ INSTALLED_APPS = (
     'phonenumber_field',
     'rest_framework',
     'corsheaders',
-    'jarvis.auth',
+    'jarvis.accounts',
     'jarvis.sidefone',
     'jarvis.pxdcast',
 )
