@@ -42,7 +42,7 @@ MESSAGE_TAGS = {
 }
 
 if DEBUG:
-    ALLOWED_HOSTS = ('jkrclaro.localhost',)
+    ALLOWED_HOSTS = ('jarvis.localhost',)
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
     CORS_ORIGIN_ALLOW_ALL = True
@@ -123,7 +123,7 @@ TEMPLATES = (
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'server/templates')
+            os.path.join(BASE_DIR, 'jarvis/templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
