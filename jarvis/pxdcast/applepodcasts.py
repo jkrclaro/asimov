@@ -9,7 +9,7 @@ class ApplePodcasts:
             # 'trackViewUrl': 'website',
             'trackName': 'name',
             'artistName': 'author',
-            'artworkUrl100': 'img',
+            'artworkUrl600': 'img',
             'feedUrl': 'website',
             'trackId': 'id',
         }
