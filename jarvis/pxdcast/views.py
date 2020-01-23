@@ -1,4 +1,7 @@
+import json
+
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Podcast, Episode
 from .applepodcasts import ApplePodcasts
@@ -6,13 +9,11 @@ from .feed import Feed
 from jarvis.utils.jsonify import jsonify
 
 
+@csrf_exempt
 def podcast_list(request):
+    payload = json.loads(request.body.decode('utf-8'))
     apple_podcasts = ApplePodcasts()
-    a16z = apple_podcasts.search_podcasts('a16z')
-    sed = apple_podcasts.search_podcasts('software engineering daily')
-    jr = apple_podcasts.search_podcasts('joe rogan')
-    recode_decode = apple_podcasts.search_podcasts('recode decode')
-    podcasts = a16z + sed + jr + recode_decode
+    podcasts = apple_podcasts.search_podcasts(payload['keywords'])
     return jsonify(podcasts)
 
 
