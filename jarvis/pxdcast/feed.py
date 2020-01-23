@@ -32,13 +32,9 @@ class Feed:
             episode = {
                 'name': entry['title'],
                 'uploaded_at': 'Today',
-                'duration': entry['itunes_duration'],
+                'duration': entry.get('itunes_duration', 'N/A'),
                 'url': url
             }
             episodes.append(episode)
 
-        data = {
-            'episodes': episodes,
-            'summary': summary
-        }
-        return data
+        return episodes, summary

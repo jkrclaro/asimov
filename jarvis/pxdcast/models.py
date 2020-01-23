@@ -21,7 +21,7 @@ class Podcast(models.Model):
 
 
 class Episode(models.Model):
-    name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=256)
     uploaded_at = models.CharField(max_length=256)
     duration = models.CharField(max_length=256)
     url = models.URLField()
