@@ -14,10 +14,6 @@ admin.autodiscover()
 router = routers.DefaultRouter()
 router.registry.extend(router_sidefone.registry)
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('articles/', TemplateView.as_view(template_name='articles.html'), name='articles'),
-    path('books/', TemplateView.as_view(template_name='books.html'), name='books'),
-    path('mindset/', TemplateView.as_view(template_name='books/mindset.html'), name='mindset'),
     path('pxdcast/', include('jarvis.pxdcast.urls'), name='pxdcast'),
     # path('api/', include(router.urls), name='api'),
     # path('api/sidefone/', include('jarvis.sidefone.urls'), name='sidefone'),
