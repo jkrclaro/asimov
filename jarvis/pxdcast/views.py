@@ -17,6 +17,10 @@ def podcast_list(request):
     return jsonify(podcasts)
 
 
+def podcast_subscriptions(request):
+    return jsonify([])
+
+
 def podcast_retrieve(request, pk):
     try:
         podcast = Podcast.objects.get(apple_podcasts_id=pk)
