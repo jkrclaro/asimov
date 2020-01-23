@@ -1,6 +1,6 @@
-import time
+from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Podcast
+from .models import Podcast, Episode
 from .applepodcasts import ApplePodcasts
 from .feed import Feed
 from jarvis.utils.jsonify import jsonify
@@ -18,32 +18,46 @@ def podcast_list(request):
 
 def podcast_retrieve(request, pk):
     try:
-        podcast_model = Podcast.objects.get(apple_podcasts_id=pk)
-    except Podcast.DoesNotExist:
-        podcast_model = None
-
-    if podcast_model:
-        podcast = {
-            'name': podcast_model.name,
-            'author': podcast_model.author,
-            'img': podcast_model.img,
-            'feed': podcast_model.website,
-            'website': podcast_model.website,
-            'id': podcast_model.apple_podcasts_id
+        podcast = Podcast.objects.get(apple_podcasts_id=pk)
+        data = {
+            'name': podcast.name,
+            'author': podcast.author,
+            'img': podcast.img,
+            'feed': podcast.website,
+            'website': podcast.website,
+            'id': podcast.apple_podcasts_id,
+            'summary': podcast.summary,
+            'episodes': list(Episode.objects.filter(podcast__id=podcast.id).all())
         }
-    else:
+        print(data['episodes'])
+    except ObjectDoesNotExist:
         apple_podcasts = ApplePodcasts()
-        podcast = apple_podcasts.search_podcast(pk)
-        Podcast.objects.get_or_create_podcast(**podcast)
-    return jsonify(podcast)
+        feed = Feed()
+        apple_podcasts_data = apple_podcasts.search_podcast(pk)
+        feed_data = feed.parse(apple_podcasts_data['website'])
+        summary = feed_data.pop('summary')
+        apple_podcasts_data['summary'] = summary
+        podcast = Podcast.objects.get_or_create_podcast(**apple_podcasts_data)
+        feed_episodes = feed_data['episodes']
+        for feed_episode in feed_episodes:
+            feed_episode['podcast'] = podcast
+            Episode.objects.get_or_create_episode(**feed_episode)
+        data = {**apple_podcasts_data, **feed_data}
+
+    print(data)
+    return jsonify(data)
 
 
 def episode_list(request, pk):
-    podcast = Podcast.objects.get(apple_podcasts_id=pk)
+    # try:
+    #     podcast = Podcast.objects.get(apple_podcasts_id=pk)
+    # except ObjectDoesNotExist:
+    #     podcast = None
+    #
+    # data = {}
+    # if podcast:
+    #     feed = Feed()
     data = {}
-    if podcast:
-        feed = Feed()
-        data = feed.parse(podcast.feed)
     return jsonify(data)
 
 
