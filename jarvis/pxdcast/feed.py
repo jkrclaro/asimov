@@ -21,6 +21,8 @@ class Feed:
 
         episodes = []
         response = feedparser.parse(url)
+
+        summary = response['feed']['summary']
         for entry in response['entries']:
             for link in entry['links']:
                 play_link = link['href'].split('?')
@@ -35,4 +37,8 @@ class Feed:
             }
             episodes.append(episode)
 
-        return episodes
+        data = {
+            'episodes': episodes,
+            'summary': summary
+        }
+        return data
