@@ -5,24 +5,19 @@ import feedparser
 
 class Feed:
 
-    def parse(self, url):
-        """Parse feed of podcast.
-
-        Keys:
-        - id
-        - name
-        - uploaded_at
-        - duration
-        - url
-        """
+    def __init__(self):
         # https://stackoverflow.com/questions/28282797/feedparser-parse-ssl-certificate-verify-failed
         if hasattr(ssl, '_create_unverified_context'):
             ssl._create_default_https_context = ssl._create_unverified_context
 
+    def get_summary(self, url):
+        response = feedparser.parse(url)
+        summary = response['feed']['summary']
+        return summary
+
+    def get_episodes(self, url):
         episodes = []
         response = feedparser.parse(url)
-
-        summary = response['feed']['summary']
         for entry in response['entries']:
             for link in entry['links']:
                 play_link = link['href'].split('?')
@@ -36,5 +31,4 @@ class Feed:
                 'url': url
             }
             episodes.append(episode)
-
-        return episodes, summary
+        return episodes
