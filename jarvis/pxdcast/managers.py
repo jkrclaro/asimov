@@ -24,7 +24,7 @@ class EpisodeManager(models.Manager):
 
     def get_or_create_episode(self, name, uploaded_at, duration, url, podcast):
         try:
-            episode = self.get(name=name)
+            episode = self.get(name=name, podcast__id=podcast.id)
         except ObjectDoesNotExist:
             episode = self.create(
                 name=name,

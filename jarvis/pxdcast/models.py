@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from .managers import PodcastManager, EpisodeManager
+
+User = get_user_model()
 
 
 class Podcast(models.Model):
@@ -30,6 +33,18 @@ class Episode(models.Model):
 
     class Meta:
         db_table = 'pxdcast_episodes'
+        unique_together = ('name', 'podcast',)
 
     def __str__(self):
         return self.name
+
+
+class Subscription(models.Model):
+    account = models.ForeignKey(User, on_delete=models.CASCADE)
+    podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'pxdcast_subscriptions'
+
+    def __str__(self):
+        return f'{self.account} is subscribed to {self.podcast.name}'
