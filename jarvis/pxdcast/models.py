@@ -7,12 +7,12 @@ User = get_user_model()
 
 
 class Podcast(models.Model):
-    name = models.CharField(max_length=256, unique=True)
-    author = models.CharField(max_length=256)
+    name = models.CharField(max_length=255, unique=True)
+    author = models.CharField(max_length=255)
     img = models.URLField()
     feed = models.URLField()
     website = models.URLField()
-    apple_podcasts_id = models.CharField(max_length=256)
+    apple_podcasts_id = models.CharField(max_length=255)
     summary = models.TextField()
     objects = PodcastManager()
 
@@ -24,9 +24,9 @@ class Podcast(models.Model):
 
 
 class Episode(models.Model):
-    name = models.CharField(max_length=256)
-    uploaded_at = models.CharField(max_length=256)
-    duration = models.CharField(max_length=256)
+    name = models.CharField(max_length=255)
+    uploaded_at = models.CharField(max_length=255)
+    duration = models.CharField(max_length=255)
     url = models.URLField()
     podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
     objects = EpisodeManager()
