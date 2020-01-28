@@ -91,19 +91,20 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'jarvis.accounts',
+    'jarvis.sidefone',
+    'jarvis.pxdcast',
     'debug_toolbar',
     'phonenumber_field',
     'rest_framework',
     'corsheaders',
-    'jarvis.accounts',
-    'jarvis.sidefone',
-    'jarvis.pxdcast',
+    'knox',
 )
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'knox.auth.TokenAuthentication'
+    ),
     'DATETIME_FORMAT': '%m/%d/%Y %H:%M:%S"'
 }
 
