@@ -15,9 +15,7 @@ router = routers.DefaultRouter()
 router.registry.extend(router_sidefone.registry)
 urlpatterns = [
     path('pxdcast/', include('jarvis.pxdcast.urls'), name='pxdcast'),
-    # path('api/', include(router.urls), name='api'),
-    # path('api/sidefone/', include('jarvis.sidefone.urls'), name='sidefone'),
-    # path('api/auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('account/', include('jarvis.accounts.urls'), name='account'),
 ]
 
 if settings.DEBUG:

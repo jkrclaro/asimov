@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ClaroConfig(AppConfig):
-    name = 'claro'
+class AccountsConfig(AppConfig):
+    name = 'accounts'
