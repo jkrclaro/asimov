@@ -4,8 +4,6 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 User = get_user_model()
-
-
 User._meta.get_field('email')._unique = True
 
 
@@ -30,7 +28,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class LoginSerializer(serializers.ModelSerializer):
+class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
 
