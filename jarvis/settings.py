@@ -98,7 +98,6 @@ INSTALLED_APPS = (
     'phonenumber_field',
     'rest_framework',
     'corsheaders',
-    'knox',
 )
 
 REST_FRAMEWORK = {
