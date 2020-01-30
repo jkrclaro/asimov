@@ -43,7 +43,7 @@ def user_retrieve(request):
 def register(request):
     serializer = UserCreateSerializer(data=request.data)
     if not serializer.is_valid():
-        errors = update_unique_error_messages(serializer.errors)
+        update_unique_error_messages(serializer.errors)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
     user = serializer.save()
     refresh = RefreshToken.for_user(user)
