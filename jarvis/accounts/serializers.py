@@ -38,8 +38,21 @@ class UserCreateSerializer(serializers.ModelSerializer):
             'password2',
         ]
         extra_kwargs = {
+            'email': {
+                'error_messages': {
+                    'required': 'Please enter a valid email.'
+                }
+            },
+            'username': {
+                'error_messages': {
+                    'required': 'Please enter a valid email.'
+                }
+            },
             'password': {
-                'write_only': True
+                'write_only': True,
+                'error_messages': {
+                    'required': 'Please enter a password.'
+                }
             }
         }
 
@@ -50,11 +63,11 @@ class UserCreateSerializer(serializers.ModelSerializer):
         password2 = validated_data['password2']
         if email and User.objects.filter(email=email).exclude(username=username).exists():
             raise serializers.ValidationError(
-                {'email': 'Email addresses must be unique.'}
+                {'email': 'An account already exists with this email.'}
             )
         if password != password2:
             raise serializers.ValidationError(
-                {'password': 'The two passwords differ.'}
+                {'password': 'Re-enter your password confirmation so it matches your password.'}
             )
         user = User(username=username, email=email)
         user.set_password(password)
