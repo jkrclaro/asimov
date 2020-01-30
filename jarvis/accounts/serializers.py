@@ -1,10 +1,21 @@
-from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 User = get_user_model()
 User._meta.get_field('email')._unique = True
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    default_error_messages = {
+        'no_active_account': 'Incorrect email or password.'
+    }
+
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        return token
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
