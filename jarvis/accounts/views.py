@@ -35,7 +35,12 @@ class LoginView(TokenObtainPairView):
 @decorators.api_view(['POST'])
 @decorators.permission_classes([permissions.IsAuthenticated])
 def user_retrieve(request):
-    return Response({}, status.HTTP_200_OK)
+    user = {
+        'username': request.user.username,
+        'email': request.user.email,
+        'id': request.user.id
+    }
+    return Response(user, status.HTTP_200_OK)
 
 
 @decorators.api_view(['POST'])
