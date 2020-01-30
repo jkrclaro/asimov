@@ -32,7 +32,7 @@ class LoginView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
 
-@decorators.api_view(['POST'])
+@decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.IsAuthenticated])
 def user_retrieve(request):
     user = {
