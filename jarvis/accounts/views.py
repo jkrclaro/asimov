@@ -37,8 +37,7 @@ class LoginView(TokenObtainPairView):
 def user_retrieve(request):
     user = {
         'username': request.user.username,
-        'email': request.user.email,
-        'id': request.user.id
+        'email': request.user.email
     }
     return Response(user, status.HTTP_200_OK)
 
