@@ -10,6 +10,24 @@ from .serializers import UserCreateSerializer, CustomTokenObtainPairSerializer
 User = get_user_model()
 
 
+def update_unique_error_messages(errors):
+    """Update error messages with regards to the unique constraint.
+
+    TODO: Update error messages for unique in User model.
+    """
+    for field, error in errors.items():
+        exists = (
+            f'user with this email address already exists.',
+            f'user with this username already exists.',
+            f'A user with that {field} already exists.'
+        )
+        for exist in exists:
+            if exist in error:
+                error.remove(exist)
+                error.append(f'An account already exists with this {field}.')
+    return errors
+
+
 class LoginView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
@@ -25,6 +43,7 @@ def user_retrieve(request):
 def register(request):
     serializer = UserCreateSerializer(data=request.data)
     if not serializer.is_valid():
+        errors = update_unique_error_messages(serializer.errors)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
     user = serializer.save()
     refresh = RefreshToken.for_user(user)
