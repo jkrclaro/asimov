@@ -12,11 +12,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         'no_active_account': 'Incorrect email or password.'
     }
 
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        return token
-
 
 class UserCreateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
