@@ -63,8 +63,8 @@ def episode_list(request, pk):
     today = datetime.now(timezone.utc)
     time_elapsed = today - podcast.last_episodes_query_at
     last_time = divmod(time_elapsed.total_seconds(), 60)[0]
-    last_query_was_an_hour_ago = last_time >= 60
-    if last_query_was_an_hour_ago:
+    last_query_was_12_hours_ago = last_time >= 720
+    if last_query_was_12_hours_ago:
         feed = Feed()
         episodes = feed.get_episodes(podcast.website)
         podcast.last_episodes_query_at = today
