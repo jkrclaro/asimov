@@ -6,21 +6,17 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
+from .helpers import itunes, feed
 from .models import Podcast, Episode
-from .applepodcasts import ApplePodcasts
-from .feed import Feed
-from jarvis.utils.jsonify import jsonify
 
 
 @decorators.api_view(['POST'])
 @decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_list(request):
     payload = json.loads(request.body.decode('utf-8'))
-    apple_podcasts = ApplePodcasts()
-    apple_podcasts = apple_podcasts.search_podcasts(payload['keywords'])
-    for apple_podcast in apple_podcasts:
-        Podcast.objects.get_or_create_podcast(**apple_podcast)
-    return Response(apple_podcasts, status.HTTP_200_OK)
+    keywords = payload.get('keywords', None)
+    podcasts = itunes.search_podcasts(keywords)
+    return Response(podcasts, status.HTTP_200_OK)
 
 
 @decorators.api_view(['GET'])
@@ -35,12 +31,10 @@ def podcast_retrieve(request, pk):
     try:
         podcast = Podcast.objects.get(apple_podcasts_id=pk)
     except ObjectDoesNotExist:
-        apple_podcasts = ApplePodcasts()
-        data = apple_podcasts.search_podcast(pk)
-        podcast = Podcast.objects.get_or_create_podcast(**data)
+        data = itunes.search_podcast(pk)
+        podcast = Podcast.objects.create_podcast(**data)
 
     if not podcast.summary:
-        feed = Feed()
         summary = feed.get_summary(podcast.website)
         podcast.summary = summary
         podcast.save()
@@ -68,17 +62,19 @@ def episode_list(request, pk):
     except ObjectDoesNotExist:
         return Response({}, status.HTTP_404_NOT_FOUND)
 
-    today = datetime.now(timezone.utc)
-    time_elapsed = today - podcast.last_episodes_query_at
-    last_time = divmod(time_elapsed.total_seconds(), 60)[0]
-    last_query_was_12_hours_ago = last_time >= 720
-    if last_query_was_12_hours_ago:
-        feed = Feed()
-        episodes = feed.get_episodes(podcast.website)
-        podcast.last_episodes_query_at = today
-        podcast.save()
-        for episode in episodes:
-            Episode.objects.get_or_create_episode(podcast=podcast, **episode)
+    episodes = []
+    if podcast.last_episodes_query_at:
+        today = datetime.now(timezone.utc)
+        time_elapsed = today - podcast.last_episodes_query_at
+        last_time = divmod(time_elapsed.total_seconds(), 60)[0]
+        last_query_was_12_hours_ago = last_time >= 720
+
+        if last_query_was_12_hours_ago:
+            episodes = feed.get_episodes(podcast.website)
+            podcast.last_episodes_query_at = today
+            podcast.save()
+            for episode in episodes:
+                Episode.objects.create_episode(podcast=podcast, **episode)
     else:
         episodes = Episode.objects.filter(podcast=podcast)
         episodes = list(episodes.values())
@@ -86,6 +82,8 @@ def episode_list(request, pk):
     return Response(episodes, status.HTTP_200_OK)
 
 
+@decorators.api_view(['GET'])
+@decorators.permission_classes([permissions.IsAuthenticated])
 def episode_retrieve(request, podcast_pk, pk):
     data = {
         'id': 'js-party-with-kevin-ball',
@@ -93,4 +91,4 @@ def episode_retrieve(request, podcast_pk, pk):
         'uploaded_at': 'January 16',
         'duration': '1h 4m'
     }
-    return jsonify(data)
+    return Response(data, status.HTTP_200_OK)
