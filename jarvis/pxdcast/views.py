@@ -16,7 +16,6 @@ def podcast_list(request):
     apple_podcasts = ApplePodcasts()
     apple_podcasts = apple_podcasts.search_podcasts(payload['keywords'])
     for apple_podcast in apple_podcasts:
-        apple_podcast['summary'] = ''
         Podcast.objects.get_or_create_podcast(**apple_podcast)
     return jsonify(apple_podcasts)
 

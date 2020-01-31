@@ -32,6 +32,7 @@ class ApplePodcasts:
         podcasts = []
         for data in response['results']:
             podcast = self.serialize_podcast(data)
+            podcast['summary'] = ''
             podcasts.append(podcast)
 
         return podcasts
