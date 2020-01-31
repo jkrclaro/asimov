@@ -5,20 +5,24 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 
+from rest_framework import decorators, permissions, status
+from rest_framework.response import Response
+
 from .models import Podcast, Episode
 from .applepodcasts import ApplePodcasts
 from .feed import Feed
 from jarvis.utils.jsonify import jsonify
 
 
-@csrf_exempt
+@decorators.api_view(['POST'])
+@decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_list(request):
     payload = json.loads(request.body.decode('utf-8'))
     apple_podcasts = ApplePodcasts()
     apple_podcasts = apple_podcasts.search_podcasts(payload['keywords'])
     for apple_podcast in apple_podcasts:
         Podcast.objects.get_or_create_podcast(**apple_podcast)
-    return jsonify(apple_podcasts)
+    return Response(apple_podcasts, status.HTTP_200_OK)
 
 
 def podcast_subscriptions(request):
