@@ -13,7 +13,7 @@ class Podcast(models.Model):
     feed = models.URLField()
     website = models.URLField()
     apple_podcasts_id = models.CharField(max_length=255)
-    summary = models.TextField()
+    summary = models.TextField(blank=True, null=True)
     last_episodes_query_at = models.DateTimeField(blank=True, null=True)
     objects = PodcastManager()
 
