@@ -14,6 +14,7 @@ class Podcast(models.Model):
     website = models.URLField()
     apple_podcasts_id = models.CharField(max_length=255)
     summary = models.TextField()
+    last_episodes_query_at = models.DateTimeField()
     objects = PodcastManager()
 
     class Meta:

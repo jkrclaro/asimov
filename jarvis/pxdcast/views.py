@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
@@ -59,13 +60,21 @@ def episode_list(request, pk):
     except ObjectDoesNotExist:
         return JsonResponse({}, status=404)
 
-    episodes = Episode.objects.filter(podcast=podcast)
-    episodes = list(episodes.values())
-    if not episodes:
+    today = datetime.now(timezone.utc)
+    time_elapsed = today - podcast.last_episodes_query_at
+    last_time = divmod(time_elapsed.total_seconds(), 60)[0]
+    last_query_was_an_hour_ago = last_time >= 60
+    if last_query_was_an_hour_ago:
         feed = Feed()
         episodes = feed.get_episodes(podcast.website)
+        podcast.last_episodes_query_at = today
+        podcast.save()
         for episode in episodes:
             Episode.objects.get_or_create_episode(podcast=podcast, **episode)
+    else:
+        episodes = Episode.objects.filter(podcast=podcast)
+        episodes = list(episodes.values())
+
     return jsonify(episodes)
 
 
