@@ -25,10 +25,14 @@ def podcast_list(request):
     return Response(apple_podcasts, status.HTTP_200_OK)
 
 
+@decorators.api_view(['GET'])
+@decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_subscriptions(request):
-    return jsonify([])
+    return Response([], status.HTTP_200_OK)
 
 
+@decorators.api_view(['GET'])
+@decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_retrieve(request, pk):
     try:
         podcast = Podcast.objects.get(apple_podcasts_id=pk)
@@ -55,14 +59,16 @@ def podcast_retrieve(request, pk):
         'episodes': list(episodes.values())
     }
 
-    return jsonify(data)
+    return Response(data, status.HTTP_200_OK)
 
 
+@decorators.api_view(['GET'])
+@decorators.permission_classes([permissions.IsAuthenticated])
 def episode_list(request, pk):
     try:
         podcast = Podcast.objects.get(apple_podcasts_id=pk)
     except ObjectDoesNotExist:
-        return JsonResponse({}, status=404)
+        return Response({}, status.HTTP_404_NOT_FOUND)
 
     today = datetime.now(timezone.utc)
     time_elapsed = today - podcast.last_episodes_query_at
@@ -79,7 +85,7 @@ def episode_list(request, pk):
         episodes = Episode.objects.filter(podcast=podcast)
         episodes = list(episodes.values())
 
-    return jsonify(episodes)
+    return Response(episodes, status.HTTP_200_OK)
 
 
 def episode_retrieve(request, podcast_pk, pk):
