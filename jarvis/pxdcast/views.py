@@ -2,8 +2,6 @@ import json
 from datetime import datetime, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.views.decorators.csrf import csrf_exempt
-from django.http.response import JsonResponse
 
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
