@@ -4,7 +4,7 @@ from .models import Podcast, Episode, Subscription
 
 
 class PodcastAdmin(admin.ModelAdmin):
-    search_fields = ('apple_podcasts_id', 'name')
+    search_fields = ('itunes_id', 'name')
 
 
 class EpisodeAdmin(admin.ModelAdmin):

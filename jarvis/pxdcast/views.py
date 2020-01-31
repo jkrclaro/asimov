@@ -27,28 +27,25 @@ def podcast_subscriptions(request):
 
 @decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.IsAuthenticated])
-def podcast_retrieve(request, pk):
+def podcast_retrieve(request, itunes_id):
     try:
-        podcast = Podcast.objects.get(apple_podcasts_id=pk)
+        podcast = Podcast.objects.get(itunes_id=itunes_id)
     except ObjectDoesNotExist:
-        data = itunes.search_podcast(pk)
+        data = itunes.search_podcast(itunes_id)
         podcast = Podcast.objects.create_podcast(**data)
 
     if not podcast.summary:
-        summary = feed.get_summary(podcast.website)
-        podcast.summary = summary
+        podcast.summary = feed.get_summary(podcast.website)
         podcast.save()
 
-    episodes = Episode.objects.filter(podcast__id=podcast.id)
     data = {
         'name': podcast.name,
         'author': podcast.author,
         'img': podcast.img,
         'feed': podcast.website,
         'website': podcast.website,
-        'id': podcast.apple_podcasts_id,
-        'summary': podcast.summary,
-        'episodes': list(episodes.values())
+        'id': podcast.itunes_id,
+        'summary': podcast.summary
     }
 
     return Response(data, status.HTTP_200_OK)
@@ -56,10 +53,11 @@ def podcast_retrieve(request, pk):
 
 @decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.IsAuthenticated])
-def episode_list(request, pk):
+def episode_list(request, itunes_id):
     try:
-        podcast = Podcast.objects.get(apple_podcasts_id=pk)
+        podcast = Podcast.objects.get(itunes_id=itunes_id)
     except ObjectDoesNotExist:
+        print(f'{itunes_id} not found!')
         return Response({}, status.HTTP_404_NOT_FOUND)
 
     episodes = []
@@ -84,7 +82,7 @@ def episode_list(request, pk):
 
 @decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.IsAuthenticated])
-def episode_retrieve(request, podcast_pk, pk):
+def episode_retrieve(request, itunes_id, pk):
     data = {
         'id': 'js-party-with-kevin-ball',
         'name': 'JS Party with Kevin Ball',
