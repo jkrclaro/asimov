@@ -45,6 +45,6 @@ class ApplePodcasts:
 
     def serialize_podcast(self, data):
         return {
-            value: data[key]
+            value: data.get(key, '')
             for key, value in self.fields.items()
         }
