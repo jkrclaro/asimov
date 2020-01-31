@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 class PodcastManager(models.Manager):
 
-    def create_podcast(self, name, author, img, website, id, summary=None):
+    def create_podcast(self, name: str, author: str, img: str, website: str, id: str, summary=None):
         try:
             podcast = self.get(name=name)
         except ObjectDoesNotExist:
@@ -14,7 +14,7 @@ class PodcastManager(models.Manager):
                 img=img,
                 feed=website,
                 website=website,
-                apple_podcasts_id=id,
+                itunes_id=id,
                 summary=summary
             )
         return podcast
@@ -22,7 +22,7 @@ class PodcastManager(models.Manager):
 
 class EpisodeManager(models.Manager):
 
-    def create_episode(self, name, uploaded_at, duration, url, podcast):
+    def create_episode(self, name: str, uploaded_at: str, duration: str, url: str, podcast):
         try:
             episode = self.get(name=name, podcast__id=podcast.id)
         except ObjectDoesNotExist:

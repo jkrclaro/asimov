@@ -12,7 +12,7 @@ class Podcast(models.Model):
     img = models.URLField()
     feed = models.URLField()
     website = models.URLField()
-    apple_podcasts_id = models.CharField(max_length=255)
+    itunes_id = models.CharField(max_length=255)
     summary = models.TextField(blank=True, null=True)
     last_episodes_query_at = models.DateTimeField(blank=True, null=True)
     objects = PodcastManager()
@@ -29,7 +29,7 @@ class Episode(models.Model):
     uploaded_at = models.CharField(max_length=255)
     duration = models.CharField(max_length=255)
     url = models.URLField()
-    podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
+    podcast = models.ForeignKey(Podcast, related_name='episodes', on_delete=models.CASCADE)
     objects = EpisodeManager()
 
     class Meta:
