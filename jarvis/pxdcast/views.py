@@ -2,7 +2,8 @@ import json
 from datetime import datetime, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.text import slugify
+from django.core import serializers
+from django.forms.models import model_to_dict
 
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
@@ -32,19 +33,11 @@ def podcast_retrieve(request, itunes_id):
         podcast = Podcast.objects.create_podcast(**data)
 
     if not podcast.summary:
-        podcast.summary = feed.get_summary(podcast.website)
+        podcast.summary = feed.get_summary(podcast.feed)
         podcast.save()
 
-    data = {
-        'name': podcast.name,
-        'author': podcast.author,
-        'img': podcast.img,
-        'feed': podcast.website,
-        'website': podcast.website,
-        'id': podcast.itunes_id,
-        'summary': podcast.summary
-    }
-
+    fields = ('img', 'name', 'author', 'summary', 'feed', 'website',)
+    data = model_to_dict(podcast, fields=fields)
     return Response(data, status.HTTP_200_OK)
 
 
@@ -67,14 +60,14 @@ def episode_list(request, itunes_id):
     last_query_was_an_hour_ago = last_time >= 60
 
     if not podcast.last_episodes_query_at or last_query_was_an_hour_ago:
-        episodes = feed.get_episodes(podcast.website)
+        episodes = feed.get_episodes(podcast.feed)
         podcast.last_episodes_query_at = today
         podcast.save()
         for episode in episodes:
             Episode.objects.create_episode(podcast=podcast, **episode)
     else:
-        episodes = Episode.objects.filter(podcast=podcast)
-        episodes = list(episodes.values())
+        fields = ('name', 'uploaded_at', 'duration',)
+        episodes = podcast.episodes.all().values(*fields)
 
     return Response(episodes, status.HTTP_200_OK)
 
@@ -95,9 +88,10 @@ def episode_retrieve(request, itunes_id, pk):
 @decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_subscriptions(request):
     subscriptions = request.user.pxdcast.subscriptions.only('podcast_id').all()
-    podcasts = Podcast.objects.filter(id__in=subscriptions)
-    podcasts = list(podcasts.values())
-    return Response(podcasts, status.HTTP_200_OK)
+    fields = ('itunes_id', 'img')
+    podcasts = Podcast.objects.filter(id__in=subscriptions).values(*fields)
+    data = list(podcasts)
+    return Response(data, status.HTTP_200_OK)
 
 
 @decorators.api_view(['POST'])
