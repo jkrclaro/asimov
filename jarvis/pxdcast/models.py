@@ -39,7 +39,7 @@ class Episode(models.Model):
 
     class Meta:
         db_table = 'episodes'
-        unique_together = ('name', 'podcast',)
+        unique_together = ('name', 'uploaded_at', 'duration', 'url', 'podcast',)
 
     def __str__(self):
         return self.name

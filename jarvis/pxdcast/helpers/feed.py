@@ -16,7 +16,7 @@ def get_podcast(url: str) -> dict:
 
 
 def get_episodes(url: str) -> list:
-    episodes = []
+    feed_episodes = []
     response = feedparser.parse(url)
     for entry in response['entries']:
         for link in entry['links']:
@@ -24,11 +24,10 @@ def get_episodes(url: str) -> list:
             if play_link[0].endswith('.mp3'):
                 url = play_link[0]
 
-        episode = {
+        feed_episodes.append({
             'name': entry['title'],
             'uploaded_at': 'Today',
             'duration': entry.get('itunes_duration', 'N/A'),
             'url': url
-        }
-        episodes.append(episode)
-    return episodes
+        })
+    return feed_episodes

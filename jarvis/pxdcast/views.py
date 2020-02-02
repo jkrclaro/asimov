@@ -38,8 +38,8 @@ def podcast_retrieve(request, itunes_id):
         podcast.save()
 
     fields = ('img', 'name', 'author', 'summary', 'feed', 'website',)
-    data = model_to_dict(podcast, fields=fields)
-    return Response(data, status.HTTP_200_OK)
+    podcast = model_to_dict(podcast, fields=fields)
+    return Response(podcast, status.HTTP_200_OK)
 
 
 @decorators.api_view(['GET'])
@@ -51,29 +51,23 @@ def episode_list(request, itunes_id):
         return Response({}, status.HTTP_404_NOT_FOUND)
 
     episodes = feed.get_episodes(podcast.feed)
-    if podcast.episodes.count() != len(episodes) - 1:
+    if podcast.episodes.count() != len(episodes):
         for episode in episodes:
             try:
-                Episode.objects.create_episode(podcast=podcast, **episode)
+                Episode.objects.create_episode(**episode, podcast=podcast)
             except IntegrityError:
                 break
     else:
         fields = ('name', 'uploaded_at', 'duration',)
         episodes = podcast.episodes.all().values(*fields)
-
     return Response(episodes, status.HTTP_200_OK)
 
 
 @decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.AllowAny])
 def episode_retrieve(request, itunes_id, pk):
-    data = {
-        'id': 'js-party-with-kevin-ball',
-        'name': 'JS Party with Kevin Ball',
-        'uploaded_at': 'January 16',
-        'duration': '1h 4m'
-    }
-    return Response(data, status.HTTP_200_OK)
+    episode = None
+    return Response(episode, status.HTTP_200_OK)
 
 
 @decorators.api_view(['GET'])
@@ -82,8 +76,8 @@ def podcast_subscriptions(request):
     subscriptions = request.user.pxdcast.subscriptions.values('podcast_id')
     fields = ('itunes_id', 'img')
     podcasts = Podcast.objects.filter(id__in=subscriptions).values(*fields)
-    data = list(podcasts)
-    return Response(data, status.HTTP_200_OK)
+    podcasts = list(podcasts)
+    return Response(podcasts, status.HTTP_200_OK)
 
 
 @decorators.api_view(['POST'])
