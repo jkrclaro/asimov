@@ -85,11 +85,13 @@ def podcast_subscriptions(request):
 def podcast_subscription(request):
     payload = json.loads(request.body.decode('utf-8'))
     itunes_id = payload.get('itunes_id', None)
-    podcast = Podcast.objects.get(itunes_id=itunes_id)
-    subscribed = podcast.subscribers.filter(
-        account=request.user.pxdcast
-    ).exists()
-    return Response({'is_subscribed': subscribed}, status.HTTP_200_OK)
+    try:
+        podcast = Podcast.objects.get(itunes_id=itunes_id)
+        subscription = podcast.subscribers.filter(account=request.user.pxdcast)
+        subscription = subscription.exists()
+    except ObjectDoesNotExist:
+        subscription = False
+    return Response(subscription, status.HTTP_200_OK)
 
 
 @decorators.api_view(['POST'])
