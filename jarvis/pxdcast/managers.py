@@ -30,17 +30,13 @@ class PodcastManager(models.Manager):
 class EpisodeManager(models.Manager):
 
     def create_episode(self, name: str, uploaded_at: str, duration: str, url: str, podcast):
-        try:
-            episode = self.get(name=name, podcast__id=podcast.id)
-        except ObjectDoesNotExist:
-            episode = self.create(
-                name=name,
-                uploaded_at=uploaded_at,
-                duration=duration,
-                url=url,
-                podcast=podcast
-            )
-        return episode
+        return self.create(
+            name=name,
+            uploaded_at=uploaded_at,
+            duration=duration,
+            url=url,
+            podcast=podcast
+        )
 
 
 class SubscriptionManager(models.Manager):
