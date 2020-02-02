@@ -32,9 +32,9 @@ def podcast_retrieve(request, itunes_id):
         podcast = Podcast.objects.create_podcast(**data)
 
     if not podcast.summary:
-        details = feed.get_podcast(podcast.feed)
-        podcast.summary = details['summary']
-        podcast.website = details['website']
+        feed_podcast = feed.get_podcast(podcast.feed)
+        podcast.summary = feed_podcast['summary']
+        podcast.website = feed_podcast['website']
         podcast.save()
 
     fields = ('img', 'name', 'author', 'summary', 'feed', 'website',)
@@ -48,7 +48,7 @@ def episode_list(request, itunes_id):
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
     except ObjectDoesNotExist:
-        return Response({}, status.HTTP_404_NOT_FOUND)
+        return Response(None, status.HTTP_404_NOT_FOUND)
 
     episodes = feed.get_episodes(podcast.feed)
     if podcast.episodes.count() != len(episodes):
@@ -88,4 +88,4 @@ def podcast_subscribe(request):
     podcast = Podcast.objects.get(name=name)
     account = request.user.pxdcast
     Subscription.objects.create_subscription(podcast=podcast, account=account)
-    return Response({}, status.HTTP_200_OK)
+    return Response(None, status.HTTP_200_OK)
