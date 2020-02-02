@@ -2,12 +2,13 @@ import json
 from datetime import datetime, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.text import slugify
 
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
 from .helpers import itunes, feed
-from .models import Podcast, Episode
+from .models import Podcast, Episode, Subscription
 
 
 @decorators.api_view(['POST'])
@@ -20,18 +21,14 @@ def podcast_list(request):
 
 
 @decorators.api_view(['GET'])
-@decorators.permission_classes([permissions.IsAuthenticated])
-def podcast_subscriptions(request):
-    return Response([], status.HTTP_200_OK)
-
-
-@decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.AllowAny])
 def podcast_retrieve(request, itunes_id):
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
     except ObjectDoesNotExist:
         data = itunes.search_podcast(itunes_id)
+        if not data:
+            return Response(None, status.HTTP_404_NOT_FOUND)
         podcast = Podcast.objects.create_podcast(**data)
 
     if not podcast.summary:
@@ -67,9 +64,9 @@ def episode_list(request, itunes_id):
         time_elapsed = 0
 
     last_time = divmod(time_elapsed, 60)[0]
-    last_query_was_12_hours_ago = last_time >= 720
+    last_query_was_an_hour_ago = last_time >= 60
 
-    if not podcast.last_episodes_query_at or last_query_was_12_hours_ago:
+    if not podcast.last_episodes_query_at or last_query_was_an_hour_ago:
         episodes = feed.get_episodes(podcast.website)
         podcast.last_episodes_query_at = today
         podcast.save()
@@ -92,3 +89,23 @@ def episode_retrieve(request, itunes_id, pk):
         'duration': '1h 4m'
     }
     return Response(data, status.HTTP_200_OK)
+
+
+@decorators.api_view(['GET'])
+@decorators.permission_classes([permissions.IsAuthenticated])
+def podcast_subscriptions(request):
+    subscriptions = request.user.pxdcast.subscriptions.only('podcast_id').all()
+    podcasts = Podcast.objects.filter(id__in=subscriptions)
+    podcasts = list(podcasts.values())
+    return Response(podcasts, status.HTTP_200_OK)
+
+
+@decorators.api_view(['POST'])
+@decorators.permission_classes([permissions.IsAuthenticated])
+def podcast_subscribe(request):
+    payload = json.loads(request.body.decode('utf-8'))
+    name = payload.get('name', None)
+    podcast = Podcast.objects.get(name=name)
+    account = request.user.pxdcast
+    Subscription.objects.create_subscription(podcast=podcast, account=account)
+    return Response({}, status.HTTP_200_OK)

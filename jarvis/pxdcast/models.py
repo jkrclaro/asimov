@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from .managers import PodcastManager, EpisodeManager
+from ..accounts.models import Pxdcast
+from . import managers
 
 User = get_user_model()
 
@@ -15,10 +16,12 @@ class Podcast(models.Model):
     itunes_id = models.CharField(max_length=255)
     summary = models.TextField(blank=True, null=True)
     last_episodes_query_at = models.DateTimeField(blank=True, null=True)
-    objects = PodcastManager()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = managers.PodcastManager()
 
     class Meta:
-        db_table = 'pxdcast_podcasts'
+        db_table = 'podcasts'
 
     def __str__(self):
         return self.name
@@ -30,10 +33,12 @@ class Episode(models.Model):
     duration = models.CharField(max_length=255)
     url = models.URLField()
     podcast = models.ForeignKey(Podcast, related_name='episodes', on_delete=models.CASCADE)
-    objects = EpisodeManager()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = managers.EpisodeManager()
 
     class Meta:
-        db_table = 'pxdcast_episodes'
+        db_table = 'episodes'
         unique_together = ('name', 'podcast',)
 
     def __str__(self):
@@ -41,11 +46,14 @@ class Episode(models.Model):
 
 
 class Subscription(models.Model):
-    account = models.ForeignKey(User, on_delete=models.CASCADE)
-    podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
+    account = models.ForeignKey(Pxdcast, related_name='subscriptions', on_delete=models.CASCADE)
+    podcast = models.ForeignKey(Podcast, related_name='subscribers', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = managers.SubscriptionManager()
 
     class Meta:
-        db_table = 'pxdcast_subscriptions'
+        db_table = 'subscriptions'
 
     def __str__(self):
         return f'{self.account} is subscribed to {self.podcast.name}'

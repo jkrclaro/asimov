@@ -34,3 +34,16 @@ class EpisodeManager(models.Manager):
                 podcast=podcast
             )
         return episode
+
+
+class SubscriptionManager(models.Manager):
+
+    def create_subscription(self, podcast, account):
+        try:
+            subscription = self.get(podcast=podcast, account=account)
+        except ObjectDoesNotExist:
+            subscription = self.create(
+                podcast=podcast,
+                account=account
+            )
+        return subscription
