@@ -7,10 +7,12 @@ if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
 
 
-def get_summary(url):
+def get_podcast(url):
     response = feedparser.parse(url)
-    summary = response['feed']['summary']
-    return summary
+    return {
+        'summary': response['feed'].get('summary', None),
+        'website': response['feed'].get('link', None)
+    }
 
 
 def get_episodes(url):
