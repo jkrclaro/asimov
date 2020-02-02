@@ -82,10 +82,33 @@ def podcast_subscriptions(request):
 
 @decorators.api_view(['POST'])
 @decorators.permission_classes([permissions.IsAuthenticated])
+def podcast_subscription(request):
+    payload = json.loads(request.body.decode('utf-8'))
+    itunes_id = payload.get('itunes_id', None)
+    podcast = Podcast.objects.get(itunes_id=itunes_id)
+    subscribed = podcast.subscribers.filter(
+        account=request.user.pxdcast
+    ).exists()
+    return Response({'is_subscribed': subscribed}, status.HTTP_200_OK)
+
+
+@decorators.api_view(['POST'])
+@decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_subscribe(request):
     payload = json.loads(request.body.decode('utf-8'))
     name = payload.get('name', None)
     podcast = Podcast.objects.get(name=name)
     account = request.user.pxdcast
     Subscription.objects.create_subscription(podcast=podcast, account=account)
+    return Response(None, status.HTTP_200_OK)
+
+
+@decorators.api_view(['POST'])
+@decorators.permission_classes([permissions.IsAuthenticated])
+def podcast_unsubscribe(request):
+    payload = json.loads(request.body.decode('utf-8'))
+    name = payload.get('name', None)
+    podcast = Podcast.objects.get(name=name)
+    account = request.user.pxdcast
+    Subscription.objects.filter(account=account, podcast=podcast).delete()
     return Response(None, status.HTTP_200_OK)
