@@ -1,8 +1,8 @@
 import json
-from datetime import datetime, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
+from django.db.utils import IntegrityError
 
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
@@ -50,22 +50,13 @@ def episode_list(request, itunes_id):
     except ObjectDoesNotExist:
         return Response({}, status.HTTP_404_NOT_FOUND)
 
-    today = datetime.now(timezone.utc)
-    try:
-        time_elapsed = today - podcast.last_episodes_query_at
-        time_elapsed = time_elapsed.total_seconds()
-    except TypeError:
-        time_elapsed = 0
-
-    last_time = divmod(time_elapsed, 60)[0]
-    last_query_was_an_hour_ago = last_time >= 60
-
-    if not podcast.last_episodes_query_at or last_query_was_an_hour_ago:
-        episodes = feed.get_episodes(podcast.feed)
-        podcast.last_episodes_query_at = today
-        podcast.save()
+    episodes = feed.get_episodes(podcast.feed)
+    if podcast.episodes.count() != len(episodes):
         for episode in episodes:
-            Episode.objects.create_episode(podcast=podcast, **episode)
+            try:
+                Episode.objects.create_episode(podcast=podcast, **episode)
+            except IntegrityError:
+                break
     else:
         fields = ('name', 'uploaded_at', 'duration',)
         episodes = podcast.episodes.all().values(*fields)
