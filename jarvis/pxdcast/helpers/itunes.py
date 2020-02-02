@@ -20,10 +20,14 @@ def search_podcasts(keywords: str) -> list:
     ]
 
 
-def search_podcast(podcast_id: str) -> dict:
-    url = f'{base_url}/lookup?id={podcast_id}'
-    response = requests.get(url).json()['results'][0]
-    return serialize_podcast(response)
+def search_podcast(itunes_id: str) -> dict:
+    url = f'{base_url}/lookup?id={itunes_id}'
+    results = requests.get(url).json().get('results', None)
+    podcast = {}
+    if results:
+        result = results[0]
+        podcast = serialize_podcast(result)
+    return podcast
 
 
 def serialize_podcast(data: dict) -> dict:
