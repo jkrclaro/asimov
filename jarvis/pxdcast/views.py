@@ -58,7 +58,7 @@ def episode_list(request, itunes_id):
             except IntegrityError:
                 break
     else:
-        fields = ('name', 'uploaded_at', 'duration',)
+        fields = ('name', 'uploaded_at', 'duration', 'url',)
         episodes = podcast.episodes.all().values(*fields)
     return Response(episodes, status.HTTP_200_OK)
 
