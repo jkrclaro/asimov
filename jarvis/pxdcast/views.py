@@ -11,7 +11,7 @@ from .models import Podcast, Episode
 
 
 @decorators.api_view(['POST'])
-@decorators.permission_classes([permissions.IsAuthenticated])
+@decorators.permission_classes([permissions.AllowAny])
 def podcast_list(request):
     payload = json.loads(request.body.decode('utf-8'))
     keywords = payload.get('keywords', None)
@@ -26,7 +26,7 @@ def podcast_subscriptions(request):
 
 
 @decorators.api_view(['GET'])
-@decorators.permission_classes([permissions.IsAuthenticated])
+@decorators.permission_classes([permissions.AllowAny])
 def podcast_retrieve(request, itunes_id):
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
@@ -52,27 +52,29 @@ def podcast_retrieve(request, itunes_id):
 
 
 @decorators.api_view(['GET'])
-@decorators.permission_classes([permissions.IsAuthenticated])
+@decorators.permission_classes([permissions.AllowAny])
 def episode_list(request, itunes_id):
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
     except ObjectDoesNotExist:
-        print(f'{itunes_id} not found!')
         return Response({}, status.HTTP_404_NOT_FOUND)
 
-    episodes = []
-    if podcast.last_episodes_query_at:
-        today = datetime.now(timezone.utc)
+    today = datetime.now(timezone.utc)
+    try:
         time_elapsed = today - podcast.last_episodes_query_at
-        last_time = divmod(time_elapsed.total_seconds(), 60)[0]
-        last_query_was_12_hours_ago = last_time >= 720
+        time_elapsed = time_elapsed.total_seconds()
+    except TypeError:
+        time_elapsed = 0
 
-        if last_query_was_12_hours_ago:
-            episodes = feed.get_episodes(podcast.website)
-            podcast.last_episodes_query_at = today
-            podcast.save()
-            for episode in episodes:
-                Episode.objects.create_episode(podcast=podcast, **episode)
+    last_time = divmod(time_elapsed, 60)[0]
+    last_query_was_12_hours_ago = last_time >= 720
+
+    if not podcast.last_episodes_query_at or last_query_was_12_hours_ago:
+        episodes = feed.get_episodes(podcast.website)
+        podcast.last_episodes_query_at = today
+        podcast.save()
+        for episode in episodes:
+            Episode.objects.create_episode(podcast=podcast, **episode)
     else:
         episodes = Episode.objects.filter(podcast=podcast)
         episodes = list(episodes.values())
@@ -81,7 +83,7 @@ def episode_list(request, itunes_id):
 
 
 @decorators.api_view(['GET'])
-@decorators.permission_classes([permissions.IsAuthenticated])
+@decorators.permission_classes([permissions.AllowAny])
 def episode_retrieve(request, itunes_id, pk):
     data = {
         'id': 'js-party-with-kevin-ball',
