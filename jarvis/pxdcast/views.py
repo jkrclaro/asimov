@@ -2,7 +2,6 @@ import json
 from datetime import datetime, timezone
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.core import serializers
 from django.forms.models import model_to_dict
 
 from rest_framework import decorators, permissions, status
@@ -33,7 +32,9 @@ def podcast_retrieve(request, itunes_id):
         podcast = Podcast.objects.create_podcast(**data)
 
     if not podcast.summary:
-        podcast.summary = feed.get_summary(podcast.feed)
+        details = feed.get_podcast(podcast.feed)
+        podcast.summary = details['summary']
+        podcast.website = details['website']
         podcast.save()
 
     fields = ('img', 'name', 'author', 'summary', 'feed', 'website',)
@@ -87,7 +88,7 @@ def episode_retrieve(request, itunes_id, pk):
 @decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_subscriptions(request):
-    subscriptions = request.user.pxdcast.subscriptions.only('podcast_id').all()
+    subscriptions = request.user.pxdcast.subscriptions.values('podcast_id')
     fields = ('itunes_id', 'img')
     podcasts = Podcast.objects.filter(id__in=subscriptions).values(*fields)
     data = list(podcasts)

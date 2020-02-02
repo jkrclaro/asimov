@@ -12,7 +12,7 @@ class Podcast(models.Model):
     author = models.CharField(max_length=255)
     img = models.URLField()
     feed = models.URLField()
-    website = models.URLField()
+    website = models.URLField(blank=True, null=True)
     itunes_id = models.CharField(max_length=255)
     summary = models.TextField(blank=True, null=True)
     last_episodes_query_at = models.DateTimeField(blank=True, null=True)
