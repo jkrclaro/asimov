@@ -2,11 +2,11 @@ import requests
 
 base_url = 'https://itunes.apple.com'
 fields = {
-    # 'trackViewUrl': 'website',
+    'trackViewUrl': 'website',
     'trackName': 'name',
     'artistName': 'author',
     'artworkUrl600': 'img',
-    'feedUrl': 'website',
+    'feedUrl': 'feed',
     'trackId': 'id',
 }
 
