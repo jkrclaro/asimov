@@ -51,7 +51,7 @@ def episode_list(request, itunes_id):
         return Response({}, status.HTTP_404_NOT_FOUND)
 
     episodes = feed.get_episodes(podcast.feed)
-    if podcast.episodes.count() != len(episodes):
+    if podcast.episodes.count() != len(episodes) - 1:
         for episode in episodes:
             try:
                 Episode.objects.create_episode(podcast=podcast, **episode)
