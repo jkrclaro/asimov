@@ -1,3 +1,7 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class FeedTestCase(TestCase):
+
+    def test_format_duration(self):
+        self.assertEqual(1, 1)

@@ -1,10 +1,23 @@
 import ssl
+import datetime
 
 import feedparser
 
 
 if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
+
+
+def format_duration(duration: str) -> str:
+    try:
+        duration = datetime.timedelta(seconds=int(duration))
+    except ValueError:
+        pass
+
+    duration = datetime.datetime.strptime(duration, '%H:%M:%S')
+    duration = duration.strftime('%m')
+    print(duration)
+    return duration
 
 
 def get_podcast(url: str) -> dict:
@@ -24,10 +37,13 @@ def get_episodes(url: str) -> list:
             if play_link[0].endswith('.mp3'):
                 url = play_link[0]
 
+        duration = entry.get('itunes_duration', 'N/A')
+        duration = format_duration(duration)
+
         feed_episodes.append({
             'name': entry['title'],
             'uploaded_at': 'Today',
-            'duration': entry.get('itunes_duration', 'N/A'),
+            'duration': duration,
             'url': url
         })
     return feed_episodes

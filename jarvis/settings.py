@@ -1,6 +1,7 @@
 import os
 import sys
 import logging
+import datetime
 from distutils.util import strtobool
 
 from django.contrib.messages import constants as messages
@@ -92,7 +93,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'jarvis.accounts',
-    'jarvis.sidefone',
     'jarvis.pxdcast',
     'debug_toolbar',
     'phonenumber_field',
@@ -160,5 +160,9 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 INTERNAL_IPS = ('127.0.0.1',)
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1440),
+}
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
