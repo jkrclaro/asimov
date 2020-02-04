@@ -60,6 +60,8 @@ def episode_list(request, itunes_id):
     else:
         fields = ('name', 'uploaded_at', 'duration', 'url',)
         episodes = podcast.episodes.all().values(*fields)
+    for episode in episodes:
+        print(episode)
     return Response(episodes, status.HTTP_200_OK)
 
 

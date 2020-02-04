@@ -80,8 +80,9 @@ else:
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Europe/Dublin'
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
 USE_TZ = True
+DATETIME_FORMAT = '%b %m, %Y'
 
 
 INSTALLED_APPS = (
@@ -111,7 +112,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    'DATETIME_FORMAT': '%m/%d/%Y %H:%M:%S"'
+    'DATETIME_FORMAT': '%b %m, %Y'
 }
 
 MIDDLEWARE = (
