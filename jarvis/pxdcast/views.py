@@ -7,8 +7,9 @@ from django.db.utils import IntegrityError
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
-from .helpers import itunes, feed
-from .models import Podcast, Episode, Subscription
+from jarvis.pxdcast.helpers import itunes, feed
+from jarvis.pxdcast.models import Podcast, Episode, Subscription
+from jarvis.accounts.models import Pxdcast
 
 
 @decorators.api_view(['POST'])
@@ -73,11 +74,15 @@ def episode_retrieve(request, itunes_id, pk):
 @decorators.api_view(['GET'])
 @decorators.permission_classes([permissions.IsAuthenticated])
 def podcast_subscriptions(request):
-    subscriptions = request.user.pxdcast.subscriptions.values('podcast_id')
     fields = ('itunes_id', 'img')
-    podcasts = Podcast.objects.filter(id__in=subscriptions).values(*fields)
-    podcasts = list(podcasts)
-    return Response(podcasts, status.HTTP_200_OK)
+    try:
+        subscriptions = request.user.pxdcast.subscriptions.values('podcast_id')
+        subscriptions = Podcast.objects.filter(id__in=subscriptions)
+        subscriptions = subscriptions.values(*fields)
+        subscriptions = list(subscriptions)
+    except Pxdcast.DoesNotExist:
+        subscriptions = []
+    return Response(subscriptions, status.HTTP_200_OK)
 
 
 @decorators.api_view(['POST'])
