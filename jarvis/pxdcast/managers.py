@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class PodcastManager(models.Manager):
@@ -15,7 +14,7 @@ class PodcastManager(models.Manager):
     ):
         try:
             podcast = self.get(name=name)
-        except ObjectDoesNotExist:
+        except self.DoesNotExist:
             podcast = self.create(
                 name=name,
                 author=author,
@@ -51,7 +50,7 @@ class SubscriptionManager(models.Manager):
     def create_subscription(self, podcast, account):
         try:
             subscription = self.get(podcast=podcast, account=account)
-        except ObjectDoesNotExist:
+        except self.DoesNotExist:
             subscription = self.create(
                 podcast=podcast,
                 account=account
