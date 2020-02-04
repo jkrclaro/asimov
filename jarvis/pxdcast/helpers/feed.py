@@ -3,6 +3,7 @@ import datetime
 import pytz
 
 import feedparser
+from bs4 import BeautifulSoup
 
 
 if hasattr(ssl, '_create_unverified_context'):
@@ -40,10 +41,11 @@ def format_published_at(published: str) -> datetime.datetime:
 
 def get_podcast(url: str) -> dict:
     response = feedparser.parse(url)
-    return {
-        'summary': response['feed'].get('summary', None),
-        'website': response['feed'].get('link', None)
-    }
+    summary = response['feed'].get('summary', None)
+    summary = BeautifulSoup(summary, 'lxml').text
+    website = response['feed'].get('link', None)
+    podcast = {'summary': summary, 'website': website}
+    return podcast
 
 
 def get_episodes(url: str) -> list:
