@@ -10,11 +10,10 @@ if hasattr(ssl, '_create_unverified_context'):
 
 def format_duration(duration: str) -> str:
     try:
-        duration = datetime.timedelta(seconds=int(duration))
+        duration = datetime.datetime.strptime(duration, '%H:%M:%S')
     except ValueError:
-        pass
-
-    duration = datetime.datetime.strptime(duration, '%H:%M:%S')
+        duration_as_timedelta = datetime.timedelta(seconds=int(duration))
+        duration = (datetime.datetime.min + duration_as_timedelta).time()
 
     if duration.hour:
         duration = f'{duration.hour}h {duration.minute}m'
@@ -24,6 +23,10 @@ def format_duration(duration: str) -> str:
         duration = f'{duration.second} secs'
 
     return duration
+
+
+def format_uploaded_at(uploaded_at: str) -> str:
+    return uploaded_at
 
 
 def get_podcast(url: str) -> dict:
