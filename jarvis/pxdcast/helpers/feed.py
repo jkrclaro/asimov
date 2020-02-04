@@ -15,8 +15,14 @@ def format_duration(duration: str) -> str:
         pass
 
     duration = datetime.datetime.strptime(duration, '%H:%M:%S')
-    duration = duration.strftime('%m')
-    print(duration)
+
+    if duration.hour:
+        duration = f'{duration.hour}h {duration.minute}m'
+    elif duration.minute:
+        duration = f'{duration.minute}m {duration.second}s'
+    else:
+        duration = f'{duration.second}s'
+
     return duration
 
 
