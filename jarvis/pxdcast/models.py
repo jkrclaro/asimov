@@ -25,7 +25,7 @@ class Podcast(models.Model):
 
 class Episode(models.Model):
     name = models.CharField(max_length=255)
-    uploaded_at = models.DateTimeField()
+    published_at = models.DateTimeField()
     duration = models.CharField(max_length=255)
     url = models.URLField()
     podcast = models.ForeignKey(Podcast, related_name='episodes', on_delete=models.CASCADE)
@@ -35,7 +35,7 @@ class Episode(models.Model):
 
     class Meta:
         db_table = 'episodes'
-        unique_together = ('name', 'uploaded_at', 'duration', 'url', 'podcast',)
+        unique_together = ('name', 'published_at', 'duration', 'url', 'podcast',)
 
     def __str__(self):
         return self.name

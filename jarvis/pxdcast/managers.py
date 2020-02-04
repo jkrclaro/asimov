@@ -39,7 +39,7 @@ class EpisodeManager(models.Manager):
     ):
         return self.create(
             name=name,
-            uploaded_at=published_at,
+            published_at=published_at,
             duration=duration,
             url=url,
             podcast=podcast
