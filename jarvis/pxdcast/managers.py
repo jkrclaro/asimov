@@ -6,11 +6,11 @@ class PodcastManager(models.Manager):
 
     def create_podcast(
             self,
-            name: str = '',
-            author: str = '',
-            img: str = '',
-            itunes_id: str = '',
-            feed: str = '',
+            name: str,
+            author: str,
+            img: str,
+            itunes_id: str,
+            feed: str,
             summary: str = ''
     ):
         try:
@@ -31,11 +31,11 @@ class EpisodeManager(models.Manager):
 
     def create_episode(
             self,
-            name: str = '',
-            published_at: str = '',
-            duration: str = '',
-            url: str = '',
-            podcast: models.Model = None
+            name: str,
+            published_at: str,
+            duration: str,
+            url: str,
+            podcast: models.Model
     ):
         return self.create(
             name=name,

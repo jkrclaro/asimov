@@ -12,7 +12,6 @@ class Podcast(models.Model):
     website = models.URLField(blank=True, null=True)
     itunes_id = models.CharField(max_length=255)
     summary = models.TextField(blank=True, null=True)
-    last_episodes_query_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = managers.PodcastManager()
