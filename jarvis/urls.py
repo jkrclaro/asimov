@@ -4,15 +4,8 @@ from django.conf.urls import include
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
-
-from rest_framework import routers
-
-from .sidefone.urls import router as router_sidefone
 
 admin.autodiscover()
-router = routers.DefaultRouter()
-router.registry.extend(router_sidefone.registry)
 urlpatterns = [
     path('pxdcast/', include('jarvis.pxdcast.urls'), name='pxdcast'),
     path('accounts/', include('jarvis.accounts.urls'), name='accounts'),
