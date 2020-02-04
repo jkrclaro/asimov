@@ -35,7 +35,7 @@ def format_duration(duration: str) -> str:
 def format_published_at(published: str) -> str:
     feed_format = '%a, %d %b %Y %H:%M:%S %z'
     published_at = datetime.datetime.strptime(published, feed_format)
-    # published_at = published_at.strftime('%Y-%m-%d %H:%M')
+    published_at = published_at.strftime('%Y-%m-%d %H:%M')
     return published_at
 
 
