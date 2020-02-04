@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.timezone import make_aware
 
 
 class PodcastManager(models.Manager):
@@ -32,7 +33,7 @@ class EpisodeManager(models.Manager):
     def create_episode(self, name: str, uploaded_at: str, duration: str, url: str, podcast):
         return self.create(
             name=name,
-            uploaded_at=uploaded_at,
+            uploaded_at=make_aware(uploaded_at),
             duration=duration,
             url=url,
             podcast=podcast
