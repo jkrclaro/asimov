@@ -1,7 +1,6 @@
 import ssl
 import datetime
-
-from django.utils import timezone
+import pytz
 
 import feedparser
 
@@ -20,7 +19,7 @@ def format_duration(duration: str) -> str:
         duration_as_timedelta = datetime.timedelta(seconds=int(duration))
         duration = (datetime.datetime.min + duration_as_timedelta).time()
 
-    duration = duration.replace(tzinfo=timezone.utc)
+    duration = duration.replace(tzinfo=pytz.utc)
 
     if duration.hour:
         duration = f'{duration.hour}h {duration.minute}m'
@@ -32,10 +31,10 @@ def format_duration(duration: str) -> str:
     return duration
 
 
-def format_published_at(published: str) -> str:
+def format_published_at(published: str) -> datetime.datetime:
     feed_format = '%a, %d %b %Y %H:%M:%S %z'
     published_at = datetime.datetime.strptime(published, feed_format)
-    published_at = published_at.strftime('%Y-%m-%d %H:%M')
+    published_at.replace(tzinfo=pytz.utc)
     return published_at
 
 
