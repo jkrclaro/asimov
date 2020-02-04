@@ -1,6 +1,8 @@
 import ssl
 import datetime
 
+from django.utils import timezone
+
 import feedparser
 
 
@@ -18,6 +20,8 @@ def format_duration(duration: str) -> str:
         duration_as_timedelta = datetime.timedelta(seconds=int(duration))
         duration = (datetime.datetime.min + duration_as_timedelta).time()
 
+    duration = duration.replace(tzinfo=timezone.utc)
+
     if duration.hour:
         duration = f'{duration.hour}h {duration.minute}m'
     elif duration.minute:
@@ -28,9 +32,10 @@ def format_duration(duration: str) -> str:
     return duration
 
 
-def format_published_at(published_at: datetime) -> str:
-    parsed = datetime.datetime.strptime(published_at, '%a, %d %b %Y %H:%M:%S %z')
-    published_at = parsed.strftime('%Y-%m-%d %H:%M')
+def format_published_at(published: str) -> str:
+    feed_format = '%a, %d %b %Y %H:%M:%S %z'
+    published_at = datetime.datetime.strptime(published, feed_format)
+    # published_at = published_at.strftime('%Y-%m-%d %H:%M')
     return published_at
 
 
@@ -51,7 +56,7 @@ def get_episodes(url: str) -> list:
             if play_link[0].endswith('.mp3'):
                 url = play_link[0]
 
-        duration = entry.get('itunes_duration', 'N/A')
+        duration = entry.get('itunes_duration', None)
         duration = format_duration(duration)
 
         published_at = entry.get('published', None)
@@ -59,7 +64,7 @@ def get_episodes(url: str) -> list:
 
         feed_episodes.append({
             'name': entry['title'],
-            'uploaded_at': published_at,
+            'published_at': published_at,
             'duration': duration,
             'url': url
         })

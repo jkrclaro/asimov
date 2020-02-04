@@ -1,7 +1,7 @@
 from django.db import models
 
-from ..accounts.models import Pxdcast
-from . import managers
+from jarvis.pxdcast import managers
+from jarvis.accounts.models import Pxdcast
 
 
 class Podcast(models.Model):

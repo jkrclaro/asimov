@@ -1,18 +1,17 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.timezone import make_aware
 
 
 class PodcastManager(models.Manager):
 
     def create_podcast(
             self,
-            name: str,
-            author: str,
-            img: str,
-            itunes_id: str,
-            feed: str,
-            summary: str = None
+            name: str = '',
+            author: str = '',
+            img: str = '',
+            itunes_id: str = '',
+            feed: str = '',
+            summary: str = ''
     ):
         try:
             podcast = self.get(name=name)
@@ -30,10 +29,17 @@ class PodcastManager(models.Manager):
 
 class EpisodeManager(models.Manager):
 
-    def create_episode(self, name: str, uploaded_at: str, duration: str, url: str, podcast):
+    def create_episode(
+            self,
+            name: str = '',
+            published_at: str = '',
+            duration: str = '',
+            url: str = '',
+            podcast: models.Model = None
+    ):
         return self.create(
             name=name,
-            uploaded_at=make_aware(uploaded_at),
+            uploaded_at=published_at,
             duration=duration,
             url=url,
             podcast=podcast
