@@ -26,7 +26,7 @@ class Podcast(models.Model):
 
 class Episode(models.Model):
     name = models.CharField(max_length=255)
-    uploaded_at = models.CharField(max_length=255)
+    uploaded_at = models.DateTimeField()
     duration = models.CharField(max_length=255)
     url = models.URLField()
     podcast = models.ForeignKey(Podcast, related_name='episodes', on_delete=models.CASCADE)
