@@ -9,9 +9,12 @@ if hasattr(ssl, '_create_unverified_context'):
 
 
 def format_duration(duration: str) -> str:
-    try:
-        duration = datetime.datetime.strptime(duration, '%H:%M:%S')
-    except ValueError:
+    if ':' in duration:
+        try:
+            duration = datetime.datetime.strptime(duration, '%H:%M:%S')
+        except ValueError:
+            duration = datetime.datetime.strptime(duration, '%M:%S')
+    else:
         duration_as_timedelta = datetime.timedelta(seconds=int(duration))
         duration = (datetime.datetime.min + duration_as_timedelta).time()
 
