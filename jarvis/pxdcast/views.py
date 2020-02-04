@@ -1,6 +1,5 @@
 import json
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
 from django.db.utils import IntegrityError
 
@@ -26,7 +25,7 @@ def podcast_list(request):
 def podcast_retrieve(request, itunes_id):
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
-    except ObjectDoesNotExist:
+    except Podcast.DoesNotExist:
         data = itunes.search_podcast(itunes_id)
         if not data:
             return Response(None, status.HTTP_404_NOT_FOUND)
@@ -48,7 +47,7 @@ def podcast_retrieve(request, itunes_id):
 def episode_list(request, itunes_id):
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
-    except ObjectDoesNotExist:
+    except Podcast.DoesNotExist:
         return Response(None, status.HTTP_404_NOT_FOUND)
 
     episodes = feed.get_episodes(podcast.feed)
@@ -94,7 +93,7 @@ def podcast_subscription(request):
         podcast = Podcast.objects.get(itunes_id=itunes_id)
         subscription = podcast.subscribers.filter(account=request.user.pxdcast)
         subscription = subscription.exists()
-    except ObjectDoesNotExist:
+    except Podcast.DoesNotExist:
         subscription = False
     return Response(subscription, status.HTTP_200_OK)
 
