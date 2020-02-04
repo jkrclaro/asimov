@@ -25,8 +25,10 @@ def format_duration(duration: str) -> str:
     return duration
 
 
-def format_uploaded_at(uploaded_at: str) -> str:
-    return uploaded_at
+def format_published_at(published_at: datetime) -> str:
+    parsed = datetime.datetime.strptime(published_at, '%a, %d %b %Y %H:%M:%S %z')
+    published_at = parsed.strftime('%b %d, %Y')
+    return published_at
 
 
 def get_podcast(url: str) -> dict:
@@ -49,9 +51,12 @@ def get_episodes(url: str) -> list:
         duration = entry.get('itunes_duration', 'N/A')
         duration = format_duration(duration)
 
+        published_at = entry.get('published', None)
+        published_at = format_published_at(published_at)
+
         feed_episodes.append({
             'name': entry['title'],
-            'uploaded_at': 'Today',
+            'uploaded_at': published_at,
             'duration': duration,
             'url': url
         })
