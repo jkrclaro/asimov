@@ -19,9 +19,9 @@ def format_duration(duration: str) -> str:
     if duration.hour:
         duration = f'{duration.hour}h {duration.minute}m'
     elif duration.minute:
-        duration = f'{duration.minute}m {duration.second}s'
+        duration = f'{duration.minute} mins'
     else:
-        duration = f'{duration.second}s'
+        duration = f'{duration.second} secs'
 
     return duration
 
