@@ -16,6 +16,7 @@ class FeedTestCase(TestCase):
         self.assertEqual(feed.format_duration('0:40:12'), '40 mins')
         self.assertEqual(feed.format_duration('2412'), '40 mins')
         self.assertEqual(feed.format_duration('58:55'), '58 mins')
+        self.assertEqual(feed.format_duration('60:15'), '60 mins')
 
     def test_format_uploaded_at(self):
         self.assertEqual(feed.format_published_at('Sun, 25 Aug 2019 11:00:00 +0000'), datetime.datetime(2019, 8, 25, 11, 0, tzinfo=pytz.utc))
@@ -43,4 +44,4 @@ class EpisodeTestCase(TestCase):
             'podcast': Podcast.objects.get(id=1)
         }
         episode = Episode.objects.create_episode(**data)
-        self.assertEqual(episode.uploaded_at, datetime.datetime(2019, 8, 25, 11, 0, tzinfo=datetime.timezone.utc))
+        self.assertEqual(episode.published_at, datetime.datetime(2019, 8, 25, 11, 0, tzinfo=datetime.timezone.utc))
