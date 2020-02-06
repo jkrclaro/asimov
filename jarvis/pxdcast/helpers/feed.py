@@ -1,6 +1,6 @@
 import ssl
-import datetime
 import pytz
+from datetime import datetime, timedelta
 
 import feedparser
 from bs4 import BeautifulSoup
@@ -13,17 +13,26 @@ if hasattr(ssl, '_create_unverified_context'):
 def format_duration(duration: str) -> str:
     if ':' in duration:
         try:
-            duration = datetime.datetime.strptime(duration, '%H:%M:%S')
+            duration = datetime.strptime(duration, '%H:%M:%S')
         except ValueError:
-            duration = datetime.datetime.strptime(duration, '%M:%S')
+            try:
+                duration = datetime.strptime(duration, '%M:%S')
+            except ValueError:
+                minutes = int(duration.split(':')[0]) * 60
+                seconds = int(duration.split(':')[1])
+                duration_as_timedelta = timedelta(seconds=minutes + seconds)
+                duration = (datetime.min + duration_as_timedelta).time()
     else:
-        duration_as_timedelta = datetime.timedelta(seconds=int(duration))
-        duration = (datetime.datetime.min + duration_as_timedelta).time()
+        duration_as_timedelta = timedelta(seconds=int(duration))
+        duration = (datetime.min + duration_as_timedelta).time()
 
     duration = duration.replace(tzinfo=pytz.utc)
 
     if duration.hour:
-        duration = f'{duration.hour}h {duration.minute}m'
+        if duration.hour and duration.minute == 0:
+            duration = f'{duration.hour}hr'
+        else:
+            duration = f'{duration.hour}h {duration.minute}m'
     elif duration.minute:
         duration = f'{duration.minute} mins'
     else:
@@ -32,9 +41,9 @@ def format_duration(duration: str) -> str:
     return duration
 
 
-def format_published_at(published: str) -> datetime.datetime:
+def format_published_at(published: str) -> datetime:
     feed_format = '%a, %d %b %Y %H:%M:%S %z'
-    published_at = datetime.datetime.strptime(published, feed_format)
+    published_at = datetime.strptime(published, feed_format)
     published_at.replace(tzinfo=pytz.utc)
     return published_at
 
