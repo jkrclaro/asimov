@@ -114,14 +114,14 @@ body {
 
 /* Bootstrap4 */
 .card {
-  border-radius: 0px;
+  border-radius: 5px;
 }
 .form-control {
-  border-radius: 0px;
+  border-radius: 5px;
 }
 .btn {
   cursor: pointer;
-  border-radius: 0px;
+  border-radius: 5px;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 1.5px;
