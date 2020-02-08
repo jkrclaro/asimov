@@ -1,0 +1,142 @@
+/* Layout */
+body {
+  overflow-x: hidden;
+}
+
+#sidebar {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar .list-group {
+  width: 15rem;
+}
+
+#sidebar-content {
+  min-width: 100vw;
+}
+
+#sidebar-container.toggled #sidebar {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    margin-left: 0;
+  }
+
+  #sidebar-content {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #sidebar-container.toggled #sidebar {
+    margin-left: -15rem;
+  }
+
+  #navbar {
+    display: none;
+  }
+}
+/* Layout */
+
+/* HTML */
+
+
+/* Custom */
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.btn-Theme {
+  background-color: #000;
+  color: #FFF;
+}
+.btn-Theme:hover, .btn-Theme:focus, .btn-Theme:active, .btn-Theme.active {
+  transition: all .2s ease-in-out;
+  transform: scale(1.05);
+  color: #FFF;
+}
+.btn-Light {
+  background-color: lightgray;
+  color: gray;
+}
+.btn-Light:hover, .btn-Light:focus, .btn-Light:active, .btn-Light.active {
+  transition: all .2s ease-in-out;
+  transform: scale(1.05);
+  background-color: tomato;
+  color: #FFF;
+}
+.btn-Theme-Outline {
+  border: 2px solid #000;
+  color: #000;
+  cursor: pointer;
+}
+.btn-Theme-Outline:hover, .btn-Theme-Outline:focus, .btn-Theme-Outline:active, .btn-Theme-Outline.active {
+  background-color: #000;
+  color: #FFF;
+}
+
+#podcast-player {
+  color: #FFF;
+  background-color: #111;
+}
+#podcast-player .fas, #podcast-player .far {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.search-link {
+  text-decoration: none !important;
+}
+.episode-link {
+  color: #111;
+}
+.episode-link:hover, .episode-link:focus, .episode-link:active {
+  color: #000;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.podcast-img {
+  height: 150px;
+  width: 150px;
+}
+
+/* Bootstrap4 */
+.card {
+  border-radius: 0px;
+}
+.form-control {
+  border-radius: 0px;
+}
+.btn {
+  cursor: pointer;
+  border-radius: 0px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+.list-group-item {
+  border-top: 0 none;
+  border-bottom: 0 none;
+  background-color: #FFF !important;
+}
+a.bg-light:hover, a.bg-light:active, a.bg-light:focus {
+  color: #000;
+  background-color: #FFF !important;
+}
+
+/* FontAwesome */
+.fa-sync-alt {
+  font-size: 32px;
+}
