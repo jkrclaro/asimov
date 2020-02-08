@@ -3,8 +3,8 @@ import pytz
 
 from django.test import TestCase
 
-from jarvis.pxdcast.models import Episode, Podcast
-from jarvis.pxdcast.helpers import feed
+from asimov.pxdcast.models import Episode, Podcast
+from asimov.pxdcast.helpers import feed
 
 
 class FeedTestCase(TestCase):

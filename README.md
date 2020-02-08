@@ -1,7 +1,7 @@
-<a href='https://github.com/jkrclaro/jarvis'><img src='https://github.com/jkrclaro/jarvis/blob/master/assets/logo.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/asimov'><img src='https://github.com/jkrclaro/asimov/blob/master/assets/logo.png' align='right' width='200' height='160' /></a>
 
-# Jarvis
-[![CircleCI](https://circleci.com/gh/jkrclaro/jarvis.svg?style=svg)](https://circleci.com/gh/jkrclaro/jarvis)
+# Asimov
+[![CircleCI](https://circleci.com/gh/jkrclaro/asimov.svg?style=svg)](https://circleci.com/gh/jkrclaro/asimov)
 
 Backend for all my projects.
 
