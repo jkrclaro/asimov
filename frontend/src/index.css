@@ -58,7 +58,7 @@ body {
 }
 
 .btn-Theme {
-  background-color: #000;
+  background-color: #0070F3;
   color: #FFF;
 }
 .btn-Theme:hover, .btn-Theme:focus, .btn-Theme:active, .btn-Theme.active {
@@ -77,12 +77,12 @@ body {
   color: #FFF;
 }
 .btn-Theme-Outline {
-  border: 2px solid #000;
-  color: #000;
+  border: 2px solid #0070F3;
+  color: #0070F3;
   cursor: pointer;
 }
 .btn-Theme-Outline:hover, .btn-Theme-Outline:focus, .btn-Theme-Outline:active, .btn-Theme-Outline.active {
-  background-color: #000;
+  background-color: #0070F3;
   color: #FFF;
 }
 
@@ -102,7 +102,7 @@ body {
   color: #111;
 }
 .episode-link:hover, .episode-link:focus, .episode-link:active {
-  color: #000;
+  color: #0070F3;
   cursor: pointer !important;
   text-decoration: none !important;
 }
@@ -132,7 +132,7 @@ body {
   background-color: #FFF !important;
 }
 a.bg-light:hover, a.bg-light:active, a.bg-light:focus {
-  color: #000;
+  color: #0070F3;
   background-color: #FFF !important;
 }
 
