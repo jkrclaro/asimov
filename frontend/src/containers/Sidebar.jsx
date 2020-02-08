@@ -24,9 +24,9 @@ class Sidebar extends React.Component {
         let viewportHeight = player.isOpen ? '80vh' : '100vh';
         return (
             <div className='d-flex' id='sidebar-container'>
-                <nav id='sidebar'>
+                <nav id='sidebar' className='mt-3'>
                     <div className='sidebar-heading'>
-                        <Link to='/podcasts'><img src='/logo.png' alt='logo.png' height='50' width='50'></img></Link>
+                        <Link to='/podcasts'><img src='/logo.png' alt='logo.png' height='30' width='30'></img></Link>
                     </div>
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
