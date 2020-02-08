@@ -1,4 +1,4 @@
-<a href='https://github.com/jkrclaro/asimov'><img src='https://github.com/jkrclaro/asimov/blob/master/frontend/public/logo.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/asimov'><img src='https://github.com/jkrclaro/asimov/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
 
 # Asimov
 [![CircleCI](https://circleci.com/gh/jkrclaro/asimov.svg?style=svg)](https://circleci.com/gh/jkrclaro/asimov)
