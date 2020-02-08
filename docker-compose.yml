@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   database:
+    container_name: database
     image: postgres
   frontend:
     container_name: frontend
