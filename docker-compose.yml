@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    image: asimov/frontend
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+  backend:
+    container_name: backend
+    command: python manage.py runserver
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: asimov/backend
+    volumes:
+      - './backend:/app'
+      - '/app/node_modules'
+    ports:
+      - '8000:8000'
+    depends_on:
+      - database
