@@ -6,9 +6,9 @@ from django.db.utils import IntegrityError
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
-from jarvis.pxdcast.helpers import itunes, feed
-from jarvis.pxdcast.models import Podcast, Episode, Subscription
-from jarvis.accounts.models import Pxdcast
+from asimov.pxdcast.helpers import itunes, feed
+from asimov.pxdcast.models import Podcast, Episode, Subscription
+from asimov.accounts.models import Pxdcast
 
 
 @decorators.api_view(['POST'])

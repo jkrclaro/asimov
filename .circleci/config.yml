@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test jarvis
+      - run: python manage.py test asimov
       - store_test_results:
-          path: jarvis-test-results
+          path: asimov-test-results
       - store_artifacts:
-          path: jarvis-test-results
+          path: asimov-test-results
           destination: tr1
