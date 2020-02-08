@@ -3,13 +3,12 @@
 # Asimov
 [![CircleCI](https://circleci.com/gh/jkrclaro/asimov.svg?style=svg)](https://circleci.com/gh/jkrclaro/asimov)
 
-Backend for all my projects.
+A personal dashboard application.
 
 ## Overview
 
-Powering these websites
-- [Sidefone](https://sidefone.jkrclaro.com)
-- [Pxdcast](https://pxdcast.jkrclaro.com)
+Asimov provides functionalities to
+- Listen to podcasts
 
 ## Requirements
 
