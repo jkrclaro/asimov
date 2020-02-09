@@ -2,10 +2,10 @@
 
 # Zuse
 
-Dashboard of my personal apps.
+Web apps I've written all in one.
 
 ## Apps
-- Web podcast player
+- Podcast player
 
 ## Requirements
 
