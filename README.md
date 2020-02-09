@@ -2,7 +2,10 @@
 
 # Lovelace
 
-Personal dashboard application
+Dashboard of my personal applications.
+
+## Applications
+- Web podcast player
 
 ## Requirements
 
