@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test lovelace
+      - run: python manage.py test zuse
       - store_test_results:
-          path: lovelace-test-results
+          path: zuse-test-results
       - store_artifacts:
-          path: lovelace-test-results
+          path: zuse-test-results
           destination: tr1
