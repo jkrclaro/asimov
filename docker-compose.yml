@@ -13,7 +13,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-    image: asimov/frontend
+    image: lovelace/frontend
     volumes:
       - './frontend:/app'
       - '/app/node_modules'
@@ -26,7 +26,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    image: asimov/backend
+    image: lovelace/backend
     volumes:
       - './backend:/app'
     ports:

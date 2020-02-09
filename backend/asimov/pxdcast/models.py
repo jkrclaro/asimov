@@ -1,7 +1,7 @@
 from django.db import models
 
-from asimov.pxdcast import managers
-from asimov.accounts.models import Pxdcast
+from lovelace.pxdcast import managers
+from lovelace.accounts.models import Pxdcast
 
 
 class Podcast(models.Model):

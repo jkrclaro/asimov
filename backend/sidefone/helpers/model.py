@@ -1,6 +1,6 @@
 from flask import abort
 
-from src.asimov.models import db
+from src.lovelace.models import db
 
 
 def get_or_404(model: db.Model, options: dict) -> db.Model:

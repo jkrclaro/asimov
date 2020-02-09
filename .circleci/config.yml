@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test asimov
+      - run: python manage.py test lovelace
       - store_test_results:
-          path: asimov-test-results
+          path: lovelace-test-results
       - store_artifacts:
-          path: asimov-test-results
+          path: lovelace-test-results
           destination: tr1
