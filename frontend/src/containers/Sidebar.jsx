@@ -9,12 +9,10 @@ class Sidebar extends React.Component {
 
     state = {
         links: [
-            {'url': '/podcasts', 'logo': 'fa-th', 'title': 'Podcasts'},
-            {'url': '/playlists', 'logo': 'fa-bars', 'title': 'Playlists'},
-            {'url': '/new-releases', 'logo': 'fa-podcast', 'title': 'New Releases'},
-            {'url': '/in-progress', 'logo': 'fa-spinner', 'title': 'In Progress'},
-            {'url': '/favorites', 'logo': 'fa-star', 'title': 'Favorites'},
-            {'url': '/account', 'logo': 'fa-cog', 'title': 'Account'},
+            {'url': '/podcasts', 'logo': 'fas fa-podcast', 'title': 'Podcasts'},
+            {'url': '/rss', 'logo': 'fas fa-rss', 'title': 'RSS'},
+            {'url': '/hacker-news', 'logo': 'fab fa-y-combinator', 'title': 'Hacker News'},
+            {'url': '/account', 'logo': 'fas fa-cog', 'title': 'Account'},   
         ]
     }
 
@@ -30,7 +28,7 @@ class Sidebar extends React.Component {
                     </div>
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
-                            <Link key={index} to={link.url} className='list-group-item list-group-item-action bg-light'><i className={`fas ${link.logo} mr-3`}></i> {link.title}</Link>
+                            <Link key={index} to={link.url} className='list-group-item list-group-item-action bg-light'><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
                         )}
                         <Logout className='list-group-item list-group-item-action bg-light' />
                     </div>
@@ -44,7 +42,7 @@ class Sidebar extends React.Component {
                         <div className='collapse navbar-collapse' id='navbar-content'>
                             <div className='navbar-nav ml-auto mt-2 mt-lg-0'>
                                 { links.map((link, index) => 
-                                    <Link key={index} to={link.url} className='nav-item nav-link'><i className={`fas ${link.logo} mr-3`}></i> {link.title}</Link>
+                                    <Link key={index} to={link.url} className='nav-item nav-link'><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
                                 )}
                                 <Logout className='nav-item nav-link' />
                             </div>
