@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test zuse
+      - run: python manage.py test eniac
       - store_test_results:
-          path: zuse-test-results
+          path: eniac-test-results
       - store_artifacts:
-          path: zuse-test-results
+          path: eniac-test-results
           destination: tr1
