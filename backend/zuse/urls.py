@@ -7,8 +7,8 @@ from django.conf.urls.static import static
 
 admin.autodiscover()
 urlpatterns = [
-    path('pxdcast/', include('zuse.pxdcast.urls'), name='pxdcast'),
-    path('accounts/', include('zuse.accounts.urls'), name='accounts'),
+    path('pxdcast/', include('eniac.pxdcast.urls'), name='pxdcast'),
+    path('accounts/', include('eniac.accounts.urls'), name='accounts'),
 ]
 
 if settings.DEBUG:
