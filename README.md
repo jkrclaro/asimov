@@ -2,7 +2,7 @@
 
 # Eniac
 
-Web apps I've written all in one.
+Dashboard for a podcast player, feed reader, and HackerNews search.
 
 ## Apps
 - Podcast player
