@@ -1,6 +1,6 @@
-<a href='https://github.com/jkrclaro/lovelace'><img src='https://github.com/jkrclaro/lovelace/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/zuse'><img src='https://github.com/jkrclaro/zuse/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
 
-# Lovelace
+# Zuse
 
 Dashboard of my personal apps.
 
