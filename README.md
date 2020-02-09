@@ -2,9 +2,9 @@
 
 # Lovelace
 
-Dashboard of my personal applications.
+Dashboard of my personal apps.
 
-## Applications
+## Apps
 - Web podcast player
 
 ## Requirements
