@@ -1,4 +1,4 @@
-<a href='https://github.com/jkrclaro/zuse'><img src='https://github.com/jkrclaro/zuse/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/zuse'><img src='https://github.com/jkrclaro/zuse/blob/master/frontend/public/logo.png' align='right' width='200' height='160' /></a>
 
 # Zuse
 
