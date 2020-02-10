@@ -23,7 +23,7 @@ class Account(models.Model):
         return self.account.username
 
     @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
+    def create_user_account(sender, instance, created, **kwargs):
         if created:
             Account.objects.create(account=instance)
 
