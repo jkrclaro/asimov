@@ -12,9 +12,7 @@ class NotFound extends Component {
             <div>
                 {!this.props.auth.isAuthenticated ? (
                     <Layout>
-                        <div className='col-lg-12'>
-                            {this.props.children}
-                        </div>
+                        {this.props.children}
                     </Layout>
                 ) : (
                     <Sidebar>
