@@ -6,7 +6,7 @@ from .views import (
     episode_list, episode_retrieve,
 )
 
-app_name = 'pxdcast'
+app_name = 'auricle'
 
 urlpatterns = [
     path('subscriptions', podcast_subscriptions, name='podcast_subscriptions'),

@@ -10,14 +10,14 @@ class User(AbstractUser):
     pass
 
 
-class Pxdcast(models.Model):
+class Account(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     account = models.OneToOneField(User, on_delete=models.CASCADE)
-    objects = managers.PxdcastManager()
+    objects = managers.AccountManager()
 
     class Meta:
-        db_table = 'pxdcasts'
+        db_table = 'accounts'
 
     def __str__(self):
         return self.account.username
@@ -25,8 +25,8 @@ class Pxdcast(models.Model):
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
-            Pxdcast.objects.create(account=instance)
+            Account.objects.create(account=instance)
 
     @receiver(post_save, sender=User)
-    def save_user_account_pxdcast(sender, instance, **kwargs):
-        instance.pxdcast.save()
+    def save_user_account(sender, instance, **kwargs):
+        instance.account.save()

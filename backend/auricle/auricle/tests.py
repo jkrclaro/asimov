@@ -3,8 +3,8 @@ import pytz
 
 from django.test import TestCase
 
-from auricle.pxdcast.models import Episode, Podcast
-from auricle.pxdcast.helpers import feed
+from auricle.auricle.models import Episode, Podcast
+from auricle.auricle.helpers import feed
 
 
 class FeedTestCase(TestCase):

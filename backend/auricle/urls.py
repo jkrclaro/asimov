@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 admin.autodiscover()
 urlpatterns = [
-    path('pxdcast/', include('auricle.pxdcast.urls'), name='pxdcast'),
+    path('auricle/', include('auricle.auricle.urls'), name='auricle'),
     path('accounts/', include('auricle.accounts.urls'), name='accounts'),
 ]
 

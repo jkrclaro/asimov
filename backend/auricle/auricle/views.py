@@ -6,9 +6,9 @@ from django.db.utils import IntegrityError
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
-from auricle.pxdcast.helpers import itunes, feed
-from auricle.pxdcast.models import Podcast, Episode, Subscription
-from auricle.accounts.models import Pxdcast
+from auricle.auricle.helpers import itunes, feed
+from auricle.auricle.models import Podcast, Episode, Subscription
+from auricle.accounts.models import Account
 
 
 @decorators.api_view(['POST'])
@@ -75,11 +75,11 @@ def episode_retrieve(request, itunes_id, pk):
 def podcast_subscriptions(request):
     fields = ('itunes_id', 'img')
     try:
-        subscriptions = request.user.pxdcast.subscriptions.values('podcast_id')
+        subscriptions = request.user.auricle.subscriptions.values('podcast_id')
         subscriptions = Podcast.objects.filter(id__in=subscriptions)
         subscriptions = subscriptions.values(*fields)
         subscriptions = list(subscriptions)
-    except Pxdcast.DoesNotExist:
+    except Account.DoesNotExist:
         subscriptions = []
     return Response(subscriptions, status.HTTP_200_OK)
 
@@ -91,7 +91,7 @@ def podcast_subscription(request):
     itunes_id = payload.get('itunes_id', None)
     try:
         podcast = Podcast.objects.get(itunes_id=itunes_id)
-        subscription = podcast.subscribers.filter(account=request.user.pxdcast)
+        subscription = podcast.subscribers.filter(account=request.user.account)
         subscription = subscription.exists()
     except Podcast.DoesNotExist:
         subscription = False
@@ -104,7 +104,7 @@ def podcast_subscribe(request):
     payload = json.loads(request.body.decode('utf-8'))
     name = payload.get('name', None)
     podcast = Podcast.objects.get(name=name)
-    account = request.user.pxdcast
+    account = request.user.account
     Subscription.objects.create_subscription(podcast=podcast, account=account)
     return Response(None, status.HTTP_200_OK)
 
@@ -115,6 +115,6 @@ def podcast_unsubscribe(request):
     payload = json.loads(request.body.decode('utf-8'))
     name = payload.get('name', None)
     podcast = Podcast.objects.get(name=name)
-    account = request.user.pxdcast
+    account = request.user.account
     Subscription.objects.filter(account=account, podcast=podcast).delete()
     return Response(None, status.HTTP_200_OK)

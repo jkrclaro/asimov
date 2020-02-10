@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User, Pxdcast
+from .models import User, Account
 
 admin.site.register(User)
-admin.site.register(Pxdcast)
+admin.site.register(Account)
