@@ -67,30 +67,43 @@ class Sidebar extends React.Component {
         let viewportHeight = player.isOpen ? '80vh' : '100vh';
         const pathname = getPathname(window.location.pathname);
         const urls = {
-            '/podcasts': [
-                '/podcasts',
-                '/playlists',
-                '/new-releases',
-                '/in-progress',
-                '/favorites',
-                '/podcasts/:id'
-            ],
-            '/rss': [
-                '/rss',
-                '/rss-1',
-                '/rss-2',
-                '/rss-3',
-            ],
-            '/hacker-news': [
-                '/hacker-news',
-                '/hacker-news-1',
-                '/hacker-news-2',
-                '/hacker-news-3',
-            ],
-            '/account': [
-                '/account',
-                '/logout',
-            ]
+            '/podcasts': {
+                'main': [
+                    '/podcasts',
+                    '/playlists',
+                    '/new-releases',
+                    '/in-progress',
+                    '/favorites',
+                ],
+                'others': [
+                    '/podcasts/:id'
+                ]
+            },
+            '/rss': {
+                'main': [
+                    '/rss',
+                    '/rss-1',
+                    '/rss-2',
+                    '/rss-3',
+                ],
+                'others': []
+            },
+            '/hacker-news': {
+                'main': [
+                    '/hacker-news',
+                    '/hacker-news-1',
+                    '/hacker-news-2',
+                    '/hacker-news-3',
+                ],
+                'others': []
+            },
+            '/account': {
+                'main': [
+                    '/account',
+                    '/logout',
+                ],
+                'others': []
+            }
         }
         return (
             <div className='d-flex' id='sidebar-container'>
@@ -101,8 +114,8 @@ class Sidebar extends React.Component {
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
                             <div key={`sidebar-${index}`}>
-                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url ? 'sidebar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
-                                { urls[link.url].includes(pathname) ? (
+                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url || urls[link.url].others.includes(pathname) ? 'sidebar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                { urls[link.url].main.includes(pathname) || urls[link.url].others.includes(pathname) ? (
                                     <span>
                                         { link.submenus.map((submenu, submenuIndex) =>
                                             <span key={`submenu-${submenuIndex}`}>
@@ -129,8 +142,8 @@ class Sidebar extends React.Component {
                             <div className='navbar-nav ml-auto mt-2 mt-lg-0'>
                                 { links.map((link, index) => 
                                     <div key={`navbar-${index}`}>
-                                        <Link to={link.url} className={`nav-item nav-link ${pathname === link.url ? 'navbar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
-                                        { urls[link.url].includes(pathname) ? (
+                                        <Link to={link.url} className={`nav-item nav-link ${pathname === link.url || urls[link.url].others.includes(pathname) ? 'navbar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                        { urls[link.url].main.includes(pathname) || urls[link.url].others.includes(pathname) ? (
                                             <span>
                                                 { link.submenus.map((submenu, submenuIndex) =>
                                                     <span key={`submenu-${submenuIndex}`}>
