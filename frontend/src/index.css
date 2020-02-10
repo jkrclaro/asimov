@@ -106,7 +106,10 @@ body {
   cursor: pointer !important;
   text-decoration: none !important;
 }
-
+.sidebar-active, .navbar-active {
+  color: #0070F3 !important;
+  background-color: #FFF !important;
+}
 .podcast-img {
   height: 150px;
   width: 150px;
@@ -129,10 +132,6 @@ body {
 .list-group-item {
   border-top: 0 none;
   border-bottom: 0 none;
-  background-color: #FFF !important;
-}
-.list-active {
-  color: #0070F3;
   background-color: #FFF !important;
 }
 a.bg-light:hover, a.bg-light:active, a.bg-light:focus {
