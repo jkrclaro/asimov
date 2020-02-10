@@ -61,7 +61,7 @@ else:
     ALLOWED_HOSTS = ('auricle.jkrclaro.com',)
     DATABASES['default'] = dj_database_url.config(conn_max_age=600)
     CORS_ORIGIN_WHITELIST = [
-        "https://pxdcast.jkrclaro.com",
+        "https://auricle.jkrclaro.com",
     ]
 
     # AWS
@@ -94,7 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'auricle.accounts',
-    'auricle.pxdcast',
+    'auricle.auricle',
     'debug_toolbar',
     'phonenumber_field',
     'rest_framework',

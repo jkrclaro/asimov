@@ -1,7 +1,7 @@
 from django.db import models
 
-from auricle.pxdcast import managers
-from auricle.accounts.models import Pxdcast
+from auricle.auricle import managers
+from auricle.accounts.models import Account
 
 
 class Podcast(models.Model):
@@ -42,7 +42,7 @@ class Episode(models.Model):
 
 
 class Subscription(models.Model):
-    account = models.ForeignKey(Pxdcast, related_name='subscriptions', on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, related_name='subscriptions', on_delete=models.CASCADE)
     podcast = models.ForeignKey(Podcast, related_name='subscribers', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

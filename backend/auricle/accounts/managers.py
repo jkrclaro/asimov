@@ -1,5 +1,5 @@
 from django.db import models
 
 
-class PxdcastManager(models.Manager):
+class AccountManager(models.Manager):
     pass
