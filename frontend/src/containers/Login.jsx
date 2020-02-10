@@ -11,7 +11,7 @@ class Login extends Component {
     renderField = ({ input, label, type, value, meta: { touched, error } }) => {
         return (
             <div className='form-group'>
-                <label>{label}</label>
+                <label className='label-theme'>{label}</label>
                 <input type={type} className={`form-control ${touched && error ? 'is-invalid': ''}`} value={value} {...input} autoComplete='off' />
                 {touched && error && (
                     <span className='invalid-feedback d-block'>{error}</span>
