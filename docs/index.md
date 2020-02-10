@@ -1,5 +1,5 @@
 # Docs
 
 ## Creating a new app
-mkdir winer/sidefone
-python manage.py startapp sidefone winer/sidefone
+mkdir auricle/sidefone
+python manage.py startapp sidefone auricle/sidefone

@@ -1,7 +1,7 @@
 from django.db import models
 
-from winer.pxdcast import managers
-from winer.accounts.models import Pxdcast
+from auricle.pxdcast import managers
+from auricle.accounts.models import Pxdcast
 
 
 class Podcast(models.Model):

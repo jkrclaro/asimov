@@ -13,7 +13,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-    image: winer/frontend
+    image: auricle/frontend
     volumes:
       - './frontend:/app'
       - '/frontend/app/node_modules'
@@ -26,7 +26,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    image: winer/backend
+    image: auricle/backend
     volumes:
       - './backend:/app'
     ports:
