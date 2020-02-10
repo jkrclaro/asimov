@@ -9,10 +9,37 @@ class Sidebar extends React.Component {
 
     state = {
         links: [
-            {'url': '/podcasts', 'logo': 'fas fa-podcast', 'title': 'Podcasts'},
-            {'url': '/rss', 'logo': 'fas fa-rss', 'title': 'RSS'},
-            {'url': '/hacker-news', 'logo': 'fab fa-y-combinator', 'title': 'Hacker News'},
-            {'url': '/account', 'logo': 'fas fa-cog', 'title': 'Account'},   
+            {
+                'url': '/podcasts',
+                'logo': 'fas fa-podcast',
+                'title': 'Podcasts',
+                'submenus': [
+                    {'url': '/playlists', 'logo': 'fas fa-bars', 'title': 'Playlists'},
+                    {'url': '/new-releases', 'logo': 'fas fa-podcast', 'title': 'New Releases'},
+                    {'url': '/in-progress', 'logo': 'fas fa-spinner', 'title': 'In Progress'},
+                    {'url': '/favorites', 'logo': 'fas fa-star', 'title': 'Favorites'},
+                ]
+            },
+            {
+                'url': '/rss',
+                'logo': 'fas fa-rss',
+                'title': 'RSS',
+                'submenus': []
+            },
+            {
+                'url': '/hacker-news',
+                'logo': 'fab fa-y-combinator',
+                'title': 'Hacker News',
+                'submenus': []
+            },
+            {
+                'url': '/account',
+                'logo': 'fas fa-cog',
+                'title': 'Account',
+                'submenus': [
+                    {'url': '/logout', 'logo': 'fas fa-sign-out', 'title': 'Logout'}
+                ]
+            },   
         ]
     }
 
@@ -20,6 +47,19 @@ class Sidebar extends React.Component {
         const { links } = this.state;
         const { player } = this.props;
         let viewportHeight = player.isOpen ? '80vh' : '100vh';
+        const { pathname } = window.location;
+        const urls = {
+            '/podcasts': [
+                '/podcasts',
+                '/playlists',
+                '/new-releases',
+                '/in-progress',
+                '/favorites'
+            ],
+            '/rss': [],
+            '/hacker-news': [],
+            '/account': []
+        }
         return (
             <div className='d-flex' id='sidebar-container'>
                 <nav id='sidebar' className='mt-3'>
@@ -28,9 +68,19 @@ class Sidebar extends React.Component {
                     </div>
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
-                            <Link key={index} to={link.url} className='list-group-item list-group-item-action bg-light'><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                            <div key={`sidebar-${index}`}>
+                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${urls[link.url].includes(pathname) ? 'list-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                { link.submenus.map((submenu, submenuIndex) =>
+                                    <span key={`submenu-${submenuIndex}`}>
+                                        { submenu.url === '/logout' ? (
+                                            <Logout className='list-group-item list-group-item-action bg-light' paddingLeft={55} />
+                                        ) : (
+                                            <Link key={`submenu-${submenuIndex}`} to={submenu.url} className='list-group-item list-group-item-action bg-light' style={{paddingLeft: 55}}>{submenu.title}</Link>
+                                        )}
+                                    </span>
+                                )}
+                            </div>
                         )}
-                        <Logout className='list-group-item list-group-item-action bg-light' />
                     </div>
                 </nav>
                 <div id='sidebar-content'>
@@ -42,9 +92,19 @@ class Sidebar extends React.Component {
                         <div className='collapse navbar-collapse' id='navbar-content'>
                             <div className='navbar-nav ml-auto mt-2 mt-lg-0'>
                                 { links.map((link, index) => 
-                                    <Link key={index} to={link.url} className='nav-item nav-link'><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                    <div key={`navbar-${index}`}>
+                                        <Link to={link.url} className={`nav-item nav-link ${urls[link.url].includes(pathname) ? 'list-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                        { link.submenus.map((submenu, submenuIndex) =>
+                                            <span key={`submenu-${submenuIndex}`}>
+                                                { submenu.url === '/logout' ? (
+                                                    <Logout className='nav-item nav-link' paddingLeft={35} />
+                                                ) : (
+                                                    <Link to={submenu.url} className='nav-item nav-link' style={{paddingLeft: 35}}>{submenu.title}</Link>
+                                                )}
+                                            </span>
+                                        )}
+                                    </div>
                                 )}
-                                <Logout className='nav-item nav-link' />
                             </div>
                         </div>
                     </nav>

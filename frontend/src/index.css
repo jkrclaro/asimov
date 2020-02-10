@@ -131,6 +131,10 @@ body {
   border-bottom: 0 none;
   background-color: #FFF !important;
 }
+.list-active {
+  color: #0070F3;
+  background-color: #FFF !important;
+}
 a.bg-light:hover, a.bg-light:active, a.bg-light:focus {
   color: #0070F3;
   background-color: #FFF !important;
