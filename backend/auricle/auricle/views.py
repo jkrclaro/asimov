@@ -75,7 +75,7 @@ def episode_retrieve(request, itunes_id, pk):
 def podcast_subscriptions(request):
     fields = ('itunes_id', 'img')
     try:
-        subscriptions = request.user.auricle.subscriptions.values('podcast_id')
+        subscriptions = request.user.account.subscriptions.values('podcast_id')
         subscriptions = Podcast.objects.filter(id__in=subscriptions)
         subscriptions = subscriptions.values(*fields)
         subscriptions = list(subscriptions)
