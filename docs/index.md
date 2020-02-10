@@ -1,5 +1,5 @@
 # Docs
 
 ## Creating a new app
-mkdir eniac/sidefone
-python manage.py startapp sidefone eniac/sidefone
+mkdir winer/sidefone
+python manage.py startapp sidefone winer/sidefone

@@ -21,8 +21,8 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-ROOT_URLCONF = 'eniac.urls'
-WSGI_APPLICATION = 'eniac.wsgi.application'
+ROOT_URLCONF = 'winer.urls'
+WSGI_APPLICATION = 'winer.wsgi.application'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'accounts.User'
@@ -58,7 +58,7 @@ else:
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
     SECURE_HSTS_PRELOAD = True
-    ALLOWED_HOSTS = ('eniac.jkrclaro.com',)
+    ALLOWED_HOSTS = ('winer.jkrclaro.com',)
     DATABASES['default'] = dj_database_url.config(conn_max_age=600)
     CORS_ORIGIN_WHITELIST = [
         "https://pxdcast.jkrclaro.com",
@@ -71,10 +71,10 @@ else:
 
     # Used by django-storages
     AWS_STORAGE_BUCKET_NAME = 'jkrclaro.com'
-    STATICFILES_STORAGE = 'eniac.storage.Static'
+    STATICFILES_STORAGE = 'winer.storage.Static'
     STATICFILES_LOCATION = 'static'
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'eniac.storage.Media'
+    DEFAULT_FILE_STORAGE = 'winer.storage.Media'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -93,8 +93,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'eniac.accounts',
-    'eniac.pxdcast',
+    'winer.accounts',
+    'winer.pxdcast',
     'debug_toolbar',
     'phonenumber_field',
     'rest_framework',

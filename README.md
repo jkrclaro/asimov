@@ -1,6 +1,6 @@
-<a href='https://github.com/jkrclaro/eniac'><img src='https://github.com/jkrclaro/eniac/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/winer'><img src='https://github.com/jkrclaro/winer/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
 
-# Eniac
+# Winer
 
 Dashboard for a podcast player, feed reader, and HackerNews search.
 

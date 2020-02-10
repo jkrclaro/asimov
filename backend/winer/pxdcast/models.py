@@ -1,7 +1,7 @@
 from django.db import models
 
-from eniac.pxdcast import managers
-from eniac.accounts.models import Pxdcast
+from winer.pxdcast import managers
+from winer.accounts.models import Pxdcast
 
 
 class Podcast(models.Model):
