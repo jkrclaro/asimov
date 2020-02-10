@@ -5,6 +5,16 @@ import { Link } from 'react-router-dom';
 import Logout from './Logout';
 
 
+function getPathname(pathname) {
+    let newPathname = '/';
+    const queryStrings = pathname.split('/');
+    for (const queryString of queryStrings) {
+        newPathname += parseInt(queryString) ? '/:id' : queryString;
+    }
+    return newPathname
+}
+
+
 class Sidebar extends React.Component {
 
     state = {
@@ -55,14 +65,15 @@ class Sidebar extends React.Component {
         const { links } = this.state;
         const { player } = this.props;
         let viewportHeight = player.isOpen ? '80vh' : '100vh';
-        const { pathname } = window.location;
+        const pathname = getPathname(window.location.pathname);
         const urls = {
             '/podcasts': [
                 '/podcasts',
                 '/playlists',
                 '/new-releases',
                 '/in-progress',
-                '/favorites'
+                '/favorites',
+                '/podcasts/:id'
             ],
             '/rss': [
                 '/rss',
