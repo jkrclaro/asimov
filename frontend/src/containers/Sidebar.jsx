@@ -9,7 +9,7 @@ function getPathname(pathname) {
     let path = '/';
     const parameters = pathname.split('/');
     for (const parameter of parameters) {
-        newPathname += parseInt(parameter) ? '/:id' : parameter;
+        path += parseInt(parameter) ? '/:id' : parameter;
     }
     return path
 }
