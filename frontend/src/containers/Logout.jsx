@@ -11,9 +11,9 @@ class Logout extends Component {
     }
 
     render() {
-        const className = this.props.className;
+        const { className, paddingLeft } = this.props;
         return (
-            <a href='/' className={className} onClick={this.onClick}><i className='fas fa-sign-out-alt mr-3'></i> Logout</a>
+            <a href='/' className={className} onClick={this.onClick} style={{ paddingLeft }}>Logout</a>
         )
     }
 }
