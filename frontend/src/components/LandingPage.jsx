@@ -7,7 +7,7 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <Layout>Layout</Layout>
+            <Layout>Hello World</Layout>
         )
     }
 }
