@@ -24,13 +24,21 @@ class Sidebar extends React.Component {
                 'url': '/rss',
                 'logo': 'fas fa-rss',
                 'title': 'RSS',
-                'submenus': []
+                'submenus': [
+                    {'url': '/rss-1', 'logo': 'fas fa-bars', 'title': 'RSS 1'},
+                    {'url': '/rss-2', 'logo': 'fas fa-bars', 'title': 'RSS 2'},
+                    {'url': '/rss-3', 'logo': 'fas fa-bars', 'title': 'RSS 3'},
+                ]
             },
             {
                 'url': '/hacker-news',
                 'logo': 'fab fa-y-combinator',
                 'title': 'Hacker News',
-                'submenus': []
+                'submenus': [
+                    {'url': '/hackernews-1', 'logo': 'fas fa-bars', 'title': 'Hacker News 1'},
+                    {'url': '/hackernews-2', 'logo': 'fas fa-bars', 'title': 'Hacker News 2'},
+                    {'url': '/hackernews-3', 'logo': 'fas fa-bars', 'title': 'Hacker News 3'},
+                ]
             },
             {
                 'url': '/account',
@@ -56,9 +64,22 @@ class Sidebar extends React.Component {
                 '/in-progress',
                 '/favorites'
             ],
-            '/rss': [],
-            '/hacker-news': [],
-            '/account': []
+            '/rss': [
+                '/rss',
+                '/rss-1',
+                '/rss-2',
+                '/rss-3',
+            ],
+            '/hacker-news': [
+                '/hacker-news',
+                '/hacker-news-1',
+                '/hacker-news-2',
+                '/hacker-news-3',
+            ],
+            '/account': [
+                '/account',
+                '/logout',
+            ]
         }
         return (
             <div className='d-flex' id='sidebar-container'>
@@ -69,16 +90,20 @@ class Sidebar extends React.Component {
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
                             <div key={`sidebar-${index}`}>
-                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${urls[link.url].includes(pathname) ? 'list-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
-                                { link.submenus.map((submenu, submenuIndex) =>
-                                    <span key={`submenu-${submenuIndex}`}>
-                                        { submenu.url === '/logout' ? (
-                                            <Logout className='list-group-item list-group-item-action bg-light' paddingLeft={55} />
-                                        ) : (
-                                            <Link key={`submenu-${submenuIndex}`} to={submenu.url} className='list-group-item list-group-item-action bg-light' style={{paddingLeft: 55}}>{submenu.title}</Link>
+                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url ? 'list-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                { urls[link.url].includes(pathname) ? (
+                                    <span>
+                                        { link.submenus.map((submenu, submenuIndex) =>
+                                            <span key={`submenu-${submenuIndex}`}>
+                                                { submenu.url === '/logout' ? (
+                                                    <Logout className='list-group-item list-group-item-action bg-light' paddingLeft={55} />
+                                                ) : (
+                                                    <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`list-group-item list-group-item-action bg-light ${pathname === submenu.url ? 'list-active' : null}`} style={{paddingLeft: 55}}>{submenu.title}</Link>
+                                                )}
+                                            </span>
                                         )}
                                     </span>
-                                )}
+                                ) : null}
                             </div>
                         )}
                     </div>
