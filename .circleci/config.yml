@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test winer
+      - run: python manage.py test auricle
       - store_test_results:
-          path: winer-test-results
+          path: auricle-test-results
       - store_artifacts:
-          path: winer-test-results
+          path: auricle-test-results
           destination: tr1
