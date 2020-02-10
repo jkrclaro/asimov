@@ -90,7 +90,7 @@ class Sidebar extends React.Component {
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
                             <div key={`sidebar-${index}`}>
-                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url ? 'list-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url ? 'sidebar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
                                 { urls[link.url].includes(pathname) ? (
                                     <span>
                                         { link.submenus.map((submenu, submenuIndex) =>
@@ -98,7 +98,7 @@ class Sidebar extends React.Component {
                                                 { submenu.url === '/logout' ? (
                                                     <Logout className='list-group-item list-group-item-action bg-light' paddingLeft={55} />
                                                 ) : (
-                                                    <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`list-group-item list-group-item-action bg-light ${pathname === submenu.url ? 'list-active' : null}`} style={{paddingLeft: 55}}>{submenu.title}</Link>
+                                                    <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`list-group-item list-group-item-action bg-light ${pathname === submenu.url ? 'sidebar-active' : null}`} style={{paddingLeft: 55}}>{submenu.title}</Link>
                                                 )}
                                             </span>
                                         )}
@@ -110,7 +110,7 @@ class Sidebar extends React.Component {
                 </nav>
                 <div id='sidebar-content'>
                     <nav className='navbar navbar-expand-lg navbar-light mt-3 mb-3' id='navbar'>
-                        <Link to='/podcasts'><img src='/logo.png' alt='logo.png' height='50' width='50'></img></Link>
+                        <Link to='/podcasts'><img src='/logo.png' alt='logo.png' height='30' width='30'></img></Link>
                         <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-content' aria-controls='navbar-content' aria-expanded='false' aria-label='Toggle navigation'>
                             <span className='navbar-toggler-icon'></span>
                         </button>
@@ -118,16 +118,20 @@ class Sidebar extends React.Component {
                             <div className='navbar-nav ml-auto mt-2 mt-lg-0'>
                                 { links.map((link, index) => 
                                     <div key={`navbar-${index}`}>
-                                        <Link to={link.url} className={`nav-item nav-link ${urls[link.url].includes(pathname) ? 'list-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
-                                        { link.submenus.map((submenu, submenuIndex) =>
-                                            <span key={`submenu-${submenuIndex}`}>
-                                                { submenu.url === '/logout' ? (
-                                                    <Logout className='nav-item nav-link' paddingLeft={35} />
-                                                ) : (
-                                                    <Link to={submenu.url} className='nav-item nav-link' style={{paddingLeft: 35}}>{submenu.title}</Link>
+                                        <Link to={link.url} className={`nav-item nav-link ${pathname === link.url ? 'navbar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
+                                        { urls[link.url].includes(pathname) ? (
+                                            <span>
+                                                { link.submenus.map((submenu, submenuIndex) =>
+                                                    <span key={`submenu-${submenuIndex}`}>
+                                                        { submenu.url === '/logout' ? (
+                                                            <Logout className='nav-item nav-link' paddingLeft={35} />
+                                                        ) : (
+                                                            <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`nav-item nav-link ${pathname === submenu.url ? 'navbar-active' : null}`} style={{paddingLeft: 35}}>{submenu.title}</Link>
+                                                        )}
+                                                    </span>
                                                 )}
                                             </span>
-                                        )}
+                                        ) : null}
                                     </div>
                                 )}
                             </div>
