@@ -44,7 +44,7 @@ class Podcast extends React.Component {
                         <div className='col-lg-9 mb-3'>
                             <div className='row'>
                                 <div className='col-lg-8'>
-                                    <div style={{ fontSize: '20px' }}><b>{podcasts.selected.name}</b></div>
+                                    <h3><b>{podcasts.selected.name}</b></h3>
                                     <div className='mb-2'><span className='text-muted'>{podcasts.selected.author}</span></div>
                                     <div className='mb-2'><i className='fas fa-link text-muted mr-3'></i><a href={podcasts.selected.website}>{podcasts.selected.website}</a></div>
                                     <div className='mb-2'><small>{podcasts.selected.summary}</small></div>
