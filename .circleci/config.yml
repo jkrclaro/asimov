@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test eniac
+      - run: python manage.py test winer
       - store_test_results:
-          path: eniac-test-results
+          path: winer-test-results
       - store_artifacts:
-          path: eniac-test-results
+          path: winer-test-results
           destination: tr1

@@ -13,7 +13,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-    image: eniac/frontend
+    image: winer/frontend
     volumes:
       - './frontend:/app'
       - '/frontend/app/node_modules'
@@ -26,7 +26,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    image: eniac/backend
+    image: winer/backend
     volumes:
       - './backend:/app'
     ports:

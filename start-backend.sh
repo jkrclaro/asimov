@@ -1,1 +1,1 @@
-source ~/virtualenvs/eniac/bin/activate && cd backend && gunicorn --bind 0.0.0.0:8000 --workers 4 eniac.wsgi:application
+source ~/virtualenvs/winer/bin/activate && cd backend && gunicorn --bind 0.0.0.0:8000 --workers 4 winer.wsgi:application
