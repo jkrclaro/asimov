@@ -2,7 +2,7 @@
 
 # Winer
 
-Dashboard for a podcast player, feed reader, and HackerNews search.
+Listen to podcasts with an open-sourced podcasting app
 
 ## Apps
 - Podcast player
