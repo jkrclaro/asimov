@@ -50,7 +50,14 @@ body {
 /* Layout */
 
 /* HTML */
-
+a {
+  color: #0070F3;
+}
+a:hover {
+  color: #0070F3;
+  text-decoration: none;
+}
+/* HTML */
 
 /* Custom */
 * {
@@ -58,7 +65,7 @@ body {
 }
 
 .btn-Theme {
-  background-color: #0070F3;
+  background-color: #000;
   color: #FFF;
 }
 .btn-Theme:hover, .btn-Theme:focus, .btn-Theme:active, .btn-Theme.active {
@@ -77,15 +84,29 @@ body {
   color: #FFF;
 }
 .btn-Theme-Outline {
-  border: 2px solid #0070F3;
-  color: #0070F3;
+  border: 2px solid #000;
+  color: #000;
   cursor: pointer;
 }
 .btn-Theme-Outline:hover, .btn-Theme-Outline:focus, .btn-Theme-Outline:active, .btn-Theme-Outline.active {
-  background-color: #0070F3;
+  background-color: #000;
   color: #FFF;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.logo, .nav-item, .list-group-item {
+  color: #888;
+  font-family: 'Open Sans';
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 #podcast-player {
   color: #FFF;
   background-color: #111;
@@ -96,18 +117,19 @@ body {
 }
 
 .search-link {
+  color: #0070F3;
   text-decoration: none !important;
 }
 .episode-link {
   color: #111;
 }
 .episode-link:hover, .episode-link:focus, .episode-link:active {
-  color: #0070F3;
+  color: #000;
   cursor: pointer !important;
   text-decoration: none !important;
 }
 .sidebar-active, .navbar-active {
-  color: #0070F3 !important;
+  color: #000 !important;
   background-color: #FFF !important;
 }
 .podcast-img {
@@ -130,12 +152,13 @@ body {
   letter-spacing: 1.5px;
 }
 .list-group-item {
+  color: #888;
   border-top: 0 none;
   border-bottom: 0 none;
   background-color: #FFF !important;
 }
 a.bg-light:hover, a.bg-light:active, a.bg-light:focus {
-  color: #0070F3;
+  color: #000;
   background-color: #FFF !important;
 }
 

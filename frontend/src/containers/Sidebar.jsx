@@ -23,17 +23,12 @@ class Sidebar extends React.Component {
                 'url': '/podcasts',
                 'logo': 'fas fa-podcast',
                 'title': 'Podcasts',
-                'submenus': [
-                    {'url': '/playlists', 'logo': 'fas fa-bars', 'title': 'Playlists'},
-                    {'url': '/new-releases', 'logo': 'fas fa-podcast', 'title': 'New Releases'},
-                    {'url': '/in-progress', 'logo': 'fas fa-spinner', 'title': 'In Progress'},
-                    {'url': '/favorites', 'logo': 'fas fa-star', 'title': 'Favorites'},
-                ]
+                'submenus': []
             },
             {
-                'url': '/rss',
-                'logo': 'fas fa-rss',
-                'title': 'RSS',
+                'url': '/playlists',
+                'logo': 'fas fa-bars',
+                'title': 'Playlists',
                 'submenus': [
                     {'url': '/rss-1', 'logo': 'fas fa-bars', 'title': 'RSS 1'},
                     {'url': '/rss-2', 'logo': 'fas fa-bars', 'title': 'RSS 2'},
@@ -41,9 +36,19 @@ class Sidebar extends React.Component {
                 ]
             },
             {
-                'url': '/hacker-news',
-                'logo': 'fab fa-y-combinator',
-                'title': 'Hacker News',
+                'url': '/new-releases',
+                'logo': 'fas fa-podcast',
+                'title': 'New Releases',
+                'submenus': [
+                    {'url': '/hackernews-1', 'logo': 'fas fa-bars', 'title': 'Hacker News 1'},
+                    {'url': '/hackernews-2', 'logo': 'fas fa-bars', 'title': 'Hacker News 2'},
+                    {'url': '/hackernews-3', 'logo': 'fas fa-bars', 'title': 'Hacker News 3'},
+                ]
+            },
+            {
+                'url': '/in-progress',
+                'logo': 'fas fa-spinner',
+                'title': 'In Progress',
                 'submenus': [
                     {'url': '/hackernews-1', 'logo': 'fas fa-bars', 'title': 'Hacker News 1'},
                     {'url': '/hackernews-2', 'logo': 'fas fa-bars', 'title': 'Hacker News 2'},
@@ -79,7 +84,7 @@ class Sidebar extends React.Component {
                     '/podcasts/:id'
                 ]
             },
-            '/rss': {
+            '/playlists': {
                 'main': [
                     '/rss',
                     '/rss-1',
@@ -88,7 +93,16 @@ class Sidebar extends React.Component {
                 ],
                 'others': []
             },
-            '/hacker-news': {
+            '/new-releases': {
+                'main': [
+                    '/hacker-news',
+                    '/hacker-news-1',
+                    '/hacker-news-2',
+                    '/hacker-news-3',
+                ],
+                'others': []
+            },
+            '/in-progress': {
                 'main': [
                     '/hacker-news',
                     '/hacker-news-1',
@@ -109,7 +123,7 @@ class Sidebar extends React.Component {
             <div className='d-flex' id='sidebar-container'>
                 <nav id='sidebar' className='mt-3'>
                     <div className='sidebar-heading'>
-                        <Link to='/podcasts'><img src='/logo.png' alt='logo.png' height='30' width='30'></img></Link>
+                        <Link to='/podcasts'><h2 className='logo'>WINER</h2></Link>
                     </div>
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
@@ -134,7 +148,7 @@ class Sidebar extends React.Component {
                 </nav>
                 <div id='sidebar-content'>
                     <nav className='navbar navbar-expand-lg navbar-light mt-3 mb-3' id='navbar'>
-                        <Link to='/podcasts'><img src='/logo.png' alt='logo.png' height='30' width='30'></img></Link>
+                        <Link to='/podcasts'><h2 className='logo'>WINER</h2></Link>
                         <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-content' aria-controls='navbar-content' aria-expanded='false' aria-label='Toggle navigation'>
                             <span className='navbar-toggler-icon'></span>
                         </button>
