@@ -93,13 +93,6 @@ a:hover {
   color: #FFF;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'Open Sans';
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
 .logo, .nav-item, .list-group-item {
   color: #888;
   font-family: 'Open Sans';
