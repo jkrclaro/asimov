@@ -6,12 +6,12 @@ import Logout from './Logout';
 
 
 function getPathname(pathname) {
-    let newPathname = '/';
-    const queryStrings = pathname.split('/');
-    for (const queryString of queryStrings) {
-        newPathname += parseInt(queryString) ? '/:id' : queryString;
+    let path = '/';
+    const parameters = pathname.split('/');
+    for (const parameter of parameters) {
+        newPathname += parseInt(parameter) ? '/:id' : parameter;
     }
-    return newPathname
+    return path
 }
 
 
