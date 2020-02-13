@@ -94,7 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'auricle.accounts',
-    'auricle.auricle',
+    'auricle.podcasts',
     'debug_toolbar',
     'phonenumber_field',
     'rest_framework',

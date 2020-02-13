@@ -1,6 +1,6 @@
 from django.db import models
 
-from auricle.auricle import managers
+from auricle.podcasts import managers
 from auricle.accounts.models import Account
 
 

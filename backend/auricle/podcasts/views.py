@@ -6,8 +6,8 @@ from django.db.utils import IntegrityError
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
-from auricle.auricle.helpers import itunes, feed
-from auricle.auricle.models import Podcast, Episode, Subscription
+from auricle.podcasts.helpers import itunes, feed
+from auricle.podcasts.models import Podcast, Episode, Subscription
 from auricle.accounts.models import Account
 
 
