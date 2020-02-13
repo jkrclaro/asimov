@@ -37,7 +37,7 @@ class Sidebar extends React.Component {
             },
             {
                 'url': '/new-releases',
-                'logo': 'fas fa-podcast',
+                'logo': 'far fa-plus-square',
                 'title': 'New Releases',
                 'submenus': [
                     {'url': '/hackernews-1', 'logo': 'fas fa-bars', 'title': 'Hacker News 1'},
