@@ -4,9 +4,6 @@
 
 Listen to podcasts with an open-sourced podcasting app
 
-## Apps
-- Podcast player
-
 ## Requirements
 
 You'll need the following:
@@ -14,8 +11,11 @@ You'll need the following:
 - [Docker](https://www.docker.com/)
 - Modern browser like Google Chrome
 
+## Usage
 
-## Getting started
+Refer to Makefile.
+
+## Usage with Dockerfile
 
 Run the app locally using docker-compose
 
