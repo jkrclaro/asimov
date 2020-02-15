@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class AuricleConfig(AppConfig):
-    name = 'auricle'
+class PodcastsConfig(AppConfig):
+    name = 'podcasts'
