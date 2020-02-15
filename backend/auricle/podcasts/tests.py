@@ -19,7 +19,9 @@ class FeedTestCase(TestCase):
         self.assertEqual(feed.format_duration('60:15'), '1hr')
 
     def test_format_uploaded_at(self):
-        self.assertEqual(feed.format_published_at('Sun, 25 Aug 2019 11:00:00 +0000'), datetime.datetime(2019, 8, 25, 11, 0, tzinfo=pytz.utc))
+        feed_pa = feed.format_published_at('Sun, 25 Aug 2019 11:00:00 +0000')
+        test_pa = datetime.datetime(2019, 8, 25, 11, 0, tzinfo=pytz.utc)
+        self.assertEqual(feed_pa, test_pa)
 
 
 class EpisodeTestCase(TestCase):
@@ -28,20 +30,22 @@ class EpisodeTestCase(TestCase):
         data = {
             'name': 'Artificial Intelligence (AI Podcast) with Lex Fridman',
             'author': 'Lex Fridman',
-            'img': 'https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/29/ea/e1/29eae152-8211-a682-27f3-3604dcf5fc97/mza_8620699171955537230.png/600x600bb.jpg',
+            'img': 'https://is4-ssl.mzstatic.com/image/thumb/600x600bb.jpg',
             'itunes_id': 1434243584,
             'feed': 'https://lexfridman.com/category/ai/feed/',
-            'summary': 'Conversations about the nature of intelligence, science, and technology (at MIT and beyond) from the perspective of deep learning, robotics, AI, AGI, neuroscience, philosophy, psychology, cognitive science, economics, physics, mathematics, and more.'
+            'summary': 'Conversations about the nature of intelligence.'
         }
         Podcast.objects.create_podcast(**data)
 
     def test_create_episode(self):
+        feed_pa = feed.format_published_at('Sun, 25 Aug 2019 11:00:00 +0000')
         data = {
             'name': 'Elon Musk: Tesla Autopilot',
-            'published_at': feed.format_published_at('Sun, 25 Aug 2019 11:00:00 +0000'),
+            'published_at': feed_pa,
             'duration': feed.format_duration('58:55'),
-            'url': 'https://media.blubrry.com/takeituneasy/content.blubrry.com/takeituneasy/mit_ai_elon_musk.mp3',
+            'url': 'https://media.blubrry.com/mit_ai_elon_musk.mp3',
             'podcast': Podcast.objects.get(id=1)
         }
         episode = Episode.objects.create_episode(**data)
-        self.assertEqual(episode.published_at, datetime.datetime(2019, 8, 25, 11, 0, tzinfo=datetime.timezone.utc))
+        test_pa = datetime.datetime(2019, 8, 25, 11, 0, tzinfo=pytz.utc)
+        self.assertEqual(episode.published_at, test_pa)
