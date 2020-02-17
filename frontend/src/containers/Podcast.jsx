@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-    getPodcast,
+    fetchPodcast,
     subscribePodcast,
     unsubscribePodcast,
-    getPodcastSubscription
+    fetchPodcastsubscription
 } from '../actions/podcasts';
 import Episodes from './Episodes';
 
@@ -14,8 +14,8 @@ class Podcast extends React.Component {
 
     componentDidMount() {
         const { podcastId } = this.props;
-        this.props.getPodcast(podcastId);
-        this.props.getPodcastSubscription(podcastId);
+        this.props.fetchPodcast(podcastId);
+        this.props.fetchPodcastsubscription(podcastId);
     }
 
     subscribe = (name) => {
@@ -78,5 +78,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getPodcast, subscribePodcast, unsubscribePodcast, getPodcastSubscription }
+    { fetchPodcast, subscribePodcast, unsubscribePodcast, fetchPodcastsubscription }
 )(Podcast);

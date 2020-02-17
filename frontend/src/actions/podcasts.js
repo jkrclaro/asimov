@@ -20,7 +20,7 @@ import {
 } from './types';
 
 
-export const getPodcasts = () => async (dispatch, getState) => {
+export const fetchPodcasts = () => async (dispatch, getState) => {
     dispatch({ type: GET_PODCASTS_REQUEST })
     const response = await earcast.get('/subscriptions', tokenConfig(getState));
     dispatch({
@@ -42,7 +42,7 @@ export const fetchEpisodes = (id) => async dispatch => {
     }
 }
 
-export const getPodcast = id => async (dispatch, getState) => {
+export const fetchPodcast = id => async (dispatch, getState) => {
     dispatch({ type: GET_PODCAST_REQUEST });
     try {
         const response = await earcast.get(`/podcasts/${id}`, tokenConfig(getState));
@@ -102,7 +102,7 @@ export const unsubscribePodcast = name => async (dispatch, getState) => {
     })
 }
 
-export const getPodcastSubscription = itunes_id => async (dispatch, getState) => {
+export const fetchPodcastsubscription = itunes_id => async (dispatch, getState) => {
     dispatch({ type: GET_PODCAST_SUBSCRIPTION_REQUEST });
     const payload = { itunes_id }
     const response = await earcast.post('/podcasts/subscription', payload, tokenConfig(getState));

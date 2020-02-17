@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getPodcasts } from '../actions/podcasts';
+import { fetchPodcasts } from '../actions/podcasts';
 
 
 class Podcasts extends React.Component {
 
     componentDidMount() {
-        this.props.getPodcasts()
+        this.props.fetchPodcasts()
     }
 
     render() {
@@ -44,5 +44,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getPodcasts }
+    { fetchPodcasts }
 )(Podcasts);
