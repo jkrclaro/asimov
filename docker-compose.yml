@@ -13,7 +13,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-    image: auricle/frontend
+    image: earcast/frontend
     volumes:
       - './frontend:/app'
       - '/frontend/app/node_modules'
@@ -26,7 +26,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    image: auricle/backend
+    image: earcast/backend
     volumes:
       - './backend:/app'
     ports:

@@ -123,7 +123,7 @@ class Sidebar extends React.Component {
             <div className='d-flex' id='sidebar-container'>
                 <nav id='sidebar' className='mt-3'>
                     <div className='sidebar-heading'>
-                        <Link to='/podcasts'><h2 className='logo'>AURICLE</h2></Link>
+                        <Link to='/podcasts'><h2 className='logo'>EARCAST</h2></Link>
                     </div>
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
@@ -148,7 +148,7 @@ class Sidebar extends React.Component {
                 </nav>
                 <div id='sidebar-content'>
                     <nav className='navbar navbar-expand-lg navbar-light mt-3 mb-3' id='navbar'>
-                        <Link to='/podcasts'><h2 className='logo'>AURICLE</h2></Link>
+                        <Link to='/podcasts'><h2 className='logo'>EARCAST</h2></Link>
                         <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-content' aria-controls='navbar-content' aria-expanded='false' aria-label='Toggle navigation'>
                             <span className='navbar-toggler-icon'></span>
                         </button>

@@ -1,6 +1,6 @@
-<a href='https://github.com/jkrclaro/auricle'><img src='https://github.com/jkrclaro/auricle/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
+<a href='https://github.com/jkrclaro/earcast'><img src='https://github.com/jkrclaro/earcast/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
 
-# Auricle
+# Earcast
 
 Listen to podcasts with an open-sourced podcasting app
 

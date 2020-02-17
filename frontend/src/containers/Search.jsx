@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { components } from 'react-select';
 import AsyncSelect from 'react-select/async';
 
-import auricle from '../api/auricle';
+import earcast from '../api/earcast';
 
 
 const DropdownIndicator = (props) => {
@@ -50,7 +50,7 @@ class Search extends React.Component {
             'Authorization': `Bearer ${this.props.auth.token}`
         }
         const config = { headers }
-        auricle.post('/podcasts', payload, config)
+        earcast.post('/podcasts', payload, config)
             .then(result => callback(result.data, null))
             .catch(error => callback(null, error))
     }, 100)

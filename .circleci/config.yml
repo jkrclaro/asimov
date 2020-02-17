@@ -21,9 +21,9 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.8/site-packages"
-      - run: python manage.py test auricle
+      - run: python manage.py test earcast
       - store_test_results:
-          path: auricle-test-results
+          path: earcast-test-results
       - store_artifacts:
-          path: auricle-test-results
+          path: earcast-test-results
           destination: tr1
