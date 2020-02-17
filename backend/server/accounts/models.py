@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 
-from auricle.accounts import managers
+from server.accounts import managers
 
 
 class User(AbstractUser):

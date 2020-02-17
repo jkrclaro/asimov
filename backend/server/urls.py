@@ -7,8 +7,8 @@ from django.conf.urls.static import static
 
 admin.autodiscover()
 urlpatterns = [
-    path('', include('auricle.podcasts.urls'), name='podcasts'),
-    path('accounts/', include('auricle.accounts.urls'), name='accounts'),
+    path('', include('server.podcasts.urls'), name='podcasts'),
+    path('accounts/', include('server.accounts.urls'), name='accounts'),
 ]
 
 if settings.DEBUG:

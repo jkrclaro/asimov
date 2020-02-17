@@ -6,9 +6,9 @@ from django.db.utils import IntegrityError
 from rest_framework import decorators, permissions, status
 from rest_framework.response import Response
 
-from auricle.podcasts.helpers import itunes, feed
-from auricle.podcasts.models import Podcast, Episode, Subscription
-from auricle.accounts.models import Account
+from server.podcasts.helpers import itunes, feed
+from server.podcasts.models import Podcast, Episode, Subscription
+from server.accounts.models import Account
 
 
 @decorators.api_view(['POST'])

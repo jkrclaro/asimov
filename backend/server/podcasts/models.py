@@ -1,7 +1,7 @@
 from django.db import models
 
-from auricle.podcasts import managers
-from auricle.accounts.models import Account
+from server.podcasts import managers
+from server.accounts.models import Account
 
 
 class Podcast(models.Model):
