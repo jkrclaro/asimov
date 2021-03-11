@@ -1,4 +1,4 @@
-# Fireside
+# Podplayer
 
 Podcast player using React.js
 
