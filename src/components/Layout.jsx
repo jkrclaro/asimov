@@ -9,7 +9,7 @@ class Layout extends React.Component {
             <div>
                 <nav className='navbar navbar-expand-lg navbar-light mt-3 mb-3' id='main-navbar'>
                     <div className='container'>
-                        <Link to='/' className='mr-3'><h2 className='logo'>EARCAST</h2></Link>
+                        <Link to='/' className='mr-3'><h2 className='logo'>PODPLAYER</h2></Link>
                         <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-content' aria-controls='navbar-content' aria-expanded='false' aria-label='Toggle navigation'>
                             <span className='navbar-toggler-icon'></span>
                         </button>
