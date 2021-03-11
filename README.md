@@ -1,26 +1,19 @@
-<a href='https://github.com/jkrclaro/earcast'><img src='https://github.com/jkrclaro/earcast/blob/master/frontend/public/logo-circle.png' align='right' width='200' height='160' /></a>
+# Fireside
 
-# Earcast
+Podcast player using React.js
 
-Listen to podcasts with an open-sourced podcasting app
+## Installation
 
-## Requirements
-
-You'll need the following:
-
-- [Docker](https://www.docker.com/)
-- Modern browser like Google Chrome
+```sh-session
+npm install
+```
 
 ## Usage
 
-Refer to Makefile.
-
-## Usage with Dockerfile
-
-Run the app locally using docker-compose
+Run the app locally
 
 ```sh-session
-docker-compose up
+npm run start
 ```
 
 Lastly, you will see the URL can be visited in
@@ -29,4 +22,4 @@ Lastly, you will see the URL can be visited in
 localhost:3000
 ```
 
-Use this URL in your browser to start the app.
+Use this URL in your browser to see the app.
