@@ -9,9 +9,9 @@ import { LOGOUT_SUCCESS } from '../actions/types';
 
 const appReducer = combineReducers({
     form: form,
-    podcast: podcastReducer,
+    podcasts: podcastReducer,
     player: playerReducer,
-    episode: episodeReducer,
+    episodes: episodeReducer,
     auth: authReducer
 })
 

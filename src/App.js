@@ -29,7 +29,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <PublicRoute exact path={process.env.PUBLIC_URL + '/'} component={LandingPage} />
+                        <PrivateRoute exact path={process.env.PUBLIC_URL + '/'} component={LandingPage} />
                         <PublicRoute exact path={process.env.PUBLIC_URL + '/login'} component={LoginPage} />
                         <PublicRoute exact path={process.env.PUBLIC_URL + '/register'} component={RegisterPage} />
                         <PrivateRoute exact path={process.env.PUBLIC_URL + '/podcasts'} component={PodcastsPage} />
