@@ -1,18 +1,18 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 
-import podcasts from './podcasts';
-import player from './player';
-import episodes from './episodes';
-import auth from './auth';
+import podcastReducer from './podcasts';
+import playerReducer from './player';
+import episodeReducer from './episodes';
+import authReducer from './auth';
 import { LOGOUT_SUCCESS } from '../actions/types';
 
 const appReducer = combineReducers({
-    form,
-    podcasts,
-    player,
-    episodes,
-    auth
+    form: form,
+    podcast: podcastReducer,
+    player: playerReducer,
+    episode: episodeReducer,
+    auth: authReducer
 })
 
 const rootReducer = (state, action) => {

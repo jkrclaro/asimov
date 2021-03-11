@@ -15,9 +15,7 @@ class Podcasts extends React.Component {
         const { podcasts } = this.props;
         return (
             <div className='mb-3'>
-                { podcasts.isFetching ? (
-                    <div className='text-center mt-5'><i className='fas fa-sync-alt fa-spin'></i></div>
-                ) : !podcasts.data.length ? (
+                { !podcasts.data.length ? (
                     <span>You are not currently subscribed to any podcasts.</span>
                 ) : (
                     <div className='row'>

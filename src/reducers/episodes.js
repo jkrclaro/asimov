@@ -10,7 +10,7 @@ const initialState = {
     isFetching: false
 }
 
-export default (state = initialState, action) => {
+export default function episodeReducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_EPISODES_REQUEST:
             return {

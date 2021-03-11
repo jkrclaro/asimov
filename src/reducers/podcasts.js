@@ -19,7 +19,7 @@ const initialState = {
     subscriptions: []
 }
 
-export default (state = initialState, action) => {
+export default function podcastReducer(state = initialState, action) {
     switch (action.type) {
         case GET_PODCAST_REQUEST:
             return {

@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     episode: {}
 }
 
-export default (state = INITIAL_STATE, action) => {
+export default function playerReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case PLAY_EPISODE:
             return {
