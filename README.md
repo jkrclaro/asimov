@@ -1,5 +1,7 @@
 # Podplayer
 
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=podplayer)
+
 Podcast player using React.js
 
 ## Installation
