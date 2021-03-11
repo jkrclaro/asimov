@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { components } from 'react-select';
 import AsyncSelect from 'react-select/async';
 
-import earcast from '../api/earcast';
+import fireside from '../api/fireside';
 
 
 const DropdownIndicator = (props) => {
@@ -50,7 +50,7 @@ class Search extends React.Component {
             'Authorization': `Bearer ${this.props.auth.token}`
         }
         const config = { headers }
-        earcast.post('/podcasts', payload, config)
+        fireside.post('/podcasts', payload, config)
             .then(result => callback(result.data, null))
             .catch(error => callback(null, error))
     }, 100)
