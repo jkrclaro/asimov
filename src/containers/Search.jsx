@@ -47,7 +47,7 @@ class Search extends React.Component {
         const payload = {'keywords': inputValue}
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.props.auth.token}`
+            'Authorization': `jwt ${this.props.auth.token}`
         }
         const config = { headers }
         podplayer.post('/podcasts', payload, config)
