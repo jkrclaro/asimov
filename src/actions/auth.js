@@ -18,7 +18,7 @@ const config = {headers: {'Content-Type': 'application/json'}};
 export const tokenConfig = getState => {
     const token = getState().auth.token;
     if (token) {
-        config.headers['authorization'] = `Bearer ${token}`;
+        config.headers['Authorization'] = `JWT ${token}`;
     }
     return config;
 };
