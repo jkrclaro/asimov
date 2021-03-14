@@ -19,6 +19,7 @@ const config = {
 
 export const tokenConfig = getState => {
     const token = getState().auth.token;
+    console.log(token);
     if (token) {
         config.headers['Authorization'] = `JWT ${token}`;
     }
