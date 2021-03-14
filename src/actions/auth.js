@@ -19,7 +19,6 @@ export const tokenConfig = getState => {
     const token = getState().auth.token;
     if (token) {
         config.headers['Authorization'] = `JWT ${token}`;
-        config.headers['Access-Control-Allow-Origin'] = '*';
     }
     return config;
 };
