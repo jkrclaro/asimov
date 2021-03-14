@@ -12,13 +12,15 @@ import {
     REGISTER_FAIL,
 } from './types';
 
-const config = {headers: {'Content-Type': 'application/json'}};
+const config = {
+    headers: {'Content-Type': 'application/json'}
+};
 
 
 export const tokenConfig = getState => {
     const token = getState().auth.token;
     if (token) {
-        config.headers['Authorization'] = `JWT ${token}`;
+        config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
 };
