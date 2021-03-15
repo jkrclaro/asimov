@@ -1,8 +1,0 @@
-.circleci/
-database/
-.vscode/
-alembic/
-docs/
-tests/
-migrations/
-scripts/
