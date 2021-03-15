@@ -14,14 +14,13 @@ class LoginPage extends Component {
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
                         {this.props.location.state === 'Unauthorized' ? (
-                            <div className='alert alert-danger' role='alert'>
-                                Please login first.
-                            </div>
+                            <div className='text-center mb-3' style={{color: 'red'}}>Please login first</div>
                         ) : null}
 
                         <div className='card'>
                             <div className='card-body'>
-                                <h5 className='mb-4 text-center'><b>Welcome back!</b></h5>
+                                <h5 className='mb-3 text-center'><b>Welcome back!</b></h5>
+                                <small className='text-muted'>As a guest -> (u=guest) (p=guest123) </small>
                                 <Login />
                             </div>
                         </div>
