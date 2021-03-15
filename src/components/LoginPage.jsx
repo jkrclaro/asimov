@@ -22,7 +22,6 @@ class LoginPage extends Component {
                                 {this.props.location.state === 'Unauthorized' ? (
                                     <div className='text-center mb-3' style={{color: 'red'}}>Please login first</div>
                                 ) : null}
-                                <small className='text-muted'>As a guest -> (u=guest) (p=guest123) </small>
                                 <Login />
                             </div>
                         </div>

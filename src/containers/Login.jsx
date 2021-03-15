@@ -40,8 +40,8 @@ class Login extends Component {
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field name='non_field_errors' type='hidden' component={this.renderHiddenField} />
-                <Field name='username' type='text' component={this.renderField} label='Username' />
-                <Field name='password' type='password' component={this.renderField} label='Password' />
+                <Field name='username' type='text' component={this.renderField} label='Username (As guest -> guest)' />
+                <Field name='password' type='password' component={this.renderField} label='Password (As guest -> guest123)' />
                 <button className='btn btn-Theme btn-block'>Sign in to your account</button>
             </form>
         )
