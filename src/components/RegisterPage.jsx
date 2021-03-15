@@ -13,6 +13,9 @@ class RegisterPage extends Component {
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
+                        <div className='text-center mb-3'>
+                            <Link to='/'><img src='/logo.png' height={50} width={50}></img></Link>
+                        </div>
                         <div className='card'>
                             <div className='card-body'>
                                 <h5><b>Create your account</b></h5>

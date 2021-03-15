@@ -123,7 +123,9 @@ class Sidebar extends React.Component {
             <div className='d-flex' id='sidebar-container'>
                 <nav id='sidebar' className='mt-3'>
                     <div className='sidebar-heading'>
-                        <Link to='/podcasts'><h2 className='logo'>PODPLAYER</h2></Link>
+                        <Link to='/podcasts'>
+                            <img src='/logo.png' height={50} width={50}></img>    
+                        </Link>
                     </div>
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 

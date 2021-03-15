@@ -93,6 +93,11 @@ a:hover {
   color: #FFF;
 }
 
+.logo {
+  color: #111;
+  font-weight: 700;
+}
+
 .nav-item, .list-group-item {
   color: #0070F3 !important;
 }
