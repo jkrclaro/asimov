@@ -14,7 +14,7 @@ class LoginPage extends Component {
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
                         <div className='text-center mb-3'>
-                            <Link to='/'><img src='/logo.png' height={50} width={50}></img></Link>
+                            <Link to='/'><img src='/logo.png' alt='logo.png' height={50} width={50}></img></Link>
                         </div>
                         <div className='card'>
                             <div className='card-body'>
