@@ -16,6 +16,6 @@ jobs:
           vercel-args: '--prod --confirm' #Optional
           vercel-org-id: ${{ secrets.ORG_ID}}  #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required 
-          working-directory: ./sub-directory
+          working-directory: ./src
           alias-domains: |
             podplayer.vercel.app
