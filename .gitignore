@@ -123,11 +123,6 @@ dmypy.json
 
 # local
 config/
-<<<<<<< HEAD
-warkphones/
-=======
-sidefones/
->>>>>>> Add speech-bubble CSS
 
 # vscode
 .vscode
@@ -146,4 +141,3 @@ scripts/letsencrypt/letsencrypt
 node_modules
 .env
 media/
-.vercel
