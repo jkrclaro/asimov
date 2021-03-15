@@ -99,7 +99,7 @@ a:hover {
 }
 
 .nav-item, .list-group-item {
-  color: #0070F3 !important;
+  color: #333;
 }
 #podcast-player {
   color: #FFF;
@@ -123,8 +123,8 @@ a:hover {
   text-decoration: none !important;
 }
 .sidebar-active, .navbar-active {
-  color: #000 !important;
-  background-color: #FFF !important;
+  color: #111 !important;
+  font-weight: 700;
 }
 .podcast-img {
   height: 150px;
