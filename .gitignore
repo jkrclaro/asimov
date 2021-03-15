@@ -141,3 +141,4 @@ scripts/letsencrypt/letsencrypt
 node_modules
 .env
 media/
+.vercel
