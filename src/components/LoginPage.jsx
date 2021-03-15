@@ -31,7 +31,7 @@ class LoginPage extends Component {
                     <div className='col-lg-4'>
                         <div className='card text-center mt-3'>
                             <div className='card-body'>
-                                Don't have an account? <Link to='/register'>Sign up</Link>.
+                                Don't have an account? <Link to='/register'>Sign up</Link>
                             </div>
                         </div>
                     </div>

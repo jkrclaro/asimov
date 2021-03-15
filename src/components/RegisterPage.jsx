@@ -16,7 +16,7 @@ class RegisterPage extends Component {
                         <div className='card'>
                             <div className='card-body'>
                                 <h5><b>Create your account</b></h5>
-                                <div className='mb-4'>Already have an account? <Link to='/login'>Sign in</Link>.</div>
+                                <div className='mb-4'>Already have an account? <Link to='/login'>Sign in</Link></div>
                                 <Register />
                             </div>
                         </div>
