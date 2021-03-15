@@ -1,6 +1,6 @@
 # Podplayer
 
-![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=podplayer)
+[![deploy](https://github.com/johnclaro/podplayer/actions/workflows/main.yml/badge.svg)](https://github.com/johnclaro/podplayer/actions/workflows/main.yml)
 
 Podcast player using React.js
 
