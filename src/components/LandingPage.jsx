@@ -8,13 +8,20 @@ class LandingPage extends Component {
         projects: [
             {img: 'covid.png', title: 'COVID-19', link: 'covid'},
             {img: 'podplayer.png', title: 'Podplayer', link: 'podplayer'},
+        ],
+        links: [
+            {url: 'mailto:jkrclaro@gmail.com', title: 'Email'},
+            {url: 'https://www.linkedin.com/in/johnclaro', title: 'LinkedIn'},
+            {url: 'https://www.twitter.com/johnclaro_', title: 'Twitter'},
+            {url: 'https://github.com/johnclaro_', title: 'Github'},
+            {url: 'https://getpocket.com/@johnclaro', title: 'Pocket'},
         ]
     }
 
     render() {
-        const { projects } = this.state;
+        const { projects, links } = this.state;
         return (
-            <div className='container mt-3'>
+            <div className='ml-3 mt-3'>
                 <div className='mb-3'>
                     <img src='me.png' alt='me.png' style={{borderRadius: '50%', height: 100, width: 100}}></img>
                 </div>
@@ -25,6 +32,17 @@ class LandingPage extends Component {
                             I was born in the Philippines and grew up in Ireland since I was 10 years old. 
                             I studied Applied Computing at WIT. 
                             After graduation, I worked as data engineer at Distilled SCH.
+                        </div>
+                    </div>
+                    <div className='mb-3'>
+                        <b>Links</b>
+                        <div>
+                            {links.map((link, index) =>
+                                <span key={`link-${index}`} className='mr-1'>
+                                    <a href={link.url}>{link.title}</a>{index !== links.length - 1 ? ',' : null}
+                                </span>
+
+                            )}
                         </div>
                     </div>
                     <div>
