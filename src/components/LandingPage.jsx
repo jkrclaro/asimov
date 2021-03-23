@@ -38,7 +38,7 @@ class LandingPage extends Component {
                         <b>Links</b>
                         <div>
                             {links.map((link, index) =>
-                                <span key={`link-${index}`} className='mr-1'>
+                                <span key={index} className='mr-1'>
                                     <a href={link.url}>{link.title}</a>{index !== links.length - 1 ? ',' : null}
                                 </span>
 
@@ -51,7 +51,7 @@ class LandingPage extends Component {
                         </div>
                         <div className='row'>
                             {projects.map((project, index) =>
-                                <Link to={project.link} className='col-3 text-center mb-3' key={`project-${index}`}>
+                                <Link to={project.link} className='col-3 text-center mb-3' key={index}>
                                     <img src={project.img} alt={project.img} style={{borderRadius: '50%', height: 50, width: 50}}></img>
                                     <div>
                                         <small>{project.title}</small>
