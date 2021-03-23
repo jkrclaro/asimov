@@ -1,4 +1,6 @@
-# Podplayer
+# Frontend
+
+Frontend of johnclaro.com
 
 [![deploy](https://github.com/johnclaro/podplayer/actions/workflows/main.yml/badge.svg)](https://github.com/johnclaro/podplayer/actions/workflows/main.yml)
 
