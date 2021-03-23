@@ -54,7 +54,7 @@ class LandingPage extends Component {
                                 <Link to={project.link} className='col-3 text-center mb-3' key={index}>
                                     <img src={project.img} alt={project.img} style={{borderRadius: '50%', height: 50, width: 50}}></img>
                                     <div>
-                                        <small>{project.title}</small>
+                                        {project.title}
                                     </div>
                                 </Link>
                             )}
