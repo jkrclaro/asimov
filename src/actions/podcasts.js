@@ -19,7 +19,7 @@ import {
 } from './types';
 
 
-export const fetchPodcasts = () => async (dispatch, getState) => {
+export const fetchPodcasts = () => async (dispatch) => {
     dispatch({ type: GET_PODCASTS_REQUEST })
     const response = await axios.get('/podplayer/subscriptions');
     dispatch({
@@ -41,7 +41,7 @@ export const fetchEpisodes = (id) => async dispatch => {
     }
 }
 
-export const fetchPodcast = id => async (dispatch, getState) => {
+export const fetchPodcast = id => async (dispatch) => {
     dispatch({ type: GET_PODCAST_REQUEST });
     try {
         const response = await axios.get(`/podplayer/podcasts/${id}`);
@@ -83,7 +83,7 @@ export const pausePlayer = () => async dispatch => {
     })
 }
 
-export const subscribePodcast = name => async (dispatch, getState) => {
+export const subscribePodcast = name => async (dispatch) => {
     const payload = { name }
     await axios.post('/podplayer/podcasts/subscribe', payload);
     dispatch({
@@ -92,7 +92,7 @@ export const subscribePodcast = name => async (dispatch, getState) => {
     })
 }
 
-export const unsubscribePodcast = name => async (dispatch, getState) => {
+export const unsubscribePodcast = name => async (dispatch) => {
     const payload = { name }
     await axios.post('/podplayer/podcasts/unsubscribe', payload);
     dispatch({
@@ -101,7 +101,7 @@ export const unsubscribePodcast = name => async (dispatch, getState) => {
     })
 }
 
-export const fetchPodcastsubscription = itunes_id => async (dispatch, getState) => {
+export const fetchPodcastsubscription = itunes_id => async (dispatch) => {
     dispatch({ type: GET_PODCAST_SUBSCRIPTION_REQUEST });
     const payload = { itunes_id }
     const response = await axios.post('/podplayer/podcasts/subscription', payload);
