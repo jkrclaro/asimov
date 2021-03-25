@@ -5,8 +5,6 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
-    REGISTER_FAIL,
-    REGISTER_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -30,7 +28,6 @@ export default function authReducer(state = initialState, action) {
                 isAuthenticated: true,
                 user: action.payload
             };
-        case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.access);
             return {
@@ -41,7 +38,6 @@ export default function authReducer(state = initialState, action) {
                 refresh: action.payload.refresh
             };
         case AUTH_ERROR:
-        case REGISTER_FAIL:
         case LOGIN_FAIL:
             localStorage.removeItem('token');
             return {

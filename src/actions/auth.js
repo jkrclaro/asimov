@@ -8,8 +8,6 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
-    REGISTER_SUCCESS,
-    REGISTER_FAIL,
 } from './types';
 
 const config = {
@@ -57,24 +55,6 @@ export const login = ({ username, password }) => async dispatch => {
         dispatch(stopSubmit('loginForm', {'non_field_errors': [error.response.data.detail]}));
     }
 };
-
-
-export const register = ({ username, email, password, password2 }) => async dispatch => {
-    const body = JSON.stringify({ username, email, password, password2 });
-    try {
-        const response = await accounts.post('/register', body, config);
-        dispatch({
-            type: REGISTER_SUCCESS,
-            payload: response.data
-        });
-    } catch (error) {
-        dispatch({
-            type: REGISTER_FAIL
-        });
-        dispatch(stopSubmit('registerForm', error.response.data));
-    }
-}
-
 
 export const logout = () => async dispatch => {
     dispatch({
