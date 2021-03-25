@@ -1,6 +1,6 @@
 import { stopSubmit } from 'redux-form';
 
-import accounts from '../api/accounts';
+import axios from '../axios';
 import {
     USER_LOADING,
     USER_LOADED,
@@ -27,7 +27,7 @@ export const tokenConfig = getState => {
 export const loadUser = () => async (dispatch, getState) => {
     dispatch({ type: USER_LOADING });
     try {
-        const response = await accounts.get('/user', tokenConfig(getState));
+        const response = await axios.get('/accounts/user', tokenConfig(getState));
         dispatch({
             type: USER_LOADED,
             payload: response.data
@@ -43,7 +43,7 @@ export const loadUser = () => async (dispatch, getState) => {
 export const login = ({ username, password }) => async dispatch => {
     const body = JSON.stringify({ username, password });
     try {
-        const response = await accounts.post('/login', body, config);
+        const response = await axios.post('/accounts/login', body, config);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: response.data

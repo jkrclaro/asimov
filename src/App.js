@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import { loadUser, login } from './actions/auth';
+import { loadUser } from './actions/auth';
 import PodcastsPage from './components/PodcastsPage';
 import SearchRedirector from './components/SearchRedirector';
 import PodcastPage from './components/PodcastPage';
@@ -16,8 +16,6 @@ class App extends React.Component {
     componentDidMount() {
         if (localStorage.getItem('token')) {
             store.dispatch(loadUser());
-        } else {
-            store.dispatch(login({ username: 'podplayer', password: 'p0dpl4y3r!p455'}))
         }
     }
 

@@ -1,5 +1,5 @@
 import { tokenConfig } from './auth';
-import podplayer from '../api/podplayer';
+import axios from '../axios';
 import {
     GET_PODCASTS_REQUEST,
     GET_PODCASTS_SUCCESS,
@@ -22,17 +22,21 @@ import {
 
 export const fetchPodcasts = () => async (dispatch, getState) => {
     dispatch({ type: GET_PODCASTS_REQUEST })
-    const response = await podplayer.get('/subscriptions', tokenConfig(getState));
-    dispatch({
-        type: GET_PODCASTS_SUCCESS,
-        payload: response.data
-    });
+    try {
+        const response = await axios.get('/podplayer/subscriptions', tokenConfig(getState));
+        dispatch({
+            type: GET_PODCASTS_SUCCESS,
+            payload: response.data
+        });
+    } catch(e) {
+        console.error(e);
+    }
 };
 
 export const fetchEpisodes = (id) => async dispatch => {
     dispatch({ type: FETCH_EPISODES_REQUEST });
     try {
-        const response = await podplayer.get(`/podcasts/${id}/episodes/`)
+        const response = await axios.get(`/podplayer/podcasts/${id}/episodes/`)
         dispatch({
             type: FETCH_EPISODES_SUCCESS,
             payload: response.data
@@ -45,7 +49,7 @@ export const fetchEpisodes = (id) => async dispatch => {
 export const fetchPodcast = id => async (dispatch, getState) => {
     dispatch({ type: GET_PODCAST_REQUEST });
     try {
-        const response = await podplayer.get(`/podcasts/${id}`, tokenConfig(getState));
+        const response = await axios.get(`/podplayer/podcasts/${id}`, tokenConfig(getState));
         dispatch({
             type: GET_PODCAST_SUCCESS,
             payload: response.data
@@ -86,7 +90,7 @@ export const pausePlayer = () => async dispatch => {
 
 export const subscribePodcast = name => async (dispatch, getState) => {
     const payload = { name }
-    await podplayer.post('/podcasts/subscribe', payload, tokenConfig(getState));
+    await axios.post('/podplayer/podcasts/subscribe', payload, tokenConfig(getState));
     dispatch({
         type: SUBSCRIBE_PODCAST_SUCCESS,
         payload: {is_subscribed: true}
@@ -95,7 +99,7 @@ export const subscribePodcast = name => async (dispatch, getState) => {
 
 export const unsubscribePodcast = name => async (dispatch, getState) => {
     const payload = { name }
-    await podplayer.post('/podcasts/unsubscribe', payload, tokenConfig(getState));
+    await axios.post('/podplayer/podcasts/unsubscribe', payload, tokenConfig(getState));
     dispatch({
         type: UNSUBSCRIBE_PODCAST_SUCCESS,
         payload: {is_subscribed: false}
@@ -105,7 +109,7 @@ export const unsubscribePodcast = name => async (dispatch, getState) => {
 export const fetchPodcastsubscription = itunes_id => async (dispatch, getState) => {
     dispatch({ type: GET_PODCAST_SUBSCRIPTION_REQUEST });
     const payload = { itunes_id }
-    const response = await podplayer.post('/podcasts/subscription', payload, tokenConfig(getState));
+    const response = await axios.post('/podplayer/podcasts/subscription', payload, tokenConfig(getState));
     dispatch({
         type: GET_PODCAST_SUBSCRIPTION_SUCCESS,
         payload: {is_subscribed: response.data}
