@@ -11,6 +11,7 @@ class PodcastsPage extends React.Component {
         return (
             <Sidebar>
                 <Header paramsId={null} title='Podcasts' />
+                <h1>{process.env.NODE_ENV}</h1>
                 <Podcasts />
             </Sidebar>
         )
