@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 import { loadUser } from './actions/auth';
-import LandingPage from './components/LandingPage';
 import PodcastsPage from './components/PodcastsPage';
 import SearchRedirector from './components/SearchRedirector';
 import PodcastPage from './components/PodcastPage';
@@ -26,8 +25,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <PublicRoute exact path={process.env.PUBLIC_URL + '/'} component={LandingPage} />
-                        <PublicRoute exact path={process.env.PUBLIC_URL + '/podplayer'} component={PodcastsPage} />
+                        <PublicRoute exact path={process.env.PUBLIC_URL + '/'} component={PodcastsPage} />
                         <Route exact path={process.env.PUBLIC_URL + '/search/:id'} component={SearchRedirector} />
                         <Route exact path={process.env.PUBLIC_URL + '/podcasts/:id'} component={PodcastPage} />
                         <Route component={NotFoundPage} />

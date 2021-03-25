@@ -1,8 +1,8 @@
-# Frontend
+# podplayer
 
 [![deploy](https://github.com/johnclaro/podplayer/actions/workflows/main.yml/badge.svg)](https://github.com/johnclaro/podplayer/actions/workflows/main.yml)
 
-Frontend of johnclaro.com
+Podpast player
 
 ## Installation
 
