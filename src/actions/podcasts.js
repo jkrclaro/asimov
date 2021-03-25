@@ -21,15 +21,11 @@ import {
 
 export const fetchPodcasts = () => async (dispatch, getState) => {
     dispatch({ type: GET_PODCASTS_REQUEST })
-    try {
-        const response = await axios.get('/podplayer/subscriptions');
-        dispatch({
-            type: GET_PODCASTS_SUCCESS,
-            payload: response.data
-        });
-    } catch(e) {
-        console.error(e);
-    }
+    const response = await axios.get('/podplayer/subscriptions');
+    dispatch({
+        type: GET_PODCASTS_SUCCESS,
+        payload: response.data
+    });
 };
 
 export const fetchEpisodes = (id) => async dispatch => {
