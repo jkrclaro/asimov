@@ -10,24 +10,11 @@ import {
     LOGOUT_SUCCESS,
 } from './types';
 
-const config = {
-    headers: {'Content-Type': 'application/json'}
-};
-
-
-export const tokenConfig = getState => {
-    const token = getState().auth.token;
-    if (token) {
-        config.headers['Authorization'] = `Bearer ${token}`;
-    }
-    return config;
-};
-
 
 export const loadUser = () => async (dispatch, getState) => {
     dispatch({ type: USER_LOADING });
     try {
-        const response = await axios.get('/accounts/user', tokenConfig(getState));
+        const response = await axios.get('/accounts/user');
         dispatch({
             type: USER_LOADED,
             payload: response.data
@@ -43,7 +30,7 @@ export const loadUser = () => async (dispatch, getState) => {
 export const login = ({ username, password }) => async dispatch => {
     const body = JSON.stringify({ username, password });
     try {
-        const response = await axios.post('/accounts/login', body, config);
+        const response = await axios.post('/accounts/login', body);
         dispatch({
             type: LOGIN_SUCCESS,
             payload: response.data
@@ -52,7 +39,6 @@ export const login = ({ username, password }) => async dispatch => {
         dispatch({
             type: LOGIN_FAIL
         })
-        dispatch(stopSubmit('loginForm', {'non_field_errors': [error.response.data.detail]}));
     }
 };
 

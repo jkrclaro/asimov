@@ -13,12 +13,6 @@ import Player from './containers/Player';
 
 class App extends React.Component {
 
-    componentDidMount() {
-        if (localStorage.getItem('token')) {
-            store.dispatch(loadUser());
-        }
-    }
-
     render() {
         return(
             <Provider store={store}>
