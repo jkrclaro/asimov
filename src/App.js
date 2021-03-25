@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import { loadUser } from './actions/auth';
 import PodcastsPage from './components/PodcastsPage';
 import SearchRedirector from './components/SearchRedirector';
 import PodcastPage from './components/PodcastPage';

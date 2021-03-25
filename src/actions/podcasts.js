@@ -1,4 +1,3 @@
-import { tokenConfig } from './auth';
 import axios from '../axios';
 import {
     GET_PODCASTS_REQUEST,

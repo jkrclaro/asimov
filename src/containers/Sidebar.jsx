@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Logout from './Logout';
-
 
 function getPathname(pathname) {
     let path = '/';
@@ -55,14 +53,6 @@ class Sidebar extends React.Component {
                     {'url': '/hackernews-3', 'logo': 'fas fa-bars', 'title': 'Hacker News 3'},
                 ]
             },
-            {
-                'url': '/account',
-                'logo': 'fas fa-cog',
-                'title': 'Account',
-                'submenus': [
-                    {'url': '/logout', 'logo': 'fas fa-sign-out', 'title': 'Logout'}
-                ]
-            },   
         ]
     }
 
@@ -110,13 +100,6 @@ class Sidebar extends React.Component {
                     '/hacker-news-3',
                 ],
                 'others': []
-            },
-            '/account': {
-                'main': [
-                    '/account',
-                    '/logout',
-                ],
-                'others': []
             }
         }
         return (
@@ -133,11 +116,7 @@ class Sidebar extends React.Component {
                                     <span>
                                         { link.submenus.map((submenu, submenuIndex) =>
                                             <span key={`submenu-${submenuIndex}`}>
-                                                { submenu.url === '/logout' ? (
-                                                    <Logout className='list-group-item list-group-item-action bg-light' paddingLeft={55} />
-                                                ) : (
-                                                    <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`list-group-item list-group-item-action bg-light ${pathname === submenu.url ? 'sidebar-active' : null}`} style={{paddingLeft: 55}}>{submenu.title}</Link>
-                                                )}
+                                                <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`list-group-item list-group-item-action bg-light ${pathname === submenu.url ? 'sidebar-active' : null}`} style={{paddingLeft: 55}}>{submenu.title}</Link>
                                             </span>
                                         )}
                                     </span>
@@ -161,11 +140,7 @@ class Sidebar extends React.Component {
                                             <span>
                                                 { link.submenus.map((submenu, submenuIndex) =>
                                                     <span key={`submenu-${submenuIndex}`}>
-                                                        { submenu.url === '/logout' ? (
-                                                            <Logout className='nav-item nav-link' paddingLeft={35} />
-                                                        ) : (
-                                                            <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`nav-item nav-link ${pathname === submenu.url ? 'navbar-active' : null}`} style={{paddingLeft: 35}}>{submenu.title}</Link>
-                                                        )}
+                                                        <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`nav-item nav-link ${pathname === submenu.url ? 'navbar-active' : null}`} style={{paddingLeft: 35}}>{submenu.title}</Link>
                                                     </span>
                                                 )}
                                             </span>

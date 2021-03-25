@@ -4,21 +4,15 @@ import { reducer as form } from 'redux-form';
 import podcastReducer from './podcasts';
 import playerReducer from './player';
 import episodeReducer from './episodes';
-import authReducer from './auth';
-import { LOGOUT_SUCCESS } from '../actions/types';
 
 const appReducer = combineReducers({
     form: form,
     podcasts: podcastReducer,
     player: playerReducer,
-    episodes: episodeReducer,
-    auth: authReducer
+    episodes: episodeReducer
 })
 
 const rootReducer = (state, action) => {
-    if (action.type === LOGOUT_SUCCESS) {
-        state = undefined;
-    }
     return appReducer(state, action);
 };
 

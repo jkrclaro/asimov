@@ -45,12 +45,7 @@ class Search extends React.Component {
 
     loadRemoteOptions = _.debounce((inputValue, callback) => {
         const payload = {'keywords': inputValue}
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.props.auth.token}`
-        }
-        const config = { headers }
-        axios.post('/podplayer/podcasts', payload, config)
+        axios.post('/podplayer/podcasts', payload)
             .then(result => callback(result.data, null))
             .catch(error => callback(null, error))
     }, 100)
@@ -69,10 +64,4 @@ class Search extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        auth: state.auth
-    }
-}
-
-export default connect(mapStateToProps)(Search);
+export default Search;

@@ -27,7 +27,7 @@ class Podcast extends React.Component {
     }
 
     render() {
-        const { podcasts, auth, isDesktop } = this.props;
+        const { podcasts, isDesktop } = this.props;
         return (
             <div className='mt-3'>
                 { podcasts.isFetchingPodcast ? (
@@ -49,16 +49,14 @@ class Podcast extends React.Component {
                                     <div className='mb-2'><i className='fas fa-link text-muted mr-3'></i><a href={podcasts.selected.website}>{podcasts.selected.website}</a></div>
                                     <div className='mb-2'><small>{podcasts.selected.summary}</small></div>
                                 </div>
-                                { auth.isAuthenticated ? (
-                                    <div className='col-lg-4 mb-3'>
-                                        {podcasts.is_subscribed ? (
-                                            <span onClick={() => this.unsubscribe(podcasts.selected.name)} className={`btn btn-Light ${isDesktop ? 'btn-block': null}`}><i className='fas fa-times'></i> Unsubscribe</span>
-                                        ) : (
-                                            <span onClick={() => this.subscribe(podcasts.selected.name)} className={`btn btn-Theme ${isDesktop ? 'btn-block': null}`}><i className='fas fa-plus'></i> Subscribe</span>
-                                        )}
+                                <div className='col-lg-4 mb-3'>
+                                    {podcasts.is_subscribed ? (
+                                        <span onClick={() => this.unsubscribe(podcasts.selected.name)} className={`btn btn-Light ${isDesktop ? 'btn-block': null}`}><i className='fas fa-times'></i> Unsubscribe</span>
+                                    ) : (
+                                        <span onClick={() => this.subscribe(podcasts.selected.name)} className={`btn btn-Theme ${isDesktop ? 'btn-block': null}`}><i className='fas fa-plus'></i> Subscribe</span>
+                                    )}
 
-                                    </div>
-                                ) : null}
+                                </div>
                             </div>
                         </div>
                         <Episodes podcastId={this.props.podcastId} />
@@ -71,8 +69,7 @@ class Podcast extends React.Component {
 
 const mapStateToProps = state => {
     return { 
-        podcasts: state.podcasts,
-        auth: state.auth
+        podcasts: state.podcasts
     };
 }
 

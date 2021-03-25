@@ -23,10 +23,3 @@ export const PLAY_EPISODE = 'PLAY_EPISODE';
 export const SHOW_PLAYER = 'SHOW_PLAYER';
 export const PLAY_PLAYER = 'PLAY_PLAYER';
 export const PAUSE_PLAYER = 'PAUSE_PLAYER';
-
-export const USER_LOADING = 'USER_LOADING';
-export const USER_LOADED = 'USER_LOADED';
-export const AUTH_ERROR = 'AUTH_ERROR';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'LOGIN_FAIL';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
