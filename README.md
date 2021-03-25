@@ -1,6 +1,6 @@
 # podplayer
 
-[![deploy](https://github.com/johnclaro/podplayer/actions/workflows/main.yml/badge.svg)](https://github.com/johnclaro/podplayer/actions/workflows/main.yml)
+[![Deploy](https://github.com/johnclaro/podplayer/actions/workflows/deploy.yml/badge.svg)](https://github.com/johnclaro/podplayer/actions/workflows/deploy.yml)
 
 Podpast player
 
