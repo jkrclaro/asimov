@@ -21,37 +21,11 @@ class Sidebar extends React.Component {
                 'url': '/',
                 'logo': 'fas fa-podcast',
                 'title': 'Podcasts',
-                'submenus': []
             },
             {
                 'url': '/playlists',
                 'logo': 'fas fa-bars',
                 'title': 'Playlists',
-                'submenus': [
-                    {'url': '/rss-1', 'logo': 'fas fa-bars', 'title': 'RSS 1'},
-                    {'url': '/rss-2', 'logo': 'fas fa-bars', 'title': 'RSS 2'},
-                    {'url': '/rss-3', 'logo': 'fas fa-bars', 'title': 'RSS 3'},
-                ]
-            },
-            {
-                'url': '/new-releases',
-                'logo': 'far fa-plus-square',
-                'title': 'New Releases',
-                'submenus': [
-                    {'url': '/hackernews-1', 'logo': 'fas fa-bars', 'title': 'Hacker News 1'},
-                    {'url': '/hackernews-2', 'logo': 'fas fa-bars', 'title': 'Hacker News 2'},
-                    {'url': '/hackernews-3', 'logo': 'fas fa-bars', 'title': 'Hacker News 3'},
-                ]
-            },
-            {
-                'url': '/in-progress',
-                'logo': 'fas fa-spinner',
-                'title': 'In Progress',
-                'submenus': [
-                    {'url': '/hackernews-1', 'logo': 'fas fa-bars', 'title': 'Hacker News 1'},
-                    {'url': '/hackernews-2', 'logo': 'fas fa-bars', 'title': 'Hacker News 2'},
-                    {'url': '/hackernews-3', 'logo': 'fas fa-bars', 'title': 'Hacker News 3'},
-                ]
             },
         ]
     }
@@ -61,47 +35,6 @@ class Sidebar extends React.Component {
         const { player } = this.props;
         let viewportHeight = player.isOpen ? '80vh' : '100vh';
         const pathname = getPathname(window.location.pathname);
-        const urls = {
-            '/': {
-                'main': [
-                    '/',
-                    '/playlists',
-                    '/new-releases',
-                    '/in-progress',
-                    '/favorites',
-                ],
-                'others': [
-                    '/podcasts/:id'
-                ]
-            },
-            '/playlists': {
-                'main': [
-                    '/rss',
-                    '/rss-1',
-                    '/rss-2',
-                    '/rss-3',
-                ],
-                'others': []
-            },
-            '/new-releases': {
-                'main': [
-                    '/hacker-news',
-                    '/hacker-news-1',
-                    '/hacker-news-2',
-                    '/hacker-news-3',
-                ],
-                'others': []
-            },
-            '/in-progress': {
-                'main': [
-                    '/hacker-news',
-                    '/hacker-news-1',
-                    '/hacker-news-2',
-                    '/hacker-news-3',
-                ],
-                'others': []
-            }
-        }
         return (
             <div className='d-flex' id='sidebar-container'>
                 <nav id='sidebar' className='mt-3'>
@@ -111,16 +44,7 @@ class Sidebar extends React.Component {
                     <div className='list-group list-group-flush'>
                         { links.map((link, index) => 
                             <div key={`sidebar-${index}`}>
-                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url || urls[link.url].others.includes(pathname) ? 'sidebar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
-                                { urls[link.url].main.includes(pathname) || urls[link.url].others.includes(pathname) ? (
-                                    <span>
-                                        { link.submenus.map((submenu, submenuIndex) =>
-                                            <span key={`submenu-${submenuIndex}`}>
-                                                <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`list-group-item list-group-item-action bg-light ${pathname === submenu.url ? 'sidebar-active' : null}`} style={{paddingLeft: 55}}>{submenu.title}</Link>
-                                            </span>
-                                        )}
-                                    </span>
-                                ) : null}
+                                <Link to={link.url} className={`list-group-item list-group-item-action bg-light ${pathname === link.url ? 'sidebar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
                             </div>
                         )}
                     </div>
@@ -135,16 +59,7 @@ class Sidebar extends React.Component {
                             <div className='navbar-nav ml-auto mt-2 mt-lg-0'>
                                 { links.map((link, index) => 
                                     <div key={`navbar-${index}`}>
-                                        <Link to={link.url} className={`nav-item nav-link ${pathname === link.url || urls[link.url].others.includes(pathname) ? 'navbar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
-                                        { urls[link.url].main.includes(pathname) || urls[link.url].others.includes(pathname) ? (
-                                            <span>
-                                                { link.submenus.map((submenu, submenuIndex) =>
-                                                    <span key={`submenu-${submenuIndex}`}>
-                                                        <Link key={`submenu-${submenuIndex}`} to={submenu.url} className={`nav-item nav-link ${pathname === submenu.url ? 'navbar-active' : null}`} style={{paddingLeft: 35}}>{submenu.title}</Link>
-                                                    </span>
-                                                )}
-                                            </span>
-                                        ) : null}
+                                        <Link to={link.url} className={`nav-item nav-link ${pathname === link.url ? 'navbar-active' : null}`}><i className={`${link.logo} mr-3`}></i> {link.title}</Link>
                                     </div>
                                 )}
                             </div>

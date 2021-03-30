@@ -26,8 +26,8 @@ instance.interceptors.response.use((response) => {
     if (error.response.status === 401 && !request._retry) {
         request._retry = true;
         const body = {
-            username: 'podplayer',
-            password: 'p0dpl4y3r!p455'
+            username: 'guestusername',
+            password: 'guestpassword'
         }
         const response = await instance.post('/accounts/login', body);
         const { access, refresh } = response.data;
