@@ -12,9 +12,11 @@ import {
 class Player extends React.Component {
 
     state = {
-        isDesktop: false
+        isDesktop: false,
+        volume: 0.5,
     }
     updatePredicate = this.updatePredicate.bind(this);
+    changeVolume = this.changeVolume.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -34,8 +36,18 @@ class Player extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    changeVolume(event) {
+        let volume = event.target.value;
+        volume = parseFloat(event.target.value);
+        this.setState({ volume })
+    }
+
+    inputVolume(event) {
+        console.log(event.target)
+    }
+
     render() {
-        const { isDesktop } = this.state;
+        const { isDesktop, volume } = this.state;
         const { player, pausePlayer, playPlayer } = this.props;
         let viewportHeight = player.isOpen ? '20vh' : '0vh';
         return (
@@ -46,7 +58,8 @@ class Player extends React.Component {
                         width='0%'
                         height='0%'
                         playing={player.isPlaying}
-                        url={player.episode.url} />
+                        url={player.episode.url}
+                        volume={volume} />
                     ) : null}
 
                     { isDesktop ? (
@@ -67,7 +80,7 @@ class Player extends React.Component {
                             <div className='col-lg-1 col-3 my-auto'>
                                 <i className='fas fa-redo'></i>
                             </div>
-                            <div className='col-lg-5 col-12 text-center'>
+                            <div className='col-lg-6 col-12 text-center'>
                                 { player.episode ? (
                                     <div className='mt-3 mb-3'>
                                         <div style={{textOverflow: 'ellipsis'}}><b>{ player.episode.name}</b></div>
@@ -77,13 +90,17 @@ class Player extends React.Component {
                                 ) : null}
                             </div>
                             <div className='col-lg-1 col-4 text-center my-auto'>
-                                <span className='btn btn-light'>1x</span>
-                            </div>
-                            <div className='col-lg-1 col-4 text-center my-auto'>
                                 <i className='fas fa-volume-up'></i>
                             </div>
                             <div className='col-lg-1 col-4 text-center my-auto'>
-                                <i className='fas fa-bars'></i>
+                                <input
+                                    type='range'
+                                    min={0}
+                                    max={1}
+                                    step={0.1}
+                                    defaultValue={volume}
+                                    onChange={this.changeVolume}
+                                />
                             </div>
                         </div>
                     ) : (
