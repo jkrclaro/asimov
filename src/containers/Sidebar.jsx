@@ -22,11 +22,11 @@ class Sidebar extends React.Component {
                 'logo': 'fas fa-podcast',
                 'title': 'Podcasts',
             },
-            {
-                'url': '/playlists',
-                'logo': 'fas fa-bars',
-                'title': 'Playlists',
-            },
+            // {
+            //     'url': '/playlists',
+            //     'logo': 'fas fa-bars',
+            //     'title': 'Playlists',
+            // },
         ]
     }
 
