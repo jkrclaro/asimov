@@ -14,9 +14,11 @@ class Player extends React.Component {
     state = {
         isDesktop: false,
         volume: 0.5,
+        muted: false,
     }
     updatePredicate = this.updatePredicate.bind(this);
     changeVolume = this.changeVolume.bind(this);
+    muteVolume = this.muteVolume.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -42,12 +44,19 @@ class Player extends React.Component {
         this.setState({ volume })
     }
 
-    inputVolume(event) {
-        console.log(event.target)
+    muteVolume(event) {
+        const muted = !this.state.muted;
+        let volume = 0;
+        if (!muted) {
+            volume = 0.5;
+        }
+        let volumeInput = document.getElementById('volume-range');
+        volumeInput.value = volume;
+        this.setState({ volume, muted })
     }
 
     render() {
-        const { isDesktop, volume } = this.state;
+        const { isDesktop, volume, muted } = this.state;
         const { player, pausePlayer, playPlayer } = this.props;
         let viewportHeight = player.isOpen ? '20vh' : '0vh';
         return (
@@ -59,7 +68,8 @@ class Player extends React.Component {
                         height='0%'
                         playing={player.isPlaying}
                         url={player.episode.url}
-                        volume={volume} />
+                        volume={volume}
+                        muted={muted} />
                     ) : null}
 
                     { isDesktop ? (
@@ -90,10 +100,11 @@ class Player extends React.Component {
                                 ) : null}
                             </div>
                             <div className='col-lg-1 col-4 text-center my-auto'>
-                                <i className='fas fa-volume-up'></i>
+                                <i className={`fas fa-volume-${muted ? 'mute' : 'up'}`} onClick={this.muteVolume}></i>
                             </div>
                             <div className='col-lg-1 col-4 text-center my-auto'>
                                 <input
+                                    id='volume-range'
                                     type='range'
                                     min={0}
                                     max={1}
