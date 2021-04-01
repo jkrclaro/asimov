@@ -14,11 +14,13 @@ class Player extends React.Component {
     state = {
         isDesktop: false,
         volume: 0.5,
+        podcastTime: 0,
         muted: false,
     }
     updatePredicate = this.updatePredicate.bind(this);
     changeVolume = this.changeVolume.bind(this);
     muteVolume = this.muteVolume.bind(this);
+    changeTime = this.changeTime.bind(this);
 
     componentDidMount() {
         this.updatePredicate();
@@ -39,8 +41,7 @@ class Player extends React.Component {
     }
 
     changeVolume(event) {
-        let volume = event.target.value;
-        volume = parseFloat(event.target.value);
+        const volume = parseFloat(event.target.value);
         this.setState({ volume })
     }
 
@@ -55,6 +56,15 @@ class Player extends React.Component {
         this.setState({ volume, muted })
     }
 
+    changeTime(event) {
+        const time = parseFloat(event.target.value);
+        this.refPlayer.seekTo(time, 'fraction');
+    }
+
+    ref = refPlayer => {
+        this.refPlayer = refPlayer;
+    }
+
     render() {
         const { isDesktop, volume, muted } = this.state;
         const { player, pausePlayer, playPlayer } = this.props;
@@ -64,6 +74,7 @@ class Player extends React.Component {
                 <div className='container'>
                     { player.episode ? (
                         <ReactPlayer
+                        ref={this.ref}
                         width='0%'
                         height='0%'
                         playing={player.isPlaying}
@@ -95,7 +106,15 @@ class Player extends React.Component {
                                     <div className='mt-3 mb-3'>
                                         <div style={{textOverflow: 'ellipsis'}}><b>{ player.episode.name}</b></div>
                                         <div>{ player.podcast.name} - <Moment format='ll'>{player.episode.published_at}</Moment></div>
-                                        <input type='range' className='form-control'></input>
+                                        <input
+                                            id='player-time'
+                                            type='range'
+                                            min={0}
+                                            max={1}
+                                            step={0.001}
+                                            defaultValue={volume}
+                                            onChange={this.changeTime}
+                                        ></input>
                                     </div>
                                 ) : null}
                             </div>

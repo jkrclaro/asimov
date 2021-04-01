@@ -163,3 +163,7 @@ a.bg-light:hover, a.bg-light:active, a.bg-light:focus {
 .fa-sync-alt {
   font-size: 32px;
 }
+
+#player-time {
+  width: 100% !important;
+}
