@@ -33,12 +33,12 @@ class Episodes extends React.Component {
                 ) : (
                     <div className='row'>
                         <div className='col-lg-5 mb-3'>
-                            <div className='input-group'>
+                            {/* <div className='input-group'>
                                 <input type='text' className='form-control' placeholder='Search episode...'></input>
                                 <div className="input-group-append">
                                     <span className="btn btn-Theme"><i className='fas fa-search'></i></span>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='col-lg-7 text-right my-auto'>
                             <small className='text-muted'>{episodes.data.length} EPISODES</small>
